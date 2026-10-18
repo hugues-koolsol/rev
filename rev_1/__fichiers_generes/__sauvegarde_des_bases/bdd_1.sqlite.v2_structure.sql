@@ -601,7 +601,7 @@ choix(si(condition(non(ou(egalstricte(tup.cht_condition_rev_source,null),egalstr
 choix(si(condition(et(egalstricte(tup.che_est_fragment_source,1),diffstricte(tup.chx_dossier_id_source,null))),alors(
       throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier ne doit pas être indiqué\')))))))
 choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.che_est_fragment_source,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(525,16))) 
+      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(516,9))) 
 */
     
             /*
@@ -778,6 +778,19 @@ choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.ch
             )
             */
              `che_est_verrouille_source` INTEGER NOT NULL DEFAULT  0
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('cht_import_module_rev_source'),
+            nom_bref_du_champ('liste des imports'),libelle_du_champ('liste des imports'),
+            typologie(cht),
+            genre(98),
+            longueur_du_champ(2.200)
+            )
+            */
+             `cht_import_module_rev_source` TEXT DEFAULT  NULL
     ,
     
             /*
@@ -1901,10 +1914,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_cle_parametre'),
-            nom_bref_du_champ('cle'),libelle_du_champ('cle du paramètre'),entete_distant_du_champ('paramètre'),
+            nom_bref_du_champ('clé'),libelle_du_champ('clé'),entete_distant_du_champ('paramètre'),
             typologie(chp),
             genre(3),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_cle_parametre` VARCHAR(64) NOT NULL
@@ -1914,10 +1927,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_parametre'),
-            nom_bref_du_champ('nom'),libelle_du_champ('nom du paramètre'),entete_distant_du_champ('paramètre'),
+            nom_bref_du_champ('nom'),libelle_du_champ('nom'),entete_distant_du_champ('paramètre'),
             typologie(chp),
             genre(3),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_nom_parametre` VARCHAR(64) NOT NULL
@@ -1927,10 +1940,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_parametre'),
-            nom_bref_du_champ('commentaire'),libelle_du_champ('commentaire du parametre'),entete_distant_du_champ('commentaire paramètre'),
+            nom_bref_du_champ('commentaire'),libelle_du_champ('commentaire'),entete_distant_du_champ('commentaire paramètre'),
             typologie(cht),
             genre(11),
-            longueur_du_champ(10.200)
+            longueur_du_champ(2.100)
             )
             */
              `cht_commentaire_parametre` TEXT
@@ -1940,10 +1953,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_rev_parametre'),
-            nom_bref_du_champ('rev'),libelle_du_champ('rev du parametre'),entete_distant_du_champ('rev paramètre'),
+            nom_bref_du_champ('rev'),libelle_du_champ('rev'),entete_distant_du_champ('rev paramètre'),
             typologie(cht),
             genre(98),
-            longueur_du_champ(10.200)
+            longueur_du_champ(2.100)
             )
             */
              `cht_rev_parametre` TEXT DEFAULT  '#()'
@@ -1953,10 +1966,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_ordre_parametre'),
-            nom_bref_du_champ('ordre'),libelle_du_champ('ordre du parametre'),entete_distant_du_champ('ordre paramètre'),
+            nom_bref_du_champ('ordre'),libelle_du_champ('ordre'),entete_distant_du_champ('ordre paramètre'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(10.200)
+            longueur_du_champ(2.100)
             )
             */
              `cht_ordre_parametre` TEXT DEFAULT  NULL
@@ -2063,7 +2076,7 @@ CREATE TABLE `tbl_grandeurs`(
             typologie(chp),
             genre(12),
             est_libelle_lien(1),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_cle_grandeur` VARCHAR(64) NOT NULL DEFAULT  NULL

@@ -198,11 +198,11 @@ class __navigation1{
         /* console.log(lst1); */
         let c_est_un_bouton_rev='';
         if(event.target
-               && event.target.hasAttribute( 'data-rev_click' )
-               && event.target.getAttribute( 'data-rev_click' ).indexOf( 'm1(' ) >= 0
+               && event.target.hasAttribute( 'rev_click1' )
+               && event.target.getAttribute( 'rev_click1' ).indexOf( 'm1(' ) >= 0
         ){
             /* console.log('%c on est ici car on a cliqué dans le menu et il faut fermer ce menu','background:hotpink;color:black;'); */
-            c_est_un_bouton_rev=event.target.getAttribute( 'data-rev_click' );
+            c_est_un_bouton_rev=event.target.getAttribute( 'rev_click1' );
         }
         let le_menu=null;
         for( let i=0 ; i < lst1.length ; i++ ){
@@ -300,7 +300,7 @@ class __navigation1{
     #souris_haut_branche( e ){
         /* console.log('#souris_haut_branche', e ); */
         let cible=null;
-        if(e.target.getAttribute( 'data-rev_click' )){
+        if(e.target.getAttribute( 'rev_clic1' )){
             cible=e.target;
         }else if(e.target.getAttribute( 'data-bouton_plusmoins_de' )){
         }else if(e.target.getAttribute( 'data-replie' )){
@@ -312,8 +312,8 @@ class __navigation1{
             */
             let pare=e.target.parentNode;
             let continuer=50;
-            while(continuer >= 0){
-                if(pare.getAttribute( 'data-rev_click' )){
+            while(continuer >= 0 && pare.tagName.toLowerCase() !== 'body'){
+                if(pare.getAttribute( 'rev_clic1' )){
                     continuer=-1;
                     cible=pare;
                 }else{
@@ -321,7 +321,7 @@ class __navigation1{
                 }
             }
         }
-        if(cible && cible.getAttribute( 'data-rev_click' )){
+        if(cible && cible.getAttribute( 'rev_clic1' )){
             if(cible.parentElement.getAttribute( 'data-num_conteneur_parent' )){
                 /* console.log( 'cible.parentElement=' , cible.parentElement ); */
                 let num_conteneur_parent=cible.parentElement.getAttribute( 'data-num_conteneur_parent' );
@@ -457,10 +457,7 @@ class __navigation1{
       =============================================================================================================
     */
     #souris_haut0( e ){
-        /* console.log('dans #souris_haut0', e.target , e.target.parentNode , e.target.parentNode.parentNode ); */
-        /* window.removeEventListener( 'mouseup' , this.#souris_haut_listener , false ); */
-        /* window.removeEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
-        let aa=e.target.getAttribute( 'data-rev_click' );
+        let aa=e.target.getAttribute( 'rev_clic1' );
         if(aa && aa !== '' && aa.indexOf( 'm1(' ) >= 0){
             e.target.style.visibility='visible';
             let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' );

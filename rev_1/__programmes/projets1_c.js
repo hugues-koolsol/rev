@@ -121,7 +121,7 @@ class projets1{
                 this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div id="vv_ajouter_un_element_' + this.moi + '" class="yy_svg1 yy__xif" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_creer1())))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div id="vv_ajouter_un_element_' + this.moi + '" class="yy_svg1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_creer1())))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =============================================================================================================
@@ -495,7 +495,7 @@ class projets1{
             if(tup.T0_chi_id_projet === 2){
                 lst+='<div class="yy_b1 yy__3 yy__3_inactif" >=&gt;</div>';
             }else{
-                lst+='<div class="yy_b1 yy__3 ' + (this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet ? ( 'yy__3_inactif' ) : ( '' )) + '" data-rev_click="';
+                lst+='<div class="yy_b1 yy__3 ' + (this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet ? ( 'yy__3_inactif' ) : ( '' )) + '" rev_clic1="';
                 lst+='pm1(m1(n1(' + this.moi + '),f1(activer1(';
                 lst+=' chi_id_projet(' + tup.T0_chi_id_projet + ')';
                 lst+='))))';
@@ -504,7 +504,7 @@ class projets1{
         }
         /* DEsactiver */
         if(this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet){
-            lst+='<div class="yy_b1 yy__0 ' + (this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet ? ( '' ) : ( 'yy__0_inactif' )) + '" data-rev_click="';
+            lst+='<div class="yy_b1 yy__0 ' + (this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet ? ( '' ) : ( 'yy__0_inactif' )) + '" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(desactiver1(';
             lst+=' $chi_id_projet(' + tup.T0_chi_id_projet + ')';
             lst+='))))';
@@ -515,7 +515,7 @@ class projets1{
         if(this.__variables_module['chi_id_projet'] === 0 || this.__variables_module['chi_id_projet'] !== tup.T0_chi_id_projet){
             lst+='<div class="yy_svg1 yy__3 yy__3_inactif" >' + this.__ig1.les_svg.editer + '</div>';
         }else{
-            lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + tup.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + tup.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.editer + '</div>';
         }
         /* supprimer */
         if(tup.T0_chi_id_projet <= 3){
@@ -523,7 +523,7 @@ class projets1{
         }else{
             /* seul le dev principal peut supprimer un projet */
             if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
-                lst+='<div class="yy_svg1 yy__0" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + tup.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<div class="yy_svg1 yy__0" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + tup.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
             }else{
                 lst+='<div class="yy_svg1 yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</div>';
             }
@@ -532,10 +532,10 @@ class projets1{
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
             lst+='<div class="yy_svg1 yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</div>';
         }else{
-            lst+='<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + tup.T0_chi_id_projet + '),base_systeme(1)))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
+            lst+='<div class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + tup.T0_chi_id_projet + '),base_systeme(1)))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</div>';
         }
         if(tup.T0_chi_id_projet >= 3 || tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-            lst+='<div class="yy_svg1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
+            lst+='<div class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</div>';
         }else{
             lst+='<div class="yy_svg1 yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</div>';
         }
@@ -574,10 +574,10 @@ class projets1{
                        && le_colis1.chi_id_utilisateur === 1
                        && this.__ig1._CA_ === 1
                 ){
-                    lst+='<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>';
+                    lst+='<div class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(initialiser_projet_2())))" title="initialiser projet 2" >ip2</div>';
                 }
                 if(tup.T0_chi_id_projet === 2 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 2){
-                    lst+='<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
+                    lst+='<div class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(initialiser_le_clone())))" title="initialiser_le_clone" >init clone</div>';
                 }
                 lst+='</td>';
                 /*
@@ -595,7 +595,7 @@ class projets1{
                 lst+='<td style="text-align:center;">';
                 lst+=this.__ig1.fi2( tup.T0_cht_commentaire_projet ).substr( 0 , 100 ).replace( />/g , '&gt;' ).replace( /</g , '&lt;' );
                 if(tup.T0_chi_id_projet >= 3 && tup.T0_chi_id_projet === le_colis1.chi_id_projet){
-                    lst+='<br /><div class="yy_b1 yy__1" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>';
+                    lst+='<br /><div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(vacuum_et_checkpoint(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="vacuum et checkpoint">vacuum et checkpoint</div>';
                 }
                 lst+='</td>';
                 lst+='</tr>';

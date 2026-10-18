@@ -19,7 +19,7 @@ class __televersement2{
       o1+='      <span>fichiers attachés</span>';
       o1+='    </div>';
       o1+='    <div class="yy_edition_valeur1">';
-      o1+='      <div class="yy_b1 yy__1" data-rev_click="';
+      o1+='      <div class="yy_b1 yy__1" rev_clic1="';
       o1+='m1(n1(__televersement2),f1(afficher_la_sous_fenetre_televersement1('
       o1+='  traitement_final(';
       o1+='    pm1(';
@@ -733,7 +733,7 @@ class __televersement2{
           =====================================================================================================
         */
         o1+='</div>';
-        o1+='<div class="yy_b1 yy__3" data-rev_click="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
+        o1+='<div class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
@@ -919,7 +919,7 @@ class __televersement2{
         /*
           =====================================================================================================
         */
-        o1+='<div class="yy_b1 yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
+        o1+='<div class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         this.__ig1.ajoute_les_evenements_aux_boutons();
         /*

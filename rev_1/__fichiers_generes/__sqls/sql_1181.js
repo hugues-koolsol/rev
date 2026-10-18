@@ -86,7 +86,7 @@ class sql_1181{
                     "T0_che_pour_admin_parametre" : lignes[numero_de_ligne][3] ,
                     "T0_cht_commentaire_parametre" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,100)) ,
                     "T0_cht_rev_parametre" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,100)) ,
-                    "T0_cht_ordre_parametre" : (lignes[numero_de_ligne][6]===null?null:lignes[numero_de_ligne][6].substr(0,200))
+                    "T0_cht_ordre_parametre" : (lignes[numero_de_ligne][6]===null?null:lignes[numero_de_ligne][6].substr(0,100))
                 } );
         }
         /* comptage */

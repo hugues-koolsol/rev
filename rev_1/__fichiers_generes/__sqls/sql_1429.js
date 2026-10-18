@@ -13,8 +13,7 @@ class sql_1429{
         const champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , \`T0\`.\`che_binaire_source\` , 
           \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`cht_condition_rev_source\` , \`T0\`.\`cht_condition_js_source\` , 
-          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`che_est_fragment_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`cht_import_module_rev_source\` , 
-          \`T0\`.\`cht_variables_module_rev_source\`
+          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`che_est_fragment_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`cht_import_module_rev_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -29,7 +28,7 @@ class sql_1429{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 0 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1429 , e , sql0 , {} ));
         }
         let donnees0=[];
         for(let col of lignes){
@@ -48,8 +47,7 @@ class sql_1429{
                     "T0_che_pour_util_source" : col[11] ,
                     "T0_che_est_fragment_source" : col[12] ,
                     "T0_che_est_verrouille_source" : col[13] ,
-                    "T0_cht_import_module_rev_source" : col[14] ,
-                    "T0_cht_variables_module_rev_source" : col[15]
+                    "T0_cht_import_module_rev_source" : col[14]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

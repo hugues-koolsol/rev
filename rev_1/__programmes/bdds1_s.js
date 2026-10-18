@@ -14,7 +14,7 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 */
 class bdds1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async forcer_fermeture_fichier_wal( mat , d ){
         let chi_id_basedd=0;
@@ -38,7 +38,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async enregistrer_la_matrice_dans_la_table_rev( mat , d , __db1=null ){
         let chi_id_basedd=0;
@@ -158,7 +158,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async dump_de_la_base( mat , d , chi_id_projet=null ){
         /* chi_id_projet est <> de null dans le cas ou on fait une saugegarde de la base système */
@@ -167,7 +167,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async asynchrone_dump_de_la_base( mat , d , chi_id_projet=null , asynchrone=false ){
         /* attention, cette fonction asynchrone DOIT être incluse dans un try/catch */
@@ -540,7 +540,7 @@ class bdds1{
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     formatter_erreur_catch( e ){
         const repl0=new RegExp( this.__ig1.options_generales.repertoire_du_pgm_serveur , 'g' );
@@ -549,7 +549,7 @@ class bdds1{
         return('<pre>' + le_message + '</pre>');
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async recuperer_les_revs_des_bases( mat , d ){
         let les_bases_a_editer='';
@@ -1015,6 +1015,9 @@ class bdds1{
       =============================================================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -1022,6 +1025,7 @@ class bdds1{
     */
     moi='bdds1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

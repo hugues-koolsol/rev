@@ -11,7 +11,7 @@ class sql_1417{
     */
     async sql( tup ){
         const champs0=`
-          \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_import_module_rev_source\` , \`T0\`.\`cht_variables_module_rev_source\`
+          \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_import_module_rev_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -36,8 +36,7 @@ class sql_1417{
                     "T0_cht_rev_source" : col[0] ,
                     "T0_cht_genere_source" : col[1] ,
                     "T0_chp_nom_source" : col[2] ,
-                    "T0_cht_import_module_rev_source" : col[3] ,
-                    "T0_cht_variables_module_rev_source" : col[4]
+                    "T0_cht_import_module_rev_source" : col[3]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

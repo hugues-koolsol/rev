@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class acces1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     construit_menu_vjs2( id_interne_parent , le_tableau_du_menu , niveau , parent_est_select=false ){
         let contenu_menu1='';
@@ -37,7 +37,7 @@ class acces1{
                             bb+=' data-id_source="' + v1['attributs']['data-chi_id_source'] + '"';
                             bb+=' class="' + la_classe + '" ';
                             bb+=' title="' + v1['attributs']['data-chp_titre_menu'] + '"';
-                            bb+=' data-rev_click="';
+                            bb+=' rev_clic1="';
                             bb+='m1(n1(' + v1['attributs']['data-chp_nom_source'].replace( '_c.js' , '' ) + ')';
                             bb+=',f1(' + v1['attributs']['data-chp_methode_menu'];
                             if(v1['attributs']['data-cht_initialisation_menu'] === 'null'){
@@ -149,7 +149,7 @@ class acces1{
                                     bb+=' data-separateur="' + v1['separateur'] + '"';
                                 }
                                 bb+=' class="' + la_classe + '"';
-                                bb+=' data-rev_click="';
+                                bb+=' rev_clic1="';
                                 bb+='m1(n1(' + v1['attributs']['data-chp_nom_source'].replace( '_c.js' , '' ) + ')';
                                 bb+=',f1(' + v1['attributs']['data-chp_methode_menu'];
                                 if(v1['attributs']['data-cht_initialisation_menu'] === 'null'){
@@ -266,7 +266,7 @@ class acces1{
         return({"__xst" : __xsu ,"__xva" : contenu_menu1});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async produire_le_menu( mat , d , __db1 ){
         let chi_id_acces=this.__ig1.donnees_recues[__xva]['chi_id_acces'];
@@ -356,7 +356,7 @@ class acces1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async enregister_le_menu_de_l_acces2( mat , d ){
         if(this.__ig1.donnees_retournees.chi_id_utilisateur === 1){
@@ -424,7 +424,7 @@ class acces1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     construit_html_du_menu( les_elements_du_menu_actuel , id_interne_parent ){
         let t='';
@@ -463,7 +463,7 @@ class acces1{
         return t;
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async recuperer_les_menus_d_un_acces( mat , d ){
         let chi_id_acces=-1;
@@ -706,7 +706,7 @@ class acces1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         if(this.__ig1.donnees_retournees._CA_ > 2
@@ -1122,10 +1122,6 @@ class acces1{
                 criteres_1135[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
-        criteres_1135['acces_pas_dans']='(-1)';
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            criteres_1135['acces_pas_dans']='(1,2)';
-        }
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
@@ -1199,9 +1195,16 @@ class acces1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
+        this.__ig1.donnees_recues.__xva.__complements_sous_liste['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            this.__ig1.donnees_recues.__xva.__complements_sous_liste['acces_pas_dans']='(1,2)';
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -1209,6 +1212,7 @@ class acces1{
     */
     moi='acces1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

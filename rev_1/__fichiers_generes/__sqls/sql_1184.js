@@ -24,12 +24,18 @@ class sql_1184{
     async sql( tup ){
         /* test "non nul" sur le champ "chp_cle_parametre" */
         if(tup.n_chp_cle_parametre === null || tup.n_chp_cle_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "clé" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+                if(tup.n_chp_cle_parametre.length < 2 || tup.n_chp_cle_parametre.substr( 0 , 1 ) === ' '  || tup.n_chp_cle_parametre.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "clé" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
         /* test "non nul" sur le champ "chp_nom_parametre" */
         if(tup.n_chp_nom_parametre === null || tup.n_chp_nom_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+                if(tup.n_chp_nom_parametre.length < 2 || tup.n_chp_nom_parametre.substr( 0 , 1 ) === ' '  || tup.n_chp_nom_parametre.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
         /* test 0,1 sur le champ "che_pour_admin_parametre" */
         if(!( tup.n_che_pour_admin_parametre === 0 ||  tup.n_che_pour_admin_parametre === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});

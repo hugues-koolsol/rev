@@ -14,6 +14,9 @@ class sql_1188{
         if(tup.n_chp_cle_grandeur === null || tup.n_chp_cle_grandeur === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+                if(tup.n_chp_cle_grandeur.length < 2 || tup.n_chp_cle_grandeur.substr( 0 , 1 ) === ' '  || tup.n_chp_cle_grandeur.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{

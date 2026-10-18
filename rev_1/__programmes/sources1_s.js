@@ -10,7 +10,6 @@ const __xac=/* actions */'__xac';
 /*
   Je n'aime pas importer un module externe mais pour l'instant, ça ira car d'un autre
   coté, acorn est browserifié dans l'interface client
-  Méthode recommandée par microsoft copilot
 */
 import  * as acorn from "https://esm.sh/acorn@8";
 /*  */
@@ -21,7 +20,7 @@ import {w_rev_vers_js1} from './w_rev_vers_js1_.js';
 */
 class sources1{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async vv_sources_nouveau_numero1( mat , d ){
         let chi_id_source_ancienne=0;
@@ -57,7 +56,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async remplacer_une_chaine_par_une_autre_en_arriere_plan( mat , d ){
         /* this.__ig1.ma_trace1('d='+d+',mat',mat); */
@@ -128,7 +127,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async exporter_dans_base_de_prod1( mat , d ){
         let chi_id_source=0;
@@ -146,36 +145,34 @@ class sources1{
         if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
-        /* this.__ig1.ma_trace1('tt1419[__xva]=',tt1419[__xva]); */
         let sql0=`
-            UPDATE tbl_sources SET 
-                chi_id_source = ` + chi_id_source + ` , 
-                chx_dossier_id_source = ` + tt1419.__xva[0]['T0_chx_dossier_id_source'] + ` , 
-                chp_nom_source = ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_chp_nom_source'] ) + ` ,  
-                cht_commentaire_source = ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_cht_commentaire_source'] ) + ` ,  
-                che_binaire_source = ` + tt1419.__xva[0]['T0_che_binaire_source'] + ` ,  
-                che_autorisation_globale_source = ` + tt1419.__xva[0]['T0_che_autorisation_globale_source'] + ` ,
-                che_pour_util_source = ` + tt1419.__xva[0]['T0_che_pour_util_source'] + `
-            WHERE chi_id_source = ` + tt1419.__xva[0]['T0_chi_id_source'] + ` ;
-                
-            INSERT OR IGNORE INTO tbl_sources( 
-                \`chi_id_source\` , 
-                \`chx_dossier_id_source\` , 
-                \`chp_nom_source\` , 
-                \`cht_commentaire_source\` , 
-                \`che_binaire_source\` , 
-                \`che_autorisation_globale_source\` ,
-                \`che_pour_util_source\`
-            ) values(
-                ` + tt1419.__xva[0]['T0_chi_id_source'] + ` , 
-                ` + tt1419.__xva[0]['T0_chx_dossier_id_source'] + ` , 
-                ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_chp_nom_source'] ) + ` , 
-                ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_cht_commentaire_source'] ) + ` ,
-                ` + tt1419.__xva[0]['T0_che_binaire_source'] + ` , 
-                ` + tt1419.__xva[0]['T0_che_autorisation_globale_source'] + ` ,
-                ` + tt1419.__xva[0]['T0_che_pour_util_source'] + ` 
-            );`;
-        /* this.__ig1.ma_trace1('this.__ig1.options_generales=',this.__ig1.options_generales); */
+                UPDATE tbl_sources SET 
+                    chi_id_source = ` + chi_id_source + ` , 
+                    chx_dossier_id_source = ` + tt1419.__xva[0]['T0_chx_dossier_id_source'] + ` , 
+                    chp_nom_source = ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_chp_nom_source'] ) + ` ,  
+                    cht_commentaire_source = ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_cht_commentaire_source'] ) + ` ,  
+                    che_binaire_source = ` + tt1419.__xva[0]['T0_che_binaire_source'] + ` ,  
+                    che_autorisation_globale_source = ` + tt1419.__xva[0]['T0_che_autorisation_globale_source'] + ` ,
+                    che_pour_util_source = ` + tt1419.__xva[0]['T0_che_pour_util_source'] + `
+                WHERE chi_id_source = ` + tt1419.__xva[0]['T0_chi_id_source'] + ` ;
+                    
+                INSERT OR IGNORE INTO tbl_sources( 
+                    \`chi_id_source\` , 
+                    \`chx_dossier_id_source\` , 
+                    \`chp_nom_source\` , 
+                    \`cht_commentaire_source\` , 
+                    \`che_binaire_source\` , 
+                    \`che_autorisation_globale_source\` ,
+                    \`che_pour_util_source\`
+                ) values(
+                    ` + tt1419.__xva[0]['T0_chi_id_source'] + ` , 
+                    ` + tt1419.__xva[0]['T0_chx_dossier_id_source'] + ` , 
+                    ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_chp_nom_source'] ) + ` , 
+                    ` + this.__ig1.__fnt1.sq1( tt1419.__xva[0]['T0_cht_commentaire_source'] ) + ` ,
+                    ` + tt1419.__xva[0]['T0_che_binaire_source'] + ` , 
+                    ` + tt1419.__xva[0]['T0_che_autorisation_globale_source'] + ` ,
+                    ` + tt1419.__xva[0]['T0_che_pour_util_source'] + ` 
+                );`;
         let chemin_bdd=(await this.__ig1.options_generales.chemin_absolu_projet) + '__bases_de_donnees/bdd_1.sqlite';
         this.__ig1.ma_trace1( 'chemin_bdd=' + chemin_bdd );
         let __db_1=null;
@@ -194,7 +191,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async supprimer_ce_source_du_disque1( mat , d ){
         let chi_id_source=0;
@@ -238,7 +235,7 @@ class sources1{
         this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']' );
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async ecrire_ce_source_sur_disque1( mat , d ){
         let chi_id_source=0;
@@ -341,7 +338,7 @@ class sources1{
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async lire_ce_source_du_disque1( mat , d ){
         let chi_id_source=0;
@@ -471,11 +468,9 @@ class sources1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =============================================================================================================
-      met une liste de js dans la table tbl_cron
+      =========================== fragment ========================================================================
     */
     async remplacer_une_chaine_par_une_autre( mat , d ){
-        /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
         let tt1402=await this.__ig1.sql_iij(
@@ -547,11 +542,9 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      met une liste de js dans la table tbl_cron
+      =========================== fragment ========================================================================
     */
     async compiler_cette_liste_de_js_en_cron2( mat , d ){
-        /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1402={"T0_chi_id_source" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_source.join( ',' ) + ')'};
         /* this.__ig1.ma_trace1( 'criteres_select_1402=' , criteres_select_1402 ); */
@@ -624,7 +617,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async compiler_texte_js_vers_ast( mat , d , texte_js ){
         let tableau_des_commentaires_js=[];
@@ -663,7 +656,7 @@ class sources1{
             });
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async compiler_source_js_par_id_en_arriere_plan( mat , d ){
         /* this.__ig1.ma_trace1('d='+d+',mat',mat); */
@@ -724,7 +717,7 @@ class sources1{
           =====================================================================================================
           transformation de l'ast du js en rev 
         */
-        let obj1=this.#objet_conversion_ast_js_vers_rev.traite_ast( obj0.__xva.ast.body , obj0.__xva.tableau_des_commentaires_js , {} );
+        let obj1=this.__variables_module['objet_conversion_ast_js_vers_rev']['traite_ast']( obj0.__xva.ast.body , obj0.__xva.tableau_des_commentaires_js , {} );
         if(obj1.__xst !== __xsu){
             /* this.__ig1.__rev1.empiler _ erreur( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2()} ); */
             return({"__xst" : __xer ,"__xme" : ' erreur de transformation du js en rev ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
@@ -733,7 +726,7 @@ class sources1{
           =====================================================================================================
           transformation du rev du js en js 
         */
-        let obj2=this.#objet_conversion_rev_vers_js.c_rev_vers_js( obj1.__xva , {} );
+        let obj2=this.__variables_module['objet_conversion_rev_vers_js']['c_rev_vers_js']( obj1.__xva , {} );
         if(obj2.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ' erreur de transformation du rev du js en js ' + chi_id_source + '[' + this.__ig1.nl2() + ']'});
         }
@@ -803,7 +796,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async sauvegarder_une_matrice_de_source( mat , d , chi_id_source , matrice_source , __db1 ){
         let criteres_1353={
@@ -961,11 +954,14 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      utile seulement dans rev_2
-      permet de copier des fichiers de l'environnement 1 vers l'environnement 2 et inversement
+      =========================== fragment ========================================================================
     */
     async importer_ou_exporter( mat , d , projet_source , projet_cible ){
+        /*
+          =====================================================================================================
+          utile seulement dans rev_2
+          permet de copier des fichiers de l'environnement 1 vers l'environnement 2 et inversement
+        */
         let chi_id_source=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1018,11 +1014,13 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      utile seulement dans rev_2
-      Copie un fichier de l'environnement deux vers l'environnement un.
+      =========================== fragment ========================================================================
     */
     async exporter_dans_rev_un( mat , d ){
+        /*
+          utile seulement dans rev_2
+          Copie un fichier de l'environnement deux vers l'environnement un.
+        */
         let obj=await this.importer_ou_exporter( mat , d , '../rev_2/' , '../rev_1/' );
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'les source n\'a pas pu être transféré de rev_2 vers rev_1  [' + this.__ig1.nl2() + ']'});
@@ -1031,11 +1029,13 @@ class sources1{
         }
     }
     /*
-      =============================================================================================================
-      utile seulement dans rev_2
-      Copie un fichier de l'environnement un vers l'environnement deux.
+      =========================== fragment ========================================================================
     */
     async importer_de_rev_un( mat , d ){
+        /*
+          utile seulement dans rev_2
+          Copie un fichier de l'environnement un vers l'environnement deux.
+        */
         let origine=1;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -1056,7 +1056,7 @@ class sources1{
         }
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async enregistrer_un_source_compile1( mat , d ){
         /* $this.__ig1.donnees_retournees.__xsi[__xdv][]='<pre>'.var_export( $this.__ig1.donnees_recues , true ).'</pre> [' . __LINE__ . ']'; */
@@ -1125,7 +1125,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async charger_source_pour_compilation1( mat , d ){
         let chi_id_source=0;
@@ -1191,7 +1191,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         let m=await import( './dossiers1_s.js' );
@@ -1792,17 +1792,14 @@ class sources1{
     */
     moi='sources1';
     __ig1=null;
-    __js_vers_ast=null;
-    #objet_conversion_ast_js_vers_rev=null;
-    #objet_conversion_rev_vers_js=null;
+    __variables_module={};
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     constructor( __ig1 ){
         this.__ig1=__ig1;
-        /* this.__ig1.ma_trace1( ' constructor de ' + this.moi ); */
-        this.#objet_conversion_ast_js_vers_rev=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , this.__ig1 );
-        this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 );
+        this.__variables_module['objet_conversion_ast_js_vers_rev']=new w_ast_js_vers_rev1( '#objet_conversion_ast_js_vers_rev' , this.__ig1 );
+        this.__variables_module['objet_conversion_rev_vers_js']=new w_rev_vers_js1( 'objet_conversion_rev_vers_js' , this.__ig1 );
     }
     /*
       =============================================================================================================

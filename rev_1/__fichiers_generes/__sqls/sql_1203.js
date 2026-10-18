@@ -45,6 +45,9 @@ class sql_1203{
                 if(tup.chp_cle_grandeur === null || tup.chp_cle_grandeur === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                if(tup.chp_cle_grandeur.length < 2 || tup.chp_cle_grandeur.substr( 0 , 1 ) === ' '  || tup.chp_cle_grandeur.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
                 /* test 0,1 sur le champ "che_actif_grandeur" */
                 if(!( tup.che_actif_grandeur === 0 ||  tup.che_actif_grandeur === 1 )){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});

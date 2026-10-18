@@ -1045,6 +1045,9 @@ class genres1{
       =============================================================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -1052,6 +1055,7 @@ class genres1{
     */
     moi='genres1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

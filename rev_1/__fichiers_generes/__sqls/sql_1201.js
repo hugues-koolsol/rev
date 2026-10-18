@@ -87,8 +87,8 @@ class sql_1201{
                     "T0_che_actif_grandeur" : lignes[numero_de_ligne][4] ,
                     "T1_chp_cle_parametre" : lignes[numero_de_ligne][5] ,
                     "T1_chp_nom_parametre" : lignes[numero_de_ligne][6] ,
-                    "T1_cht_rev_parametre" : (lignes[numero_de_ligne][7]===null?null:lignes[numero_de_ligne][7].substr(0,200)) ,
-                    "T1_cht_ordre_parametre" : (lignes[numero_de_ligne][8]===null?null:lignes[numero_de_ligne][8].substr(0,200)) ,
+                    "T1_cht_rev_parametre" : (lignes[numero_de_ligne][7]===null?null:lignes[numero_de_ligne][7].substr(0,100)) ,
+                    "T1_cht_ordre_parametre" : (lignes[numero_de_ligne][8]===null?null:lignes[numero_de_ligne][8].substr(0,100)) ,
                     "T1_che_pour_admin_parametre" : lignes[numero_de_ligne][9]
                 } );
         }

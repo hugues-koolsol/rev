@@ -167,11 +167,11 @@ class w_html_vers_rev1{
                     }else{
                         let l_attribut=jsonDeHtml.attributes[attr].replace( /"/g , '&quot;' );
                         /*
-                         l_attribut est mis entre double quote donc si dans le html il est:
-                         xx="meta(distinction_pour_isad('d\'un groupe'))"
-                         alors 'd\'un groupe' il doit être transformé en 'd\\'un groupe'
+                          l_attribut est mis entre double quote donc si dans le html il est:
+                          xx="meta(distinction_pour_isad('d\'un groupe'))"
+                          alors 'd\'un groupe' il doit être transformé en 'd\\'un groupe'
                         */
-                        l_attribut=l_attribut.replace(/\\\'/g,'\\\\\'')
+                        l_attribut=l_attribut.replace( /\\\'/g , '\\\\\'' );
                         attributs+='(\'' + attr.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\',"' + l_attribut + '")';
                     }
                 }

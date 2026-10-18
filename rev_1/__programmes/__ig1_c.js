@@ -91,7 +91,7 @@ class __ig1{
             let tt='';
             tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">La version du programme a changé !</h2>';
             tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
-            tt+=' <div class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+=' <div class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.maj_contenu_principal( tt );
@@ -737,7 +737,7 @@ class __ig1{
             this.initialisation_des_zones( nom_de_la_classe_js , nom_du_champ_cle );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="yy_svg1 yy_btn_retour_liste" data-rev_click="';
+        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="yy_svg1 yy_btn_retour_liste" rev_clic1="';
         bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
         bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
         let sujet='modification';
@@ -816,11 +816,11 @@ class __ig1{
         o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
         o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
         o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
-        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="yy_b1 yy_suivant_precedent_inactif" data-rev_click="';
+        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="yy_b1 yy_suivant_precedent_inactif" rev_clic1="';
         o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
         o1+='"';
         o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
-        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif"  data-rev_click="';
+        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif"  rev_clic1="';
         o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
         o1+='"';
         o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
@@ -834,9 +834,9 @@ class __ig1{
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+='   <div id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
+        o1+='   <div id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter</div>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+='   <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
+        o1+='   <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter et revenir à la liste</div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_creation_zone_complement" style="display:none;"></div>';
         /*
@@ -849,8 +849,8 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;">';
-        o1+='  <div class="yy_b1 yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
-        o1+='  <div class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
+        o1+='  <div class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
+        o1+='  <div class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_suppression_zone_complement" style="display:none;"></div>';
         /*
@@ -859,13 +859,13 @@ class __ig1{
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
         o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone" ';
-        o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
+        o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
         o1+='    title="">modifier</div>    ';
         o1+='  <div class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
-        o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
+        o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
         o1+='    title="">modifier et retour</div>';
         o1+='  <div class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
-        o1+='    data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
+        o1+='    rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
         o1+='    title="page de confirmation de suppression">' + this.les_svg.poubelle + '</div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
@@ -909,7 +909,7 @@ class __ig1{
                         console.log( 'faire quelquechose ici e=' , e );
                         let btn2=document.getElementById( 'yy_bouton_loupe_sous_fenetre2' );
                         if(btn2){
-                            let cmd2=btn2.getAttribute( 'data-rev_click' );
+                            let cmd2=btn2.getAttribute( 'rev_clic1' );
                             if(cmd2){
                                 console.log( 'cmd2=' + cmd2 );
                                 this.executer1( cmd2 , null , e );
@@ -1022,7 +1022,7 @@ class __ig1{
                     }
                     o1+='        <div style="' + bck + '"><span>' + elem.nom + '</span></div>';
                     o1+='        <div>';
-                    o1+='<div class="yy_b1 yy__4" data-rev_click="';
+                    o1+='<div class="yy_b1 yy__4"  rev_clic1="';
                     o1+='m1(n1(__fnt1),f1(selection_sous_grandeur_filtre2(';
                     o1+='id_zone(' + i + '),';
                     o1+='module_appelant1(' + module_appelant1 + ')';
@@ -1030,7 +1030,7 @@ class __ig1{
                     o1+='chi_id_parametre(' + elem.rerefence_a_une_grandeur.chi_id_parametre + ' ),';
                     o1+='puiser_avec(' + elem.rerefence_a_une_grandeur.puiser_avec + '),';
                     o1+='__sous_titre_a_afficher(\'' + elem.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\'' ) + '\'))))" >?</div>';
-                    o1+='            <div class="yy_b1 yy__4" data-rev_click="m1(n1(__fnt1),f1(raz_zone_et_select1(';
+                    o1+='            <div class="yy_b1 yy__4"  rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                     o1+='id(' + i + '),';
                     o1+='origine_de_l_appel_liste(' + that.moi + ')';
                     if(elem.champ_texte_associé){
@@ -1085,7 +1085,7 @@ class __ig1{
         }
         o1+='   <div class="yy_bloc_loupe">';
         o1+='        <div id="yy_bouton_loupe_sous_fenetre2" class="yy_b1" style="margin:auto auto;min-width:' + this.css_dimensions.t_boutons_carres + 'px;min-height:' + this.css_dimensions.t_boutons_carres + 'px;"';
-        o1+=' data-rev_click="m1(n1(' + this.moi + '),f1(appel_serveur_pour_zones_sous_liste2(';
+        o1+='  rev_clic1="m1(n1(' + this.moi + '),f1(appel_serveur_pour_zones_sous_liste2(';
         o1+='__num_page(0)';
         o1+=',module_appelant1(' + module_appelant1 + ')';
         o1+=',module_appele1(' + module_appele1 + ')';
@@ -1113,7 +1113,7 @@ class __ig1{
         /* bouton page précédente */
         if(le_colis1.__xva.__debut > 0){
             o1+='<div id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_actif" ';
-            o1+='data-rev_click="';
+            o1+=' rev_clic1="';
             o1+='fo1(co1(sous_liste2),pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
             o1+='__num_page(' + (le_colis1.__xva.__num_page - 1) + '),';
             o1+='module_appelant1(' + module_appelant1 + '),';
@@ -1135,7 +1135,7 @@ class __ig1{
         }
         /* bouton page suivante */
         if(le_colis1.__xva.sous_liste2.nombre > le_colis1.__xva.__debut + le_colis1.__xva.__nbMax){
-            o1+='<div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_actif" data-rev_click="';
+            o1+='<div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_actif"  rev_clic1="';
             o1+='fo1(co1(sous_liste2),pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
             o1+='__num_page(' + (le_colis1.__xva.__num_page + 1) + '),';
             o1+='module_appelant1(' + module_appelant1 + '),';
@@ -1277,7 +1277,7 @@ class __ig1{
                     parametres+=this.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
                     parametres+='\')';
                     parametres+=')))';
-                    lst+='  <div class="yy_b1 yy__2" data-rev_click="' + parametres + '">=&gt;</div>';
+                    lst+='  <div class="yy_b1 yy__2"  rev_clic1="' + parametres + '">=&gt;</div>';
                     lst+='</td>';
                     lst+='<td style="text-align:center;">';
                     lst+=this.fi2( tup.T0_chi_id_grandeur );
@@ -1425,7 +1425,7 @@ class __ig1{
     lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true , valeur_actuelle=null ){
         let o1='';
         o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
-        o1+='    <div class="yy_svg1 yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
+        o1+='    <div class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
         o1+='  module_appele1(' + module1 + ')';
@@ -1447,7 +1447,7 @@ class __ig1{
           );
         o1+=' title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
         if(afficher_bouton_vider === true){
-            o1+='    <div class="yy_svg1 yy__2" data-rev_click="m1(n1(__ig1),f1(annuler_lien_parent2(id_valeur3(' + champ_fils + '),id_libelle3(' + id_span_libelle + '))))"';
+            o1+='    <div class="yy_svg1 yy__2"  rev_clic1="m1(n1(__ig1),f1(annuler_lien_parent2(id_valeur3(' + champ_fils + '),id_libelle3(' + id_span_libelle + '))))"';
             o1+=valeur_actuelle === null ?
               ( 
                 chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
@@ -1603,6 +1603,67 @@ class __ig1{
             this.css1();
         } , 300 );
         window.addEventListener( 'resize' , debouncedResize );
+        window.addEventListener( "click" , ( event ) => {
+                this.traite_clic1( event );
+        } );
+    }
+    /*
+      =============================================================================================================
+    */
+    traite_clic1( e ){
+        let l_action_rev='';
+        let l_element=null;
+        if(e.target.hasAttribute( 'rev_clic1' ) && e.target.getAttribute( 'rev_clic1' ) !== ''){
+            l_element=e.target;
+            l_action_rev=e.target.getAttribute( 'rev_clic1' );
+        }else{
+            l_element=e.target.parentNode;
+            let i=50;
+            while(i-- > 0 && l_element.tagName.toLowerCase() !== 'body'){
+                if(l_element.hasAttribute( 'rev_clic1' ) && l_element.getAttribute( 'rev_clic1' ) !== ''){
+                    l_action_rev=l_element.getAttribute( 'rev_clic1' );
+                    break;
+                }
+                l_element=l_element.parentNode;
+            }
+        }
+        if(l_action_rev === ''){
+            return;
+        }
+        e.preventDefault();
+        let obj1=this.__rev1.rev_tcm( l_action_rev );
+        if(obj1.__xst !== __xsu){
+            this.ajoute_message( {
+                    "__xst" : __xer ,
+                    "__xme" : 'erreur de convertion de source en matrice sur le click <br /><br /><b>' + l_action_rev + '</b><br /><br />' + this.nl2() + '<br />' + obj1.__xme
+                } );
+            this.affiche_les_messages();
+            this.fermer_la_sous_fenetre();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        l_element.classList.add( 'yy_invisible' );
+        if(this.#liste_des_appels_au_serveur.length > 0){
+            this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
+            this.affiche_les_messages();
+        }
+        try{
+            document.getElementById( 'vv_div_des_positions_du_curseur' ).innerHTML='';
+        } catch {}
+        this.#boutons_masques_avant_appel.push( l_element );
+        let mat=obj1.__xva;
+        /* ==== appel ici ================================================= */
+        let obj=this.__xac( mat , 0 , null , e );
+        /* ==== appel ici ================================================= */
+        if(obj.__xst === __xer){
+            this.ajoute_message( {
+                    "__xst" : __xer ,
+                    "__xme" : 'le source de traite_clic1 :<br /><b>' + l_action_rev + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
+                } );
+            this.affiche_les_messages();
+            this.retablir_les_boutons_masques();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
@@ -2918,25 +2979,25 @@ class __ig1{
         t+='<div id="vv_haut_de_page" role="navigation">';
         t+='    <div id="vv_nav">';
         t+='        <div id="vv_nav_gauche">';
-        t+='            <div data-id_menu="-1" class="yy__bcar1" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
-        t+='            <div id="vv_bouton_messages" class="yy__bcar1" data-rev_click="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
+        t+='            <div data-id_menu="-1" class="yy__bcar1" rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
+        t+='            <div id="vv_bouton_messages" class="yy__bcar1" rev_clic1="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
         t+='        </div>';
         t+='        <div id="vv_nav_centre">';
         t+='            <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
         t+='        </div>';
         t+='        <div id="vv_nav_droite">';
-        t+='            <div data-id_menu="-2" class="yy__bcar1" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
-        t+='            <div data-id_menu="-3" class="yy__bcar1 yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
+        t+='            <div data-id_menu="-2" class="yy__bcar1" id="vv_bouton_aide" rev_clic1="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
+        t+='            <div data-id_menu="-3" class="yy__bcar1 yy__1" id="vv_bouton_connexion" rev_clic1="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
         t+='        </div>';
         t+='    </div>';
         t+='</div>';
         t+='<div id="vv_messages" style="visibility:hidden;"></div>';
         t+='<div id="vv_contenu_principal" role="main"></div>';
         t+='<div id="vv_pied_de_page">';
-        t+='      <div data-id_menu="-9" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(page_bas()))">' + this.les_svg.bas_de_page + '</div>';
-        t+='      <div data-id_menu="-4" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</div>';
-        t+='      <div data-id_menu="-5" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</div>';
-        t+='      <div data-id_menu="-6" class="yy__bcar1" style="" data-rev_click="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</div>';
+        t+='      <div data-id_menu="-9" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(page_bas()))">' + this.les_svg.bas_de_page + '</div>';
+        t+='      <div data-id_menu="-4" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</div>';
+        t+='      <div data-id_menu="-5" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</div>';
+        t+='      <div data-id_menu="-6" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</div>';
         t+='      <div data-id_menu="-7" class="" style="display:flex;" id="vv_info_projet"></div>';
         t+='      <div data-id_menu="-8" class="" style="display:flex;" id="vv_info_connexion">' + this.les_svg.rond_rouge1 + '</div>';
         t+='</div>';
@@ -3639,13 +3700,13 @@ class __ig1{
                 tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau';
                 tt+='</div>';
                 tt+='<div>';
-                tt+='<div class="yy__bcar1 yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+                tt+='<div class="yy__bcar1 yy__1" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
                 tt+='</div>';
                 tt+='</div>';
                 message=tt;
             }
             if(obj.hasOwnProperty( 'lig_col' )){
-                t+='<div class="yy_b1 ' + la_classe + '" data-rev_click="';
+                t+='<div class="yy_b1 ' + la_classe + '"  rev_clic1="';
                 t+='m1(n1(__fnt1),f1(placer_le_curseur_en_lig_col1(';
                 t+=' zone_source(' + (obj.zone_edition === undefined ? ( __ig1.zone_d_edition_en_cours ) : ( obj.zone_edition )) + '),';
                 t+=' ligne(' + obj.lig_col[0] + '),';
@@ -3949,6 +4010,7 @@ class __ig1{
         lst=document.querySelectorAll( "[data-rev_click]" );
         for( let i=0 ; i < lst.length ; i++ ){
             if(!lst[i].getAttribute( 'data-rev_event_click' )){
+                debugger;
                 lst[i].addEventListener( "click" , this.quand_click.bind( this ) );
                 if(lst[i].nodeName.toLowerCase() === 'input' || lst[i].nodeName.toLowerCase() === 'textarea'){
                     lst[i].addEventListener( "touchend" , this.quand_click.bind( this ) );
@@ -4031,10 +4093,10 @@ class __ig1{
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
                 let t='';
-                t+='<div class="yy_b1 yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
+                t+='<div class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
                 if(dans_sous_fenetre === false){
-                    t+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
-                    t+='<div class="yy_svg1 yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                    t+='<div class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
+                    t+='<div class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
                 }
                 vv_supprimer_les_messages.innerHTML=t;
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
@@ -4050,10 +4112,10 @@ class __ig1{
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
             let t='';
-            t+='<div class="yy_b1 yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
+            t+='<div class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
             if(dans_sous_fenetre === false){
-                t+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
-                t+='<div class="yy_svg1 yy__3" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                t+='<div class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
+                t+='<div class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
             }
             vv_supprimer_les_messages.innerHTML=t;
             a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
@@ -4575,7 +4637,7 @@ class __ig1{
             t+='<span>&nbsp;bidon=' + (i + 1) + '</span><br />';
             if(false && i === 3){
                 for( let j=0 ; j <= 4 ; j++ ){
-                    t+='<div class="yy_b1 yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
+                    t+='<div class="yy_b1 yy__' + j + '"  rev_clic1="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
                 }
             }
             if(false && i === 8){
@@ -4622,34 +4684,34 @@ class __ig1{
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                 t+='  <ul>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</div>';
+                t+='     <div class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
+                t+='     <div class="yy_b1"  rev_clic1="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
+                t+='     <div class="yy_b1"  rev_clic1="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
+                t+='     <div class="yy_b1"  rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
+                t+='     <div class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
+                t+='     <div class="yy_b1"  rev_clic1="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="yy_b1" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</div>';
+                t+='     <div class="yy_b1"  rev_clic1="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</div>';
                 t+='   </li>';
                 t+='   <li>';
                 t+='     bla';
                 t+='     <ul>';
                 t+='       <li>';
-                t+='         <div class="yy_b1" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</div>';
+                t+='         <div class="yy_b1"  rev_clic1="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</div>';
                 t+='       </li>';
                 t+='       <li>';
-                t+='         <div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</div>';
+                t+='         <div class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</div>';
                 t+='       </li>';
                 t+='     </ul>';
                 t+='   </li>';
@@ -4663,9 +4725,9 @@ class __ig1{
                 t+=' <li>';
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un autre menu</div>';
                 t+='  <ul>';
-                t+='   <li><div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
-                t+='   <li><div class="yy_b1" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
-                t+='   <li><div class="yy_b1" data-rev_click="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
+                t+='   <li><div class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
+                t+='   <li><div class="yy_b1"  rev_clic1="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
+                t+='   <li><div class="yy_b1"  rev_clic1="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
                 t+='  </ul>';
                 t+=' </li>';
                 t+='</ul>';
@@ -4981,7 +5043,7 @@ class __ig1{
             let tt='';
             tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">la connexion au site distant n\'a pas pu être rétablie !</h2>';
             tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
-            tt+=' <div class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+=' <div class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.fermer_la_sous_fenetre();

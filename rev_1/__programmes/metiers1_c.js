@@ -70,7 +70,7 @@ class metiers1{
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
     }
     /*
       =============================================================================================================
@@ -493,7 +493,7 @@ class metiers1{
                 1,2].includes( tup.T0_chi_id_metier )){
             lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
         }else{
-            lst+='<div class="yy_svg1 yy__2" data-rev_click="';
+            lst+='<div class="yy_svg1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_metier(' + tup.T0_chi_id_metier + ')))))';
             lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
         }
@@ -501,8 +501,8 @@ class metiers1{
             lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
             lst+='<div class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
         }else{
-            lst+='<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_metier(' + tup.T0_chi_id_metier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_metier(' + tup.T0_chi_id_metier + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_metier(' + tup.T0_chi_id_metier + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_metier(' + tup.T0_chi_id_metier + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
         }
         lst+='</div>';
         return lst;

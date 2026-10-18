@@ -162,7 +162,8 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+        `T0`.`cht_import_module_rev_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -490,7 +491,8 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+        `T0`.`cht_import_module_rev_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
         
@@ -855,7 +857,8 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+            `T0`.`cht_import_module_rev_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -940,7 +943,8 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source`
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+            `T0`.`cht_import_module_rev_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
             
@@ -2334,6 +2338,9 @@ class dossiers1{
       =============================================================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -2341,6 +2348,7 @@ class dossiers1{
     */
     moi='dossiers1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

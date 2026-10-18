@@ -163,11 +163,6 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`cht_import_module_rev_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_import_module_rev_source , 'n_cht_import_module_rev_source' ) + '\'' );
             }
-            if(tup.n_cht_variables_module_rev_source === undefined || tup.n_cht_variables_module_rev_source === '' || tup.n_cht_variables_module_rev_source === null){
-                tableau_champs.push( '`cht_variables_module_rev_source` = NULL' );
-            }else{
-                tableau_champs.push( '`cht_variables_module_rev_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_variables_module_rev_source , 'n_cht_variables_module_rev_source' ) + '\'' );
-            }
             if(tableau_champs.length === 0){
                 return({
                          /*  */

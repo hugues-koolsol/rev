@@ -263,7 +263,7 @@ class v_svg_bdd1{
                 t+='<td>';
                 /*  */
                 let t0='UPDATE ' + nom_de_la_table + '<br />SET ' + nom_du_champ + ' = \'xxxx' + i + '\'<br />WHERE ' + nom_du_champ + ' = \'' + le_colis1.__xva.lignes[i][0] + '\'';
-                t+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
+                t+='<div class="yy_svg1 yy__1" rev_clic1="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
                 t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
                 t+='requete(\'' + t0.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
@@ -279,7 +279,7 @@ class v_svg_bdd1{
                 t+='<td>';
                 /*  */
                 t0='SELECT * FROM ' + nom_de_la_table + '<br />WHERE ' + nom_du_champ + ' = \'' + le_colis1.__xva.lignes[i][0] + '\'';
-                t+='<div class="yy_svg1 yy__1" data-rev_click="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
+                t+='<div class="yy_svg1 yy__1" rev_clic1="m1(n1(v_svg_bdd1),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
                 t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
                 t+='requete(\'' + t0.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
@@ -305,7 +305,7 @@ class v_svg_bdd1{
                && id_svg_champ_en_cours > 0
                && id_svg_conteneur_table > 0
         ){
-            t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(modale_modifier_le_champ(';
+            t+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(modale_modifier_le_champ(';
             t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
             t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
             t+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
@@ -1968,7 +1968,7 @@ class v_svg_bdd1{
         t+='<h3>changer le nom de l\'index</h3>';
         t+='<input autocapitalize="off" id="nouveau_nom" type="text" value="' + nom_de_l_index + '" />';
         t+='<input id="ancien_nom" type="hidden" value="' + nom_de_l_index + '" />';
-        t+='<div class="yy_b1 yy__0" data-rev_click="';
+        t+='<div class="yy_b1 yy__0" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(changer_le_nom_d_index_de_modale(';
         t+=' id_svg_text(' + id_element_svg + '),';
         t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
@@ -1982,7 +1982,7 @@ class v_svg_bdd1{
         t+='<h3>changer les champs</h3>';
         t+='<br />liste des champ  : <input type="text" id="liste_des_champs_de_l_index" disabled style="width:100%;" disabled title="' + liste_des_champs_de_l_index + '" value="' + liste_des_champs_de_l_index + '" />';
         t+='<br />';
-        t+='<div class="yy_b1 yy__0" data-rev_click="';
+        t+='<div class="yy_b1 yy__0" rev_clic1="';
         t+='m1(n1(' + this.moi + ')f1(raz_liste_des_champs_de_l_index(';
         t+=' nom_du_champ(\'liste_des_champs_de_l_index\'),';
         t+=')))" >raz</div>';
@@ -1999,7 +1999,7 @@ class v_svg_bdd1{
             }
         }
         for( let i=0 ; i < liste_des_champs.length ; i++ ){
-            t+='<div class="yy_b1 yy__3" data-rev_click="';
+            t+='<div class="yy_b1 yy__3" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_a_l_index_dans_modale(';
             t+=' nom_du_champ(\'' + liste_des_champs[i] + '\')';
             t+=' null_est_unique(0)';
@@ -2007,7 +2007,7 @@ class v_svg_bdd1{
         }
         t+='<br />avec null_est_unique<br />';
         for( let i=0 ; i < liste_des_champs.length ; i++ ){
-            t+='<div class="yy_b1 yy__3" data-rev_click="';
+            t+='<div class="yy_b1 yy__3" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_a_l_index_dans_modale(';
             t+=' nom_du_champ(\'' + liste_des_champs[i] + '\')';
             t+=' null_est_unique(1)';
@@ -2024,7 +2024,7 @@ class v_svg_bdd1{
         t+='<br />message : <br> <input autocapitalize="off" type="text" id="meta_modifier__message" value="' + message.replace( /"/g , '&quot;' ) + '" style="width:100%;" />';
         t+='<br />';
         t+='<br />';
-        t+='<div class="yy_b1 yy__3" data-rev_click="';
+        t+='<div class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(modifier_un_index_de_modale(';
         t+=' id_svg_rectangle_de_l_index(' + id_svg_rectangle_de_l_index + '),';
         t+=' nom_de_l_index(' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
@@ -2039,7 +2039,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_l_index(' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
         cmd+='  nom_de_la_table(' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" >supprimer</div>';
+        t+='<div class="yy_b1 yy__0" rev_clic1="' + cmd + '" >supprimer</div>';
         t+='<hr />';
         t+='<h2>dans la base physique</h2>';
         /*
@@ -2052,7 +2052,7 @@ class v_svg_bdd1{
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
         cmd+=' id_svg_de_la_base_en_cours(' + id_svg_de_la_base_en_cours + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >analyser l\'index</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >analyser l\'index</div>';
         t+='<br /><br />';
         /*  */
         cmd='';
@@ -2061,7 +2061,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_l_index(' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
         cmd+=' nom_de_la_table(' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >ajouter</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >ajouter</div>';
         t+='<br /><br />';
         /*  */
         cmd='';
@@ -2070,7 +2070,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_l_index(' + nom_de_l_index.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
         cmd+=' nom_de_la_table(' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" >supprimer l\'index</div>';
+        t+='<div class="yy_b1 yy__0" rev_clic1="' + cmd + '" >supprimer l\'index</div>';
         this.__ig1.affiche_sous_fenetre1( t );
         return({"__xst" : __xsu});
     }
@@ -2461,7 +2461,7 @@ class v_svg_bdd1{
         t+='<h4>modification champ "' + nom_du_champ + '" de la table "' + nom_de_la_table + '"</h4>';
         t+='<div ';
         t+=' class="yy_b1 yy__1" ';
-        t+=' data-rev_click="';
+        t+=' rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(modale_gerer_la_table(';
         t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
         t+=' id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + ')';
@@ -2482,7 +2482,7 @@ class v_svg_bdd1{
         f+=' id_svg_conteneur_table(\'' + id_svg_conteneur_table + '\')';
         f+=' nom_de_la_table(\'' + nom_de_la_table + '\')';
         f+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + f + '" >changer en base et sur le schema</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + f + '" >changer en base et sur le schema</div>';
         f='';
         f+='m1(n1(' + this.moi + '),f1(changer_le_nom_de_champ_de_modale_sur_le_schema(';
         f+=' id_svg_text(' + id_element_texte_du_nom_de_champ_svg + '),';
@@ -2490,7 +2490,7 @@ class v_svg_bdd1{
         f+=' id_svg_conteneur_table(\'' + id_svg_conteneur_table + '\')';
         f+=' nom_de_la_table(\'' + nom_de_la_table + '\')';
         f+=')))';
-        t+='<div class="yy_b1 yy__0" data-rev_click="' + f + '" >changer sur le schema uniquement</div>';
+        t+='<div class="yy_b1 yy__0" rev_clic1="' + f + '" >changer sur le schema uniquement</div>';
         t+='<hr />';
         /*
           =====================================================================================================
@@ -2614,12 +2614,12 @@ class v_svg_bdd1{
         t+='<input';
         t+=' id="che_longueur_genre" type="text" maxlength="32" size="7"  value="' + longueur_du_champ + '" class="yy_input1" style="width:6em;" autocapitalize="off" aria-autocomplete="list"';
         t+=' title="x,y pour DECIMAL,\nlng.nb car pour TEXT,\nlng.nb car min pour TEXT" />';
-        t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(32)))))">32</div>';
-        t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'17,2\')))))">17,2</div>';
-        t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'3.200\')))))">3.200</div>';
-        t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'64.2\')))))">64.2</div>';
+        t+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(32)))))">32</div>';
+        t+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'17,2\')))))">17,2</div>';
+        t+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'3.200\')))))">3.200</div>';
+        t+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'64.2\')))))">64.2</div>';
         if(longueur_du_champ !== null && longueur_du_champ !== ''){
-            t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'' + longueur_du_champ + '\')))))">' + longueur_du_champ + '</div>';
+            t+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(che_longueur_genre),valeur(valeur_constante(\'' + longueur_du_champ + '\')))))">' + longueur_du_champ + '</div>';
         }
         t+='<br />bdd mère:<input id="base_mère" type="text" maxlength="3" size="3" value="' + base_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:2em;" />';
         t+=', tbl mère:<input id="table_mère" type="text" maxlength="64" size="10" value="' + table_mere + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" />';
@@ -2665,7 +2665,7 @@ class v_svg_bdd1{
         t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox"  ' + (a_une_valeur_par_defaut ? ( 'checked="true"' ) : ( '' )) + '/>';
         t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" ' + (la_valeur_par_defaut_est_caractere ? ( 'checked="true"' ) : ( '' )) + ' />';
         t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="' + valeur_par_defaut.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" /> ';
-        t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(cht_valeur_init_genre),valeur(valeur_constante(NULL)))))">NULL</div>';
+        t+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(cht_valeur_init_genre),valeur(valeur_constante(NULL)))))">NULL</div>';
         t+='<br />"CURRENT_TIMESTAMP","CURRENT_TIME","CURRENT_DATE"';
         /* ========================================================= */
         t+='<br /><b>meta</b>';
@@ -2697,7 +2697,7 @@ class v_svg_bdd1{
         cmd+=' meta_champ(bref)';
         cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >construire le nom</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >construire le nom</div>';
         /*  */
         t+='<br />libelle : ';
         t+='<input type="text" id="meta_modifier__libelle_du_champ" value="' + libelle_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:20em;" />';
@@ -2709,7 +2709,7 @@ class v_svg_bdd1{
         cmd+=' methode(de_la)';
         cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >nom "de la" </div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >nom "de la" </div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_modifier__libelle_du_champ),';
@@ -2718,7 +2718,7 @@ class v_svg_bdd1{
         cmd+=' methode(du)';
         cmd+=' nom_de_la_table(' + nom_de_la_table + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >nom "du" </div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >nom "du" </div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_modifier__libelle_du_champ),';
@@ -2732,7 +2732,7 @@ class v_svg_bdd1{
         cmd+=' champ1(meta_modifier__nom_bref_du_champ),';
         cmd+=' champ2(meta_modifier__libelle_du_champ),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >copier nom bref</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >copier nom bref</div>';
         /*  */
         t+='<br />suggestions : ';
         t+='<input type="text" id="meta_modifier__suggestion_du_champ" value="' + suggestion_du_champ.replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:19em;" />';
@@ -2743,7 +2743,7 @@ class v_svg_bdd1{
         t+='<br />est libelle lien : <input type="checkbox" id="est_libelle_lien" ' + (est_libelle_lien === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+=' , entete distant : ';
         t+='<input type="text" id="meta_modifier__entete_distant_du_champ" value="' + entete_distant_du_champ.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '" autocapitalize="off" aria-autocomplete="list" aria-autocomplete="list" class="yy_input1" style="width:10em;" />';
-        t+='<div class="yy_svg1 yy__0 rev_b_ctxt" data-rev_click="m1(n1(__fnt1),f1(vider_la_zone(zone_source(meta_modifier__entete_distant_du_champ))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        t+='<div class="yy_svg1 yy__0 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(vider_la_zone(zone_source(meta_modifier__entete_distant_du_champ))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
         t+='<br />masquer : ';
         t+='<input type="checkbox" id="masquer_champ_dans_svg" ' + (masquer_champ_dans_svg === 1 ? ( 'checked' ) : ( '' )) + ' />';
         t+=' , refe_enfant_droite : <input type="checkbox" id="refe_enfant_droite" ' + (refe_enfant_droite === 1 ? ( 'checked' ) : ( '' )) + ' />';
@@ -2763,8 +2763,8 @@ class v_svg_bdd1{
         t+='<details><summary style="font-weight: bold;' + (cht_fonction_init !== '' ? ( 'color:red;' ) : ( '' )) + '">fonction d\'initialisation</summary>';
         t+='rev : ';
         t+='<textarea id="cht_fonction_init" rows="4" cols="20" autocapitalize="off">' + cht_fonction_init.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
-        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_init),zone_resultat(cht_fonction_init_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
-        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_init_js),zone_resultat(cht_fonction_init),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_init),zone_resultat(cht_fonction_init_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_init_js),zone_resultat(cht_fonction_init),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
         t+='js : ';
         t+='<textarea id="cht_fonction_init_js" rows="4" cols="20" autocapitalize="off">' + cht_fonction_init_js.replace( />/g , '&gt;' ).replace( /</g , '&lt;' ) + '</textarea>';
         t+='</details>';
@@ -2781,8 +2781,8 @@ class v_svg_bdd1{
         t+='<details><summary style="font-weight: bold;' + (cht_fonction_tstchp !== '' ? ( 'color:red;' ) : ( '' )) + '">fonction test unitaire</summary>';
         t+='rev : ';
         t+='<textarea id="cht_fonction_tstchp" rows="4" cols="20" autocapitalize="off">' + cht_fonction_tstchp.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ) + '</textarea>';
-        t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_tstchp),zone_resultat(cht_fonction_tstchp_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
-        t+='<div class="yy_b1 yy__1" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_tstchp_js),zone_resultat(cht_fonction_tstchp),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_fonction_tstchp),zone_resultat(cht_fonction_tstchp_js))))" title="convertir de rev vers js" >↧rev->js↧</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_fonction_tstchp_js),zone_resultat(cht_fonction_tstchp),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js-&gt;rev↥</div>';
         t+='js : ';
         t+='<textarea id="cht_fonction_tstchp_js" rows="4" cols="20" autocapitalize="off">' + cht_fonction_tstchp_js.replace( />/g , '&gt;' ).replace( /</g , '&lt;' ) + '</textarea>';
         t+='<pre>if(tup.chn_xxx_yyy <= 0){\r\n throw new Error( \'doit être > 0\' );\r\n}</pre>';
@@ -2826,7 +2826,7 @@ class v_svg_bdd1{
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >modifier</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >modifier</div>';
         /*
           =====================================================================================================
         */
@@ -2856,7 +2856,7 @@ class v_svg_bdd1{
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+=' vv_chi_id_projet(' + vv_chi_id_projet + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >' + le_sql1 + '</div>';
         /*  */
         let le_sql2='select distinct ' + nom_du_champ + ' , count(*) from ' + nom_de_la_table + ' GROUP BY ' + nom_du_champ + ' ORDER BY ' + nom_du_champ + ' DESC LIMIT 500;';
         var cmd='';
@@ -2870,7 +2870,7 @@ class v_svg_bdd1{
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+=' vv_chi_id_projet(' + vv_chi_id_projet + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >' + le_sql2 + '</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >' + le_sql2 + '</div>';
         let le_sql3='SELECT MAX(length(' + nom_du_champ + ')) FROM ' + nom_de_la_table + '';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(page_exécuter_une_requete_sql_directement_sur_la_base(';
@@ -2882,7 +2882,7 @@ class v_svg_bdd1{
         cmd+='nom_de_la_table(' + nom_de_la_table + ')';
         cmd+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >' + le_sql3 + '</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >' + le_sql3 + '</div>';
         /*
           =====================================================================================================
         */
@@ -2896,7 +2896,7 @@ class v_svg_bdd1{
         cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=' id_svg_rectangle_du_champ(' + id_svg_rectangle_du_champ + '),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" >supprimer le champ du svg</div>';
+        t+='<div class="yy_b1 yy__0" rev_clic1="' + cmd + '" >supprimer le champ du svg</div>';
         t+='<hr />';
         /*
           =====================================================================================================
@@ -2916,7 +2916,7 @@ class v_svg_bdd1{
         cmd+=' id_svg_rectangle_du_champ(' + id_svg_rectangle_du_champ + ')';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >ajouter le champ en bdd</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >ajouter le champ en bdd</div>';
         t+='<span class="yy__0">Ne pas oublier de réécrire la base après un ajout d\'un champ en base de donnée</span>';
         t+='<hr />';
         /*
@@ -2933,7 +2933,7 @@ class v_svg_bdd1{
         cmd+=' id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + ')';
         cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" >supprimer le champ en bdd</div>';
+        t+='<div class="yy_b1 yy__0" rev_clic1="' + cmd + '" >supprimer le champ en bdd</div>';
         t+='<hr />';
         /*
           =====================================================================================================
@@ -3189,7 +3189,7 @@ class v_svg_bdd1{
           );
         t+='<div id="vv_meme_ordre"></div>';
         t+='<div ';
-        t+=' data-rev_click="';
+        t+=' rev_clic1="';
         t+='m1(n1(\'' + this.moi + '\'),f1(modale_modifier_la_base(';
         t+=' id_bdd_de_la_base(' + par.id_bdd_de_la_base_en_cours + ')';
         t+=')))';
@@ -3199,7 +3199,7 @@ class v_svg_bdd1{
                && differences_entre_les_champs === false
                && differences_entre_les_indexe === false
         ){
-            t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))">réécrire</div>';
+            t+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))">réécrire</div>';
         }
         t+='</td>';
         t+='</tr>';
@@ -3646,15 +3646,15 @@ class v_svg_bdd1{
         }
         t+='<br />default_charset : ' + '<input type="text" id="vv_meta_default_charset" value="' + obj_meta.default_charset.replace( /"/g , '&quot;' ) + '" autocapitalize="off"  /> "utf8mb4"';
         t+='<br />collate : ' + '<input type="text" id="vv_meta_collate" value="' + obj_meta.collate.replace( /"/g , '&quot;' ) + '" autocapitalize="off"  /> "utf8mb4_unicode_ci"';
-        t+='<br /><div class="yy_b1 yy__3" data-rev_click="';
+        t+='<br /><div class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(modifier_la_base_de_modale(id_svg_rectangle_de_la_base(' + id_svg_rectangle_de_la_base + '))))';
         t+='">modifier</div>';
         t+='<hr /><h3>ajouter une table</h3>';
         t+='nom de la table <input id="vv_nom_de_la_nouvelle_table" type="text" value="tbl_zzzs" autocapitalize="off" />';
-        t+='<div class="yy_b1 yy__3" data-rev_click="';
+        t+='<div class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(remplir_les_metas_de_la_table(id_de_la_zone(\'vv_nom_de_la_nouvelle_table\'),masculin_feminin(1))))';
         t+='">remplir les champs masculin</div>';
-        t+='<div class="yy_b1 yy__4" data-rev_click="';
+        t+='<div class="yy_b1 yy__4" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(remplir_les_metas_de_la_table(id_de_la_zone(\'vv_nom_de_la_nouvelle_table\'),masculin_feminin(0))))';
         t+='">remplir les champs féminin</div>';
         t+='<br />';
@@ -3676,7 +3676,7 @@ class v_svg_bdd1{
             }
             t+='<br />';
         }
-        t+='<div class="yy_b1 yy__3" data-rev_click="';
+        t+='<div class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(ajouter_une_table_provenant_de_modale(id_de_la_zone(\'vv_nom_de_la_nouvelle_table\'))))';
         t+='">ajouter la table</div>';
         t+='<hr />';
@@ -3693,7 +3693,7 @@ class v_svg_bdd1{
         rev+='  )';
         rev+=' )';
         rev+=')';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + rev + '">comparer la base physique et la base virtuelle</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + rev + '">comparer la base physique et la base virtuelle</div>';
         /*
           =====================================================================================================
         */
@@ -3701,28 +3701,28 @@ class v_svg_bdd1{
         t+='<p>il faut que la comparaison soit sans erreur et il faut sauvegarder la base virtuelle</p>';
         rev='';
         rev+='m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + rev + '">réécrire</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + rev + '">réécrire</div>';
         /*
           =====================================================================================================
         */
         t+='<hr /><h3>créer la base physique à partir de ce schéma</h3>';
         rev='';
         rev+='m1(n1(' + this.moi + '),f1(creer_la_base_sur_disque_a_partir_du_shema(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '))))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + rev + '">créer</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + rev + '">créer</div>';
         /*
           =====================================================================================================
         */
         t+='<hr /><h3>voir la définition de la base à partir_de ce schema</h3>';
         rev='';
         rev+='m1(n1(' + this.moi + '),f1(voir_la_définition_de_la_base_à_partir_de_ce_schema(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '))))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + rev + '">voir</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + rev + '">voir</div>';
         /*
           =====================================================================================================
         */
         t+='<hr /><h3>exécuter une requete sql directement sur la base</h3>';
         rev='';
         rev+='m1(n1(' + this.moi + '),f1(page_exécuter_une_requete_sql_directement_sur_la_base(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '))))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + rev + '">page exécuter</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + rev + '">page exécuter</div>';
         /*
           =====================================================================================================
         */
@@ -3823,14 +3823,14 @@ class v_svg_bdd1{
         rev+='nom_de_zone(vv_commande_sql)';
         rev+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
         rev+=')))';
-        t+='<div class="yy_b1 yy__2" data-rev_click="' + rev + '">exécuter</div>';
+        t+='<div class="yy_b1 yy__2" rev_clic1="' + rev + '">exécuter</div>';
         if(id_bdd_de_la_base_en_cours > 0
                && nom_de_la_table !== ''
                && nom_du_champ !== ''
                && id_svg_champ_en_cours > 0
                && id_svg_conteneur_table > 0
         ){
-            t+='<div class="yy_b1 yy__3" data-rev_click="m1(n1(' + this.moi + '),f1(modale_modifier_le_champ(';
+            t+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(modale_modifier_le_champ(';
             t+='id_bdd_de_la_base_en_cours(' + id_bdd_de_la_base_en_cours + ')';
             t+='id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
             t+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
@@ -3850,12 +3850,12 @@ class v_svg_bdd1{
             cmd+='id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
             cmd+='vv_chi_id_projet(' + vv_chi_id_projet + ')';
             cmd+=')))';
-            t+='<br /><div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >' + le_sql1 + '</div>';
+            t+='<br /><div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >' + le_sql1 + '</div>';
         }
         t+='<div id="vv_resultat_sql_direct1"></div>';
         if(nom_de_la_table !== '' && nom_du_champ !== ''){
             let tt='SELECT MAX(length(' + nom_du_champ + ')) FROM ' + nom_de_la_table + '';
-            t+='<div class="yy_b1" data-rev_click="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(vv_commande_sql),valeur(valeur_constante(\'' + tt + '\')))))">' + tt + '</div>';
+            t+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(vv_commande_sql),valeur(valeur_constante(\'' + tt + '\')))))">' + tt + '</div>';
         }
         t+='<textarea rows="3" cols="50">';
         t+=`SELECT MAX(length(fld_nomcomfr_modele)) FROM tbl_modeles
@@ -5063,7 +5063,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         cmd+=' chi_id_basedd(' + id_bdd_de_la_base_en_cours + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >générer le programme</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >générer le programme</div>';
         /*  */
         var cmd='';
         cmd+='m1(n1(__ig1),f1(fermer_la_sous_fenetre()))';
@@ -5071,7 +5071,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         cmd+=' chi_id_basedd(' + id_bdd_de_la_base_en_cours + '),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >générer les requêtes souches</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >générer les requêtes souches</div>';
         /*  */
         t+='<hr />';
         t+='<h2>dans ce schema</h2>';
@@ -5092,7 +5092,7 @@ class v_svg_bdd1{
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ')';
         cmd+=' id_svg_du_texte(' + id_svg_du_texte + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >changer dans la base et sur le svg</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >changer dans la base et sur le svg</div>';
         /*  */
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(changer_le_nom_de_table_sur_le_svg(';
@@ -5100,14 +5100,14 @@ class v_svg_bdd1{
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ')';
         cmd+=' id_svg_du_texte(' + id_svg_du_texte + ')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" >changer sur le svg</div>';
+        t+='<div class="yy_b1 yy__0" rev_clic1="' + cmd + '" >changer sur le svg</div>';
         t+='<hr />';
         t+='<h3>modifier ses propriétés</h3>';
         var rev='';
         rev+='m1(n1(' + this.moi + '),f1(remplir_les_metas_de_la_table(id_de_la_zone(\'ancien_nom\'),masculin_feminin(1))))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + rev + '">remplir les champs masculin</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + rev + '">remplir les champs masculin</div>';
         rev+='m1(n1(' + this.moi + '),f1(remplir_les_metas_de_la_table(id_de_la_zone(\'ancien_nom\'),masculin_feminin(0))))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + rev + '">remplir les champs féminin</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + rev + '">remplir les champs féminin</div>';
         t+='<br />';
         let est_table_virtuelle=0;
         let contient_televersement=0;
@@ -5174,13 +5174,13 @@ class v_svg_bdd1{
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >modifier dans le schema</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >modifier dans le schema</div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(voir_la_definition_de_la_table(';
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__1" data-rev_click="' + cmd + '" >voir la définition de la table</div>';
+        t+='<div class="yy_b1 yy__1" rev_clic1="' + cmd + '" >voir la définition de la table</div>';
         /*
           =====================================================================================================
         */
@@ -5327,7 +5327,7 @@ class v_svg_bdd1{
         cmd+=' zone_du_champ(vv_nom_du_champ)';
         cmd+=' meta_champ(bref)';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >modifier</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >modifier</div>';
         /*  */
         t+='<br />libelle_du_champ : <input type="text" id="meta_ajouter__libelle_du_champ" value="A faire ..." autocapitalize="off" />';
         t+='<br />entete_distant_du_champ : <input type="text" id="meta_ajouter__entete_distant_du_champ" value="" autocapitalize="off" />';
@@ -5347,7 +5347,7 @@ class v_svg_bdd1{
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >ajouter ce champ à la table du schéma</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >ajouter ce champ à la table du schéma</div>';
         /*
           =====================================================================================================
           =====================================================================================================
@@ -5358,12 +5358,12 @@ class v_svg_bdd1{
         t+='<br />';
         t+='liste des champs : <input id="liste_des_champs_de_l_index" type="text" value="" disabled style="width:90%;" autocapitalize="off"/>';
         t+='<br />';
-        t+='<div class="yy_b1 yy__0" data-rev_click="';
+        t+='<div class="yy_b1 yy__0" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(raz_liste_des_champs_de_l_index(';
         t+=' nom_du_champ(liste_des_champs_de_l_index)';
         t+=')))" >raz</div>';
         for( i=0 ; i < liste_des_champs.length ; i++ ){
-            t+='<div class="yy_b1 yy__3" data-rev_click="';
+            t+='<div class="yy_b1 yy__3" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(ajouter_un_champ_a_l_index_dans_modale(';
             t+='  nom_du_champ(\'' + liste_des_champs[i].nom_du_champ + '\'),';
             t+=')))" >' + liste_des_champs[i].nom_du_champ + '</div>';
@@ -5371,7 +5371,7 @@ class v_svg_bdd1{
         t+='<br />message de l\'index : <input id="message_de_l_index" type="text" value="" autocapitalize="off" />';
         t+='<br />unique  : <input type="checkbox" id="unique" />';
         t+='<br />';
-        t+='<div class="yy_b1 yy__3" data-rev_click="';
+        t+='<div class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(ajouter_l_index_dans_modale(';
         t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
@@ -5382,7 +5382,7 @@ class v_svg_bdd1{
         t+='<h3>Supprimer la table de ce schema </h3>';
         t+='<div ';
         t+=' class="yy_b1 yy__0" ';
-        t+=' data-rev_click="';
+        t+=' rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(';
         t+=' supprimer_la_table_de_modale(';
         t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
@@ -5396,7 +5396,7 @@ class v_svg_bdd1{
         */
         t+='<h2>table dans la base physique</h2>';
         t+='<hr />';
-        t+='<div class="yy_b1 yy__1" data-rev_click="';
+        t+='<div class="yy_b1 yy__1" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(ajouter_la_table_en_base_de_modale(';
         t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
@@ -5404,14 +5404,14 @@ class v_svg_bdd1{
         t+='" >ajouter la table dans la base physique</div>';
         /*  */
         t+='<br /><br />';
-        t+='<div class="yy_b1 yy__0" data-rev_click="';
+        t+='<div class="yy_b1 yy__0" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(supprimer_la_table_en_base_de_modale(';
         t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
         t+=')))';
         t+='" >supprimer la table de la base physique</div>';
         t+='<br /><br />';
-        t+='<div class="yy_b1 yy__2" data-rev_click="';
+        t+='<div class="yy_b1 yy__2" rev_clic1="';
         t+='pm1(m1(n1(' + this.moi + '),f1(compter_le_nombre_d_enregistrements(';
         t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
@@ -5420,7 +5420,7 @@ class v_svg_bdd1{
         t+='" >compter le nombre d enregistrements</div>';
         if(est_table_virtuelle === 1){
             t+='<br /><br />';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(insérer_les_donnees_dans_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5443,7 +5443,7 @@ class v_svg_bdd1{
             t+='<td>delete</td>';
             /*  */
             t+='<td>';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(operation_trigger_delete_de_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5455,7 +5455,7 @@ class v_svg_bdd1{
             /*  */
             /*  */
             t+='<td>';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(operation_trigger_delete_de_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5476,7 +5476,7 @@ class v_svg_bdd1{
             t+='<td>update</td>';
             /*  */
             t+='<td>';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(operation_trigger_update_de_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5488,7 +5488,7 @@ class v_svg_bdd1{
             /*  */
             /*  */
             t+='<td>';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(operation_trigger_update_de_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5507,7 +5507,7 @@ class v_svg_bdd1{
             t+='<td>insert</td>';
             /*  */
             t+='<td>';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(operation_trigger_insert_de_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5519,7 +5519,7 @@ class v_svg_bdd1{
             /*  */
             /*  */
             t+='<td>';
-            t+='<div class="yy_b1 yy__4" data-rev_click="';
+            t+='<div class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(operation_trigger_insert_de_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
@@ -5572,14 +5572,14 @@ class v_svg_bdd1{
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '">ordonner dans la base et ici</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '">ordonner dans la base et ici</div>';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(bouton_ordonner_les_champs_sur_svg_uniquement(';
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         cmd+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
         cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ' ),';
         cmd+=')))';
-        t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '">ordonner ici uniquement</div>';
+        t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '">ordonner ici uniquement</div>';
         t+='</td></tr></table>';
         /*
           
@@ -5608,7 +5608,7 @@ class v_svg_bdd1{
             cmd+=' nom_du_champ(\'' + liste_des_champs[i].nom_du_champ + '\') ';
             cmd+=' nom_de_la_table(\'' + nom_de_la_table + '\') ';
             cmd+=')))';
-            t+='<div class="yy_b1 yy__3" data-rev_click="' + cmd + '" >éditer</div>';
+            t+='<div class="yy_b1 yy__3" rev_clic1="' + cmd + '" >éditer</div>';
             t+='</td>';
             /*
             */
@@ -5623,7 +5623,7 @@ class v_svg_bdd1{
                 txtl1='afficher';
                 clsl1='yy__1';
             }
-            t+='<div class="yy_b1 ' + clsl1 + '" data-rev_click="';
+            t+='<div class="yy_b1 ' + clsl1 + '" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(masquer_ou_afficher_le_champ(';
             t+=' id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
             t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
@@ -5641,7 +5641,7 @@ class v_svg_bdd1{
                 txtl1='oui';
                 clsl1='yy__1';
             }
-            t+='<div class="yy_b1 ' + clsl1 + '" data-rev_click="';
+            t+='<div class="yy_b1 ' + clsl1 + '" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(basculer_est_libelle_lien(';
             t+='  id_rectangle_de_champ(' + liste_des_champs[i].id_rectangle_de_champ + '),';
             t+='  id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
@@ -5674,7 +5674,7 @@ class v_svg_bdd1{
         t+='<td>';
         t+='</td>';
         t+='<td>';
-        t+='<div><div class="yy_b1 yy__2" data-rev_click="';
+        t+='<div><div class="yy_b1 yy__2" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(opérations_sur_valeurs_initiales( ';
         t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
         t+=' nom_de_la_table(\'' + nom_de_la_table + '\')';
@@ -6178,7 +6178,7 @@ class v_svg_bdd1{
                     cmd+=' nom_du_champ_a_modifier(\'' + lmds.liste_des_champs[j] + '\'),';
                     cmd+=' nom_de_la_table(\'' + lmds.nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
                     cmd+=')))';
-                    t+='<div class="yy_b1 yy__0" data-rev_click="' + cmd + '" >ajouter indicateur [1]</div>';
+                    t+='<div class="yy_b1 yy__0" rev_clic1="' + cmd + '" >ajouter indicateur [1]</div>';
                 }
                 t+='</td>';
                 k='T1_' + lmds.liste_des_champs[j];
@@ -8484,9 +8484,8 @@ class v_svg_bdd1{
                 "y" : 2 * this.#taille_bordure ,
                 "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
                 "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:darkcyan;fill-opacity:1;cursor:pointer;" ,
-                 /* "data-rev_click" : cmd */
-                }
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:darkcyan;fill-opacity:1;cursor:pointer;"
+            }
         };
         indice_courant++;
         /*
@@ -8654,9 +8653,8 @@ class v_svg_bdd1{
                 "y" : 2 * this.#taille_bordure ,
                 "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
                 "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:yellow;fill-opacity:0.2;cursor:pointer;" ,
-                 /* "data-rev_click" : cmd */
-                }
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:yellow;fill-opacity:0.2;cursor:pointer;"
+            }
         };
         indice_courant++;
         var objrev=null;
@@ -8801,9 +8799,8 @@ class v_svg_bdd1{
                 "y" : 2 * this.#taille_bordure ,
                 "width" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
                 "height" : this.#hauteur_de_boite - 4 * this.#taille_bordure ,
-                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:green;fill-opacity:0.2;cursor:pointer;" ,
-                 /* "data-rev_click" : cmd */
-                }
+                "style" : "stroke:black;stroke-width:" + this.#taille_bordure + ";fill:green;fill-opacity:0.2;cursor:pointer;"
+            }
         };
         indice_courant++;
         /*
@@ -9553,27 +9550,27 @@ class v_svg_bdd1{
             for(let i in this.les_bases_du_projet){
                 cmds+='<div data-bouton_pour_bdd="1" id="bouton_bdd_' + this.les_bases_du_projet[i]['T0_chi_id_basedd'] + '" ';
                 if(tab_les_bases_a_editer.includes( this.les_bases_du_projet[i]['T0_chi_id_basedd'] )){
-                    cmds+=' class="yy_b1 yy__3" ';
+                    cmds+=' class="yy_b1 yy__3"';
                 }else{
-                    cmds+=' class="yy_b1" ';
+                    cmds+=' class="yy_b1"';
                 }
-                cmds+='data-rev_click="';
+                cmds+=' rev_clic1="';
                 cmds+='m1(n1(' + this.moi + '),f1(editer_le_schema(chi_id_basedd(' + this.les_bases_du_projet[i]['T0_chi_id_basedd'] + '))))';
                 cmds+='">base ' + this.les_bases_du_projet[i]['T0_chi_id_basedd'] + '</div>';
             }
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(zoomPlus()))">++</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(zoomMoins()))">--</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(-100))))">-100x</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(-10))))">-10x</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(+10))))">+10x</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(+100))))">+100x</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-100))))">-100y</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-10))))">-10y</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+10))))">+10y</div>';
-            cmds+='<div class="yy_b1" data-rev_click="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+100))))">+100y</div>';
-            cmds+='<div class="yy_b1 yy__1" id="vv_bouton_editer_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(editer_la_base_en_cours()))">éditer</div>';
-            cmds+='<div class="yy_b1 yy__1" id="vv_bouton_sauver_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
-            cmds+='<div class="yy_b1 yy__3" id="vv_bouton_reecrire_general" style="visibility:hidden;" data-rev_click="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))' + '">réécrire</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(zoomPlus()))">++</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(zoomMoins()))">--</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(-100))))">-100x</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(-10))))">-10x</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(+10))))">+10x</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(x),valeur(+100))))">+100x</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-100))))">-100y</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(-10))))">-10y</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+10))))">+10y</div>';
+            cmds+='<div class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(dacaler_les_tables(direction(y),valeur(+100))))">+100y</div>';
+            cmds+='<div class="yy_b1 yy__1" id="vv_bouton_editer_general" style="visibility:hidden;" rev_clic1="m1(n1(' + this.moi + '),f1(editer_la_base_en_cours()))">éditer</div>';
+            cmds+='<div class="yy_b1 yy__1" id="vv_bouton_sauver_general" style="visibility:hidden;" rev_clic1="m1(n1(' + this.moi + '),f1(sauvegarder_la_base_en_cours()))">sauver</div>';
+            cmds+='<div class="yy_b1 yy__3" id="vv_bouton_reecrire_general" style="visibility:hidden;" rev_clic1="m1(n1(' + this.moi + '),f1(reecrire_la_base_a_partir_du_shema()))' + '">réécrire</div>';
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );
