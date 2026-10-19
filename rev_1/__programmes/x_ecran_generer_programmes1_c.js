@@ -3639,7 +3639,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'modification \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
             src_client2+='        this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );\r\n';
-            src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        \r\n';
             src_client2+='        this.__ig1.repositionner_les_boutons_action( \'vv_ecran_modification_zone_boutons\' );\r\n';
             src_client2+='        if(this.__ig1.decallage_page_avant_envoi > 0){\r\n';
             src_client2+='            window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );\r\n';
@@ -4035,7 +4035,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        if(this.__ig1.stockage_local[\'parametres\'][\'__deverminage\'][\'valeur\']>0){\r\n';
             src_client2+='            this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        }\r\n';
-            src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        \r\n';
             src_client2+='        this.__ig1.repositionner_les_boutons_action( \'vv_ecran_suppression_zone_boutons\' );\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
             src_client2+='    }\r\n';
@@ -4386,7 +4386,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        this.afficher_le_contenu_sous_pg_voir1( mat , d , le_colis1 );\r\n';
             src_client2+='        this.__ig1.maj_title_htm1( \'visualisation \' + this.DUN_DUNE_ELEMENT_GERE );\r\n';
             src_client2+='        this.__ig1.maj_hash( mat , 0 );\r\n';
-            src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        \r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
             src_client2+='    }\r\n';
         }
@@ -6100,7 +6100,7 @@ class x_ecran_generer_programmes1{
             }
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(\'création \'+this.DUN_DUNE_ELEMENT_GERE);\r\n';
-            src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        \r\n';
             if(masquer_le_bouton_ajouter_seulement === 1){
                 src_client2+='        document.getElementById( \'vv_ajouter_un_element_\' + this.moi ).style.visibility=\'hidden\';\r\n';
             }
@@ -6128,7 +6128,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        let tt=this.zones_liste1( le_colis1 );\r\n';
             src_client2+='        document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=tt.o1;\r\n';
             src_client2+='        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );\r\n';
-            src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        \r\n';
             src_client2+='        let lst=document.getElementById( \'vv_filtre1\' ).querySelectorAll( "input" );\r\n';
             src_client2+='        this.filtres={};\r\n';
             src_client2+='        for( let i=0 ; i < lst.length ; i++ ){\r\n';
@@ -6229,7 +6229,7 @@ class x_ecran_generer_programmes1{
                 src_client2+='        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , \'liste1\' );\r\n';
                 src_client2+='        document.getElementById( \'vv_ecran_liste_zone_contenu\' ).innerHTML=this.zones_liste1( le_colis1 );\r\n';
             }
-            src_client2+='        this.__ig1.ajoute_les_evenements_aux_boutons();\r\n';
+            src_client2+='        \r\n';
             src_client2+='        this.__ig1.maj_hash(mat,0);\r\n';
             src_client2+='        this.__ig1.maj_title_htm1(this.LISTE_DES_ELEMENTS_GERES);\r\n';
             src_client2+='        return({"__xst" : __xsu});\r\n';
@@ -7931,7 +7931,7 @@ class x_ecran_generer_programmes1{
             /* style="width:30%;" */
             var cmd='m1(n1(' + this.moi + '),f1(selectionner_une_requete(zone_select(reference_requete_' + type_requete + '),zone_pre(libelle_de_la_requete_' + type_requete + '))))';
             o1+=type_requete + ' : <br />';
-            o1+='<select id="reference_requete_' + type_requete + '" data-rev_change="' + cmd + '">';
+            o1+='<select id="reference_requete_' + type_requete + '" rev_change1="' + cmd + '">';
             o1+='<option value="">indéfini</option>';
             for(let i in this.__ig1.__liste_des_sql){
                 if(type_requete === 'select' || type_requete === 'liste_ecran'){
@@ -8076,7 +8076,7 @@ class x_ecran_generer_programmes1{
         o1+='</div>';
         let contenu_generer_le_programme=document.getElementById( 'contenu_generer_le_programme' );
         contenu_generer_le_programme.innerHTML=o1;
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         setTimeout( () => {
                 this.pre_selectionner( this );
         } , 250 );
@@ -8123,7 +8123,7 @@ class x_ecran_generer_programmes1{
         }else{
             this.__ig1.date_derniere_navigation=performance.now();
             window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
-            this.__ig1.ajoute_les_evenements_aux_boutons( null );
+            
         }
         return({"__xst" : __xsu});
     }
@@ -8151,18 +8151,18 @@ class x_ecran_generer_programmes1{
                     o1+='<option id="option_indice_de_la_classe_' + i + '" value="' + i + '">' + i + '</option>';
                 }
                 document.getElementById( 'vv_indice_de_la_classe' ).innerHTML=o1;
-                this.__ig1.ajoute_les_evenements_aux_boutons( null );
+                
             }else{
                 document.getElementById( 'vv_indice_de_la_classe' ).innerHTML='';
                 this.__ig1.date_derniere_navigation=performance.now();
                 window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
-                this.__ig1.ajoute_les_evenements_aux_boutons( null );
+                
             }
         }else{
             document.getElementById( 'vv_indice_de_la_classe' ).innerHTML='';
             this.__ig1.date_derniere_navigation=performance.now();
             window.location.hash='m1(n1(x_ecran_generer_programmes1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
-            this.__ig1.ajoute_les_evenements_aux_boutons( null );
+            
         }
         return({"__xst" : __xsu});
     }
@@ -8192,7 +8192,7 @@ class x_ecran_generer_programmes1{
             }
         }
         document.getElementById( 'vv_les_tables' ).innerHTML=o1;
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -8215,7 +8215,7 @@ class x_ecran_generer_programmes1{
         this.#les_bases={};
         let o1='';
         o1+='base : ';
-        o1+='<select id="vv_les_bases" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))">';
+        o1+='<select id="vv_les_bases" rev_change1="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))">';
         o1+='<option  value="0" ' + (0 === chi_id_basedd ? ( ' selected ' ) : ( '' )) + '>base</option>';
         this.chi_id_projet=le_colis1.chi_id_projet;
         for(let i in le_colis1.__xva.les_bases_du_projet){
@@ -8254,7 +8254,7 @@ class x_ecran_generer_programmes1{
         }
         o1+='</select>';
         o1+=' , table : ';
-        o1+=' <select id="vv_les_tables" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_une_table(zone_select(vv_les_tables))))">';
+        o1+=' <select id="vv_les_tables" rev_change1="m1(n1(' + this.moi + '),f1(selectionner_une_table(zone_select(vv_les_tables))))">';
         o1+='<option  value="" ' + ('' === nom_de_la_table ? ( ' selected ' ) : ( '' )) + '>table</option>';
         if(chi_id_basedd > 0){
             for(let j in this.#les_bases[chi_id_basedd].tables){
@@ -8270,7 +8270,7 @@ class x_ecran_generer_programmes1{
         }
         o1+='</select>';
         o1+=' , indice : ';
-        o1+=' <select id="vv_indice_de_la_classe" data-rev_change="m1(n1(' + this.moi + '),f1(selectionner_un_indice_classe(zone_select(indice_de_la_classe))))">';
+        o1+=' <select id="vv_indice_de_la_classe" rev_change1="m1(n1(' + this.moi + '),f1(selectionner_un_indice_classe(zone_select(indice_de_la_classe))))">';
         o1+='<option  value="" ' + ('' === indice_de_la_classe ? ( ' selected ' ) : ( '' )) + '>indice</option>';
         if(nom_de_la_table !== ''){
             for( let j=1 ; j < 10 ; j++ ){
@@ -8287,7 +8287,7 @@ class x_ecran_generer_programmes1{
         if(chi_id_basedd > 0 && nom_de_la_table !== '' && indice_de_la_classe > 0){
             this.charger_base1( chi_id_basedd , nom_de_la_table , indice_de_la_classe );
         }else{
-            this.__ig1.ajoute_les_evenements_aux_boutons( null );
+            
         }
         setTimeout( () => {
                 let indice_option_base_courante=document.getElementById( 'vv_les_bases' ).value;

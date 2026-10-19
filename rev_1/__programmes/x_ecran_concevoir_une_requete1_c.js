@@ -1469,7 +1469,7 @@ class x_ecran_concevoir_une_requete1{
         var champs_affiches=false;
         t+='<div>';
         t+='type de requête : ';
-        t+='<select id="type_de_requete" data-rev_change="' + 'm1(n1(' + this.moi + '),f1(maj_type_de_requete(nom_zone(type_de_requete))))' + '">';
+        t+='<select id="type_de_requete" rev_change1="' + 'm1(n1(' + this.moi + '),f1(maj_type_de_requete(nom_zone(type_de_requete))))' + '">';
         t+='<option value="liste_ecran"     ' + (this.#obj_webs.type_de_requete === 'liste_ecran' ? ( ' selected="true"' ) : ( '' )) + '>liste_ecran</option>';
         t+='<option value="select"           ' + (this.#obj_webs.type_de_requete === 'select' ? ( ' selected="true"' ) : ( '' )) + '>select</option>';
         t+='<option value="insert"           ' + (this.#obj_webs.type_de_requete === 'insert' ? ( ' selected="true"' ) : ( '' )) + '>insert</option>';
@@ -1637,7 +1637,7 @@ class x_ecran_concevoir_une_requete1{
                     /* t+='<td>'; */
                     var cmd='';
                     cmd+='m1(n1(' + this.moi + '),f1(changer_la_jointure(ind(' + i + '),nom_zone(type_de_jointure_' + i + '))))';
-                    t+='<select id="type_de_jointure_' + i + '" data-rev_change="' + cmd + '" >';
+                    t+='<select id="type_de_jointure_' + i + '" rev_change1="' + cmd + '" >';
                     t+='<option ' + (this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_croisée' ? ( ' selected="true" ' ) : ( '' )) + ' value="jointure_croisée" >jointure croisée</option>';
                     t+='<option ';
                     if(this.#obj_webs['ordre_des_tables'][i].jointure === 'jointure_gauche'){
@@ -2508,7 +2508,7 @@ class x_ecran_concevoir_une_requete1{
           =====================================================================================================
         */
         this.#div_de_travail.innerHTML=t;
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         if(this.#che_est_souche_requete === 1){
             document.getElementById( 'bouton_aller_a_generer_le_programme1' ).style.visibility='visible';
         }else{

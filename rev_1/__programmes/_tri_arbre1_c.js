@@ -540,7 +540,7 @@ class _tri_arbre1{
                 }
             }
             return;
-        }else if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-replie" )){
+        }else if(tar.tagName.toLowerCase() === 'button' && tar.getAttribute( "data-replie" )){
             let id_interne=parseInt( tar.getAttribute( "data-replie" ) , 10 );
             let lst1=document.getElementById( this.#id_div ).querySelectorAll( '[data-enfants_de="' + id_interne + '"]' );
             if(lst1[0].style.display === 'none'){
@@ -746,11 +746,11 @@ class _tri_arbre1{
                     if(this.arbre[i].contient_des_enfants === 0){
                         style_replie='visibility:hidden;';
                     }
-                    le_html+='<div data-replie="' + this.arbre[i].id_interne + '"';
+                    le_html+='<button data-replie="' + this.arbre[i].id_interne + '"';
                     le_html+=' class="' + this.#options.class_du_bouton_replier + '"';
                     le_html+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;">';
                     le_html+=libelle_replie;
-                    le_html+='</div>';
+                    le_html+='</button>';
                 }
                 if(this.#options.triable === false){
                     le_html+='<div data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;min-width:1em;" class="' + this.#options.class_du_bouton_deplacer + '">↕</div>';

@@ -499,12 +499,9 @@ class __navigation1{
       =============================================================================================================
     */
     #souris_ou_doigt_bas( e , nom_de_l_action ){
-        /* console.log("dans #souris_ou_doigt_bas nom_de_l_action=" , nom_de_l_action ); */
         var tar=e.target;
-        /* console.log('#souris_ou_doigt_bas', tar ); */
         let txt_log='';
-        /* let tt=document.getElementById( this.#id_div ).getBoundingClientRect(); */
-        if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-replie" )){
+        if(tar.tagName.toLowerCase() === 'button' && tar.getAttribute( "data-replie" )){
             /*
               on a cliqué sur un bouton +/-
             */
@@ -677,8 +674,7 @@ class __navigation1{
             for( let i=0 ; i < this.arbre.length ; i++ ){
                 if(this.arbre[i].id_interne_parent === 0){
                     t='';
-                    t+='<div';
-                    t+=' id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
+                    t+='<div id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                     t+=' data-position_pour_tri="dedans" ';
                     t+=' style="';
                     t+='   min-height:var(--h_but_plus_marge);';
@@ -718,7 +714,7 @@ class __navigation1{
                         /*
                           bouton +/- au niveau de la racine
                         */
-                        t+=' '.repeat( 4 ) + '<div ';
+                        t+=' '.repeat( 4 ) + '<button ';
                         t+=' data-plus_ou_moins_sur_racine="1" ';
                         t+=' data-replie="' + this.arbre[i].id_interne + '" ';
                         t+=' data-bouton_plusmoins_de="' + this.arbre[i].id_interne + '" ';
@@ -727,7 +723,7 @@ class __navigation1{
                         t+=' data-cle_aleatoire="' + this.cle_aleatoire + '"';
                         t+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;margin-left:1px;">';
                         t+=libelle_replie;
-                        t+='</div>\n';
+                        t+='</button>\n';
                     }
                     t+=' '.repeat( 4 ) + '</div>\n';
                     t+='</div>\n';
@@ -855,14 +851,14 @@ class __navigation1{
                         /*
                           bouton +/- au niveau des sous menus
                         */
-                        le_html+=' '.repeat( 4 * (niveau + 2) ) + '<div ';
+                        le_html+=' '.repeat( 4 * (niveau + 2) ) + '<button ';
                         le_html+=' data-cle_aleatoire="' + this.cle_aleatoire + '" ';
                         le_html+=' data-replie="' + this.arbre[i].id_interne + '" ';
                         le_html+=' class="' + this.#options.class_du_bouton_replier + '" ';
                         le_html+=' data-num_conteneur_parent="' + num_conteneur_parent + '" ';
                         le_html+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;">';
                         le_html+=libelle_replie;
-                        le_html+='</div>\n';
+                        le_html+='</button>\n';
                     }
                     le_html+=' '.repeat( 4 * (niveau + 1) ) + '</div>\n';
                     /*

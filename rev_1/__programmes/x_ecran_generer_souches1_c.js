@@ -202,7 +202,7 @@ class x_ecran_generer_souches1{
         o1+='<div id="les_requetes"></div>';
         let contenu_generer_le_programme=document.getElementById( 'contenu_generer_le_programme' );
         contenu_generer_le_programme.innerHTML=o1;
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         setTimeout( () => {
                 this.charger_les_requetes_existantes();
         } , 50 );
@@ -231,7 +231,7 @@ class x_ecran_generer_souches1{
             }
         }else{
             window.location.hash='m1(n1(x_ecran_generer_souches1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
-            this.__ig1.ajoute_les_evenements_aux_boutons( null );
+            
         }
         return({"__xst" : __xsu});
     }
@@ -263,7 +263,7 @@ class x_ecran_generer_souches1{
             }
         }
         document.getElementById( 'vv_les_tables' ).innerHTML=o1;
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -283,17 +283,13 @@ class x_ecran_generer_souches1{
         this.#arbre={};
         let o1='';
         o1+='bases : ';
-        o1+='<select';
-        o1+=' id="vv_les_bases" ';
-        o1+=' data-rev_change="';
-        o1+='m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))';
-        o1+='">';
+        o1+='<select id="vv_les_bases" ';
+        o1+=' rev_change1="m1(n1(' + this.moi + '),f1(selectionner_une_base(zone_select(vv_les_bases))))">';
         o1+='<option  value="0" ' + (0 === chi_id_basedd ? ( ' selected ' ) : ( '' )) + '>sélectionnez une base </option>';
         for(let i in le_colis1.__xva.les_bases_du_projet){
             if(le_colis1.__xva.les_bases_du_projet[i]['T0_chp_rev_travail_basedd'] === null){
             }else{
-                o1+='<option ';
-                o1+=' value="' + le_colis1.__xva.les_bases_du_projet[i]['T0_chi_id_basedd'] + '" ';
+                o1+='<option value="' + le_colis1.__xva.les_bases_du_projet[i]['T0_chi_id_basedd'] + '" ';
                 o1+=' id="option_base_"';
                 o1+=le_colis1.__xva.les_bases_du_projet[i]['T0_chi_id_basedd'];
                 o1+='"';
@@ -324,7 +320,7 @@ class x_ecran_generer_souches1{
         o1+='</select>';
         o1+=' , tables : ';
         o1+=' <select id="vv_les_tables" ';
-        o1+=' data-rev_change="';
+        o1+=' rev_change1="';
         o1+='m1(n1(' + this.moi + '),f1(selectionner_une_table(zone_select(vv_les_tables))))';
         o1+='">';
         o1+='<option  value="" ' + ('' === nom_de_la_table ? ( ' selected ' ) : ( '' )) + '>sélectionnez une table </option>';
@@ -345,7 +341,7 @@ class x_ecran_generer_souches1{
         if(chi_id_basedd > 0 && nom_de_la_table !== ''){
             this.charger_base1( chi_id_basedd , nom_de_la_table );
         }else{
-            this.__ig1.ajoute_les_evenements_aux_boutons( null );
+            
         }
         return({"__xst" : __xsu});
     }

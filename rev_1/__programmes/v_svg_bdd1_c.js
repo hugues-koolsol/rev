@@ -316,7 +316,7 @@ class v_svg_bdd1{
         }
         this.__ig1.affiche_sous_fenetre1( t );
         vv_sous_fenetre1.showModal();
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -2225,8 +2225,8 @@ class v_svg_bdd1{
                     cmd+=' zone_select(vv_champ_parent),';
                     cmd+=' zone_cible(' + zone_champ_parent + '),';
                     cmd+=')))';
-                    document.getElementById( zone_liste_des_champs ).innerHTML='<select id="vv_champ_parent" data-rev_change="' + cmd + '"><option value=""></option>' + sel01 + '</select>';
-                    this.__ig1.ajoute_les_evenements_aux_boutons( null );
+                    document.getElementById( zone_liste_des_champs ).innerHTML='<select id="vv_champ_parent" rev_change1="' + cmd + '"><option value=""></option>' + sel01 + '</select>';
+                    
                 }
             }
         }
@@ -2606,7 +2606,7 @@ class v_svg_bdd1{
         cmd+=' zone_select(vv_genre1),';
         cmd+=' contexte_action_champ_modifier(1),';
         cmd+=')))';
-        t+='<select id="vv_genre1" data-rev_change="' + cmd + '" style="width:10em;">' + texte__liste_des_genres + '</select>';
+        t+='<select id="vv_genre1" rev_change1="' + cmd + '" style="width:10em;">' + texte__liste_des_genres + '</select>';
         /*
         */
         t+=' , espece : <input id="chp_espece_genre" type="text" maxlength="32" size="7" value="' + espece_du_champ.toUpperCase() + '" autocapitalize="off" aria-autocomplete="list"  class="yy_input1" style="width:6em;" />';
@@ -2653,7 +2653,7 @@ class v_svg_bdd1{
             cmd+='  zone_champ_parent(champ_père),';
             cmd+=' )';
             cmd+='))';
-            t+='jj<select id="vv_table_parente" data-rev_change="' + cmd + '" style="width:10em;"><option value=""></option>' + sel + '</select>';
+            t+='jj<select id="vv_table_parente" rev_change1="' + cmd + '" style="width:10em;"><option value=""></option>' + sel + '</select>';
         }
         t+=' , chp père:<input id="champ_père" type="text" maxlength="64" size="10" value="' + champ_pere + '" autocapitalize="off" class="yy_input1" style="width:6em;" />';
         t+='<span id="vv_liste_des_champs_pere"></span>';
@@ -3424,7 +3424,7 @@ class v_svg_bdd1{
         }
         /*  */
         vv_sous_fenetre1.showModal();
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -5239,7 +5239,7 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=' zone_du_nom(vv_nom_du_champ)';
         cmd+=')))';
-        t+='genre: <select id="vv_genre1" data-rev_change="' + cmd + '">' + texte__liste_des_genres + '</select>';
+        t+='genre: <select id="vv_genre1" rev_change1="' + cmd + '">' + texte__liste_des_genres + '</select>';
         t+='<br /><br />';
         /*
           =====================================================================================================
@@ -5254,7 +5254,7 @@ class v_svg_bdd1{
         cmd+=' nom_zone_de_la_table(nouveau_nom),';
         cmd+=')))';
         t+='typologie : ';
-        t+='<select id="chp_prefixe_genre" data-rev_change="' + cmd + '">';
+        t+='<select id="chp_prefixe_genre" rev_change1="' + cmd + '">';
         t+='<option value="">choisissez une typologie</option>';
         t+='<option value="chi">index entier (chi) integer[n]</option>';
         t+='<option value="cht">texte (cht) text</option>';
@@ -5301,7 +5301,7 @@ class v_svg_bdd1{
             cmd+='  zone_liste_des_champs(vv_liste_des_champs_pere),';
             cmd+='  zone_champ_parent(champ_père),';
             cmd+=')))';
-            t+='<select id="vv_table_parente" data-rev_change="' + cmd + '"><option value=""></option>' + sel + '</select>';
+            t+='<select id="vv_table_parente" rev_change1="' + cmd + '"><option value=""></option>' + sel + '</select>';
         }
         t+='<br />champ père pour chx  : <input id="champ_père" type="text" value="" autocapitalize="off" /><span id="vv_liste_des_champs_pere"></span>';
         t+='<br />index primary_key <input id="che_est_primaire_genre" type="checkbox" /> ';
@@ -7238,7 +7238,7 @@ class v_svg_bdd1{
         for(i in tableau_svg){
             this.#svg_ajuster_la_largeur_de_la_base( tableau_svg[i] );
         }
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
     }
     /*
       
@@ -9574,7 +9574,7 @@ class v_svg_bdd1{
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );
-            this.__ig1.ajoute_les_evenements_aux_boutons();
+            
             this.editer_le_schema( null , null , tab_les_bases_a_editer[0] );
             window.location.hash='#pm1(m1(n1(' + this.moi + '),f1(editer_les_schemas2(les_bases_a_editer(\'' + les_bases_a_editer + '\')))))';
             return({"__xst" : __xsu});

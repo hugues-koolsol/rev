@@ -159,7 +159,7 @@ class acces1{
                                 t+="<br />";
                                 t+='<div class="yy_svg1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(modification_branche(indice(' + i + '),id_interne(' + obj.arbre[i].id_interne + '),cle_aleatoire(' + reference_arbre.cle_aleatoire + '))))">modifier</div>';
                                 document.getElementById( 'edition_de_la_branche' ).innerHTML=t;
-                                this.__ig1.ajoute_les_evenements_aux_boutons();
+                                
                             }
                             break;
                         }
@@ -264,7 +264,7 @@ class acces1{
         options['class_du_bouton_editer']='yy_b1 yy__3';
         /* this._tri_arbre1.construire_arbre( id , options ); */
         this.__variables_module['_tri_arbre1']['construire_arbre']( id , options );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -430,7 +430,7 @@ class acces1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
         if(this.__ig1.decallage_page_avant_envoi > 0){
             window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
@@ -516,7 +516,7 @@ class acces1{
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
         }
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -626,7 +626,7 @@ class acces1{
         this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -641,7 +641,7 @@ class acces1{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -729,7 +729,7 @@ class acces1{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});

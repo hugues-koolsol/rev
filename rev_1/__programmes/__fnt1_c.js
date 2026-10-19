@@ -1,4 +1,4 @@
-const __xer=0;
+const __xer=0; 
 const __xsu=1;
 const __xal=2;
 const __xif=3;
@@ -957,7 +957,7 @@ class __fnt1{
         this.affiche_palette1( this.html_de_palette1( format_palette , nom_du_champ1 , nom_du_champ2 , nom_du_champ_a_modifier ) );
         /* html_de_date1 */
         vv_sous_fenetre1.showModal();
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -1025,7 +1025,7 @@ class __fnt1{
             lst1='<table><tr><th colspan="3">' + __sous_titre_a_afficher + '</th></tr><tr><td>pas de valeur disponible</td></tr></table>';
         }
         document.getElementById( 'vv_sous_sous_fenetre_de_liste2' ).innerHTML=lst1;
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -1301,7 +1301,7 @@ class __fnt1{
             }
         }
         this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE , __sous_titre_a_afficher );
-        this.__ig1.ajoute_les_evenements_aux_boutons();
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -2565,7 +2565,7 @@ class __fnt1{
         options['class_du_bouton_editer']='yy_b1 yy__xif';
         this.__ig1.affiche_sous_fenetre1( le_chetemel );
         this.__variables_module['_tri_arbre1']['construire_arbre']( 'vv_trier_les_champs1' , options );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         a['taille_de_la_boite']=17 * this.__ig1.css_dimensions.largeur_du_m;
         setTimeout( function( taille_de_page ){
                 /* ajustement horizontal */
@@ -3130,7 +3130,7 @@ class __fnt1{
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
         vv_sous_fenetre1.showModal();
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3219,7 +3219,7 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , parseInt( minute_a_afficher , 10 ) , parseInt( seconde_a_afficher , 10 ) ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3267,7 +3267,7 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3315,7 +3315,7 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3347,7 +3347,7 @@ class __fnt1{
         o1+='<tr style="box-shadow:none;">';
         /* dropdown hh */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select id="vv_option_heure" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_heure),nom_du_champ(' + nom_du_champ + '))))">';
+        o1+='<select id="vv_option_heure" rev_change1="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_heure),nom_du_champ(' + nom_du_champ + '))))">';
         for( let i=0 ; i < 24 ; i++ ){
             let sele1='';
             if(heure_a_afficher === i){
@@ -3359,7 +3359,7 @@ class __fnt1{
         o1+='</td>';
         /* dropdown mm */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select id="vv_option_minute" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_minute),nom_du_champ(' + nom_du_champ + '))))">';
+        o1+='<select id="vv_option_minute" rev_change1="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_minute),nom_du_champ(' + nom_du_champ + '))))">';
         for( let i=0 ; i < 60 ; i++ ){
             let sele1='';
             if(minute_a_afficher === i){
@@ -3371,7 +3371,7 @@ class __fnt1{
         o1+='</td>';
         /* dropdown ss */
         o1+='<td style="border-color:hotpink;" colspan="2">';
-        o1+='<select  id="vv_option_seconde" data-rev_change="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_seconde),nom_du_champ(' + nom_du_champ + '))))">';
+        o1+='<select  id="vv_option_seconde" rev_change1="m1( n1(' + this.moi + '), f1(maj_drop_horloge(zone_select(vv_option_seconde),nom_du_champ(' + nom_du_champ + '))))">';
         for( let i=0 ; i < 60 ; i++ ){
             let sele1='';
             if(seconde_a_afficher === i){
@@ -3511,7 +3511,7 @@ class __fnt1{
         }
         document.getElementById( nom_du_champ ).value=t;
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         /* this.__ig1.fermer_la_sous_fenetre(); */
         return({"__xst" : __xsu});
     }
@@ -3652,7 +3652,7 @@ class __fnt1{
             mois++;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3681,7 +3681,7 @@ class __fnt1{
             mois--;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3709,7 +3709,7 @@ class __fnt1{
             annee=1000;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3737,7 +3737,7 @@ class __fnt1{
             annee=9999;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3759,7 +3759,7 @@ class __fnt1{
         annee=tt.getFullYear();
         mois=tt.getMonth() + 1;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3783,7 +3783,7 @@ class __fnt1{
         }
         annee=annee - annee% 50;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3811,7 +3811,7 @@ class __fnt1{
             annee=1000;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3839,7 +3839,7 @@ class __fnt1{
             annee=9950;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -3866,7 +3866,7 @@ class __fnt1{
             annee=dt.getFullYear();
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /*
@@ -4195,7 +4195,7 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher ) );
         vv_sous_fenetre1.showModal();
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
+        
         return({"__xst" : __xsu});
     }
     /* ===================================================================================================================== */
@@ -5042,9 +5042,11 @@ class __fnt1{
             if(deverminage_avant !== this.__ig1.__deverminage){
                 console.log( 'Changement de déverminage=' , this.__ig1.__deverminage );
             }
+            /*
             if(this.__ig1.__deverminage === 2){
                 console.log( this.__ig1.stockage_local );
             }
+            */
             localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
             this.__ig1.css1();
             let zone_actuelle=document.getElementById( nom_zone + '_actuelle' );
@@ -5102,7 +5104,7 @@ class __fnt1{
             t+='' + tta.libelle0 + ' ';
             t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
             t+=' value="' + vva.valeur + '" ';
-            t+=' data-rev_change_ou_entree="m1(n1(__ig1),f1(maj_contenu(';
+            t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
             t+=' type_cible(inner_html)';
             t+=' id(' + i + '_nouvelle),';
             t+=' valeur(valeur_de_champ(' + i + '))';
@@ -5118,16 +5120,12 @@ class __fnt1{
                 t+=' )';
                 t+=')))';
             }
-            t+='"';
-            t+=' rev_clic1="';
-            t+='m1(n1(__fnt1),f1(';
-            t+=' maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))';
-            t+='))';
+            t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
             t+='"';
             if(tta.style_interface){
                 t+=' style="' + tta.style_interface + '"';
             }
-            t+='></td>';
+            t+=' /></td>';
             /*
             */
             t+='<td style="' + style_des_tds0 + ';height:36px;width:40%;';
@@ -5184,7 +5182,7 @@ class __fnt1{
             }
             t+='' + tta.libelle0 + ' ';
             t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
-            t+=' value="' + vva.valeur + '" data-rev_change_ou_entree="m1(n1(__ig1)f1(maj_contenu(';
+            t+=' value="' + vva.valeur + '" rev_chg_ou_ent1="m1(n1(__ig1)f1(maj_contenu(';
             t+='   type_cible(inner_html)';
             t+='   id(' + i + '_nouvelle),';
             t+='   valeur(valeur_de_champ(' + i + '))';
@@ -5200,10 +5198,9 @@ class __fnt1{
                 t+=' )';
                 t+=')))';
             }
-            t+='"';
-            t+=' rev_clic1="';
             t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(parametres))))';
-            t+='" />';
+            t+='"';
+            t+=' />';
             t+='</td>';
             /*
             */

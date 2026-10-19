@@ -30,7 +30,7 @@ class acces1{
                                 la_classe='yy_svg1';
                             }
                             bb+='<li>';
-                            bb+='<div ';
+                            bb+='<button ';
                             bb+=' id="menu_' + v1['id_interne'] + '"  ';
                             bb+=' data-id_auto="' + v1['attributs']['data-chx_autorisation_menu'] + '"';
                             bb+=' data-id_menu="' + v1['attributs']['data-chi_id_menu'] + '"';
@@ -49,7 +49,7 @@ class acces1{
                             }
                             bb+='))';
                             bb+='"';
-                            bb+='>' + v1['contenu'].replace( 'height:25px;width:25px;' , '' ) + '</div></li>';
+                            bb+='>' + v1['contenu'].replace( 'height:25px;width:25px;' , '' ) + '</button></li>';
                             /* let xx=var_export(bb,true); */
                             let xx='`' + bb.replace( /`/ , '\\`' ) + '`';
                             if(xx.substr( 0 , 1 ) === "\r"){
@@ -141,7 +141,7 @@ class acces1{
                                 if(v1['separateur'] === '1'){
                                     bb+=' data-separateur="' + v1['separateur'] + '"';
                                 }
-                                bb+='><div id="menu_' + v1['id_interne'] + '"';
+                                bb+='><button id="menu_' + v1['id_interne'] + '"';
                                 bb+=' data-id_auto="' + v1['attributs']['data-chx_autorisation_menu'] + '"';
                                 bb+=' data-id_menu="' + v1['attributs']['data-chi_id_menu'] + '"';
                                 bb+=' data-id_source="' + v1['attributs']['data-chi_id_source'] + '"';
@@ -162,7 +162,7 @@ class acces1{
                                 bb+='))';
                                 bb+='"';
                                 bb+=' title="' + v1['attributs']['data-chp_titre_menu'] + '"';
-                                bb+='>' + v1['contenu'].replace( 'class="yy_b1"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</div></li>';
+                                bb+='>' + v1['contenu'].replace( 'class="yy_b1"' , '' ).replace( 'height:25px;width:25px;' , '' ) + '</button></li>';
                                 let xx='`' + bb.replace( /`/g , '\\`' ) + '`';
                                 if(xx.substr( 0 , 1 ) === "\r"){
                                     xx=xx.substr( 1 );
