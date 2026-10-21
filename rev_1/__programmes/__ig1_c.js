@@ -65,14 +65,27 @@ class __ig1{
     __decallage_page_avant_envoi=0;
     les_svg={};
     largeur_ecran_limite=550;
+    temps_performance0=0;
+    temps_performance1=0;
+    temps_performance1=0;
+    temps_performance2=0;
+    temps_performance3=0;
+    temps_performance4=0;
+    temps_performance5=0;
+    temps_performance6=0;
+    temps_performance7=0;
+    temps_performance8=0;
+    temps_performance9=0;
     /*
       =============================================================================================================
     */
     async #traite_message_recupere_du_worker( par ){
         this.date_derniere_navigation=performance.now();
         let le_colis1=par.data;
+        this.temps_performance0=performance.now();
         if(this.__deverminage === 2){
             console.log( '%cdeverminage 2 __ig1_c' , 'background:black;color:white;' , le_colis1 );
+            console.log("this.temps_performance0="+this.temps_performance0);
         }
         if(le_colis1.hasOwnProperty( '__liste_des_genres' )){
             this.__liste_des_genres=le_colis1.__liste_des_genres;
@@ -822,14 +835,12 @@ class __ig1{
         o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
         o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
         o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
-        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="yy_b1 yy_suivant_precedent_inactif" rev_clic1="';
+        o1+='  <button id="vv_ecran_liste_bouton_precedents"  class="yy_b1 yy_suivant_precedent_inactif" rev_clic1="';
         o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
-        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif"  rev_clic1="';
+        o1+='" data-numero_page="-1" style="display:none;">&laquo;</button>';
+        o1+='  <button id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif"  rev_clic1="';
         o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
+        o1+='"  data-numero_page="-1" style="display:none;">&raquo;</button>';
         o1+='  <div id="vv_ecran_liste_zone_pages" style="display:none;"></div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_liste_zone_contenu" style="display:none;"></div>';
@@ -840,9 +851,9 @@ class __ig1{
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+='   <div id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter</div>';
+        o1+='   <button id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter</button>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+='   <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter et revenir à la liste</div>';
+        o1+='   <button id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter et revenir à la liste</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_creation_zone_complement" style="display:none;"></div>';
         /*
@@ -855,8 +866,8 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;">';
-        o1+='  <div class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
-        o1+='  <div class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
+        o1+='  <button class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</button>';
+        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_suppression_zone_complement" style="display:none;"></div>';
         /*
@@ -864,15 +875,15 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
-        o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone" ';
+        o1+='  <button id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone" ';
         o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
-        o1+='    title="">modifier</div>    ';
-        o1+='  <div class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
+        o1+='    title="">modifier</button>    ';
+        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
         o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
-        o1+='    title="">modifier et retour</div>';
-        o1+='  <div class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
+        o1+='    title="">modifier et retour</button>';
+        o1+='  <button class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
         o1+='    rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
-        o1+='    title="page de confirmation de suppression">' + this.les_svg.poubelle + '</div>';
+        o1+='    title="page de confirmation de suppression">' + this.les_svg.poubelle + '</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
         this.maj_contenu_principal( o1 );
@@ -1552,6 +1563,10 @@ class __ig1{
         this.#__worker.onmessage=function( le_message_recu_du_worker ){
             this.#liste_des_appels_au_serveur.pop();
             let obj1=this.#traite_message_recupere_du_worker( le_message_recu_du_worker );
+            this.temps_performance9=performance.now();
+            setTimeout(function(){
+                console.log("%cthis.temps_performance9="+parseInt(this.temps_performance9-this.temps_performance0,10),'color:red;background:black;');
+            }.bind(this),0);
         }.bind( this );
         /*
         */
@@ -1614,7 +1629,7 @@ class __ig1{
       =============================================================================================================
     */
     traite_input1( e ){
-        console.log( ' traite_input1 changement de valeur de zone input' , e);
+        //console.log( ' traite_input1 changement de valeur de zone input' , e);
         let l_action_rev='';
         let l_element=null;
         if(e && e.target && e.target.hasAttribute( 'rev_chg_ou_ent1' ) && e.target.getAttribute( 'rev_chg_ou_ent1' ) !== ''){
@@ -1641,7 +1656,7 @@ class __ig1{
         if(obj.__xst === __xer){
             this.ajoute_message( {
                     "__xst" : __xer ,
-                    "__xme" : 'le source de traite_clic1 :<br /><b>' + l_action_rev + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
+                    "__xme" : '<b>' + l_action_rev + '</b>  ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
                 } );
             this.affiche_les_messages();
             this.retablir_les_boutons_masques();
@@ -1653,7 +1668,7 @@ class __ig1{
       =============================================================================================================
     */
     traite_change1( e ){
-        console.log( ' traite_change1 changement de valeur de zone input' , e);
+        //console.log( ' traite_change1 changement de valeur de zone input' , e);
         let l_action_rev='';
         let l_element=null;
         if(e && e.target && e.target.hasAttribute( 'rev_change1' ) && e.target.getAttribute( 'rev_change1' ) !== ''){
@@ -1692,7 +1707,7 @@ class __ig1{
       =============================================================================================================
     */
     traite_clic1( e ){
-        console.log( ' traite_clic1 clic');
+        // console.log( ' traite_clic1 clic');
         let l_action_rev='';
         let l_element=null;
         if(e.target.hasAttribute( 'rev_clic1' ) && e.target.getAttribute( 'rev_clic1' ) !== ''){
@@ -1931,6 +1946,11 @@ class __ig1{
             larg_de_date=130;
             larg_de_heure=102;
             larg_de_num=14.0;
+        }else if(t_police === 24){
+            largeur_du_m=20.2;
+            larg_de_date=144;
+            larg_de_heure=115;
+            larg_de_num=15.2;
         }
         let t_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
         let t_pad_inp=parseInt( this.stockage_local.aspect['--t_pad_inp']['valeur'] , 10 );
@@ -2073,7 +2093,7 @@ class __ig1{
             "t_de_num" : larg_de_num
         };
         let t='';
-        t+='*,*::before,*::after{box-sizing:border-box;}';
+        t+='*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:verdana;}';
         t+='html{min-height:100%;overscroll-behavior: none;}';
         t+='body{';
         t+=' --t_police:' + t_police + 'px;';
@@ -2115,13 +2135,6 @@ class __ig1{
         t+=' --t_hauteur_input1:' + (t_police + 2 * t_pad_inp + 2 * t_border) + 'px;';
         t+=' --largeur_disponible_de_l_ecran:' + largeur_disponible_de_l_ecran + 'px;';
         t+=' --largeur_max_inp_avec_boutons:' + largeur_max_inp_avec_boutons + 'px;';
-        t+='   color:' + couleur6hex + ';';
-        t+='   font-family:verdana;';
-        t+='   font-size:' + t_police + 'px;';
-        t+='   line-height:' + line_height + 'px;';
-        t+='   max-width:' + t_fenetre + 'px;';
-        t+='   margin:0 auto;';
-        t+='   overflow-y: scroll;';
         /* B0BEC5;'; */
         t+=' --c_coul_1:rgba(236,239,241,1);';
         /* #eceff1 */
@@ -2132,6 +2145,13 @@ class __ig1{
         t+=' --c_coul_4:rgba( 96,125,139,1);';
         /* #607D8B */
         t+=' --c_coul_5:rgba( 96,125,139,1);';
+        t+='   color:' + couleur6hex + ';';
+        t+='   font-family:verdana;';
+        t+='   font-size:' + t_police + 'px;';
+        t+='   line-height:' + line_height + 'px;';
+        t+='   max-width:' + t_fenetre + 'px;';
+        t+='   margin:0 auto;';
+        t+='   overflow-y: scroll;';
         /* #95adb9  est entre #B0BEC5 et #607D8B */
         /* #B0BEC5, #607D8B */
         t+='   background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, ' + couleur2hex + ' 100%);';
@@ -2203,10 +2223,6 @@ class __ig1{
         t+='   justify-content:space-around;';
         t+='   height:' + h_barre + 'px;';
         t+='   max-width:calc( min( ' + t_fenetre + 'px , 100vw));';
-        /* t+='   z-index:1000;'; */
-        /* t+='   background:var(--c_coul_1);'; */
-        /* t+='   overflow:hidden;'; */
-        /* var[--c_coul_3], var[--c_coul_4]];'; */
         t+='}';
         t+='#vv_nav_gauche{';
         t+='   display:flex;';
@@ -2306,9 +2322,7 @@ class __ig1{
         t+='    overflow-x: hidden;';
         t+='    overflow-y: hidden;';
         t+='}';
-        t+='.yy_svg1>svg{';
-        t+='   transform : translate(0px, 0px);';
-        t+='}';
+//        t+='.yy_svg1>svg{transform : translate(0px, 0px);}';
         /*
           pour la ligne des boutons dans le action td
           pour les td avec une ligne de bouton on ne met pas 2*t_border mais 1*t_border car on a un border collapse
@@ -2771,9 +2785,11 @@ class __ig1{
         t+='display:inline-flex;';
         t+='}';
         t+='.yy_dt1{min-width:' + Math.ceil( larg_de_num * 10 ) + 'px;}';
-        t+='input[type="range"]{color:'+couleur8hex + ';outline:auto;}';
+        t+='input[type="range"]{color:'+couleur8hex + ';outline:auto;margin:2px;}';
         t+='input[type="range"]:focus{background:red;color:red;cursor:pointer;outline:auto;}';
+        t+='button{font-size:' + t_police + 'px;vertical-align:top;}';
         t+='button:focus{box-shadow: inset 0px 0px 5px 4px red;outline:auto!important;}';
+        t+='textarea[data-editeur1="rev"],textarea[data-editeur1="source_editeur1"]{font-family:monospace;}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -2786,17 +2802,12 @@ class __ig1{
             "aspect" : {
                 "--t_police" : {
                     "min" : 12 ,
-                    "max" : 22 ,
+                    "max" : 24 ,
                     "valeur" : 16 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        12,
-                        14,
-                        16,
-                        18,
-                        20,
-                        22
-                    ] ,
+                        /* tbel */
+                        12,14,16,18,20,22,24] ,
                     "step" : 2 ,
                     "defaut" : 16 ,
                     "libelle0" : 'police' ,
@@ -2808,14 +2819,8 @@ class __ig1{
                     "valeur" : 1 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6
-                    ] ,
+                        /* tbel */
+                        0,1,2,3,4,5,6] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
                     "libelle0" : 'espaces boutons' ,

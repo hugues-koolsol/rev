@@ -2720,9 +2720,9 @@ class __fnt1{
                             o1+='<div class="yy_champ_filtre1">';
                             o1+='<input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
                             o1+='<div class="yy__fil_btns1">';
-                            o1+='<div data-pos=""  data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</div>';
-                            o1+='<div data-pos="0" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</div>';
-                            o1+='<div data-pos="1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</div>';
+                            o1+='<button data-pos=""  data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</button>';
+                            o1+='<button data-pos="0" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</button>';
+                            o1+='<button data-pos="1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</button>';
                             o1+='</div>';
                             o1+='</div>';
                         }else if(l_elem_filtre.genre === 25){
@@ -2766,7 +2766,7 @@ class __fnt1{
                             }
                             o1+=' autocapitalize="off"';
                             o1+=' style="' + bck + ';margin:0;" class="yy_input1 yy_fi_inp1" />';
-                            o1+='<div style="margin:0;" class="yy_b1 yy__4" rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</div>';
+                            o1+='<button style="margin:0;" class="yy_b1 yy__4" rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(id(' + i + '))))">X</button>';
                             o1+='</div>';
                         }
                     }
@@ -2775,14 +2775,14 @@ class __fnt1{
             }
             o1+='   <input type="hidden" id="__ordre_de_tri_de_la_liste1" value="" />';
             o1+='   <div class="yy_bloc_loupe">';
-            o1+='        <div id="vv_bouton_loupe" class="yy_b1" style="margin:auto auto;min-width:' + this.__ig1.css_dimensions.t_boutons_carres + 'px;min-height:' + this.__ig1.css_dimensions.t_boutons_carres + 'px;" rev_clic1="';
+            o1+='        <button id="vv_bouton_loupe" class="yy_b1" style="margin:auto auto;min-width:' + this.__ig1.css_dimensions.t_boutons_carres + 'px;min-height:' + this.__ig1.css_dimensions.t_boutons_carres + 'px;" rev_clic1="';
             if(table_reference_est_table_virtuelle === true){
                 o1+='fo1(sur_table_virtuelle(),co1(liste1),pm1(m1(n1(' + that.moi + '),f1(liste1(__num_page(0))))))';
             }else{
                 o1+='fo1(co1(liste1),pm1(m1(n1(' + that.moi + '),f1(liste1(__num_page(0))))))';
             }
             o1+='"';
-            o1+='        >' + that.__ig1.les_svg.loupe + '</div>';
+            o1+='        >' + that.__ig1.les_svg.loupe + '</button>';
             for(let i in that.tableau_des_filtres['liste1']){
                 if(that.tableau_des_filtres['liste1'][i].masqué === true){
                     o1+='     <input type="hidden" id="' + i + '" value="' + that.filtres['liste1'][i] + '" />';
@@ -2790,10 +2790,10 @@ class __fnt1{
             }
             if(le_colis1.__xva.hasOwnProperty( '__champs_sortie_pour_tri1' )){
                 /* flèche vers le haut : ↗ (8599) , flèche vers le bas ↘ (8600) */
-                o1+='<div id="vv_bouton_tri1" class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(tri_filtre1(';
+                o1+='<button id="vv_bouton_tri1" class="yy_b1" rev_clic1="m1(n1(' + this.moi + '),f1(tri_filtre1(';
                 o1+='le_jsonc_des_champs_utilises_pour_le_tri1(\'' + JSON.stringify( le_colis1.__xva.__champs_sortie_pour_tri1 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ).replace( /"/g , '&quot;' ) + '\')';
                 o1+='le_jsonc_des_champs_possibles_pour_le_tri1(\'' + JSON.stringify( __champs_sortie_pour_tri1 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ).replace( /"/g , '&quot;' ) + '\')';
-                o1+=')))" title="ajuster le tri">T</div>';
+                o1+=')))" title="ajuster le tri">T</button>';
             }
             o1+='   </div>';
             o1+='</div>';
@@ -4936,9 +4936,9 @@ class __fnt1{
         /* let svg_copier_la_selection='<svg xmlns="http://www.w3.org/2000/svg" class="yy_svg_el" viewBox="0 0  100 100"><rect x="7" y="6" width="0" height="0" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect><path d=" M 18 10 C 24 10 31 10 38 10 C 40 2 56 2 59 10 C 65 10 72 10 79 10 C 82 10 84 13 84 16 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 16 c 0 -3 2 -6 5 -6 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:4;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="24" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:4;"></line><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>'; */
         let o1='';
         o1+='<div class="yy__lst_btns1 yy__aff_be1">';
-        o1+='<div class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>';
+        o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</button>';
         o1+='</div>';
         return o1;
     }
@@ -4948,10 +4948,10 @@ class __fnt1{
     boutons_edition_text( nom_de_la_zone ){
         let o1='';
         o1+='<div class="yy__lst_btns1">';
-        o1+='<div class="yy_svg1 yy__1 yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
-        o1+='<div class="yy_svg1 yy__3 yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
-        o1+='<div class="yy_svg1 yy__0 yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
-        o1+='<div class="yy_svg1 yy__xsi_2 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='<button class="yy_svg1 yy__1 yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
+        o1+='<button class="yy_svg1 yy__3 yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
+        o1+='<button class="yy_svg1 yy__0 yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</button>';
+        o1+='<button class="yy_svg1 yy__xsi_2 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</button>';
         o1+='</div>';
         return o1;
     }
@@ -4964,16 +4964,16 @@ class __fnt1{
         if(sans_div === false){
             o1+='<div class="yy__lst_btns1">';
         }
-        o1+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</div>';
-        o1+='<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</div>';
-        o1+='<div class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>';
-        o1+='<div class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</div>';
-        o1+='<div class="yy_svg1 yy__0  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</div>\r\n';
-        o1+='<div class="yy_svg1 yy__0 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
-        o1+='<div class="yy_b1 yy__1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</div>';
-        o1+='<div class="yy_svg1 yy__2 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</div>';
+        o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</button>';
+        o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</button>';
+        o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
+        o1+='<button class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
+        o1+='<button class="yy_svg1 yy__0  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</button>\r\n';
+        o1+='<button class="yy_svg1 yy__0 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</button>';
+        o1+='<button class="yy_b1 yy__1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</button>';
+        o1+='<button class="yy_svg1 yy__2 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</button>';
         if(sans_div === false){
             o1+='</div>';
         }
@@ -4985,8 +4985,8 @@ class __fnt1{
     boutons_rev3( nom_de_la_zone ){
         let o1='';
         o1+='<div class="yy__lst_btns1 yy__aff_be1">';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(formater_le_rev_de_textarea1(zone_source(' + nom_de_la_zone + '))))" title="formater le source rev" >(😊)</div>';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(insérer_un_commentaire_rev1(zone_source(' + nom_de_la_zone + '))))" title="insérer un commentaire" >#(😎)</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(formater_le_rev_de_textarea1(zone_source(' + nom_de_la_zone + '))))" title="formater le source rev" >(😊)</button>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(insérer_un_commentaire_rev1(zone_source(' + nom_de_la_zone + '))))" title="insérer un commentaire" >#(😎)</button>';
         o1+=this.boutons_edition1( nom_de_la_zone , true );
         o1+='</div>';
         return o1;
@@ -4997,9 +4997,9 @@ class __fnt1{
     boutons_date1( nom_de_la_zone ){
         let o1='';
         o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(maj_date1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(jour_courant1(nom_du_champ(' + nom_de_la_zone + '))))" title="jour courant">JC</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt yy__0" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="raz">' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(maj_date1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(jour_courant1(nom_du_champ(' + nom_de_la_zone + '))))" title="jour courant">JC</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt yy__0" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="raz">' + this.__ig1.les_svg.ensemble_vide + '</button>';
         o1+='</div>';
         return o1;
     }
@@ -5009,13 +5009,13 @@ class __fnt1{
     boutons_heure1( nom_de_la_zone ){
         let o1='';
         o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(popup_horloge1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'08:00:00\')))))">08</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'10:00:00\')))))">10</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'12:00:00\')))))">12</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'14:00:00\')))))">14</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'16:00:00\')))))">16</div>';
-        o1+='<div class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'18:00:00\')))))">18</div>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(popup_horloge1(nom_du_champ(' + nom_de_la_zone + '))))">' + this.__ig1.les_svg.calendrier + '';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'08:00:00\')))))">08</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'10:00:00\')))))">10</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'12:00:00\')))))">12</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'14:00:00\')))))">14</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'16:00:00\')))))">16</button>';
+        o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + nom_de_la_zone + '),valeur(valeur_constante(\'18:00:00\')))))">18</button>';
         o1+='</div>\r\n';
         return o1;
     }
@@ -5089,84 +5089,197 @@ class __fnt1{
         le_style1+='margin-top:var(--t_marge_hb_plus);';
         le_style1+='margin-bottom:var(--t_marge_hb_plus);';
         le_style1+='padding:var(--t_padding);';
-        t+='<h1>paramètres et aides</h1>';
-        t+='<div style="display:inline-block;border:1px red solid;position:fixed;right:0;top:var(--h_barre);background:white;">';
-        t+='  <div style="border:1px blue solid;">';
-        t+='    <div style="' + le_style1 + '">aa</div>';
-        t+='    <div style="' + le_style1 + '">bb</div>';
-        t+='  </div>';
-        t+='</div>';
+        let le_top1=50;
+        let haut1=32;
+        t+='<h1 style="font-size:18px;position:fixed;top:'+le_top1+'px;width:100%;height:'+haut1+'px;">paramètres et aides</h1>';
+        le_top1+=haut1;
+        t+='<div style="position:fixed;top:'+le_top1+'px;width:100%;height:'+(2*haut1)+'px;text-align:center;overflow:hidden;">MMMMMMMMMM,2000-01-01,00:00:00,1234567890</div>'
+        le_top1+=2*haut1;
+        
+        t+='<div class="yy_edition_champ2" style="position:fixed;top:'+le_top1+'px;width:100%;">';
         for(let i in this.__ig1.reference_stockage_local['aspect']){
-            let tta=this.__ig1.reference_stockage_local['aspect'][i];
-            let vva=this.__ig1.stockage_local['aspect'][i];
-            t+='<table style="width:360px;"><tr>';
-            t+='<td style="' + style_des_tds0 + ';height:46px;width:60%;padding:5px;">';
-            t+='' + tta.libelle0 + ' ';
-            t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
-            t+=' value="' + vva.valeur + '" ';
-            t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
-            t+=' type_cible(inner_html)';
-            t+=' id(' + i + '_nouvelle),';
-            t+=' valeur(valeur_de_champ(' + i + '))';
-            t+='))),';
-            if(tta.nom_du_style !== ''){
-                t+='m1(n1(__ig1),f1(maj_contenu(';
-                t+=' type_cible(style)';
+            if('--t_police' === i || '--t_padding' === i || '--t_pad_inp' === i ){
+                let tta=this.__ig1.reference_stockage_local['aspect'][i];
+                let vva=this.__ig1.stockage_local['aspect'][i];
+                t+='<label for="'+i+'" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:32px;">';
+                t+='    <div id="che_binaire_source_libelle" style="display:flex;">';
+                t+='        <div style="margin:auto 3px;font-size:16px;">' + tta.libelle0 + '</div>';
+                t+='    </div>';
+                t+='    <div>';
+                //
+                //
+                t+='         <input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
+                t+=' value="' + vva.valeur + '" ';
+                t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
+                t+=' type_cible(inner_html)';
                 t+=' id(' + i + '_nouvelle),';
-                t+=' valeur(';
-                t+='   nom_du_style(' + tta.nom_du_style + ')';
-                t+='   valeur_de_champ(' + i + '),';
-                t+='   dimension(' + vva.dimension + ')';
-                t+=' )';
-                t+=')))';
+                t+=' valeur(valeur_de_champ(' + i + '))';
+                t+='))),';
+                if(tta.nom_du_style !== ''){
+                    t+='m1(n1(__ig1),f1(maj_contenu(';
+                    t+=' type_cible(style)';
+                    t+=' id(' + i + '_nouvelle),';
+                    t+=' valeur(';
+                    t+='   nom_du_style(' + tta.nom_du_style + ')';
+                    t+='   valeur_de_champ(' + i + '),';
+                    t+='   dimension(' + vva.dimension + ')';
+                    t+=' )';
+                    t+=')))';
+                }
+                t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
+                t+='"';
+                t+=' style="width:'+(tta.valeurs.length*10)+'px;height:25px;"';
+/*
+                if(tta.style_interface){
+                    t+=' style="' + tta.style_interface + '"';
+                }
+*/                
+                t+=' />';
+                //
+                //
+                t+='    </div>';
+                if(i === '--t_police'){
+                    t+='<div id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;width:32px;height:32px;">' + vva.valeur + '</div>';
+                }else if(i === '--t_padding'){
+                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
+                    t+='</div>';
+                }else if(i === '--t_pad_inp'){
+                    t+='<div style="padding:0;border:1px blue solid;width:60px;height:30px;">';
+                    t+='<div id="' + i + '_nouvelle" style="display:inline;font-size:12px;max-width:20px!important;mix-width:20px!important;padding:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
+                    t+='<input class="yy_input1" type="text" style="max-width:10px;height:20px;">';
+                    t+='</div>';
+                }else{
+                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
+                    t+='</div>';
+                }
+                t+='</label>        '
             }
-            t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
-            t+='"';
-            if(tta.style_interface){
-                t+=' style="' + tta.style_interface + '"';
-            }
-            t+=' /></td>';
-            /*
-            */
-            t+='<td style="' + style_des_tds0 + ';height:36px;width:40%;';
-            if(i === '--t_marge_hb'){
-                t+='vertical-align:top;';
-            }
-            t+='">';
-            t+='  <div id="' + i + '_nouvelle" style="display:content;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';';
-            if(i === '--t_rayon_b'){
-                t+='border-radius:' + vva.valeur + 'px;';
-            }
-            if(i === '--t_padding'){
-                t+='padding:' + vva.valeur + 'px;';
-            }else{
-                t+='min-height:26px;';
-            }
-            if(i === '--t_police'){
-                t+='font-size:' + vva.valeur + 'px;';
-            }else{
-                t+='font-size:16px;';
-            }
-            if(i === '--t_border'){
-                t+='border-width:' + vva.valeur + 'px;';
-            }else if(i === '--t_input_border'){
-                t+='border-width:' + vva.valeur + 'px;';
-            }else{
-                t+='border-width:1px;';
-            }
-            if(i === '--t_marge_gd'){
-                t+='margin:auto ' + vva.valeur + 'px;';
-            }
-            if(i === '--t_marge_hb'){
-                t+='margin:' + vva.valeur + 'px auto;';
-            }
-            t+='">' + vva.valeur + '</div>';
-            t+='</td></tr></table>';
         }
+        
+        t+='</div>';
+/*        
+        
+        for(let i in this.__ig1.reference_stockage_local['aspect']){
+            if('--t_police' === i || '--t_padding' === i){
+                let tta=this.__ig1.reference_stockage_local['aspect'][i];
+                let vva=this.__ig1.stockage_local['aspect'][i];
+                
+                t+='<div style="display:flex;position:fixed;top:'+le_top1+'px;width:100%;height:'+haut1+'px;border:1px black solid;margin:0 auto;font-size:16px;">';
+                le_top1+=haut1;
+                t+='<div style="border:1px red solid;margin-right:10px;"><div style="border:1px blue solid;">' + tta.libelle0 + '</div></div>';
+                t+='<div style="border:1px blue solid;">';
+                t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + ';width:'+(tta.valeurs.length*10)+'px;" ';
+                t+=' value="' + vva.valeur + '" ';
+                t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
+                t+=' type_cible(inner_html)';
+                t+=' id(' + i + '_nouvelle),';
+                t+=' valeur(valeur_de_champ(' + i + '))';
+                t+='))),';
+                if(tta.nom_du_style !== ''){
+                    t+='m1(n1(__ig1),f1(maj_contenu(';
+                    t+=' type_cible(style)';
+                    t+=' id(' + i + '_nouvelle),';
+                    t+=' valeur(';
+                    t+='   nom_du_style(' + tta.nom_du_style + ')';
+                    t+='   valeur_de_champ(' + i + '),';
+                    t+='   dimension(' + vva.dimension + ')';
+                    t+=' )';
+                    t+=')))';
+                }
+                t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
+                t+='"';
+                if(tta.style_interface){
+                    t+=' style="' + tta.style_interface + '"';
+                }
+                t+=' />';
+                t+='</div>';
+                if(i === '--t_padding'){
+                    t+='<div style="padding:0;">';
+                    t+='<button id="' + i + '_nouvelle" class="yy__1" style="display:inline-block;border-color:red;border-style:solid;font-size:12px!important;padding:' + vva.valeur + 'px;border-width:1px;">' + vva.valeur + '</button>';
+                    t+='</div>';
+                }else if(i === '--t_police'){
+                    t+='  <div id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;font-size:' + vva.valeur + 'px;border-width:1px;">' + vva.valeur + '</div>';
+                }else{
+                    t+='  <div id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;">' + vva.valeur + '</div>';
+                }
+                t+='</div>';
+            }else{
+                let tta=this.__ig1.reference_stockage_local['aspect'][i];
+                let vva=this.__ig1.stockage_local['aspect'][i];
+                t+='<table style="position:fixed;top:'+le_top1+'px;width:100%;height:'+haut1+'px;"><tr>';
+                le_top1+=haut1;
+                t+='<td style="' + style_des_tds0 + ';height:46px;width:60%;padding:5px;">';
+                t+='' + tta.libelle0 + ' ';
+                t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
+                t+=' value="' + vva.valeur + '" ';
+                t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
+                t+=' type_cible(inner_html)';
+                t+=' id(' + i + '_nouvelle),';
+                t+=' valeur(valeur_de_champ(' + i + '))';
+                t+='))),';
+                if(tta.nom_du_style !== ''){
+                    t+='m1(n1(__ig1),f1(maj_contenu(';
+                    t+=' type_cible(style)';
+                    t+=' id(' + i + '_nouvelle),';
+                    t+=' valeur(';
+                    t+='   nom_du_style(' + tta.nom_du_style + ')';
+                    t+='   valeur_de_champ(' + i + '),';
+                    t+='   dimension(' + vva.dimension + ')';
+                    t+=' )';
+                    t+=')))';
+                }
+                t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
+                t+='"';
+                if(tta.style_interface){
+                    t+=' style="' + tta.style_interface + '"';
+                }
+                t+=' /></td>';
+                //
+                //
+                t+='<td style="' + style_des_tds0 + ';height:36px;width:40%;';
+                if(i === '--t_marge_hb'){
+                    t+='vertical-align:top;';
+                }
+                t+='">';
+                t+='  <div id="' + i + '_nouvelle" style="display:content;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';';
+                if(i === '--t_rayon_b'){
+                    t+='border-radius:' + vva.valeur + 'px;';
+                }
+                if(i === '--t_padding'){
+                    t+='padding:' + vva.valeur + 'px;';
+                }else{
+                    t+='min-height:26px;';
+                }
+                if(i === '--t_police'){
+                    t+='font-size:' + vva.valeur + 'px;';
+                }else{
+                    t+='font-size:16px;';
+                }
+                if(i === '--t_border'){
+                    t+='border-width:' + vva.valeur + 'px;';
+                }else if(i === '--t_input_border'){
+                    t+='border-width:' + vva.valeur + 'px;';
+                }else{
+                    t+='border-width:1px;';
+                }
+                if(i === '--t_marge_gd'){
+                    t+='margin:auto ' + vva.valeur + 'px;';
+                }
+                if(i === '--t_marge_hb'){
+                    t+='margin:' + vva.valeur + 'px auto;';
+                }
+                t+='">' + vva.valeur + '</div>';
+                t+='</td></tr></table>';
+            }
+        }
+        
         for(let i in this.__ig1.reference_stockage_local['parametres']){
             let tta=this.__ig1.reference_stockage_local['parametres'][i];
             let vva=this.__ig1.stockage_local['parametres'][i];
-            t+='<table style="width:360px;"><tr>';
+            t+='<table style="position:fixed;top:'+le_top1+'px;width:100%;"><tr>';
+            le_top1+=haut1;
             if(i === '__deverminage'){
                 if(vva.valeur === 0){
                     t+='<td style="' + style_des_tds0 + ';background:SpringGreen;color:black;min-width:70%;">';
@@ -5202,18 +5315,20 @@ class __fnt1{
             t+='"';
             t+=' />';
             t+='</td>';
-            /*
-            */
+            //
+            //
             t+='<td style="' + style_des_tds0 + ';height:36px;width:40%;">';
             t+='  <div id="' + i + '_nouvelle" style="display:content;border-width:1px;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';';
             t+='">' + vva.valeur + '</div>';
             t+='</td></tr></table>';
         }
+        
         let ecran_tactile='ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
         let style_des_tds3=' style="border:1px black solid; max-width:30%;"';
         let style_des_tds4=' style="border:1px black solid; max-width:70%;"';
-        t+='<div class="yy_conteneur_table">';
-        t+='<table border="1">';
+        t+='<div class="yy_conteneur_table" style="position:fixed;top:'+le_top1+'px;width:100%;">';
+        le_top1+=haut1;
+        t+='<table>';
         t+='  <tr>';
         t+='    <td ' + style_des_tds3 + '>ecran tactile</td>';
         t+='    <td ' + style_des_tds4 + '><b>' + JSON.stringify( ecran_tactile ) + '</b></td>';
@@ -5244,12 +5359,7 @@ class __fnt1{
         t+='    <td ' + style_des_tds4 + '><b>' + JSON.stringify( navigator.userAgent ) + '</b></td>';
         t+='  </tr>';
         t+='</table>';
-        t+='</div class="yy_conteneur_table">';
-        t+='<br />';
-        /*
-          t+='#genre crios = <b>' + JSON.stringify( this.#genre_crios ) + '</b>';
-          t+='<br />';
-          t+='navigator.userAgent = <b>' + JSON.stringify( navigator.userAgent ) + '</b>';
+        t+='</div>';
         */
         this.__ig1.maj_contenu_principal( t );
         this.__ig1.activer_menu( null , null , '-2' );
