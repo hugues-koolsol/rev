@@ -57,7 +57,7 @@ class bdds1{
                 this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
         import( '/f0?n0=v_svg_bdd1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
                 this.__variables_module['v_svg_bdd1']=new m['v_svg_bdd1']( [] , 0 , this.__ig1 );
         } );
@@ -184,7 +184,6 @@ class bdds1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
         if(this.__ig1.decallage_page_avant_envoi > 0){
             window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
@@ -246,7 +245,6 @@ class bdds1{
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
         }
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -331,7 +329,6 @@ class bdds1{
         this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -346,7 +343,6 @@ class bdds1{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -434,7 +430,6 @@ class bdds1{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
@@ -454,26 +449,26 @@ class bdds1{
         lst+='<div style="display:inline-flex;">';
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(1)) */
         if(tup.T0_chi_id_basedd <= 1){
-            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
-            lst+='<div class="yy_svg1 yy__2" rev_clic1="';
+            lst+='<button class="yy_svg1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))';
-            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</button>';
         }
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="yy_svg1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(dump_de_la_base(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))" title="faire un dump de la base">' + this.__ig1.les_svg.disquette + '</div>';
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'' + tup.T0_chi_id_basedd + '\')))))">' + this.__ig1.les_svg.bdd + '</div>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
+        lst+='<button class="yy_svg1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(dump_de_la_base(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))" title="faire un dump de la base">' + this.__ig1.les_svg.disquette + '</button>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'' + tup.T0_chi_id_basedd + '\')))))">' + this.__ig1.les_svg.bdd + '</button>';
         if(le_colis1._CA_ === 1 && le_colis1.chi_id_projet === 1){
         }else{
             /*  */
-            lst+='<div class="yy_b1" rev_clic1="';
+            lst+='<button class="yy_b1" title="enregistrer la matrice dans la table rev" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + ')f1(enregistrer_la_matrice_dans_la_table_rev(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))';
-            lst+='" title="enregistrer la matrice dans la table rev">rev()</div>';
+            lst+='">rev()</button>';
             /*  */
-            lst+='<div class="yy_b1" rev_clic1="';
+            lst+='<button class="yy_b1" title="forcer fermeture fichier wal" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + ')f1(forcer_fermeture_fichier_wal(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))';
-            lst+='" title="forcer fermeture fichier wal">forcer fermeture wal</div>';
+            lst+='">forcer fermeture wal</button>';
             /*  */
         }
         lst+='</div>';

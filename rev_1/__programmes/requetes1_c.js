@@ -60,9 +60,9 @@ class requetes1{
             o1+='<h2>Sélectionnez le projet cible</h2>';
             o1+='<ul>';
             for(let i in le_colis1.__xva){
-                o1+='    <div class="yy_b1" rev_clic1="';
+                o1+='    <button class="yy_b1" rev_clic1="';
                 o1+='pm1(m1(n1(' + this.moi + '),f1(integrer_cette_requete_dans_un_autre_projet(chi_id_requete(' + chi_id_requete + '),chi_id_projet(' + le_colis1.__xva[i].T0_chi_id_projet + ')))))';
-                o1+='">(' + le_colis1.__xva[i].T0_chi_id_projet + ') ' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + '</div>';
+                o1+='">(' + le_colis1.__xva[i].T0_chi_id_projet + ') ' + this.__ig1.fi0( le_colis1.__xva[i].T0_chp_nom_projet ) + '</button>';
             }
             o1+='</ul>';
             this.__ig1.affiche_sous_fenetre1( o1 );
@@ -162,10 +162,10 @@ class requetes1{
             o1+='    <input type="hidden" id="vv_ancien_numero_de_requete" value="' + chi_id_requete + '" />';
             o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_requete" value="" aria-autocomplete="list"/>';
             o1+='    <br />';
-            o1+='    <div class="yy_b1" rev_clic1="';
+            o1+='    <button class="yy_b1" rev_clic1="';
             o1+='fo1(co1(vv_requetes_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_requetes_nouveau_numero1()))))';
             o1+='">attribuer ce nouveau numéro</div>';
-            o1+='</div>';
+            o1+='</button>';
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
         }
@@ -215,8 +215,8 @@ class requetes1{
                 }
             }
             /* this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>'; */
-            this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__4" rev_clic1="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</div>';
-            this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</div>';
+            this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__4" rev_clic1="m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1()))">+SQL</button>';
+            this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_sql_en_cron1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >compiler cette liste en cron</button>';
         }
     }
     /*
@@ -387,7 +387,6 @@ class requetes1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
         if(this.__ig1.decallage_page_avant_envoi > 0){
             window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
@@ -481,7 +480,6 @@ class requetes1{
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
         }
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -645,7 +643,6 @@ class requetes1{
         this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -660,7 +657,6 @@ class requetes1{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -748,7 +744,6 @@ class requetes1{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
@@ -766,22 +761,22 @@ class requetes1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div style="display:inline-flex;">';
-        lst+='<div class="yy_b1 yy__4" rev_clic1="';
+        lst+='<button class="yy_b1 yy__4" rev_clic1="';
         lst+='m1(n1(x_ecran_concevoir_une_requete1),f1(page_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '))))';
-        lst+='">SQL</div>';
-        lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="yy_svg1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
-        lst+='<div class="yy_b1 yy__4" id="vv_bouton_compiler_' + tup.T0_chi_id_requete + '" rev_clic1="';
+        lst+='">SQL</button>';
+        lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
+        lst+='<button class="yy_svg1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(page_nouveau_numero_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</button>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
+        lst+='<button class="yy_b1 yy__4" id="vv_bouton_compiler_' + tup.T0_chi_id_requete + '" rev_clic1="';
         lst+='m1(n1(' + this.moi + '),f1(compiler_requete1(chi_id_requete(' + tup.T0_chi_id_requete + '),bouton_compiler(vv_bouton_compiler_' + tup.T0_chi_id_requete + '))))';
-        lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</div>';
+        lst+='" title="compiler cette requête">' + this.__ig1.les_svg.compiler + '</button>';
         lst+='</div>';
         if(le_colis1.chi_id_projet === 3){
-            lst+='<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">importer de (1)</div>';
+            lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(importer_requete_de_1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">importer de (1)</button>';
         }
         if(le_colis1.chi_id_projet === 1 && tup.T0_chi_id_requete < 1300){
-            lst+='<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">=&gt; n</div>';
+            lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_exporter_requete_de_1_vers_n1(chi_id_requete(' + tup.T0_chi_id_requete + ')))))">=&gt; n</button>';
         }
         lst+='</div>';
         return lst;
@@ -839,7 +834,7 @@ class requetes1{
                 if(tup.T0_cht_sql_requete !== null){
                     /*  */
                     let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0_cht_sql_requete_' + tup.T0_chi_id_requete + ')))';
-                    lst+='<div  class="yy_svg1" rev_clic1="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</div>';
+                    lst+='<button class="yy_svg1" rev_clic1="' + cmd1 + '">' + this.__ig1.les_svg.agrandir + '</button>';
                     /*  */
                     lst+=this.__ig1.fi2( tup.T0_cht_sql_requete.substr( 0 , 100 ) );
                 }

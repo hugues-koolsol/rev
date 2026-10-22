@@ -202,7 +202,6 @@ class x_ecran_generer_souches1{
         o1+='<div id="les_requetes"></div>';
         let contenu_generer_le_programme=document.getElementById( 'contenu_generer_le_programme' );
         contenu_generer_le_programme.innerHTML=o1;
-        
         setTimeout( () => {
                 this.charger_les_requetes_existantes();
         } , 50 );
@@ -231,7 +230,6 @@ class x_ecran_generer_souches1{
             }
         }else{
             window.location.hash='m1(n1(x_ecran_generer_souches1),f1(entree_module(chi_id_basedd(' + chi_id_basedd + '))))';
-            
         }
         return({"__xst" : __xsu});
     }
@@ -263,7 +261,6 @@ class x_ecran_generer_souches1{
             }
         }
         document.getElementById( 'vv_les_tables' ).innerHTML=o1;
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -341,7 +338,6 @@ class x_ecran_generer_souches1{
         if(chi_id_basedd > 0 && nom_de_la_table !== ''){
             this.charger_base1( chi_id_basedd , nom_de_la_table );
         }else{
-            
         }
         return({"__xst" : __xsu});
     }

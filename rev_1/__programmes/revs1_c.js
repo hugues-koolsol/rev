@@ -84,7 +84,6 @@ class revs1{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -172,7 +171,6 @@ class revs1{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
@@ -191,13 +189,13 @@ class revs1{
         let lst='';
         lst+='<div class="yy_act1">';
         /*
-          lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.poubelle+'</div>';
+          lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('+this.moi+'),f1(page_confirmation_supprimer1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.poubelle+'</button>';
         */
         /*
-          lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.editer+'</div>';
+          lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('+this.moi+'),f1(page_modification1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.editer+'</button>';
         */
         /*
-          lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.dupliquer+'</div>';
+          lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('+this.moi+'),f1(page_duplication1(chi_id_rev(' + tup.T0_chi_id_rev + ')))))">'+this.__ig1.les_svg.dupliquer+'</button>';
         */
         lst+='</div>';
         return lst;

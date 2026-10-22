@@ -316,7 +316,6 @@ class v_svg_bdd1{
         }
         this.__ig1.affiche_sous_fenetre1( t );
         vv_sous_fenetre1.showModal();
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -2226,7 +2225,6 @@ class v_svg_bdd1{
                     cmd+=' zone_cible(' + zone_champ_parent + '),';
                     cmd+=')))';
                     document.getElementById( zone_liste_des_champs ).innerHTML='<select id="vv_champ_parent" rev_change1="' + cmd + '"><option value=""></option>' + sel01 + '</select>';
-                    
                 }
             }
         }
@@ -2473,8 +2471,8 @@ class v_svg_bdd1{
           =====================================================================================================
         */
         t+='<h3>changer le nom de champ</h3>';
-        t+='<input id="nouveau_nom" type="text" value="' + nom_du_champ + '" autocapitalize="off" />';
-        t+='<input id="ancien_nom" type="hidden" value="' + nom_du_champ + '" autocapitalize="off" />';
+        t+='<input id="nouveau_nom" class="yy_input1" type="text" value="' + nom_du_champ + '" autocapitalize="off" aria-autocomplete="list" />';
+        t+='<input id="ancien_nom" class="yy_input1" type="hidden" value="' + nom_du_champ + '" autocapitalize="off" />';
         let f='';
         f+='m1(n1(' + this.moi + '),f1(changer_le_nom_de_champ_de_modale(';
         f+=' id_svg_text(' + id_element_texte_du_nom_de_champ_svg + '),';
@@ -3424,7 +3422,6 @@ class v_svg_bdd1{
         }
         /*  */
         vv_sous_fenetre1.showModal();
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -7238,7 +7235,6 @@ class v_svg_bdd1{
         for(i in tableau_svg){
             this.#svg_ajuster_la_largeur_de_la_base( tableau_svg[i] );
         }
-        
     }
     /*
       
@@ -9574,7 +9570,6 @@ class v_svg_bdd1{
             document.getElementById( 'vv_liste_des_bases' ).innerHTML=cmds;
             var rev='';
             this.init001( 'refZnDessin' , 'div_svg1' );
-            
             this.editer_le_schema( null , null , tab_les_bases_a_editer[0] );
             window.location.hash='#pm1(m1(n1(' + this.moi + '),f1(editer_les_schemas2(les_bases_a_editer(\'' + les_bases_a_editer + '\')))))';
             return({"__xst" : __xsu});

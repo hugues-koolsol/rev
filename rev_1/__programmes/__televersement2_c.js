@@ -150,7 +150,6 @@ class __televersement2{
         options['afficher_le_bouton_editer']=0;
         options['class_du_bouton_editer']='yy_b1 yy__xif';
         this.__variables_module['_tri_arbre1']['construire_arbre']( 'trier_les_televersements' , options );
-        
     }
     /*
       =============================================================================================================
@@ -735,7 +734,6 @@ class __televersement2{
         o1+='</div>';
         o1+='<div class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -921,7 +919,6 @@ class __televersement2{
         */
         o1+='<div class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
         this.__ig1.affiche_sous_fenetre1( o1 );
-        
         /*
           let cmd='';
           cmd+='liste1(';

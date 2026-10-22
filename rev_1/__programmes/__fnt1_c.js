@@ -1,4 +1,4 @@
-const __xer=0; 
+const __xer=0;
 const __xsu=1;
 const __xal=2;
 const __xif=3;
@@ -957,7 +957,6 @@ class __fnt1{
         this.affiche_palette1( this.html_de_palette1( format_palette , nom_du_champ1 , nom_du_champ2 , nom_du_champ_a_modifier ) );
         /* html_de_date1 */
         vv_sous_fenetre1.showModal();
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -1025,7 +1024,6 @@ class __fnt1{
             lst1='<table><tr><th colspan="3">' + __sous_titre_a_afficher + '</th></tr><tr><td>pas de valeur disponible</td></tr></table>';
         }
         document.getElementById( 'vv_sous_sous_fenetre_de_liste2' ).innerHTML=lst1;
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -1301,7 +1299,6 @@ class __fnt1{
             }
         }
         this.__ig1.initialisation_filtre_sous_fenetre2( 'sous_liste2' , o1 , this.DUN_DUNE_ELEMENT_GERE , __sous_titre_a_afficher );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -2565,7 +2562,6 @@ class __fnt1{
         options['class_du_bouton_editer']='yy_b1 yy__xif';
         this.__ig1.affiche_sous_fenetre1( le_chetemel );
         this.__variables_module['_tri_arbre1']['construire_arbre']( 'vv_trier_les_champs1' , options );
-        
         a['taille_de_la_boite']=17 * this.__ig1.css_dimensions.largeur_du_m;
         setTimeout( function( taille_de_page ){
                 /* ajustement horizontal */
@@ -3130,7 +3126,6 @@ class __fnt1{
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
         vv_sous_fenetre1.showModal();
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3219,7 +3214,6 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , parseInt( minute_a_afficher , 10 ) , parseInt( seconde_a_afficher , 10 ) ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3267,7 +3261,6 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3315,7 +3308,6 @@ class __fnt1{
             }
         }
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3511,7 +3503,6 @@ class __fnt1{
         }
         document.getElementById( nom_du_champ ).value=t;
         this.affiche_horloge1( this.html_de_horloge1( nom_du_champ , heure_a_afficher , minute_a_afficher , seconde_a_afficher ) );
-        
         /* this.__ig1.fermer_la_sous_fenetre(); */
         return({"__xst" : __xsu});
     }
@@ -3652,7 +3643,6 @@ class __fnt1{
             mois++;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3681,7 +3671,6 @@ class __fnt1{
             mois--;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3709,7 +3698,6 @@ class __fnt1{
             annee=1000;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3737,7 +3725,6 @@ class __fnt1{
             annee=9999;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3759,7 +3746,6 @@ class __fnt1{
         annee=tt.getFullYear();
         mois=tt.getMonth() + 1;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3783,7 +3769,6 @@ class __fnt1{
         }
         annee=annee - annee% 50;
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3811,7 +3796,6 @@ class __fnt1{
             annee=1000;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3839,7 +3823,6 @@ class __fnt1{
             annee=9950;
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois , true ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -3866,7 +3849,6 @@ class __fnt1{
             annee=dt.getFullYear();
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee , mois ) );
-        
         return({"__xst" : __xsu});
     }
     /*
@@ -4195,7 +4177,6 @@ class __fnt1{
         }
         this.affiche_calendrier( this.html_de_date1( format_calendrier , nom_du_champ , annee_a_afficher , mois_a_afficher ) );
         vv_sous_fenetre1.showModal();
-        
         return({"__xst" : __xsu});
     }
     /* ===================================================================================================================== */
@@ -5043,9 +5024,9 @@ class __fnt1{
                 console.log( 'Changement de déverminage=' , this.__ig1.__deverminage );
             }
             /*
-            if(this.__ig1.__deverminage === 2){
-                console.log( this.__ig1.stockage_local );
-            }
+              if(this.__ig1.__deverminage === 2){
+              console.log( this.__ig1.stockage_local );
+              }
             */
             localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
             this.__ig1.css1();
@@ -5080,254 +5061,147 @@ class __fnt1{
         let style_des_tds2=' style="border:1px green solid;height:40px;font-size:' + font_size_fixe + ';"';
         let le_style_des_tables1=' style="border:1px black solid;border-collapse:collapse;min-width:100%;"';
         let t='';
-        t+='<div style="min-height:var(--h_barre);"></div>';
-        let le_style1='';
-        le_style1+='display:inline-block;border:var(--t_border) red solid;border-radius:var(--t_rayon_b);';
-        le_style1+='font-size:var(--t_police);';
-        le_style1+='margin-left:var(--t_marge_gd_plus);';
-        le_style1+='margin-right:var(--t_marge_gd_plus);';
-        le_style1+='margin-top:var(--t_marge_hb_plus);';
-        le_style1+='margin-bottom:var(--t_marge_hb_plus);';
-        le_style1+='padding:var(--t_padding);';
-        let le_top1=50;
         let haut1=32;
-        t+='<h1 style="font-size:18px;position:fixed;top:'+le_top1+'px;width:100%;height:'+haut1+'px;">paramètres et aides</h1>';
-        le_top1+=haut1;
-        t+='<div style="position:fixed;top:'+le_top1+'px;width:100%;height:'+(2*haut1)+'px;text-align:center;overflow:hidden;">MMMMMMMMMM,2000-01-01,00:00:00,1234567890</div>'
-        le_top1+=2*haut1;
-        
-        t+='<div class="yy_edition_champ2" style="position:fixed;top:'+le_top1+'px;width:100%;">';
+        t+='<div class="yy_edition_champ2" style="width:100%;border-width:1px!important;">';
+        t+='<h1 style="font-size:18px;width:100%;height:' + haut1 + 'px;">paramètres et aides</h1>';
+        t+='<div style="width:100%;height:' + (2 * haut1) + 'px;text-align:center;overflow:hidden;">MMMMMMMMMM,2000-01-01,00:00:00,1234567890</div>';
         for(let i in this.__ig1.reference_stockage_local['aspect']){
-            if('--t_police' === i || '--t_padding' === i || '--t_pad_inp' === i ){
+            if('--t_police' === i
+                   || '--t_padding' === i
+                   || '--t_border' === i
+                   || '--t_pad_inp' === i
+                   || '--t_input_border' === i
+                   || '--t_marge_gd' === i
+                   || '--t_marge_hb' === i
+                   || '--t_rayon_b' === i
+                   || '--fond_est_gris' === i
+                   || '--c_couleur1' === i
+                   || '--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis' === i
+                   || '--afficher_les_boutons_d_edition' === i
+            ){
                 let tta=this.__ig1.reference_stockage_local['aspect'][i];
                 let vva=this.__ig1.stockage_local['aspect'][i];
-                t+='<label for="'+i+'" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:32px;">';
+                t+='<label for="' + i + '" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:32px;">';
+                if(i === '--t_police'){
+                    t+='<div id="--t_police_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;width:32px;height:32px;">' + vva.valeur + '</div>';
+                }else if(i === '--t_padding'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--t_border'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border-color:red;border-style:solid;padding:1px;font-size:12px;vertical-align:top;border-width:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--t_pad_inp'){
+                    t+='<div style="padding:0;border:0px blue solid;width:60px;height:30px;">';
+                    t+='<table style="border:0;"><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
+                    t+='<input disabled="true" class="yy_input1" id="' + i + '_nouvelle" style="border-radius:1px;border-width:1px;line-height:14px;max-height:30px;height:auto;vertical-align:top;font-size:12px;max-width:22px!important;min-width:20px!important;padding:' + vva.valeur + 'px;" value="' + vva.valeur + '" />';
+                    t+='</td></tr></table>';
+                    t+='</div>';
+                }else if(i === '--t_input_border'){
+                    t+='<div style="padding:0;border:0px blue solid;width:60px;height:30px;">';
+                    t+='<table style="border:0;"><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
+                    t+='<input disabled="true" class="yy_input1" id="' + i + '_nouvelle" style="border-radius:1px;padding:1px;line-height:14px;max-height:30px;height:auto;vertical-align:top;font-size:12px;max-width:22px!important;min-width:20px!important;border-width:' + vva.valeur + 'px;" value="' + vva.valeur + '" />';
+                    t+='</td></tr></table>';
+                    t+='</div>';
+                }else if(i === '--t_marge_gd'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:60px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:1px;margin:' + vva.valeur + 'px">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--t_marge_hb'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:1px;margin:' + vva.valeur + 'px">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--t_rayon_b'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;border-radius:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--fond_est_gris'
+                       || '--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis' === i
+                       || '--afficher_les_boutons_d_edition' === i
+                ){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--c_couleur1'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else{
+                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
+                    t+='</div>';
+                }
                 t+='    <div id="che_binaire_source_libelle" style="display:flex;">';
                 t+='        <div style="margin:auto 3px;font-size:16px;">' + tta.libelle0 + '</div>';
                 t+='    </div>';
                 t+='    <div>';
-                //
-                //
-                t+='         <input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
-                t+=' value="' + vva.valeur + '" ';
+                t+='         <input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" value="' + vva.valeur + '" ';
                 t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
-                t+=' type_cible(inner_html)';
-                t+=' id(' + i + '_nouvelle),';
-                t+=' valeur(valeur_de_champ(' + i + '))';
+                if('--t_pad_inp' === i || '--t_input_border' === i){
+                    t+=' type_cible(valeur_de_champ),id(' + i + '_nouvelle),valeur(nom_du_champ(' + i + '))';
+                }else{
+                    t+=' type_cible(inner_html),id(' + i + '_nouvelle),valeur(valeur_de_champ(' + i + '))';
+                }
                 t+='))),';
                 if(tta.nom_du_style !== ''){
-                    t+='m1(n1(__ig1),f1(maj_contenu(';
-                    t+=' type_cible(style)';
-                    t+=' id(' + i + '_nouvelle),';
-                    t+=' valeur(';
-                    t+='   nom_du_style(' + tta.nom_du_style + ')';
-                    t+='   valeur_de_champ(' + i + '),';
-                    t+='   dimension(' + vva.dimension + ')';
-                    t+=' )';
+                    t+='m1(n1(__ig1),f1(maj_contenu(type_cible(style),id(' + i + '_nouvelle),valeur(nom_du_style(' + tta.nom_du_style + '),valeur_de_champ(' + i + '),dimension(' + vva.dimension + '))';
                     t+=')))';
                 }
                 t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
                 t+='"';
-                t+=' style="width:'+(tta.valeurs.length*10)+'px;height:25px;"';
-/*
-                if(tta.style_interface){
-                    t+=' style="' + tta.style_interface + '"';
-                }
-*/                
-                t+=' />';
-                //
-                //
+                t+=' style="width:' + (tta.valeurs.length * 10) + 'px;height:25px;margin:3px;" />';
                 t+='    </div>';
-                if(i === '--t_police'){
-                    t+='<div id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;width:32px;height:32px;">' + vva.valeur + '</div>';
-                }else if(i === '--t_padding'){
-                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
-                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
-                    t+='</div>';
-                }else if(i === '--t_pad_inp'){
-                    t+='<div style="padding:0;border:1px blue solid;width:60px;height:30px;">';
-                    t+='<div id="' + i + '_nouvelle" style="display:inline;font-size:12px;max-width:20px!important;mix-width:20px!important;padding:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
-                    t+='<input class="yy_input1" type="text" style="max-width:10px;height:20px;">';
-                    t+='</div>';
-                }else{
-                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
-                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
-                    t+='</div>';
-                }
-                t+='</label>        '
+                t+='</label>';
             }
         }
-        
-        t+='</div>';
-/*        
-        
-        for(let i in this.__ig1.reference_stockage_local['aspect']){
-            if('--t_police' === i || '--t_padding' === i){
-                let tta=this.__ig1.reference_stockage_local['aspect'][i];
-                let vva=this.__ig1.stockage_local['aspect'][i];
-                
-                t+='<div style="display:flex;position:fixed;top:'+le_top1+'px;width:100%;height:'+haut1+'px;border:1px black solid;margin:0 auto;font-size:16px;">';
-                le_top1+=haut1;
-                t+='<div style="border:1px red solid;margin-right:10px;"><div style="border:1px blue solid;">' + tta.libelle0 + '</div></div>';
-                t+='<div style="border:1px blue solid;">';
-                t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + ';width:'+(tta.valeurs.length*10)+'px;" ';
-                t+=' value="' + vva.valeur + '" ';
-                t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
-                t+=' type_cible(inner_html)';
-                t+=' id(' + i + '_nouvelle),';
-                t+=' valeur(valeur_de_champ(' + i + '))';
-                t+='))),';
-                if(tta.nom_du_style !== ''){
-                    t+='m1(n1(__ig1),f1(maj_contenu(';
-                    t+=' type_cible(style)';
-                    t+=' id(' + i + '_nouvelle),';
-                    t+=' valeur(';
-                    t+='   nom_du_style(' + tta.nom_du_style + ')';
-                    t+='   valeur_de_champ(' + i + '),';
-                    t+='   dimension(' + vva.dimension + ')';
-                    t+=' )';
-                    t+=')))';
-                }
-                t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
-                t+='"';
-                if(tta.style_interface){
-                    t+=' style="' + tta.style_interface + '"';
-                }
-                t+=' />';
-                t+='</div>';
-                if(i === '--t_padding'){
-                    t+='<div style="padding:0;">';
-                    t+='<button id="' + i + '_nouvelle" class="yy__1" style="display:inline-block;border-color:red;border-style:solid;font-size:12px!important;padding:' + vva.valeur + 'px;border-width:1px;">' + vva.valeur + '</button>';
-                    t+='</div>';
-                }else if(i === '--t_police'){
-                    t+='  <div id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;font-size:' + vva.valeur + 'px;border-width:1px;">' + vva.valeur + '</div>';
-                }else{
-                    t+='  <div id="' + i + '_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;">' + vva.valeur + '</div>';
-                }
-                t+='</div>';
-            }else{
-                let tta=this.__ig1.reference_stockage_local['aspect'][i];
-                let vva=this.__ig1.stockage_local['aspect'][i];
-                t+='<table style="position:fixed;top:'+le_top1+'px;width:100%;height:'+haut1+'px;"><tr>';
-                le_top1+=haut1;
-                t+='<td style="' + style_des_tds0 + ';height:46px;width:60%;padding:5px;">';
-                t+='' + tta.libelle0 + ' ';
-                t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
-                t+=' value="' + vva.valeur + '" ';
-                t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
-                t+=' type_cible(inner_html)';
-                t+=' id(' + i + '_nouvelle),';
-                t+=' valeur(valeur_de_champ(' + i + '))';
-                t+='))),';
-                if(tta.nom_du_style !== ''){
-                    t+='m1(n1(__ig1),f1(maj_contenu(';
-                    t+=' type_cible(style)';
-                    t+=' id(' + i + '_nouvelle),';
-                    t+=' valeur(';
-                    t+='   nom_du_style(' + tta.nom_du_style + ')';
-                    t+='   valeur_de_champ(' + i + '),';
-                    t+='   dimension(' + vva.dimension + ')';
-                    t+=' )';
-                    t+=')))';
-                }
-                t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
-                t+='"';
-                if(tta.style_interface){
-                    t+=' style="' + tta.style_interface + '"';
-                }
-                t+=' /></td>';
-                //
-                //
-                t+='<td style="' + style_des_tds0 + ';height:36px;width:40%;';
-                if(i === '--t_marge_hb'){
-                    t+='vertical-align:top;';
-                }
-                t+='">';
-                t+='  <div id="' + i + '_nouvelle" style="display:content;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';';
-                if(i === '--t_rayon_b'){
-                    t+='border-radius:' + vva.valeur + 'px;';
-                }
-                if(i === '--t_padding'){
-                    t+='padding:' + vva.valeur + 'px;';
-                }else{
-                    t+='min-height:26px;';
-                }
-                if(i === '--t_police'){
-                    t+='font-size:' + vva.valeur + 'px;';
-                }else{
-                    t+='font-size:16px;';
-                }
-                if(i === '--t_border'){
-                    t+='border-width:' + vva.valeur + 'px;';
-                }else if(i === '--t_input_border'){
-                    t+='border-width:' + vva.valeur + 'px;';
-                }else{
-                    t+='border-width:1px;';
-                }
-                if(i === '--t_marge_gd'){
-                    t+='margin:auto ' + vva.valeur + 'px;';
-                }
-                if(i === '--t_marge_hb'){
-                    t+='margin:' + vva.valeur + 'px auto;';
-                }
-                t+='">' + vva.valeur + '</div>';
-                t+='</td></tr></table>';
-            }
-        }
-        
         for(let i in this.__ig1.reference_stockage_local['parametres']){
-            let tta=this.__ig1.reference_stockage_local['parametres'][i];
-            let vva=this.__ig1.stockage_local['parametres'][i];
-            t+='<table style="position:fixed;top:'+le_top1+'px;width:100%;"><tr>';
-            le_top1+=haut1;
-            if(i === '__deverminage'){
-                if(vva.valeur === 0){
-                    t+='<td style="' + style_des_tds0 + ';background:SpringGreen;color:black;min-width:70%;">';
-                }else if(vva.valeur === 1){
-                    t+='<td style="' + style_des_tds0 + ';background:DarkOrange;color:black;min-width:70%;">';
-                }else if(vva.valeur === 2){
-                    t+='<td style="' + style_des_tds0 + ';background:yellow;color:red;min-width:70%;">';
+            if('--t_police' === i || '__deverminage' === i || '--bidon' === i){
+                let tta=this.__ig1.reference_stockage_local['parametres'][i];
+                let vva=this.__ig1.stockage_local['parametres'][i];
+                t+='<label for="' + i + '" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:32px;">';
+                if(i === '__deverminage'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:30px;">';
+                    let la_classe='yy__1';
+                    if(vva.valeur === 1){
+                        la_classe='yy__2';
+                    }else if(vva.valeur === 2){
+                        la_classe='yy__0';
+                    }
+                    t+='<div class="' + la_classe + '" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
+                }else if(i === '--bidon'){
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
+                    t+='</td></tr></table>';
                 }else{
-                    t+='<td style="' + style_des_tds0 + ';background:SaddleBrown;color:white;min-width:70%;">';
+                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
+                    t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
+                    t+='</div>';
                 }
-            }else{
-                t+='<td style="' + style_des_tds0 + ';height:46px;width:60%;padding:5px;">';
+                t+='    <div id="che_binaire_source_libelle" style="display:flex;">';
+                t+='        <div style="margin:auto 3px;font-size:16px;">' + tta.libelle0 + '</div>';
+                t+='    </div>';
+                t+='    <div>';
+                t+='         <input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" value="' + vva.valeur + '" ';
+                t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
+                t+=' type_cible(inner_html),id(' + i + '_nouvelle),valeur(valeur_de_champ(' + i + '))';
+                t+='))),';
+                if(tta.nom_du_style !== ''){
+                    t+='m1(n1(__ig1),f1(maj_contenu(type_cible(style),id(' + i + '_nouvelle),valeur(nom_du_style(' + tta.nom_du_style + '),valeur_de_champ(' + i + '),dimension(' + vva.dimension + '))';
+                    t+=')))';
+                }
+                t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(parametres))))';
+                t+='"';
+                t+=' style="width:' + (tta.valeurs.length * 10) + 'px;height:25px;margin:3px;" />';
+                t+='    </div>';
+                t+='</label>';
             }
-            t+='' + tta.libelle0 + ' ';
-            t+='<input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" ';
-            t+=' value="' + vva.valeur + '" rev_chg_ou_ent1="m1(n1(__ig1)f1(maj_contenu(';
-            t+='   type_cible(inner_html)';
-            t+='   id(' + i + '_nouvelle),';
-            t+='   valeur(valeur_de_champ(' + i + '))';
-            t+='  ))),';
-            if(tta.nom_du_style !== ''){
-                t+='m1(n1(__ig1),f1(maj_contenu(';
-                t+=' type_cible(style)';
-                t+=' id(' + i + '_nouvelle),';
-                t+=' valeur(';
-                t+='   nom_du_style(' + tta.nom_du_style + ')';
-                t+='   valeur_de_champ(' + i + '),';
-                t+='   dimension(' + vva.dimension + ')';
-                t+=' )';
-                t+=')))';
-            }
-            t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(parametres))))';
-            t+='"';
-            t+=' />';
-            t+='</td>';
-            //
-            //
-            t+='<td style="' + style_des_tds0 + ';height:36px;width:40%;">';
-            t+='  <div id="' + i + '_nouvelle" style="display:content;border-width:1px;border-color:red;border-style:solid;min-width:' + largeur_des_champs_input + ';';
-            t+='">' + vva.valeur + '</div>';
-            t+='</td></tr></table>';
         }
-        
         let ecran_tactile='ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
         let style_des_tds3=' style="border:1px black solid; max-width:30%;"';
         let style_des_tds4=' style="border:1px black solid; max-width:70%;"';
-        t+='<div class="yy_conteneur_table" style="position:fixed;top:'+le_top1+'px;width:100%;">';
-        le_top1+=haut1;
+        t+='<div class="yy_conteneur_table" style="width:100%;">';
         t+='<table>';
         t+='  <tr>';
         t+='    <td ' + style_des_tds3 + '>ecran tactile</td>';
@@ -5360,6 +5234,9 @@ class __fnt1{
         t+='  </tr>';
         t+='</table>';
         t+='</div>';
+        t+='</div>';
+        t+='<hr />';
+        /*
         */
         this.__ig1.maj_contenu_principal( t );
         this.__ig1.activer_menu( null , null , '-2' );

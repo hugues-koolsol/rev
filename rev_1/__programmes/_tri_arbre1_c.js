@@ -513,7 +513,7 @@ class _tri_arbre1{
         this.#top_declenchement=document.documentElement.scrollTop + parseInt( tt.top , 10 );
         /* console.log('souris bas top_declenchement='+this.#top_declenchement) */
         this.#bottom_declenchement=document.documentElement.scrollTop + parseInt( tt.bottom , 10 );
-        if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-poignee_pour_tri" )){
+        if(tar.tagName.toLowerCase() === 'button' && tar.getAttribute( "data-poignee_pour_tri" )){
             this.#element_bouge=tar;
             /* console.log( 'ici' ); */
             /* document.body.style.overflowY='hidden'; */
@@ -683,7 +683,8 @@ class _tri_arbre1{
                         le_html+='<div id="avant_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                         le_html+=' data-position_pour_tri="avant" ';
                         le_html+=' style="';
-                        le_html+=' min-height:' + this.#options.hauteur_separateur_en_px + 'px;max-height:' + this.#options.hauteur_separateur_en_px + 'px;';
+                        /* le_html+=' min-height:' + this.#options.hauteur_separateur_en_px + 'px;max-height:' + this.#options.hauteur_separateur_en_px + 'px;'; */
+                        le_html+=' min-height:calc( var(--h_ligne_bouton) / 3 * 2 );max-height:calc( var(--h_ligne_bouton) / 3 * 2);';
                         le_html+=' border:' + this.#options.border_separateur + ';';
                         le_html+=' ' + this.#style_des_separateurs + '"></div>';
                     }
@@ -696,21 +697,22 @@ class _tri_arbre1{
                 t+='<div id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                 t+=' data-position_pour_tri="dedans" ';
                 t+=' style="';
-                t+='   min-height:var(--h_but_plus_marge);';
-                t+='   height:var(--h_but_plus_marge);';
+                t+='   min-height:calc(var(--h_but_plus_marge) + 2px);';
+                /* t+='   height:calc(var(--h_but_plus_marge) + 2px);'; */
                 t+='   border:' + this.#options.border_bloc + ';';
                 t+='   display:flex;';
                 t+='   flex-direction:row;';
                 t+='   justify-content:space-between;';
+                t+='   align-items:baseline;';
                 t+=' "';
                 t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                 t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                 t+=' data-separateur="' + this.arbre[i].separateur + '"';
                 t+='>';
-                t+='  <div';
+                t+='  <div rev_repere="1" ';
                 if(this.arbre[i].separateur === '1' || this.arbre[i].separateur === 1){
                     t+=' data-separateur="' + this.arbre[i].separateur + '"';
-                    t+='    style="text-align:left;flex-grow:1;color:hotpink;" ';
+                    t+='    style="text-align:left;flex-grow:1;color:hotpink;max" ';
                 }else{
                     t+='    style="text-align:left;flex-grow:1;" ';
                 }
@@ -753,9 +755,9 @@ class _tri_arbre1{
                     le_html+='</button>';
                 }
                 if(this.#options.triable === false){
-                    le_html+='<div data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;min-width:1em;" class="' + this.#options.class_du_bouton_deplacer + '">↕</div>';
+                    le_html+='<button data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;visibility:hidden;" class="' + this.#options.class_du_bouton_deplacer + '">↕</button>';
                 }else{
-                    le_html+='<div data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;min-width:1em;" class="' + this.#options.class_du_bouton_deplacer + '">↕</div>';
+                    le_html+='<button data-poignee_pour_tri="' + this.arbre[i].id_interne + '" style="float:right;" class="' + this.#options.class_du_bouton_deplacer + '">↕</button>';
                 }
                 le_html+='</div>';
                 /*
@@ -771,8 +773,9 @@ class _tri_arbre1{
                 le_html+='<div';
                 le_html+=' id="apres_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                 le_html+=' data-position_pour_tri="apres"';
-                le_html+=' style="min-height:' + this.#options.hauteur_separateur_en_px + 'px;';
-                le_html+=' max-height:' + this.#options.hauteur_separateur_en_px + 'px;';
+                le_html+=' style="';
+                /* le_html+='min-height:' + this.#options.hauteur_separateur_en_px + 'px;max-height:' + this.#options.hauteur_separateur_en_px + 'px;'; */
+                le_html+='min-height:calc( var(--h_ligne_bouton) / 3 * 2 );max-height:calc( var(--h_ligne_bouton) / 3 * 2);';
                 le_html+=' border:' + this.#options.border_separateur + ';';
                 le_html+=' ' + this.#style_des_separateurs + '"></div>';
             }

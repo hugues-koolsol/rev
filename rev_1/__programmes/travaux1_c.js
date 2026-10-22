@@ -21,7 +21,7 @@ class travaux1{
             "T0_cht_rev_travail" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_utilisateur_travail" : {"nom" : 'id utilisateur' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chd_dtc_travail" : {"nom" : 'dt création' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_de_connexion_utilisateur" : {"nom" : 'utilisateur' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_de_connexion_utilisateur" : {"nom" : 'nom utilisateur' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_etat_travail" : {"nom" : 'état' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
@@ -30,6 +30,15 @@ class travaux1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chi_id_travail`" : 'id' ,
+        "`T0`.`chp_resume_travail`" : 'resumé' ,
+        "`T0`.`cht_rev_travail`" : 'rev' ,
+        "`T0`.`chx_utilisateur_travail`" : 'id utilisateur' ,
+        "`T0`.`chd_dtc_travail`" : 'dt création' ,
+        "`T1`.`chp_nom_de_connexion_utilisateur`" : 'nom de connexion' ,
+        "`T0`.`chp_etat_travail`" : 'état'
+    };
     /*
       =========================== fragment ========================================================================
     */
@@ -77,11 +86,6 @@ class travaux1{
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -111,12 +115,12 @@ class travaux1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_utilisateur_travail" ,"lib" : 'id utilisateur du travail'},
             {
                     "nt" : 'parmis1' ,
@@ -129,7 +133,7 @@ class travaux1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
         if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
@@ -142,16 +146,6 @@ class travaux1{
                 } catch {}
                 return({"__xst" : __xsu});
             }
-        }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
-        if(__test_1_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_travail' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -175,7 +169,7 @@ class travaux1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_resume_travail" ,"__contexte" : "modification1" ,"longueur_du_champ" : 64 ,"libelle_du_champ" : "résumé du travail"} );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_resume_travail" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64' ,"libelle_du_champ" : "résumé du travail"} );
         /*
           =====================================================================================================
         */
@@ -208,7 +202,7 @@ class travaux1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_etat_travail" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 32 ,
+            "longueur_du_champ" : '32' ,
             "liens_parmis_du_genre1" : [
                 "en_file_d_attente",
                 "en_pause",
@@ -250,7 +244,6 @@ class travaux1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
         if(this.__ig1.decallage_page_avant_envoi > 0){
             window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
@@ -332,7 +325,6 @@ class travaux1{
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
         }
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -371,7 +363,7 @@ class travaux1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_utilisateur_travail" ,"lib" : 'id utilisateur du travail'},
             {
                     "nt" : 'parmis1' ,
@@ -384,17 +376,19 @@ class travaux1{
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu});
+            return __obj_tests;
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
-        if(__test_1_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_travail' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
+            if(obj1.__xst !== __xsu){
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'cht_rev_travail' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -415,13 +409,7 @@ class travaux1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_resume_travail" ,
-            "__contexte" : "creer1" ,
-            "longueur_du_champ" : 64 ,
-            "libelle_du_champ" : "résumé du travail" ,
-            "valeur_par_defaut" : ''
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_resume_travail" ,"__contexte" : "creer1" ,"libelle_du_champ" : "résumé du travail" ,"non_nulle" : true ,"longueur_du_champ" : '64'} );
         /*
           =====================================================================================================
         */
@@ -431,9 +419,7 @@ class travaux1{
             "libelle_du_champ" : "description rev du travail" ,
             "rows" : 10 ,
             "cols" : 50 ,
-            "format_du_source" : 2 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
+            "format_du_source" : 2
         } );
         /*
           =====================================================================================================
@@ -445,7 +431,7 @@ class travaux1{
             "bouton_vider" : false ,
             "nom_du_lien" : "utilisateurs1" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_de_connexion_utilisateur"] ,
-            "valeur_par_defaut" : ""
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
@@ -453,8 +439,8 @@ class travaux1{
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_etat_travail" ,
             "__contexte" : "creer1" ,
-            "longueur_du_champ" : 32 ,
             "libelle_du_champ" : "état du travail" ,
+            "valeur_par_defaut" : 'en_file_d_attente' ,
             "liens_parmis_du_genre1" : [
                 "en_file_d_attente",
                 "en_pause",
@@ -463,21 +449,13 @@ class travaux1{
                 "ko_termine",
                 "ok_mais_avertissement"
             ] ,
-            "valeur_par_defaut" : 'en_file_d_attente'
+            "non_nulle" : true ,
+            "longueur_du_champ" : '32'
         } );
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
-            "nom_du_champ" : "cht_utilisateur_travail" ,
-            "__contexte" : "creer1" ,
-            "libelle_du_champ" : "nom utilisateur" ,
-            "rows" : 10 ,
-            "cols" : 50 ,
-            "format_du_source" : 0 ,
-            "valeur_par_defaut" : "" ,
-            "non_nulle" : false
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_utilisateur_travail" ,"__contexte" : "creer1" ,"libelle_du_champ" : "nom utilisateur" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
@@ -496,7 +474,6 @@ class travaux1{
         this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -511,7 +488,6 @@ class travaux1{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -543,7 +519,7 @@ class travaux1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
@@ -599,7 +575,6 @@ class travaux1{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
@@ -624,9 +599,9 @@ class travaux1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div class="yy_act1">';
-        lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_travail(' + tup.T0_chi_id_travail + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         lst+='</div>';
         return lst;
     }

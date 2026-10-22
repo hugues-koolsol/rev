@@ -70,9 +70,9 @@ class sources1{
             o1+='    <input type="hidden" id="vv_ancien_numero_de_source" value="' + chi_id_source + '" />';
             o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_source" value="" />';
             o1+='    <br />';
-            o1+='    <div class="yy_b1" rev_clic1="';
+            o1+='    <button class="yy_b1" rev_clic1="';
             o1+='fo1(co1(vv_sources_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_sources_nouveau_numero1()))))';
-            o1+='">attribuer ce nouveau numéro</div>';
+            o1+='">attribuer ce nouveau numéro</button>';
             o1+='</div>';
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
@@ -128,7 +128,7 @@ class sources1{
             o1+='<br />';
             o1+='' + la_liste.join( ',' );
             o1+='<br />';
-            o1+='<div class="yy_b1 yy__xal" rev_clic1="m1(n1(' + this.moi + '),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</div>';
+            o1+='<button class="yy_b1 yy__xal" rev_clic1="m1(n1(' + this.moi + '),f1(constituer_la_liste_et_envoyer_en_cron()))" title="" >remplacer pour la liste affichée</button>';
         }
         this.__ig1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
@@ -440,32 +440,37 @@ class sources1{
         */
         let boutons_avant1=[];
         if(tup.T0_chp_nom_source.toLowerCase().slice( -3 ) === '.js'){
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir de rev versjs" >↧rev->js↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.htm'
                || tup.T0_chp_nom_source.toLowerCase().slice( -5 ) === '.html'
         ){
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_html1),f1(rev_vers_html1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en html" >↧rev->html↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_html1),f1(html_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥html->rev↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_html1),f1(rev_vers_html1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en html" >↧rev->html↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_html1),f1(html_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥html->rev↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.php'){
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(rev_vers_php1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en php">↧r->p↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(php1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source),options(nettoyer_html(1)))))" title="convertir en rev par php_parseur">↥p->r↥</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(php1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source),options(nettoyer_html(0)))))" title="convertir en rev par php_parseur sans nettoyage html">↥p->r↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(rev_vers_php1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en php">↧r->p↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(php1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source),options(nettoyer_html(1)))))" title="convertir en rev par php_parseur">↥p->r↥</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(php1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source),options(nettoyer_html(0)))))" title="convertir en rev par php_parseur sans nettoyage html">↥p->r↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.sql'){
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(rev_vers_sql1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en html" >↧rev->sql↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(sql1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥sql->rev↥</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(sql2_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥sql->rev↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(rev_vers_sql1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en html" >↧rev->sql↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(sql1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥sql->rev↥</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(sql2_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥sql->rev↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.css'){
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_css1),f1(rev_vers_css1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en css" >↧rev->css↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_css1),f1(css1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥css->rev↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_css1),f1(rev_vers_css1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en css" >↧rev->css↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_css1),f1(css1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥css->rev↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.rev'){
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(rev_vers_rev(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en texte" >↧rev->rev↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(rev_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥rev->rev↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(rev_vers_rev(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en texte" >↧rev->rev↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(rev_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥rev->rev↥</button>' );
         }else{
-            boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_txt1),f1(rev_vers_texte1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en texte" >↧rev->txt↧</div>' );
-            boutons_avant1.push( '<div class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_txt1),f1(texte1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥txt->rev↥</div>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_txt1),f1(rev_vers_texte1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir en texte" >↧rev->txt↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_txt1),f1(texte1_vers_rev(zone_source(cht_genere_source),zone_resultat(cht_rev_source))))" title="convertir en rev" >↥txt->rev↥</button>' );
         }
-        let boutons_apres1=['<div class="yy_b1 yy__0" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="supprimer du disque" >🗑 du 💽</div>','<div class="yy_b1 yy__2" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="écrire sur disque" >📥 sur 💽</div>','<div class="yy_b1 yy__1" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="lire du disque" >📤 du 💽</div>'];
+        let boutons_apres1=[
+            /*  */
+            '<button class="yy_b1 yy__0" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="supprimer du disque" >🗑 du 💽</button>',
+            '<button class="yy_b1 yy__2" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="écrire sur disque" >📥 sur 💽</button>',
+            '<button class="yy_b1 yy__1" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="lire du disque" >📤 du 💽</button>'
+        ];
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_genere_source" ,
             "__contexte" : "modification1" ,
@@ -547,7 +552,6 @@ class sources1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_modification_zone_boutons' );
         if(this.__ig1.decallage_page_avant_envoi > 0){
             window.scrollTo( {"top" : this.__ig1.decallage_page_avant_envoi ,"left" : 0} );
@@ -651,7 +655,6 @@ class sources1{
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
         }
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -788,7 +791,6 @@ class sources1{
         this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
-        
         document.getElementById( 'vv_ajouter_un_element_et_retour_a_la_ligne_' + this.moi ).style.visibility='hidden';
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
         return({"__xst" : __xsu});
@@ -804,7 +806,6 @@ class sources1{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -898,7 +899,6 @@ class sources1{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
@@ -928,10 +928,10 @@ class sources1{
           boutons de la liste début
           =====================================================================================================
         */
-        lst+='<div class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + tup.T0_chx_dossier_id_source + ')))))">' + this.__ig1.les_svg.dossier + '</div>';
-        lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + tup.T0_chx_dossier_id_source + ')))))">' + this.__ig1.les_svg.dossier + '</button>';
+        lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         let affiche_bouton_compiler=true;
         if(tup.T0_che_binaire_source === 1 || tup.T0_chx_dossier_id_source === null){
             affiche_bouton_compiler=false;
@@ -950,7 +950,7 @@ class sources1{
             }
         }
         if(affiche_bouton_compiler === true){
-            lst+='<div ';
+            lst+='<button ';
             lst+=' id="vv_bouton_compiler_' + tup.T0_chi_id_source + '" ';
             lst+=' class="yy_svg1 yy__4" ';
             lst+=' rev_clic1="';
@@ -958,50 +958,50 @@ class sources1{
             lst+=' chi_id_source(' + tup.T0_chi_id_source + '),';
             lst+=' bouton_compiler(vv_bouton_compiler_' + tup.T0_chi_id_source + '),';
             lst+=' pas_de_message_de_succes(1),';
-            lst+='))))"  title="compiler">' + this.__ig1.les_svg.compiler + '</div>';
+            lst+='))))"  title="compiler">' + this.__ig1.les_svg.compiler + '</button>';
         }else{
-            lst+='<div class="yy_svg1 yy__4 yy__4_inactif" title="compiler">' + this.__ig1.les_svg.compiler + '</div>';
+            lst+='<button class="yy_svg1 yy__4 yy__4_inactif" title="compiler">' + this.__ig1.les_svg.compiler + '</button>';
         }
         if(this.__ig1._CA_ === 2){
             /*  */
-            lst+='  <div class="yy_b1 yy__4" rev_clic1="';
+            lst+='  <button class="yy_b1 yy__4" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + tup.T0_chi_id_source + '),origine(1)))))';
-            lst+='" >importer de 1(0)</div>';
+            lst+='" >importer de 1(0)</button>';
         }else if(this.__ig1._CA_ === 1 && (le_colis1.chi_id_projet === 2 || le_colis1.chi_id_projet === 3)){
             if(le_colis1.chi_id_projet === 3
                    && (tup.T0_chp_nom_source === 'sources1_c.js'
                        || tup.T0_chp_nom_source === 'sources1_s.js')
             ){
                 /*  */
-                lst+='  <div class="yy_b1 yy__4 yy__4_inactif">importer de 1(1)</div>';
+                lst+='  <button class="yy_b1 yy__4 yy__4_inactif">importer de 1(1)</button>';
             }else{
                 /*  */
-                lst+='  <div class="yy_b1 yy__4" rev_clic1="';
+                lst+='  <button class="yy_b1 yy__4" rev_clic1="';
                 lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + tup.T0_chi_id_source + '),origine(1)))))';
-                lst+='" >importer de 1(1)</div>';
+                lst+='" >importer de 1(1)</button>';
             }
         }else if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 3){
             /*  */
-            lst+='  <div class="yy_b1 yy__4" rev_clic1="';
+            lst+='  <button class="yy_b1 yy__4" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(importer_de_rev_un(chi_id_source(' + tup.T0_chi_id_source + '),origine(3)))))';
-            lst+='" >> de 3</div>';
+            lst+='" >> de 3</button>';
         }
         if(this.__ig1._CA_ === 2){
             if(tup.T0_che_est_fragment_source === 1){
                 /* export inactif car c'est un fragment */
-                lst+='  <div class="yy_b1 yy__0 yy__0_inactif" >exporter dans 1</div>';
+                lst+='  <button class="yy_b1 yy__0 yy__0_inactif" >exporter dans 1</button>';
                 /*  */
             }else{
-                lst+='  <div class="yy_b1 yy__0" rev_clic1="';
+                lst+='  <button class="yy_b1 yy__0" rev_clic1="';
                 lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_rev_un(chi_id_source(' + tup.T0_chi_id_source + ')))))';
-                lst+='" >exporter dans 1</div>';
+                lst+='" >exporter dans 1</button>';
             }
         }
-        lst+='<div class="yy_svg1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + tup.T0_chi_id_source + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</div>';
+        lst+='<button class="yy_svg1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(page_nouveau_numero_source1(chi_id_source(' + tup.T0_chi_id_source + '))))" title="attribuer un autre numéro" >' + this.__ig1.les_svg.renuméroter + '</button>';
         if(this.__ig1._CA_ === 1 && le_colis1.chi_id_projet > 2 && tup.T0_che_pour_util_source === 1){
-            lst+='  <div class="yy_b1 yy__2" rev_clic1="';
+            lst+='  <button class="yy_b1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(exporter_dans_base_de_prod1(chi_id_source(' + tup.T0_chi_id_source + ')))))';
-            lst+='" >-> prod</div>';
+            lst+='" >-> prod</button>';
         }
         lst+='</div>';
         return lst;

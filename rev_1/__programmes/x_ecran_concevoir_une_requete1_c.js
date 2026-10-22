@@ -2508,7 +2508,6 @@ class x_ecran_concevoir_une_requete1{
           =====================================================================================================
         */
         this.#div_de_travail.innerHTML=t;
-        
         if(this.#che_est_souche_requete === 1){
             document.getElementById( 'bouton_aller_a_generer_le_programme1' ).style.visibility='visible';
         }else{
