@@ -75,8 +75,8 @@ class autorisations1{
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>';
     }
     /*
       =============================================================================================================
@@ -519,13 +519,13 @@ class autorisations1{
             peut_gerer_cette_autorisation=true;
         }
         if(peut_gerer_cette_autorisation === true){
-            lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-            lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_autorisation(' + tup.T0_chi_id_autorisation + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         }else{
-            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-            lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</button>';
         }
         lst+='</div>';
         return lst;

@@ -70,7 +70,7 @@ class groupes1{
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
     }
     /*
       =============================================================================================================
@@ -477,7 +477,7 @@ class groupes1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
@@ -486,18 +486,18 @@ class groupes1{
         if([
                 /* tbel */
                 1,2].includes( tup.T0_chi_id_groupe )){
-            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
-            lst+='<div class="yy_svg1 yy__2" rev_clic1="';
+            lst+='<button class="yy_svg1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))';
-            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</button>';
         }
         if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && tup.T0_chi_id_groupe <= 2){
-            lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<button class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</button>';
         }else{
-            lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-            lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+            lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_groupe(' + tup.T0_chi_id_groupe + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         }
         lst+='</div>';
         return lst;

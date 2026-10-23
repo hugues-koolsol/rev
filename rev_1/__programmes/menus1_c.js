@@ -96,12 +96,9 @@ class menus1{
                                                        && mat1[m + 1][2] === 'c'
                                                        && mat1[m + 1][1].substr( 0 , 7 ) === 'entree_'
                                                 ){
-                                                    vv_liste_des_methodes+='<div ';
-                                                    vv_liste_des_methodes+=' class="yy_b1"';
-                                                    vv_liste_des_methodes+=' rev_clic1="';
+                                                    vv_liste_des_methodes+='<button class="yy_b1" rev_clic1="';
                                                     vv_liste_des_methodes+='m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante(' + mat1[m + 1][1] + ')))))';
-                                                    vv_liste_des_methodes+='"';
-                                                    vv_liste_des_methodes+='>' + mat1[m + 1][1] + '</div>';
+                                                    vv_liste_des_methodes+='">' + mat1[m + 1][1] + '</button>';
                                                 }
                                             }
                                         }
@@ -172,7 +169,7 @@ class menus1{
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
         /*
           pré chargement du module externe acorn car on peut en avoir besoin
           lors de la modification d'un menu
@@ -293,7 +290,7 @@ class menus1{
           =====================================================================================================
         */
         let boutons_avant1=[];
-        boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
+        boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</button>' );
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_methode_menu" ,
             "__contexte" : "modification1" ,
@@ -741,9 +738,9 @@ class menus1{
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
         lst+='<div class="yy_act1">';
-        lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_menu(' + tup.T0_chi_id_menu + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         lst+='</div>';
         return lst;
     }

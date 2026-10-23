@@ -157,7 +157,7 @@ class acces1{
                                 t+="séparateur<br />";
                                 t+='<input type="range" id="separateur_' + reference_arbre.cle_aleatoire + '" class="yy_ouinon" min="0" max="1" step="1" value="' + obj.arbre[i].separateur + '" />';
                                 t+="<br />";
-                                t+='<div class="yy_svg1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(modification_branche(indice(' + i + '),id_interne(' + obj.arbre[i].id_interne + '),cle_aleatoire(' + reference_arbre.cle_aleatoire + '))))">modifier</div>';
+                                t+='<button class="yy_svg1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(modification_branche(indice(' + i + '),id_interne(' + obj.arbre[i].id_interne + '),cle_aleatoire(' + reference_arbre.cle_aleatoire + '))))">modifier</button>';
                                 document.getElementById( 'edition_de_la_branche' ).innerHTML=t;
                             }
                             break;
@@ -305,7 +305,7 @@ class acces1{
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
     }
     /*
       =============================================================================================================
@@ -772,26 +772,26 @@ class acces1{
         }
         lst+='<div style="display:inline-flex;">';
         if(boutons_activés === false){
-            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
-            lst+='<div class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button  class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</button>';
         }else{
             if([
                     /* tbel */
                     0,1,2].includes( tup.T0_chi_id_acces )){
-                lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
             }else{
-                lst+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
+                lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
             }
-            lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+            lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.editer + '</button>';
         }
         if(boutons_activés === false){
             if(tup.T0_chi_id_acces === 0){
-                lst+='<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</div>';
+                lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</button>';
             }else{
-                lst+='<div class="yy_b1 yy__1 yy__1_inactif">menus</div>';
+                lst+='<button class="yy_b1 yy__1 yy__1_inactif">menus</button>';
             }
         }else{
-            lst+='<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</div>';
+            lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</button>';
         }
         lst+='</div>';
         return lst;
