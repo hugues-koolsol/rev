@@ -113,18 +113,15 @@ class acces1{
             let id_racine='liste_des_menus_' + cle_aleatoire;
             let les_elements=document.getElementById( id_racine ).querySelectorAll( '[data-id_interne="' + id_interne + '"]' );
             if(les_elements.length === 1){
-                les_elements[0].innerHTML=document.getElementById( 'libelle_' + cle_aleatoire ).value;
+                this.__ig1.maj_htm1( les_elements[0] , document.getElementById( 'libelle_' + cle_aleatoire ).value );
                 les_elements[0].setAttribute( 'data-separateur' , document.getElementById( 'separateur_' + cle_aleatoire ).value );
                 les_elements[0].parentNode.setAttribute( 'data-separateur' , document.getElementById( 'separateur_' + cle_aleatoire ).value );
                 les_elements[0].parentNode.setAttribute( 'data-contenu_original' , document.getElementById( 'libelle_' + cle_aleatoire ).value );
                 this.__variables_module['reference_arbre_du_menu'].arbre[indice].contenu=document.getElementById( 'libelle_' + cle_aleatoire ).value;
-                debugger;
                 this.__variables_module['reference_arbre_du_menu'].arbre[indice].separateur=document.getElementById( 'separateur_' + cle_aleatoire ).value;
-                /* obj.arbre[i].contenu=nouveau_nom; */
-                /* reference_arbre.action_externe_sur_arbre( 'mise_a_jour_arbre' , obj.arbre ); */
             }
         }
-        document.getElementById( 'edition_de_la_branche' ).innerHTML='';
+        this.__ig1.maj_htm2( 'edition_de_la_branche' , '' );
         return({"__xst" : __xsu});
     }
     /*
@@ -132,7 +129,7 @@ class acces1{
     */
     action_sur_tri_menu1( reference_arbre , obj ){
         /* console.log( 'dans action_sur_tri_menu1 ' , reference_arbre , obj ); */
-        document.getElementById( 'edition_de_la_branche' ).innerHTML='';
+        this.__ig1.maj_htm2( 'edition_de_la_branche' , '' );
         switch (obj.type_deplacement){
             case 'editer' :
                 let trouvé=false;
@@ -158,14 +155,14 @@ class acces1{
                                 t+='<input type="range" id="separateur_' + reference_arbre.cle_aleatoire + '" class="yy_ouinon" min="0" max="1" step="1" value="' + obj.arbre[i].separateur + '" />';
                                 t+="<br />";
                                 t+='<button class="yy_svg1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(modification_branche(indice(' + i + '),id_interne(' + obj.arbre[i].id_interne + '),cle_aleatoire(' + reference_arbre.cle_aleatoire + '))))">modifier</button>';
-                                document.getElementById( 'edition_de_la_branche' ).innerHTML=t;
+                                this.__ig1.maj_htm2( 'edition_de_la_branche' , t );
                             }
                             break;
                         }
                     }
                 }
                 if(trouvé === false){
-                    document.getElementById( 'edition_de_la_branche' ).innerHTML='Cette branche ne peut pas être éditée';
+                    this.__ig1.maj_htm2( 'edition_de_la_branche' , 'Cette branche ne peut pas être éditée' );
                 }
                 break;
                 
@@ -315,7 +312,7 @@ class acces1{
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
-        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+        this.__ig1.maj_htm2( 'vv_ecran_modification_zone_complement' , o1 );
     }
     /*
       =============================================================================================================
@@ -634,7 +631,7 @@ class acces1{
             return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -717,12 +714,12 @@ class acces1{
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_acces' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
-            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
+            this.__ig1.maj_htm1( a , this.LISTE_DES_ELEMENTS_GERES );
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , this.zones_liste1( le_colis1 ) );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});

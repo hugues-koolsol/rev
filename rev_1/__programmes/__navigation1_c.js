@@ -817,18 +817,11 @@ class __navigation1{
                     t+=' '.repeat( 4 * (niveau + 1) ) + '<div';
                     t+=' id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                     t+=' data-position_pour_tri="dedans" ';
-                    t+=' style="';
-                    t+='   min-height:var(--h_mini_but);';
+                    t+=' style="display:flex;flex-direction:row;justify-content:space-between;position:relative;top:0;align-items:center;';
+                    /* t+='   min-height:var(--h_mini_but);'; */
                     t+='   border:' + this.#options.border_element_sous_menu + ';';
-                    t+='   display:flex;';
-                    t+='   flex-direction:row;';
-                    t+='   justify-content:space-between;';
-                    t+='   xxx-visibility:hidden;';
-                    t+='   position:relative;';
-                    t+='   top:0;';
                     t+='   z-index:' + niveau + ';';
                     t+=' "';
-                    /* t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"'; */
                     t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+='>\n';
                     t+=' '.repeat( 4 * (niveau + 2) ) + '<div style="text-align:left;flex-grow:1;"  data-id_interne="' + this.arbre[i].id_interne + '" data-num_conteneur_parent="' + num_conteneur_parent + '" >\n';

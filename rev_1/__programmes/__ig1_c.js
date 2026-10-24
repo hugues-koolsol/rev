@@ -106,12 +106,12 @@ class __ig1{
             let tt='';
             tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">La version du programme a changé !</h2>';
             tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
-            tt+=' <div class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+=' <button class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</button>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.maj_contenu_principal( tt );
             try{
-                document.getElementById( 'vv_nav' ).innerHTML='';
+                this.maj_htm2( 'vv_nav' , '' );
             } catch {}
             return({"__xst" : __xsu});
         }
@@ -736,7 +736,7 @@ class __ig1{
                 for( let j=0 ; j < lst.length ; j++ ){
                     try{
                         if(lst[j].id.indexOf( 'boutons' ) < 0){
-                            lst[j].innerHTML='';
+                            this.maj_htm1( lst[j] , '' );
                         }
                         lst[j].style.display='none';
                     }catch(e){
@@ -755,9 +755,9 @@ class __ig1{
             this.initialisation_des_zones( nom_de_la_classe_js , nom_du_champ_cle );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="yy_svg1 yy_btn_retour_liste" rev_clic1="';
+        let bouton_retour='<button title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="yy_svg1 yy_btn_retour_liste" rev_clic1="';
         bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
-        bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
+        bouton_retour+='">' + this.les_svg.lst_des_elts + '</button>';
         let sujet='modification';
         if('vv_ecran_modification' === nom_de_la_zone){
             sujet='modification';
@@ -770,7 +770,7 @@ class __ig1{
         }
         let titre=sujet + ' ' + préfixe_titre + (id_element === null ? ( '' ) : ( ' (' + id_element + ')' ));
         if(a.innerHTML !== bouton_retour + titre){
-            a.innerHTML=bouton_retour + titre;
+            this.maj_htm1( a , bouton_retour + titre );
             this.afficher_les_zones( nom_de_la_zone );
         }
     }
@@ -891,7 +891,7 @@ class __ig1{
       =============================================================================================================
     */
     initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre , __sous_titre_a_afficher='' ){
-        document.getElementById( 'vv_contenu_de_sous_liste2' ).innerHTML=contenu_de_sous_liste2;
+        this.maj_htm2( 'vv_contenu_de_sous_liste2' , contenu_de_sous_liste2 );
         if(__sous_titre_a_afficher !== ''){
             document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + __sous_titre_a_afficher;
         }else{
@@ -1037,15 +1037,15 @@ class __ig1{
                     }
                     o1+='        <div style="' + bck + '"><span>' + elem.nom + '</span></div>';
                     o1+='        <div>';
-                    o1+='<div class="yy_b1 yy__4"  rev_clic1="';
+                    o1+='<button class="yy_b1 yy__4"  rev_clic1="';
                     o1+='m1(n1(__fnt1),f1(selection_sous_grandeur_filtre2(';
                     o1+='id_zone(' + i + '),';
                     o1+='module_appelant1(' + module_appelant1 + ')';
                     o1+='module_appele1(' + module_appele1 + ')';
                     o1+='chi_id_parametre(' + elem.rerefence_a_une_grandeur.chi_id_parametre + ' ),';
                     o1+='puiser_avec(' + elem.rerefence_a_une_grandeur.puiser_avec + '),';
-                    o1+='__sous_titre_a_afficher(\'' + elem.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\'' ) + '\'))))" >?</div>';
-                    o1+='            <div class="yy_b1 yy__4"  rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(';
+                    o1+='__sous_titre_a_afficher(\'' + elem.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\'' ) + '\'))))" >?</button>';
+                    o1+='            <button class="yy_b1 yy__4"  rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                     o1+='id(' + i + '),';
                     o1+='origine_de_l_appel_liste(' + that.moi + ')';
                     if(elem.champ_texte_associé){
@@ -1054,7 +1054,7 @@ class __ig1{
                     if(elem.champ_libelle_associé){
                         o1+='champ_libelle_associé(' + elem.champ_libelle_associé + ')';
                     }
-                    o1+=')))">x</div>';
+                    o1+=')))">x</button>';
                     o1+='        </div>';
                     /*  */
                     o1+='        <div style="' + bck + '">';
@@ -1099,7 +1099,7 @@ class __ig1{
             }
         }
         o1+='   <div class="yy_bloc_loupe">';
-        o1+='        <div id="yy_bouton_loupe_sous_fenetre2" class="yy_b1" style="margin:auto auto;min-width:' + this.css_dimensions.t_boutons_carres + 'px;min-height:' + this.css_dimensions.t_boutons_carres + 'px;"';
+        o1+='        <button id="yy_bouton_loupe_sous_fenetre2" class="yy_b1" style="margin:auto auto;min-width:' + this.css_dimensions.t_boutons_carres + 'px;min-height:' + this.css_dimensions.t_boutons_carres + 'px;"';
         o1+='  rev_clic1="m1(n1(' + this.moi + '),f1(appel_serveur_pour_zones_sous_liste2(';
         o1+='__num_page(0)';
         o1+=',module_appelant1(' + module_appelant1 + ')';
@@ -1115,7 +1115,7 @@ class __ig1{
         }
         o1+=')))';
         o1+='"';
-        o1+='        >' + this.les_svg.loupe + '</div>';
+        o1+='        >' + this.les_svg.loupe + '</button>';
         o1+='     </div>';
         for(let i in that.tableau_des_filtres.sous_liste2){
             if(that.tableau_des_filtres.sous_liste2.masqué === true){
@@ -1127,7 +1127,7 @@ class __ig1{
         o1+='<div class="yy_navigation_liste">';
         /* bouton page précédente */
         if(le_colis1.__xva.__debut > 0){
-            o1+='<div id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_actif" ';
+            o1+='<button id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_actif" ';
             o1+=' rev_clic1="';
             o1+='fo1(co1(sous_liste2),pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
             o1+='__num_page(' + (le_colis1.__xva.__num_page - 1) + '),';
@@ -1144,13 +1144,13 @@ class __ig1{
             }
             o1+=')))))';
             o1+='" ';
-            o1+='data-numero_page="0" style="">«</div>';
+            o1+='data-numero_page="0" style="">«</button>';
         }else{
-            o1+='<div id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_inactif" style="" >«</div>';
+            o1+='<button id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_inactif" style="" >«</button>';
         }
         /* bouton page suivante */
         if(le_colis1.__xva.sous_liste2.nombre > le_colis1.__xva.__debut + le_colis1.__xva.__nbMax){
-            o1+='<div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_actif"  rev_clic1="';
+            o1+='<button id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_actif"  rev_clic1="';
             o1+='fo1(co1(sous_liste2),pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
             o1+='__num_page(' + (le_colis1.__xva.__num_page + 1) + '),';
             o1+='module_appelant1(' + module_appelant1 + '),';
@@ -1165,11 +1165,9 @@ class __ig1{
                 o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
             }
             o1+=')))))';
-            o1+='">»</div>';
-            /* o1+='m1(n1(requetes1),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))" '; */
-            /* o1+='data-numero_page="1" style="" >»</div>'; */
+            o1+='">»</button>';
         }else{
-            o1+='<div id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif" style="" >»</div>';
+            o1+='<button id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif" style="" >»</button>';
         }
         o1+='</div>';
         return({
@@ -1291,7 +1289,7 @@ class __ig1{
                     parametres+=this.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
                     parametres+='\')';
                     parametres+=')))';
-                    lst+='  <div class="yy_b1 yy__2"  rev_clic1="' + parametres + '">=&gt;</div>';
+                    lst+='  <button class="yy_b1 yy__2"  rev_clic1="' + parametres + '">=&gt;</button>';
                     lst+='</td>';
                     lst+='<td style="text-align:center;">';
                     lst+=this.fi2( tup.T0_chi_id_grandeur );
@@ -1418,7 +1416,7 @@ class __ig1{
         }
         if(id_libelle3 !== '' && id_valeur3 !== ''){
             document.getElementById( id_valeur3 ).value='';
-            document.getElementById( id_libelle3 ).innerHTML='';
+            this.maj_htm2( id_libelle3 , '' );
             try{
                 if(document.getElementById( id_valeur3 ).parentNode.tagName.toUpperCase() === 'LABEL'){
                     let lst=document.getElementById( id_valeur3 ).parentNode.querySelectorAll( '[data-libelle_de="' + id_valeur3 + '"]' );
@@ -1438,7 +1436,7 @@ class __ig1{
     lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true , valeur_actuelle=null ){
         let o1='';
         o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
-        o1+='    <div class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
+        o1+='    <button class="yy_svg1 yy__1" rev_clic1="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
         o1+='  module_appele1(' + module1 + ')';
@@ -1458,16 +1456,16 @@ class __ig1{
           ) : ( 
             ''
           );
-        o1+=' title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</div>';
+        o1+=' title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</button>';
         if(afficher_bouton_vider === true){
-            o1+='    <div class="yy_svg1 yy__2"  rev_clic1="m1(n1(__ig1),f1(annuler_lien_parent2(id_valeur3(' + champ_fils + '),id_libelle3(' + id_span_libelle + '))))"';
+            o1+='    <button class="yy_svg1 yy__2" rev_clic1="m1(n1(__ig1),f1(annuler_lien_parent2(id_valeur3(' + champ_fils + '),id_libelle3(' + id_span_libelle + '))))"';
             o1+=valeur_actuelle === null ?
               ( 
                 chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
               ) : ( 
                 ''
               );
-            o1+=' title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
+            o1+=' title="annuler" >' + this.les_svg.ensemble_vide + '</button>';
         }
         o1+='</div>';
         return o1;
@@ -1519,7 +1517,7 @@ class __ig1{
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
         this.#init1();
         this.css1();
-        document.getElementById( 'vv_le_body1' ).innerHTML=this.#html_initial();
+        this.maj_htm2( 'vv_le_body1' , this.#html_initial() );
         this.#la_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         this.#la_sous_fenetre1.addEventListener( 'click' , function( e ){
                 var dim=e.target.getBoundingClientRect();
@@ -1532,7 +1530,7 @@ class __ig1{
                                 e.target.remove();
                             }else{
                                 try{
-                                    document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
+                                    this.maj_htm( 'vv_sous_fenetre1' , '' );
                                     e.target.removeAttribute( 'style' );
                                 } catch {}
                                 e.target.className='';
@@ -1545,7 +1543,7 @@ class __ig1{
         this.#vv_div_des_positions_du_curseur=document.createElement( 'div' );
         this.#vv_div_des_positions_du_curseur.id='vv_div_des_positions_du_curseur';
         this.#vv_div_des_positions_du_curseur.setAttribute( 'style' , 'position:absolute;top:60px;left:0px;background:white;display:inline-block;min-height:12px!important;line-height:12px;' );
-        this.#vv_div_des_positions_du_curseur.innerHTML='';
+        this.maj_htm1( this.#vv_div_des_positions_du_curseur , '' );
         document.getElementsByTagName( 'body' )[0].appendChild( this.#vv_div_des_positions_du_curseur );
         this.#__worker=new Worker( "./f0?n0=__worker1_c.js&__version=" + __version , {"type" : 'module'} );
         this.#liste_des_modules_dynamiques['__worker1']={"objet1" : this.#__worker};
@@ -1564,9 +1562,11 @@ class __ig1{
             let obj1=this.#traite_message_recupere_du_worker( le_message_recu_du_worker );
             if(this.__deverminage === 2){
                 this.temps_performance9=performance.now();
-                setTimeout( function(){
-                        console.log( "%cthis.temps_performance9=" + parseInt( this.temps_performance9 - this.temps_performance0 , 10 ) , 'color:red;background:black;' );
-                    }.bind( this ) , 0 );
+                /*
+                  setTimeout( function(){
+                  console.log( "%cthis.temps_performance9=" + parseInt( this.temps_performance9 - this.temps_performance0 , 10 ) , 'color:red;background:black;' );
+                  }.bind( this ) , 0 );
+                */
             }
         }.bind( this );
         /*
@@ -1742,7 +1742,7 @@ class __ig1{
             this.affiche_les_messages();
         }
         try{
-            document.getElementById( 'vv_div_des_positions_du_curseur' ).innerHTML='';
+            this.maj_htm2( 'vv_div_des_positions_du_curseur' , '' );
         } catch {}
         this.#boutons_masques_avant_appel.push( l_element );
         let mat=obj1.__xva;
@@ -1796,7 +1796,7 @@ class __ig1{
         /* console.log(`Textarea resized to: ${width}px × ${height}px`); */
         try{
             let tt=document.getElementById( nom_de_zone );
-            tt.innerHTML=contenu_html1;
+            this.maj_htm1( tt , contenu_html1 );
             let lst=tt.getElementsByTagName( 'textarea' );
             for( let i=0 ; i < lst.length ; i++ ){
                 observer.observe( tt );
@@ -3439,7 +3439,7 @@ class __ig1{
             this.#la_sous_fenetre1.removeAttribute( 'style' );
             this.#la_sous_fenetre1.className='';
         } catch {}
-        document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
+        this.maj_htm2( 'vv_sous_fenetre1' , '' );
         this.#la_sous_fenetre1.close();
         return({"__xst" : __xsu});
     }
@@ -3464,7 +3464,7 @@ class __ig1{
             }
         }
         document.getElementById( nom_champ_dans_parent2 ).value=id2;
-        document.getElementById( nom_libelle_dans_parent2 ).innerHTML='<div>' + libelle2 + '</div>';
+        this.maj_htm2( nom_libelle_dans_parent2 , '<div>' + libelle2 + '</div>' );
         try{
             if(document.getElementById( nom_champ_dans_parent2 ).parentNode.tagName.toUpperCase() === 'LABEL'){
                 let lst=document.getElementById( nom_champ_dans_parent2 ).parentNode.querySelectorAll( '[data-libelle_de="' + nom_champ_dans_parent2 + '"]' );
@@ -3486,7 +3486,7 @@ class __ig1{
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.style.maxWidth='80vw';
         vv_sous_fenetre1.style.minWidth='min(80vw, ' + this.css_dimensions.t_fenetre + 'px)';
-        vv_sous_fenetre1.innerHTML=contenu_a_afficher;
+        this.maj_htm1( vv_sous_fenetre1 , contenu_a_afficher );
         vv_sous_fenetre1.showModal();
         return({"__xst" : __xsu});
     }
@@ -3540,8 +3540,7 @@ class __ig1{
         t+='/';
         t+='<div style="display:inline-block;min-width:1em;text-align:left;">' + Math.ceil( __nbEnregs / __nbMax ).toLocaleString( undefined ) + '</div>';
         t+=' (<div style="display:inline-block;min-width:3em;text-align:left;">' + __nbEnregs.toLocaleString( undefined ) + '</div> enregistrements)';
-        let z=document.getElementById( 'vv_ecran_liste_zone_pages' );
-        z.innerHTML=t;
+        this.maj_htm2( 'vv_ecran_liste_zone_pages' , t );
     }
     /*
       =============================================================================================================
@@ -3550,7 +3549,7 @@ class __ig1{
         let o1='';
         if(le_colis11 !== null){
             /* && le_colis11.__xva.__formulaire1 !== null]{ */
-            document.getElementById( 'vv_ecran_liste_boutons_avant' ).innerHTML=vv_ecran_liste_boutons_avant;
+            this.maj_htm2( 'vv_ecran_liste_boutons_avant' , vv_ecran_liste_boutons_avant );
             this.construire_navigation_pour_liste( /*  */ le_colis11.__xva.__debut , le_colis11.__xva.__nbMax , le_colis11.__xva[fonction_liste].nombre , le_colis11.__xva.__num_page );
         }
         return o1;
@@ -3772,7 +3771,7 @@ class __ig1{
         if(a1 === null){
             a1=document.getElementById( 'vv_messages' );
         }
-        a1.innerHTML='';
+        this.maj_htm1( a1 , '' );
         a1.style.visibility='hidden';
         return({"__xst" : __xsu});
     }
@@ -3808,28 +3807,28 @@ class __ig1{
                 tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau';
                 tt+='</div>';
                 tt+='<div>';
-                tt+='<div class="yy__bcar1 yy__1" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+                tt+='<button class="yy__bcar1 yy__1" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</button>';
                 tt+='</div>';
                 tt+='</div>';
                 message=tt;
             }
             if(obj.hasOwnProperty( 'lig_col' )){
-                t+='<div class="yy_b1 ' + la_classe + '"  rev_clic1="';
+                t+='<button class="yy_b1 ' + la_classe + '"  rev_clic1="';
                 t+='m1(n1(__fnt1),f1(placer_le_curseur_en_lig_col1(';
                 t+=' zone_source(' + (obj.zone_edition === undefined ? ( __ig1.zone_d_edition_en_cours ) : ( obj.zone_edition )) + '),';
                 t+=' ligne(' + obj.lig_col[0] + '),';
                 t+=' colonne(' + obj.lig_col[1] + '),';
                 t+=')))';
-                t+='" title="aller à la ligne" >lig_col[' + obj.lig_col[0] + ',' + obj.lig_col[1] + ']</div>';
+                t+='" title="aller à la ligne" >lig_col[' + obj.lig_col[0] + ',' + obj.lig_col[1] + ']</button>';
                 message=t + message;
             }
             t='<div class="' + la_classe + '">' + message + '</div>';
             if(a1.innerHTML === ''){
-                a1.innerHTML=t;
+                this.maj_htm1( a1 , t );
             }else{
                 let temp=document.createElement( 'div' );
                 temp.setAttribute( 'class' , la_classe );
-                temp.innerHTML=t;
+                this.maj_htm1( temp , t );
                 a1.insertBefore( temp , document.getElementById( la_zone ).firstChild );
             }
         }catch(e2){
@@ -3917,7 +3916,7 @@ class __ig1{
     */
     #blur_sur_editeur1( e ){
         try{
-            this.#vv_div_des_positions_du_curseur.innerHTML='';
+            this.maj_htm1( this.#vv_div_des_positions_du_curseur , '' );
         } catch {}
     }
     /*
@@ -3943,7 +3942,7 @@ class __ig1{
             let lng=zoneSource.value.substr( 0 , zoneSource.selectionStart ).split( '\n' ).length;
             le_texte_a_afficher+=' [' + lng + ']';
         }
-        this.#vv_div_des_positions_du_curseur.innerHTML=le_texte_a_afficher;
+        this.maj_htm1( this.#vv_div_des_positions_du_curseur , le_texte_a_afficher );
         this.derniere_zone_editee=zoneSource;
         this.position_dans_la_derniere_zone_editee=zoneSource.selectionStart;
         var ttt=zoneSource.getBoundingClientRect();
@@ -3963,7 +3962,7 @@ class __ig1{
         var tabtext=[];
         /* var elem=this.#global_tableau_des_textareas[e.target.id]; */
         var zoneSource=document.getElementById( e.target.id );
-        this.#vv_div_des_positions_du_curseur.innerHTML=zoneSource.selectionStart;
+        this.maj_htm1( this.#vv_div_des_positions_du_curseur , zoneSource.selectionStart );
         this.derniere_zone_editee=zoneSource;
         this.position_dans_la_derniere_zone_editee=zoneSource.selectionStart;
         var ttt=zoneSource.getBoundingClientRect();
@@ -4049,63 +4048,6 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    /*
-      quand_click( e ){
-      try{
-      e.stopPropagation();
-      } catch {}
-      let elt=e.target;
-      let action_rev=elt.getAttribute( 'data-rev_click' );
-      do{
-      if(action_rev === null){
-      elt=elt.parentNode;
-      action_rev=elt.getAttribute( 'data-rev_click' );
-      }
-      }while(action_rev === null);
-      if(action_rev === null || action_rev === ''){
-      this.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'action_rev n\'est pas définie ' + this.nl2()} );
-      this.affiche_les_messages();
-      return({"__xst" : __xer ,"__xme" : this.nl2()});
-      }
-      let source=action_rev + '';
-      let obj1=this.__rev1.rev_tcm( source );
-      if(obj1.__xst !== __xsu){
-      this.ajoute_message( {
-      "__xst" : __xer ,
-      "__xme" : 'erreur de convertion de source en matrice sur le click <br /><br /><b>' + source + '</b><br /><br />' + this.nl2() + '<br />' + obj1.__xme
-      } );
-      this.affiche_les_messages();
-      __ig1.fermer_la_sous_fenetre();
-      return({"__xst" : __xer ,"__xme" : this.nl2()});
-      }
-      elt.classList.add( 'yy_invisible' );
-      if(this.#liste_des_appels_au_serveur.length > 0){
-      this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
-      this.affiche_les_messages();
-      }
-      try{
-      document.getElementById( 'vv_div_des_positions_du_curseur' ).innerHTML='';
-      } catch {}
-      this.#boutons_masques_avant_appel.push( elt );
-      let mat=obj1.__xva;
-      // ==== appel ici =================================================
-      let obj=this.__xac( mat , 0 , null , e );
-      // ==== appel ici ================================================= 
-      if(obj.__xst === __xer){
-      this.ajoute_message( {
-      "__xst" : __xer ,
-      "__xme" : 'le source de quand_clic :<br /><b>' + source + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
-      } );
-      this.affiche_les_messages();
-      this.retablir_les_boutons_masques();
-      return({"__xst" : __xer ,"__xme" : this.nl2()});
-      }
-      return({"__xst" : __xsu});
-      }
-    */
-    /*
-      =============================================================================================================
-    */
     affiche_les_messages( obj=null , le_colis11=null ){
         if(obj !== null && !Array.isArray( obj )){
             this.ajoute_message( obj );
@@ -4137,7 +4079,7 @@ class __ig1{
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.innerHTML=texte_a_afficher;
+                this.maj_htm1( vv_supprimer_les_messages , texte_a_afficher );
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             }else{
                 a1.style.visibility='visible';
@@ -4145,17 +4087,17 @@ class __ig1{
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
                 let t='';
-                t+='<div class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
+                t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</button>';
                 if(dans_sous_fenetre === false){
-                    t+='<div class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
-                    t+='<div class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                    t+='<button class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
+                    t+='<button class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
                 }
-                vv_supprimer_les_messages.innerHTML=t;
+                this.maj_htm1( vv_supprimer_les_messages , t );
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
                 for( let i=0 ; i < cumul.length ; i++ ){
                     let div1=document.createElement( 'div' );
                     div1.className='yy__' + cumul[i][0];
-                    div1.innerHTML=cumul[i][1];
+                    this.maj_htm1( div1 , cumul[i][1] );
                     a1.appendChild( div1 );
                 }
             }
@@ -4164,12 +4106,12 @@ class __ig1{
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
             let t='';
-            t+='<div class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
+            t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</button>';
             if(dans_sous_fenetre === false){
-                t+='<div class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</div>';
-                t+='<div class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                t+='<button class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
+                t+='<button class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
             }
-            vv_supprimer_les_messages.innerHTML=t;
+            this.maj_htm1( vv_supprimer_les_messages , t );
             a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             if(dans_sous_fenetre === true){
                 if(a1.innerHTML.indexOf( 'class="yy__0"' ) >= 0 || a1.innerHTML.indexOf( 'class="yy__2"' ) >= 0){
@@ -4290,12 +4232,12 @@ class __ig1{
     init0( mat , d , __xva_param ){
         try{
             if(this._CA_ === 1){
-                document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="projet ' + __xva_param.chi_id_projet + '" style="margin:auto;">p' + __xva_param.chi_id_projet + '/' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>';
+                this.maj_htm2( 'vv_info_projet' , '<div class="yy_texte_clair_fond_fonce" title="projet ' + __xva_param.chi_id_projet + '" style="margin:auto;">p' + __xva_param.chi_id_projet + '/' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>' );
             }else{
                 if(__xva_param.chi_id_utilisateur === 0){
-                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chi_id_utilisateur + '" style="margin:auto;"></div>';
+                    this.maj_htm2( 'vv_info_projet' , '<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chi_id_utilisateur + '" style="margin:auto;"></div>' );
                 }else{
-                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chp_nom_de_connexion_utilisateur + '" style="margin:auto;">' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>';
+                    this.maj_htm2( 'vv_info_projet' , '<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chp_nom_de_connexion_utilisateur + '" style="margin:auto;">' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>' );
                 }
             }
         } catch {}
@@ -4328,8 +4270,62 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    maj_htm2( nzt , t ){
+        /* mise à jour par nom de zone en texte */
+        document.getElementById( nzt ).innerHTML=t;
+        if(false && this.__deverminage === 2){
+            let re=document.getElementById( nzt );
+            let lst1=re.getElementsByTagName( '*' );
+            for( let i=0 ; i < lst1.length ; i++ ){
+                let lst2=lst1[i].getAttributeNames( '*' );
+                for(let j in lst2){
+                    try{
+                        if(lst2[j].substr( 0 , 4 ) === 'rev_' && !['button','input','select'].includes( lst1[i].tagName.toLowerCase() )){
+                            console.log( '%ctag à passer en button' , 'color:red;background:yellow;' , lst1[i] );
+                        }
+                    }catch(ee){
+                        debugger;
+                    }
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_htm1( z , t ){
+        if( typeof z === 'string'){
+            document.getElementById( z ).innerHTML=t;
+        }else{
+            z.innerHTML=t;
+        }
+        if(this.__deverminage === 2){
+            let re=null;
+            if( typeof z === 'string'){
+                re=document.getElementById( z );
+            }else{
+                re=z;
+            }
+            let lst1=re.getElementsByTagName( '*' );
+            for( let i=0 ; i < lst1.length ; i++ ){
+                let lst2=lst1[i].getAttributeNames( '*' );
+                for(let j in lst2){
+                    try{
+                        if(lst2[j].substr( 0 , 4 ) === 'rev_' && !['button','input','select'].includes( lst1[i].tagName.toLowerCase() )){
+                            console.log( '%ctag à passer en button' , 'color:red;background:yellow;' , lst1[i] );
+                        }
+                    }catch(ee){
+                        debugger;
+                    }
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     maj_contenu_principal( t ){
-        document.getElementById( 'vv_contenu_principal' ).innerHTML=t;
+        this.maj_htm2( 'vv_contenu_principal' , t );
         let lst1=document.querySelectorAll( "[data-editeur1]" );
         for( let i=0 ; i < lst1.length ; i++ ){
             if(!lst1[i].getAttribute( 'data-rev_event' )){
@@ -4412,7 +4408,7 @@ class __ig1{
             document.getElementById( id ).value=document.getElementById( nom_du_champ ).value;
         }else if(id !== '' && type_cible === 'inner_html' && xva !== '' && le_colis11 !== null){
             try{
-                document.getElementById( id ).innerHTML=le_colis11.__xva[xva];
+                this.maj_htm2( id , le_colis11.__xva[xva] );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -4420,7 +4416,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'inner_html' && valeur_de_champ !== ''){
             try{
-                document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
+                this.maj_htm2( id , document.getElementById( valeur_de_champ ).value );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -4428,7 +4424,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'libelle_html'){
             try{
-                document.getElementById( id ).innerHTML=valeur_constante;
+                this.maj_htm2( id , valeur_constante );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -4540,7 +4536,7 @@ class __ig1{
         if(this.avec_maj_de_hash === __xsu){
         }else if(id !== '' && type_cible === 'inner_html' && xva !== '' && le_colis11 !== null){
             try{
-                document.getElementById( id ).innerHTML=le_colis11.__xva[xva];
+                this.maj_htm2( id , le_colis11.__xva[xva] );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -4548,7 +4544,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'inner_html' && valeur_de_champ !== ''){
             try{
-                document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
+                this.maj_htm2( id , document.getElementById( valeur_de_champ ).value );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -4556,7 +4552,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'libelle_html'){
             try{
-                document.getElementById( id ).innerHTML=valeur_constante;
+                this.maj_htm2( id , valeur_constante );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -4693,10 +4689,11 @@ class __ig1{
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + (i + 1) + '</span><br />';
-            if(false && i === 3){
+            if(true && i === 30){
                 for( let j=0 ; j <= 4 ; j++ ){
-                    t+='<div class="yy_b1 yy__' + j + '"  rev_clic1="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
+                    t+='<button class="yy_b1 yy__' + j + '"  rev_clic1="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</button>';
                 }
+                t+='<br />';
             }
             if(false && i === 8){
                 tri_affiche=true;
@@ -4970,7 +4967,7 @@ class __ig1{
             document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__0' );
             document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__1' );
         }
-        document.getElementById( 'vv_nav_centre' ).innerHTML=les_menu1;
+        this.maj_htm2( 'vv_nav_centre' , les_menu1 );
         /*  */
         let lst=document.querySelectorAll( "[data-rev_menu]" );
         for( let i=0 ; i < lst.length ; i++ ){
@@ -5064,7 +5061,7 @@ class __ig1{
     */
     connexion_socket_etablie( mat , d ){
         this.#nombre_de_tentatives_de_reconnexion_au_websocket=0;
-        document.getElementById( 'vv_info_connexion' ).innerHTML=this.les_svg.rond_vert1;
+        this.maj_htm2( 'vv_info_connexion' , this.les_svg.rond_vert1 );
         const lst=document.querySelectorAll( '.yy__bidon_reconnexion1' );
         if(lst.length > 0){
             for( let i=lst.length - 1 ; i >= 0 ; i-- ){
@@ -5133,13 +5130,13 @@ class __ig1{
             let tt='';
             tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">la connexion au site distant n\'a pas pu être rétablie !</h2>';
             tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
-            tt+=' <div class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+=' <button class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</button>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
             this.fermer_la_sous_fenetre();
             this.maj_contenu_principal( tt );
             try{
-                document.getElementById( 'vv_nav' ).innerHTML='';
+                this.maj_htm2( 'vv_nav' , '' );
             } catch {}
             return({"__xst" : __xsu});
         }else{
@@ -5150,7 +5147,7 @@ class __ig1{
             this.ajoute_message( {"__xst" : __xal ,"__xme" : tt} );
             this.fermer_la_sous_fenetre();
             this.affiche_les_messages();
-            document.getElementById( 'vv_info_connexion' ).innerHTML=this.les_svg.rond_rouge1;
+            this.maj_htm2( 'vv_info_connexion' , this.les_svg.rond_rouge1 );
             setTimeout( () => {
                     this.retablir_la_connexion_au_ws();
                 } , 1000 );

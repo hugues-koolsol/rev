@@ -481,13 +481,13 @@ class taches1{
         }
         let tt=this.zones_liste1( le_colis1 );
         if(this.__ig1.__deverminage === 2){
-            this.__ig1.temps_performance7=performance.now();
-            console.log( "this.__ig1.temps_performance7=" + this.__ig1.temps_performance7 , this.__ig1.temps_performance7 - this.__ig1.temps_performance0 );
-        }
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt;
-        if(this.__ig1.__deverminage === 2){
             this.__ig1.temps_performance6=performance.now();
             console.log( "this.__ig1.temps_performance6=" + this.__ig1.temps_performance6 , this.__ig1.temps_performance6 - this.__ig1.temps_performance0 );
+        }
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , tt );
+        if(this.__ig1.__deverminage === 2){
+            this.__ig1.temps_performance7=performance.now();
+            console.log( "this.__ig1.temps_performance7=" + this.__ig1.temps_performance7 , this.__ig1.temps_performance7 - this.__ig1.temps_performance0 );
         }
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );

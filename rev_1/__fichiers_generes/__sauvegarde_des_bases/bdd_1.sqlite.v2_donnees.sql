@@ -59,7 +59,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (136) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (138) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -139,7 +139,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
 ('560','acces1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('561','autorisations1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('562','autorisations1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('563','menus1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('563','menus1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','0','importer(bibliotheque_spécifiée(w_ast_js_vers_rev1),provenance(''./f0?n0=w_ast_js_vers_rev1_.js''))','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('564','menus1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('565','groupes1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('566','groupes1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -157,8 +157,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
 sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('577','travaux1_c.js',NULL,NULL,'0','2',NULL,'0','
 sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('578','travaux1_s.js',NULL,NULL,'0','2',NULL,'0','
-sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('578','travaux1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','0','0','0','importer(bibliotheque_spécifiée(Database),provenance("https://deno.land/x/sqlite3/mod.ts"))','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('581','_rev_de_sql_vers_js1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('584','1x1_blanc.png',NULL,NULL,'1','8','120 octets = 70h=112d + 8 caracères de la dernière ligne = 120','0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('585','1x1_rouge.png',NULL,NULL,'1','8','120 octets','0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -21555,46 +21554,46 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_b1 yy__xif" rev_clic1="m1(n1('',
+                  ''<button class="yy_b1 yy__xif" rev_clic1="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
                   ''" >'',
                   this.__ig1.les_svg.nouveau_document,
-                  ''</div>''
+                  ''</button>''
                )
             ),
             affectop(
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('',
+                  ''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('',
                   this.moi,
                   ''),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >'',
                   this.__ig1.les_svg.poubelle,
-                  ''</div>''
+                  ''</button>''
                )
             ),
             affectop(
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('',
+                  ''<button class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('',
                   this.moi,
                   ''),f1(supprimer_les_travaux())))" title="supprimer les travaux" >'',
                   this.__ig1.les_svg.poubelle,
-                  ''</div>''
+                  ''</button>''
                )
             ),
             affectop(
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('',
+                  ''<button class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('',
                   this.moi,
                   ''),f1(compiler_les_travaux())))" title="compiler les travaux" >'',
                   this.__ig1.les_svg.compiler,
-                  ''</div>''
+                  ''</button>''
                )
             )
          )
@@ -21816,10 +21815,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux())))" title="supprimer les travaux" >'' + this.__ig1.les_svg.poubelle + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(compiler_les_travaux())))" title="compiler les travaux" >'' + this.__ig1.les_svg.compiler + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >'' + this.__ig1.les_svg.poubelle + ''</button>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(supprimer_les_travaux())))" title="supprimer les travaux" >'' + this.__ig1.les_svg.poubelle + ''</button>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(compiler_les_travaux())))" title="compiler les travaux" >'' + this.__ig1.les_svg.compiler + ''</button>'';
     }
     /*
       =============================================================================================================
@@ -22651,7 +22650,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                          ''+='',
                                                          t,
                                                          concat(
-                                                            ''<div class="yy_svg1 yy__3" rev_clic1="m1(n1('',
+                                                            ''<button class="yy_svg1 yy__3" rev_clic1="m1(n1('',
                                                             this.moi,
                                                             ''),f1(modification_branche(indice('',
                                                             i,
@@ -22659,11 +22658,10 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                             obj.arbre[i].id_interne,
                                                             ''),cle_aleatoire('',
                                                             reference_arbre.cle_aleatoire,
-                                                            ''))))">modifier</div>''
+                                                            ''))))">modifier</button>''
                                                          )
                                                       ),
-                                                      affecte(appelf(element(document),nomf(getElementById),p(''edition_de_la_branche''),prop(innerHTML)),t),
-                                                      appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p())
+                                                      affecte(appelf(element(document),nomf(getElementById),p(''edition_de_la_branche''),prop(innerHTML)),t)
                                                    )
                                                 )
                                              ),
@@ -22937,7 +22935,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                p(id),
                p(options)
             ),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p(null)),
             retourner(obj(("__xst",__xsu)))
          )
       ),
@@ -23004,13 +23001,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('',
+                  ''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
                   ''" >'',
                   this.__ig1.les_svg.nouveau_document,
-                  ''</div>''
+                  ''</button>''
                )
             )
          )
@@ -23062,7 +23059,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(egalstricte(boutons_activés,false)),
-                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')),affectop(''+='',lst,concat(''<button  class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')))
                ),
                sinon(
                   alors(
@@ -23082,7 +23079,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  p(tup.T0_chi_id_acces)
                               )
                            ),
-                           alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                           alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')))
                         ),
                         sinon(
                            alors(
@@ -23090,13 +23087,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  ''+='',
                                  lst,
                                  concat(
-                                    ''<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('',
+                                    ''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('',
                                     this.moi,
                                     ''),f1(page_confirmation_supprimer1(chi_id_acces('',
                                     tup.T0_chi_id_acces,
                                     '')))))">'',
                                     this.__ig1.les_svg.poubelle,
-                                    ''</div>''
+                                    ''</button>''
                                  )
                               )
                            )
@@ -23106,13 +23103,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
+                           ''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_modification1(chi_id_acces('',
                            tup.T0_chi_id_acces,
                            '')))))">'',
                            this.__ig1.les_svg.editer,
-                           ''</div>''
+                           ''</button>''
                         )
                      )
                   )
@@ -23130,16 +23127,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                  ''+='',
                                  lst,
                                  concat(
-                                    ''<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('',
+                                    ''<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('',
                                     this.moi,
                                     ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('',
                                     tup.T0_chi_id_acces,
-                                    '')))))">menus</div>''
+                                    '')))))">menus</button>''
                                  )
                               )
                            )
                         ),
-                        sinon(alors(affectop(''+='',lst,''<div class="yy_b1 yy__1 yy__1_inactif">menus</div>'')))
+                        sinon(alors(affectop(''+='',lst,''<button class="yy_b1 yy__1 yy__1_inactif">menus</button>'')))
                      )
                   )
                ),
@@ -23149,11 +23146,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('',
+                           ''<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('',
                            this.moi,
                            ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('',
                            tup.T0_chi_id_acces,
-                           '')))))">menus</div>''
+                           '')))))">menus</button>''
                         )
                      )
                   )
@@ -23281,9 +23278,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                 t+="séparateur<br />";
                                 t+=''<input type="range" id="separateur_'' + reference_arbre.cle_aleatoire + ''" class="yy_ouinon" min="0" max="1" step="1" value="'' + obj.arbre[i].separateur + ''" />'';
                                 t+="<br />";
-                                t+=''<div class="yy_svg1 yy__3" rev_clic1="m1(n1('' + this.moi + ''),f1(modification_branche(indice('' + i + ''),id_interne('' + obj.arbre[i].id_interne + ''),cle_aleatoire('' + reference_arbre.cle_aleatoire + ''))))">modifier</div>'';
+                                t+=''<button class="yy_svg1 yy__3" rev_clic1="m1(n1('' + this.moi + ''),f1(modification_branche(indice('' + i + ''),id_interne('' + obj.arbre[i].id_interne + ''),cle_aleatoire('' + reference_arbre.cle_aleatoire + ''))))">modifier</button>'';
                                 document.getElementById( ''edition_de_la_branche'' ).innerHTML=t;
-                                this.__ig1.ajoute_les_evenements_aux_boutons();
                             }
                             break;
                         }
@@ -23388,7 +23384,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         options[''class_du_bouton_editer'']=''yy_b1 yy__3'';
         /* this._tri_arbre1.construire_arbre( id , options ); */
         this.__variables_module[''_tri_arbre1''][''construire_arbre'']( id , options );
-        this.__ig1.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -23413,7 +23408,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
     }
     /*
       =============================================================================================================
@@ -23446,26 +23441,26 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         }
         lst+=''<div style="display:inline-flex;">'';
         if(boutons_activés === false){
-            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-            lst+=''<div class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            lst+=''<button  class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
         }else{
             if([
                     /* tbel */
                     0,1,2].includes( tup.T0_chi_id_acces )){
-                lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
             }else{
-                lst+=''<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+                lst+=''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">'' + this.__ig1.les_svg.poubelle + ''</button>'';
             }
-            lst+=''<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
+            lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
         }
         if(boutons_activés === false){
             if(tup.T0_chi_id_acces === 0){
-                lst+=''<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">menus</div>'';
+                lst+=''<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">menus</button>'';
             }else{
-                lst+=''<div class="yy_b1 yy__1 yy__1_inactif">menus</div>'';
+                lst+=''<button class="yy_b1 yy__1 yy__1_inactif">menus</button>'';
             }
         }else{
-            lst+=''<div class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">menus</div>'';
+            lst+=''<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(recuperer_les_menus_d_un_acces(chi_id_acces('' + tup.T0_chi_id_acces + '')))))">menus</button>'';
         }
         lst+=''</div>'';
         return lst;
@@ -23544,16 +23539,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('',
+                  ''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
                   ''" >'',
                   this.__ig1.les_svg.nouveau_document,
-                  ''</div>''
+                  ''</button>''
                )
             ),
-            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<div class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('',this.moi,''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</div>''))
+            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('',this.moi,''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>''))
          )
       ),
       #(
@@ -23587,45 +23582,45 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('',
+                           ''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_confirmation_supprimer1(chi_id_autorisation('',
                            tup.T0_chi_id_autorisation,
                            '')))))">'',
                            this.__ig1.les_svg.poubelle,
-                           ''</div>''
+                           ''</button>''
                         )
                      ),
                      affectop(
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
+                           ''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_modification1(chi_id_autorisation('',
                            tup.T0_chi_id_autorisation,
                            '')))))">'',
                            this.__ig1.les_svg.editer,
-                           ''</div>''
+                           ''</button>''
                         )
                      ),
                      affectop(
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
+                           ''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
                            this.moi,
                            ''),f1(page_duplication1(chi_id_autorisation('',
                            tup.T0_chi_id_autorisation,
                            '')))))">'',
                            this.__ig1.les_svg.dupliquer,
-                           ''</div>''
+                           ''</button>''
                         )
                      )
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</div>'')),affectop(''+='',lst,concat(''<div class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</button>'')))
                )
             ),
             affectop(''+='',lst,''</div>''),
@@ -23671,8 +23666,8 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>'';
     }
     /*
       =============================================================================================================
@@ -23689,13 +23684,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             peut_gerer_cette_autorisation=true;
         }
         if(peut_gerer_cette_autorisation === true){
-            lst+=''<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-            lst+=''<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-            lst+=''<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+            lst+=''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         }else{
-            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
-            lst+=''<div class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</div>'';
-            lst+=''<div class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         }
         lst+=''</div>'';
         return lst;
@@ -25018,9 +25013,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                                                                 )
                                                                                              ),
                                                                                              alors(
-                                                                                                affectop(''+='',vv_liste_des_methodes,''<div ''),
-                                                                                                affectop(''+='',vv_liste_des_methodes,'' class="yy_b1"''),
-                                                                                                affectop(''+='',vv_liste_des_methodes,'' rev_clic1="''),
+                                                                                                affectop(''+='',vv_liste_des_methodes,''<button class="yy_b1" rev_clic1="''),
                                                                                                 affectop(
                                                                                                    ''+='',
                                                                                                    vv_liste_des_methodes,
@@ -25035,19 +25028,18 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                                                                       '')))))''
                                                                                                    )
                                                                                                 ),
-                                                                                                affectop(''+='',vv_liste_des_methodes,''"''),
                                                                                                 affectop(
                                                                                                    ''+='',
                                                                                                    vv_liste_des_methodes,
                                                                                                    concat(
-                                                                                                      ''>'',
+                                                                                                      ''">'',
                                                                                                       tableau(
                                                                                                          nomt(
                                                                                                             tableau(nomt(mat1),p(plus(m,1)))
                                                                                                          ),
                                                                                                          p(1)
                                                                                                       ),
-                                                                                                      ''</div>''
+                                                                                                      ''</button>''
                                                                                                    )
                                                                                                 )
                                                                                              )
@@ -25079,7 +25071,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                )
             ),
             affecte(appelf(element(document),nomf(getElementById),p(''vv_liste_des_methodes''),prop(innerHTML)),vv_liste_des_methodes),
-            appelf(element(this.__ig1),nomf(ajoute_les_evenements_aux_boutons),p()),
             retourner(obj(("__xst",__xsu)))
          )
       ),
@@ -25227,13 +25218,13 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                this.vv_ecran_liste_boutons_avant,
                concat(
-                  ''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('',
+                  ''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('',
                   this.moi,
                   ''),f1(page_creer1()))" title="création'',
                   this.DUN_DUNE_ELEMENT_GERE,
                   ''" >'',
                   this.__ig1.les_svg.nouveau_document,
-                  ''</div>''
+                  ''</button>''
                )
             ),
             #(
@@ -25304,12 +25295,9 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                                                        && mat1[m + 1][2] === ''c''
                                                        && mat1[m + 1][1].substr( 0 , 7 ) === ''entree_''
                                                 ){
-                                                    vv_liste_des_methodes+=''<div '';
-                                                    vv_liste_des_methodes+='' class="yy_b1"'';
-                                                    vv_liste_des_methodes+='' rev_clic1="'';
+                                                    vv_liste_des_methodes+=''<button class="yy_b1" rev_clic1="'';
                                                     vv_liste_des_methodes+=''m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(chp_methode_menu),valeur(valeur_constante('' + mat1[m + 1][1] + '')))))'';
-                                                    vv_liste_des_methodes+=''"'';
-                                                    vv_liste_des_methodes+=''>'' + mat1[m + 1][1] + ''</div>'';
+                                                    vv_liste_des_methodes+=''">'' + mat1[m + 1][1] + ''</button>'';
                                                 }
                                             }
                                         }
@@ -25322,7 +25310,6 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
         }
         document.getElementById( ''vv_liste_des_methodes'' ).innerHTML=vv_liste_des_methodes;
-        this.__ig1.ajoute_les_evenements_aux_boutons();
         return({"__xst" : __xsu});
     }
     /*
@@ -25363,7 +25350,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
         /*
           pré chargement du module externe acorn car on peut en avoir besoin
           lors de la modification d''un menu
@@ -26159,11 +26146,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                o1,
                concat(
-                  ''<div class="yy_b1 yy__3" rev_clic1="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1('',
+                  ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1('',
                   this.moi,
                   ''),f1(modifier_le_mot_de_passe(chi_id_utilisateur('',
                   chi_id_utilisateur,
-                  ''))))))" title="">modifier</div>''
+                  ''))))))" title="">modifier</button>''
                )
             ),
             affectop(''+='',o1,''</div>''),
@@ -26219,11 +26206,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         p(tup.T0_chi_id_utilisateur)
                      )
                   ),
-                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')))
                ),
                sinon(
                   alors(
-                     affectop(''+='',lst,''<div class="yy_svg1 yy__2" rev_clic1="''),
+                     affectop(''+='',lst,''<button class="yy_svg1 yy__2" rev_clic1="''),
                      affectop(
                         ''+='',
                         lst,
@@ -26235,7 +26222,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            '')))))''
                         )
                      ),
-                     affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</div>''))
+                     affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</button>''))
                   )
                )
             ),
@@ -26243,26 +26230,26 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                ''+='',
                lst,
                concat(
-                  ''<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
+                  ''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_modification1(chi_id_utilisateur('',
                   tup.T0_chi_id_utilisateur,
                   '')))))">'',
                   this.__ig1.les_svg.editer,
-                  ''</div>''
+                  ''</button>''
                )
             ),
             affectop(
                ''+='',
                lst,
                concat(
-                  ''<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
+                  ''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
                   this.moi,
                   ''),f1(page_duplication1(chi_id_utilisateur('',
                   tup.T0_chi_id_utilisateur,
                   '')))))">'',
                   this.__ig1.les_svg.dupliquer,
-                  ''</div>''
+                  ''</button>''
                )
             ),
             choix(
@@ -26275,7 +26262,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         ''+='',
                         lst,
                         concat(
-                           ''<div class="yy_svg1 yy__0" rev_clic1="m1(n1('',
+                           ''<button class="yy_svg1 yy__0" rev_clic1="m1(n1('',
                            this.moi,
                            ''),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur('',
                            tup.T0_chi_id_utilisateur,
@@ -26283,11 +26270,11 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         )
                      ),
                      affectop(''+='',lst,this.__ig1.les_svg.cle),
-                     affectop(''+='',lst,''</div>'')
+                     affectop(''+='',lst,''</button>'')
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<div class="yy_svg1 yy__2 yy__0_inactif">'',this.__ig1.les_svg.cle,''</div>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__0_inactif">'',this.__ig1.les_svg.cle,''</button>'')))
                )
             ),
             affectop(''+='',lst,''</div>''),
@@ -26320,7 +26307,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         o1+=''<br/>'';
         o1+=''<input id="chp_mot_de_passe_utilisateur2" type="password" value="" autocomplete="new-password" />'';
         o1+=''<br/>'';
-        o1+=''<div class="yy_b1 yy__3" rev_clic1="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1('' + this.moi + ''),f1(modifier_le_mot_de_passe(chi_id_utilisateur('' + chi_id_utilisateur + ''))))))" title="">modifier</div>'';
+        o1+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1('' + this.moi + ''),f1(modifier_le_mot_de_passe(chi_id_utilisateur('' + chi_id_utilisateur + ''))))))" title="">modifier</button>'';
         o1+=''</div>'';
         this.__ig1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
@@ -26351,20 +26338,20 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         if([
                 /* tbel */
                 1,2].includes( tup.T0_chi_id_utilisateur )){
-            lst+=''<div class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }else{
-            lst+=''<div class="yy_svg1 yy__2" rev_clic1="'';
+            lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + '')))))'';
-            lst+=''">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+            lst+=''">'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }
-        lst+=''<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + '')))))">'' + this.__ig1.les_svg.editer + ''</div>'';
-        lst+=''<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</div>'';
+        lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
+        lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         if(tup.T0_chi_id_utilisateur > 1 || le_colis1._CA_ >= 3 && le_colis1.chi_id_utilisateur === 2){
-            lst+=''<div class="yy_svg1 yy__0" rev_clic1="m1(n1('' + this.moi + ''),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + ''))))">'';
+            lst+=''<button class="yy_svg1 yy__0" rev_clic1="m1(n1('' + this.moi + ''),f1(ecran_changer_le_mot_de_passe(chi_id_utilisateur('' + tup.T0_chi_id_utilisateur + ''))))">'';
             lst+=this.__ig1.les_svg.cle;
-            lst+=''</div>'';
+            lst+=''</button>'';
         }else{
-            lst+=''<div class="yy_svg1 yy__2 yy__0_inactif">'' + this.__ig1.les_svg.cle + ''</div>'';
+            lst+=''<button class="yy_svg1 yy__2 yy__0_inactif">'' + this.__ig1.les_svg.cle + ''</button>'';
         }
         lst+=''</div>'';
         return lst;
@@ -42319,6 +42306,238 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         this.__ig1.donnees_retournees[__xac]+=''m1(n1('' + this.moi + ''),f1(apres_recuperer_les_revs_des_bases(les_bases_a_editer(\'''' + les_bases_a_editer + ''\''))))'';
         return({"__xst" : __xsu});
     }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1061','groupes1_c.js','definition_de_classe(
+   nom_classe(groupes1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
+         contenu(
+            declare_variable(lst,''''),
+            affectop(''+='',lst,''<div class="yy_act1">''),
+            #( fonctions_spéciales1(ne_pas_supprimer_id_un(...)) ),
+            choix(
+               si(
+                  condition(
+                     appelf(
+                        element(
+                           defTab(
+                              #( tbel ),
+                              p(1),
+                              p(2)
+                           )
+                        ),
+                        nomf(includes),
+                        p(tup.T0_chi_id_groupe)
+                     )
+                  ),
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')))
+               ),
+               sinon(
+                  alors(
+                     affectop(''+='',lst,''<button class="yy_svg1 yy__2" rev_clic1="''),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_confirmation_supprimer1(chi_id_groupe('',
+                           tup.T0_chi_id_groupe,
+                           '')))))''
+                        )
+                     ),
+                     affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</button>''))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(le_colis1._CA_,2),sup(le_colis1.chi_id_utilisateur,1),infeg(tup.T0_chi_id_groupe,2))),
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</button>'')))
+               ),
+               sinon(
+                  alors(
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_modification1(chi_id_groupe('',
+                           tup.T0_chi_id_groupe,
+                           '')))))">'',
+                           this.__ig1.les_svg.editer,
+                           ''</button>''
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_duplication1(chi_id_groupe('',
+                           tup.T0_chi_id_groupe,
+                           '')))))">'',
+                           this.__ig1.les_svg.dupliquer,
+                           ''</button>''
+                        )
+                     )
+                  )
+               )
+            ),
+            affectop(''+='',lst,''</div>''),
+            retourner(lst)
+         )
+      )
+   )
+)','class groupes1{
+    /*
+      =============================================================================================================
+    */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='''';
+        lst+=''<div class="yy_act1">'';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([
+                /* tbel */
+                1,2].includes( tup.T0_chi_id_groupe )){
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+        }else{
+            lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_groupe('' + tup.T0_chi_id_groupe + '')))))'';
+            lst+=''">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+        }
+        if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && tup.T0_chi_id_groupe <= 2){
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+        }else{
+            lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_groupe('' + tup.T0_chi_id_groupe + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_groupe('' + tup.T0_chi_id_groupe + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+        }
+        lst+=''</div>'';
+        return lst;
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1062','metiers1_c.js','definition_de_classe(
+   nom_classe(metiers1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
+         contenu(
+            declare_variable(lst,''''),
+            affectop(''+='',lst,''<div class="yy_act1">''),
+            #( fonctions_spéciales1(ne_pas_supprimer_id_un(...)) ),
+            choix(
+               si(
+                  condition(
+                     appelf(
+                        element(
+                           defTab(
+                              #( tbel ),
+                              p(1),
+                              p(2)
+                           )
+                        ),
+                        nomf(includes),
+                        p(tup.T0_chi_id_metier)
+                     )
+                  ),
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')))
+               ),
+               sinon(
+                  alors(
+                     affectop(''+='',lst,''<button class="yy_svg1 yy__2" rev_clic1="''),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_confirmation_supprimer1(chi_id_metier('',
+                           tup.T0_chi_id_metier,
+                           '')))))''
+                        )
+                     ),
+                     affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</button>''))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(le_colis1._CA_,2),sup(le_colis1.chi_id_utilisateur,1),infeg(tup.T0_chi_id_metier,2))),
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</button>'')))
+               ),
+               sinon(
+                  alors(
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_modification1(chi_id_metier('',
+                           tup.T0_chi_id_metier,
+                           '')))))">'',
+                           this.__ig1.les_svg.editer,
+                           ''</button>''
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_duplication1(chi_id_metier('',
+                           tup.T0_chi_id_metier,
+                           '')))))">'',
+                           this.__ig1.les_svg.dupliquer,
+                           ''</button>''
+                        )
+                     )
+                  )
+               )
+            ),
+            affectop(''+='',lst,''</div>''),
+            retourner(lst)
+         )
+      )
+   )
+)','class metiers1{
+    /*
+      =============================================================================================================
+    */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='''';
+        lst+=''<div class="yy_act1">'';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([
+                /* tbel */
+                1,2].includes( tup.T0_chi_id_metier )){
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+        }else{
+            lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_metier('' + tup.T0_chi_id_metier + '')))))'';
+            lst+=''">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+        }
+        if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && tup.T0_chi_id_metier <= 2){
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+        }else{
+            lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_metier('' + tup.T0_chi_id_metier + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_metier('' + tup.T0_chi_id_metier + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+        }
+        lst+=''</div>'';
+        return lst;
+    }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
@@ -42444,7 +42663,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1695','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1699','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'17','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -49677,7 +49896,8 @@ WHERE `chi_id_projet` = :c_chi_id_projet ;',NULL,'0','2000-01-01 00:00:00.000','
          egal(champ(`T0`,`chx_utilisateur_travail`),:T0_chx_utilisateur_travail),
          comme(champ(`T0`,`chd_dtc_travail`),:T0_chd_dtc_travail),
          comme(champ(`T1`,`chp_nom_de_connexion_utilisateur`),:T1_chp_nom_de_connexion_utilisateur),
-         comme(champ(`T0`,`chp_etat_travail`),:T0_chp_etat_travail)
+         comme(champ(`T0`,`chp_etat_travail`),:T0_chp_etat_travail),
+         supegal(champ(`T0`,`chn_duree_travail`),:T0_chn_duree_travail)
       )
    ),
    complements(
@@ -49696,7 +49916,8 @@ WHERE (`T0`.`chi_id_travail` = :T0_chi_id_travail
    AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail
    AND `T0`.`chd_dtc_travail` LIKE :T0_chd_dtc_travail
    AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-   AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail) 
+   AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail
+   AND `T0`.`chn_duree_travail` >= :T0_chn_duree_travail) 
 ORDER BY `T0`.`chi_id_travail` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_travaux','1'),

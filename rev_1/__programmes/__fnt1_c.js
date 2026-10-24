@@ -5150,7 +5150,14 @@ class __fnt1{
                 }
                 t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
                 t+='"';
-                t+=' style="width:' + (tta.valeurs.length * 10) + 'px;height:25px;margin:3px;" />';
+                if(i === '--fond_est_gris'
+                       || '--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis' === i
+                       || '--afficher_les_boutons_d_edition' === i
+                ){
+                    t+=' style="width:50px;height:20px;margin:3px;" />';
+                }else{
+                    t+=' style="width:' + (tta.valeurs.length * 10) + 'px;height:25px;margin:3px;" />';
+                }
                 t+='    </div>';
                 t+='</label>';
             }

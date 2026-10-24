@@ -3103,6 +3103,7 @@ class w_rev_vers_js1{
                         'fromCodePoint',
                         'getAnimations',
                         'getAttribute',
+                        'getAttributeNames',
                         'getBBox',
                         'getBoundingClientRect',
                         'getScreenCTM',

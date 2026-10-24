@@ -22,7 +22,8 @@ class travaux1{
             "T0_chx_utilisateur_travail" : {"nom" : 'id utilisateur' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chd_dtc_travail" : {"nom" : 'dt création' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_de_connexion_utilisateur" : {"nom" : 'nom utilisateur' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chp_etat_travail" : {"nom" : 'état' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T0_chp_etat_travail" : {"nom" : 'état' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chn_duree_travail" : {"nom" : 'durée >=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -37,7 +38,8 @@ class travaux1{
         "`T0`.`chx_utilisateur_travail`" : 'id utilisateur' ,
         "`T0`.`chd_dtc_travail`" : 'dt création' ,
         "`T1`.`chp_nom_de_connexion_utilisateur`" : 'nom de connexion' ,
-        "`T0`.`chp_etat_travail`" : 'état'
+        "`T0`.`chp_etat_travail`" : 'état' ,
+        "`T0`.`chn_duree_travail`" : 'durée'
     };
     /*
       =========================== fragment ========================================================================
@@ -76,10 +78,10 @@ class travaux1{
                 this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >' + this.__ig1.les_svg.poubelle + '</div>';
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux())))" title="supprimer les travaux" >' + this.__ig1.les_svg.poubelle + '</div>';
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(compiler_les_travaux())))" title="compiler les travaux" >' + this.__ig1.les_svg.compiler + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux_termines())))" title="supprimer les travaux termines" >' + this.__ig1.les_svg.poubelle + '</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer_les_travaux())))" title="supprimer les travaux" >' + this.__ig1.les_svg.poubelle + '</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xer" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(compiler_les_travaux())))" title="compiler les travaux" >' + this.__ig1.les_svg.compiler + '</button>';
     }
     /*
       =============================================================================================================

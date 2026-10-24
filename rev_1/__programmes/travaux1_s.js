@@ -506,12 +506,12 @@ class travaux1{
         ];
         let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
         if(__obj_convertions.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_convertions.__xme});
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_utilisateur_travail" ,"lib" : 'id utilisateur du travail'},
             {
                     "nt" : 'parmis1' ,
@@ -519,22 +519,18 @@ class travaux1{
                     "lib" : 'état du travail' ,
                     "p" : [
                         /* tbel */
-                        'en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement']
+                        'en_file_d_attente',"en_pause",`en_cours`,'ok_termine','ko_termine','ok_mais_avertissement']
                 }
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
         if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
             if(obj1.__xst !== __xsu){
                 return({"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'});
             }
-        }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
-        if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -743,7 +739,7 @@ class travaux1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_resume_travail" ,"lib" : 'résumé du travail' ,"ldc" : '64'},
             {"nt" : 'non_vide1' ,"nz" : "chx_utilisateur_travail" ,"lib" : 'id utilisateur du travail'},
             {
                     "nt" : 'parmis1' ,
@@ -751,16 +747,18 @@ class travaux1{
                     "lib" : 'état du travail' ,
                     "p" : [
                         /* tbel */
-                        'en_file_d_attente','en_pause','en_cours','ok_termine','ko_termine','ok_mais_avertissement']
+                        'en_file_d_attente',"en_pause",`en_cours`,'ok_termine','ko_termine','ok_mais_avertissement']
                 }
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
-            return({"__xst" : __xsu ,"__xme" : __obj_tests.__xme});
+            return __obj_tests;
         }
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
-        if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'});
+            }
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
@@ -860,6 +858,9 @@ class travaux1{
             "quantitee" : __nbMax ,
             "debut" : __debut
         };
+        if(formulaire.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && formulaire.__ordre_de_tri_de_la_liste1 !== ''){
+            formulaire.__ordre_de_tri_de_la_liste1=formulaire.__ordre_de_tri_de_la_liste1.replace( /&quot;/g , '"' );
+        }
         for(let i in formulaire){
             if(i !== '__num_page'){
                 criteres_1395[i]=formulaire[i];
@@ -887,7 +888,8 @@ class travaux1{
            AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail
            AND `T0`.`chd_dtc_travail` LIKE :T0_chd_dtc_travail
            AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-           AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail) 
+           AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail
+           AND `T0`.`chn_duree_travail` >= :T0_chn_duree_travail) 
         ORDER BY `T0`.`chi_id_travail` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -917,13 +919,15 @@ class travaux1{
                AND `T0`.`chx_utilisateur_travail` = :T0_chx_utilisateur_travail
                AND `T0`.`chd_dtc_travail` LIKE :T0_chd_dtc_travail
                AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-               AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail) 
+               AND `T0`.`chp_etat_travail` LIKE :T0_chp_etat_travail
+               AND `T0`.`chn_duree_travail` >= :T0_chn_duree_travail) 
             ORDER BY `T0`.`chi_id_travail` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
             */
             /*sql_inclure_fin*/ 1395 , criteres_1395 , __db1 );
         }
+        this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_travail`" : "DESC"};
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
@@ -939,6 +943,9 @@ class travaux1{
       =============================================================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -946,6 +953,7 @@ class travaux1{
     */
     moi='travaux1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

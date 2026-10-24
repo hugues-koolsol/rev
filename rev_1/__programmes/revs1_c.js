@@ -71,7 +71,7 @@ class revs1{
                 this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_b1 yy__0" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__0" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(tout_supprimer())))" title="tout supprimer" >supprimer tout</button>';
     }
     /*
       =============================================================================================================

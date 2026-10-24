@@ -59,6 +59,9 @@ class sql_1395{
             if(tup.hasOwnProperty( 'T0_chp_etat_travail' ) && tup.T0_chp_etat_travail !== ''){
                 where0+=` AND \`T0\`.\`chp_etat_travail\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_etat_travail , 'T0_chp_etat_travail' ) + '\r\n';
             }
+            if(tup.hasOwnProperty( 'T0_chn_duree_travail' ) && tup.T0_chn_duree_travail !== ''){
+                where0+=` AND \`T0\`.\`chn_duree_travail\` >= ` + this.__ig1.__fnt1.sq1( tup.T0_chn_duree_travail , 'T0_chn_duree_travail' ) + '\r\n';
+            }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             

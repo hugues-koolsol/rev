@@ -63,9 +63,9 @@ class parametres1{
             o1+='    <input type="hidden" id="vv_ancien_numero_de_grandeur" value="' + chi_id_grandeur + '" />';
             o1+='    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_grandeur" value="" aria-autocomplete="list"/>';
             o1+='    <br />';
-            o1+='    <div class="yy_b1" rev_clic1="';
+            o1+='    <button class="yy_b1" rev_clic1="';
             o1+='fo1(co1(vv_grandeurs_nouveau_numero1),pm1(m1(n1(' + this.moi + '),f1(vv_grandeurs_nouveau_numero1(chi_id_parametre(' + chi_id_parametre + '))))))';
-            o1+='">attribuer ce nouveau numéro</div>';
+            o1+='">attribuer ce nouveau numéro</button>';
             o1+='</div>';
             this.__ig1.affiche_sous_fenetre1( o1 );
             return({"__xst" : __xsu});
@@ -263,7 +263,7 @@ class parametres1{
             }
         }
         if(this.__ig1.chi_id_utilisateur === 1){
-            this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+            this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création ' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
         }
     }
     /*
