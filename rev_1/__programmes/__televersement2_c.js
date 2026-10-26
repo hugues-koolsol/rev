@@ -10,39 +10,6 @@ const __xva=/* valeurs */'__xva';
 const __xsi=/* signaux */'__xsi';
 const __xac=/* actions */'__xac';
 class __televersement2{
-    /*#
-      exemple d'appel à inclure , rechercher xxxxxxxx pour voir ce qu'il y a à changer
-      
-      
-      o1+='  <div class="yy_edition_champ1">';
-      o1+='    <div class="yy_edition_libelle1">';
-      o1+='      <span>fichiers attachés</span>';
-      o1+='    </div>';
-      o1+='    <div class="yy_edition_valeur1">';
-      o1+='      <div class="yy_b1 yy__1" rev_clic1="';
-      o1+='m1(n1(__televersement2),f1(afficher_la_sous_fenetre_televersement1('
-      o1+='  traitement_final(';
-      o1+='    pm1(';
-      o1+='      m1(';
-      o1+='        n1(__televersement2),';
-      o1+='        f1(';
-      o1+='          enregistrer_televersement_standard1(';
-      o1+='            chi_id_basedd(3),';
-      o1+='            nom_de_la_table_referente(\'tbl_xxxxxxxx_le_nom_de_la_table_xxxxxxxx\'),'; // exemple : tbl_dessins
-      o1+='            id_element(' + enreg['T0_xxxxxxxx_le_nom_du_champ_cle_du_champ_xxxxxxxxxxx'] + '),';  // exemple : chi_id_dessin
-      o1+='            nom_champ_cle(xxxxxxxx_le_nom_du_champ_cle_du_champ_xxxxxxxxxxx)'; // exemple : chi_id_dessin
-      o1+='            recharger_la_page_courante(1)';
-      o1+='          )';
-      o1+='        )';
-      o1+='      )';
-      o1+='    )';
-      o1+='  )'
-      o1+='  plusieurs_fichiers_possibles(5)'
-      o1+=')))';
-      o1+='" >téléverser un fichier attaché</div>';
-      o1+='    </div>';
-      o1+='  </div>';
-    */
     moi='__televersement2';
     #les_morceaux_televerses=[];
     #le_colis={};
@@ -732,7 +699,7 @@ class __televersement2{
           =====================================================================================================
         */
         o1+='</div>';
-        o1+='<div class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</div>';
+        o1+='<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1(' + this.moi + '),f1(modifier1()))))" title="modifier" >modifier</button>';
         this.__ig1.affiche_sous_fenetre1( o1 );
         return({"__xst" : __xsu});
     }
@@ -917,26 +884,8 @@ class __televersement2{
         /*
           =====================================================================================================
         */
-        o1+='<div class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</div>';
+        o1+='<button class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(supprimer1(chi_id_televersement(' + enreg['T0_chi_id_televersement'] + ')))))" title="">je confirme la suppression</button>';
         this.__ig1.affiche_sous_fenetre1( o1 );
-        /*
-          let cmd='';
-          cmd+='liste1(';
-          for(let i in this.tableau_des_filtres['liste1']){
-          if(this.filtres['liste1'][i] !== ''){
-          cmd+=i + '(\'' + this.__ig1.fi2( this.filtres['liste1'][i] ) + '\')';
-          }
-          }
-          cmd+=')';
-          let obj2=this.__ig1.__rev1.rev_tm( cmd );
-          let jso=JSON.stringify( obj2.__xva );
-          o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-          document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
-          this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
-          if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
-          this.__ig1.maj_hash( mat , 0 );
-          }
-        */
         return({"__xst" : __xsu});
     }
 }

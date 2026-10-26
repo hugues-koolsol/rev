@@ -24,7 +24,7 @@ class sql_1166{
          AND \`T0\`.\`chp_champ_cle_televersement\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chp_champ_cle_televersement , 'T0_chp_champ_cle_televersement' ) + `)`;
         sql0+=where0;
     const order0=`
-       ORDER BY  \`T0\`.\`chi_id_televersement\` DESC`;
+       ORDER BY  \`T0\`.\`che_ordre_televersement\` ASC, \`T0\`.\`chi_id_televersement\` DESC`;
     sql0+=order0;
     const plage0=`
         LIMIT 500 OFFSET 0 `;

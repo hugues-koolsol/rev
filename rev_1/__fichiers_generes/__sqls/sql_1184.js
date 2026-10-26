@@ -48,7 +48,7 @@ class sql_1184{
         */
         /* test "non nul" sur le champ "che__nur_parametre" */
         if(tup.n_che__nur_parametre === null || tup.n_che__nur_parametre === ''){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour " nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           =====================================================================================================

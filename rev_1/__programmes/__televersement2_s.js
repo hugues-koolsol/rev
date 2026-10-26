@@ -95,7 +95,7 @@ class __televersement2{
            AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
            AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement
            AND `T0`.`chp_champ_cle_televersement` = :T0_chp_champ_cle_televersement) 
-        ORDER BY `T0`.`chi_id_televersement` DESC  
+        ORDER BY `T0`.`che_ordre_televersement` ASC, `T0`.`chi_id_televersement` DESC  
         LIMIT 500 OFFSET 0 
         ;
         */

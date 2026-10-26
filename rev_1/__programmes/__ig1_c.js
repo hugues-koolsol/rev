@@ -1691,10 +1691,7 @@ class __ig1{
         let obj=this.__xac( mat , 0 , null , e );
         /* ==== appel ici ================================================= */
         if(obj.__xst === __xer){
-            this.ajoute_message( {
-                    "__xst" : __xer ,
-                    "__xme" : 'le source de traite_clic1 :<br /><b>' + l_action_rev + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
-                } );
+            this.ajoute_message( {"__xst" : __xer ,"__xme" : '<b>' + l_action_rev + '</b> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()} );
             this.affiche_les_messages();
             this.retablir_les_boutons_masques();
             return({"__xst" : __xer ,"__xme" : this.nl2()});
@@ -2467,7 +2464,7 @@ class __ig1{
         t+='    font-family:monospace;';
         t+='}';
         t+='tr>td:last-of-type,tr>th:last-of-type {border-right: ' + (t_border + 1) + 'px ' + couleur5hex + ' solid;}';
-        t+='.yy_filtre_liste1{display:flex;flex-wrap:balance;justify-content:space-evenly;}';
+        t+='.yy_filtre_liste1{display:flex;flex-wrap:wrap;justify-content:space-evenly;}';
         let border_debug=0;
         let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd;
         /* hauteur_lgn_avec_pad_et_bordure */
@@ -2553,7 +2550,7 @@ class __ig1{
         t+='.yy_edition_champ2{';
         t+='    display: flex;';
         t+='    flex-direction: row;';
-        t+='    flex-wrap:balance;';
+        t+='    flex-wrap:wrap;';
         t+='    align-items: stretch;';
         t+='    justify-content:space-evenly;';
         t+='    margin-bottom: ' + t_marge_hb + 'px;';
@@ -3594,16 +3591,6 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    fi2( s ){
-        if(s === null || s === undefined){
-            return '';
-        }
-        let t=s + '';
-        return(t.replace( /&/g , '&amp;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ));
-    }
-    /*
-      =============================================================================================================
-    */
     fi0( s ){
         let t=s + '';
         return(t.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ));
@@ -3614,6 +3601,16 @@ class __ig1{
     fi1( s ){
         let t=s + '';
         return(this.fi0( t.replace( /\\\'/ , '\'' ).replace( /\\\\/ , '\\' ) ));
+    }
+    /*
+      =============================================================================================================
+    */
+    fi2( s ){
+        if(s === null || s === undefined){
+            return '';
+        }
+        let t=s + '';
+        return(t.replace( /&/g , '&amp;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ));
     }
     /*
       =============================================================================================================

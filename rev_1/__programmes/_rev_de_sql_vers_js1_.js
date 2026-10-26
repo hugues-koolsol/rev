@@ -1983,6 +1983,10 @@ class _rev_de_sql_vers_js1{
                                 if(this.#obj_webs.ordre_des_tables[j].alias_de_la_table === elem.tableau_des_champs[0][0]){
                                     let id_bdd=this.#obj_webs.ordre_des_tables[j].id_bdd;
                                     let nom_de_la_table=this.#obj_webs.ordre_des_tables[j].nom_de_la_table;
+                                    if(!this.#obj_webs.tableau_des_bases_tables_champs[id_bdd][nom_de_la_table].champs.hasOwnProperty( elem.tableau_des_champs[0][1] )
+                                    ){
+                                        return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ ' + elem.tableau_des_champs[0][1] + ' n\'a pas été trouvé dans la table ' + nom_de_la_table} ));
+                                    }
                                     genre_numerique_du_champ=this.#obj_webs.tableau_des_bases_tables_champs[id_bdd][nom_de_la_table].champs[elem.tableau_des_champs[0][1]].genre_numerique_du_champ;
                                     break;
                                 }

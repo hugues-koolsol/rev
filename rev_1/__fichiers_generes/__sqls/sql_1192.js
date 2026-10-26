@@ -10,6 +10,10 @@ class sql_1192{
       ================================update=============================================================================
     */
     async sql( tup ){
+        /* test "non nul" sur le champ "cht_rev_grandeur" */
+        if(tup.n_cht_rev_grandeur === null || tup.n_cht_rev_grandeur === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{

@@ -259,8 +259,8 @@ class __fnt1{
                 /*  */
                 tt+='<td>';
                 /*  */
-                tt+='<div class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(__televersement2),f1(page_confirmation_supprimer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</div>';
-                tt+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(__televersement2),f1(page_editer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.editer + '</div>';
+                tt+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(__televersement2),f1(page_confirmation_supprimer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
+                tt+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(__televersement2),f1(page_editer1(chi_id_televersement(' + le_televersement['T0_chi_id_televersement'] + ')))))">' + this.__ig1.les_svg.editer + '</button>';
                 /*  */
                 tt+='</td>';
                 /*  */
@@ -303,14 +303,14 @@ class __fnt1{
                 tt+='</tr>';
             }
             tt+='</table>';
-            tt+='<div class="yy_b1 yy__1" rev_clic1="';
+            tt+='<button class="yy_b1 yy__1" rev_clic1="';
             tt+='m1(n1(' + this.moi + '),f1(trier_les_televersements1(';
             tt+='che_id_element_televersement(' + che_id_element_televersement + '),';
             tt+='chp_nom_table_televersement(\'' + chp_nom_table_televersement.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
             tt+='che_bdd_televersement(' + che_bdd_televersement + ')';
             tt+='chp_champ_cle_televersement(' + chp_champ_cle_televersement + ')';
             tt+=')))';
-            tt+='" >trier</div>';
+            tt+='" >trier</button>';
         }
         return tt;
     }
@@ -814,11 +814,11 @@ class __fnt1{
         o1+='  </tr>';
         o1+='  <tr>';
         o1+='    <td style="height:1.8em;">';
-        o1+='       <div class="yy_b1 yy__3" rev_clic1="m1(n1(__fnt1),f1(maj_champ_de_couleur1(';
+        o1+='       <button class="yy_b1 yy__3" rev_clic1="m1(n1(__fnt1),f1(maj_champ_de_couleur1(';
         o1+='nom_du_champ1(' + nom_du_champ1 + ')';
         o1+='nom_du_champ2(' + nom_du_champ2 + ')';
         o1+='nom_du_champ_a_modifier(' + nom_du_champ_a_modifier + ')';
-        o1+=')))" >s</div>';
+        o1+=')))" >s</button>';
         o1+='       <div data-valeur_couleur1="' + couleur1 + '" id="vv_nom_couleur_selectionne1" style="display:inline-block;">';
         o1+='<span style="background:' + couleur1 + ';color:' + couleur2 + ';">' + couleur1 + ' / ' + couleur2 + '</span>';
         o1+='       </div>';
@@ -1005,10 +1005,10 @@ class __fnt1{
             let tup=le_colis.__xva.liste_des_grandeurs[i];
             lst1+='<tr>';
             lst1+='<td>';
-            lst1+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_sous_liste2(';
+            lst1+='<button class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_sous_liste2(';
             lst1+='id_zone(' + id_zone + '),';
             lst1+='chi_id_grandeur(' + tup.T0_chi_id_grandeur + ')';
-            lst1+=')))">=&gt;</div>';
+            lst1+=')))">=&gt;</button>';
             lst1+='</td>';
             lst1+='<td>';
             lst1+=tup.T0_chi_id_grandeur;
@@ -1164,13 +1164,13 @@ class __fnt1{
         o1+='<table id="vv_liste_des_grandeurs">';
         o1+='<tr>';
         o1+='<th>';
-        o1+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_des_grandeur_de_la_liste_pour_le_filtre(';
+        o1+='<button class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_des_grandeur_de_la_liste_pour_le_filtre(';
         o1+='id_zone(' + id_zone + '),';
         o1+='origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
         o1+='champ_libelle_associé(' + champ_libelle_associé + ')';
         o1+='champ_texte_associé(' + champ_texte_associé + ')';
         o1+='cle_session(' + cle_session + ')';
-        o1+=')))">=&gt;</div>';
+        o1+=')))">=&gt;</button>';
         o1+='';
         o1+='</th>';
         o1+='<th>id</th>';
@@ -1178,7 +1178,7 @@ class __fnt1{
         o1+='</tr>';
         o1+='<tr>';
         o1+='<td>';
-        o1+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
+        o1+='<button class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
         o1+='id_zone(' + id_zone + '),';
         /* la grandeur zéro pour trouver les valeurs IS NULL */
         o1+='chi_id_grandeur(0),';
@@ -1186,7 +1186,7 @@ class __fnt1{
         o1+='champ_texte_associé(' + champ_texte_associé + ')';
         o1+='champ_libelle_associé(' + champ_libelle_associé + ')';
         o1+='cle_session(' + cle_session + ')';
-        o1+=')))">=&gt;</div>';
+        o1+=')))">=&gt;</button>';
         o1+='</td>';
         o1+='<td>';
         o1+='indéfinie';
@@ -1202,14 +1202,14 @@ class __fnt1{
                 cochee=' checked';
             }
             o1+='<input type="checkbox"  value="' + tup.T0_chi_id_grandeur + '" ' + cochee + ' />';
-            o1+='<div class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
+            o1+='<button class="yy_b1 yy__1" rev_clic1="m1(n1(' + that.moi + '),f1(selectionner_une_grandeur_de_la_liste_pour_le_filtre(';
             o1+='chi_id_grandeur(' + tup.T0_chi_id_grandeur + '),';
             o1+='id_zone(' + id_zone + '),';
             o1+='origine_de_l_appel_liste(' + origine_de_l_appel_liste + ')';
             o1+='champ_texte_associé(' + champ_texte_associé + ')';
             o1+='champ_libelle_associé(' + champ_libelle_associé + ')';
             o1+='cle_session(' + cle_session + ')';
-            o1+=')))">=&gt;</div>';
+            o1+=')))">=&gt;</button>';
             o1+='</td>';
             o1+='<td>';
             o1+=tup.T0_chi_id_grandeur;
@@ -1269,7 +1269,7 @@ class __fnt1{
                 libelle2+=tup.T0_chp_cle_grandeur ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</div>';
+                lst+='  <button class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</button>';
                 lst+='</td>';
                 lst+='<td style="text-align:center;">';
                 lst+=this.__ig1.fi2( tup.T0_chi_id_grandeur );
@@ -1624,12 +1624,12 @@ class __fnt1{
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" ';
             o1+=' />';
             o1+=this.__ig1.__fnt1.boutons_heure1( les_donnees_du_champ.nom_du_champ );
-            o1+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'08:00:00\')))))">08</div>';
-            o1+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'10:00:00\')))))">10</div>';
-            o1+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'12:00:00\')))))">12</div>';
-            o1+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'14:00:00\')))))">14</div>';
-            o1+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'16:00:00\')))))">16</div>';
-            o1+='<div class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'18:00:00\')))))">18</div>';
+            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'08:00:00\')))))">08</button>';
+            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'10:00:00\')))))">10</button>';
+            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'12:00:00\')))))">12</button>';
+            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'14:00:00\')))))">14</button>';
+            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'16:00:00\')))))">16</button>';
+            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'18:00:00\')))))">18</button>';
             o1+='          <div><i style="text-align:left;font-weight:100;">';
             if(les_donnees_du_champ.description_du_champ){
                 o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
@@ -1748,12 +1748,12 @@ class __fnt1{
                 o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
                 for( let i=0 ; i < les_donnees_du_champ.liens_parmis_du_genre1.length ; i++ ){
                     let tt=les_donnees_du_champ.liens_parmis_du_genre1[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
-                    o1+='<div class="yy_b1" rev_clic1="';
+                    o1+='<button class="yy_b1" rev_clic1="';
                     o1+='m1(n1(__ig1),f1(maj_contenu(';
                     o1+='type_cible(valeur_constante),';
                     o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
                     o1+='valeur(valeur_constante(\'' + tt + '\'))';
-                    o1+=')))">' + les_donnees_du_champ.liens_parmis_du_genre1[i] + '</div>';
+                    o1+=')))">' + les_donnees_du_champ.liens_parmis_du_genre1[i] + '</button>';
                 }
                 o1+='</div>';
             }
@@ -1761,12 +1761,12 @@ class __fnt1{
                 o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
-                    o1+='<div class="yy_b1" rev_clic1="';
+                    o1+='<button class="yy_b1" rev_clic1="';
                     o1+='m1(n1(__ig1),f1(maj_contenu(';
                     o1+='type_cible(valeur_constante),';
                     o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
                     o1+='valeur(valeur_constante(\'' + tt + '\'))';
-                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</button>';
                 }
                 o1+='</div>';
             }
@@ -1841,12 +1841,12 @@ class __fnt1{
                 o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
-                    o1+='<div class="yy_b1" rev_clic1="';
+                    o1+='<button class="yy_b1" rev_clic1="';
                     o1+='m1(n1(__ig1),f1(maj_contenu(';
                     o1+='type_cible(valeur_constante),';
                     o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
                     o1+='valeur(valeur_constante(\'' + tt + '\'))';
-                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</button>';
                 }
                 o1+='</div>';
             }
@@ -1909,12 +1909,12 @@ class __fnt1{
                 o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
-                    o1+='<div class="yy_b1" rev_clic1="';
+                    o1+='<button class="yy_b1" rev_clic1="';
                     o1+='m1(n1(__ig1),f1(maj_contenu(';
                     o1+='type_cible(valeur_constante),';
                     o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
                     o1+='valeur(valeur_constante(\'' + tt + '\'))';
-                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</button>';
                 }
                 o1+='</div>';
             }
@@ -1985,12 +1985,12 @@ class __fnt1{
                 o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
-                    o1+='<div class="yy_b1" rev_clic1="';
+                    o1+='<button class="yy_b1" rev_clic1="';
                     o1+='m1(n1(__ig1),f1(maj_contenu(';
                     o1+='type_cible(valeur_constante),';
                     o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
                     o1+='valeur(valeur_constante(\'' + tt + '\'))';
-                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</button>';
                 }
                 o1+='</div>';
             }
@@ -2071,12 +2071,12 @@ class __fnt1{
                 o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
-                    o1+='<div class="yy_b1" rev_clic1="';
+                    o1+='<button class="yy_b1" rev_clic1="';
                     o1+='m1(n1(__ig1),f1(maj_contenu(';
                     o1+='type_cible(valeur_constante),';
                     o1+='id(' + les_donnees_du_champ.nom_du_champ + '),';
                     o1+='valeur(valeur_constante(\'' + tt + '\'))';
-                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</div>';
+                    o1+=')))">' + les_donnees_du_champ.les_suggestions[i] + '</button>';
                 }
                 o1+='</div>';
             }
@@ -2301,7 +2301,7 @@ class __fnt1{
         if(contexte === 'modifier1' || contexte === 'creer1'){
             o1+='        <input type="hidden" value="' + valeur + '" id="' + nom_du_champ + '" />';
         }
-        o1+='        <div';
+        o1+='        <button';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
         o1+=' data-valeur=""';
         o1+=' class="yy_b1' + (tup && tup['T0_' + nom_du_champ + ''] === null ? ( ' yy__2' ) : ( '' )) + '"';
@@ -2312,9 +2312,9 @@ class __fnt1{
         o1+='vv_libelle(' + nom_du_champ + '_libelle),';
         o1+='valeur(),';
         o1+='contexte(' + contexte + ')';
-        o1+=')))" >' + this.__ig1.les_svg.ensemble_vide + '</div>';
+        o1+=')))" >' + this.__ig1.les_svg.ensemble_vide + '</button>';
         /*  */
-        o1+='        <div';
+        o1+='        <button';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
         o1+=' data-valeur="0"';
         o1+=' class="yy_b1' + (tup && tup['T0_' + nom_du_champ + ''] === 0 ? ( ' yy__0' ) : ( '' )) + '"';
@@ -2325,9 +2325,9 @@ class __fnt1{
         o1+='vv_libelle(' + nom_du_champ + '_libelle),';
         o1+='valeur(0),';
         o1+='contexte(' + contexte + ')';
-        o1+=')))">0</div>';
+        o1+=')))">0</button>';
         /*  */
-        o1+='        <div';
+        o1+='        <button';
         o1+=' data-nulle_zero_un="' + nom_du_champ + '"';
         o1+=' data-valeur="1"';
         o1+=' class="yy_b1' + (tup && tup['T0_' + nom_du_champ + ''] === 1 ? ( ' yy__1' ) : ( '' )) + '"';
@@ -2338,7 +2338,7 @@ class __fnt1{
         o1+='vv_libelle(' + nom_du_champ + '_libelle),';
         o1+='valeur(1),';
         o1+='contexte(' + contexte + ')';
-        o1+=')))">1</div>';
+        o1+=')))">1</button>';
         /*  */
         if(libelle !== null){
             o1+='</label>';
@@ -2641,7 +2641,7 @@ class __fnt1{
                         o1+='<div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
                         o1+='<div class="yy_champ_filtre1" style="width:100%;">';
                         o1+='<div class="yy__fil_btns1" style="justify-content:space-around;width:100%;">';
-                        o1+='<div class="yy_b1 yy__4" rev_clic1="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
+                        o1+='<button class="yy_b1 yy__4" rev_clic1="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
                         o1+='chi_id_parametre(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
                         o1+='table_mere(' + l_elem_filtre.rerefence_a_une_grandeur.chi_id_parametre + '),';
@@ -2655,8 +2655,8 @@ class __fnt1{
                         }
                         o1+='cle_session(' + cle_session + ')';
                         o1+='__sous_titre_a_afficher(\'' + l_elem_filtre.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-                        o1+=')))">?</div>';
-                        o1+='             <div class="yy_b1 yy__4" rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(';
+                        o1+=')))">?</button>';
+                        o1+='             <button class="yy_b1 yy__4" rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(';
                         o1+='id(' + i + '),';
                         o1+='origine_de_l_appel_liste(' + that.moi + '),';
                         if(l_elem_filtre.champ_texte_associé !== undefined){
@@ -2666,7 +2666,7 @@ class __fnt1{
                             o1+='champ_libelle_associé(' + l_elem_filtre.champ_libelle_associé + ')';
                         }
                         o1+='cle_session(' + cle_session + ')';
-                        o1+=')))">X</div>';
+                        o1+=')))">X</button>';
                         o1+='</div>';
                         o1+='</div>';
                         /*  */
@@ -2734,10 +2734,10 @@ class __fnt1{
                             o1+='<div class="yy_champ_filtre1">';
                             o1+='<input type="hidden" id="' + i + '" value="' + val + '" maxlength="2" />';
                             o1+='<div class="yy__fil_btns1">';
-                            o1+='<div data-pos=""  data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">X</div>';
-                            o1+='<div data-pos="-1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '-1' ? ( 'yy__2' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(-1))))">&nbsp;</div>';
-                            o1+='<div data-pos="0" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(0))))" >0</div>';
-                            o1+='<div data-pos="1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(1))))" >1</div>';
+                            o1+='<button data-pos=""  data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur())))">X</button>';
+                            o1+='<button data-pos="-1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '-1' ? ( 'yy__2' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(-1))))">&nbsp;</button>';
+                            o1+='<button data-pos="0" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(0))))" >0</button>';
+                            o1+='<button data-pos="1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_nulle_zero_un(id(' + i + '),valeur(1))))" >1</button>';
                             o1+='</div>';
                             o1+='</div>';
                         }else{
@@ -3386,7 +3386,7 @@ class __fnt1{
             if(ref_champ_date.value !== '' && heure_a_afficher === i){
                 o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
             }else{
-                o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(definir_l_heure(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'h">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(definir_l_heure(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'h">' + (i < 10 ? ( '0' + i ) : ( i )) + '</button>';
             }
             o1+='</td>';
             if(i + 1% 6 === 0){
@@ -3403,7 +3403,7 @@ class __fnt1{
             if(ref_champ_date.value !== '' && minute_a_afficher === i){
                 o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
             }else{
-                o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(definir_la_minute(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'mn">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(definir_la_minute(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'mn">' + (i < 10 ? ( '0' + i ) : ( i )) + '</button>';
             }
             o1+='</td>';
             o1+='</td>';
@@ -3419,7 +3419,7 @@ class __fnt1{
             if(ref_champ_date.value !== '' && seconde_a_afficher === i){
                 o1+='<span style="background:yellow;">' + (i < 10 ? ( '0' + i ) : ( i )) + '</span>';
             }else{
-                o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(definir_la_seconde(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'ss">' + (i < 10 ? ( '0' + i ) : ( i )) + '</div>';
+                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(definir_la_seconde(nom_du_champ(' + nom_du_champ + '),valeur(' + i + '))))" title="' + i + 'ss">' + (i < 10 ? ( '0' + i ) : ( i )) + '</button>';
             }
             o1+='</td>';
         }
@@ -3431,28 +3431,28 @@ class __fnt1{
         /*
         */
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt yy__4" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(0))))" title="nulle">Ø</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt yy__4" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(0))))" title="nulle">Ø</button>';
         o1+='</td>';
         /*
           maintenant hh mm ss
         */
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(1))))" title="maintenant">mn</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(1))))" title="maintenant">mn</button>';
         o1+='</td>';
         /*
         */
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(2))))" title="secondes à zéro">hm</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(2))))" title="secondes à zéro">hm</button>';
         o1+='</td>';
         /*
         */
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(3))))" title="minutes et secondes à zéro">00</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(3))))" title="minutes et secondes à zéro">00</button>';
         o1+='</td>';
         /*
         */
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt yy__1" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(4))))" title="valider">OK</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt yy__1" rev_clic1="m1(n1(__fnt1),f1(maintenant_hhmmss(nom_du_champ(' + nom_du_champ + '),option(4))))" title="valider">OK</button>';
         o1+='</td>';
         /*
         */
@@ -3883,7 +3883,7 @@ class __fnt1{
             let derniere_annee=annee_de_debut + 49;
             /*  */
             o1+='<td id="vv_demi_siecle_precedente">';
-            o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(demi_siecle_precedent(nom_du_champ(' + nom_du_champ + '),annee(' + annee_de_debut + '),mois(' + mois_a_afficher + '))))">&lt;</div>';
+            o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(demi_siecle_precedent(nom_du_champ(' + nom_du_champ + '),annee(' + annee_de_debut + '),mois(' + mois_a_afficher + '))))">&lt;</button>';
             o1+='</td>';
             /*  */
             o1+='<td colspan="3">';
@@ -3891,7 +3891,7 @@ class __fnt1{
             o1+='</td>';
             /*  */
             o1+='<td id="vv_demi_siecle_precedente">';
-            o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(demi_siecle_suivant(nom_du_champ(' + nom_du_champ + '),annee(' + annee_de_debut + '),mois(' + mois_a_afficher + '))))">&gt;</div>';
+            o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(demi_siecle_suivant(nom_du_champ(' + nom_du_champ + '),annee(' + annee_de_debut + '),mois(' + mois_a_afficher + '))))">&gt;</button>';
             o1+='</td>';
             /*  */
             o1+='</tr>';
@@ -3907,7 +3907,7 @@ class __fnt1{
                     sty1=' style="border-color:red;"';
                 }
                 o1+='<td ' + sty1 + ' data-i="' + i + '-' + (i% (nb_annees_par_ligne - 1)) + '-' + ((i - 1)% nb_annees_par_ligne) + '-' + '">';
-                o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(choisir_annee(nom_du_champ(' + nom_du_champ + '),annee(' + annee_courante + '),mois(' + mois_a_afficher + '))))">' + annee_courante + '</div>';
+                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(choisir_annee(nom_du_champ(' + nom_du_champ + '),annee(' + annee_courante + '),mois(' + mois_a_afficher + '))))">' + annee_courante + '</button>';
                 o1+='</td>';
                 if(i >= nb_annees_par_ligne - 1 && (i - (nb_annees_par_ligne - 1))% nb_annees_par_ligne == 0){
                     o1+='</tr>';
@@ -3926,24 +3926,24 @@ class __fnt1{
           
         */
         o1+='<td id="vv_annee_precedente">';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(annee_precedente(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&lt;</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(annee_precedente(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&lt;</button>';
         o1+='</td>';
         o1+='<td id="vv_annee_courante" colspan="2">';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(afficher_siecle(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">' + annee_a_afficher + '</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(afficher_siecle(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">' + annee_a_afficher + '</button>';
         o1+='</td>';
         o1+='<td id="vv_annee_suivante">';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(annee_suivante(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&gt;</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(annee_suivante(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&gt;</button>';
         o1+='</td>';
         o1+='<td>&nbsp;</td>';
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt yy__4" rev_clic1="m1(n1(__fnt1),f1(annuler_le_champ_date1(nom_du_champ(' + nom_du_champ + '))))">Ø</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt yy__4" rev_clic1="m1(n1(__fnt1),f1(annuler_le_champ_date1(nom_du_champ(' + nom_du_champ + '))))">Ø</button>';
         o1+='';
         o1+='</td>';
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt yy__1" rev_clic1="m1(n1(__fnt1),f1(selectionner_le_jour_courant(nom_du_champ(' + nom_du_champ + '))))" title="jour courant">JC</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt yy__1" rev_clic1="m1(n1(__fnt1),f1(selectionner_le_jour_courant(nom_du_champ(' + nom_du_champ + '))))" title="jour courant">JC</button>';
         o1+='</td>';
         o1+='<td>';
-        o1+='<div class="yy_b1 rev_b_ctxt yy__4" rev_clic1="m1(n1(__fnt1),f1(affiche_mois_courant(nom_du_champ(' + nom_du_champ + '))))" title="mois courant">MC</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt yy__4" rev_clic1="m1(n1(__fnt1),f1(affiche_mois_courant(nom_du_champ(' + nom_du_champ + '))))" title="mois courant">MC</button>';
         o1+='</td>';
         /*
           
@@ -3964,14 +3964,14 @@ class __fnt1{
         */
         o1+='<td>&nbsp;</td>';
         o1+='<td id="vv_mois_precedent">';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(mois_precedent(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&lt;</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(mois_precedent(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&lt;</button>';
         o1+='';
         o1+='</td>';
         o1+='<td id="vv_mois_courant" colspan="4">';
         o1+=annee_a_afficher + ' ' + (mois_a_afficher < 10 ? ( '0' + mois_a_afficher ) : ( mois_a_afficher ));
         o1+='</td>';
         o1+='<td id="vv_mois_suivant">';
-        o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(mois_suivant(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&gt;</div>';
+        o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(mois_suivant(nom_du_champ(' + nom_du_champ + '),annee(' + annee_a_afficher + '),mois(' + mois_a_afficher + '))))">&gt;</button>';
         o1+='';
         o1+='</td>';
         o1+='<td>&nbsp;</td>';
@@ -4088,7 +4088,7 @@ class __fnt1{
             if(date_en_cours === true){
                 o1+='<span>' + i + '</span>';
             }else{
-                o1+='<div class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(selectionner_la_date1(nom_du_champ(' + nom_du_champ + '),jour(' + i + '),mois(' + mois_a_afficher + '),annee(' + annee_a_afficher + '))))">' + i + '</div>';
+                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(selectionner_la_date1(nom_du_champ(' + nom_du_champ + '),jour(' + i + '),mois(' + mois_a_afficher + '),annee(' + annee_a_afficher + '))))">' + i + '</button>';
             }
             o1+='</td>';
             if(jour_du_premier_jour% 7 == 0){
@@ -4534,7 +4534,7 @@ class __fnt1{
             o1+='<br />';
             o1+='<input  class="yy_input1" id="vv_valeur_remplacante" value="" />';
             o1+='<br />';
-            o1+=' <div class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</div>\r\n';
+            o1+=' <button class="yy_b1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_la_valeur_dans_la_zone(zone_source(' + zone_source + '))))" title="remplacer_dans_la_zone" >remplacer</button>\r\n';
             this.__ig1.affiche_sous_fenetre1( o1 );
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
@@ -4907,7 +4907,7 @@ class __fnt1{
     */
     boutons_suppression2( nom_de_la_zone ){
         let o1='';
-        o1+=' <div class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</div>\r\n';
+        o1+=' <button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>\r\n';
         return o1;
     }
     /*
@@ -5023,9 +5023,9 @@ class __fnt1{
             if(deverminage_avant !== this.__ig1.__deverminage){
                 console.log( 'Changement de déverminage=' , this.__ig1.__deverminage );
             }
-            /*
+            /*#
               if(this.__ig1.__deverminage === 2){
-              console.log( this.__ig1.stockage_local );
+                  console.log( this.__ig1.stockage_local );
               }
             */
             localStorage.setItem( this.__ig1.cle_lst0 , JSON.stringify( this.__ig1.stockage_local ) );
@@ -5055,16 +5055,11 @@ class __fnt1{
         let max=10;
         let step=1;
         let font_size_fixe='16px';
-        let largeur_des_champs_input='3rem';
-        let style_des_tds0='border:1px black solid;text-align:center;font-size:' + font_size_fixe + ';';
-        let style_des_tds1=' style="border:1px black solid;font-size:' + font_size_fixe + ';"';
-        let style_des_tds2=' style="border:1px green solid;height:40px;font-size:' + font_size_fixe + ';"';
-        let le_style_des_tables1=' style="border:1px black solid;border-collapse:collapse;min-width:100%;"';
         let t='';
-        let haut1=32;
+        let haut1=36;
+        let haut2=haut1 - 2;
+        t+='<h1 style="font-size:18px;width:100%;height:' + haut1 + 'px;margin-bottom:20px;">paramètres et aides</h1>';
         t+='<div class="yy_edition_champ2" style="width:100%;border-width:1px!important;">';
-        t+='<h1 style="font-size:18px;width:100%;height:' + haut1 + 'px;">paramètres et aides</h1>';
-        t+='<div style="width:100%;height:' + (2 * haut1) + 'px;text-align:center;overflow:hidden;">MMMMMMMMMM,2000-01-01,00:00:00,1234567890</div>';
         for(let i in this.__ig1.reference_stockage_local['aspect']){
             if('--t_police' === i
                    || '--t_padding' === i
@@ -5081,60 +5076,59 @@ class __fnt1{
             ){
                 let tta=this.__ig1.reference_stockage_local['aspect'][i];
                 let vva=this.__ig1.stockage_local['aspect'][i];
-                t+='<label for="' + i + '" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:32px;">';
+                t+='<label for="' + i + '" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:' + haut1 + 'px;">';
                 if(i === '--t_police'){
-                    t+='<div id="--t_police_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;width:32px;height:32px;">' + vva.valeur + '</div>';
+                    t+='<div id="--t_police_nouvelle" style="display:inline-block;border-color:red;border-style:solid;border-width:1px;width:32px;height:' + haut1 + 'px">' + vva.valeur + '</div>';
                 }else if(i === '--t_padding'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:30px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--t_border'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:30px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border-color:red;border-style:solid;padding:1px;font-size:12px;vertical-align:top;border-width:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--t_pad_inp'){
-                    t+='<div style="padding:0;border:0px blue solid;width:60px;height:30px;">';
-                    t+='<table style="border:0;"><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
-                    t+='<input disabled="true" class="yy_input1" id="' + i + '_nouvelle" style="border-radius:1px;border-width:1px;line-height:14px;max-height:30px;height:auto;vertical-align:top;font-size:12px;max-width:22px!important;min-width:20px!important;padding:' + vva.valeur + 'px;" value="' + vva.valeur + '" />';
+                    t+='<div style="padding:0;border:0px blue solid;width:40px;height:' + haut2 + 'px;">';
+                    t+='<table style="border:0;"><tr><td style="padding:0;border:0px blue solid;width:30px;height:' + haut2 + 'px;">';
+                    t+='<input disabled="true" class="yy_input1" id="' + i + '_nouvelle" style="border-radius:1px;border-width:1px;line-height:14px;max-height:' + haut2 + 'px;height:auto;vertical-align:top;font-size:12px;max-width:22px!important;min-width:20px!important;padding:' + vva.valeur + 'px;" value="' + vva.valeur + '" />';
                     t+='</td></tr></table>';
                     t+='</div>';
                 }else if(i === '--t_input_border'){
-                    t+='<div style="padding:0;border:0px blue solid;width:60px;height:30px;">';
-                    t+='<table style="border:0;"><tr><td style="padding:0;border:0px blue solid;width:30px;height:30px;">';
-                    t+='<input disabled="true" class="yy_input1" id="' + i + '_nouvelle" style="border-radius:1px;padding:1px;line-height:14px;max-height:30px;height:auto;vertical-align:top;font-size:12px;max-width:22px!important;min-width:20px!important;border-width:' + vva.valeur + 'px;" value="' + vva.valeur + '" />';
+                    t+='<div style="padding:0;border:0px blue solid;width:40px;height:' + haut2 + 'px;">';
+                    t+='<table style="border:0;"><tr><td style="padding:0;border:0px blue solid;width:30px;height:' + haut2 + 'px;">';
+                    t+='<input disabled="true" class="yy_input1" id="' + i + '_nouvelle"';
+                    t+=' style="border-radius:1px;padding:1px;line-height:14px;max-height:' + haut2 + 'px;height:auto;vertical-align:top;font-size:12px;max-width:22px!important;min-width:20px!important;border-color:black;border-width:' + vva.valeur + 'px;" value="' + vva.valeur + '" />';
                     t+='</td></tr></table>';
                     t+='</div>';
                 }else if(i === '--t_marge_gd'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:60px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:60px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:1px;margin:' + vva.valeur + 'px">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--t_marge_hb'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:1px;margin:' + vva.valeur + 'px">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--t_rayon_b'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;border-radius:' + vva.valeur + 'px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--fond_est_gris'
                        || '--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis' === i
                        || '--afficher_les_boutons_d_edition' === i
                 ){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--c_couleur1'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else{
-                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
+                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
                     t+='</div>';
                 }
-                t+='    <div id="che_binaire_source_libelle" style="display:flex;">';
-                t+='        <div style="margin:auto 3px;font-size:16px;">' + tta.libelle0 + '</div>';
-                t+='    </div>';
+                /*  */
                 t+='    <div>';
                 t+='         <input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" value="' + vva.valeur + '" ';
                 t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
@@ -5150,15 +5144,13 @@ class __fnt1{
                 }
                 t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(aspect))))';
                 t+='"';
-                if(i === '--fond_est_gris'
-                       || '--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis' === i
-                       || '--afficher_les_boutons_d_edition' === i
-                ){
-                    t+=' style="width:50px;height:20px;margin:3px;" />';
-                }else{
-                    t+=' style="width:' + (tta.valeurs.length * 10) + 'px;height:25px;margin:3px;" />';
-                }
+                t+=' style="width:' + (tta.valeurs.length < 4 ? ( 40 ) : ( tta.valeurs.length * 10 )) + 'px;height:25px;margin:3px;" />';
                 t+='    </div>';
+                /*  */
+                t+='    <div id="che_binaire_source_libelle" style="display:flex;height:' + haut2 + 'px;overflow:hidden;">';
+                t+='        <div style="margin:auto 3px;font-size:16px;line-height:17.6px;">' + tta.libelle0 + '</div>';
+                t+='    </div>';
+                /*  */
                 t+='</label>';
             }
         }
@@ -5166,9 +5158,9 @@ class __fnt1{
             if('--t_police' === i || '__deverminage' === i || '--bidon' === i){
                 let tta=this.__ig1.reference_stockage_local['parametres'][i];
                 let vva=this.__ig1.stockage_local['parametres'][i];
-                t+='<label for="' + i + '" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:32px;">';
+                t+='<label for="' + i + '" style="display:inline-flex;margin-left:3px;padding:0px;border:1px #669900 solid;margin:3px;height:' + haut1 + 'px">';
                 if(i === '__deverminage'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:20px;height:' + haut2 + 'px;">';
                     let la_classe='yy__1';
                     if(vva.valeur === 1){
                         la_classe='yy__2';
@@ -5178,17 +5170,15 @@ class __fnt1{
                     t+='<div class="' + la_classe + '" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else if(i === '--bidon'){
-                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:30px;">';
+                    t+='<table><tr><td style="padding:0;border:0px blue solid;width:40px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;vertical-align:top;padding:3px;margin:0px;">' + vva.valeur + '</div>';
                     t+='</td></tr></table>';
                 }else{
-                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:30px;">';
+                    t+='<div style="padding:0;border:1px blue solid;width:30px;height:' + haut2 + 'px;">';
                     t+='<div class="yy__1" id="' + i + '_nouvelle" style="display:inline;border: 1px red solid;font-size:12px;">' + vva.valeur + '</div>';
                     t+='</div>';
                 }
-                t+='    <div id="che_binaire_source_libelle" style="display:flex;">';
-                t+='        <div style="margin:auto 3px;font-size:16px;">' + tta.libelle0 + '</div>';
-                t+='    </div>';
+                /*  */
                 t+='    <div>';
                 t+='         <input type="range" id="' + i + '" min="' + tta.min + '" max="' + tta.max + '" step="' + tta.step + '" value="' + vva.valeur + '" ';
                 t+=' rev_chg_ou_ent1="m1(n1(__ig1),f1(maj_contenu(';
@@ -5200,11 +5190,17 @@ class __fnt1{
                 }
                 t+='m1(n1(__fnt1),f1(maj_stockage_local(nom_zone(' + i + '),type_lsto(parametres))))';
                 t+='"';
-                t+=' style="width:' + (tta.valeurs.length * 10) + 'px;height:25px;margin:3px;" />';
+                t+=' style="width:' + (tta.valeurs.length < 4 ? ( 40 ) : ( tta.valeurs.length * 10 )) + 'px;height:25px;margin:3px;" />';
                 t+='    </div>';
+                /*  */
+                t+='    <div id="che_binaire_source_libelle" style="display:flex;height:' + haut2 + 'px;overflow:hidden;">';
+                t+='        <div style="margin:auto 3px;font-size:16px;line-height:17.6px;">' + tta.libelle0 + '</div>';
+                t+='    </div>';
+                /*  */
                 t+='</label>';
             }
         }
+        /* t+='<div style="width:100%;height:' + (2 * haut1) + 'px;text-align:center;overflow:hidden;">MMMMMMMMMM,2000-01-01,00:00:00,1234567890</div>'; */
         let ecran_tactile='ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
         let style_des_tds3=' style="border:1px black solid; max-width:30%;"';
         let style_des_tds4=' style="border:1px black solid; max-width:70%;"';
