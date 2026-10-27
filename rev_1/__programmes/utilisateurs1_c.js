@@ -547,7 +547,7 @@ class utilisateurs1{
         if([
                 /* tbel */
                 1,2].includes( tup.T0_chi_id_utilisateur )){
-            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
             lst+='<button class="yy_svg1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_utilisateur(' + tup.T0_chi_id_utilisateur + ')))))';
@@ -560,7 +560,7 @@ class utilisateurs1{
             lst+=this.__ig1.les_svg.cle;
             lst+='</button>';
         }else{
-            lst+='<button class="yy_svg1 yy__2 yy__0_inactif">' + this.__ig1.les_svg.cle + '</button>';
+            lst+='<button class="yy_svg1 yy__2 yy__0_inactif" disabled="true">' + this.__ig1.les_svg.cle + '</button>';
         }
         lst+='</div>';
         return lst;

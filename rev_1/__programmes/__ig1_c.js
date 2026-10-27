@@ -1622,15 +1622,15 @@ class __ig1{
             this.css1();
         } , 300 );
         window.addEventListener( "resize" , debouncedResize );
-        window.addEventListener( "click" , this.traite_clic1.bind( this ) );
-        window.addEventListener( "change" , this.traite_change1.bind( this ) );
+        window.addEventListener( "click" , this.quand_clic1.bind( this ) );
+        window.addEventListener( "change" , this.quand_change1.bind( this ) );
         window.addEventListener( "input" , this.traite_input1.bind( this ) );
     }
     /*
       =============================================================================================================
     */
     traite_input1( e ){
-        /* console.log( ' traite_input1 changement de valeur de zone input' , e); */
+        console.log( ' traite_input1 changement de valeur de zone input' , e);
         let l_action_rev='';
         let l_element=null;
         if(e && e.target && e.target.hasAttribute( 'rev_chg_ou_ent1' ) && e.target.getAttribute( 'rev_chg_ou_ent1' ) !== ''){
@@ -1665,8 +1665,8 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    traite_change1( e ){
-        /* console.log( ' traite_change1 changement de valeur de zone input' , e); */
+    quand_change1( e ){
+        console.log( ' quand_change1 changement de valeur de zone input' , e);
         let l_action_rev='';
         let l_element=null;
         if(e && e.target && e.target.hasAttribute( 'rev_change1' ) && e.target.getAttribute( 'rev_change1' ) !== ''){
@@ -1701,8 +1701,8 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    traite_clic1( e ){
-        /* console.log( ' traite_clic1 clic'); */
+    quand_clic1( e ){
+        /* console.log( ' quand_clic1 clic'); */
         let l_action_rev='';
         let l_element=null;
         if(e.target.hasAttribute( 'rev_clic1' ) && e.target.getAttribute( 'rev_clic1' ) !== ''){
@@ -1749,7 +1749,7 @@ class __ig1{
         if(obj.__xst === __xer){
             this.ajoute_message( {
                     "__xst" : __xer ,
-                    "__xme" : 'le source de traite_clic1 :<br /><b>' + l_action_rev + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
+                    "__xme" : 'le source de quand_clic1 :<br /><b>' + l_action_rev + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
                 } );
             this.affiche_les_messages();
             this.retablir_les_boutons_masques();
@@ -2149,6 +2149,8 @@ class __ig1{
         /* #95adb9  est entre #B0BEC5 et #607D8B */
         /* #B0BEC5, #607D8B */
         t+='   background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, ' + couleur2hex + ' 100%);';
+        /* permet d'éviter un rechargement de la page ( reload ) quand on drague trop :-]] */
+        t+='   overscroll-behavior: contain;';
         t+='}';
         t+='html, textarea, div, pre {';
         t+='   scrollbar-width:thin;';
@@ -2812,12 +2814,12 @@ class __ig1{
                 } ,
                 "--t_padding" : {
                     "min" : 1 ,
-                    "max" : 6 ,
+                    "max" : 10 ,
                     "valeur" : 1 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
                         /* tbel */
-                        0,1,2,3,4,5,6] ,
+                        0,1,2,3,4,5,6,8,9,10] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
                     "libelle0" : 'espaces boutons' ,
@@ -3516,20 +3518,25 @@ class __ig1{
             p.setAttribute( 'data-numero_page' , __num_page - 1 );
             p.classList.remove( 'yy_suivant_precedent_inactif' );
             p.classList.add( 'yy_suivant_precedent_actif' );
+            p.classList.add( 'yy_suivant_precedent_actif' );
+            p.removeAttribute('disabled');
         }else{
             p.setAttribute( 'data-numero_page' , '-1' );
             p.classList.add( 'yy_suivant_precedent_inactif' );
             p.classList.remove( 'yy_suivant_precedent_actif' );
+            p.setAttribute('disabled' , 'true');
         }
         let s=document.getElementById( 'vv_ecran_liste_bouton_suivants' );
         if(__debut + __nbMax < __nbEnregs){
             s.classList.remove( 'yy_suivant_precedent_inactif' );
             s.classList.add( 'yy_suivant_precedent_actif' );
             s.setAttribute( 'data-numero_page' , __num_page + 1 );
+            s.removeAttribute('disabled');
         }else{
             s.classList.remove( 'yy_suivant_precedent_actif' );
             s.classList.add( 'yy_suivant_precedent_inactif' );
             s.setAttribute( 'data-numero_page' , '-1' );
+            s.setAttribute('disabled' , 'true');
         }
         let t='';
         t+='page ';

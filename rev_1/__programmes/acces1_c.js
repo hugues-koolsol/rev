@@ -769,13 +769,13 @@ class acces1{
         }
         lst+='<div style="display:inline-flex;">';
         if(boutons_activés === false){
-            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
-            lst+='<button  class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button  class="yy_svg1 yy__3 yy__3_inactif" disabled="true">' + this.__ig1.les_svg.editer + '</button>';
         }else{
             if([
                     /* tbel */
                     0,1,2].includes( tup.T0_chi_id_acces )){
-                lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
+                lst+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">' + this.__ig1.les_svg.poubelle + '</button>';
             }else{
                 lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
             }
@@ -785,7 +785,7 @@ class acces1{
             if(tup.T0_chi_id_acces === 0){
                 lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</button>';
             }else{
-                lst+='<button class="yy_b1 yy__1 yy__1_inactif">menus</button>';
+                lst+='<button class="yy_b1 yy__1 yy__1_inactif" disabled="true">menus</button>';
             }
         }else{
             lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(recuperer_les_menus_d_un_acces(chi_id_acces(' + tup.T0_chi_id_acces + ')))))">menus</button>';

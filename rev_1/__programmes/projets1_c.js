@@ -485,10 +485,10 @@ class projets1{
         let lst='';
         lst+='<div class="yy_act1">';
         if(this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet){
-            lst+='<button class="yy_b1 yy__3 yy__3_inactif" >=&gt;</button>';
+            lst+='<button class="yy_b1 yy__3 yy__3_inactif" disabled="true" >=&gt;</button>';
         }else{
             if(tup.T0_chi_id_projet === 2){
-                lst+='<button class="yy_b1 yy__3 yy__3_inactif" >=&gt;</button>';
+                lst+='<button class="yy_b1 yy__3 yy__3_inactif" disabled="true">=&gt;</button>';
             }else{
                 lst+='<button class="yy_b1 yy__3 ' + (this.__variables_module['chi_id_projet'] === tup.T0_chi_id_projet ? ( 'yy__3_inactif' ) : ( '' )) + '" rev_clic1="';
                 lst+='pm1(m1(n1(' + this.moi + '),f1(activer1(';
@@ -505,34 +505,34 @@ class projets1{
             lst+='))))';
             lst+='"  title="désactiver">=&lt;</button>';
         }else{
-            lst+='<button class="yy_b1 yy__0 yy__0_inactif" >=&lt;</button>';
+            lst+='<button class="yy_b1 yy__0 yy__0_inactif" disabled="true" >=&lt;</button>';
         }
         if(this.__variables_module['chi_id_projet'] === 0 || this.__variables_module['chi_id_projet'] !== tup.T0_chi_id_projet){
-            lst+='<button class="yy_svg1 yy__3 yy__3_inactif" >' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true" >' + this.__ig1.les_svg.editer + '</button>';
         }else{
             lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_projet(' + tup.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.editer + '</button>';
         }
         /* supprimer */
         if(tup.T0_chi_id_projet <= 3){
-            lst+='<button class="yy_svg1 yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button class="yy_svg1 yy__0 yy__2_inactif" disabled="true" >' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
             /* seul le dev principal peut supprimer un projet */
             if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
                 lst+='<button class="yy_svg1 yy__0" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_projet(' + tup.T0_chi_id_projet + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
             }else{
-                lst+='<button class="yy_svg1 yy__0 yy__2_inactif" >' + this.__ig1.les_svg.poubelle + '</button>';
+                lst+='<button class="yy_svg1 yy__0 yy__2_inactif" disabled="true" >' + this.__ig1.les_svg.poubelle + '</button>';
             }
         }
         /* supprimer */
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
-            lst+='<button class="yy_svg1 yy__1 yy__1_inactif" >' + this.__ig1.les_svg.disquette + '</button>';
+            lst+='<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true" >' + this.__ig1.les_svg.disquette + '</button>';
         }else{
             lst+='<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(sauvegarder_la_base_systeme(chi_id_projet(' + tup.T0_chi_id_projet + '),base_systeme(1)))))" title="sauvegarder la base systeme">' + this.__ig1.les_svg.disquette + '</button>';
         }
         if(tup.T0_chi_id_projet >= 3 || tup.T0_chi_id_projet === le_colis1.chi_id_projet){
             lst+='<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(creer_le_repertoire_racine(chi_id_projet(' + tup.T0_chi_id_projet + ')))))" title="creer le repertoire racine">' + this.__ig1.les_svg.dossier + '</button>';
         }else{
-            lst+='<button class="yy_svg1 yy__1 yy__1_inactif" >' + this.__ig1.les_svg.dossier + '</button>';
+            lst+='<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true">' + this.__ig1.les_svg.dossier + '</button>';
         }
         lst+='</div>';
         return lst;

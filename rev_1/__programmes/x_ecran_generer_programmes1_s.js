@@ -53,7 +53,7 @@ class x_ecran_generer_programmes1{
         let serveur_cht_import_module_rev_source=null;
         let client_cht_import_module_rev_source=null;
         for(let i in tt1429.__xva){
-            if(tt1429.__xva[i]['T0_cht_rev_source'] !== null){
+            if(tt1429.__xva[i]['T0_cht_rev_source'] !== null && tt1429.__xva[i]['T0_che_est_fragment_source'] === 1){
                 if(rev_fragment === null){
                     rev_fragment={};
                 }

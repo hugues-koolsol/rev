@@ -28,6 +28,13 @@ class grandeurs1{
     filtres={};
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
+    __champs_sortie_pour_tri1={
+        "`T0`.`chx_parametre_grandeur`" : 'id paramètre' ,
+        "`T0`.`chp_cle_grandeur`" : 'cle' ,
+        "`T0`.`chi_id_grandeur`" : 'id' ,
+        "`T0`.`cht_rev_grandeur`" : 'rev' ,
+        "`T0`.`che_actif_grandeur`" : 'actif'
+    };
     /*
       =============================================================================================================
     */
@@ -60,22 +67,17 @@ class grandeurs1{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['liste1']){
-                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
-        this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
     }
     /*
       =============================================================================================================
     */
     afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
         let o1='';
-        /*#
-          if(this.__variables_module.hasOwnProperty('__televersement2')){
-              o1+=this.__variables_module['__televersement2']['tableau_html_des_televersements']([] , 0 , le_colis1.__xva.fichiers_televerses );
-          }
-        */
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
@@ -97,84 +99,28 @@ class grandeurs1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chx_parametre_grandeur === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_parametre_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.cht_rev_grandeur !== null && fo1.cht_rev_grandeur !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_grandeur );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "rev de la grandeur" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_rev_grandeur' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_grandeur , 'rev de la grandeur' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_actif_grandeur === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_actif_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_actif_grandeur !== ''){
-            let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1.che_actif_grandeur )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_actif_grandeur' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
-        /* conversion des données numériques verifier_modifier début */
-        fo1.chi_id_grandeur=fo1.chi_id_grandeur === '' ? ( null ) : ( parseInt( fo1.chi_id_grandeur , 10 ) );
-        fo1.chx_parametre_grandeur=fo1.chx_parametre_grandeur === '' ? ( null ) : ( parseInt( fo1.chx_parametre_grandeur , 10 ) );
-        if(isNaN( fo1.chx_parametre_grandeur )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id paramètre" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_parametre_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        fo1.che_actif_grandeur=fo1.che_actif_grandeur === '' ? ( null ) : ( parseInt( fo1.che_actif_grandeur , 10 ) );
-        if(isNaN( fo1.che_actif_grandeur )){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être numérique'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_actif_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_grandeur' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'chx_parametre_grandeur' ,"vpd" : undefined ,"lib" : 'id du paramètre'},
+            {"nc" : "entier1" ,"nz" : 'che_actif_grandeur' ,"vpd" : 0 ,"lib" : 'la grandeur est active'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return __obj_convertions;
         }
         /* conversion des données numériques verifier_modifier fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_parametre_grandeur" ,"lib" : 'id du paramètre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_cle_grandeur" ,"lib" : 'cle de la grandeur' ,"ldc" : '64.2'},
+            {"nt" : 'non_vide1' ,"nz" : "cht_rev_grandeur" ,"lib" : 'rev de la grandeur'},
+            {"nt" : 'zero_un1' ,"nz" : "che_actif_grandeur" ,"lib" : 'la grandeur est active'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return __obj_tests;
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -197,73 +143,29 @@ class grandeurs1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chx_parametre_grandeur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="hidden" value="' + tup.T0_chx_parametre_grandeur + '" id="chx_parametre_grandeur" />';
-        o1+='        <span id="chx_parametre_grandeur_libelle">';
-        o1+='(' + tup.T0_chx_parametre_grandeur + ') ';
-        o1+='</span>';
-        o1+=this.__ig1.lien_parent2( 'parametres1' , 'chx_parametre_grandeur' , 'chx_parametre_grandeur_libelle' , this.moi );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_parametre_grandeur" ,
+            "__contexte" : "modification1" ,
+            "libelle_du_champ" : "id du paramètre" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "parametres1" ,
+            "liste_des_champs_libelles" : []
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle de la grandeur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_chp_cle_grandeur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='      <input  type="text" style="height: var(--t_hauteur_input1);" id="chp_cle_grandeur"  size="48"  maxlength="64" value="' + this.__ig1.fi2( tup.T0_chp_cle_grandeur ) + '" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
-        o1+='<div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_cle_grandeur' );
-        o1+='</div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_cle_grandeur" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64.2' ,"libelle_du_champ" : "cle de la grandeur"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev de la grandeur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_cht_rev_grandeur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_rev3( 'cht_rev_grandeur' );
-        o1+='</div>\r\n';
-        o1+='            <textarea  data-editeur1="rev"  id="cht_rev_grandeur" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        o1+=this.__ig1.fi2( tup.T0_cht_rev_grandeur );
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_rev_grandeur" ,"__contexte" : "modification1" ,"libelle_du_champ" : "rev de la grandeur" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>la grandeur est active</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        if(tup.T0_che_actif_grandeur === undefined){
-            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
-        }
-        o1+='        <input type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_grandeur ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_grandeur" ,"__contexte" : "modification1" ,"libelle_du_champ" : "la grandeur est active"} );
+        /*
+          =====================================================================================================
+        */
         o1+='     <input type="hidden" id="che__nur_grandeur" value="' + this.__ig1.fi2( tup.T0_che__nur_grandeur ) + '" />';
         /*
           =====================================================================================================
@@ -283,8 +185,8 @@ class grandeurs1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        o1+='  <div class="yy__bdp1"></div>';
-        document.getElementById( 'vv_ecran_modification_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'modification ' + this.DUN_DUNE_ELEMENT_GERE );
         this.afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1 );
@@ -327,58 +229,25 @@ class grandeurs1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="hidden" value="';
-        o1+=tup.T0_chx_parametre_grandeur;
-        o1+='"  id="chx_parametre_grandeur" />';
-        o1+='        <span>';
-        o1+='(' + tup.T0_chx_parametre_grandeur + ') ';
-        o1+='</span>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_cle_grandeur" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : "64.2" ,"libelle_du_champ" : "cle de la grandeur"} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle de la grandeur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='      <input disabled  type="text" id="chp_cle_grandeur"  size="64"   maxlength="64"  value="' + this.__ig1.fi2( tup.T0_chp_cle_grandeur ) + '"   />';
-        o1+=this.__ig1.__fnt1.boutons_suppression2( 'chp_cle_grandeur' );
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {"nom_du_champ" : "cht_rev_grandeur" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "rev de la grandeur" ,"rows" : 10 ,"cols" : 50} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev de la grandeur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='<div>\r\n';
-        o1+=this.__ig1.__fnt1.boutons_suppression1( 'cht_rev_grandeur' );
-        o1+='</div>\r\n';
-        o1+='            <textarea disabled id="cht_rev_grandeur" rows="2"  cols="50" >' + this.__ig1.fi2( tup.T0_cht_rev_grandeur ) + '</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_parametre_grandeur" ,
+            "__contexte" : "supprimer1" ,
+            "libelle_du_champ" : "id du paramètre" ,
+            "nom_du_lien" : "parametres1" ,
+            "liste_des_champs_libelles" : []
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>la grandeur est active</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input disabled type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="' + this.__ig1.fi2( tup.T0_che_actif_grandeur ) + '" >';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_grandeur" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "la grandeur est active"} );
         /*
           =====================================================================================================
         */
@@ -396,8 +265,9 @@ class grandeurs1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_suppression_zone_contenu' ).innerHTML=o1;
+        o1+='<input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_suppression_zone_contenu' , o1 );
         this.__ig1.maj_title_htm1( 'suppression ' + this.DUN_DUNE_ELEMENT_GERE );
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
@@ -428,53 +298,28 @@ class grandeurs1{
         }
         let co1=données.__co1;
         let fo1=données.__fo1[co1];
-        if(fo1.chx_parametre_grandeur === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chx_parametre_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_grandeur , 'rev de la grandeur' );
-        if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'cht_rev_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_actif_grandeur === ''){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_actif_grandeur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
-        }
-        if(fo1.che_actif_grandeur !== ''){
-            let tab_est_parmis_3='0,1'.split( ',' );
-            if(!tab_est_parmis_3.includes( fo1.che_actif_grandeur )){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être correctement renseignée (utilisez les boutons)'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'che_actif_grandeur' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
-        }
         /* conversion des données numériques verifier_creer début */
-        fo1.chx_parametre_grandeur=fo1.chx_parametre_grandeur === '' ? ( null ) : ( parseInt( fo1.chx_parametre_grandeur , 10 ) );
-        fo1.che_actif_grandeur=fo1.che_actif_grandeur === '' ? ( null ) : ( parseInt( fo1.che_actif_grandeur , 10 ) );
+        let __les_convertions=[
+            /*  */
+            {"nc" : "entier1" ,"nz" : 'chx_parametre_grandeur' ,"vpd" : undefined ,"lib" : 'id du paramètre'},
+            {"nc" : "entier1" ,"nz" : 'che_actif_grandeur' ,"vpd" : 0 ,"lib" : 'la grandeur est active'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return({"__xst" : __xsu});
+        }
         /* conversion des données numériques verifier_creer fin */
-        /*
-          tout a été vérifié
-        */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'non_vide1' ,"nz" : "chx_parametre_grandeur" ,"lib" : 'id du paramètre'},
+            {"nt" : 'non_vide1' ,"nz" : "chp_cle_grandeur" ,"lib" : 'cle de la grandeur' ,"ldc" : '64.2'},
+            {"nt" : 'non_vide1' ,"nz" : "cht_rev_grandeur" ,"lib" : 'rev de la grandeur'},
+            {"nt" : 'parmis1' ,"nz" : "che_actif_grandeur" ,"lib" : 'la grandeur est active' ,"p" : [0,1]}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return __obj_tests;
+        }
         let __fo1={};
         __fo1[co1]=fo1;
         this.__ig1.envoyer_un_colis_au_worker( {
@@ -494,100 +339,34 @@ class grandeurs1{
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>id du paramètre</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input id="chx_parametre_grandeur" type="hidden" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chx_parametre_grandeur );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='        <span id="chx_parametre_grandeur_libelle">';
-        if(tup){
-            if(tup.T0_chx_parametre_grandeur === null){
-                o1+='*indéfini';
-            }else{
-                o1+='(' + tup.T0_chx_parametre_grandeur + ') ';
-            }
-        }else{
-            o1+='*indéfini';
-        }
-        o1+='        </span>';
-        /*
-        */
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <span>';
-        o1+=this.__ig1.lien_parent2( 'parametres1' , 'chx_parametre_grandeur' , 'chx_parametre_grandeur_libelle' , this.moi );
-        o1+='</span>';
-        o1+='    </div>';
-        /*  */
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_autrex2( tup , {
+            "nom_du_champ" : "chx_parametre_grandeur" ,
+            "__contexte" : "creer1" ,
+            "libelle_du_champ" : "id du paramètre" ,
+            "bouton_vider" : false ,
+            "nom_du_lien" : "parametres1" ,
+            "liste_des_champs_libelles" : [] ,
+            "non_nulle" : true
+        } , this );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>cle de la grandeur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='    <div>';
-        o1+='      <input  type="text"  size="48"   maxlength="64"  id="chp_cle_grandeur" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_chp_cle_grandeur );
-        }else{
-            o1+='';
-        }
-        o1+='" />';
-        o1+='    <div style="display:inline-block;">';
-        o1+=this.__ig1.__fnt1.boutons_edition_text( 'chp_cle_grandeur' );
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_cle_grandeur" ,"__contexte" : "creer1" ,"libelle_du_champ" : "cle de la grandeur" ,"non_nulle" : true ,"longueur_du_champ" : '64.2'} );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>rev de la grandeur</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <div class="yy_conteneur_txtara">';
-        o1+='            <div>\r\n';
-        o1+='              ' + this.__ig1.__fnt1.boutons_rev3( 'cht_rev_grandeur' );
-        o1+='            </div>\r\n';
-        o1+='            <textarea  data-editeur1="rev" id="cht_rev_grandeur" rows="10" cols="50" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_cht_rev_grandeur );
-        }else{
-            o1+='';
-        }
-        o1+='</textarea>';
-        o1+='        </div>';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
+            "nom_du_champ" : "cht_rev_grandeur" ,
+            "__contexte" : "creer1" ,
+            "libelle_du_champ" : "rev de la grandeur" ,
+            "non_nulle" : true ,
+            "rows" : 10 ,
+            "cols" : 50
+        } );
         /*
           =====================================================================================================
         */
-        o1+='  <div class="yy_edition_champ1">';
-        o1+='    <div class="yy_edition_libelle1">';
-        o1+='      <span>la grandeur est active</span>';
-        o1+='    </div>';
-        o1+='    <div class="yy_edition_valeur1">';
-        o1+='        <input type="range" id="che_actif_grandeur" class="yy_ouinon" min="0" max="1" step="1" value="';
-        if(tup){
-            o1+=this.__ig1.fi2( tup.T0_che_actif_grandeur );
-        }else{
-            o1+='0';
-        }
-        o1+='" />';
-        o1+='    </div>';
-        o1+='  </div>';
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_actif_grandeur" ,"__contexte" : "creer1" ,"libelle_du_champ" : "la grandeur est active" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -602,7 +381,8 @@ class grandeurs1{
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
-        document.getElementById( 'vv_ecran_creation_zone_contenu' ).innerHTML=o1;
+        o1+='<div class="yy__bdp1"></div>';
+        this.__ig1.maj_inner1( 'vv_ecran_creation_zone_contenu' , o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
@@ -650,7 +430,7 @@ class grandeurs1{
       =============================================================================================================
     */
     zones_filtres1( mat , d , le_colis1 ){
-        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' );
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , 'grandeurs2' , this.__champs_sortie_pour_tri1 );
     }
     /*
       =============================================================================================================
@@ -729,17 +509,17 @@ class grandeurs1{
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
-        lst+='<div style="display:inline-flex;">';
-        /* fonctions_spéciales1(ne_pas_supprimer_id_un(20000)) */
-        if(tup.T0_chi_id_grandeur <= 20000){
-            lst+='<div class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</div>';
+        lst+='<div class="yy_act1">';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if([20000].includes( tup.T0_chi_id_grandeur )){
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
-            lst+='<div class="yy_svg1 yy__2" rev_clic1="';
+            lst+='<button class="yy_svg1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_grandeur(' + tup.T0_chi_id_grandeur + ')))))';
-            lst+='">' + this.__ig1.les_svg.poubelle + '</div>';
+            lst+='">' + this.__ig1.les_svg.poubelle + '</button>';
         }
-        lst+='<div class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_grandeur(' + tup.T0_chi_id_grandeur + ')))))">' + this.__ig1.les_svg.editer + '</div>';
-        lst+='<div class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_grandeur(' + tup.T0_chi_id_grandeur + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_grandeur(' + tup.T0_chi_id_grandeur + ')))))">' + this.__ig1.les_svg.editer + '</button>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_grandeur(' + tup.T0_chi_id_grandeur + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         lst+='</div>';
         return lst;
     }
@@ -750,79 +530,96 @@ class grandeurs1{
         let o1='';
         if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'liste1' )){
             let lst='';
-            for(let i in le_colis1.__xva['liste1'].__xva){
-                let tup=le_colis1.__xva['liste1'].__xva[i];
+            for(let i in le_colis1.__xva.liste1.__xva){
+                let tup=le_colis1.__xva.liste1.__xva[i];
                 lst+='<tr>';
+                /*
+                  =====================================================================================
+                */
                 lst+='<td>';
                 lst+=this.liste_des_boutons_action1( tup , le_colis1 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas 9.1.0 */
                 lst+='<span data-chi_id_grandeur="' + this.__ig1.fi2( tup.T0_chi_id_grandeur ) + '">' + this.__ig1.fi2( tup.T0_chi_id_grandeur ) + '</span>';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T0_chp_cle_grandeur );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
                 lst+=this.__ig1.fi2( tup.T0_cht_rev_grandeur ).substr( 0 , 200 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
                 /* cas 8.2 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_parametre_grandeur ) + ')';
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
                 /* cas 5 */
-                if(tup.T0_che_actif_grandeur === 0){
-                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                }else{
+                if(tup.T0_che_actif_grandeur === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T1_chp_cle_parametre );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
+                lst+='<td style="text-align:left;">';
                 /* cas 3.4 */
                 lst+=this.__ig1.fi2( tup.T1_chp_nom_parametre );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
-                lst+=this.__ig1.fi2( tup.T1_cht_rev_parametre ).substr( 0 , 200 );
+                lst+=this.__ig1.fi2( tup.T1_cht_rev_parametre ).substr( 0 , 100 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="max-width:24em;overflow:hidden;">';
                 /* cas 1 */
-                lst+=this.__ig1.fi2( tup.T1_cht_ordre_parametre ).substr( 0 , 200 );
+                lst+=this.__ig1.fi2( tup.T1_cht_ordre_parametre ).substr( 0 , 100 );
                 lst+='</td>';
                 /*
+                  =====================================================================================
                 */
                 lst+='<td style="text-align:center;">';
                 /* cas 5 */
-                if(tup.T1_che_pour_admin_parametre === 0){
-                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
-                }else{
+                if(tup.T1_che_pour_admin_parametre === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
+                }else{
+                    lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){

@@ -822,7 +822,7 @@ class dossiers1{
                         o1+='pm1(m1(n1(sources1),f1(page_modification1(chi_id_source(' + __xva.liste_des_fido[i].chi_id_source + ')))))';
                         o1+='">source</button>';
                     }else{
-                        o1+='<button class="yy_svg1 yy__2 yy__2_inactif" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</button >';
+                        o1+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true" title="analyser premiere ligne de csv">' + this.__ig1.les_svg.cle + '</button >';
                     }
                 }else{
                     o1+='<button class="yy_svg1 yy__1" title="intégrer non binaire" rev_clic1="';
@@ -1403,7 +1403,7 @@ class dossiers1{
         if([
                 /* tbel */
                 1,2,3,4,5,6,7,8,9].includes( tup.T0_chi_id_dossier )){
-            lst+='<button class="yy_svg1 yy__2 yy__2_inactif">' + this.__ig1.les_svg.poubelle + '</button>';
+            lst+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
             lst+='<button class="yy_svg1 yy__2" rev_clic1="';
             lst+='pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))';
@@ -1415,10 +1415,10 @@ class dossiers1{
             lst+='<button class="yy_svg1 yy__1" rev_clic1="m1(n1(' + this.moi + '),f1(page_nouveau_numero_dossier1(chi_id_dossier(' + tup.T0_chi_id_dossier + '))))" >' + this.__ig1.les_svg.renuméroter + '</button>';
             lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(creer_le_dossier_sur_disque(chi_id_dossier(' + tup.T0_chi_id_dossier + ')))))" >créer</button>';
         }else{
-            lst+='<button class="yy_svg1 yy__3 yy__3_inactif">' + this.__ig1.les_svg.editer + '</button>';
-            lst+='<button class="yy_svg1 yy__4 yy__4_inactif">' + this.__ig1.les_svg.dupliquer + '</button>';
-            lst+='<button class="yy_svg1 yy__1 yy__1_inactif">' + this.__ig1.les_svg.renuméroter + '</button>';
-            lst+='<button class="yy_b1 yy__1 yy__1_inactif">créer</button>';
+            lst+='<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">' + this.__ig1.les_svg.editer + '</button>';
+            lst+='<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">' + this.__ig1.les_svg.dupliquer + '</button>';
+            lst+='<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true">' + this.__ig1.les_svg.renuméroter + '</button>';
+            lst+='<button class="yy_b1 yy__1 yy__1_inactif" disabled="true">créer</button>';
         }
         lst+='<button class="yy_b1" rev_clic1="m1(n1(sources1),f1(entree_module(T0_chx_dossier_id_source(' + tup.T0_chi_id_dossier + '),*(\'\'))))" title="liste des sources">sources</button>';
         lst+='</div>';

@@ -6730,7 +6730,7 @@ class x_ecran_generer_programmes1{
                                     liste_des_valeurs_a_de_pas_supprimer=liste_des_valeurs_a_de_pas_supprimer.substr( 1 );
                                     src_client2+='        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */\r\n';
                                     src_client2+='        if([/' + '* tbel *' + '/' + liste_des_valeurs_a_de_pas_supprimer + '].includes(tup.T0_' + champ_primaire + ')){\r\n';
-                                    src_client2+='            lst+=\'<button class="yy_svg1 yy__2 yy__2_inactif">\'+this.__ig1.les_svg.poubelle+\'</button>\';\r\n';
+                                    src_client2+='            lst+=\'<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">\'+this.__ig1.les_svg.poubelle+\'</button>\';\r\n';
                                     src_client2+='        }else{\r\n';
                                     src_client2+='            lst+=\'<button class="yy_svg1 yy__2" rev_clic1="\';\r\n';
                                     src_client2+='            lst+=\'pm1(m1(n1(\'+this.moi+\'),f1(page_confirmation_supprimer1(' + champ_primaire + '(\' + tup.T0_' + champ_primaire + ' + \')))))\';\r\n';

@@ -964,7 +964,7 @@ class sources1{
             lst+=' pas_de_message_de_succes(1),';
             lst+='))))"  title="compiler">' + this.__ig1.les_svg.compiler + '</button>';
         }else{
-            lst+='<button class="yy_svg1 yy__4 yy__4_inactif" title="compiler">' + this.__ig1.les_svg.compiler + '</button>';
+            lst+='<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true" title="compiler">' + this.__ig1.les_svg.compiler + '</button>';
         }
         if(this.__ig1._CA_ === 2){
             /*  */
@@ -977,7 +977,7 @@ class sources1{
                        || tup.T0_chp_nom_source === 'sources1_s.js')
             ){
                 /*  */
-                lst+='  <button class="yy_b1 yy__4 yy__4_inactif">importer de 1(1)</button>';
+                lst+='  <button class="yy_b1 yy__4 yy__4_inactif" disabled="true">importer de 1(1)</button>';
             }else{
                 /*  */
                 lst+='  <button class="yy_b1 yy__4" rev_clic1="';
@@ -993,7 +993,7 @@ class sources1{
         if(this.__ig1._CA_ === 2){
             if(tup.T0_che_est_fragment_source === 1){
                 /* export inactif car c'est un fragment */
-                lst+='  <button class="yy_b1 yy__0 yy__0_inactif" >exporter dans 1</button>';
+                lst+='  <button class="yy_b1 yy__0 yy__0_inactif" disabled="true" >exporter dans 1</button>';
                 /*  */
             }else{
                 lst+='  <button class="yy_b1 yy__0" rev_clic1="';
