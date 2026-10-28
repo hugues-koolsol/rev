@@ -1,0 +1,18 @@
+{
+  "20000": {
+    "__cle": "ne pas supprimer!",
+    "__rev": "0",
+    "__actif": 0,
+    "__couleur_texte": "yellow",
+    "__couleur_fond": "red",
+    "__liste_des_parametres": []
+  },
+  "20002": {
+    "__cle": "aaaaaaa",
+    "__rev": "0",
+    "__actif": 0,
+    "__couleur_texte": "yellow",
+    "__couleur_fond": "black",
+    "__liste_des_parametres": []
+  }
+}

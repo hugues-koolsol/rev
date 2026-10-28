@@ -2019,7 +2019,7 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_parametre'),
-            nom_bref_du_champ(' nur'),libelle_du_champ(' nur'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
+            nom_bref_du_champ('nur'),libelle_du_champ('nur'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
             typologie(che),
             genre(15),
             masquer_champ_dans_svg(1)
@@ -2074,7 +2074,7 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('chp_cle_grandeur'),
             nom_bref_du_champ('cle'),libelle_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
             typologie(chp),
-            genre(12),
+            genre(3),
             est_libelle_lien(1),
             longueur_du_champ(64.2)
             )

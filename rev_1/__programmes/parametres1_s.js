@@ -162,8 +162,8 @@ class parametres1{
         if(chi_id_grandeur <= 0){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        if(chi_id_grandeur === 20000){
-            return({"__xst" : __xer ,"__xme" : 'on ne peut pas supprimer la grandeur 20001'});
+        if(chi_id_grandeur <= 20000){
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas supprimer la grandeur 20000'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_1202={
@@ -215,15 +215,15 @@ class parametres1{
         }else{
             return({"__xst" : __xer ,"__xme" : ' le nouveau numéro doit être numérique [' + this.__ig1.nl2() + ']'});
         }
-        if(chi_id_grandeur_nouvelle <= 20001){
-            return({"__xst" : __xer ,"__xme" : 'on ne peut pas donner à une grandeur une valeur inférieure à 20 001'});
+        if(chi_id_grandeur_nouvelle <= 20000){
+            return({"__xst" : __xer ,"__xme" : 'on ne peut pas donner à une grandeur une valeur inférieure à 20 000'});
         }
         if(form['vv_ancien_numero_de_grandeur'] && this.__ig1.est_num( form['vv_ancien_numero_de_grandeur'] )){
             chi_id_grandeur_ancienne=parseInt( form['vv_ancien_numero_de_grandeur'] , 10 );
         }else{
             return({"__xst" : __xer ,"__xme" : 'l\'ancien numéro doit être numérique [' + this.__ig1.nl2() + ']'});
         }
-        if(chi_id_grandeur_ancienne === 20000){
+        if(chi_id_grandeur_ancienne <= 20000){
             return({"__xst" : __xer ,"__xme" : 'on ne peut pas renuméroter la grandeur 20 000'});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -1403,6 +1403,9 @@ class parametres1{
       =============================================================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -1410,6 +1413,7 @@ class parametres1{
     */
     moi='parametres1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */
