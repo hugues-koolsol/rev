@@ -19,7 +19,7 @@ class _connexion1{
         let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
         document.getElementById('vv_se_deconnecter').style.display='none';
         a.select();
-        this.__ig1.ajoute_message( {"__xst" : __xsu , "__xme" : '<br /><b style="font-size:3em;min-height:3.5em;">A bientôt :-)</b><br /><br />'} );
+        this.__ig1.ajoute_message( {"__xst" : __xsu , "__xme" : '<br /><b style="font-size:1.5em;min-height:1.8em;">A bientôt :-)</b><br /><br />'} );
         this.__ig1.affiche_les_messages();
         return({"__xst" : __xsu});
     }
@@ -102,34 +102,30 @@ class _connexion1{
         }
         t+='<div id="vv_se_deconnecter" style="padding:20px;text-align:center;display:' + aff + '">';
         t+='<div class="yy__1" style="padding:10px;display:inline-block;margin:auto;margin;5px;border-radius:10px;    background: linear-gradient(to bottom, #5DBB00, #7FFF00 );font-weight:bold;">vous êtes connecté</div><br/>';
-        t+='<button id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;min-height:var(--h_barre);line-height:var(--h_barre);"  class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</button>';
+        t+='<button id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;padding:0;margin:0;border-width:1px;opacity:0.9;"  class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</button>';
         t+='</div>';
         /*  */
-        t+='<div id="vv_formulaire_de_connexion">';
+        t+='<table  id="vv_formulaire_de_connexion" style="max-width:360px;">';
+        t+='<tr>';
         /*  */
-        t+='<div class="yy_edition_champ1">';
-        t+=' <div class="yy_edition_libelle1"><div>nom</div></div>';
-        t+=' <div class="yy_edition_valeur1">';
-        t+='   <input id="chp_nom_de_connexion_utilisateur" type="text" aria-autocomplete="list" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" autocapitalize="off" class="yy_input1" />';
-        t+=' </div>';
-        t+='</div>';
-        /*  */
-        t+='<div class="yy_edition_champ1">';
-        t+=' <div class="yy_edition_libelle1"><div>mot de passe&nbsp;</div></div>';
-        t+=' <div class="yy_edition_valeur1">';
-        t+='   <input id="chp_mot_de_passe_utilisateur_en_clair" type="password" autocomplete="off" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" class="yy_input1" />';
-        t+=' </div>';
-        t+='</div>';
-        /*  */
-        t+='<div class="yy_edition_champ1">';
-        t+=' <div class="yy_edition_libelle1"></div>';
-        t+=' <div class="yy_edition_valeur1">';
-        t+='   <input type="hidden" id="vv_redirection" value="' + window.location.hash + '" />';
-        t+='   <button style="margin:0 auto;display:block;width:10em;" class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))" title="Cliquez ici pour vous connecter" >connexion</button>';
-        t+=' </div>';
-        t+='</div>';
-        /*  */
-        t+='</div>';
+        t+='<th style="">nom</th>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td><input id="chp_nom_de_connexion_utilisateur" type="text" aria-autocomplete="list" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" autocapitalize="off" class="yy_input1" /></td>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td>mot de passe</td>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td><input id="chp_mot_de_passe_utilisateur_en_clair" type="password" autocomplete="off" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" class="yy_input1" /></td>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td>';
+        t+='<input type="hidden" id="vv_redirection" value="' + window.location.hash + '" />';
+        t+='<button style="margin:0 auto;display:block;width:10em;" class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))" title="Cliquez ici pour vous connecter" >connexion</button>';
+        t+='</td>';
+        t+='</tr>';
+        t+='</table>';
         t+='<div style="text-align:center;margin-top:40px;">ou bien aller ici: ';
         t+=' <button style="margin:0 auto;"  class="yy_b1" rev_clic1="m1(n1(__ig1)f1(affiche_page_d_accueil()))" title="affiche la page d\'accueil" >Accueil</button>';
         t+='</div>';

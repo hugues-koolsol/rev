@@ -62,13 +62,16 @@ class x_ecran_coordonnees1{
             return({"__xst" : __xsu});
         }
         if(fo1['chp_nom_de_connexion_utilisateur'].length < 5){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion doit comporter au moins 5 caractères'} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_de_connexion_utilisateur' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            if(this.__ig1.chi_id_utilisateur === 1 && fo1['chp_nom_de_connexion_utilisateur'].length >= 3){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion doit comporter au moins 5 caractères'} );
+                this.__ig1.affiche_les_messages();
+                this.__ig1.retablir_les_boutons_masques();
+                try{
+                    document.getElementById( 'chp_nom_de_connexion_utilisateur' ).focus();
+                } catch {}
+                return({"__xst" : __xsu});
+            }
         }
         if(fo1['chp_nom_de_connexion_utilisateur'].indexOf( ' ' ) >= 0 || fo1['chp_mot_de_passe_utilisateur'].indexOf( ' ' ) >= 0){
             this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le nom de connexion et le mot de passe ne doivent pas comporter le caractère espace'} );
@@ -91,48 +94,49 @@ class x_ecran_coordonnees1{
       =============================================================================================================
     */
     entree_module( mat , d ){
-        let t='';
-        t+='<h1>mes coordonnées</h1>';
-        t+='<div class="yy_conteneur_table">';
-        t+='  <table border="1" id="vv_formulaire_de_changement_de_nom_et_de_mot_de_passe">';
-        t+='    <tr>';
-        t+='      <td>nouveau nom</td>';
-        t+='      <td>';
-        t+='        <input type="hidden" id="chp_nom_de_connexion_utilisateur_ancien" value="" autocapitalize="off" class="yy_input1" />';
-        t+='        <input type="text" id="chp_nom_de_connexion_utilisateur" value="" autocapitalize="off" class="yy_input1" />';
-        t+='      </td>';
-        t+='    </tr>';
-        t+='    <tr>';
-        t+='      <td>nouveau mot de passe</td>';
-        t+='      <td>';
-        t+='        <input type="password" id="chp_mot_de_passe_utilisateur" value="" autocomplete="new-password" class="yy_input1" />';
-        t+='      </td>';
-        t+='    </tr>';
-        t+='    <tr>';
-        t+='    <tr>';
-        t+='      <td>nouveau mot de passe<br /> pour confirmation</td>';
-        t+='      <td>';
-        t+='        <input type="password" id="chp_mot_de_passe_utilisateur2" value="" autocomplete="off" class="yy_input1" />';
-        t+='      </td>';
-        t+='    </tr>';
-        t+='    <tr>';
-        t+='      <td>ancien mot de passe</td>';
-        t+='      <td>';
-        t+='        <input type="password" id="chp_mot_de_passe_utilisateur3" value="" autocomplete="off" class="yy_input1" />';
-        t+='      </td>';
-        t+='    </tr>';
-        t+='    <tr>';
-        t+='      <td colspan="2" style="text-align:center;">';
-        t+='        <div class="yy_b1 yy__3" style="max-height:3em;" rev_clic1="';
-        t+='fo1(co1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe),m1(n1(' + this.moi + '),f1(verifier_modifier1())))';
-        t+='" title="Cliquez ici pour vous connecter" >changer mes coordonnées</div>';
-        t+='      </td>';
-        t+='    </tr>';
-        t+='  </table>';
-        t+='</div>';
-        t+=' <p id="nombre_de_connexions"></p>';
-        t+=' <p></p>';
-        this.__ig1.maj_contenu_principal( t );
+        let o1='';
+        o1+='<h1>mes coordonnées</h1>';
+        
+        o1+='<div id="vv_formulaire_de_changement_de_nom_et_de_mot_de_passe">';
+        /* t+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_nom_de_connexion_utilisateur" ,"__contexte" : "modification1" ,"longueur_du_champ" : '64' ,"libelle_du_champ" : "nouveau nom"} ); */
+        
+        o1+='        <input type="hidden" id="chp_nom_de_connexion_utilisateur_ancien" value="" />';
+        let tt=[
+            /*  */
+            ['nouveau nom','chp_nom_de_connexion_utilisateur','text'],
+            ['nouveau mot de passe','chp_mot_de_passe_utilisateur','password'],
+            ['nouveau mot de passe<br /> pour confirmation','chp_mot_de_passe_utilisateur2','password'],
+            ['ancien mot de passe','chp_mot_de_passe_utilisateur3','password']
+            
+        ];
+        let lng_px=(64 * this.__ig1.css_dimensions.largeur_du_m + 2 * (this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_input_border));
+        for(let i=0;i<tt.length;i++){
+            o1+='<div class="yy_edition_champ1">';
+            o1+='    <div class="yy_edition_libelle1">';
+            o1+='        <div style="color:red;">' + tt[i][0] + '</div>';
+            o1+='    </div>';
+            o1+='    <div class="yy_edition_valeur1">';
+            o1+='        <div class="yy_contient_description">';
+            o1+='<input id="' + tt[i][1] + '" type="' + tt[i][2] + '" size="48" maxlength="64" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" style="width: min( 100% , ' + lng_px + 'px)" />';
+            o1+='        </div>\r\n';
+            o1+='    </div>';
+            o1+='</div>';
+        }
+        o1+='<div class="yy_conteneur_table">';
+        o1+='  <table border="1">';
+        o1+='    <tr>';
+        o1+='      <td colspan="2" style="text-align:center;">';
+        o1+='        <div class="yy_b1 yy__3" style="max-height:3em;" rev_clic1="';
+        o1+='fo1(co1(vv_formulaire_de_changement_de_nom_et_de_mot_de_passe),m1(n1(' + this.moi + '),f1(verifier_modifier1())))';
+        o1+='" title="Cliquez ici pour vous connecter" >changer mes coordonnées</div>';
+        o1+='      </td>';
+        o1+='    </tr>';
+        o1+='  </table>';
+        o1+='</div>';
+        o1+='</div>';
+        o1+=' <p id="nombre_de_connexions"></p>';
+        o1+=' <p></p>';
+        this.__ig1.maj_contenu_principal( o1 );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'mes coordonnées' );
         let cmd='';

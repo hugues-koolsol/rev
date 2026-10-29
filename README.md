@@ -326,3 +326,37 @@ ainsi que la version [rev](https://github.com/hugues-koolsol/rev/blob/main/ticta
 
 
 Les sources javascript, html, sql , css contenus dans ce github sont tous passés par le format rev.
+
+Pout l'instant, les composants sont "révisables" partiellement mais le modèle ressemblerait finalement à :
+
+```
+@html(
+   html(
+      (doctype),
+      head(
+         style(("type","text/css")),
+         @css(
+            regle(selecteur('.texte_en_rouge'),d(p('color'),v('red')))
+         )
+      ),
+      body(
+         h1(
+            "hello",
+            span((class,"texte_en_rouge"),('style',"font-size:16px;"),"world< /span>and others")
+         ),
+         script(
+            ("type","text/javascript"),
+            @js(
+               #(commentaire js),
+               appelf(nomf(alert),p("c'est un message qui vient d'un script")),
+            )
+         )
+      ),
+      @php(
+         #(commentaire php),
+         appelf(nomf(echo),p(__FILE__)),
+      )
+   )
+)
+```
+

@@ -1910,12 +1910,12 @@ class __ig1{
         /* largeur d'un caractère numérique il ne faut PAS ajouter le rembourrage et le bord */
         let larg_de_num=7.5;
         if(t_police === 12){
-            largeur_du_m=11.3;
+            largeur_du_m=10.3;
             larg_de_date=71;
             larg_de_heure=56;
             larg_de_num=7.5;
         }else if(t_police === 14){
-            largeur_du_m=12;
+            largeur_du_m=11.9;
             larg_de_date=83;
             larg_de_heure=65;
             larg_de_num=8.9;
@@ -4091,10 +4091,10 @@ class __ig1{
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
                 let t='';
-                t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</button>';
+                t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>';
                 if(dans_sous_fenetre === false){
-                    t+='<button class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
-                    t+='<button class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
+                    t+='<button class="yy_svg1 yy__1" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
+                    t+='<button class="yy_svg1 yy__3" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
                 }
                 this.maj_htm1( vv_supprimer_les_messages , t );
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
@@ -4110,10 +4110,10 @@ class __ig1{
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
             let t='';
-            t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</button>';
+            t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>';
             if(dans_sous_fenetre === false){
-                t+='<button class="yy_svg1 yy__1"  rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
-                t+='<button class="yy_svg1 yy__3"  rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
+                t+='<button class="yy_svg1 yy__1" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
+                t+='<button class="yy_svg1 yy__3" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
             }
             this.maj_htm1( vv_supprimer_les_messages , t );
             a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
