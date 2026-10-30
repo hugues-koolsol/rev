@@ -59,7 +59,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (138) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (140) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -23620,7 +23620,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'',this.__ig1.les_svg.poubelle,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">'',this.__ig1.les_svg.dupliquer,''</button>'')))
                )
             ),
             affectop(''+='',lst,''</div>''),
@@ -23688,9 +23688,9 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
             lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
             lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_autorisation('' + tup.T0_chi_id_autorisation + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         }else{
-            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
-            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
-            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         }
         lst+=''</div>'';
         return lst;
@@ -43991,6 +43991,182 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         lst+=''</div>'';
         return lst;
     }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1063','groupes1_s.js','definition_de_classe(
+   nom_classe(groupes1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_et_tests_avant_modifier),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(fo1),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            choix(
+               si(
+                  condition(et(sup(this.__ig1.donnees_retournees._CA_,2),sup(this.__ig1.donnees_retournees.chi_id_utilisateur,1),infeg(__xva_avant.T0_chi_id_groupe,2))),
+                  alors(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat('' vous ne pouvez pas modifier le groupe ('',__xva_avant.T0_chi_id_groupe,'')'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            choix(
+               si(
+                  condition(
+                     non(appelf(element(this.__ig1.donnees_recues.__xva),nomf(hasOwnProperty),p(''__complements_sous_liste'')))
+                  ),
+                  alors(
+                     affecte(tableau(nomt(this.__ig1.donnees_recues.__xva),p(''__complements_sous_liste'')),obj())
+                  )
+               )
+            ),
+            affecte(tableau(nomt(this.__ig1.donnees_recues.__xva.__complements_sous_liste),p(''groupe_mini'')),0),
+            choix(
+               si(
+                  condition(et(sup(this.__ig1.donnees_retournees._CA_,2),sup(this.__ig1.donnees_retournees.chi_id_utilisateur,1))),
+                  alors(
+                     affecte(tableau(nomt(this.__ig1.donnees_recues.__xva.__complements_sous_liste),p(''groupe_mini'')),3)
+                  )
+               )
+            ),
+            retourner(
+               await(appelf(element(this),nomf(filtre1),p(mat),p(d)))
+            )
+         )
+      )
+   )
+)','class groupes1{
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
+        if(this.__ig1.donnees_retournees._CA_ > 2
+               && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
+               && __xva_avant.T0_chi_id_groupe <= 2
+        ){
+            return({"__xst" : __xer ,"__xme" : '' vous ne pouvez pas modifier le groupe ('' + __xva_avant.T0_chi_id_groupe + '')''});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
+            this.__ig1.donnees_recues.__xva[''__complements_sous_liste'']={};
+        }
+        this.__ig1.donnees_recues.__xva.__complements_sous_liste[''groupe_mini'']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            this.__ig1.donnees_recues.__xva.__complements_sous_liste[''groupe_mini'']=3;
+        }
+        return(await this.filtre1( mat , d ));
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1064','metiers1_s.js','definition_de_classe(
+   nom_classe(metiers1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_et_tests_avant_modifier),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(fo1),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            choix(
+               si(
+                  condition(et(sup(this.__ig1.donnees_retournees._CA_,2),sup(this.__ig1.donnees_retournees.chi_id_utilisateur,1),infeg(__xva_avant.T0_chi_id_metier,2))),
+                  alors(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat('' vous ne pouvez pas modifier le métier ('',__xva_avant.T0_chi_id_metier,'')'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            choix(
+               si(
+                  condition(
+                     non(appelf(element(this.__ig1.donnees_recues.__xva),nomf(hasOwnProperty),p(''__complements_sous_liste'')))
+                  ),
+                  alors(
+                     affecte(tableau(nomt(this.__ig1.donnees_recues.__xva),p(''__complements_sous_liste'')),obj())
+                  )
+               )
+            ),
+            affecte(tableau(nomt(this.__ig1.donnees_recues.__xva.__complements_sous_liste),p(''metier_mini'')),0),
+            choix(
+               si(
+                  condition(et(sup(this.__ig1.donnees_retournees._CA_,2),sup(this.__ig1.donnees_retournees.chi_id_utilisateur,1))),
+                  alors(
+                     affecte(tableau(nomt(this.__ig1.donnees_recues.__xva.__complements_sous_liste),p(''metier_mini'')),3)
+                  )
+               )
+            ),
+            retourner(
+               await(appelf(element(this),nomf(filtre1),p(mat),p(d)))
+            )
+         )
+      )
+   )
+)','class metiers1{
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
+        if(this.__ig1.donnees_retournees._CA_ > 2
+               && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
+               && __xva_avant.T0_chi_id_metier <= 2
+        ){
+            return({"__xst" : __xer ,"__xme" : '' vous ne pouvez pas modifier le métier ('' + __xva_avant.T0_chi_id_metier + '')''});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
+            this.__ig1.donnees_recues.__xva[''__complements_sous_liste'']={};
+        }
+        this.__ig1.donnees_recues.__xva.__complements_sous_liste[''metier_mini'']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            this.__ig1.donnees_recues.__xva.__complements_sous_liste[''metier_mini'']=3;
+        }
+        return(await this.filtre1( mat , d ));
+    }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
@@ -44116,8 +44292,8 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$6OI0hUT7qu/cR0UKQeHOKuti3o7NoRz/Z1BgRxBFLcy0Ep6AExc0q',NULL,'1808','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
-('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'18','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1833','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'19','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
@@ -44554,6 +44730,9 @@ créer_table(
       distinction_pour_liste(''liste des groupes''),
       distinction_pour_isad(''d\''un groupe''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2)''),
+      fonctions_coherence1(''
+choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chx_id_groupe,1))),alors(
+      throw(new(appelf(nomf(Error),p(\''seul le groupe 1 peut peut être rattaché au groupe 1\'')))))))''),
       transform_base_sur_svg(translate(30,33))
    ),
    champs(
@@ -44620,7 +44799,10 @@ créer_table(
       distinction_pour_liste(''liste des metiers''),
       distinction_pour_isad(''d\''un metier''),
       fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2)''),
-      transform_base_sur_svg(translate(29,189))
+      fonctions_coherence1(''
+choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_id_metier,1))),alors(
+      throw(new(appelf(nomf(Error),p(\''seul le métier 1 peut peut être rattaché au métier 1\'')))))))''),
+      transform_base_sur_svg(translate(27,148))
    ),
    champs(
       champ(

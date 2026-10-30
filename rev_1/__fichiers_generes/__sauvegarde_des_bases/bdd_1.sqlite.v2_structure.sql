@@ -352,7 +352,9 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),rang_de_la_table(20),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(29,189))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),fonctions_coherence1('
+choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_id_metier,1))),alors(
+      throw(new(appelf(nomf(Error),p(\'seul le métier 1 peut peut être rattaché au métier 1\')))))))'),transform_base_sur_svg(translate(29,189))) 
 */
     
             /*
@@ -2088,11 +2090,11 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('cht_rev_grandeur'),
             nom_bref_du_champ('rev'),libelle_du_champ('rev de la grandeur'),entete_distant_du_champ('rev grandeur'),
             typologie(cht),
-            genre(98),
+            genre(11),
             longueur_du_champ(10.200)
             )
             */
-             `cht_rev_grandeur` TEXT DEFAULT  NULL
+             `cht_rev_grandeur` TEXT NOT NULL DEFAULT  NULL
     ,
     
             /*

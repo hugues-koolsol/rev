@@ -544,7 +544,8 @@ class __ig1{
             "base_de_reference" : 1 ,
             "base_de_travail" : 1 ,
             "erreur_controlee" : false ,
-            "les_clients_du_ws" : les_clients_du_ws
+            "les_clients_du_ws" : les_clients_du_ws ,
+            "base_cible_ou_base_un" : 1
         };
         /* this.ma_trace1('this.__ndlcs='+this.__ndlcs+',cookies=',cookies); */
         if(cookies.hasOwnProperty( this.__ndlcs )
@@ -579,6 +580,7 @@ class __ig1{
                     */
                     if(this._CA_ > 2){
                         this.donnees_retournees.chi_id_projet=this._CA_;
+                        this.options_generales.base_cible_ou_base_un=1;
                     }
                     if(this.donnees_retournees.chi_id_projet === 0){
                         /*
@@ -587,21 +589,26 @@ class __ig1{
                         if(this._CA_ === 1){
                             this.options_generales.chemin_absolu_projet='../rev_1/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }else if(this._CA_ === 2){
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
                             this.options_generales.chemin_absolu_projet='../rev_2/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }
                     }else{
                         if(this._CA_ === 1){
                             this.options_generales.chemin_absolu_projet='../rev_' + this.donnees_retournees.chi_id_projet + '/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
                             this.options_generales.base_de_travail=this.donnees_retournees.chi_id_projet;
+                            this.options_generales.base_cible_ou_base_un=this.donnees_retournees.chi_id_projet;
                         }else if(this._CA_ === 2){
                             this.options_generales.chemin_absolu_projet='../rev_2/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }else{
                             this.options_generales.chemin_absolu_projet='../rev_' + this.donnees_retournees.chi_id_projet + '/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }
                     }
                     /* console.log('this.donnees_retournees',this.donnees_retournees); */

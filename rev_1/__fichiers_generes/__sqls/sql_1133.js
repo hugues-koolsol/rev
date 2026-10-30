@@ -9,6 +9,18 @@ class sql_1133{
     /*
       ================================update=============================================================================
     */
+    verifier_coherence( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(tup.n_chx_parent_groupe === 1 && tup.n_chx_id_groupe !== 1){
+            throw new Error( 'seul le groupe 1 peut peut être rattaché au groupe 1' );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+
+    /*
+      ================================update=============================================================================
+    */
     async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_groupe" */
         if(tup.n_chp_nom_groupe === null || tup.n_chp_nom_groupe === ''){
@@ -21,6 +33,17 @@ class sql_1133{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
+        this.verifier_coherence( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction de coherence qui fait un throw ==============================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_groupes` SET \r\n';
         let tableau_champs=[];
         try{

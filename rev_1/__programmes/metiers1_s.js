@@ -24,7 +24,7 @@ class metiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         if(this.__ig1.donnees_retournees._CA_ > 2
@@ -118,7 +118,7 @@ class metiers1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let criteres_select_1125={"T0_chi_id_metier" : fo1.chi_id_metier};
         let tt1125=await this.recup_chi_id_metier( criteres_select_1125 , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
@@ -184,7 +184,7 @@ class metiers1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : chi_id_metier} , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
@@ -210,7 +210,7 @@ class metiers1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : chi_id_metier} , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1125 ' + this.__ig1.nl2() + ']'});
@@ -225,7 +225,7 @@ class metiers1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : fo1.chi_id_metier} , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1125 ' + this.__ig1.nl2() + ']'});
@@ -274,7 +274,7 @@ class metiers1{
         if(chi_id_metier === 0){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1125=await this.recup_chi_id_metier( {"T0_chi_id_metier" : chi_id_metier} , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1125 ' + this.__ig1.nl2() + ']'});
@@ -317,7 +317,7 @@ class metiers1{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
@@ -368,7 +368,7 @@ class metiers1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
@@ -412,12 +412,8 @@ class metiers1{
                 criteres_1124[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
             }
         }
-        criteres_1124['metier_mini']=0;
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            criteres_1124['metier_mini']=3;
-        }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1124=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -477,9 +473,16 @@ class metiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
+        this.__ig1.donnees_recues.__xva.__complements_sous_liste['metier_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            this.__ig1.donnees_recues.__xva.__complements_sous_liste['metier_mini']=3;
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -487,6 +490,7 @@ class metiers1{
     */
     moi='metiers1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

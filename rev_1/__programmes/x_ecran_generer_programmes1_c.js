@@ -2792,10 +2792,25 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='                retour_a_la_liste=true;\r\n';
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='        }\r\n';
+            /*#
+              if(this.chi_id_projet <= 2){
+                  src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+              }else{
+                  if(chi_id_basedd_de_reference === 1){
+                      src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                  }else{
+                      src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                  }
+              }
+            */
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             var deja_pris=[champ_primaire];
             src_serveur_js2+='        let criteres_select_' + ref_select + '={"T0_' + champ_primaire + '" : fo1.' + champ_primaire + '};\r\n';
@@ -2921,10 +2936,25 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'[\' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        if(__db1 === null){\r\n';
+            /*
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
+            }
+            */
+            if(this.chi_id_projet <= 2){
+                src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+            }else{
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , __db1 );\r\n';
@@ -4418,9 +4448,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
@@ -4453,9 +4487,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});\r\n';
             src_serveur_js2+='        }\r\n';
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        let critere_' + ref_select + '={\r\n';
             src_serveur_js2+='                \'T0_' + champ_primaire + '\' : ' + champ_primaire + ',\r\n';
@@ -4481,9 +4519,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let fo1=this.__ig1.donnees_recues.__xva[\'__fo1\'][nom_formulaire];\r\n';
             src_serveur_js2+='        /**/\r\n';
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : fo1.' + champ_primaire + '} , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
@@ -4531,9 +4573,13 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});\r\n';
             src_serveur_js2+='        }\r\n';
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
@@ -4916,10 +4962,14 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        }\r\n';
             }
             src_serveur_js2+=les_tests_particuliers_serveur_creer2;
-            if(this.chi_id_projet <= 3){
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+            if(this.chi_id_projet <= 2){
+                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );\r\n';
             src_serveur_js2+='        if(__tac.__xst !== __xsu){\r\n';
@@ -5106,6 +5156,22 @@ class x_ecran_generer_programmes1{
                     src_serveur_js2+='        }\r\n';
                     src_serveur_js2+='\r\n';
                 }
+                if(this.chi_id_projet <= 2){
+                    src_serveur_js2+='        if(__db1 === null){\r\n';
+                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                    src_serveur_js2+='        }\r\n';
+                }else{
+                    if(chi_id_basedd_de_reference === 1){
+                        src_serveur_js2+='        if(__db1 === null){\r\n';
+                        src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                        src_serveur_js2+='        }\r\n';
+                    }else{
+                        src_serveur_js2+='        if(__db1 === null){\r\n';
+                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                        src_serveur_js2+='        }\r\n';
+                    }
+                }
+                /*#
                 if(this.chi_id_projet <= 3){
                     src_serveur_js2+='        if(__db1 === null){\r\n';
                     src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
@@ -5115,6 +5181,7 @@ class x_ecran_generer_programmes1{
                     src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
                     src_serveur_js2+='        }\r\n';
                 }
+                */
                 src_serveur_js2+='        /* on peut initialiser une valeur ici, par exemple : */\r\n';
                 src_serveur_js2+='        /* this.__ig1.donnees_retournees.__xva[\'xxxxx\']=\'xxxxx\'; */\r\n';
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
@@ -5191,11 +5258,22 @@ class x_ecran_generer_programmes1{
                 }
             }
             src_serveur_js2+='        if(__db1===null){\r\n';
+            if(this.chi_id_projet <= 2){
+                src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+            }else{
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
+            }
+            /*#
             if(this.chi_id_projet <= 3){
                 src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
             }else{
                 src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
             }
+            */
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='        let tt' + ref_liste_ecran + '=await this.__ig1.sql_iij( ' + ref_liste_ecran + ' , criteres_' + ref_liste_ecran + ' , __db1 );\r\n';
@@ -5263,10 +5341,21 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async selection_des_valeurs(chi_id_parametre , T0_che_actif_grandeur){\r\n';
+            /*#
+              if(this.chi_id_projet <= 2){
+                  src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+              }else{
+                  src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+              }
+            */
             if(this.chi_id_projet <= 2){
-                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
-                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                if(chi_id_basedd_de_reference === 1){
+                    src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                }else{
+                    src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                }
             }
             src_serveur_js2+='        let criteres_select_' + numero_requete_souche_sur_la_table_mere + '={"T0_chi_id_parametre" : chi_id_parametre};\r\n';
             src_serveur_js2+='        let tt' + numero_requete_souche_sur_la_table_mere + '=await this.__ig1.sql_iij(\r\n';
@@ -5427,10 +5516,21 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='                }\r\n';
                 src_serveur_js2+='            }\r\n';
                 src_serveur_js2+='        }\r\n';
+                /*#
+                  if(this.chi_id_projet <= 2){
+                      src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                  }else{
+                      src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                  }
+                */
                 if(this.chi_id_projet <= 2){
-                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                    src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
                 }else{
-                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                    if(chi_id_basedd_de_reference === 1){
+                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                    }else{
+                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                    }
                 }
                 src_serveur_js2+='        const __nbMax=40;\r\n';
                 src_serveur_js2+='        let __num_page=0;\r\n';

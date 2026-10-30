@@ -9,6 +9,18 @@ class sql_1132{
     /*
       ================================insert=============================================================================
     */
+    verifier_coherence( tup ){
+        this.__ig1.options_generales.erreur_controlee=true;
+        if(tup.chx_parent_groupe === 1 && tup.chx_id_groupe !== 1){
+            throw new Error( 'seul le groupe 1 peut peut être rattaché au groupe 1' );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+
+    /*
+      ================================insert=============================================================================
+    */
     async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_groupes\`(
@@ -32,6 +44,17 @@ class sql_1132{
                     return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme};
                 }
 
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction de coherence qui fait un throw ==============================
+                  =====================================================================================================
+                */
+                this.verifier_coherence( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction de coherence qui fait un throw ==============================
+                  =====================================================================================================
+                */
                 if(tup.chx_parent_groupe !== null && isNaN( parseInt( tup.chx_parent_groupe , 10 ) ) ){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id parent" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
