@@ -340,21 +340,36 @@ Pout l'instant, les composants sont "révisables" partiellement mais le modèle 
          )
       ),
       body(
-         h1(
-            "hello",
-            span((class,"texte_en_rouge"),('style',"font-size:16px;"),"world< /span>and others")
-         ),
+         h1("hello",span((class,"texte_en_rouge"),('style',"font-size:16px;"),"world< /span>and others")),
          script(
             ("type","text/javascript"),
             @js(
                #(commentaire js),
-               appelf(nomf(alert),p("c'est un message qui vient d'un script")),
+               appelf(nomf(alert),p("c'est un message qui vient d'un script"))
             )
          )
       ),
       @php(
          #(commentaire php),
-         appelf(nomf(echo),p(__FILE__)),
+         appelf(nomf(include),p('mes_fonctions_db.php')),
+         appelf(
+            nomf(executer_mafonction_db_avec_un_paramètre),
+            p(
+               @sql(
+                  sélectionner(
+                     valeurs(champ(`T0`,`id_utilisateur`)),
+                     provenance(
+                        table_reference(
+                           source(nom_de_la_table(ma_table,alias(T0)))
+                        )
+                     ),
+                     conditions(comme(champ(`T0`,`nom_utilisateur`),'%jo%')),
+                     complements(limité_à(quantité(10),début(0)))
+                  )
+               )
+            )
+         ),
+         appelf(nomf(echo),p(__FILE__))
       )
    )
 )

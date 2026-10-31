@@ -24,8 +24,8 @@ class x_ecran_coordonnees1{
             return({"__xst" : __xer ,"__xme" : 'le mot de passe doit comporter au moins 7 caractères [' + this.__ig1.nl2() + ']'});
         }
         if(form['chp_nom_de_connexion_utilisateur'].length < 5){
-            if(this.__ig1.donnees_retournees.chi_id_utilisateur === 1 && form['chp_nom_de_connexion_utilisateur'].length >=3 ){
-                /* 
+            if(this.__ig1.donnees_retournees.chi_id_utilisateur === 1 && form['chp_nom_de_connexion_utilisateur'].length >= 3){
+                /*
                   si l'utilisateur courant est le développeur, on lu accorde généreusement 
                   le droit d'avoir un nom d'utilisateur court ( par exemple : dev )
                 */

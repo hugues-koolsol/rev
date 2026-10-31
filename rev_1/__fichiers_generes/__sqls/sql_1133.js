@@ -11,8 +11,8 @@ class sql_1133{
     */
     verifier_coherence( tup ){
         this.__ig1.options_generales.erreur_controlee=true;
-        if(tup.n_chx_parent_groupe === 1 && tup.n_chx_id_groupe !== 1){
-            throw new Error( 'seul le groupe 1 peut peut être rattaché au groupe 1' );
+        if(tup.n_chx_parent_groupe === 1 && tup.n_chi_id_groupe !== 1){
+            throw new Error( 'seul le groupe 1 peut être rattaché au groupe 1' );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});

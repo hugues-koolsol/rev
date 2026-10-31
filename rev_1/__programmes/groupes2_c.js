@@ -20,7 +20,7 @@ class groupes2{
             "T0_chi_id_groupe" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_nom_groupe" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_parent_groupe" : {"nom" : 'id parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_groupe" : {"nom" : 'nom parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T1_chp_nom_groupe" : {"nom" : 'groupe parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
@@ -67,7 +67,7 @@ class groupes2{
             sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }
         /*
-          this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
+          this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</button>';
         */
     }
     /*
@@ -117,7 +117,7 @@ class groupes2{
                 libelle2+=tup.T0_chp_nom_groupe ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_nom_groupe ) ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</div>';
+                lst+='  <button class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</button>';
                 lst+='</td>';
                 /*
                 */

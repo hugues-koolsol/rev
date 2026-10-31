@@ -1630,7 +1630,7 @@ class __ig1{
       =============================================================================================================
     */
     traite_input1( e ){
-        console.log( ' traite_input1 changement de valeur de zone input' , e);
+        console.log( ' traite_input1 changement de valeur de zone input' , e );
         let l_action_rev='';
         let l_element=null;
         if(e && e.target && e.target.hasAttribute( 'rev_chg_ou_ent1' ) && e.target.getAttribute( 'rev_chg_ou_ent1' ) !== ''){
@@ -1666,7 +1666,7 @@ class __ig1{
       =============================================================================================================
     */
     quand_change1( e ){
-        console.log( ' quand_change1 changement de valeur de zone input' , e);
+        console.log( ' quand_change1 changement de valeur de zone input' , e );
         let l_action_rev='';
         let l_element=null;
         if(e && e.target && e.target.hasAttribute( 'rev_change1' ) && e.target.getAttribute( 'rev_change1' ) !== ''){
@@ -2819,7 +2819,7 @@ class __ig1{
                     "dimension" : 'px' ,
                     "valeurs" : [
                         /* tbel */
-                        0,1,2,3,4,5,6,8,9,10] ,
+                        0,1,2,3,4,5,6,8,9,10                ] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
                     "libelle0" : 'espaces boutons' ,
@@ -3519,24 +3519,24 @@ class __ig1{
             p.classList.remove( 'yy_suivant_precedent_inactif' );
             p.classList.add( 'yy_suivant_precedent_actif' );
             p.classList.add( 'yy_suivant_precedent_actif' );
-            p.removeAttribute('disabled');
+            p.removeAttribute( 'disabled' );
         }else{
             p.setAttribute( 'data-numero_page' , '-1' );
             p.classList.add( 'yy_suivant_precedent_inactif' );
             p.classList.remove( 'yy_suivant_precedent_actif' );
-            p.setAttribute('disabled' , 'true');
+            p.setAttribute( 'disabled' , 'true' );
         }
         let s=document.getElementById( 'vv_ecran_liste_bouton_suivants' );
         if(__debut + __nbMax < __nbEnregs){
             s.classList.remove( 'yy_suivant_precedent_inactif' );
             s.classList.add( 'yy_suivant_precedent_actif' );
             s.setAttribute( 'data-numero_page' , __num_page + 1 );
-            s.removeAttribute('disabled');
+            s.removeAttribute( 'disabled' );
         }else{
             s.classList.remove( 'yy_suivant_precedent_actif' );
             s.classList.add( 'yy_suivant_precedent_inactif' );
             s.setAttribute( 'data-numero_page' , '-1' );
-            s.setAttribute('disabled' , 'true');
+            s.setAttribute( 'disabled' , 'true' );
         }
         let t='';
         t+='page ';

@@ -42,12 +42,17 @@ class groupes2{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         const __nbMax=40;
         let __num_page=0;
         let liste2={};
         let criteres_xxxx={};
         criteres_xxxx['quantitee']=__nbMax;
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
         if(true || contexte === 'nom_du_contexte'){
             /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
             liste2=await this.__ig1.generique_sous_liste2( mat , d , 1216 , criteres_xxxx , __nbMax , __db1 );
@@ -59,9 +64,17 @@ class groupes2{
         return liste2;
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async liste1( mat , d ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
+        this.__ig1.donnees_recues.__xva.__complements_sous_liste['groupe_mini']=0;
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            /* on peut sélectionner le groupe admin comme parent */
+            this.__ig1.donnees_recues.__xva.__complements_sous_liste['groupe_mini']=2;
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -69,6 +82,7 @@ class groupes2{
     */
     moi='groupes2';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

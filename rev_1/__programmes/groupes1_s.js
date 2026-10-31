@@ -158,7 +158,7 @@ class groupes1{
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -475,7 +475,7 @@ class groupes1{
     /*
       =========================== fragment ========================================================================
     */
-    async liste1( mat , d ){
+    async liste1( mat , d , __db1=null ){
         if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
         }
@@ -483,7 +483,7 @@ class groupes1{
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
             this.__ig1.donnees_recues.__xva.__complements_sous_liste['groupe_mini']=3;
         }
-        return(await this.filtre1( mat , d ));
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================

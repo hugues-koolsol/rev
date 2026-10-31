@@ -1705,7 +1705,8 @@ class x_ecran_generer_programmes1{
             'filtre1',
             'sous_liste2',
             'liste1',
-            'constructor'
+            'constructor',
+            'ajoute_criteres_sous_liste2'
         ];
         for(let i in this.#liste_des_methodes_desfragments[this.#nom_de_la_classe_générée2 + '_s.js']){
             let elem=this.#liste_des_methodes_desfragments[this.#nom_de_la_classe_générée2 + '_s.js'][i];
@@ -2897,14 +2898,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __taam.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        await __db1.exec(\'COMMIT;\');\r\n';
+            src_serveur_js2+='        await __db1.exec( \'COMMIT;\' );\r\n';
             if(l_update_gere_un_nur !== ''){
                 src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__nouveau_nur\']=parseInt( fo1.' + l_update_gere_un_nur + ' , 10 )+1;\r\n';
             }
             src_serveur_js2+='        if(retour_a_la_liste === true){\r\n';
             src_serveur_js2+='            if(fo1.__mat_liste_si_ok){\r\n';
             src_serveur_js2+='                let mat1=JSON.parse( fo1.__mat_liste_si_ok );\r\n';
-            src_serveur_js2+='                await this.filtre1( mat1 , 1 , __db1 );\r\n';
+            src_serveur_js2+='                await this.liste1( mat1 , 1 , __db1 );\r\n';
             src_serveur_js2+='            }\r\n';
             src_serveur_js2+='            return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='        }\r\n';
@@ -2937,15 +2938,15 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        if(__db1 === null){\r\n';
             /*
-            if(this.chi_id_projet <= 2){
-                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
-            }else{
-                if(chi_id_basedd_de_reference === 1){
-                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
-                }else{
-                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-                }
-            }
+              if(this.chi_id_projet <= 2){
+              src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+              }else{
+              if(chi_id_basedd_de_reference === 1){
+              src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+              }else{
+              src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+              }
+              }
             */
             if(this.chi_id_projet <= 2){
                 src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
@@ -4551,7 +4552,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        /**/\r\n';
             src_serveur_js2+='        if(fo1.__mat_liste_si_ok !== \'\'){\r\n';
             src_serveur_js2+='            let mat1=JSON.parse( fo1.__mat_liste_si_ok );\r\n';
-            src_serveur_js2+='            await this.filtre1( mat1 , 1 , __db1 );\r\n';
+            src_serveur_js2+='            return( await this.liste1( mat1 , 1 , __db1 ) );\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='    }\r\n';
@@ -5036,7 +5037,7 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        await __db1.exec(\'COMMIT;\');\r\n';
             src_serveur_js2+='        if(retour_a_la_liste===true && fo1.__mat_liste_si_ok !== \'\'){\r\n';
             src_serveur_js2+='            let mat1=JSON.parse( fo1.__mat_liste_si_ok );\r\n';
-            src_serveur_js2+='            await this.filtre1( mat1 , 1 , __db1 );\r\n';
+            src_serveur_js2+='            await this.liste1( mat1 , 1 , __db1 );\r\n';
             src_serveur_js2+='        }else{\r\n';
             if(avec_creer_et_dupliquer1 === 1){
                 src_serveur_js2+='            if(__creer_et_dupliquer1 !== 0){\r\n';
@@ -5172,15 +5173,15 @@ class x_ecran_generer_programmes1{
                     }
                 }
                 /*#
-                if(this.chi_id_projet <= 3){
-                    src_serveur_js2+='        if(__db1 === null){\r\n';
-                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
-                    src_serveur_js2+='        }\r\n';
-                }else{
-                    src_serveur_js2+='        if(__db1 === null){\r\n';
-                    src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-                    src_serveur_js2+='        }\r\n';
-                }
+                  if(this.chi_id_projet <= 3){
+                      src_serveur_js2+='        if(__db1 === null){\r\n';
+                      src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+                      src_serveur_js2+='        }\r\n';
+                  }else{
+                      src_serveur_js2+='        if(__db1 === null){\r\n';
+                      src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                      src_serveur_js2+='        }\r\n';
+                  }
                 */
                 src_serveur_js2+='        /* on peut initialiser une valeur ici, par exemple : */\r\n';
                 src_serveur_js2+='        /* this.__ig1.donnees_retournees.__xva[\'xxxxx\']=\'xxxxx\'; */\r\n';
@@ -5268,11 +5269,11 @@ class x_ecran_generer_programmes1{
                 }
             }
             /*#
-            if(this.chi_id_projet <= 3){
-                src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
-            }else{
-                src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-            }
+              if(this.chi_id_projet <= 3){
+                  src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
+              }else{
+                  src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+              }
             */
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='\r\n';
@@ -5462,6 +5463,26 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='    }\r\n';
         }
         if(pour_sous_liste_uniquement === 1){
+            if(est_une_grandeur === 0){
+                fragment_trouve=-1;
+                for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
+                    if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'ajoute_criteres_sous_liste2'){
+                        fragment_trouve=i;
+                        break;
+                    }
+                }
+                if(fragment_trouve >= 0){
+                    src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
+                }else{
+                    src_serveur_js2+='    /*\r\n';
+                    src_serveur_js2+='      =============================================================================================================\r\n';
+                    src_serveur_js2+='    */\r\n';
+                    src_serveur_js2+='    ajoute_criteres_sous_liste2(criteres_xxxx){\r\n';
+                    src_serveur_js2+='        /* voir exemple dans groupes2_s.js */\r\n';
+                    src_serveur_js2+='    }\r\n';
+                    src_serveur_js2+='\r\n';
+                }
+            }
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
@@ -5486,12 +5507,6 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        if(les_valeurs.__xst !== __xsu){\r\n';
                 src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
                 src_serveur_js2+='        }\r\n';
-                /*
-                  src_serveur_js2+='        let liste2=await this.__ig1.generique_sous_liste2( mat , d , ' + ref_select + ' , criteres_' + ref_select + ' , __nbMax , __db1 );\r\n';
-                  src_serveur_js2+='        if(les_valeurs.__xst !== __xsu){\r\n';
-                  src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
-                  src_serveur_js2+='        }\r\n';
-                */
                 src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'sous_liste2\']=les_valeurs;\r\n';
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             }else{
@@ -5516,13 +5531,6 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='                }\r\n';
                 src_serveur_js2+='            }\r\n';
                 src_serveur_js2+='        }\r\n';
-                /*#
-                  if(this.chi_id_projet <= 2){
-                      src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
-                  }else{
-                      src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-                  }
-                */
                 if(this.chi_id_projet <= 2){
                     src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
                 }else{
@@ -5535,13 +5543,16 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        const __nbMax=40;\r\n';
                 src_serveur_js2+='        let __num_page=0;\r\n';
                 src_serveur_js2+='        let liste2={};\r\n';
-                /* ' + ref_liste_ecran + ' */
                 src_serveur_js2+='        let criteres_xxxx={}\r\n';
                 src_serveur_js2+='        criteres_xxxx[\'quantitee\']=__nbMax;\r\n';
-                if(est_une_grandeur === 1){
-                }else{
-                    src_serveur_js2+='        if(true || contexte === \'nom_du_contexte\'){\r\n';
-                }
+                src_serveur_js2+='        this.ajoute_criteres_sous_liste2( criteres_xxxx );\r\n';
+                src_serveur_js2+='        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( \'__complements_sous_liste\' )){\r\n';
+                src_serveur_js2+='            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){\r\n';
+                src_serveur_js2+='                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];\r\n';
+                src_serveur_js2+='            }\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='\r\n';
+                src_serveur_js2+='        if(true || contexte === \'nom_du_contexte\'){\r\n';
                 if(est_une_grandeur === 1){
                     /*
                       il faut aller chercher la requete souche sur la table mère
@@ -7470,25 +7481,27 @@ class x_ecran_generer_programmes1{
         /*
           
         */
-        fragment_trouve=-1;
-        for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
-            if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'liste1'){
-                fragment_trouve=i;
-                break;
+        if(pour_sous_liste_uniquement === 0){
+            fragment_trouve=-1;
+            for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
+                if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'liste1'){
+                    fragment_trouve=i;
+                    break;
+                }
             }
-        }
-        if(fragment_trouve >= 0){
-            src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
-        }else{
-            src_serveur_js2+='    /*\r\n';
-            src_serveur_js2+='      =============================================================================================================\r\n';
-            src_serveur_js2+='    */\r\n';
-            src_serveur_js2+='    async liste1( mat , d ){\r\n';
-            src_serveur_js2+='        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty(\'__complements_sous_liste\')){\r\n';
-            src_serveur_js2+='            this.__ig1.donnees_recues.__xva[\'__complements_sous_liste\']={};\r\n';
-            src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        return(await this.filtre1( mat , d ));\r\n';
-            src_serveur_js2+='    }\r\n';
+            if(fragment_trouve >= 0){
+                src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
+            }else{
+                src_serveur_js2+='    /*\r\n';
+                src_serveur_js2+='      =============================================================================================================\r\n';
+                src_serveur_js2+='    */\r\n';
+                src_serveur_js2+='    async liste1( mat , d , __db1=null ){\r\n';
+                src_serveur_js2+='        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty(\'__complements_sous_liste\')){\r\n';
+                src_serveur_js2+='            this.__ig1.donnees_recues.__xva[\'__complements_sous_liste\']={};\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='        return(await this.filtre1( mat , d , __db1 ));\r\n';
+                src_serveur_js2+='    }\r\n';
+            }
         }
         src_serveur_js2+='    /*\r\n';
         src_serveur_js2+='      =============================================================================================================\r\n';

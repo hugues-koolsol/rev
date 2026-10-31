@@ -17,9 +17,9 @@ class _connexion1{
         } catch {}
         this.__ig1.maj_fav_icone( le_colis1._CA_ , 0 );
         let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
-        document.getElementById('vv_se_deconnecter').style.display='none';
+        document.getElementById( 'vv_se_deconnecter' ).style.display='none';
         a.select();
-        this.__ig1.ajoute_message( {"__xst" : __xsu , "__xme" : '<br /><b style="font-size:1.5em;min-height:1.8em;">A bientôt :-)</b><br /><br />'} );
+        this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : '<br /><b style="font-size:1.5em;min-height:1.8em;">A bientôt :-)</b><br /><br />'} );
         this.__ig1.affiche_les_messages();
         return({"__xst" : __xsu});
     }
@@ -74,8 +74,12 @@ class _connexion1{
       =============================================================================================================
     */
     traite_touche_bas_sur_formulaire_de_connexion( e ){
-        console.log(' dans traite_touche_bas_sur_formulaire_de_connexion e=',e);
-        if(e.keyCode === 13 && e.target && ( e.target.id === 'chp_mot_de_passe_utilisateur_en_clair' ||  e.target.id === 'chp_nom_de_connexion_utilisateur' ) ){
+        console.log( ' dans traite_touche_bas_sur_formulaire_de_connexion e=' , e );
+        if(e.keyCode === 13
+               && e.target
+               && (e.target.id === 'chp_mot_de_passe_utilisateur_en_clair'
+                   || e.target.id === 'chp_nom_de_connexion_utilisateur')
+        ){
             let aaa='fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))';
             this.__ig1.executer1( aaa , null , null );
         }
@@ -111,13 +115,13 @@ class _connexion1{
         t+='<th style="">nom</th>';
         t+='</tr>';
         t+='<tr>';
-        t+='<td><input id="chp_nom_de_connexion_utilisateur" type="text" aria-autocomplete="list" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" autocapitalize="off" class="yy_input1" /></td>';
+        t+='<td><input id="chp_nom_de_connexion_utilisateur" type="text" aria-autocomplete="list" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;text-align:center;" value="" autocapitalize="off" class="yy_input1" /></td>';
         t+='</tr>';
         t+='<tr>';
         t+='<td>mot de passe</td>';
         t+='</tr>';
         t+='<tr>';
-        t+='<td><input id="chp_mot_de_passe_utilisateur_en_clair" type="password" autocomplete="off" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;" value="" class="yy_input1" /></td>';
+        t+='<td><input id="chp_mot_de_passe_utilisateur_en_clair" type="password" autocomplete="off" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;text-align:center;" value="" class="yy_input1" /></td>';
         t+='</tr>';
         t+='<tr>';
         t+='<td>';
@@ -135,15 +139,12 @@ class _connexion1{
         this.repositionner_le_bouton_deconnexion();
         let b=document.getElementById( 'vv_formulaire_de_connexion' );
         b.addEventListener( 'keydown' , this.traite_touche_bas_sur_formulaire_de_connexion.bind( this ) );
-
         setTimeout( () => {
                 let b=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
                 b.focus();
                 b.select();
-                //console.log('a.value="'+a.value+'"'); 
+                /* console.log('a.value="'+a.value+'"'); */
         } , 250 );
-        
-
         /* =============================================================== */
         this.__ig1.maj_title_htm1( 'connexion' );
         return({"__xst" : __xsu});

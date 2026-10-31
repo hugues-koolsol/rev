@@ -297,7 +297,9 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(30,33))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),fonctions_coherence1('
+choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chi_id_groupe,1))),alors(
+      throw(new(appelf(nomf(Error),p(\'seul le groupe 1 peut être rattaché au groupe 1\')))))))'),transform_base_sur_svg(translate(30,33))) 
 */
     
             /*
@@ -354,7 +356,7 @@ CREATE TABLE `tbl_metiers`(
    distinction_pour_liste('liste des metiers'),
    distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),fonctions_coherence1('
 choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_id_metier,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'seul le métier 1 peut peut être rattaché au métier 1\')))))))'),transform_base_sur_svg(translate(29,189))) 
+      throw(new(appelf(nomf(Error),p(\'seul le métier 1 peut peut être rattaché au métier 1\')))))))'),transform_base_sur_svg(translate(27,148))) 
 */
     
             /*

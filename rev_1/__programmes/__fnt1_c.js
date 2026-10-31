@@ -2640,7 +2640,7 @@ class __fnt1{
                         o1+='<div class="yy_bloc_filtre" style="' + bck + '">';
                         o1+='<div class="yy_libelle_filtre">' + this.__ig1.fi2( l_elem_filtre.nom ) + '</div>';
                         o1+='<div class="yy_champ_filtre1" style="width:100%;">';
-                        alert(' sur firefox vérifier la classe .yy__fil_btns1 le flex-wrap = balance')
+                        alert( ' sur firefox vérifier la classe .yy__fil_btns1 le flex-wrap = balance' );
                         o1+='<div class="yy__fil_btns1" style="justify-content:space-around;width:100%;">';
                         o1+='<button class="yy_b1 yy__4" rev_clic1="m1(n1(' + this.moi + '),f1(selection_grandeur_filtre1(';
                         o1+='id_zone(' + i + '),';
