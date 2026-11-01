@@ -110,7 +110,8 @@ class groupes1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_groupe" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -156,7 +157,7 @@ class groupes1{
             "nom_du_champ" : "chx_parent_groupe" ,
             "__contexte" : "modification1" ,
             "libelle_du_champ" : "id parent" ,
-            "bouton_vider" : true ,
+            "bouton_vider" : false ,
             "nom_du_lien" : "groupes2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_groupe"]
         } , this );
@@ -292,7 +293,8 @@ class groupes1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_groupe" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -335,9 +337,10 @@ class groupes1{
             "nom_du_champ" : "chx_parent_groupe" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "id parent" ,
-            "bouton_vider" : true ,
+            "bouton_vider" : false ,
             "nom_du_lien" : "groupes2" ,
-            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"]
+            "liste_des_champs_libelles" : ["T1_chp_nom_groupe"] ,
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
@@ -485,7 +488,7 @@ class groupes1{
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
         if([
                 /* tbel */
-                1,2].includes( tup.T0_chi_id_groupe )){
+                0,1,2].includes( tup.T0_chi_id_groupe )){
             lst+='<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">' + this.__ig1.les_svg.poubelle + '</button>';
         }else{
             lst+='<button class="yy_svg1 yy__2" rev_clic1="';

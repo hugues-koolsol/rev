@@ -2230,7 +2230,9 @@ class x_ecran_generer_programmes1{
             src_client2+='    */\r\n';
             src_client2+='    filtres={};\r\n';
             src_client2+='    __variables_module={};\r\n';
-            src_client2+='    vv_ecran_liste_boutons_avant=\'\';\r\n';
+            if(pour_sous_liste_uniquement === 0){
+                src_client2+='    vv_ecran_liste_boutons_avant=\'\';\r\n';
+            }
             if(pour_sous_liste_uniquement === 0){
                 src_client2+='    __champs_sortie_pour_tri1={\r\n';
                 for(let i in liste_des_champs_condition_liste_ecran){
@@ -2411,22 +2413,24 @@ class x_ecran_generer_programmes1{
                     src_client2+='            }\r\n';
                     src_client2+='        }\r\n';
                 }
-                if(ref_insert === ''){
-                    src_client2+='        /*\r\n';
+                if(pour_sous_liste_uniquement === 0){
+                    if(ref_insert === ''){
+                        src_client2+='        /*\r\n';
+                    }
+                    src_client2+='        this.vv_ecran_liste_boutons_avant+=';
+                    src_client2+='\'<button class="yy_svg1 yy__xif" rev_clic1="';
+                    if(avec_creer_et_dupliquer1 === 1){
+                        src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_creer1())))';
+                    }else{
+                        src_client2+='m1(n1(\'+this.moi+\'),f1(page_creer1()))';
+                    }
+                    src_client2+='" title="création\'+this.DUN_DUNE_ELEMENT_GERE +\'" >\' + this.__ig1.les_svg.nouveau_document + \'</button>\';\r\n';
+                    if(ref_insert === ''){
+                        src_client2+='        */\r\n';
+                    }
                 }
-                src_client2+='        this.vv_ecran_liste_boutons_avant+=';
-                src_client2+='\'<button class="yy_svg1 yy__xif" rev_clic1="';
-                if(avec_creer_et_dupliquer1 === 1){
-                    src_client2+='pm1(m1(n1(\'+this.moi+\'),f1(page_creer1())))';
-                }else{
-                    src_client2+='m1(n1(\'+this.moi+\'),f1(page_creer1()))';
-                }
-                src_client2+='" title="création\'+this.DUN_DUNE_ELEMENT_GERE +\'" >\' + this.__ig1.les_svg.nouveau_document + \'</button>\';\r\n';
-                if(ref_insert === ''){
-                    src_client2+='        */\r\n';
-                }
+                src_client2+='    }\r\n';
             }
-            src_client2+='    }\r\n';
         }
         if(ref_update !== '' && ref_select !== ''){
             /*  */

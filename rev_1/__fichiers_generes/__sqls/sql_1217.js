@@ -49,8 +49,8 @@ class sql_1217{
             if(tup.hasOwnProperty( 'T1_chp_nom_metier' ) && tup.T1_chp_nom_metier !== ''){
                 where0+=` AND \`T1\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_metier , 'T1_chp_nom_metier' ) + '\r\n';
             }
-            if(tup.hasOwnProperty( 'metier_mini' ) && tup.metier_mini !== ''){
-                where0+=` AND \`T0\`.\`chi_id_metier\` >= ` + this.__ig1.__fnt1.sq1( tup.metier_mini , 'metier_mini' ) + '\r\n';
+            if(tup.hasOwnProperty( 'metier_a_exclure' ) && tup.metier_a_exclure !== ''){
+                where0+=` AND \`T0\`.\`chi_id_metier\` NOT IN (` + tup.metier_a_exclure + `)` + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });

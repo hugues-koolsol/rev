@@ -31,7 +31,13 @@ class metiers1{
                && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
                && __xva_avant.T0_chi_id_metier <= 2
         ){
-            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier le métier (' + __xva_avant.T0_chi_id_metier + ')'});
+            return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier le metier (' + __xva_avant.T0_chi_id_metier + ')'});
+        }
+        if(fo1.chx_parent_metier === 1 && fo1.chi_id_metier !== 1 || fo1.chx_parent_metier !== 2 && fo1.chi_id_metier === 2){
+            return({"__xst" : __xer ,"__xme" : 'pgm : seul les metiers 1 et 2 peuvent être rattaché à eux même'});
+        }
+        if(!(fo1.chx_parent_metier === 1 || fo1.chx_parent_metier === 2) && fo1.chi_id_metier === fo1.chx_parent_metier){
+            return({"__xst" : __xer ,"__xme" : 'pgm : un metier ne peut pas être rattaché à lui même'});
         }
         return({"__xst" : __xsu});
     }
@@ -48,9 +54,12 @@ class metiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_avant_creer( mat , d , fo1 , __db1 ){
+        if(fo1.chx_parent_metier === 0 || fo1.chx_parent_metier === 1){
+            return({"__xst" : __xer ,"__xme" : 'vous ne pouvez pas créer un metier dont le parent est 0 ou 1'});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -101,7 +110,8 @@ class metiers1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_metier" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -134,7 +144,7 @@ class metiers1{
              /*  */
             "c_chi_id_metier" : fo1.chi_id_metier ,
             "n_chp_nom_metier" : fo1.chp_nom_metier ,
-            "n_chx_parent_metier" : fo1.chx_parent_metier === '' ? ( null ) : ( fo1.chx_parent_metier )
+            "n_chx_parent_metier" : fo1.chx_parent_metier
         };
         /* =========================== mise à jour effective ======================== */
         let tt1127=await this.__ig1.sql_iij(
@@ -158,7 +168,7 @@ class metiers1{
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -256,7 +266,7 @@ class metiers1{
         /*  */
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -307,7 +317,8 @@ class metiers1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_metier" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -322,9 +333,7 @@ class metiers1{
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_1126={
-            "donnees" : [{"chp_nom_metier" : fo1.chp_nom_metier ,"chx_parent_metier" : fo1.chx_parent_metier === '' ? ( null ) : ( fo1.chx_parent_metier )}]
-        };
+        let criteres_1126={"donnees" : [{"chp_nom_metier" : fo1.chp_nom_metier ,"chx_parent_metier" : fo1.chx_parent_metier}]};
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let tt1126=await this.__ig1.sql_iij(
@@ -350,7 +359,7 @@ class metiers1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1126['nouvel_id'] , __db1 );
         }

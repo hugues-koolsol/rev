@@ -2489,7 +2489,7 @@ class x_ecran_concevoir_une_requete1{
         t+='        <b>js : </b>';
         t+='        ' + this.__ig1.__fnt1.boutons_edition1( 'js1_de_la_requete' );
         t+='    </div>';
-        t+='    <textarea class="txtar1" id="js1_de_la_requete" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
+        t+='    <textarea class="txtar1" id="js1_de_la_requete" data-editeur1="source_editeur1" rows="20" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>';
         t+='</div>';
         /*
           =====================================================================================================

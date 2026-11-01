@@ -297,9 +297,7 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),fonctions_coherence1('
-choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chi_id_groupe,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'seul le groupe 1 peut être rattaché au groupe 1\')))))))'),transform_base_sur_svg(translate(30,33))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(0,1,2)'),transform_base_sur_svg(translate(30,33))) 
 */
     
             /*
@@ -334,11 +332,11 @@ choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chi_i
             nom_du_champ('chx_parent_groupe'),
             nom_bref_du_champ('id parent'),libelle_du_champ('id parent'),entete_distant_du_champ('groupe'),
             typologie(chx),
-            genre(8),
+            genre(4),
             refe_parent_gauche(1)
             )
             */
-             `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_groupe` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -354,9 +352,7 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),rang_de_la_table(20),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),fonctions_coherence1('
-choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_id_metier,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'seul le métier 1 peut peut être rattaché au métier 1\')))))))'),transform_base_sur_svg(translate(27,148))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(0,1,2)'),transform_base_sur_svg(translate(27,148))) 
 */
     
             /*
@@ -391,11 +387,11 @@ choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_i
             nom_du_champ('chx_parent_metier'),
             nom_bref_du_champ('id parent'),libelle_du_champ('id parent'),entete_distant_du_champ('métier'),
             typologie(chx),
-            genre(8),
+            genre(4),
             refe_parent_gauche(1)
             )
             */
-             `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_metier` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 

@@ -20,14 +20,13 @@ class metiers2{
             "T0_chi_id_metier" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chp_nom_metier" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_parent_metier" : {"nom" : 'id parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_metier" : {"nom" : 'nom parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T1_chp_nom_metier" : {"nom" : 'métier parent' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
     */
     filtres={};
     __variables_module={};
-    vv_ecran_liste_boutons_avant='';
     /*
       =============================================================================================================
     */
@@ -66,9 +65,6 @@ class metiers2{
         }else{
             sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }
-        /*
-          this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-        */
     }
     /*
       =============================================================================================================
@@ -117,7 +113,7 @@ class metiers2{
                 libelle2+=tup.T0_chp_nom_metier ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_nom_metier ) ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</div>';
+                lst+='  <button class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</button>';
                 lst+='</td>';
                 /*
                 */

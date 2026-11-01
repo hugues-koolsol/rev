@@ -59,7 +59,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (141) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (142) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -43779,6 +43779,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                         element(
                            defTab(
                               #( tbel ),
+                              p(0),
                               p(1),
                               p(2)
                            )
@@ -43787,7 +43788,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                         p(tup.T0_chi_id_groupe)
                      )
                   ),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'',this.__ig1.les_svg.poubelle,''</button>'')))
                ),
                sinon(
                   alors(
@@ -43810,7 +43811,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
             choix(
                si(
                   condition(et(sup(le_colis1._CA_,2),sup(le_colis1.chi_id_utilisateur,1),infeg(tup.T0_chi_id_groupe,2))),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">'',this.__ig1.les_svg.dupliquer,''</button>'')))
                ),
                sinon(
                   alors(
@@ -43858,16 +43859,16 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
         if([
                 /* tbel */
-                1,2].includes( tup.T0_chi_id_groupe )){
-            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+                0,1,2].includes( tup.T0_chi_id_groupe )){
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }else{
             lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_groupe('' + tup.T0_chi_id_groupe + '')))))'';
             lst+=''">'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }
         if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && tup.T0_chi_id_groupe <= 2){
-            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
-            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         }else{
             lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_groupe('' + tup.T0_chi_id_groupe + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
             lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_groupe('' + tup.T0_chi_id_groupe + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
@@ -43903,7 +43904,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                         p(tup.T0_chi_id_metier)
                      )
                   ),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif">'',this.__ig1.les_svg.poubelle,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'',this.__ig1.les_svg.poubelle,''</button>'')))
                ),
                sinon(
                   alors(
@@ -43926,7 +43927,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
             choix(
                si(
                   condition(et(sup(le_colis1._CA_,2),sup(le_colis1.chi_id_utilisateur,1),infeg(tup.T0_chi_id_metier,2))),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif">'',this.__ig1.les_svg.dupliquer,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">'',this.__ig1.les_svg.editer,''</button>'')),affectop(''+='',lst,concat(''<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">'',this.__ig1.les_svg.dupliquer,''</button>'')))
                ),
                sinon(
                   alors(
@@ -43975,15 +43976,15 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         if([
                 /* tbel */
                 1,2].includes( tup.T0_chi_id_metier )){
-            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }else{
             lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
             lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_metier('' + tup.T0_chi_id_metier + '')))))'';
             lst+=''">'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }
         if(le_colis1._CA_ > 2 && le_colis1.chi_id_utilisateur > 1 && tup.T0_chi_id_metier <= 2){
-            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif">'' + this.__ig1.les_svg.editer + ''</button>'';
-            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4 yy__4_inactif" disabled="true">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
         }else{
             lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_metier('' + tup.T0_chi_id_metier + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
             lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_metier('' + tup.T0_chi_id_metier + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
@@ -44019,6 +44020,29 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                   )
                )
             ),
+            choix(
+               si(
+                  condition(
+                     ou(et(egalstricte(fo1.chx_parent_groupe,1),diffstricte(fo1.chi_id_groupe,1)),et(diffstricte(fo1.chx_parent_groupe,2),egalstricte(fo1.chi_id_groupe,2)))
+                  ),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''pgm : seul les groupes 1 et 2 peuvent être rattaché à eux même'')))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        non(ou(egalstricte(fo1.chx_parent_groupe,1),egalstricte(fo1.chx_parent_groupe,2))),
+                        egalstricte(fo1.chi_id_groupe,fo1.chx_parent_groupe)
+                     )
+                  ),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''pgm : un groupe ne peut pas être rattaché à lui même'')))
+                  )
+               )
+            ),
             retourner(obj(("__xst",__xsu)))
          )
       ),
@@ -44026,7 +44050,37 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         =========================================================================================================
       ),
       méthode(
-         definition(nom(liste1),asynchrone(),argument(mat),argument(d)),
+         definition(
+            nom(tests_avant_creer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(fo1),
+            argument(__db1)
+         ),
+         contenu(
+            choix(
+               si(
+                  condition(ou(egalstricte(fo1.chx_parent_groupe,0),egalstricte(fo1.chx_parent_groupe,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''vous ne pouvez pas créer un groupe dont le parent est 0 ou 1'')))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(
+            nom(liste1),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(__db1,defaut(null))
+         ),
          contenu(
             choix(
                si(
@@ -44048,7 +44102,15 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                )
             ),
             retourner(
-               await(appelf(element(this),nomf(filtre1),p(mat),p(d)))
+               await(
+                  appelf(
+                     element(this),
+                     nomf(filtre1),
+                     p(mat),
+                     p(d),
+                     p(__db1)
+                  )
+               )
             )
          )
       )
@@ -44064,12 +44126,27 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         ){
             return({"__xst" : __xer ,"__xme" : '' vous ne pouvez pas modifier le groupe ('' + __xva_avant.T0_chi_id_groupe + '')''});
         }
+        if(fo1.chx_parent_groupe === 1 && fo1.chi_id_groupe !== 1 || fo1.chx_parent_groupe !== 2 && fo1.chi_id_groupe === 2){
+            return({"__xst" : __xer ,"__xme" : ''pgm : seul les groupes 1 et 2 peuvent être rattaché à eux même''});
+        }
+        if(!(fo1.chx_parent_groupe === 1 || fo1.chx_parent_groupe === 2) && fo1.chi_id_groupe === fo1.chx_parent_groupe){
+            return({"__xst" : __xer ,"__xme" : ''pgm : un groupe ne peut pas être rattaché à lui même''});
+        }
         return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
+    async tests_avant_creer( mat , d , fo1 , __db1 ){
+        if(fo1.chx_parent_groupe === 0 || fo1.chx_parent_groupe === 1){
+            return({"__xst" : __xer ,"__xme" : ''vous ne pouvez pas créer un groupe dont le parent est 0 ou 1''});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d , __db1=null ){
         if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
             this.__ig1.donnees_recues.__xva[''__complements_sous_liste'']={};
         }
@@ -44077,7 +44154,7 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
             this.__ig1.donnees_recues.__xva.__complements_sous_liste[''groupe_mini'']=3;
         }
-        return(await this.filtre1( mat , d ));
+        return(await this.filtre1( mat , d , __db1 ));
     }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1064','metiers1_s.js','definition_de_classe(
@@ -44102,8 +44179,55 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                   condition(et(sup(this.__ig1.donnees_retournees._CA_,2),sup(this.__ig1.donnees_retournees.chi_id_utilisateur,1),infeg(__xva_avant.T0_chi_id_metier,2))),
                   alors(
                      retourner(
-                        obj(("__xst",__xer),("__xme",concat('' vous ne pouvez pas modifier le métier ('',__xva_avant.T0_chi_id_metier,'')'')))
+                        obj(("__xst",__xer),("__xme",concat('' vous ne pouvez pas modifier le metier ('',__xva_avant.T0_chi_id_metier,'')'')))
                      )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     ou(et(egalstricte(fo1.chx_parent_metier,1),diffstricte(fo1.chi_id_metier,1)),et(diffstricte(fo1.chx_parent_metier,2),egalstricte(fo1.chi_id_metier,2)))
+                  ),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''pgm : seul les metiers 1 et 2 peuvent être rattaché à eux même'')))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        non(ou(egalstricte(fo1.chx_parent_metier,1),egalstricte(fo1.chx_parent_metier,2))),
+                        egalstricte(fo1.chi_id_metier,fo1.chx_parent_metier)
+                     )
+                  ),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''pgm : un metier ne peut pas être rattaché à lui même'')))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(
+            nom(tests_avant_creer),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(fo1),
+            argument(__db1)
+         ),
+         contenu(
+            choix(
+               si(
+                  condition(ou(egalstricte(fo1.chx_parent_metier,0),egalstricte(fo1.chx_parent_metier,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''vous ne pouvez pas créer un metier dont le parent est 0 ou 1'')))
                   )
                )
             ),
@@ -44150,7 +44274,22 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
                && this.__ig1.donnees_retournees.chi_id_utilisateur > 1
                && __xva_avant.T0_chi_id_metier <= 2
         ){
-            return({"__xst" : __xer ,"__xme" : '' vous ne pouvez pas modifier le métier ('' + __xva_avant.T0_chi_id_metier + '')''});
+            return({"__xst" : __xer ,"__xme" : '' vous ne pouvez pas modifier le metier ('' + __xva_avant.T0_chi_id_metier + '')''});
+        }
+        if(fo1.chx_parent_metier === 1 && fo1.chi_id_metier !== 1 || fo1.chx_parent_metier !== 2 && fo1.chi_id_metier === 2){
+            return({"__xst" : __xer ,"__xme" : ''pgm : seul les metiers 1 et 2 peuvent être rattaché à eux même''});
+        }
+        if(!(fo1.chx_parent_metier === 1 || fo1.chx_parent_metier === 2) && fo1.chi_id_metier === fo1.chx_parent_metier){
+            return({"__xst" : __xer ,"__xme" : ''pgm : un metier ne peut pas être rattaché à lui même''});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async tests_avant_creer( mat , d , fo1 , __db1 ){
+        if(fo1.chx_parent_metier === 0 || fo1.chx_parent_metier === 1){
+            return({"__xst" : __xer ,"__xme" : ''vous ne pouvez pas créer un metier dont le parent est 0 ou 1''});
         }
         return({"__xst" : __xsu});
     }
@@ -44217,6 +44356,40 @@ sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner u
             this.__ig1.donnees_recues.__xva.__complements_sous_liste[''groupe_mini'']=2;
         }
         return(await this.filtre1( mat , d ));
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1066','metiers2_s.js','definition_de_classe(
+   nom_classe(metiers2),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(ajoute_criteres_sous_liste2),argument(criteres_xxxx)),
+         contenu(
+            affecte(tableau(nomt(criteres_xxxx),p(''metier_a_exclure'')),''-1''),
+            choix(
+               si(
+                  condition(et(sup(this.__ig1.donnees_retournees._CA_,2),sup(this.__ig1.donnees_retournees.chi_id_utilisateur,1))),
+                  alors(
+                     #( on peut sélectionner le metier admin comme parent ),
+                     affecte(tableau(nomt(criteres_xxxx),p(''metier_a_exclure'')),''0,1'')
+                  )
+               )
+            )
+         )
+      )
+   )
+)','class metiers2{
+    /*
+      =============================================================================================================
+    */
+    ajoute_criteres_sous_liste2( criteres_xxxx ){
+        criteres_xxxx[''metier_a_exclure'']=''-1'';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            /* on peut sélectionner le metier admin comme parent */
+            criteres_xxxx[''metier_a_exclure'']=''0,1'';
+        }
     }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
@@ -44343,7 +44516,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1835','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1836','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$R2meaC4Z244eljSqUJLxnOkK59CGJFEhbRBTPK/va3wVhhYMWo86i',NULL,'19','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -44780,10 +44953,7 @@ créer_table(
       permet_la_gestion_de(''groupe''),
       distinction_pour_liste(''liste des groupes''),
       distinction_pour_isad(''d\''un groupe''),
-      fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2)''),
-      fonctions_coherence1(''
-choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chi_id_groupe,1))),alors(
-      throw(new(appelf(nomf(Error),p(\''seul le groupe 1 peut être rattaché au groupe 1\'')))))))''),
+      fonctions_spéciales1(''ne_pas_supprimer_id_un(0,1,2)''),
       transform_base_sur_svg(translate(30,33))
    ),
    champs(
@@ -44822,6 +44992,7 @@ choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chi_i
       champ(
          nom_du_champ(''chx_parent_groupe''),
          espece_du_champ(INTEGER),
+         non_nulle(1),
          references(tbl_groupes,chi_id_groupe),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -44833,7 +45004,7 @@ choix(si(condition(et(egalstricte(tup.chx_parent_groupe,1),diffstricte(tup.chi_i
             libelle_du_champ(''id parent''),
             entete_distant_du_champ(''groupe''),
             typologie(chx),
-            genre(8),
+            genre(4),
             refe_parent_gauche(1)
          )
       )
@@ -44849,10 +45020,7 @@ créer_table(
       permet_la_gestion_de(''metier''),
       distinction_pour_liste(''liste des metiers''),
       distinction_pour_isad(''d\''un metier''),
-      fonctions_spéciales1(''ne_pas_supprimer_id_un(1,2)''),
-      fonctions_coherence1(''
-choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_id_metier,1))),alors(
-      throw(new(appelf(nomf(Error),p(\''seul le métier 1 peut peut être rattaché au métier 1\'')))))))''),
+      fonctions_spéciales1(''ne_pas_supprimer_id_un(0,1,2)''),
       transform_base_sur_svg(translate(27,148))
    ),
    champs(
@@ -44891,6 +45059,7 @@ choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_i
       champ(
          nom_du_champ(''chx_parent_metier''),
          espece_du_champ(INTEGER),
+         non_nulle(1),
          references(tbl_metiers,chi_id_metier),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
@@ -44902,7 +45071,7 @@ choix(si(condition(et(egalstricte(tup.chx_parent_metier,1),diffstricte(tup.chx_i
             libelle_du_champ(''id parent''),
             entete_distant_du_champ(''métier''),
             typologie(chx),
-            genre(8),
+            genre(4),
             refe_parent_gauche(1)
          )
       )
@@ -49887,6 +50056,7 @@ WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.00
          #(),
          entete_liste(''groupe parent''),
          format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`chx_parent_groupe`)),
          utiliser(champ(`T1`,`chp_nom_groupe`),htm_pref('' ''))
       )
@@ -49906,7 +50076,7 @@ WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.00
          comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),
          egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),
          comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
-         supegal(champ(`T0`,`chi_id_groupe`),:groupe_mini)
+         pas_dans(champ(`T0`,`chi_id_groupe`),:groupe_a_exclure)
       )
    ),
    complements(
@@ -49922,7 +50092,7 @@ WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
    AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
    AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
    AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
-   AND `T0`.`chi_id_groupe` >= :groupe_mini) 
+   AND `T0`.`chi_id_groupe` NOT IN :groupe_a_exclure) 
 ORDER BY `T0`.`chi_id_groupe` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_groupes','1'),
@@ -49933,6 +50103,7 @@ LIMIT :quantitee OFFSET :debut
          #(),
          entete_liste(''parent''),
          format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
          utiliser(champ(`T0`,`chx_parent_metier`)),
          utiliser(champ(`T1`,`chp_nom_metier`))
       )
@@ -49953,7 +50124,7 @@ LIMIT :quantitee OFFSET :debut
          comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),
          egal(champ(`T0`,`chx_parent_metier`),:T0_chx_parent_metier),
          comme(champ(`T1`,`chp_nom_metier`),:T1_chp_nom_metier),
-         supegal(champ(`T0`,`chi_id_metier`),:metier_mini)
+         pas_dans(champ(`T0`,`chi_id_metier`),(:metier_a_exclure))
       )
    ),
    complements(
@@ -49969,7 +50140,7 @@ WHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier
    AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
    AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier
    AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier
-   AND `T0`.`chi_id_metier` >= :metier_mini) 
+   AND `T0`.`chi_id_metier` NOT IN (:metier_a_exclure)) 
 ORDER BY `T0`.`chi_id_metier` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers','1'),

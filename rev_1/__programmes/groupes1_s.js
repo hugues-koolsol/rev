@@ -33,6 +33,12 @@ class groupes1{
         ){
             return({"__xst" : __xer ,"__xme" : ' vous ne pouvez pas modifier le groupe (' + __xva_avant.T0_chi_id_groupe + ')'});
         }
+        if(fo1.chx_parent_groupe === 1 && fo1.chi_id_groupe !== 1 || fo1.chx_parent_groupe !== 2 && fo1.chi_id_groupe === 2){
+            return({"__xst" : __xer ,"__xme" : 'pgm : seul les groupes 1 et 2 peuvent être rattaché à eux même'});
+        }
+        if(!(fo1.chx_parent_groupe === 1 || fo1.chx_parent_groupe === 2) && fo1.chi_id_groupe === fo1.chx_parent_groupe){
+            return({"__xst" : __xer ,"__xme" : 'pgm : un groupe ne peut pas être rattaché à lui même'});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -48,9 +54,12 @@ class groupes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async tests_avant_creer( mat , d , fo1 , __db1 ){
+        if(fo1.chx_parent_groupe === 0 || fo1.chx_parent_groupe === 1){
+            return({"__xst" : __xer ,"__xme" : 'vous ne pouvez pas créer un groupe dont le parent est 0 ou 1'});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -101,7 +110,8 @@ class groupes1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_groupe" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -134,7 +144,7 @@ class groupes1{
              /*  */
             "c_chi_id_groupe" : fo1.chi_id_groupe ,
             "n_chp_nom_groupe" : fo1.chp_nom_groupe ,
-            "n_chx_parent_groupe" : fo1.chx_parent_groupe === '' ? ( null ) : ( fo1.chx_parent_groupe )
+            "n_chx_parent_groupe" : fo1.chx_parent_groupe
         };
         /* =========================== mise à jour effective ======================== */
         let tt1133=await this.__ig1.sql_iij(
@@ -256,7 +266,7 @@ class groupes1{
         /*  */
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -307,7 +317,8 @@ class groupes1{
         /* convertion des données verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_groupe" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_groupe" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -322,9 +333,7 @@ class groupes1{
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
         }
-        let criteres_1132={
-            "donnees" : [{"chp_nom_groupe" : fo1.chp_nom_groupe ,"chx_parent_groupe" : fo1.chx_parent_groupe === '' ? ( null ) : ( fo1.chx_parent_groupe )}]
-        };
+        let criteres_1132={"donnees" : [{"chp_nom_groupe" : fo1.chp_nom_groupe ,"chx_parent_groupe" : fo1.chx_parent_groupe}]};
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
         let tt1132=await this.__ig1.sql_iij(
@@ -350,7 +359,7 @@ class groupes1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1132['nouvel_id'] , __db1 );
         }

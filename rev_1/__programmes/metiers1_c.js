@@ -110,7 +110,8 @@ class metiers1{
         /* conversion des données numériques verifier_modifier fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_metier" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -156,7 +157,7 @@ class metiers1{
             "nom_du_champ" : "chx_parent_metier" ,
             "__contexte" : "modification1" ,
             "libelle_du_champ" : "id parent" ,
-            "bouton_vider" : true ,
+            "bouton_vider" : false ,
             "nom_du_lien" : "metiers2" ,
             "liste_des_champs_libelles" : ["T1_chp_nom_metier"]
         } , this );
@@ -292,7 +293,8 @@ class metiers1{
         /* conversion des données numériques verifier_creer fin */
         let __les_tests=[
             /*  */
-            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'}
+            {"nt" : 'non_vide1' ,"nz" : "chp_nom_metier" ,"lib" : 'nom' ,"ldc" : '128'},
+            {"nt" : 'non_vide1' ,"nz" : "chx_parent_metier" ,"lib" : 'id parent'}
         ];
         let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
         if(__obj_tests.__xst !== __xsu){
@@ -335,9 +337,10 @@ class metiers1{
             "nom_du_champ" : "chx_parent_metier" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "id parent" ,
-            "bouton_vider" : true ,
+            "bouton_vider" : false ,
             "nom_du_lien" : "metiers2" ,
-            "liste_des_champs_libelles" : ["T1_chp_nom_metier"]
+            "liste_des_champs_libelles" : ["T1_chp_nom_metier"] ,
+            "non_nulle" : true
         } , this );
         /*
           =====================================================================================================
