@@ -75,11 +75,11 @@ class menus1{
     /*
       =========================== fragment ========================================================================
     */
-    async tests_et_actions_apres_modifier( mat , d , f01 , __xva_avant , __db1 ){
+    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         /*
           après maj du menu, on met à jour le tri du menu
         */
-        let criteres_select_1141={"T0_chi_id_autorisation" : f01['chx_autorisation_menu']};
+        let criteres_select_1141={"T0_chi_id_autorisation" : fo1['chx_autorisation_menu']};
         let tt1141=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
@@ -160,18 +160,18 @@ class menus1{
         for(let i in le_json_du_menu){
             /* this.__ig1.ma_trace1('le_json_du_menu[i].attributs=',le_json_du_menu[i].attributs); */
             if(le_json_du_menu[i].attributs.hasOwnProperty( 'data-chi_id_menu' )
-                   && parseInt( le_json_du_menu[i].attributs['data-chi_id_menu'] , 10 ) === parseInt( f01['chi_id_menu'] , 10 )
+                   && parseInt( le_json_du_menu[i].attributs['data-chi_id_menu'] , 10 ) === parseInt( fo1['chi_id_menu'] , 10 )
             ){
                 /* this.__ig1.ma_trace1('avant le_json_du_menu[i]=',le_json_du_menu[i]); */
-                le_json_du_menu[i].contenu=f01['cht_libelle_menu'];
+                le_json_du_menu[i].contenu=fo1['cht_libelle_menu'];
                 le_json_du_menu[i].attributs['data-chi_id_source']=tt1141[__xva][0]['T0_chx_source_autorisation'];
                 le_json_du_menu[i].attributs['data-chp_nom_source']=tt1141[__xva][0]['T2_chp_nom_source'];
-                le_json_du_menu[i].attributs['data-chp_methode_menu']=f01['chp_methode_menu'];
-                le_json_du_menu[i].attributs['data-chi_id_menu']=parseInt( f01['chi_id_menu'] , 10 );
-                le_json_du_menu[i].attributs['data-chp_titre_menu']=f01['chp_titre_menu'];
-                le_json_du_menu[i].attributs['data-cht_initialisation_menu']=f01['cht_initialisation_menu'] === '' ? ( null ) : ( f01['cht_initialisation_menu'] );
-                le_json_du_menu[i].attributs['data-cht_condition_js_menu']=f01['cht_condition_js_menu'] === '' ? ( null ) : ( f01['cht_condition_js_menu'] );
-                le_json_du_menu[i].attributs['data-cht_condition_menu']=f01['cht_condition_menu'] === '' ? ( null ) : ( f01['cht_condition_menu'] );
+                le_json_du_menu[i].attributs['data-chp_methode_menu']=fo1['chp_methode_menu'];
+                le_json_du_menu[i].attributs['data-chi_id_menu']=parseInt( fo1['chi_id_menu'] , 10 );
+                le_json_du_menu[i].attributs['data-chp_titre_menu']=fo1['chp_titre_menu'];
+                le_json_du_menu[i].attributs['data-cht_initialisation_menu']=fo1['cht_initialisation_menu'] === '' ? ( null ) : ( fo1['cht_initialisation_menu'] );
+                le_json_du_menu[i].attributs['data-cht_condition_js_menu']=fo1['cht_condition_js_menu'] === '' ? ( null ) : ( fo1['cht_condition_js_menu'] );
+                le_json_du_menu[i].attributs['data-cht_condition_menu']=fo1['cht_condition_menu'] === '' ? ( null ) : ( fo1['cht_condition_menu'] );
                 /* this.__ig1.ma_trace1('après le_json_du_menu[i]=',le_json_du_menu[i]); */
                 json_de_l_acces.le_json_du_menu=le_json_du_menu;
                 let nouveau_json_texte=JSON.stringify( json_de_l_acces , null , 2 );
@@ -308,7 +308,7 @@ class menus1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let criteres_select_1146={"T0_chi_id_menu" : fo1.chi_id_menu};
         let tt1146=await this.recup_chi_id_menu( criteres_select_1146 , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
@@ -358,7 +358,7 @@ class menus1{
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -384,7 +384,7 @@ class menus1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : chi_id_menu} , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
@@ -410,7 +410,7 @@ class menus1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : chi_id_menu} , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1146 ' + this.__ig1.nl2() + ']'});
@@ -425,7 +425,7 @@ class menus1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : fo1.chi_id_menu} , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1146 ' + this.__ig1.nl2() + ']'});
@@ -442,7 +442,7 @@ class menus1{
         let tt1149=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_menus
-        WHERE `chi_id_menu` = :chi_id_menu
+        WHERE `chi_id_menu` = :chi_id_menu ;
         */
         /*sql_inclure_fin*/ 1149 , criteres_1149 , __db1 );
         /*  */
@@ -456,7 +456,7 @@ class menus1{
         /*  */
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -474,7 +474,7 @@ class menus1{
         if(chi_id_menu === 0){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : chi_id_menu} , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1146 ' + this.__ig1.nl2() + ']'});
@@ -528,7 +528,7 @@ class menus1{
                 return({"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'});
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
@@ -579,7 +579,7 @@ class menus1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1147['nouvel_id'] , __db1 );
         }
@@ -597,7 +597,7 @@ class menus1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
@@ -642,7 +642,7 @@ class menus1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1145=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -663,7 +663,7 @@ class menus1{
            AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
            AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
            AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-           AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
+           AND `T1`.`chx_acces_autorisation` NOT IN (:acces_pas_dans)) 
         ORDER BY `T0`.`chi_id_menu` DESC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -698,7 +698,7 @@ class menus1{
                AND `T0`.`chp_titre_menu` LIKE :T0_chp_titre_menu
                AND `T0`.`chx_autorisation_menu` = :T0_chx_autorisation_menu
                AND `T0`.`chp_methode_menu` LIKE :T0_chp_methode_menu
-               AND `T1`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
+               AND `T1`.`chx_acces_autorisation` NOT IN (:acces_pas_dans)) 
             ORDER BY `T0`.`chi_id_menu` DESC  
             LIMIT :quantitee OFFSET :debut 
             ;
@@ -718,9 +718,14 @@ class menus1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     async liste1( mat , d ){
+        this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        this.__ig1.donnees_recues.__xva['__complements_sous_liste']['acces_pas_dans']='(-1)';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']['acces_pas_dans']='(1,2)';
+        }
         return(await this.filtre1( mat , d ));
     }
     /*
@@ -728,6 +733,7 @@ class menus1{
     */
     moi='menus1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

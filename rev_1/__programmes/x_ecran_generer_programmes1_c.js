@@ -1883,23 +1883,25 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='    }\r\n';
             }
         }
-        if(est_une_grandeur !== 1){
-            fragment_trouve=-1;
-            for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
-                if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_apres_page_voir'){
-                    fragment_trouve=i;
-                    break;
+        if(est_une_grandeur !== 1 ){
+            if( pour_sous_liste_uniquement === 0){
+                fragment_trouve=-1;
+                for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
+                    if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_apres_page_voir'){
+                        fragment_trouve=i;
+                        break;
+                    }
                 }
-            }
-            if(fragment_trouve >= 0){
-                src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
-            }else{
-                src_serveur_js2+='    /*\r\n';
-                src_serveur_js2+='      =============================================================================================================\r\n';
-                src_serveur_js2+='    */\r\n';
-                src_serveur_js2+='    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){\r\n';
-                src_serveur_js2+='        return{__xst:__xsu};\r\n';
-                src_serveur_js2+='    }\r\n';
+                if(fragment_trouve >= 0){
+                    src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
+                }else{
+                    src_serveur_js2+='    /*\r\n';
+                    src_serveur_js2+='      =============================================================================================================\r\n';
+                    src_serveur_js2+='    */\r\n';
+                    src_serveur_js2+='    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){\r\n';
+                    src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                    src_serveur_js2+='    }\r\n';
+                }
             }
         }
         /*
@@ -6373,17 +6375,19 @@ class x_ecran_generer_programmes1{
         /*
         */
         if(des_champs_dependent_d_une_autre_table === true){
-            src_client2+='    /*\r\n';
-            src_client2+='      =============================================================================================================\r\n';
-            src_client2+='      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================\r\n';
-            src_client2+='    */\r\n';
-            src_client2+='    sous_liste2( mat , d , le_colis1 ){\r\n';
-            if(pour_sous_liste_uniquement === 1 && est_une_grandeur === 1){
-                src_client2+='        return( this.__ig1.generique_sous_liste_grandeur_pour_insertion( mat , d , le_colis1 , this.moi ));\r\n';
-            }else{
-                src_client2+='        return( this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));\r\n';
+            if( pour_sous_liste_uniquement === 0){
+                src_client2+='    /*\r\n';
+                src_client2+='      =============================================================================================================\r\n';
+                src_client2+='      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================\r\n';
+                src_client2+='    */\r\n';
+                src_client2+='    sous_liste2( mat , d , le_colis1 ){\r\n';
+                if(pour_sous_liste_uniquement === 1 && est_une_grandeur === 1){
+                    src_client2+='        return( this.__ig1.generique_sous_liste_grandeur_pour_insertion( mat , d , le_colis1 , this.moi ));\r\n';
+                }else{
+                    src_client2+='        return( this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));\r\n';
+                }
+                src_client2+='    }\r\n';
             }
-            src_client2+='    }\r\n';
         }
         /*
         */

@@ -63,8 +63,8 @@ class taches1{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi + '_liste1' );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['liste1']){
-                this.filtres['liste1'][i]=jso[i]??this.tableau_des_filtres['liste1'][i].défaut;
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
         this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
@@ -529,7 +529,7 @@ class taches1{
         lst+='<button class="yy_b1 yy__4" data-indicateur_graphique="-1' + this.moi + '_' + tup.T0_chi_id_tache + '" rev_clic1="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01(chi_id_tache(' + tup.T0_chi_id_tache + ')))))';
         lst+='"  title="-1">-1</button>';
-        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.dupliquer + '</div>';
+        lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         lst+='</div>';
         return lst;
     }

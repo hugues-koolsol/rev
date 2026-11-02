@@ -12,10 +12,14 @@ const __xac=/* actions */'__xac';
 */
 class groupes2{
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
+    ajoute_criteres_sous_liste2( criteres_xxxx ){
+        criteres_xxxx['groupe_a_exclure']='-1';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            /* on peut sélectionner le groupe admin comme parent */
+            criteres_xxxx['groupe_a_exclure']='0,1';
+        }
     }
     /*
       =============================================================================================================
@@ -48,6 +52,7 @@ class groupes2{
         let liste2={};
         let criteres_xxxx={};
         criteres_xxxx['quantitee']=__nbMax;
+        this.ajoute_criteres_sous_liste2( criteres_xxxx );
         if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
                 criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
@@ -62,20 +67,6 @@ class groupes2{
             /* voir par exemple dossiers1_s.js */
         }
         return liste2;
-    }
-    /*
-      =========================== fragment ========================================================================
-    */
-    async liste1( mat , d ){
-        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
-            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
-        }
-        this.__ig1.donnees_recues.__xva.__complements_sous_liste['groupe_mini']=0;
-        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            /* on peut sélectionner le groupe admin comme parent */
-            this.__ig1.donnees_recues.__xva.__complements_sous_liste['groupe_mini']=2;
-        }
-        return(await this.filtre1( mat , d ));
     }
     /*
       =============================================================================================================

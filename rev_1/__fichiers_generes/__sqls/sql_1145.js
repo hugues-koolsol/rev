@@ -68,7 +68,7 @@ class sql_1145{
                 where0+=` AND \`T0\`.\`chp_methode_menu\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_methode_menu , 'T0_chp_methode_menu' ) + '\r\n';
             }
             if(tup.hasOwnProperty( 'acces_pas_dans' ) && tup.acces_pas_dans !== ''){
-                where0+=` AND \`T1\`.\`chx_acces_autorisation\` NOT IN ` + tup.acces_pas_dans + '\r\n';
+                where0+=` AND \`T1\`.\`chx_acces_autorisation\` NOT IN (` + tup.acces_pas_dans + `)` + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
