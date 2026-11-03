@@ -56,13 +56,13 @@ class utilisateurs1{
         let o1='';
         o1+='<h1>Changer le mot de passe</h1>';
         o1+='<div id="formulaire_mot_de_passe">';
-        o1+='mot de passe sur 7 caractères : ';
+        o1+='mot de passe sur 7 caractères minimum : ';
         o1+='<br/>';
-        o1+='<input id="chp_mot_de_passe_utilisateur1" type="password" value="" autocomplete="new-password" />';
+        o1+='<input id="chp_mot_de_passe_utilisateur1" type="password" value="" autocomplete="new-password" class="yy_input1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<br/>';
         o1+='mot de passe (encore)';
         o1+='<br/>';
-        o1+='<input id="chp_mot_de_passe_utilisateur2" type="password" value="" autocomplete="new-password" />';
+        o1+='<input id="chp_mot_de_passe_utilisateur2" type="password" value="" autocomplete="new-password" class="yy_input1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />';
         o1+='<br/>';
         o1+='<button class="yy_b1 yy__3" rev_clic1="fo1(co1(formulaire_mot_de_passe),pm1(m1(n1(' + this.moi + '),f1(modifier_le_mot_de_passe(chi_id_utilisateur(' + chi_id_utilisateur + '))))))" title="">modifier</button>';
         o1+='</div>';
@@ -267,12 +267,7 @@ class utilisateurs1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
-            "nom_du_champ" : "chp_mot_de_passe_utilisateur" ,
-            "__contexte" : "supprimer1" ,
-            "longueur_du_champ" : 256 ,
-            "libelle_du_champ" : "mot de passe de l'utilisateur"
-        } );
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {"nom_du_champ" : "chp_mot_de_passe_utilisateur" ,"__contexte" : "supprimer1" ,"longueur_du_champ" : 256 ,"libelle_du_champ" : "mot de passe"} );
         /*
           =====================================================================================================
         */
@@ -611,7 +606,9 @@ class utilisateurs1{
                 */
                 lst+='<td style="text-align:left;">';
                 /* cas 3.3 */
-                lst+=this.__ig1.fi2( tup.T0_chp_mot_de_passe_utilisateur ).substr( 7 , 3 );
+                if(tup.T0_chp_mot_de_passe_utilisateur !== null){
+                    lst+=this.__ig1.fi2( tup.T0_chp_mot_de_passe_utilisateur.substr( 7 , 3 ) );
+                }
                 lst+='</td>';
                 /*
                   =====================================================================================

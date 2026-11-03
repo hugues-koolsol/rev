@@ -1714,8 +1714,8 @@ class __fnt1{
             }
         }else{
             let lng_num=parseInt( les_donnees_du_champ.longueur_du_champ , 10 );
-            o1+='        <div class="yy_contient_description"><input id="' + les_donnees_du_champ.nom_du_champ + '"';
-            o1+=' type="text" ';
+            o1+='        <div class="yy_contient_description">';
+            o1+='            <input id="' + les_donnees_du_champ.nom_du_champ + '" type="text" ';
             o1+=' style="';
             o1+='height: var(--t_hauteur_input1);';
             o1+='width: min( 100% , ' + (lng_num * this.__ig1.css_dimensions.largeur_du_m + 2 * (this.__ig1.css_dimensions.t_pad_inp + this.__ig1.css_dimensions.t_input_border)) + 'px)';

@@ -27,9 +27,7 @@ class sql_1211{
         where0=' WHERE 1=1 ';
         /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(tup.T0_che_actif_grandeur !== undefined && tup.T0_che_actif_grandeur !== '' ){
-                where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
-            }
+            where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
             if(tup.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && tup.T0_chx_parametre_grandeur !== ''){
                 if(tup.T0_chx_parametre_grandeur === 0){
                     where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';

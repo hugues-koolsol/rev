@@ -442,7 +442,7 @@ class menus1{
         let tt1149=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_menus
-        WHERE `chi_id_menu` = :chi_id_menu ;
+        WHERE `chi_id_menu` = :chi_id_menu
         */
         /*sql_inclure_fin*/ 1149 , criteres_1149 , __db1 );
         /*  */

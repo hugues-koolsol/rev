@@ -1883,8 +1883,8 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='    }\r\n';
             }
         }
-        if(est_une_grandeur !== 1 ){
-            if( pour_sous_liste_uniquement === 0){
+        if(est_une_grandeur !== 1){
+            if(pour_sous_liste_uniquement === 0){
                 fragment_trouve=-1;
                 for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
                     if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'actions_et_tests_apres_page_voir'){
@@ -6375,7 +6375,7 @@ class x_ecran_generer_programmes1{
         /*
         */
         if(des_champs_dependent_d_une_autre_table === true){
-            if( pour_sous_liste_uniquement === 0){
+            if(pour_sous_liste_uniquement === 0){
                 src_client2+='    /*\r\n';
                 src_client2+='      =============================================================================================================\r\n';
                 src_client2+='      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================\r\n';
@@ -6597,7 +6597,6 @@ class x_ecran_generer_programmes1{
                                 src_client2+='            *' + '/\n';
                                 if(chp_ds_lb.espece_du_champ === 'TEXT'){
                                     if(c_est_un_premier_champ_de_combinaison !== null){
-                                        debugger;
                                         src_client2+='            /* combinaison */;\r\n';
                                     }
                                     src_client2+='            lst += \'<td style="max-width:24em;overflow:hidden;">\';\r\n';
@@ -6651,7 +6650,6 @@ class x_ecran_generer_programmes1{
                                            && chp_ds_lb.genre_objet_du_champ.chp_espece_genre === 'INTEGER'
                                     ){
                                         if(c_est_un_premier_champ_de_combinaison !== null){
-                                            debugger;
                                             src_client2+='            /* combinaison */;\r\n';
                                         }
                                         src_client2+='                /* cas liste2 3.0 */\r\n';

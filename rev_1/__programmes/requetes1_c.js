@@ -830,7 +830,7 @@ class requetes1{
                 /*
                   =====================================================================================
                 */
-                lst+='<td style="max-width:360px;overflow:hidden;" title="' + this.__ig1.fi2( tup.T0_cht_sql_requete ) + '" id="T0_cht_sql_requete_' + tup.T0_chi_id_requete + '" >';
+                lst+='<td style="max-width:70%;overflow:hidden;" title="' + this.__ig1.fi2( tup.T0_cht_sql_requete ) + '" id="T0_cht_sql_requete_' + tup.T0_chi_id_requete + '" >';
                 if(tup.T0_cht_sql_requete !== null){
                     /*  */
                     let cmd1='m1(n1(__fnt1),f1(ajoute_le_contenu_du_titre(T0_cht_sql_requete_' + tup.T0_chi_id_requete + ')))';

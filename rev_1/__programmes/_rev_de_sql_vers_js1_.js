@@ -1967,9 +1967,9 @@ class _rev_de_sql_vers_js1{
                             t+='            where0+=` AND ' + valeur + '`;' + CRLF;
                         }else{
                             let nom_du_champ_a_tester=elem.tableau_des_champs[0][0] + '_' + elem.tableau_des_champs[0][1];
-                            t+='            if(tup.' + nom_du_champ_a_tester + ' !== undefined && tup.' + nom_du_champ_a_tester + ' !== \'\' ){' + CRLF;
-                            t+='                where0+=` AND ' + valeur + '`;' + CRLF;
-                            t+='            }' + CRLF;
+                            /* t+='            if(tup.' + nom_du_champ_a_tester + ' !== undefined && tup.' + nom_du_champ_a_tester + ' !== \'\' ){' + CRLF; */
+                            t+='            where0+=` AND ' + valeur + '`;' + CRLF;
+                            /* t+='            }' + CRLF; */
                         }
                     }else if(elem.type_condition === 'variable'){
                         /*#

@@ -18,15 +18,12 @@ class sql_1221{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_est_fragment_source\` , 
-          \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`cht_condition_rev_source\` , 
-          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`cht_rev_source\`
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_condition_rev_source\` , \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\` , 
+          \`T0\`.\`cht_rev_source\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
-          FROM  tbl_sources T0
-            LEFT JOIN tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
-         `;
+          FROM  tbl_sources T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
         /* this.__ig1.ma_trace1( 'tup=' , tup ); */
@@ -47,34 +44,13 @@ class sql_1221{
             if(tup.hasOwnProperty( 'T0_chi_id_source3' ) && tup.T0_chi_id_source3 !== ''){
                 where0+=` AND \`T0\`.\`chi_id_source\` <= ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_source3 , 'T0_chi_id_source3' ) + '\r\n';
             }
-            if(tup.hasOwnProperty( 'T0_che_binaire_source' ) && tup.T0_che_binaire_source !== ''){
-                where0+=` AND \`T0\`.\`che_binaire_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_binaire_source , 'T0_che_binaire_source' ) + `` + '\r\n';
-            }
-            if(tup.hasOwnProperty( 'T0_chx_dossier_id_source' ) && tup.T0_chx_dossier_id_source !== ''){
-                if(tup.T0_chx_dossier_id_source === 0){
-                    where0+=' AND `T0`.`chx_dossier_id_source` IS NULL \r\n';
-                }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_dossier_id_source`' , tup.T0_chx_dossier_id_source );
-                }
-            }
-            if(tup.hasOwnProperty( 'T1_chp_nom_dossier' ) && tup.T1_chp_nom_dossier !== ''){
-                where0+=` AND \`T1\`.\`chp_nom_dossier\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_dossier , 'T1_chp_nom_dossier' ) + '\r\n';
-            }
-            if(tup.hasOwnProperty( 'T0_che_autorisation_globale_source' ) && tup.T0_che_autorisation_globale_source !== ''){
-                where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_autorisation_globale_source , 'T0_che_autorisation_globale_source' ) + `` + '\r\n';
-            }
-            if(tup.hasOwnProperty( 'T0_che_pour_util_source' ) && tup.T0_che_pour_util_source !== ''){
-                where0+=` AND \`T0\`.\`che_pour_util_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_pour_util_source , 'T0_che_pour_util_source' ) + `` + '\r\n';
-            }
-            if(tup.hasOwnProperty( 'T0_che_est_verrouille_source' ) && tup.T0_che_est_verrouille_source !== ''){
-                where0+=` AND \`T0\`.\`che_est_verrouille_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_verrouille_source , 'T0_che_est_verrouille_source' ) + `` + '\r\n';
-            }
-            if(tup.hasOwnProperty( 'T0_che_est_fragment_source' ) && tup.T0_che_est_fragment_source !== ''){
-                where0+=` AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_fragment_source , 'T0_che_est_fragment_source' ) + `` + '\r\n';
-            }
             if(tup.hasOwnProperty( 'T0_cht_rev_source' ) && tup.T0_cht_rev_source !== ''){
                 where0+=` AND \`T0\`.\`cht_rev_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_source , 'T0_cht_rev_source' ) + '\r\n';
             }
+            where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = 0`;
+            where0+=` AND \`T0\`.\`che_pour_util_source\` = 1`;
+            where0+=` AND \`T0\`.\`che_binaire_source\` = 0`;
+            where0+=` AND \`T0\`.\`che_est_fragment_source\` = 0`;
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             
@@ -85,7 +61,7 @@ class sql_1221{
               ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;
         }else{
             sql0+=`
-           ORDER BY  \`T0\`.\`chx_dossier_id_source\` ASC, \`T0\`.\`chp_nom_source\` ASC, \`T0\`.\`chi_id_source\` ASC`;
+           ORDER BY  \`T0\`.\`chp_nom_source\` ASC, \`T0\`.\`chi_id_source\` ASC`;
         }
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
@@ -104,17 +80,10 @@ class sql_1221{
             donnees0.push( {
                     "T0_chi_id_source" : lignes[numero_de_ligne][0] ,
                     "T0_chp_nom_source" : lignes[numero_de_ligne][1] ,
-                    "T0_chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
-                    "T1_chp_nom_dossier" : lignes[numero_de_ligne][3] ,
-                    "T0_che_est_fragment_source" : lignes[numero_de_ligne][4] ,
-                    "T0_che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
-                    "T0_che_binaire_source" : lignes[numero_de_ligne][6] ,
-                    "T0_che_est_verrouille_source" : lignes[numero_de_ligne][7] ,
-                    "T0_che_pour_util_source" : lignes[numero_de_ligne][8] ,
-                    "T0_cht_condition_rev_source" : (lignes[numero_de_ligne][9]===null?null:lignes[numero_de_ligne][9].substr(0,200)) ,
-                    "T0_cht_notification_ko_source" : (lignes[numero_de_ligne][10]===null?null:lignes[numero_de_ligne][10].substr(0,200)) ,
-                    "T0_cht_commentaire_source" : (lignes[numero_de_ligne][11]===null?null:lignes[numero_de_ligne][11].substr(0,200)) ,
-                    "T0_cht_rev_source" : (lignes[numero_de_ligne][12]===null?null:lignes[numero_de_ligne][12].substr(0,50))
+                    "T0_cht_condition_rev_source" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200)) ,
+                    "T0_cht_notification_ko_source" : (lignes[numero_de_ligne][3]===null?null:lignes[numero_de_ligne][3].substr(0,200)) ,
+                    "T0_cht_commentaire_source" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,200)) ,
+                    "T0_cht_rev_source" : (lignes[numero_de_ligne][5]===null?null:lignes[numero_de_ligne][5].substr(0,50))
                 } );
         }
         /* comptage */

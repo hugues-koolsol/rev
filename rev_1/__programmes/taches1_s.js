@@ -401,7 +401,7 @@ class taches1{
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches
         WHERE (`chi_id_tache` = :chi_id_tache
-           AND `chx_utilisateur_tache` = chi_id_utilisateur) ;
+           AND `chx_utilisateur_tache` = chi_id_utilisateur)
         */
         /*sql_inclure_fin*/ 1114 , criteres_1114 , __db1 );
         /*  */

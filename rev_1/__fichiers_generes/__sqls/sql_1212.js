@@ -47,9 +47,7 @@ class sql_1212{
                     where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , tup.T0_chx_parametre_grandeur );
                 }
             }
-            if(tup.T0_che_actif_grandeur !== undefined && tup.T0_che_actif_grandeur !== '' ){
-                where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
-            }
+            where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             

@@ -29,9 +29,7 @@ class sql_1210{
         where0=' WHERE 1=1 ';
         /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(tup.T0_chx_parametre_grandeur !== undefined && tup.T0_chx_parametre_grandeur !== '' ){
-                where0+=` AND \`T0\`.\`chx_parametre_grandeur\` = 2`;
-            }
+            where0+=` AND \`T0\`.\`chx_parametre_grandeur\` = 2`;
             if(tup.hasOwnProperty( 'T0_chp_cle_grandeur' ) && tup.T0_chp_cle_grandeur !== ''){
                 where0+=` AND \`T0\`.\`chp_cle_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_cle_grandeur , 'T0_chp_cle_grandeur' ) + '\r\n';
             }
@@ -45,9 +43,7 @@ class sql_1210{
             if(tup.hasOwnProperty( 'T0_cht_rev_grandeur' ) && tup.T0_cht_rev_grandeur !== ''){
                 where0+=` AND \`T0\`.\`cht_rev_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_grandeur , 'T0_cht_rev_grandeur' ) + '\r\n';
             }
-            if(tup.T0_che_actif_grandeur !== undefined && tup.T0_che_actif_grandeur !== '' ){
-                where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
-            }
+            where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             
