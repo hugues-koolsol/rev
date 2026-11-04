@@ -38,8 +38,7 @@ class menus1{
         "`T0`.`cht_libelle_menu`" : 'libelle' ,
         "`T0`.`chp_titre_menu`" : 'titre' ,
         "`T0`.`chx_autorisation_menu`" : 'id autorisation' ,
-        "`T0`.`chp_methode_menu`" : 'methode' ,
-        "`T1`.`chx_acces_autorisation`" : 'id accès'
+        "`T0`.`chp_methode_menu`" : 'methode'
     };
     /*
       =========================== fragment ========================================================================
@@ -224,29 +223,13 @@ class menus1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_condition_menu' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return __test_4_1;
         }
-        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_initialisation_menu' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return __test_6_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -313,13 +296,19 @@ class menus1{
         /*
           =====================================================================================================
         */
+        
+        let boutons_avant2=[];
+        boutons_avant2.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
+        boutons_avant2.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_menu),zone_resultat(cht_condition_menu),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</button>' );
+        
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_menu" ,
             "__contexte" : "modification1" ,
             "libelle_du_champ" : "condition au format js" ,
             "rows" : 3 ,
             "cols" : 50 ,
-            "format_du_source" : 1
+            "format_du_source" : 1 ,
+            "boutons_avant1" : boutons_avant2 ,
         } );
         /*
           =====================================================================================================
@@ -481,29 +470,13 @@ class menus1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_condition_menu' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return __test_4_1;
         }
-        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_initialisation_menu' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return __test_6_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;

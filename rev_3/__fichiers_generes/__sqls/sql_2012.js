@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_2012{
     /*
-      =============================================================================================================
+      ================================select=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_pour_util_source\`
         `;
@@ -17,7 +17,7 @@ class sql_2012{
         const from0=`
           FROM  tbl_sources T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_source'] , 'T0_chi_id_source' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_source , 'T0_chi_id_source' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_2012 sql0=',sql0); */
         let lignes=[];
@@ -31,11 +31,11 @@ class sql_2012{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_source" : col[0] ,
-                    "T0.chp_nom_source" : col[1] ,
-                    "T0.cht_commentaire_source" : col[2] ,
-                    "T0.che_autorisation_globale_source" : col[3] ,
-                    "T0.che_pour_util_source" : col[4]
+                    "T0_chi_id_source" : col[0] ,
+                    "T0_chp_nom_source" : col[1] ,
+                    "T0_cht_commentaire_source" : col[2] ,
+                    "T0_che_autorisation_globale_source" : col[3] ,
+                    "T0_che_pour_util_source" : col[4]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

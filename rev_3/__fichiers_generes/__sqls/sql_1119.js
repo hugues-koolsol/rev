@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1119{
     /*
-      =============================================================================================================
+      ================================liste_ecran=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -18,8 +18,8 @@ class sql_1119{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chi_compteur1_utilisateur\` , \`T0\`.\`chx_acces_utilisateur\` , 
-          \`T1\`.\`chp_nom_acces\` , \`T0\`.\`che_actif_utilisateur\` , \`T1\`.\`che_actif_acces\`
+          \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`che_actif_utilisateur\` , \`T0\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chi_compteur1_utilisateur\` , 
+          \`T0\`.\`chx_acces_utilisateur\` , \`T1\`.\`chp_nom_acces\` , \`T1\`.\`che_actif_acces\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -28,36 +28,54 @@ class sql_1119{
          `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        if(par.hasOwnProperty( 'T0_chi_id_utilisateur' ) && par['T0_chi_id_utilisateur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_utilisateur`' , par['T0_chi_id_utilisateur'] );
-        }
-        if(par.hasOwnProperty( 'T0_chp_nom_de_connexion_utilisateur' ) && par['T0_chp_nom_de_connexion_utilisateur'] !== ''){
-            where0+=` AND \`T0\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_nom_de_connexion_utilisateur'] , 'T0_chp_nom_de_connexion_utilisateur' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_che_actif_utilisateur' ) && par['T0_che_actif_utilisateur'] !== ''){
-            where0+=` AND \`T0\`.\`che_actif_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_che_actif_utilisateur'] , 'T0_che_actif_utilisateur' ) + `` + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chx_acces_utilisateur' ) && par['T0_chx_acces_utilisateur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_utilisateur`' , par['T0_chx_acces_utilisateur'] );
-        }
-        if(par.hasOwnProperty( 'T1_chp_nom_acces' ) && par['T1_chp_nom_acces'] !== ''){
-            where0+=` AND \`T1\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( par['T1_chp_nom_acces'] , 'T1_chp_nom_acces' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T1_che_actif_acces' ) && par['T1_che_actif_acces'] !== ''){
-            where0+=` AND \`T1\`.\`che_actif_acces\` = ` + this.__ig1.__fnt1.sq1( par['T1_che_actif_acces'] , 'T1_che_actif_acces' ) + `` + '\r\n';
-        }
-        if(par.hasOwnProperty( 'T0_chi_compteur1_utilisateur' ) && par['T0_chi_compteur1_utilisateur'] !== ''){
-            where0+=` AND \`T0\`.\`chi_compteur1_utilisateur\` >= ` + this.__ig1.__fnt1.sq1( par['T0_chi_compteur1_utilisateur'] , 'T0_chi_compteur1_utilisateur' ) + '\r\n';
-        }
-        if(par.hasOwnProperty( 'acces_pas_dans' ) && par['acces_pas_dans'] !== ''){
-            where0+=` AND \`T0\`.\`chx_acces_utilisateur\` NOT IN ` + par['acces_pas_dans'] + '\r\n';
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
+        try{
+            if(tup.hasOwnProperty( 'T0_chi_id_utilisateur' ) && tup.T0_chi_id_utilisateur !== ''){
+                if(tup.T0_chi_id_utilisateur === 0){
+                    where0+=' AND `T0`.`chi_id_utilisateur` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_utilisateur`' , tup.T0_chi_id_utilisateur );
+                }
+            }
+            if(tup.hasOwnProperty( 'T0_che_actif_utilisateur' ) && tup.T0_che_actif_utilisateur !== ''){
+                where0+=` AND \`T0\`.\`che_actif_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_actif_utilisateur , 'T0_che_actif_utilisateur' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chp_nom_de_connexion_utilisateur' ) && tup.T0_chp_nom_de_connexion_utilisateur !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_de_connexion_utilisateur , 'T0_chp_nom_de_connexion_utilisateur' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chx_acces_utilisateur' ) && tup.T0_chx_acces_utilisateur !== ''){
+                if(tup.T0_chx_acces_utilisateur === 0){
+                    where0+=' AND `T0`.`chx_acces_utilisateur` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_utilisateur`' , tup.T0_chx_acces_utilisateur );
+                }
+            }
+            if(tup.hasOwnProperty( 'T1_chp_nom_acces' ) && tup.T1_chp_nom_acces !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_acces , 'T1_chp_nom_acces' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T1_che_actif_acces' ) && tup.T1_che_actif_acces !== ''){
+                where0+=` AND \`T1\`.\`che_actif_acces\` = ` + this.__ig1.__fnt1.sq1( tup.T1_che_actif_acces , 'T1_che_actif_acces' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chi_compteur1_utilisateur' ) && tup.T0_chi_compteur1_utilisateur !== ''){
+                where0+=` AND \`T0\`.\`chi_compteur1_utilisateur\` >= ` + this.__ig1.__fnt1.sq1( tup.T0_chi_compteur1_utilisateur , 'T0_chi_compteur1_utilisateur' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'acces_pas_dans' ) && tup.acces_pas_dans !== ''){
+                where0+=` AND \`T0\`.\`chx_acces_utilisateur\` NOT IN ` + tup.acces_pas_dans + '\r\n';
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
-        const order0=`
+        if(tup.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && tup.__ordre_de_tri_de_la_liste1 !== ''){
+            sql0+=`
+              ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;
+        }else{
+            sql0+=`
            ORDER BY  \`T0\`.\`chi_id_utilisateur\` DESC`;
-        sql0+=order0;
+        }
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1119 sql0=',sql0); */
         let lignes=[];
@@ -71,14 +89,14 @@ class sql_1119{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_utilisateur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][1] ,
-                    "T0.chp_mot_de_passe_utilisateur" : lignes[numero_de_ligne][2] ,
-                    "T0.chi_compteur1_utilisateur" : lignes[numero_de_ligne][3] ,
-                    "T0.chx_acces_utilisateur" : lignes[numero_de_ligne][4] ,
-                    "T1.chp_nom_acces" : lignes[numero_de_ligne][5] ,
-                    "T0.che_actif_utilisateur" : lignes[numero_de_ligne][6] ,
-                    "T1.che_actif_acces" : lignes[numero_de_ligne][7]
+                    "T0_chi_id_utilisateur" : lignes[numero_de_ligne][0] ,
+                    "T0_che_actif_utilisateur" : lignes[numero_de_ligne][1] ,
+                    "T0_chp_nom_de_connexion_utilisateur" : lignes[numero_de_ligne][2] ,
+                    "T0_chp_mot_de_passe_utilisateur" : lignes[numero_de_ligne][3] ,
+                    "T0_chi_compteur1_utilisateur" : lignes[numero_de_ligne][4] ,
+                    "T0_chx_acces_utilisateur" : lignes[numero_de_ligne][5] ,
+                    "T1_chp_nom_acces" : lignes[numero_de_ligne][6] ,
+                    "T1_che_actif_acces" : lignes[numero_de_ligne][7]
                 } );
         }
         /* comptage */

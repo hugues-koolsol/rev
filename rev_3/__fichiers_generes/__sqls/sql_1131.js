@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1131{
     /*
-      =============================================================================================================
+      ================================select=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_groupe\` , \`T0\`.\`chp_nom_groupe\` , \`T0\`.\`chx_parent_groupe\` , \`T1\`.\`chp_nom_groupe\`
         `;
@@ -19,7 +19,7 @@ class sql_1131{
            LEFT JOIN tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_groupe'] , 'T0_chi_id_groupe' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_groupe\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_groupe , 'T0_chi_id_groupe' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1131 sql0=',sql0); */
         let lignes=[];
@@ -33,10 +33,10 @@ class sql_1131{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_groupe" : col[0] ,
-                    "T0.chp_nom_groupe" : col[1] ,
-                    "T0.chx_parent_groupe" : col[2] ,
-                    "T1.chp_nom_groupe" : col[3]
+                    "T0_chi_id_groupe" : col[0] ,
+                    "T0_chp_nom_groupe" : col[1] ,
+                    "T0_chx_parent_groupe" : col[2] ,
+                    "T1_chp_nom_groupe" : col[3]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

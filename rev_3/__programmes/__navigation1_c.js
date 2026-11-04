@@ -84,7 +84,7 @@ class __navigation1{
         /*
           la racine du menu
         */
-        t+='<div id="' + this.#id_div + '" ' + la_classe_racine + ' data-id_original_pour_menu="' + par_id_de_l_element + '" data-reference_pour_menu_haut="' + this.#pour_menu_haut + '" date-repere="racine" data-cle_aleatoire="' + this.cle_aleatoire + '"></div>';
+        t+='<div id="' + this.#id_div + '" ' + la_classe_racine + ' data-id_original_pour_menu="' + par_id_de_l_element + '" data-reference_pour_menu_haut="' + this.#pour_menu_haut + '" data-repere="racine" data-cle_aleatoire="' + this.cle_aleatoire + '"></div>';
         /*
           et on insert ce nouvel élément
         */
@@ -149,7 +149,7 @@ class __navigation1{
         /* console.log('tableau_des_cles=',tableau_des_cles); */
         /*
           pour toutes ces clés aléatoires il faut que 
-          date-repere="racine" 
+          data-repere="racine"
           data-reference_pour_menu_haut="0"
           avec cette clé existe
         */
@@ -198,11 +198,11 @@ class __navigation1{
         /* console.log(lst1); */
         let c_est_un_bouton_rev='';
         if(event.target
-               && event.target.hasAttribute( 'data-rev_click' )
-               && event.target.getAttribute( 'data-rev_click' ).indexOf( 'm1(' ) >= 0
+               && event.target.hasAttribute( 'rev_click1' )
+               && event.target.getAttribute( 'rev_click1' ).indexOf( 'm1(' ) >= 0
         ){
             /* console.log('%c on est ici car on a cliqué dans le menu et il faut fermer ce menu','background:hotpink;color:black;'); */
-            c_est_un_bouton_rev=event.target.getAttribute( 'data-rev_click' );
+            c_est_un_bouton_rev=event.target.getAttribute( 'rev_click1' );
         }
         let le_menu=null;
         for( let i=0 ; i < lst1.length ; i++ ){
@@ -300,7 +300,7 @@ class __navigation1{
     #souris_haut_branche( e ){
         /* console.log('#souris_haut_branche', e ); */
         let cible=null;
-        if(e.target.getAttribute( 'data-rev_click' )){
+        if(e.target.getAttribute( 'rev_clic1' )){
             cible=e.target;
         }else if(e.target.getAttribute( 'data-bouton_plusmoins_de' )){
         }else if(e.target.getAttribute( 'data-replie' )){
@@ -312,8 +312,8 @@ class __navigation1{
             */
             let pare=e.target.parentNode;
             let continuer=50;
-            while(continuer >= 0){
-                if(pare.getAttribute( 'data-rev_click' )){
+            while(continuer >= 0 && pare.tagName.toLowerCase() !== 'body'){
+                if(pare.getAttribute( 'rev_clic1' )){
                     continuer=-1;
                     cible=pare;
                 }else{
@@ -321,7 +321,7 @@ class __navigation1{
                 }
             }
         }
-        if(cible && cible.getAttribute( 'data-rev_click' )){
+        if(cible && cible.getAttribute( 'rev_clic1' )){
             if(cible.parentElement.getAttribute( 'data-num_conteneur_parent' )){
                 /* console.log( 'cible.parentElement=' , cible.parentElement ); */
                 let num_conteneur_parent=cible.parentElement.getAttribute( 'data-num_conteneur_parent' );
@@ -457,10 +457,7 @@ class __navigation1{
       =============================================================================================================
     */
     #souris_haut0( e ){
-        /* console.log('dans #souris_haut0', e.target , e.target.parentNode , e.target.parentNode.parentNode ); */
-        /* window.removeEventListener( 'mouseup' , this.#souris_haut_listener , false ); */
-        /* window.removeEventListener( 'mousemove' , this.#souris_bouge_listener , false ); */
-        let aa=e.target.getAttribute( 'data-rev_click' );
+        let aa=e.target.getAttribute( 'rev_clic1' );
         if(aa && aa !== '' && aa.indexOf( 'm1(' ) >= 0){
             e.target.style.visibility='visible';
             let lst4=document.querySelectorAll( '[data-pour_menu_haut="0"]' );
@@ -502,12 +499,9 @@ class __navigation1{
       =============================================================================================================
     */
     #souris_ou_doigt_bas( e , nom_de_l_action ){
-        /* console.log("dans #souris_ou_doigt_bas nom_de_l_action=" , nom_de_l_action ); */
         var tar=e.target;
-        /* console.log('#souris_ou_doigt_bas', tar ); */
         let txt_log='';
-        /* let tt=document.getElementById( this.#id_div ).getBoundingClientRect(); */
-        if(tar.tagName.toLowerCase() === 'div' && tar.getAttribute( "data-replie" )){
+        if(tar.tagName.toLowerCase() === 'button' && tar.getAttribute( "data-replie" )){
             /*
               on a cliqué sur un bouton +/-
             */
@@ -680,18 +674,18 @@ class __navigation1{
             for( let i=0 ; i < this.arbre.length ; i++ ){
                 if(this.arbre[i].id_interne_parent === 0){
                     t='';
-                    t+='<div';
-                    t+=' id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
+                    t+='<div id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                     t+=' data-position_pour_tri="dedans" ';
                     t+=' style="';
-                    t+='   min-height:var(--h_mini_but);';
+                    t+='   min-height:var(--h_but_plus_marge);';
+                    t+='   height:var(--h_but_plus_marge);';
                     t+='   border:' + this.#options.border_element_racine + ';';
                     t+='   display:flex;';
                     t+='   flex-direction:row;';
                     t+='   justify-content:space-between;';
                     t+='   overflow-y:hidden;';
                     t+=' "';
-                    t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
+                    /* t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"'; */
                     t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+=' data-repere="racine"';
                     t+=' data-cle_aleatoire="' + this.cle_aleatoire + '"';
@@ -720,7 +714,7 @@ class __navigation1{
                         /*
                           bouton +/- au niveau de la racine
                         */
-                        t+=' '.repeat( 4 ) + '<div ';
+                        t+=' '.repeat( 4 ) + '<button ';
                         t+=' data-plus_ou_moins_sur_racine="1" ';
                         t+=' data-replie="' + this.arbre[i].id_interne + '" ';
                         t+=' data-bouton_plusmoins_de="' + this.arbre[i].id_interne + '" ';
@@ -729,7 +723,7 @@ class __navigation1{
                         t+=' data-cle_aleatoire="' + this.cle_aleatoire + '"';
                         t+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;margin-left:1px;">';
                         t+=libelle_replie;
-                        t+='</div>\n';
+                        t+='</button>\n';
                     }
                     t+=' '.repeat( 4 ) + '</div>\n';
                     t+='</div>\n';
@@ -823,18 +817,11 @@ class __navigation1{
                     t+=' '.repeat( 4 * (niveau + 1) ) + '<div';
                     t+=' id="dedans_' + this.arbre[i].id_interne + '_' + this.cle_aleatoire + '"';
                     t+=' data-position_pour_tri="dedans" ';
-                    t+=' style="';
-                    t+='   min-height:var(--h_mini_but);';
+                    t+=' style="display:flex;flex-direction:row;justify-content:space-between;position:relative;top:0;align-items:center;';
+                    /* t+='   min-height:var(--h_mini_but);'; */
                     t+='   border:' + this.#options.border_element_sous_menu + ';';
-                    t+='   display:flex;';
-                    t+='   flex-direction:row;';
-                    t+='   justify-content:space-between;';
-                    t+='   xxx-visibility:hidden;';
-                    t+='   position:relative;';
-                    t+='   top:0;';
                     t+='   z-index:' + niveau + ';';
                     t+=' "';
-                    t+=' data-attributs_originaux="' + JSON.stringify( this.arbre[i].attributs ).replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+=' data-contenu_original="' + this.arbre[i].contenu.replace( /&/g , '&amp;' ).replace( /"/g , '&quot;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ) + '"';
                     t+='>\n';
                     t+=' '.repeat( 4 * (niveau + 2) ) + '<div style="text-align:left;flex-grow:1;"  data-id_interne="' + this.arbre[i].id_interne + '" data-num_conteneur_parent="' + num_conteneur_parent + '" >\n';
@@ -857,14 +844,14 @@ class __navigation1{
                         /*
                           bouton +/- au niveau des sous menus
                         */
-                        le_html+=' '.repeat( 4 * (niveau + 2) ) + '<div ';
+                        le_html+=' '.repeat( 4 * (niveau + 2) ) + '<button ';
                         le_html+=' data-cle_aleatoire="' + this.cle_aleatoire + '" ';
                         le_html+=' data-replie="' + this.arbre[i].id_interne + '" ';
                         le_html+=' class="' + this.#options.class_du_bouton_replier + '" ';
                         le_html+=' data-num_conteneur_parent="' + num_conteneur_parent + '" ';
                         le_html+=' style="float:right;' + style_replie + 'min-width:2em;text-align:center;">';
                         le_html+=libelle_replie;
-                        le_html+='</div>\n';
+                        le_html+='</button>\n';
                     }
                     le_html+=' '.repeat( 4 * (niveau + 1) ) + '</div>\n';
                     /*

@@ -17,8 +17,20 @@ class _connexion1{
         } catch {}
         this.__ig1.maj_fav_icone( le_colis1._CA_ , 0 );
         let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
+        document.getElementById( 'vv_se_deconnecter' ).style.display='none';
         a.select();
+        this.__ig1.ajoute_message( {"__xst" : __xsu ,"__xme" : '<br /><b style="font-size:1.5em;min-height:1.8em;">A bientôt :-)</b><br /><br />'} );
+        this.__ig1.affiche_les_messages();
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    repositionner_le_bouton_deconnexion(){
+        if(window.innerWidth > this.__ig1.css_dimensions.t_fenetre){
+            let a=parseInt( (window.innerWidth - this.__ig1.css_dimensions.t_fenetre) / 2 , 10 );
+            document.getElementById( 'vv_bouton_deconnexion' ).style.right=a + 'px';
+        }
     }
     /*
       =============================================================================================================
@@ -37,6 +49,15 @@ class _connexion1{
                     document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + le_colis1.chi_id_utilisateur + '" style="margin:auto;">' + le_colis1.chp_nom_de_connexion_utilisateur.substr( 0 , 4 ) + '</div>';
                 }
             } catch {}
+            if(window.location.hash !== '#pm1(m1(n1(_connexion1),f1(page_connexion1())))'){
+                /*
+                  dans le cas d'une redirection
+                */
+                this.__ig1.executer1( window.location.hash.substr( 1 ) );
+                /* debugger */
+            }else{
+                this.repositionner_le_bouton_deconnexion();
+            }
         }else{
             try{
                 document.getElementById( 'vv_se_deconnecter' ).style.display='none';
@@ -52,9 +73,13 @@ class _connexion1{
     /*
       =============================================================================================================
     */
-    traite_touche_haut_sur_formulaire_de_connexion( e ){
-        /* console.log(' dans keyup traite_touche_haut_sur_formulaire_de_connexion e=',e); */
-        if(e.keyCode === 13){
+    traite_touche_bas_sur_formulaire_de_connexion( e ){
+        console.log( ' dans traite_touche_bas_sur_formulaire_de_connexion e=' , e );
+        if(e.keyCode === 13
+               && e.target
+               && (e.target.id === 'chp_mot_de_passe_utilisateur_en_clair'
+                   || e.target.id === 'chp_nom_de_connexion_utilisateur')
+        ){
             let aaa='fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))';
             this.__ig1.executer1( aaa , null , null );
         }
@@ -80,46 +105,40 @@ class _connexion1{
             }
         }
         t+='<div id="vv_se_deconnecter" style="padding:20px;text-align:center;display:' + aff + '">';
-        t+='<div class="yy__1" style="padding:10px;display:inline-block;margin:auto;margin;5px;">vous êtes connecté</div><br/>';
-        t+='     <div style="margin:5px auto;"  class="rev_bouton yy__2" data-rev_click="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</div>  ';
+        t+='<div class="yy__1" style="padding:10px;display:inline-block;margin:auto;margin;5px;border-radius:10px;    background: linear-gradient(to bottom, #5DBB00, #7FFF00 );font-weight:bold;">vous êtes connecté</div><br/>';
+        t+='<button id="vv_bouton_deconnexion" style="position:fixed;top:var(--h_barre);right:0px;padding:0;margin:0;border-width:1px;opacity:0.9;"  class="yy_b1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(deconnexion1())))" title="Cliquez ici pour vous déconnecter" >❌ déconnexion</button>';
         t+='</div>';
-        t+='<div class="yy_conteneur_table">';
-        t+='<table border="1" id="vv_formulaire_de_connexion" style="min-width:340px;">';
-        t+=' <tbody>';
-        t+='  <tr>';
-        t+='   <td style="text-align:right;">nom&nbsp;</td>  ';
-        t+='   <td><input type="text" aria-autocomplete="list" id="chp_nom_de_connexion_utilisateur" style="width:100%;" value="" autocapitalize="off"></td> ';
-        t+='  </tr> ';
-        t+='  <tr>  ';
-        t+='   <td style="text-align:right;">mot de passe&nbsp;</td>  ';
-        t+='   <td><input type="password" autocomplete="off" id="chp_mot_de_passe_utilisateur_en_clair" style="width:100%;" value="" ></td> ';
-        t+='  </tr> ';
-        t+='  <tr>';
-        t+='    <td colspan="2" style="text-align:center;">';
-        t+='     <input type="hidden" id="vv_redirection" value="' + window.location.hash + '" />';
-        t+='     <div style="margin:0 auto;" class="rev_bouton yy__3" data-rev_click="fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))" title="Cliquez ici pour vous connecter" >connexion</div>  ';
-        t+='    </td> ';
-        t+='  </tr>';
-        t+=' </tbody>';
+        /*  */
+        t+='<table  id="vv_formulaire_de_connexion" style="max-width:360px;">';
+        t+='<tr>';
+        /*  */
+        t+='<th style="">nom</th>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td><input id="chp_nom_de_connexion_utilisateur" type="text" aria-autocomplete="list" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;text-align:center;" value="" autocapitalize="off" class="yy_input1" /></td>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td>mot de passe</td>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td><input id="chp_mot_de_passe_utilisateur_en_clair" type="password" autocomplete="off" style="width:100%;margin:0 auto 0 auto;display:block;max-width:25em;text-align:center;" value="" class="yy_input1" /></td>';
+        t+='</tr>';
+        t+='<tr>';
+        t+='<td>';
+        t+='<input type="hidden" id="vv_redirection" value="' + window.location.hash + '" />';
+        t+='<button style="margin:0 auto;display:block;width:10em;" class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_formulaire_de_connexion),pm1(m1(n1(' + this.moi + '),f1(verifier_connexion1()))))" title="Cliquez ici pour vous connecter" >connexion</button>';
+        t+='</td>';
+        t+='</tr>';
         t+='</table>';
-        t+='</div>';
         t+='<div style="text-align:center;margin-top:40px;">ou bien aller ici: ';
-        t+=' <div style="margin:0 auto;"  class="rev_bouton" data-rev_click="m1(n1(__ig1)f1(affiche_page_d_accueil()))" title="affiche la page d\'accueil" >Accueil</div>';
+        t+=' <button style="margin:0 auto;"  class="yy_b1" rev_clic1="m1(n1(__ig1)f1(affiche_page_d_accueil()))" title="affiche la page d\'accueil" >Accueil</button>';
         t+='</div>';
         this.__ig1.maj_contenu_principal( t );
         this.__ig1.activer_menu( null , null , '-3' );
         this.__ig1.maj_hash( mat , 0 );
-        let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
-        a.addEventListener( 'keyup' , function( e ){
-                /* console.log(e.keyCode) */
-                if(e.keyCode === 39 || e.keyCode === 35){
-                    /* touche flèche droite ou fin */
-                    let a=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
-                    a.select();
-                }
-        } );
+        this.repositionner_le_bouton_deconnexion();
         let b=document.getElementById( 'vv_formulaire_de_connexion' );
-        b.addEventListener( 'keyup' , this.traite_touche_haut_sur_formulaire_de_connexion.bind( this ) );
+        b.addEventListener( 'keydown' , this.traite_touche_bas_sur_formulaire_de_connexion.bind( this ) );
         setTimeout( () => {
                 let b=document.getElementById( 'chp_nom_de_connexion_utilisateur' );
                 b.focus();

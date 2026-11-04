@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1210{
     /*
-      =============================================================================================================
+      ================================liste_ecran=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -27,23 +27,37 @@ class sql_1210{
          `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        where0+=` AND \`T0\`.\`chx_parametre_grandeur\` = 2`;
-        if(par.hasOwnProperty( 'T0_chp_cle_grandeur' ) && par['T0_chp_cle_grandeur'] !== ''){
-            where0+=` AND \`T0\`.\`chp_cle_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_chp_cle_grandeur'] , 'T0_chp_cle_grandeur' ) + '\r\n';
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
+        try{
+            where0+=` AND \`T0\`.\`chx_parametre_grandeur\` = 2`;
+            if(tup.hasOwnProperty( 'T0_chp_cle_grandeur' ) && tup.T0_chp_cle_grandeur !== ''){
+                where0+=` AND \`T0\`.\`chp_cle_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_cle_grandeur , 'T0_chp_cle_grandeur' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chi_id_grandeur' ) && tup.T0_chi_id_grandeur !== ''){
+                if(tup.T0_chi_id_grandeur === 0){
+                    where0+=' AND `T0`.`chi_id_grandeur` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_grandeur`' , tup.T0_chi_id_grandeur );
+                }
+            }
+            if(tup.hasOwnProperty( 'T0_cht_rev_grandeur' ) && tup.T0_cht_rev_grandeur !== ''){
+                where0+=` AND \`T0\`.\`cht_rev_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_grandeur , 'T0_cht_rev_grandeur' ) + '\r\n';
+            }
+            where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
-        if(par.hasOwnProperty( 'T0_chi_id_grandeur' ) && par['T0_chi_id_grandeur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_grandeur`' , par['T0_chi_id_grandeur'] );
-        }
-        if(par.hasOwnProperty( 'T0_cht_rev_grandeur' ) && par['T0_cht_rev_grandeur'] !== ''){
-            where0+=` AND \`T0\`.\`cht_rev_grandeur\` LIKE ` + this.__ig1.__fnt1.sq2( par['T0_cht_rev_grandeur'] , 'T0_cht_rev_grandeur' ) + '\r\n';
-        }
-        where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
         sql0+=where0;
-        const order0=`
+        if(tup.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && tup.__ordre_de_tri_de_la_liste1 !== ''){
+            sql0+=`
+              ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;
+        }else{
+            sql0+=`
            ORDER BY  \`T0\`.\`chi_id_grandeur\` DESC`;
-        sql0+=order0;
+        }
         const plage0=`
-        LIMIT ` + this.__ig1.__fnt1.sq1( par['quantitee'] , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( par['debut'] , 'debut' ) + ` `;
+        LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
         /* this.__ig1.ma_trace1('sql_1210 sql0=',sql0); */
         let lignes=[];
@@ -57,9 +71,9 @@ class sql_1210{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
-                    "T0.cht_rev_grandeur" : lignes[numero_de_ligne][2]
+                    "T0_chi_id_grandeur" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
+                    "T0_cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
                 } );
         }
         /* comptage */

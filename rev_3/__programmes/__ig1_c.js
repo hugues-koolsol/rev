@@ -12,6 +12,8 @@ const __xac=/* actions */'__xac';
 /*
   #html_initial
   affiche_page_d_accueil()
+  ajoute_les_evenements_aux_boutons()
+  traite_menu
 */
 /*
   Interface Globale coté client
@@ -24,10 +26,9 @@ class __ig1{
     __deverminage=0;
     #__worker=null;
     #la_sous_fenetre1=null;
-    #est_sous_fenetre=false;
     #vv_div_des_positions_du_curseur=null;
     #liste_des_appels_au_serveur=[];
-    #date_derniere_navigation=performance.now();
+    date_derniere_navigation=performance.now();
     stockage_local={};
     css_dimensions={};
     cle_lst0='';
@@ -54,14 +55,37 @@ class __ig1{
     __liste_des_genres={};
     __liste_des_sql={};
     __liste_des_autorisations1={};
+    __liste_des_grandeurs={};
+    #redirecting=false;
+    /*
+      en réalité 802 736 280  : c'est le plus gros fichier que j'ai essayé de télécharger mais je pense qu'on peut faire plus
+      ici on met 900 000 000
+    */
+    #poids_max_televersement=900e6;
+    __decallage_page_avant_envoi=0;
+    les_svg={};
+    largeur_ecran_limite=550;
+    temps_performance0=0;
+    temps_performance1=0;
+    temps_performance1=0;
+    temps_performance2=0;
+    temps_performance3=0;
+    temps_performance4=0;
+    temps_performance5=0;
+    temps_performance6=0;
+    temps_performance7=0;
+    temps_performance8=0;
+    temps_performance9=0;
     /*
       =============================================================================================================
     */
     async #traite_message_recupere_du_worker( par ){
-        this.#date_derniere_navigation=performance.now();
+        this.date_derniere_navigation=performance.now();
         let le_colis1=par.data;
+        this.temps_performance0=performance.now();
         if(this.__deverminage === 2){
             console.log( '%cdeverminage 2 __ig1_c' , 'background:black;color:white;' , le_colis1 );
+            console.log( "this.temps_performance0=" + this.temps_performance0 );
         }
         if(le_colis1.hasOwnProperty( '__liste_des_genres' )){
             this.__liste_des_genres=le_colis1.__liste_des_genres;
@@ -69,19 +93,30 @@ class __ig1{
         if(le_colis1.hasOwnProperty( '__liste_des_sql' )){
             this.__liste_des_sql=le_colis1.__liste_des_sql;
         }
+        if(le_colis1.hasOwnProperty( '__liste_des_grandeurs' )){
+            if(le_colis1.__maj_interactive_des_grandeurs === 1){
+                this.__liste_des_grandeurs[le_colis1.__base_des_grandeurs]=le_colis1.__liste_des_grandeurs;
+                return({"__xst" : __xsu});
+            }else{
+                this.__liste_des_grandeurs=le_colis1.__liste_des_grandeurs;
+            }
+        }
         if(le_colis1.hasOwnProperty( '__version' ) && le_colis1.__version !== this.__version){
-            let tt='<div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
-            this.ajoute_message( {
-                    "__xst" : __xal ,
-                    "__xme" : '<h5>La version du programme a changé !</h5><div style="text-align:center;font-size:1.3rem;"> cliquez là : ' + tt + ' pour recharger la page ou bien appuyez sur la touche <b>F5</b>  </div>'
-                } );
             this.fermer_la_sous_fenetre();
-            this.affiche_les_messages();
+            let tt='';
+            tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">La version du programme a changé !</h2>';
+            tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
+            tt+=' <button class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</button>';
+            tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
+            tt+='</div>';
+            this.maj_contenu_principal( tt );
             try{
-                document.getElementById( 'vv_contenu_principal' ).innerHTML='';
+                this.maj_htm2( 'vv_nav' , '' );
             } catch {}
-            this.retablir_les_boutons_masques( null );
-            return({"__xst" : __xer ,"__xme" : this.nl2()});
+            return({"__xst" : __xsu});
+        }
+        if(le_colis1 && le_colis1.hasOwnProperty( '__xva' ) && le_colis1.__xva.hasOwnProperty( 'les_menu1' )){
+            this.maj_menu( [] , 0 , le_colis1 );
         }
         this.#maj_hash_init_fait=false;
         this.#maj_hash_fait=false;
@@ -204,11 +239,11 @@ class __ig1{
             */
             let module=null;
             if(!(nom_a_importer === '__ig1_c.js' || '__fnt1_c.js' === nom_a_importer)){
-                if(true){
+                if(this.chi_id_utilisateur !== 1){
                     try{
                         /* console.log('%celem=','background:lightgreen;',nom_a_importer) */
                         let elem=this.__liste_des_autorisations1[nom_a_importer];
-                        /* console.log('%celem=','background:lightblue;',elem) */
+                        /* console.log( '%celem=' , 'background:lightblue;' , elem ); */
                         if(elem){
                             if(elem.cht_condition_js_source !== null){
                                 let aa=eval( elem.cht_condition_js_source );
@@ -225,13 +260,22 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(mat[d + 1][1] !== 'zones_sous_liste2'){
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                if(!(mat[d + 1][1] === 'sous_liste2'
+                                           || mat[d + 1][1] === 'zones_sous_liste2'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2')
+                                ){
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CLT erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
                         }else{
-                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                            if(this.chi_id_utilisateur === 0){
+                                this.executer1( 'pm1(m1(n1(_connexion1),f1(page_connexion1())))' );
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'connectez vous !'} );
+                            }else{
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                            }
                             return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }catch(e){
@@ -348,8 +392,20 @@ class __ig1{
                                 /* ok, pas de condition particulière à tester */
                             }
                             if(elem.che_pour_sous_liste_autorisation === 1){
-                                if(mat[d + 1][1] !== 'zones_sous_liste2'){
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 6 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                if(!(mat[d + 1][1] === 'zones_sous_liste2'
+                                           || mat[d + 1][1] === 'appel_serveur_pour_zones_sous_liste2'
+                                           || mat[d + 1][1] === 'selectionner_des_grandeur_de_la_liste_pour_le_filtre'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
+                                           || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2'
+                                           || mat[d + 1][1] === 'selectionner_une_grandeur_sous_liste2'
+                                           || mat[d + 1][1] === 'raz_champ_filtre_grandeurs0'
+                                           || mat[d + 1][1] === 'selectionner_une_grandeur_de_la_liste_pour_le_filtre'
+                                           || mat[d + 1][1] === 'sous_liste2')
+                                ){
+                                    this.affiche_les_messages( {
+                                            "__xst" : __xer ,
+                                            "__xme" : 'CLT erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )
+                                        } );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
@@ -639,6 +695,10 @@ class __ig1{
       =============================================================================================================
     */
     envoyer_un_colis_au_worker( obj ){
+        if(this.stockage_local.aspect['--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis'].valeur === 1){
+            this.supprimer_les_messages();
+        }
+        this.__decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         if(!obj.hasOwnProperty( '__xva' )){
             obj[__xva]={};
         }
@@ -662,7 +722,12 @@ class __ig1{
             if(tab[i] === nz){
                 for( let j=0 ; j < lst.length ; j++ ){
                     try{
-                        lst[j].style.display='';
+                        if(lst[j].id && lst[j].id.indexOf( 'zone_boutons' ) >= 0){
+                            lst[j].style.display='inline-block';
+                            lst[j].style.position='fixed';
+                        }else{
+                            lst[j].style.display='';
+                        }
                     }catch(e){
                         debugger;
                     }
@@ -671,7 +736,7 @@ class __ig1{
                 for( let j=0 ; j < lst.length ; j++ ){
                     try{
                         if(lst[j].id.indexOf( 'boutons' ) < 0){
-                            lst[j].innerHTML='';
+                            this.maj_htm1( lst[j] , '' );
                         }
                         lst[j].style.display='none';
                     }catch(e){
@@ -690,9 +755,9 @@ class __ig1{
             this.initialisation_des_zones( nom_de_la_classe_js , nom_du_champ_cle );
         }
         a=document.getElementById( 'vv_titre_de_la_page' );
-        let bouton_retour='<div title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="rev_bouton rev_b_svg yy_btn_retour_liste" data-rev_click="';
+        let bouton_retour='<button title="retour à la liste" id="vv_bouton_retour_a_la_liste" class="yy_svg1 yy_btn_retour_liste" rev_clic1="';
         bouton_retour+='m1(n1(' + nom_de_la_classe_js + '),f1(' + nom_de_le_methode_entree + '()))';
-        bouton_retour+='">' + this.les_svg.lst_des_elts + '</div>';
+        bouton_retour+='">' + this.les_svg.lst_des_elts + '</button>';
         let sujet='modification';
         if('vv_ecran_modification' === nom_de_la_zone){
             sujet='modification';
@@ -705,7 +770,7 @@ class __ig1{
         }
         let titre=sujet + ' ' + préfixe_titre + (id_element === null ? ( '' ) : ( ' (' + id_element + ')' ));
         if(a.innerHTML !== bouton_retour + titre){
-            a.innerHTML=bouton_retour + titre;
+            this.maj_htm1( a , bouton_retour + titre );
             this.afficher_les_zones( nom_de_la_zone );
         }
     }
@@ -769,14 +834,12 @@ class __ig1{
         o1+='<div id="vv_ecran_liste_zone_filtre" style="display:none;"></div>';
         o1+='<div id="vv_ecran_liste_zones_navigation1"  class="yy_navigation_liste"  style="display:none;">';
         o1+='  <div id="vv_ecran_liste_boutons_avant" style="display:none;"></div>';
-        o1+='  <div id="vv_ecran_liste_bouton_precedents"  class="rev_bouton yy_suivant_precedent_inactif" data-rev_click="';
+        o1+='  <button id="vv_ecran_liste_bouton_precedents"  class="yy_b1 yy_suivant_precedent_inactif" rev_clic1="';
         o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_precedents)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&laquo;</div>';
-        o1+='  <div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_inactif"  data-rev_click="';
+        o1+='" data-numero_page="-1" style="display:none;">&laquo;</button>';
+        o1+='  <button id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif"  rev_clic1="';
         o1+='m1(n1(' + nom_module + '),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))';
-        o1+='"';
-        o1+='    data-numero_page="-1" style="display:none;">&raquo;</div>';
+        o1+='"  data-numero_page="-1" style="display:none;">&raquo;</button>';
         o1+='  <div id="vv_ecran_liste_zone_pages" style="display:none;"></div>';
         o1+='</div>';
         o1+='<div id="vv_ecran_liste_zone_contenu" style="display:none;"></div>';
@@ -787,10 +850,11 @@ class __ig1{
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+=' <div id="vv_ajouter_un_element_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter</div>';
+        o1+='   <button id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter</button>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+=' <div  id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="rev_bouton yy__3" data-rev_click="' + tt1 + '">ajouter et revenir à la liste</div>';
+        o1+='   <button id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter et revenir à la liste</button>';
         o1+='</div>';
+        o1+='<div id="vv_ecran_creation_zone_complement" style="display:none;"></div>';
         /*
           visualisation
         */
@@ -800,24 +864,25 @@ class __ig1{
           suppression
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
-        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;">';
-        o1+='  <div class="rev_bouton yy__2" data-rev_click="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</div>';
-        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</div>';
+        o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;">';
+        o1+='  <button class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</button>';
+        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</button>';
         o1+='</div>';
+        o1+='<div id="vv_ecran_suppression_zone_complement" style="display:none;"></div>';
         /*
           modification
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
-        o1+='  <div id="vv_bouton_modifier_seulement_' + nom_module + '" class="rev_bouton yy__3" data-indicateur_graphique="bouton_modification_zone" ';
-        o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
-        o1+='    title="">modifier</div>    ';
-        o1+='  <div class="rev_bouton yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
-        o1+='    data-rev_click="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
-        o1+='    title="">Modifier et retour à la liste</div>';
-        o1+='  <div class="rev_bouton yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
-        o1+='    data-rev_click="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
-        o1+='    title="page de confirmation de suppression">suppression</div>';
+        o1+='  <button id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone" ';
+        o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
+        o1+='    title="">modifier</button>    ';
+        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
+        o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
+        o1+='    title="">modifier et retour</button>';
+        o1+='  <button class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
+        o1+='    rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_confirmation_supprimer(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" ';
+        o1+='    title="page de confirmation de suppression">' + this.les_svg.poubelle + '</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_modification_zone_complement" style="display:none;"></div>';
         this.maj_contenu_principal( o1 );
@@ -825,9 +890,13 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre ){
-        document.getElementById( 'vv_contenu_de_sous_liste2' ).innerHTML=contenu_de_sous_liste2;
-        document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + titre;
+    initialisation_filtre_sous_fenetre2( nom_de_zone , contenu_de_sous_liste2 , titre , __sous_titre_a_afficher='' ){
+        this.maj_htm2( 'vv_contenu_de_sous_liste2' , contenu_de_sous_liste2 );
+        if(__sous_titre_a_afficher !== ''){
+            document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + __sous_titre_a_afficher;
+        }else{
+            document.getElementById( 'vv_titre_sous_liste_2' ).innerText='selection ' + titre;
+        }
         let zones_filtre2=document.getElementById( nom_de_zone );
         if(zones_filtre2){
             let lst_inp=zones_filtre2.getElementsByTagName( 'input' );
@@ -845,7 +914,6 @@ class __ig1{
                     lst_inp[0].select();
                 }
             }
-            this.ajoute_les_evenements_aux_boutons( null );
             zones_filtre2.addEventListener( 'keyup' , ( e ) => {
                     if(e.keyCode === 13
                            && e.altKey === false
@@ -856,7 +924,7 @@ class __ig1{
                         console.log( 'faire quelquechose ici e=' , e );
                         let btn2=document.getElementById( 'yy_bouton_loupe_sous_fenetre2' );
                         if(btn2){
-                            let cmd2=btn2.getAttribute( 'data-rev_click' );
+                            let cmd2=btn2.getAttribute( 'rev_clic1' );
                             if(cmd2){
                                 console.log( 'cmd2=' + cmd2 );
                                 this.executer1( cmd2 , null , e );
@@ -870,7 +938,63 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    construire_les_zones_filtres2( mat , d , le_colis1 , that ){
+    appel_serveur_pour_zones_sous_liste2( mat , d ){
+        let l01=mat.length;
+        let module_appelant1='';
+        let module_appele1='';
+        let nom_libelle_dans_parent2='';
+        let nom_champ_dans_parent2='';
+        let chi_id_parametre=0;
+        let methode_sur_click2='';
+        let __sous_titre_a_afficher='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appelant1=mat[i + 1][1];
+            }else if(mat[i][1] === 'module_appele1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appele1=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1){
+                chi_id_parametre=mat[i + 1][1];
+            }else if(mat[i][1] === '__sous_titre_a_afficher' && mat[i][2] === 'f' && mat[i][8] === 1){
+                __sous_titre_a_afficher=mat[i + 1][1];
+            }else if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                methode_sur_click2=mat[i + 1][1];
+            }
+        }
+        let __fo1={};
+        let __co1='sous_liste2';
+        let lst=document.getElementById( 'sous_liste2' ).getElementsByTagName( 'input' );
+        for( let i=0 ; i < lst.length ; i++ ){
+            __fo1[lst[i].id]=lst[i].value;
+        }
+        let jso={"filtres" : {"sous_liste2" : __fo1}};
+        sessionStorage.setItem( this.cle_lst0 + '_' + module_appele1 , JSON.stringify( jso ) );
+        let xac='';
+        xac+='pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
+        xac+='__num_page(' + (__fo1['__num_page']??0) + '),';
+        xac+='module_appelant1(' + module_appelant1 + '),';
+        xac+='module_appele1(' + module_appele1 + '),';
+        xac+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
+        if(__sous_titre_a_afficher !== ''){
+            xac+='__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+        }
+        if(nom_libelle_dans_parent2 !== ''){
+            xac+='nom_libelle_dans_parent2(\'' + nom_libelle_dans_parent2.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+        }
+        if(methode_sur_click2 !== ''){
+            xac+='methode_sur_click2(\'' + methode_sur_click2.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
+        }
+        xac+='))))';
+        this.envoyer_un_colis_au_worker( {"__xac" : xac ,"__xva" : {"__fo1" : {"sous_liste2" : __fo1} ,"__co1" : 'sous_liste2'}} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    construire_les_zones_filtres2( mat , d , le_colis1 , that , __sous_titre_a_afficher='' ){
         let o1='';
         let l01=mat.length;
         let module_appelant1='';
@@ -878,6 +1002,7 @@ class __ig1{
         let nom_libelle_dans_parent2='';
         let nom_champ_dans_parent2='';
         let chi_id_parametre=0;
+        let methode_sur_click2=le_colis1.__xva.hasOwnProperty( 'methode_sur_click2' ) ? ( le_colis1.__xva.methode_sur_click2 ) : ( '' );
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
                 module_appelant1=mat[i + 1][1];
@@ -893,100 +1018,156 @@ class __ig1{
         }
         let premiere_zone_affichee='';
         let derniere_zone_non_vide='';
+        let nom_zone_non_vide='';
         o1+='<div class="yy_filtre_liste1" id="sous_liste2">';
         for(let i in that.tableau_des_filtres.sous_liste2){
-            if(that.tableau_des_filtres.sous_liste2[i].masqué === false){
-                if(premiere_zone_affichee === ''){
-                    premiere_zone_affichee=i;
-                }
-                o1+='    <div>';
-                o1+='        <div><span>' + that.tableau_des_filtres.sous_liste2[i].nom + '</span></div>';
-                o1+='        <div>\r\n';
-                o1+='          <input ';
-                o1+=' type="text" id="' + i + '" ';
-                if(le_colis1.__xva
-                       && le_colis1.__xva.criteres2
-                       && le_colis1.__xva.criteres2.hasOwnProperty( i )
-                       && le_colis1.__xva.criteres2[i] !== ''
-                ){
-                    derniere_zone_non_vide=i;
-                    o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
-                    o1+=' style="background:yellow;"';
+            let elem=that.tableau_des_filtres.sous_liste2[i];
+            if(elem.masqué === false){
+                o1+='    <div class="yy_bloc_filtre">';
+                if(elem.hasOwnProperty( 'rerefence_a_une_grandeur' )){
+                    let valeur_en_cours='';
+                    if(le_colis1 && le_colis1.__xva.hasOwnProperty( 'criteres2' ) && le_colis1.__xva.criteres2.hasOwnProperty( i )){
+                        valeur_en_cours=le_colis1.__xva.criteres2[i];
+                    }else{
+                        valeur_en_cours=that.filtres.sous_liste2[i];
+                    }
+                    let bck='background:yellow;';
+                    if(valeur_en_cours === ''){
+                        bck='';
+                    }
+                    o1+='        <div style="' + bck + '"><span>' + elem.nom + '</span></div>';
+                    o1+='        <div>';
+                    o1+='<button class="yy_b1 yy__4"  rev_clic1="';
+                    o1+='m1(n1(__fnt1),f1(selection_sous_grandeur_filtre2(';
+                    o1+='id_zone(' + i + '),';
+                    o1+='module_appelant1(' + module_appelant1 + ')';
+                    o1+='module_appele1(' + module_appele1 + ')';
+                    o1+='chi_id_parametre(' + elem.rerefence_a_une_grandeur.chi_id_parametre + ' ),';
+                    o1+='puiser_avec(' + elem.rerefence_a_une_grandeur.puiser_avec + '),';
+                    o1+='__sous_titre_a_afficher(\'' + elem.nom.replace( /\\/g , '\\\\' ).replace( /\'/g , '\'' ) + '\'))))" >?</button>';
+                    o1+='            <button class="yy_b1 yy__4"  rev_clic1="m1(n1(__fnt1),f1(raz_zone_et_select1(';
+                    o1+='id(' + i + '),';
+                    o1+='origine_de_l_appel_liste(' + that.moi + ')';
+                    if(elem.champ_texte_associé){
+                        o1+='champ_texte_associé(' + elem.champ_texte_associé + ')';
+                    }
+                    if(elem.champ_libelle_associé){
+                        o1+='champ_libelle_associé(' + elem.champ_libelle_associé + ')';
+                    }
+                    o1+=')))">x</button>';
+                    o1+='        </div>';
+                    /*  */
+                    o1+='        <div style="' + bck + '">';
+                    if(valeur_en_cours !== ''){
+                        o1+='          <span id="' + elem.champ_libelle_associé + '" style="background-color:yellow;color:red;">!!!!!</span>';
+                    }else{
+                        o1+='          <span id="' + elem.champ_libelle_associé + '"></span>';
+                    }
+                    o1+='          <input type="hidden" id="' + i + '" style="border-width:5px;" size="5" value="';
+                    o1+=that.__ig1.fi1( valeur_en_cours );
+                    o1+='" /> ';
+                    o1+='        </div>\r\n';
+                    o1+='        </div>\r\n';
                 }else{
-                    o1+=' value="" ';
+                    if(premiere_zone_affichee === ''){
+                        premiere_zone_affichee=i;
+                    }
+                    o1+='        <div><span>' + elem.nom + '</span></div>';
+                    o1+='        <div>\r\n';
+                    o1+='          <input class="yy_input1" type="text" id="' + i + '" ';
+                    if(le_colis1.__xva
+                           && le_colis1.__xva.criteres2
+                           && le_colis1.__xva.criteres2.hasOwnProperty( i )
+                           && le_colis1.__xva.criteres2[i] !== ''
+                    ){
+                        derniere_zone_non_vide=i;
+                        o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
+                        o1+=' style="background:yellow;"';
+                    }else{
+                        o1+=' value="" ';
+                    }
+                    o1+=' aria-autocomplete="list" ';
+                    o1+=' size="' + elem.taille + '" ';
+                    o1+=' maxlength="64" ';
+                    o1+=' autocapitalize="off" ';
+                    o1+=' />';
+                    o1+='        </div>\r\n';
+                    o1+='    </div>\r\n';
                 }
-                o1+=' aria-autocomplete="list" ';
-                o1+=' size="' + that.tableau_des_filtres.sous_liste2[i].taille + '" ';
-                o1+=' maxlength="64" ';
-                o1+=' autocapitalize="off" ';
-                o1+=' />';
-                o1+='        </div>\r\n';
-                o1+='    </div>\r\n';
+            }else{
+                /* les zones masquées sont plus bas */
             }
         }
-        o1+='   <div>';
-        o1+='     <div>';
-        o1+='       <span>&nbsp;</span>';
-        o1+='     </div>';
-        o1+='     <div>';
-        o1+='        <div class="rev_bouton yy_bouton_loupe" id="yy_bouton_loupe_sous_fenetre2" data-rev_click="fo1(co1(sous_liste2),pm1(m1(n1(' + that.moi + '),f1(sous_liste2(';
+        o1+='   <div class="yy_bloc_loupe">';
+        o1+='        <button id="yy_bouton_loupe_sous_fenetre2" class="yy_b1" style="margin:auto auto;min-width:' + this.css_dimensions.t_boutons_carres + 'px;min-height:' + this.css_dimensions.t_boutons_carres + 'px;"';
+        o1+='  rev_clic1="m1(n1(' + this.moi + '),f1(appel_serveur_pour_zones_sous_liste2(';
         o1+='__num_page(0)';
         o1+=',module_appelant1(' + module_appelant1 + ')';
         o1+=',module_appele1(' + module_appele1 + ')';
         o1+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '\')';
         o1+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre !== 0){
             o1+=',chi_id_parametre(' + chi_id_parametre + ')';
         }
-        o1+=')))))';
+        if(methode_sur_click2 !== ''){
+            o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
+        }
+        o1+=')))';
         o1+='"';
-        o1+='        >' + this.les_svg.loupe + '</div>';
+        o1+='        >' + this.les_svg.loupe + '</button>';
         o1+='     </div>';
         for(let i in that.tableau_des_filtres.sous_liste2){
             if(that.tableau_des_filtres.sous_liste2.masqué === true){
                 o1+='     <input type="hidden" id="' + i + '" value="' + that.filtres.sous_liste2[i] + '" />';
             }
         }
-        o1+='   </div>';
+        o1+='     <input type="hidden" id="__sous_titre_a_afficher" value="' + this.fi2( __sous_titre_a_afficher ) + '" />';
         o1+='</div>';
         o1+='<div class="yy_navigation_liste">';
         /* bouton page précédente */
         if(le_colis1.__xva.__debut > 0){
-            o1+='<div id="vv_ecran_liste_bouton_precedents" class="rev_bouton yy_suivant_precedent_actif" ';
-            o1+='data-rev_click="';
+            o1+='<button id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_actif" ';
+            o1+=' rev_clic1="';
             o1+='fo1(co1(sous_liste2),pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
             o1+='__num_page(' + (le_colis1.__xva.__num_page - 1) + '),';
             o1+='module_appelant1(' + module_appelant1 + '),';
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+            o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '\')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
+            if(methode_sur_click2 !== ''){
+                o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
+            }
             o1+=')))))';
             o1+='" ';
-            o1+='data-numero_page="0" style="">«</div>';
+            o1+='data-numero_page="0" style="">«</button>';
         }else{
-            o1+='<div id="vv_ecran_liste_bouton_precedents" class="rev_bouton yy_suivant_precedent_inactif" style="" >«</div>';
+            o1+='<button id="vv_ecran_liste_bouton_precedents" class="yy_b1 yy_suivant_precedent_inactif" style="" >«</button>';
         }
         /* bouton page suivante */
         if(le_colis1.__xva.sous_liste2.nombre > le_colis1.__xva.__debut + le_colis1.__xva.__nbMax){
-            o1+='<div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_actif" data-rev_click="';
+            o1+='<button id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_actif"  rev_clic1="';
             o1+='fo1(co1(sous_liste2),pm1(m1(n1(' + module_appele1 + '),f1(sous_liste2(';
             o1+='__num_page(' + (le_colis1.__xva.__num_page + 1) + '),';
             o1+='module_appelant1(' + module_appelant1 + '),';
             o1+='module_appele1(' + module_appele1 + '),';
             o1+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + '),';
             o1+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+            o1+=',__sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '\')';
             if(chi_id_parametre !== 0){
                 o1+=',chi_id_parametre(' + chi_id_parametre + ')';
             }
+            if(methode_sur_click2 !== ''){
+                o1+=',methode_sur_click2(' + methode_sur_click2 + ')';
+            }
             o1+=')))))';
-            o1+='">»</div>';
-            /* o1+='m1(n1(requetes1),f1(aller_a_la_page(vv_ecran_liste_bouton_suivants)))" '; */
-            /* o1+='data-numero_page="1" style="" >»</div>'; */
+            o1+='">»</button>';
         }else{
-            o1+='<div id="vv_ecran_liste_bouton_suivants" class="rev_bouton yy_suivant_precedent_inactif" style="" >»</div>';
+            o1+='<button id="vv_ecran_liste_bouton_suivants" class="yy_b1 yy_suivant_precedent_inactif" style="" >»</button>';
         }
         o1+='</div>';
         return({
@@ -1027,11 +1208,11 @@ class __ig1{
                && nom_libelle_dans_parent2 !== ''
         ){
             let o1='';
-            o1+='<h1 id="vv_titre_sous_liste_2">choisir</h1>';
+            o1+='<h1 id="vv_titre_sous_liste_2">choisir<!-- module_appele1="' + module_appele1 + '" --></h1>';
             o1+='<div id="vv_contenu_de_sous_liste2"></div>';
-            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min(80vw,' + parseInt( this.css_dimensions.val_fenetre * 0.8 , 10 ) + 'px)';
+            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
             this.affiche_sous_fenetre1( o1 );
-            this.ajoute_les_evenements_aux_boutons( null );
             /*  */
             let cmd2='';
             cmd2+='m1(n1(' + module_appele1 + '),f1(zones_sous_liste2(';
@@ -1052,17 +1233,165 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    popup_sous_fenetre_lien_parent2( mat , d ){
+    generique_sous_liste_grandeur_pour_insertion( mat , d , le_colis1 , nom_du_module_appelant ){
         let l01=mat.length;
+        let module_appelant1='';
+        let module_appele1='';
+        let nom_libelle_dans_parent2='';
+        let nom_champ_dans_parent2='';
+        let chi_id_parametre=0;
+        let __sous_titre_a_afficher='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'module_appelant1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appelant1=mat[i + 1][1];
+            }else if(mat[i][1] === 'module_appele1' && mat[i][2] === 'f' && mat[i][8] === 1){
+                module_appele1=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'nom_champ_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1){
+                nom_champ_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === '__sous_titre_a_afficher' && mat[i][2] === 'f' && mat[i][8] === 1){
+                __sous_titre_a_afficher=mat[i + 1][1];
+            }
+        }
+        if(module_appelant1 !== '' && module_appele1 !== '' && nom_champ_dans_parent2 !== '' && nom_libelle_dans_parent2 !== ''){
+            let o1='';
+            o1+='<!-- module_appele1="' + module_appele1 + '" -->';
+            o1+='<h1 id="vv_titre_sous_liste_2">sélection ' + __sous_titre_a_afficher + '</h1>';
+            o1+='<div id="vv_contenu_de_sous_liste2">';
+            if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
+                let la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
+                let lst='';
+                let les_libelles_complementaires=[];
+                for(let i in le_colis1.__xva.sous_liste2){
+                    let tup=le_colis1.__xva.sous_liste2[i];
+                    lst+='<tr>';
+                    lst+='<td style="text-wrap-mode: nowrap;">';
+                    let parametres='';
+                    parametres+=la_methode;
+                    parametres+=' nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+                    parametres+=' nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+                    parametres+=' id2(' + tup.T0_chi_id_grandeur + ')';
+                    let libelle2='';
+                    /* libelle2+='(' + tup.T0_chi_id_grandeur + ') , '; */
+                    if(tup.T0_chc_couleur_fond_grandeur !== null){
+                        libelle2+='<div style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + ';">';
+                        libelle2+=tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
+                    }else{
+                        libelle2+='<div>';
+                        libelle2+='' + tup.T0_chp_cle_grandeur ? ( this.fi2( tup.T0_chp_cle_grandeur ) ) : ( '' );
+                    }
+                    libelle2+='</div>';
+                    libelle2+=' ';
+                    parametres+=' libelle2(\'';
+                    parametres+=this.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+                    parametres+='\')';
+                    parametres+=')))';
+                    lst+='  <button class="yy_b1 yy__2"  rev_clic1="' + parametres + '">=&gt;</button>';
+                    lst+='</td>';
+                    lst+='<td style="text-align:center;">';
+                    lst+=this.fi2( tup.T0_chi_id_grandeur );
+                    lst+='</td>';
+                    lst+='<td style="max-width:24em;overflow:hidden;">';
+                    if(tup.T0_chc_couleur_fond_grandeur !== null){
+                        lst+='<span style="color:' + tup.T0_chc_couleur_texte_grandeur + ';background:' + tup.T0_chc_couleur_fond_grandeur + '">' + tup.T0_chp_cle_grandeur + '</span>';
+                    }else{
+                        lst+=tup.T0_chp_cle_grandeur;
+                    }
+                    lst+='</td>';
+                    if(tup.T0_cht_rev_grandeur && tup.T0_cht_rev_grandeur !== ''){
+                        let la_grandeur=this.__liste_des_grandeurs[le_colis1.__xva.chi_id_basedd][tup.T0_chi_id_grandeur];
+                        for(let j in la_grandeur.__liste_des_parametres){
+                            let sous_val=la_grandeur.__liste_des_parametres[j];
+                            lst+='<td>';
+                            lst+=this.fi2( la_grandeur[sous_val.__nom] );
+                            lst+='</td>';
+                        }
+                        if(les_libelles_complementaires.length === 0){
+                            for(let j in la_grandeur.__liste_des_parametres){
+                                let sous_val=la_grandeur.__liste_des_parametres[j];
+                                les_libelles_complementaires.push( sous_val.libelle );
+                            }
+                        }
+                    }
+                    lst+='</tr>';
+                }
+                if(lst !== ''){
+                    o1+='<div class="yy_conteneur_table">';
+                    o1+='<table>';
+                    o1+='<tr>';
+                    o1+='<th>action</th>';
+                    o1+='<th>id</th>';
+                    o1+='<th>' + this.fi2( __sous_titre_a_afficher === '' ? ( 'cle' ) : ( __sous_titre_a_afficher ) ) + '</th>';
+                    for(let i in les_libelles_complementaires){
+                        o1+='<th>' + this.fi2( les_libelles_complementaires[i] ) + '</th>';
+                    }
+                    o1+='</tr>';
+                    o1+=lst;
+                    o1+='</table>';
+                    o1+='</div>';
+                }else{
+                    o1+=this.la_liste_est_vide();
+                }
+            }
+            o1+='</div>';
+            document.getElementById( 'vv_sous_fenetre1' ).style.maxWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
+            document.getElementById( 'vv_sous_fenetre1' ).style.minWidth='min( 80vw ,' + parseInt( this.css_dimensions.t_fenetre * 0.8 , 10 ) + 'px )';
+            this.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : 'erreur sous_liste2 ' + this.__nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    popup_sous_fenetre_lien_parent2( mat , d ){
+        let module_appele1='';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 && module_appele1 === '' ; i=mat[i][12] ){
+            if(mat[i][1] === 'pm1' && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 && module_appele1 === '' ; j=mat[j][12] ){
+                    if(mat[j][1] === 'm1' && mat[j][2] === 'f'){
+                        for( let k=j + 1 ; k < l01 && module_appele1 === '' ; k=mat[k][12] ){
+                            if(mat[k][1] === 'f1' && mat[k][2] === 'f'){
+                                for( let l=k + 1 ; l < l01 && module_appele1 === '' ; l=mat[l][12] ){
+                                    if(mat[l][1] === 'sous_liste2' && mat[l][2] === 'f'){
+                                        for( let m=l + 1 ; m < l01 ; m=mat[m][12] ){
+                                            if(mat[m][1] === 'module_appele1' && mat[m][2] === 'f' && mat[m][8] === 1 && mat[m + 1][2] === 'c'){
+                                                module_appele1=mat[m + 1][1];
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
             if(mat[i][1] === 'pm1' && mat[i][2] === 'f' && mat[i][8] > 0){
                 let obj1=this.__rev1.matrice_vers_source_rev1( mat , i , false , i + 1 );
                 if(obj1.__xst === __xsu){
-                    this.envoyer_un_colis_au_worker( {
-                             /*  */
-                            "__xac" : 'pm1(' + obj1.__xva + ')' ,
-                            "__xva" : {"__fo1" : {} ,"__co1" : ''}
-                        } );
+                    let __fo1={};
+                    let aa=sessionStorage.getItem( this.cle_lst0 + '_' + module_appele1 );
+                    if(aa !== null){
+                        let jso=JSON.parse( aa );
+                        for(let chp in jso.filtres.sous_liste2){
+                            if(chp === '__num_page'){
+                                __fo1[chp]=jso.filtres.sous_liste2[chp]=0;
+                            }else{
+                                if(jso.filtres.sous_liste2.hasOwnProperty( chp ) && jso.filtres.sous_liste2[chp] !== ''){
+                                    __fo1[chp]=jso.filtres.sous_liste2[chp];
+                                }
+                            }
+                        }
+                    }
+                    /* __co1 = COnteneur des données */
+                    this.envoyer_un_colis_au_worker( {"__xac" : 'pm1(' + obj1.__xva + ')' ,"__xva" : {"__fo1" : {"sous_liste2" : __fo1} ,"__co1" : 'sous_liste2'}} );
                     return({"__xst" : __xsu});
                 }
                 return({"__xst" : __xer ,"__xme" : 'erreur popup_sous_fenetre_lien_parent2 0 '});
@@ -1073,25 +1402,95 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 ){
+    annuler_lien_parent2( mat , d ){
+        let module_appele1='';
+        let l01=mat.length;
+        let id_valeur3='';
+        let id_libelle3='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'id_valeur3' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_valeur3=mat[i + 1][1];
+            }else if(mat[i][1] === 'id_libelle3' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_libelle3=mat[i + 1][1];
+            }
+        }
+        if(id_libelle3 !== '' && id_valeur3 !== ''){
+            document.getElementById( id_valeur3 ).value='';
+            this.maj_htm2( id_libelle3 , '' );
+            try{
+                if(document.getElementById( id_valeur3 ).parentNode.tagName.toUpperCase() === 'LABEL'){
+                    let lst=document.getElementById( id_valeur3 ).parentNode.querySelectorAll( '[data-libelle_de="' + id_valeur3 + '"]' );
+                    if(lst.length === 1){
+                        lst[0].style.fontWeight='';
+                        lst[0].style.opacity='0.5';
+                    }
+                }
+            } catch {}
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : 'champs non trouvés pour l\'annulation'});
+    }
+    /*
+      =============================================================================================================
+    */
+    lien_parent2( module1 , champ_fils , id_span_libelle , module_appelant1 , chi_id_parametre=0 , __sous_titre_a_afficher='' , afficher_bouton_vider=true , valeur_actuelle=null ){
         let o1='';
-        /* moi */
-        o1+='<div class="rev_b_svg yy__1" data-rev_click="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
+        o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+        o1+='    <button class="yy_svg1 yy__1" rev_clic1="m1(n1(__ig1),f1(popup_sous_fenetre_lien_parent2(';
         o1+=' pm1(m1(n1(' + module1 + '),f1(sous_liste2(';
         o1+='  module_appelant1(' + module_appelant1 + ')';
         o1+='  module_appele1(' + module1 + ')';
         o1+='  nom_champ_dans_parent2(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent2(' + id_span_libelle + ')';
+        if(__sous_titre_a_afficher !== ''){
+            o1+='  __sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        }
         if(chi_id_parametre !== 0){
             o1+='  chi_id_parametre(' + chi_id_parametre + ')';
         }
         o1+=' ))))';
-        o1+=')))" title="selectionner" >' + this.les_svg.dossier + '</div>';
-        /* 📁 */
-        o1+='<div class="rev_b_svg yy__2" data-rev_click="m1(n1(__ig1),f1(';
-        o1+=' maj_contenu(type_cible(valeur_constante),id(' + champ_fils + '),valeur(valeur_constante(\'\')))';
-        o1+=' maj_contenu(type_cible(libelle_html),id(' + id_span_libelle + '),valeur(valeur_constante(\'*indéfini\')))';
-        o1+='))" title="annuler" >' + this.les_svg.ensemble_vide + '</div>';
+        o1+=')))" ';
+        o1+=valeur_actuelle === null ?
+          ( 
+            chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
+          ) : ( 
+            ''
+          );
+        o1+=' title="selection ' + __sous_titre_a_afficher + '" >' + this.les_svg.dossier + '</button>';
+        if(afficher_bouton_vider === true){
+            o1+='    <button class="yy_svg1 yy__2" rev_clic1="m1(n1(__ig1),f1(annuler_lien_parent2(id_valeur3(' + champ_fils + '),id_libelle3(' + id_span_libelle + '))))"';
+            o1+=valeur_actuelle === null ?
+              ( 
+                chi_id_parametre === 0 ? ( ' style="opacity:0.7;"' ) : ( ' style="opacity:0.3;"' )
+              ) : ( 
+                ''
+              );
+            o1+=' title="annuler" >' + this.les_svg.ensemble_vide + '</button>';
+        }
+        o1+='</div>';
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    html_du_label_mod1( nom_du_champ , valeur , libelle , programme , id_parametre , that , pouvoir_annuler , __contexte=null ){
+        let o1='';
+        if(valeur === undefined && __contexte === 'modifier1'){
+            o1+='        <div class="yy__0">ATTENTION, ERREUR DE SQL :  LE CHAMP n\'est pas inclus dans le SELECT</div>';
+        }
+        o1+='<label for="' + nom_du_champ + '_libelle" class="yy_lib1">';
+        o1+='    <div style="display:flex;margin:auto 3px;';
+        o1+=valeur === null ? ( 'opacity:0.5;' ) : ( '' );
+        o1+='">' + libelle + ' :&nbsp;</div>';
+        o1+='    <input type="hidden" value="' + this.fi2( valeur ) + '" id="' + nom_du_champ + '" />';
+        o1+='    <div id="' + nom_du_champ + '_libelle" style="display:flex;"';
+        o1+=' >';
+        if(valeur !== null){
+            o1+=this.rendu_lst_grandeur1( 3 , valeur );
+        }
+        o1+='    </div>';
+        o1+=this.lien_parent2( programme , nom_du_champ , nom_du_champ + '_libelle' , that.moi , id_parametre , libelle , pouvoir_annuler , valeur );
+        o1+='</label>';
         return o1;
     }
     /*
@@ -1116,28 +1515,27 @@ class __ig1{
                 this.#liste_des_modules_dynamiques['__fnts_c_et_s']={"objet1" : this.__fnts_c_et_s};
         } );
         /* console.log('dans __ig1_c.constructor this.__version=' + this.__version + ' , this.__le_port=' + this.__le_port); */
-        try{
-            if(window.parent[0] === undefined){
-            }else{
-                this.#est_sous_fenetre=true;
-            }
-        }catch(e){
-            debugger;
-        }
         this.#init1();
         this.css1();
-        document.getElementById( 'vv_le_body1' ).innerHTML=this.#html_initial();
+        this.maj_htm2( 'vv_le_body1' , this.#html_initial() );
         this.#la_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         this.#la_sous_fenetre1.addEventListener( 'click' , function( e ){
                 var dim=e.target.getBoundingClientRect();
                 if(e.clientX < dim.left || e.clientX > dim.right || e.clientY < dim.top || e.clientY > dim.bottom){
                     try{
                         if( typeof e.target['close'] === 'function'){
-                            try{
-                                document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
-                                e.target.removeAttribute( 'style' );
-                            } catch {}
-                            e.target.close();
+                            if(e.target.id === 'vv_sous_sous_fenetre_de_liste2'){
+                                e.target.className='';
+                                e.target.close();
+                                e.target.remove();
+                            }else{
+                                try{
+                                    this.maj_htm( 'vv_sous_fenetre1' , '' );
+                                    e.target.removeAttribute( 'style' );
+                                } catch {}
+                                e.target.className='';
+                                e.target.close();
+                            }
                         }
                     } catch {}
                 }
@@ -1145,7 +1543,7 @@ class __ig1{
         this.#vv_div_des_positions_du_curseur=document.createElement( 'div' );
         this.#vv_div_des_positions_du_curseur.id='vv_div_des_positions_du_curseur';
         this.#vv_div_des_positions_du_curseur.setAttribute( 'style' , 'position:absolute;top:60px;left:0px;background:white;display:inline-block;min-height:12px!important;line-height:12px;' );
-        this.#vv_div_des_positions_du_curseur.innerHTML='';
+        this.maj_htm1( this.#vv_div_des_positions_du_curseur , '' );
         document.getElementsByTagName( 'body' )[0].appendChild( this.#vv_div_des_positions_du_curseur );
         this.#__worker=new Worker( "./f0?n0=__worker1_c.js&__version=" + __version , {"type" : 'module'} );
         this.#liste_des_modules_dynamiques['__worker1']={"objet1" : this.#__worker};
@@ -1162,6 +1560,14 @@ class __ig1{
         this.#__worker.onmessage=function( le_message_recu_du_worker ){
             this.#liste_des_appels_au_serveur.pop();
             let obj1=this.#traite_message_recupere_du_worker( le_message_recu_du_worker );
+            if(this.__deverminage === 2){
+                this.temps_performance9=performance.now();
+                /*
+                  setTimeout( function(){
+                  console.log( "%cthis.temps_performance9=" + parseInt( this.temps_performance9 - this.temps_performance0 , 10 ) , 'color:red;background:black;' );
+                  }.bind( this ) , 0 );
+                */
+            }
         }.bind( this );
         /*
         */
@@ -1178,6 +1584,263 @@ class __ig1{
             }
         };
         this.envoyer_un_colis_au_worker( message_a_envoyer );
+        /*
+          si le hash a changé et que la date de dernière navigation a eu lieu plus de 250 ms avant
+          alors on recharge la page
+        */
+        window.addEventListener( "hashchange" , ( event ) => {
+                /* console.log(event.oldURL + '\n' + event.oldURL ); */
+                let maintenant=performance.now();
+                if(maintenant > this.date_derniere_navigation + 500){
+                    /* console.log("Hash changed!" , this.date_derniere_navigation ); */
+                    if(this.#redirecting === true){
+                        this.#redirecting=false;
+                        return;
+                    }
+                    this.#redirecting=false;
+                    const hash=window.location.hash.substr( 1 );
+                    /* e.g. "#/some-route" */
+                    this.executer1( hash );
+                    setTimeout( () => {
+                            this.#redirecting=false;
+                        } , 0 );
+                }else{
+                    this.#redirecting=false;
+                }
+        } );
+        function debounce( func , wait ){
+            let timeout;
+            return(function( ...args ){
+                    const context=this;
+                    clearTimeout( timeout );
+                    timeout=setTimeout( () => {
+                        func.apply( context , args );
+                    } , wait );
+                });
+        }
+        const debouncedResize=debounce( () => {
+            this.css1();
+        } , 300 );
+        window.addEventListener( "resize" , debouncedResize );
+        window.addEventListener( "click" , this.quand_clic1.bind( this ) );
+        window.addEventListener( "change" , this.quand_change1.bind( this ) );
+        window.addEventListener( "input" , this.traite_input1.bind( this ) );
+    }
+    /*
+      =============================================================================================================
+    */
+    traite_input1( e ){
+        console.log( ' traite_input1 changement de valeur de zone input' , e );
+        let l_action_rev='';
+        let l_element=null;
+        if(e && e.target && e.target.hasAttribute( 'rev_chg_ou_ent1' ) && e.target.getAttribute( 'rev_chg_ou_ent1' ) !== ''){
+            l_element=e.target;
+            l_action_rev=e.target.getAttribute( 'rev_chg_ou_ent1' );
+        }
+        if(l_action_rev === ''){
+            return;
+        }
+        let obj1=this.__rev1.rev_tcm( l_action_rev );
+        if(obj1.__xst !== __xsu){
+            this.ajoute_message( {
+                    "__xst" : __xer ,
+                    "__xme" : 'erreur de convertion de source en matrice sur le click <br /><br /><b>' + l_action_rev + '</b><br /><br />' + this.nl2() + '<br />' + obj1.__xme
+                } );
+            this.affiche_les_messages();
+            this.fermer_la_sous_fenetre();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        let mat=obj1.__xva;
+        /* ==== appel ici ================================================= */
+        let obj=this.__xac( mat , 0 , null , e );
+        /* ==== appel ici ================================================= */
+        if(obj.__xst === __xer){
+            this.ajoute_message( {"__xst" : __xer ,"__xme" : '<b>' + l_action_rev + '</b>  ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()} );
+            this.affiche_les_messages();
+            this.retablir_les_boutons_masques();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    quand_change1( e ){
+        console.log( ' quand_change1 changement de valeur de zone input' , e );
+        let l_action_rev='';
+        let l_element=null;
+        if(e && e.target && e.target.hasAttribute( 'rev_change1' ) && e.target.getAttribute( 'rev_change1' ) !== ''){
+            l_element=e.target;
+            l_action_rev=e.target.getAttribute( 'rev_change1' );
+        }
+        if(l_action_rev === ''){
+            return;
+        }
+        let obj1=this.__rev1.rev_tcm( l_action_rev );
+        if(obj1.__xst !== __xsu){
+            this.ajoute_message( {
+                    "__xst" : __xer ,
+                    "__xme" : 'erreur de convertion de source en matrice sur le click <br /><br /><b>' + l_action_rev + '</b><br /><br />' + this.nl2() + '<br />' + obj1.__xme
+                } );
+            this.affiche_les_messages();
+            this.fermer_la_sous_fenetre();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        let mat=obj1.__xva;
+        /* ==== appel ici ================================================= */
+        let obj=this.__xac( mat , 0 , null , e );
+        /* ==== appel ici ================================================= */
+        if(obj.__xst === __xer){
+            this.ajoute_message( {"__xst" : __xer ,"__xme" : '<b>' + l_action_rev + '</b> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()} );
+            this.affiche_les_messages();
+            this.retablir_les_boutons_masques();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    quand_clic1( e ){
+        /* console.log( ' quand_clic1 clic'); */
+        let l_action_rev='';
+        let l_element=null;
+        if(e.target.hasAttribute( 'rev_clic1' ) && e.target.getAttribute( 'rev_clic1' ) !== ''){
+            l_element=e.target;
+            l_action_rev=e.target.getAttribute( 'rev_clic1' );
+        }else{
+            l_element=e.target.parentNode;
+            let i=50;
+            while(i-- > 0 && l_element.tagName.toLowerCase() !== 'body'){
+                if(l_element.hasAttribute( 'rev_clic1' ) && l_element.getAttribute( 'rev_clic1' ) !== ''){
+                    l_action_rev=l_element.getAttribute( 'rev_clic1' );
+                    break;
+                }
+                l_element=l_element.parentNode;
+            }
+        }
+        if(l_action_rev === ''){
+            return;
+        }
+        e.preventDefault();
+        let obj1=this.__rev1.rev_tcm( l_action_rev );
+        if(obj1.__xst !== __xsu){
+            this.ajoute_message( {
+                    "__xst" : __xer ,
+                    "__xme" : 'erreur de convertion de source en matrice sur le click <br /><br /><b>' + l_action_rev + '</b><br /><br />' + this.nl2() + '<br />' + obj1.__xme
+                } );
+            this.affiche_les_messages();
+            this.fermer_la_sous_fenetre();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        l_element.classList.add( 'yy_invisible' );
+        if(this.#liste_des_appels_au_serveur.length > 0){
+            this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
+            this.affiche_les_messages();
+        }
+        try{
+            this.maj_htm2( 'vv_div_des_positions_du_curseur' , '' );
+        } catch {}
+        this.#boutons_masques_avant_appel.push( l_element );
+        let mat=obj1.__xva;
+        /* ==== appel ici ================================================= */
+        let obj=this.__xac( mat , 0 , null , e );
+        /* ==== appel ici ================================================= */
+        if(obj.__xst === __xer){
+            this.ajoute_message( {
+                    "__xst" : __xer ,
+                    "__xme" : 'le source de quand_clic1 :<br /><b>' + l_action_rev + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
+                } );
+            this.affiche_les_messages();
+            this.retablir_les_boutons_masques();
+            return({"__xst" : __xer ,"__xme" : this.nl2()});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_inner1( nom_de_zone , contenu_html1 ){
+        function debounce2( fn , wait ){
+            let timeout;
+            return(function( ...args ){
+                    clearTimeout( timeout );
+                    timeout=setTimeout( () => {
+                        return(fn.apply( this , args ));
+                    } , wait );
+                });
+        }
+        const onResize=debounce2( ( width , height ) => {
+            /*
+              
+            */
+            let nom_des_zones=['vv_ecran_creation_zone_boutons','vv_ecran_modification_zone_boutons','vv_ecran_suppression_zone_boutons'];
+            for(let i in nom_des_zones){
+                let tt=document.getElementById( nom_des_zones[i] );
+                if(tt && tt.style.display !== 'none'){
+                    this.repositionner_les_boutons_action( nom_des_zones[i] );
+                    break;
+                }
+            }
+        } , 300 );
+        /* 300ms debounce delay */
+        const observer=new ResizeObserver( ( entries ) => {
+            for(let entry of entries){
+                const { width  , height }=entry.contentRect;
+                onResize( width , height );
+            }
+        } );
+        /* console.log(`Textarea resized to: ${width}px × ${height}px`); */
+        try{
+            let tt=document.getElementById( nom_de_zone );
+            this.maj_htm1( tt , contenu_html1 );
+            let lst=tt.getElementsByTagName( 'textarea' );
+            for( let i=0 ; i < lst.length ; i++ ){
+                observer.observe( tt );
+            }
+            let lst1=document.querySelectorAll( "[data-editeur1]" );
+            for( let i=0 ; i < lst1.length ; i++ ){
+                if(!lst1[i].getAttribute( 'data-rev_event' )){
+                    lst1[i].addEventListener( 'blur' , this.#blur_sur_editeur1.bind( this ) );
+                    lst1[i].addEventListener( 'mouseup' , this.#mouse_up_sur_editeur1.bind( this ) );
+                    lst1[i].addEventListener( 'keyup' , this.#analyse_key_up_editeur1.bind( this ) );
+                    lst1[i].setAttribute( "data-rev_event" , "1" );
+                }
+            }
+        }catch(e){
+            console.error( 'erreur de maj de "' + nom_de_zone + '"' + e.stack );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    repositionner_les_boutons_action( nom_de_zone_contenant_le_boutons ){
+        if(window.innerWidth > this.css_dimensions.t_fenetre){
+            let a=parseInt( (window.innerWidth - this.css_dimensions.t_fenetre) / 2 , 10 );
+            document.getElementById( nom_de_zone_contenant_le_boutons ).style.right=a + 'px';
+        }
+        let nom_de_zone_complement='';
+        if(nom_de_zone_contenant_le_boutons === 'vv_ecran_creation_zone_boutons'){
+            nom_de_zone_complement='vv_ecran_creation_zone_complement';
+        }else if(nom_de_zone_contenant_le_boutons === 'vv_ecran_modification_zone_boutons'){
+            nom_de_zone_complement='vv_ecran_modification_zone_complement';
+        }else if(nom_de_zone_contenant_le_boutons === 'vv_ecran_suppression_zone_boutons'){
+            nom_de_zone_complement='vv_ecran_suppression_zone_complement';
+        }
+        if(nom_de_zone_complement !== ''){
+            let gbcr=document.getElementById( nom_de_zone_complement ).getBoundingClientRect();
+            let position_bas=gbcr.bottom;
+            let hauteur_disponible_de_l_ecran=window.innerHeight - this.css_dimensions.h_barre - this.css_dimensions.h_barre - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
+            /* console.log( 'position_bas=' + position_bas + ' hauteur_disponible_de_l_ecran=' + hauteur_disponible_de_l_ecran ); */
+            if(position_bas > hauteur_disponible_de_l_ecran){
+                /* il mettre le bouton en bas à droite de la fenetre */
+                document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=this.css_dimensions.h_barre + 'px';
+            }else{
+                /* il faut remonter un peu le bouton */
+                let hauteur=window.innerHeight - position_bas - this.css_dimensions.hauteur_lgn_avec_pad_et_bordure;
+                document.getElementById( nom_de_zone_contenant_le_boutons ).style.bottom=hauteur + 'px';
+            }
+        }
     }
     /*
       =============================================================================================================
@@ -1194,23 +1857,143 @@ class __ig1{
         };
         return("#" + f( 0 ) + "" + f( 8 ) + "" + f( 4 ) + "");
     }
+    /* ===================================================================================================================== */
+    obtenir_la_largeur_des_barres_de_scroll(){
+        /* setup globalScrollWidth1 */
+        const body=document.getElementsByTagName( 'body' )[0];
+        const div=document.createElement( "div" );
+        div.style.width='100px';
+        div.style.height='100px';
+        div.style.overflow='auto';
+        div.style.opacity=0.01;
+        /* on choisit une larheur fine pour les scrollbar */
+        div.style.scrollbarWidth='thin';
+        body.appendChild( div );
+        const bag=document.createElement( "div" );
+        const att1='width:101px;height:101px;overflow:auto;';
+        bag.style.width='101px';
+        bag.style.height='101px';
+        bag.style.overflow='auto';
+        div.appendChild( bag );
+        div.scrollTop=100;
+        let globalScrollWidth1=div.scrollTop - 1;
+        div.removeChild( bag );
+        body.removeChild( div );
+        return globalScrollWidth1;
+    }
     /*
       =============================================================================================================
       Attention, ne pas mettre de retour chariot + ligne 0D0A à la fin des lignes css
     */
     css1(){
-        let val_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
-        let val_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
-        let val_padding_de_input=4;
-        /* let val_padding_de_input=2*val_padding; */
-        let val_border=parseInt( this.stockage_local.aspect['--t_border']['valeur'] , 10 );
+        const largeir_max=1400;
+        let largeur_reelle_de_l_ecran=window.innerWidth;
+        let largeur_des_barres_de_scroll_de_l_ecran=this.obtenir_la_largeur_des_barres_de_scroll();
+        let largeur_disponible_de_l_ecran=largeur_reelle_de_l_ecran - largeur_des_barres_de_scroll_de_l_ecran;
+        /* console.log("largeur_reelle_de_l_ecran=",largeur_reelle_de_l_ecran + '-' + largeur_des_barres_de_scroll_de_l_ecran+'='+largeur_disponible_de_l_ecran ); */
+        /* let largeur_du_m=t_police-2; */
+        /*
+          police verdana => largeur mesurée de 10 "M" jusqu'au 11em M en px => largeur sélectionnée pour largeur_du_m
+          12 => 113px => 11.3
+          14 => 119px => 12
+          16 => 135px => 13.5
+          18 => 152px => 15.2
+          20 => 169px => 16.9 
+          22 => 185px => 18.5
+        */
+        let t_police=parseInt( this.stockage_local.aspect['--t_police']['valeur'] , 10 );
+        let largeur_du_m=t_police - 2;
+        /* largeur de la date 0000-00-00 en px il faut ajouter le rembourrage et le bord */
+        let larg_de_date=71;
+        /* largeur de l'heure 00:00:00 en px il faut ajouter le rembourrage et le bord */
+        let larg_de_heure=56;
+        /* largeur d'un caractère numérique il ne faut PAS ajouter le rembourrage et le bord */
+        let larg_de_num=7.5;
+        if(t_police === 12){
+            largeur_du_m=10.3;
+            larg_de_date=71;
+            larg_de_heure=56;
+            larg_de_num=7.5;
+        }else if(t_police === 14){
+            largeur_du_m=11.9;
+            larg_de_date=83;
+            larg_de_heure=65;
+            larg_de_num=8.9;
+        }else if(t_police === 16){
+            largeur_du_m=13.5;
+            larg_de_date=95;
+            larg_de_heure=74;
+            larg_de_num=10.2;
+        }else if(t_police === 18){
+            largeur_du_m=15.2;
+            larg_de_date=106;
+            larg_de_heure=83;
+            larg_de_num=11.4;
+        }else if(t_police === 20){
+            largeur_du_m=16.9;
+            larg_de_date=118;
+            larg_de_heure=93;
+            larg_de_num=12.7;
+        }else if(t_police === 22){
+            largeur_du_m=18.8;
+            larg_de_date=130;
+            larg_de_heure=102;
+            larg_de_num=14.0;
+        }else if(t_police === 24){
+            largeur_du_m=20.2;
+            larg_de_date=144;
+            larg_de_heure=115;
+            larg_de_num=15.2;
+        }
+        let t_padding=parseInt( this.stockage_local.aspect['--t_padding']['valeur'] , 10 );
+        let t_pad_inp=parseInt( this.stockage_local.aspect['--t_pad_inp']['valeur'] , 10 );
+        if(t_pad_inp < t_padding){
+            t_pad_inp=t_padding;
+        }
+        let t_border=parseInt( this.stockage_local.aspect['--t_border']['valeur'] , 10 );
         let t_input_border=parseInt( this.stockage_local.aspect['--t_input_border']['valeur'] , 10 );
-        let val_marge_gd=parseInt( this.stockage_local.aspect['--t_marge_gd']['valeur'] , 10 );
-        let val_marge_hb=parseInt( this.stockage_local.aspect['--t_marge_hb']['valeur'] , 10 );
+        let largeur_inpf=parseInt( 10 * (largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp + 2) ) / 10;
+        let t_marge_gd=parseInt( this.stockage_local.aspect['--t_marge_gd']['valeur'] , 10 );
+        let t_marge_hb=parseInt( this.stockage_local.aspect['--t_marge_hb']['valeur'] , 10 );
         let t_rayon_b=parseInt( this.stockage_local.aspect['--t_rayon_b']['valeur'] , 10 );
-        let val_fenetre=parseInt( this.stockage_local.aspect['--t_fenetre']['valeur'] , 10 );
-        let val_couleur1=parseInt( this.stockage_local.aspect['--c_couleur1']['valeur'] , 10 );
-        let profile_de_couleur1=parseInt( this.stockage_local.aspect['--c_profile_de_couleur1']['valeur'] , 10 );
+        let t_fenetre=parseInt( this.stockage_local.aspect['--t_fenetre']['valeur'] , 10 );
+        if(largeur_disponible_de_l_ecran < largeir_max){
+            t_fenetre=largeur_disponible_de_l_ecran;
+        }else{
+            t_fenetre=largeir_max;
+        }
+        let c_couleur1=parseInt( this.stockage_local.aspect['--c_couleur1']['valeur'] , 10 );
+        let fond_est_gris=parseInt( this.stockage_local.aspect['--fond_est_gris']['valeur'] , 10 );
+        let line_height=parseInt( t_police * 1.1 * 100 , 10 ) / 100;
+        /* console.log('line_height='+line_height) */
+        const largeur_zone_gauche_edition=150;
+        const hauteur_zone_input=t_police + 2 * t_pad_inp + 2 * t_input_border;
+        let hauteur_bouton=t_police + 2 + 2 * t_padding + 2 * t_border;
+        /* console.log( 'hauteur_bouton=' + hauteur_bouton , t_police , t_police + 2 , t_padding , t_border ,  typeof t_border ); */
+        let largeur_max_inp_avec_boutons=0;
+        if(largeur_disponible_de_l_ecran >= this.largeur_ecran_limite){
+            let largeur_dispo_zone_droite=largeur_disponible_de_l_ecran - largeur_zone_gauche_edition - 2 * t_border;
+            largeur_max_inp_avec_boutons=largeur_dispo_zone_droite - (10 * t_marge_gd + 4 * hauteur_bouton);
+            /* console.log( "%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons + ' ' + largeur_dispo_zone_droite + ' ' + hauteur_bouton , 'background:yellow;' ); */
+            /* ecran large */
+        }else{
+            largeur_max_inp_avec_boutons=largeur_disponible_de_l_ecran - (2 * t_border + 10 * t_marge_gd + 4 * hauteur_bouton);
+            /* console.log( "%clargeur_max_inp_avec_boutons=" + largeur_max_inp_avec_boutons , 'background:yellow;' ); */
+        }
+        /*
+          la hauteur d'une zone input conditionne la hauteur d'une zone de bouton
+          car juste après une zone input, on met des boutons
+        */
+        /*
+          if(hauteur_zone_input === hauteur_bouton ){
+          console.log("hauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton );
+          }else if(hauteur_zone_input < hauteur_bouton ){
+          console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:lime;');
+          }else if(hauteur_zone_input > hauteur_bouton ){
+          console.log("%chauteur_zone_input=" + hauteur_zone_input + "hauteur_bouton=" + hauteur_bouton , 'background:pink;');
+          hauteur_bouton=hauteur_zone_input;
+          }
+        */
         let couleur0hex=null;
         /* input , textarea */
         let couleur1hex=null;
@@ -1226,8 +2009,10 @@ class __ig1{
         let couleur5hex=null;
         /* fond-foncé plus clair ( menu sélectionné ) */
         let couleur6hex=null;
+        /* 8 couleur bordure des zones filtres */
+        let couleur8hex=null;
         /* couleur font */
-        if(profile_de_couleur1 > 0){
+        if(fond_est_gris > 0){
             /* 0 le plus clair input , textarea */
             couleur0hex='#f7f7f7';
             /* 1 fond-clair clair ( haut de page ) , couleur police de caractère clair ( dans boutons ) */
@@ -1244,63 +2029,80 @@ class __ig1{
             couleur5hex='#909090';
             /* 6 couleur police de catactère foncée */
             couleur6hex='#384a52';
+            /* 8 couleur bordure des zones filtres */
+            couleur8hex='#e1e1e1';
         }else{
-            couleur0hex=this.hslToHex( val_couleur1 , 100 , 98 );
-            couleur1hex=this.hslToHex( val_couleur1 , 100 , 97 );
-            couleur2hex=this.hslToHex( val_couleur1 , 100 , 94 );
-            couleur7hex=this.hslToHex( val_couleur1 , 100 , 92 );
-            couleur3hex=this.hslToHex( val_couleur1 , 100 , 30 );
-            couleur4hex=this.hslToHex( val_couleur1 , 100 , 15 );
-            couleur5hex=this.hslToHex( val_couleur1 , 100 , 40 );
-            couleur6hex=this.hslToHex( val_couleur1 , 100 , 10 );
+            couleur0hex=this.hslToHex( c_couleur1 , 100 , 98 );
+            couleur1hex=this.hslToHex( c_couleur1 , 100 , 97 );
+            couleur2hex=this.hslToHex( c_couleur1 , 100 , 94 );
+            couleur7hex=this.hslToHex( c_couleur1 , 100 , 92 );
+            couleur3hex=this.hslToHex( c_couleur1 , 100 , 30 );
+            couleur4hex=this.hslToHex( c_couleur1 , 100 , 15 );
+            couleur5hex=this.hslToHex( c_couleur1 , 100 , 40 );
+            couleur6hex=this.hslToHex( c_couleur1 , 100 , 10 );
+            couleur8hex=this.hslToHex( c_couleur1 , 100 , 90 );
         }
-        let police_moins_2=val_police - 2;
-        let line_height=parseInt( val_police * 1.1 * 100 , 10 ) / 100;
-        let hauteur_ligne_btn_svg=val_police - 2;
-        let hauteur_ligne=val_police + 2;
-        let hauteur_lgn_avec_padding=hauteur_ligne + 2 * val_padding;
-        let hauteur_lgn_avec_pad_et_bordure=hauteur_lgn_avec_padding + 2 * val_border;
-        let hauteur_lgn_avec_pad_et_bord_et_marge=hauteur_lgn_avec_pad_et_bordure + 2 * val_marge_hb;
+        let hauteur_ligne_btn_svg=t_police - 2;
+        let hauteur_ligne=t_police + 2;
+        let hauteur_lgn_avec_padding=hauteur_ligne + 2 * t_padding;
+        let hauteur_lgn_avec_pad_et_bordure=hauteur_lgn_avec_padding + 2 * t_border;
+        let hauteur_lgn_avec_pad_et_bord_et_marge=hauteur_lgn_avec_pad_et_bordure + 2 * t_marge_hb;
         let hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol=hauteur_lgn_avec_pad_et_bord_et_marge + 10;
-        let xtt='\nhauteur_lgn_avec_padding=' + hauteur_lgn_avec_padding + ' (val_padding=' + val_padding + ')';
-        xtt+='\nhauteur_lgn_avec_pad_et_bordure=' + hauteur_lgn_avec_pad_et_bordure + ' (val_border=' + val_border + ')';
-        xtt+='\nhauteur_lgn_avec_pad_et_bord_et_marge=' + hauteur_lgn_avec_pad_et_bord_et_marge + ' (val_marge_hb=' + val_marge_hb + ')';
+        /*
+          let xtt='\nhauteur_lgn_avec_padding=' + hauteur_lgn_avec_padding + ' (t_padding=' + t_padding + ')';
+          xtt+='\nhauteur_lgn_avec_pad_et_bordure=' + hauteur_lgn_avec_pad_et_bordure + ' (t_border=' + t_border + ')';
+          xtt+='\nhauteur_lgn_avec_pad_et_bord_et_marge=' + hauteur_lgn_avec_pad_et_bord_et_marge + ' (t_marge_hb=' + t_marge_hb + ')';
+        */
         /* console.log( '%chauteur_ligne=' + hauteur_ligne , 'background:yellow;color:red;' , xtt ); */
-        let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol;
+        /* let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol; */
+        /* let h_barre=hauteur_lgn_avec_pad_et_bord_et_marg_et_scrol; */
+        let h_barre=hauteur_bouton + 2 * t_marge_hb + largeur_des_barres_de_scroll_de_l_ecran;
         /* console.log( '%ch_barre=' + h_barre , 'background:yellow;color:red;' ); */
         let hauteur_ligne_paragraphe=hauteur_ligne;
-        let hauteur_mini_bouton=hauteur_ligne + 2 * val_padding;
-        let hauteur_mini_b_svg=hauteur_ligne + 2 * val_border;
-        let taille_bouton_carre=h_barre - 2 * val_marge_hb;
+        let hauteur_mini_bouton=hauteur_ligne + 2 * t_padding;
+        let hauteur_mini_b_svg=hauteur_ligne + 2 * t_border;
+        let taille_bouton_carre=h_barre - 2 * t_marge_hb;
         let espace_1_boutons_carres=1 * taille_bouton_carre;
         let espace_2_boutons_carres=2 * taille_bouton_carre;
         let hauteur_max_textarea='80vh';
         this.css_dimensions={
              /*  */
             "h_barre" : h_barre ,
-            "t_padding" : val_padding ,
+            "t_padding" : t_padding ,
             "hauteur_max_textarea" : 80 ,
-            "t_border" : val_border ,
-            "t_police" : val_police ,
+            "t_border" : t_border ,
+            "t_police" : t_police ,
             "t_boutons_carres" : taille_bouton_carre ,
-            "t_padding_de_input" : val_padding_de_input ,
+            "t_pad_inp" : t_pad_inp ,
             "t_rayon_b" : t_rayon_b ,
-            "val_fenetre" : val_fenetre
+            "t_fenetre" : t_fenetre ,
+            "hauteur_lgn_avec_pad_et_bordure" : hauteur_lgn_avec_pad_et_bordure ,
+            "largeur_du_m" : largeur_du_m ,
+            "largeur_inpf" : largeur_inpf ,
+            "largeur_disponible_de_l_ecran" : largeur_disponible_de_l_ecran ,
+            "largeur_max_inp_avec_boutons" : largeur_max_inp_avec_boutons ,
+            "t_input_border" : t_input_border ,
+            "t_de_date" : larg_de_date + 2 * t_pad_inp + 2 * t_pad_inp ,
+            "t_de_heure" : larg_de_heure + 2 * t_pad_inp + 2 * t_pad_inp ,
+            "t_de_num" : larg_de_num
         };
         let t='';
-        t+='*,*::before,*::after{box-sizing:border-box;}';
+        t+='*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;font-family:verdana;}';
         t+='html{min-height:100%;overscroll-behavior: none;}';
         t+='body{';
-        t+=' --t_police:' + val_police + 'px;';
-        t+=' --t_fenetre:' + val_fenetre + 'px;';
-        t+=' --t_padding:' + val_padding + 'px;';
-        t+=' --t_border:' + val_border + 'px;';
+        t+=' --t_police:' + t_police + 'px;';
+        t+=' --largeur_du_m:' + largeur_du_m + 'px;';
+        t+=' --largeur_inpf:' + largeur_inpf + 'px;';
+        t+=' --t_fenetre:' + t_fenetre + 'px;';
+        t+=' --t_padding:' + t_padding + 'px;';
+        t+=' --t_border:' + t_border + 'px;';
         t+=' --t_input_border:' + t_input_border + 'px;';
-        t+=' --t_marge_gd_plus:' + val_marge_gd + 'px;';
-        t+=' --t_marge_gd_moins:-' + val_marge_gd + 'px;';
-        t+=' --t_marge_hb_plus:' + val_marge_hb + 'px;';
-        t+=' --t_marge_hb_moins:-' + val_marge_hb + ';';
-        t+=' --c_couleur1:' + val_couleur1 + 'deg;';
+        t+=' --t_marge_gd_plus:' + t_marge_gd + 'px;';
+        t+=' --t_marge_gd_moins:-' + t_marge_gd + 'px;';
+        t+=' --t_marge_hb_plus:' + t_marge_hb + 'px;';
+        t+=' --t_marge_hb_moins:-' + t_marge_hb + ';';
+        t+=' --t_rayon_b:' + t_rayon_b + 'px;';
+        t+=' --c_couleur1:' + c_couleur1 + 'deg;';
         t+=' --c_coul_fond1:' + couleur1hex + ';';
         /* fond-clair clair ( haut de page ) */
         t+=' --c_coul_fond2:' + couleur2hex + ';';
@@ -1310,25 +2112,23 @@ class __ig1{
         t+=' --c_coul_fond4:' + couleur4hex + ';';
         /* fond-foncé foncé ( bas de bouton ) */
         t+=' --c_coul_fond5:' + couleur5hex + ';';
+        t+=' --c_coul_fond8:' + couleur8hex + ';';
         /* fond-foncé plus clair ( menu sélectionné ) */
-        t+=' --t_padding_de_input:' + val_padding_de_input + 'px;';
+        t+=' --t_pad_inp:' + t_pad_inp + 'px;';
         t+=' --h_ligne_bouton:' + hauteur_ligne + 'px;';
         t+=' --h_ligne_bouton_moins:-' + hauteur_ligne + 'px;';
         t+=' --h_ligne_paragraphe:' + hauteur_ligne_paragraphe + 'px;';
-        t+=' --h_mini_but:' + hauteur_mini_bouton + 'px;';
+        t+=' --h_mini_but:' + hauteur_bouton + 'px;';
+        t+=' --h_but_plus_marge:' + (hauteur_bouton + t_marge_hb) + 'px;';
         t+=' --h_barre:' + h_barre + 'px;';
-        t+=' --h_bloupe:' + ((h_barre + hauteur_ligne) - 2 * val_marge_hb - 2 * val_border - 2 * val_padding_de_input - 1) + 'px;';
+        let h_bloupe=(h_barre + hauteur_ligne) - 2 * t_marge_hb - 2 * t_border - 2 * t_pad_inp - 1;
+        t+=' --h_bloupe:' + h_bloupe + 'px;';
         t+=' --t_boutons_carres:' + taille_bouton_carre + 'px;';
         t+=' --t_1boutons_carres:' + espace_1_boutons_carres + 'px;';
         t+=' --t_2boutons_carres:' + espace_2_boutons_carres + 'px;';
-        t+=' --t_hauteur_input1:' + (val_police + 2 * val_padding_de_input + 2 * val_border) + 'px;';
-        t+='   color:' + couleur6hex + ';';
-        t+='   font-family:verdana;';
-        t+='   font-size:' + val_police + 'px;';
-        t+='   line-height:' + line_height + 'px;';
-        t+='   max-width:var(--t_fenetre);';
-        t+='   margin:0 auto;';
-        t+='   overflow-y: scroll;';
+        t+=' --t_hauteur_input1:' + (t_police + 2 * t_pad_inp + 2 * t_border) + 'px;';
+        t+=' --largeur_disponible_de_l_ecran:' + largeur_disponible_de_l_ecran + 'px;';
+        t+=' --largeur_max_inp_avec_boutons:' + largeur_max_inp_avec_boutons + 'px;';
         /* B0BEC5;'; */
         t+=' --c_coul_1:rgba(236,239,241,1);';
         /* #eceff1 */
@@ -1339,47 +2139,51 @@ class __ig1{
         t+=' --c_coul_4:rgba( 96,125,139,1);';
         /* #607D8B */
         t+=' --c_coul_5:rgba( 96,125,139,1);';
+        t+='   color:' + couleur6hex + ';';
+        t+='   font-family:verdana;';
+        t+='   font-size:' + t_police + 'px;';
+        t+='   line-height:' + line_height + 'px;';
+        t+='   max-width:' + t_fenetre + 'px;';
+        t+='   margin:0 auto;';
+        t+='   overflow-y: scroll;';
         /* #95adb9  est entre #B0BEC5 et #607D8B */
         /* #B0BEC5, #607D8B */
-        /* t+='   background: linear-gradient(to bottom, var(--c_coul_1) 0%, var(--c_coul_2) 100%);'; */
-        /* t+='   background-color: var(--c_coul_fond1);'; */
-        t+='   background: linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
+        t+='   background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, ' + couleur2hex + ' 100%);';
+        /* permet d'éviter un rechargement de la page ( reload ) quand on drague trop :-]] */
+        t+='   overscroll-behavior: contain;';
         t+='}';
-        t+='html,textarea,div,pre{';
+        t+='html, textarea, div, pre {';
         t+='   scrollbar-width:thin;';
         t+='   scrollbar-color: ' + couleur3hex + ' ' + couleur1hex + ' ;';
-        t+='   max-width:var(--t_fenetre);';
         t+='}';
-        t+='.rev_bouton_carre{';
-        t+='    min-width:var(--t_boutons_carres);';
-        t+='    max-width:var(--t_boutons_carres);';
+        t+='.yy__bcar1{';
+        t+='    min-width:' + taille_bouton_carre + 'px;';
+        t+='    max-width:' + taille_bouton_carre + 'px;';
         t+='    /* si on ne met pas ce "display:inline-block;" ci-dessous alors les boutons svg ne s\'affichent pas sur ipad et les vieux navigateurs */';
         t+='    display:inline-block;';
-        t+='    margin-top:' + val_marge_hb + 'px;';
-        t+='    margin-bottom:' + val_marge_hb + 'px;';
-        t+='    border:var(--t_border) ' + couleur0hex + ' outset;';
+        t+='    margin-top:' + t_marge_hb + 'px;';
+        t+='    margin-bottom:' + t_marge_hb + 'px;';
+        t+='    border:' + t_border + 'px ' + couleur0hex + ' outset;';
         t+='    cursor:pointer;';
-        t+='}';
-        t+='.yy_bouton_loupe{';
-        t+='    min-width:var(--t_boutons_carres);';
-        t+='    max-width:var(--t_boutons_carres);';
-        t+='    /* si on ne met pas ce "display:inline-block;" ci-dessous alors les boutons svg ne s\'affichent pas sur ipad et les vieux navigateurs */';
-        t+='    display:inline-block;';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
+        t+='    padding: 0;';
+        t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0%, var(--c_coul_fond4) 100%);';
         t+='}';
         t+='#vv_haut_de_page{';
         t+='   margin:0 auto;';
-        t+='   height:var(--h_barre);';
+        t+='   height:' + h_barre + 'px;';
         t+='   position:absolute;';
         t+='   top:0;';
         t+='   z-index:1;';
         t+='}';
+        t+='.yy_lib1{';
+        t+='display:inline-flex;margin-left:3px;border: ' + t_border + 'px ' + couleur3hex + ' solid;margin:3px;';
+        t+='}';
         t+='#vv_messages{';
         t+='   position: fixed;';
-        t+='   top: var(--h_barre);';
-        t+='   min-height: var(--h_barre);';
+        t+='   top: ' + h_barre + 'px;';
+        t+='   min-height: ' + hauteur_bouton + 'px;';
         t+='   max-height: 20vh;';
-        t+='   width: var(--t_fenetre);';
+        t+='   width: ' + t_fenetre + 'px;';
         t+='   background-color: blue;';
         t+='   overflow-y: scroll;';
         t+='   z-index: 1;';
@@ -1387,11 +2191,10 @@ class __ig1{
         t+='#vv_contenu_principal{';
         t+='   margin: 0 auto;';
         t+='   min-height: 100vh;';
-        t+='   padding-top: ' + (h_barre + val_police / 2) + 'px;';
-        t+='   padding-bottom: var(--h_barre);';
-        t+='   background:linear-gradient(to bottom, var(--c_coul_fond1) 0%, var(--c_coul_fond2) 100%);';
-        /* var[--c_coul_1] 0%, var[--c_coul_2] 100%];'; */
-        t+='   max-width:var(--t_fenetre);';
+        t+='   padding-top: ' + (h_barre + t_police / 2) + 'px;';
+        t+='   padding-bottom: ' + h_barre + 'px;';
+        t+='   background:linear-gradient(to bottom, ' + couleur1hex + ' 0%, ' + couleur2hex + ' 100%);';
+        t+='   max-width:' + t_fenetre + 'px;';
         t+='}';
         t+='#vv_pied_de_page{';
         t+='   margin: 0 auto;';
@@ -1400,26 +2203,12 @@ class __ig1{
         t+='   bottom:0;';
         t+='   width:100%;';
         t+='   z-index:1000;';
-        /* t+='   background:var(--c_coul_1);'; */
         t+='   background-image:linear-gradient(to bottom, var(--c_coul_fond3), var(--c_coul_fond4));';
-        /* var[--c_coul_3] 0%, var[--c_coul_4] 100%];'; */
         t+='   justify-content:space-evenly;';
-        t+='   height:var(--h_barre);';
-        t+='   max-width:var(--t_fenetre);';
+        t+='   height:' + h_barre + 'px;';
+        t+='   max-width:' + t_fenetre + 'px;';
         t+='   overflow:hidden;';
         t+='}';
-        /*
-        */
-        /*
-          t+='.yy__xer,.yy__0{';
-          t+='   background:red;';
-          t+='   color:yellow;';
-          t+='}';
-          t+='.yy__xsu,.yy_1{';
-          t+='   background:lime;';
-          t+='   color:yellow;';
-          t+='}';
-        */
         t+='#vv_nav{';
         t+='   display:flex;';
         t+='   position:fixed;';
@@ -1428,12 +2217,8 @@ class __ig1{
         t+='   background-image:linear-gradient(to bottom, var(--c_coul_fond3), var(--c_coul_fond4));';
         t+='   box-shadow:0px 2px 5px var(--c_coul_3);';
         t+='   justify-content:space-around;';
-        t+='   height:var(--h_barre);';
-        t+='   max-width:calc( min( var(--t_fenetre) , 100vw));';
-        /* t+='   z-index:1000;'; */
-        /* t+='   background:var(--c_coul_1);'; */
-        /* t+='   overflow:hidden;'; */
-        /* var[--c_coul_3], var[--c_coul_4]];'; */
+        t+='   height:' + h_barre + 'px;';
+        t+='   max-width:calc( min( ' + t_fenetre + 'px , 100vw));';
         t+='}';
         t+='#vv_nav_gauche{';
         t+='   display:flex;';
@@ -1442,11 +2227,11 @@ class __ig1{
         t+='   overflow:hidden;';
         t+='}';
         t+='#vv_nav_centre{';
-        t+='   flex-grow: 1;';
-        t+='   justify-items: center;';
-        t+='   display: flex;';
-        t+='   overflow-x: scroll;';
-        t+='   scrollbar-color: ' + couleur3hex + ' ' + couleur4hex + ';';
+        t+=' flex-grow: 1;';
+        t+=' justify-items: center;';
+        t+=' display: flex;';
+        t+=' overflow-x: scroll;';
+        t+=' scrollbar-color: ' + couleur3hex + ' ' + couleur4hex + ';';
         t+='}';
         /*  */
         t+='#vv_nav_centre_defilement{';
@@ -1488,82 +2273,68 @@ class __ig1{
         t+='   justify-content:flex-end;';
         t+='   overflow:hidden;';
         t+='}';
-        t+='.rev_bouton{';
-        t+='    display: inline-flex;';
-        t+='    align-items: center;';
-        t+='    justify-content: center;';
-        t+='    align-items: center;';
-        t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
-        t+='    border-radius: ' + t_rayon_b + 'px;';
-        t+='    border-width: var(--t_border);';
-        t+='    border-color: ' + couleur7hex + ';';
-        /* #DAE2E5;'; */
-        t+='    border-style: outset;';
-        t+='    color: var(--c_coul_fond1);';
-        t+='    font-size:var(--t_police);';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    max-width: var(--t_fenetre);';
-        t+='    min-width: fit-content;';
-        t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    max-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    padding-top:' + val_padding + 'px;';
-        t+='    padding-bottom:' + (val_padding + 2) + 'px;';
-        t+='    padding-left:' + val_padding + 'px;';
-        t+='    padding-right:' + val_padding + 'px;';
-        t+='    inline-size: max-content;';
-        t+='    line-height: ' + line_height + 'px;';
-        t+='    cursor: pointer;';
-        t+='    outline: none;';
-        t+='    touch-action: manipulation;';
-        t+='    overflow-x: hidden;';
-        t+='    overflow-y: hidden;';
-        t+='    text-decoration: none;';
-        t+='    text-align: center;';
-        t+='    user-select: none;';
-        t+='    width: 1.5em;';
-        t+='    white-space: nowrap;';
-        /* max-content */
-        t+='}';
-        t+='.rev_b_svg{';
+        t+='.yy_b1{';
         t+='    display: inline-block;';
-        t+='    align-items: center;';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='    border-radius: ' + t_rayon_b + 'px;';
-        t+='    border-width: var(--t_border);';
-        t+='    border-color: ' + couleur7hex + '; ';
-        /* #DAE2E5;'; */
+        t+='    border-width: ' + t_border + 'px;';
+        t+='    border-color: ' + couleur7hex + ';';
         t+='    border-style: outset;';
-        t+='    color: var(--c_coul_fond1);';
-        t+='    font-size:var(--t_police);';
-        t+='    justify-content: center;';
-        t+='    margin: var(--t_marge_hb_plus) var(--t_marge_gd_plus);';
-        t+='    max-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    min-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    max-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+='    padding: var(--t_padding);';
-        t+='    inline-size: max-content;';
-        t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
+        t+='    color: ' + couleur1hex + ';';
         t+='    cursor: pointer;';
         t+='    outline: none;';
         t+='    touch-action: manipulation;';
-        t+='    overflow-x: hidden;';
-        t+='    overflow-y: hidden;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
         t+='    text-decoration: none;';
         t+='    text-align: center;';
         t+='    user-select: none;';
-        /*
-          t+='    justify-content: center;';
-          t+='    line-height: ' + hauteur_lgn_avec_padding + 'px;';
-          t+='    width: ' + hauteur_ligne + 'px;';
-          t+='    height: ' + hauteur_ligne + 'px;';
-        */
-        /* height: 18px; */
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    max-height: ' + hauteur_bouton + 'px;';
+        t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
+        t+='    max-width: ' + parseInt( (2 * t_fenetre) / 3 , 10 ) + 'px;';
+        t+='    overflow-x: hidden;';
+        t+='    overflow-y: hidden;';
+        t+='    padding:' + t_padding + 'px;';
+        t+='    line-height:' + line_height + 'px;';
         t+='}';
-        t+='.rev_b_svg>svg{';
-        t+='   transform : translate(0px, 0px);';
-        /* -'+val_padding*0.8+'px];'; */
-        /* t+='   height : '+val_police+'px;'; */
+        t+='.yy_svg1{';
+        t+='    display: inline-block;';
+        t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
+        t+='    border-radius: ' + t_rayon_b + 'px;';
+        t+='    border-width: ' + t_border + 'px;';
+        t+='    border-color: ' + couleur7hex + '; ';
+        t+='    border-style: outset;';
+        t+='    color: ' + couleur1hex + ';';
+        t+='    cursor: pointer;';
+        t+='    outline: none;';
+        t+='    touch-action: manipulation;';
+        t+='    min-width: ' + hauteur_bouton + 'px;';
+        t+='    text-decoration: none;';
+        t+='    text-align: center;';
+        t+='    user-select: none;';
+        t+='    min-height: ' + hauteur_bouton + 'px;';
+        t+='    max-height: ' + hauteur_bouton + 'px;';
+        t+='    margin: ' + t_marge_hb + 'px ' + t_marge_gd + 'px ' + t_marge_hb + 'px ' + t_marge_gd + 'px;';
+        t+='    max-width: ' + hauteur_bouton + 'px;';
+        t+='    overflow-x: hidden;';
+        t+='    overflow-y: hidden;';
+        t+='}';
+        /* t+='.yy_svg1>svg{transform : translate(0px, 0px);}'; */
+        /*
+          pour la ligne des boutons dans le action td
+          pour les td avec une ligne de bouton on ne met pas 2*t_border mais 1*t_border car on a un border collapse
+        */
+        t+='.yy_act1{';
+        t+='    display : inline-block;';
+        t+='    width : max-content;';
+        t+='}';
+        /*
+          pour les boutons svg en ligne
+        */
+        t+='.yy_svg0{';
+        t+=' display:inline-block;';
+        t+=' width:var(--t_police);';
+        t+=' transform:translate(0px,' + parseInt( t_police / 5 , 10 ) + 'px);';
         t+='}';
         /*
           pour les boutons qui contiennent quelques caractères  
@@ -1575,50 +2346,48 @@ class __ig1{
         /*
           essai 1 : pour le menu du haut sur ipad
         */
-        t+='#vv_nav_centre .rev_bouton{';
+        t+='.yy_btn_large{display:inline-block;white-space: wrap;inline-size:unset;max-height: 6em;}';
+        t+='#vv_nav_centre .yy_b1{';
         t+='   width: fit-content;';
         t+='}';
         /*
           lors de la conception d'un menu
         */
         t+='.rev_svg_dans_menu0{';
-        t+='   max-height: ' + hauteur_mini_bouton + 'px;';
-        t+='   min-height: ' + hauteur_mini_bouton + 'px;';
+        t+='   max-height: ' + hauteur_bouton + 'px;';
+        t+='   min-height: ' + hauteur_bouton + 'px;';
         t+='   background: rgba(0,0,0,0.2);';
         t+='}';
         /*
           lors de l'utilisation d'un menu
         */
         t+='.rev_svg_dans_menu1{';
-        /* pourquoi -1 ? PARCEQUEE ! */
-        t+='   max-height: ' + (val_police - 1) + 'px;';
         t+='}';
-        t+='.rev_bouton:hover{box-shadow:0px 0px 5px red;}';
-        /* t+='.rev_bouton:active,.rev_bouton_actif{border-width:var(--t_border);-border-color:#DAE2E5;border-style:inset;background: #909090;}'; */
-        t+='.rev_bouton:active,.rev_bouton_actif,.rev_b_svg:active{';
-        t+=' border-width:var(--t_border);';
+        t+='.yy_b1:hover{box-shadow:0px 0px 5px red;}';
+        t+='.yy_b1:active,.yy_b1_actif,.yy_svg1:active{';
+        t+=' border-width:' + t_border + 'px;';
         t+=' border-style:inset;';
         t+=' background: var(--c_coul_fond5);';
         t+='}';
-        t+='.rev_bouton:focus{box-shadow:0px 0px 8px red;outline: none;}';
+        t+='.yy_b1:focus,.yy_svg1:focus{box-shadow:0px 0px 8px red;outline: none;}';
         t+='/*0 : erreur rouge */';
-        t+='.yy__0,.yy__xer{color:#FFFF33;background:linear-gradient(to bottom, #FF3030, #C01010);padding:var(--t_padding);max-width: 100vw;}';
-        t+='.yy__0_inactif{border-style: solid;background: #FF3030;opacity: 0.5;}';
+        t+='.yy__0,.yy__xer{color:#FFFF33;background:linear-gradient(to bottom, #FF3030, #C01010);}';
+        t+='.yy__0_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='/*1 : succes vert */';
-        t+='.yy__1,.yy__xsu{color:#556B2F;background:linear-gradient(to bottom, #7FFF00, #5DBB00);padding:var(--t_padding);max-width: 100vw;}';
-        t+='.yy__1_inactif{border-style: solid;background: #7FFF00;opacity: 0.5;}';
+        t+='.yy__1,.yy__xsu{color:#556B2F;background:linear-gradient(to bottom, #7FFF00, #5DBB00);}';
+        t+='.yy__1_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='/*2 : alarme orange*/';
-        t+='.yy__2,.yy__xal{color:#000000;background:linear-gradient(to bottom, #FFBB00, #B77700);padding:var(--t_padding);max-width: 100vw;}';
-        t+='.yy__2_inactif{border-style: solid;background: #FFBB00;opacity: 0.5;}';
+        t+='.yy__2,.yy__xal{color:#000000;background:linear-gradient(to bottom, #FFBB00, #B77700);}';
+        t+='.yy__2_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='/*3 : info bleu*/';
-        t+='.yy__3,.yy__xif{color:var(--c_coul_1);background:linear-gradient(to bottom, #2196FF, #0070AA);padding:var(--t_padding);max-width: 100vw;}';
-        t+='.yy__3_inactif{border-style: solid;background: #2196FF;opacity: 0.5;}';
+        t+='.yy__3,.yy__xif{color:var(--c_coul_1);background:linear-gradient(to bottom, #2196FF, #0070AA);}';
+        t+='.yy__3_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='/*4 : déverminage rose*/';
-        t+='.yy__4,.yy__xdv{color:#FFFFFF;background:linear-gradient(to bottom, #ff3a9e, #5a0d34);padding:var(--t_padding);max-width: 100vw;}';
-        t+='.yy__4_inactif{border-style: solid;background: #ff3a9e;opacity: 0.5;}';
+        t+='.yy__4,.yy__xdv{color:#FFFFFF;background:linear-gradient(to bottom, #ff3a9e, #5a0d34);}';
+        t+='.yy__4_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='.yy_invisible{visibility:hidden;}';
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
-        t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}';
+        /* t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}'; */
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
         t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.3em;text-wrap-style:balance;}';
         t+='h2{font-size:1.5em;margin-bottom:0.5em;}';
@@ -1626,21 +2395,26 @@ class __ig1{
         t+='h4{font-size:1.3em;margin-bottom:0.3em;}';
         t+='h5{font-size:1.2em;margin-bottom:0.2em;}';
         t+='h6{font-size:1.1em;margin-bottom:0.1em;}';
-        t+='table{margin-left:auto;margin-right:auto;}';
+        t+='table{margin-left:auto;margin-right:auto;border-collapse: collapse;border: 1px ' + couleur5hex + ' solid;}';
+        t+='table td,table th{';
+        t+=' border-collapse: collapse;';
+        t+=' border: 1px ' + couleur5hex + ' solid;';
+        t+='}';
         t+='table tr:hover{box-shadow: inset 0px 0px 5px 4px  var(--c_coul_3);}';
-        t+='input[type="password"],input[type="text"],input[type="number"]{';
-        t+='    min-width: var(--t_boutons_carres);';
-        t+='    display:inline-block;';
-        t+='    border-radius: ' + val_padding_de_input + 'px;';
-        t+='    border-width: var(--t_input_border);';
-        t+='    border-color: #DAE2E5;';
+        t+='.yy_input1{';
+        t+='    min-width: ' + taille_bouton_carre + 'px;';
+        t+='    max-width:' + largeur_max_inp_avec_boutons + 'px;';
+        t+='    border-radius: ' + (t_pad_inp + t_input_border) + 'px;';
+        t+='    border-width: ' + t_input_border + 'px;';
+        t+='    border-color: var(--c_coul_fond8);';
         t+='    border-style: inset;';
-        t+='    background-color: ' + couleur0hex + ';';
-        t+='    padding:var(--t_padding_de_input);';
-        t+='    font-size:var(--t_police);';
+        t+='    background-color: ' + couleur8hex + ';';
+        t+='    padding:' + t_pad_inp + 'px;';
         t+='    font-family:verdana;';
-        t+='    line-height: var(--h_ligne_bouton);';
-        t+='    max-width:calc(min(60%,80vw));';
+        t+='    font-size:' + t_police + 'px;';
+        t+='    line-height: ' + hauteur_ligne + 'px;';
+        t+='    height : ' + hauteur_zone_input + 'px;';
+        /* t+='    margin:' + t_marge_hb + 'px ' + t_marge_gd + 'px;'; */
         t+='}';
         t+='input:focus,textarea:focus,select:focus{';
         t+='    outline: none;';
@@ -1648,40 +2422,40 @@ class __ig1{
         t+='}';
         t+='select{';
         t+='  background: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100% );';
-        t+='  color: var(--c_coul_fond1);';
+        t+='  color: ' + couleur1hex + ';';
         t+='  font-size:var(--t_police);';
         t+='}';
         t+='option{';
         t+='  background: var(--c_coul_fond3);';
-        t+='  color: var(--c_coul_fond1);';
+        t+='  color: ' + couleur1hex + ';';
         t+='  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);';
         t+='}';
         t+='.yy_conteneur_txtara{';
         t+='    min-width: calc(min(100vw,100%));';
         t+='    max-width: 100vw;';
         t+='}';
-        t+='.yy_conteneur_txtara>div{';
-        t+='    display:flex;';
-        t+='    flex-wrap:balance;';
-        t+='}';
         t+='textarea{';
         t+='    min-width: calc(100% - ' + taille_bouton_carre + 'px);;';
-        t+='    max-width: 80vw;';
+        t+='    max-width: 80%;';
         t+='    font-size:var(--t_police);';
         t+='    border-radius: 5px;';
         t+='    border-width: var(--t_input_border);';
         t+='    border-color: #DAE2E5;';
         t+='    border-style: inset;';
-        t+='    background-color: ' + couleur0hex + ';';
-        t+='    padding: var(--t_padding_de_input);';
+        t+='    background-color: ' + couleur8hex + ';';
+        t+='    padding: var(--t_pad_inp);';
         t+='    overflow: scroll;';
         t+='    white-space: pre;';
         t+='    /*hauteur_max_textarea*/';
         t+='    max-height: ' + hauteur_max_textarea + ';';
-        t+='    min-height: 5vh;';
-        t+='    overscroll-behavior: none;';
+        t+='    min-height: 2em;';
         t+='    color:' + couleur6hex + ';';
-        t+='    line-height:' + (val_police + 2) + 'px;';
+        t+='    line-height:' + (t_police + 2) + 'px;';
+        t+='    resize:vertical;';
+        t+='    margin-left:' + t_marge_gd + 'px;';
+        t+='}';
+        t+='textarea:focus{';
+        t+='    overscroll-behavior: none;';
         t+='}';
         t+='a:focus{';
         t+='    box-shadow:0px 0px 8px red;';
@@ -1689,77 +2463,148 @@ class __ig1{
         t+='}';
         t+='pre{';
         t+='    overflow-x:scroll;';
+        t+='    font-family:monospace;';
         t+='}';
-        /*
-          Avec ça, le jaune ne se met pas à jour si modification du contenu du champ via js
-          t+='.yy_filtre_liste1 input:not([value=""]){background:yellow;}';
-        */
+        t+='tr>td:last-of-type,tr>th:last-of-type {border-right: ' + (t_border + 1) + 'px ' + couleur5hex + ' solid;}';
         t+='.yy_filtre_liste1{display:flex;flex-wrap:wrap;justify-content:space-evenly;}';
-        t+='.yy_filtre_liste1>div{';
-        t+='   display:flex;';
-        t+='   flex-direction:column;';
-        t+='   flex-wrap:wrap;';
-        t+='   margin-right:' + val_marge_gd + 'px;';
+        let border_debug=0;
+        let lng_4_btns=4 * hauteur_bouton + 8 * t_marge_gd;
+        /* hauteur_lgn_avec_pad_et_bordure */
+        let largeur_champ_avec_4_btns=4 * hauteur_bouton + 8 * t_marge_gd + 2 * border_debug;
+        let largeur_champ_avec_inp=t_marge_gd + t_input_border + t_pad_inp + largeur_du_m * 6 + t_pad_inp + t_input_border + t_marge_gd + t_marge_gd + hauteur_bouton + t_marge_gd + 2 * border_debug;
+        let largeur_libelle=largeur_champ_avec_4_btns;
+        if(largeur_champ_avec_4_btns < largeur_champ_avec_inp){
+            largeur_libelle=largeur_champ_avec_inp;
+        }
+        /* console.log( 'largeur_libelle=' + largeur_libelle ); */
+        let largeur_max_du_bloc_filtre=largeur_libelle + 2;
+        let largeur_min_zone_if=largeur_du_m * 6 + 2 * t_input_border + 2 * t_pad_inp;
+        /*  */
+        let hauteur_libelle_filtre=t_police + 2 + 2 * border_debug;
+        let hauteur_saisie_filtre=0;
+        /* 12       + 2 + 2 *     3     + 2 *    2           +   6            + 2 * 3 */
+        let h_c_filt1=t_police + 2 * t_pad_inp + 2 * t_input_border + 2 * border_debug;
+        /* console.log( 't_police=' + t_police + ' t_pad_inp=' + t_pad_inp + ' t_input_border=' + t_input_border ); */
+        /* console.log( t_police + 2 * t_pad_inp + 2 * t_input_border ); */
+        let h_c_filt2=hauteur_bouton + 2 * border_debug;
+        /* console.log( 'hauteur_bouton=' + hauteur_bouton + ' input h_c_filt1=' + h_c_filt1 + ', bouton h_c_filt2=' + h_c_filt2 + ' t_pad_inp=' + t_pad_inp + ' t_input_border=' + t_input_border ); */
+        let yy_diff_filtre1=h_c_filt1 - h_c_filt2 - 1;
+        /* console.log( "yy_diff_filtre1=" + yy_diff_filtre1 ); */
+        if(h_c_filt1 < h_c_filt2){
+            /* console.log( '_________________________ici' ); */
+            hauteur_saisie_filtre=h_c_filt2;
+        }else{
+            hauteur_saisie_filtre=h_c_filt1;
+        }
+        let hauteur_bloc_filtre=hauteur_libelle_filtre + hauteur_saisie_filtre + 2;
+        t+='.yy_diff_filtre1{';
+        t+='display:inline-block;';
+        t+='padding-top:' + yy_diff_filtre1 + 'px;';
         t+='}';
-        t+='.yy_filtre_liste1>div>div{';
-        t+='   display:flex;';
+        t+='.yy__fil_btns1{';
+        t+=' display: inline-flex!important;';
+        t+=' flex-wrap: balance!important;';
+        t+=' height:' + hauteur_bouton + 'px;';
+        /* hauteur_lgn_avec_pad_et_bordure */
+        t+=' margin-top: ' + (yy_diff_filtre1 < 0 ? ( 0 ) : ( yy_diff_filtre1 )) + 'px;';
+        t+=' width: 100%;';
+        t+=' justify-content: space-around;';
         t+='}';
-        t+='.yy_filtre_liste1 label{padding:3px;}';
+        t+='.yy_fi_inp1{';
+        t+=' min-width:' + largeur_min_zone_if + 'px;';
+        t+='}';
+        t+='.yy_libelle_filtre{';
+        t+='  text-align:center;';
+        t+='  text-wrap:nowrap;';
+        t+='  max-width:' + largeur_libelle + 'px;';
+        t+='  overflow:hidden;';
+        t+='  text-overflow:ellipsis;';
+        t+='  border:' + border_debug + 'px green solid;';
+        t+='  padding:0;';
+        t+='  margin:0  auto 0 auto';
+        t+='}';
+        t+='.yy_champ_filtre1{';
+        t+=' display:flex;';
+        t+=' height:' + hauteur_saisie_filtre + 'px;';
+        t+=' border:' + border_debug + 'px blue solid;';
+        t+=' padding:0;';
+        t+='}';
+        t+='.yy_bloc_filtre{';
+        t+='  border:1px ' + couleur8hex + ' solid;';
+        t+='  padding:0px;';
+        t+='  height:' + hauteur_bloc_filtre + 'px;';
+        t+='  max-width:' + largeur_max_du_bloc_filtre + 'px;';
+        t+='  margin:' + t_marge_hb + 'px 0 0 0;';
+        t+='}';
+        t+='.yy_bloc_loupe{';
+        t+='  border:1px ' + couleur8hex + ' solid;';
+        t+='  height:' + (hauteur_bloc_filtre + t_marge_hb) + 'px;';
+        t+='  padding-top:' + (parseInt( ((hauteur_bloc_filtre + t_marge_hb) - taille_bouton_carre) / 2 , 10 ) - 1) + 'px;';
+        t+='}';
         t+='.yy_edition_champ1{';
         t+='    display: flex;';
         t+='    flex-direction: row;';
         t+='    flex-wrap: wrap;';
         t+='    align-items: stretch;';
         t+='    justify-content: flex-start;';
-        t+='    margin-bottom: 8px;';
+        t+='    margin-bottom: ' + t_marge_hb + 'px;';
         t+='}';
-        t+='.yy_edition_libelle1 {';
-        t+='    border-bottom: var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    border-left: var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    border-top: var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    border-right: 0px ' + couleur3hex + ' solid;';
-        t+='    flex-grow: 0;';
-        t+='    flex-shrink: 0;';
-        t+='    flex-basis: 150px;';
-        t+='    max-width: 150px;';
-        t+='    text-align: center;';
-        t+='    font-weight: bold;';
+        t+='.yy_edition_champ2{';
         t+='    display: flex;';
-        t+='    flex-direction: column;';
+        t+='    flex-direction: row;';
+        t+='    flex-wrap:wrap;';
         t+='    align-items: stretch;';
+        t+='    justify-content:space-evenly;';
+        t+='    margin-bottom: ' + t_marge_hb + 'px;';
+        t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
         t+='}';
-        t+='@media all and (max-width: 550px){';
-        t+='   /*passe au dessus du champ à remplir quand l\'écran inférieur ou égal à 550px*/';
-        t+='   .yy_edition_libelle1{';
-        t+='      flex-grow:1;';
-        t+='      flex-shrink:1;';
-        t+='      flex-basis:100%;';
-        t+='      max-width:100%;';
-        t+='      border-bottom-style:none;';
-        t+='      margin-top:8px;';
-        t+='      border-right:1px ' + couleur3hex + ' solid;';
-        t+='      min-height:30px;';
-        t+='   }';
-        t+='}';
-        t+='.yy_edition_valeur1 {';
-        t+='    border : var(--t_border) ' + couleur3hex + ' solid;';
-        t+='    flex-grow : 1;';
-        t+='    flex-shrink : 0;';
-        t+='    flex-basis : 200px;';
-        t+='    padding : ' + val_padding + 'px;';
-        t+='    display : flex;';
-        t+='    flex-direction : row;';
-        t+='    max-width : 100%;';
-        t+='}';
+        if(largeur_disponible_de_l_ecran < this.largeur_ecran_limite){
+            /* ecran mobile */
+            t+='.yy_edition_libelle1{';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    border-bottom : none;';
+            t+='    max-width : ' + largeur_disponible_de_l_ecran + 'px;';
+            t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
+            t+='    text-align : center;';
+            t+='    font-weight: bold;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='}';
+            t+='.yy_edition_valeur1{';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    border-top : none;';
+            t+='    max-width : ' + largeur_disponible_de_l_ecran + 'px;';
+            t+='    width : ' + largeur_disponible_de_l_ecran + 'px;';
+            /* t+='    padding : ' + t_padding + 'px;'; */
+            t+='    margin-bottom : ' + (t_marge_hb + hauteur_bouton) + 'px;';
+            t+='}';
+        }else{
+            /* écran large */
+            t+='.yy_edition_libelle1 {';
+            t+='    border: ' + t_border + 'px ' + couleur3hex + ' solid;';
+            t+='    width: ' + largeur_zone_gauche_edition + 'px;';
+            t+='    text-align: center;';
+            t+='    font-weight: bold;';
+            t+='    padding : ' + t_padding + 'px;';
+            t+='    display : table;';
+            t+='    overflow-wrap : anywhere;';
+            t+='}';
+            t+='.yy_edition_libelle1>div{display:table-cell;vertical-align:middle;}';
+            t+='.yy_edition_valeur1 {';
+            t+='    border : ' + t_border + 'px ' + couleur3hex + ' solid;';
+            /* t+='    padding : ' + t_padding + 'px;'; */
+            /* console.log( '===============fixe  ' + largeur_disponible_de_l_ecran + ' ' + largeur_zone_gauche_edition ); */
+            t+='    width : ' + (Math.min( largeur_disponible_de_l_ecran , largeir_max ) - largeur_zone_gauche_edition) + 'px;';
+            t+='}';
+        }
         t+='.yy_btn_en_ligne1{';
         t+='    display : inline-flex;';
-        t+='    transform : translate(0px,' + val_padding + 'px);';
+        t+='    transform : translate(0px,' + t_padding + 'px);';
         t+='}';
         t+='.yy_navigation_liste {';
         t+='    display: flex;';
         t+='    flex-wrap: wrap;';
         t+='    justify-content: space-evenly;';
-        t+='    align-items: baseline;';
+        t+='    align-items: center;';
         t+='}';
         t+='#vv_ecran_liste_boutons_avant{';
         t+='   display:inline-flex;';
@@ -1767,7 +2612,7 @@ class __ig1{
         t+='.yy_suivant_precedent_actif{';
         t+='    min-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='    text-align: center;';
-        t+='    border-width: var(--t_border);';
+        t+='    border-width: ' + t_border + 'px;';
         t+='    border-style: outset;';
         t+='    border-color: #E0E0F0;';
         t+='    padding: var(--t_padding);';
@@ -1775,13 +2620,13 @@ class __ig1{
         t+='    touch-action: none;';
         t+='    user-select: none;';
         t+='    line-height: var(--h_ligne_bouton);';
-        t+='    color: var(--c_coul_fond1);';
+        t+='    color: ' + couleur1hex + ';';
         t+='    background-image: linear-gradient(to bottom, var(--c_coul_fond3) 0% , var(--c_coul_fond4) 100%);';
         t+='}';
         t+='.yy_suivant_precedent_inactif{';
         t+='    min-width: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
         t+='    text-align: center;';
-        t+='    border-width: var(--t_border);';
+        t+='    border-width: ' + t_border + 'px;';
         t+='    border-style: solid;';
         t+='    border-color: #E0E0F0;';
         t+='    padding: var(--t_padding);';
@@ -1802,18 +2647,39 @@ class __ig1{
         t+='}';
         /*  */
         t+='#vv_sous_fenetre1 {';
-        /* t+='    min-width: 70vw;'; */
-        t+='    max-width: ' + parseInt( val_fenetre * 0.85 , 10 ) + 'px;';
-        t+='    min-height: 85vh;';
-        t+='    border: var(--t_border) var(--c_coul_4) solid;';
+        t+='    max-width: ' + parseInt( t_fenetre * 0.85 , 10 ) + 'px;';
+        t+='    min-height: 80vh;';
+        t+='    max-height: 80vh;';
+        t+='    border: ' + t_border + 'px var(--c_coul_4) solid;';
         t+='    border-radius: 9px;';
         t+='    box-shadow: #000 0px 0px 5px;';
-        t+='    background: linear-gradient(to bottom, var(--c_coul_1) 0%, var(--c_coul_2) 100%);';
+        t+='    background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, var(--c_coul_fond2) 100%);';
+        t+='    opacity: 0.85;';
+        t+='    overscroll-behavior-y: none;';
+        t+='    margin: auto;';
+        t+='}';
+        t+='#vv_sous_sous_fenetre_de_liste2{';
+        t+='    max-width: ' + parseInt( t_fenetre * 0.85 , 10 ) + 'px;';
+        t+='    min-height: 85vh;';
+        t+='    border: ' + t_border + 'px var(--c_coul_4) solid;';
+        t+='    border-radius: 9px;';
+        t+='    box-shadow: #000 0px 0px 5px;';
+        t+='    background: linear-gradient(to bottom, ' + couleur1hex + ' 0%, var(--c_coul_fond2) 100%);';
         t+='    opacity: 0.85;';
         t+='    overscroll-behavior-y: none;';
         t+='}';
+        t+='.backdrop_transparent::backdrop {';
+        t+='    background-color: rgba(0, 0, 0, 0.0);';
+        t+='}';
         t+='dialog::backdrop {';
         t+='    background-color: rgba(0, 0, 0, 0.5);';
+        t+='}';
+        t+='.yy_conteneur_table{';
+        t+='    min-width: 98%;';
+        t+='    max-width: 98%;';
+        t+='    margin-right: 1%;';
+        t+='    margin-left: 1%;';
+        t+='    overflow-x: scroll;';
         t+='}';
         t+='.yy_ouinon {';
         t+='    appearance: none; ';
@@ -1825,14 +2691,6 @@ class __ig1{
         t+='    border: 1px inset white;';
         t+='    background: red;';
         t+='    transform: translate(0px, 0px);';
-        t+='}';
-        t+='.yy_conteneur_table{';
-        t+='    min-width: 98%;';
-        t+='    max-width: 98%;';
-        t+='    margin-right: 1%;';
-        t+='    margin-left: 1%;';
-        t+='    overflow-x: scroll;';
-        t+='    border-right: 1px red solid;';
         t+='}';
         if(navigator.userAgent.toLowerCase().indexOf( 'firefox' ) >= 0){
             t+='.yy_ouinon::-moz-range-thumb {';
@@ -1848,22 +2706,27 @@ class __ig1{
         t+='    border-radius: 3px;';
         t+='    border: 2px outset white;';
         t+='    box-shadow: -30rem 0 0 30rem #12ed12;';
+        /* equvalent lime */
         t+='}';
+        t+='.yy_filtre_oui_non[value=""]{background:hotpink;border: 3px hotpink solid;}';
+        t+='.yy_filtre_oui_non[value="0"]{background:red;border: 3px red solid;}';
+        t+='.yy_filtre_oui_non[value="1"]{background:lime;border: 3px lime solid;}';
         t+='.yy_w100{width:100%;}';
         t+='.yy_jcl{justify-content:left;}';
-        t+='div[data-libelle_noeud_menu1]{color: ' + couleur6hex + ';';
+        t+='div[data-libelle_noeud_menu1]{';
+        t+=' color: ' + couleur6hex + ';';
         t+=' display: flex;';
         t+=' background: var(--c_coul_fond4);';
-        t+=' color: var(--c_coul_fond1);';
-        t+=' margin-top: var(--t_marge_hb_plus);';
-        t+=' border-top:  var(--t_border) var(--c_coul_4) solid;';
-        t+=' border-bottom:  var(--t_border) var(--c_coul_4) solid;';
+        t+=' color: ' + couleur1hex + ';';
+        t+=' margin-top:' + t_marge_hb + 'px;';
+        t+=' border-top:  ' + t_border + 'px var(--c_coul_4) solid;';
+        t+=' border-bottom:  ' + t_border + 'px var(--c_coul_4) solid;';
         t+=' min-height: ' + hauteur_lgn_avec_pad_et_bordure + 'px;';
-        t+=' line-height: ' + val_police + 'px;';
-        t+=' padding-top:' + val_padding + 'px;';
-        t+=' padding-bottom:' + (val_padding + 2) + 'px;';
-        t+=' padding-left:' + val_padding + 'px;';
-        t+=' padding-right:' + val_padding + 'px;';
+        t+=' line-height: ' + t_police + 'px;';
+        t+=' padding-top:' + t_padding + 'px;';
+        t+=' padding-bottom:' + (t_padding + 2) + 'px;';
+        t+=' padding-left:' + t_padding + 'px;';
+        t+=' padding-right:' + t_padding + 'px;';
         t+='}';
         t+='div[data-libelle_noeud_menu1="0"]{';
         t+='    align-items: center;';
@@ -1871,14 +2734,14 @@ class __ig1{
         t+='.yy_col_act_td1{';
         t+='   display:inline-flex;';
         /* t+='   text-wrap-mode:nowrap;'; */
-        t+='   padding:' + val_padding + 'px;';
+        t+='   padding:' + t_padding + 'px;';
         t+='}';
         t+='.yy_conteneur_table>table{';
         t+='    border: 1px ' + couleur5hex + ' solid;';
         t+='    border-collapse: collapse;';
         t+='}';
         t+='.yy_texte_clair_fond_fonce{';
-        t+='    color: var(--c_coul_fond1);';
+        t+='    color: ' + couleur1hex + ';';
         t+='}';
         t+='.yy_btn_retour_liste{';
         t+='    opacity: 0.7;';
@@ -1887,6 +2750,45 @@ class __ig1{
         t+='    position: fixed;';
         t+='    margin-left:-1.6em;';
         t+='}';
+        t+='.yy__bdp1{min-height:' + hauteur_lgn_avec_pad_et_bord_et_marge + 'px;}';
+        let afficher_les_boutons_d_edition=parseInt( this.stockage_local.aspect['--afficher_les_boutons_d_edition']['valeur'] , 10 );
+        if(afficher_les_boutons_d_edition === 0){
+            t+='.yy__lst_btns1{display:none;}';
+        }else{
+            t+='.yy__lst_btns1{';
+            t+='    display : inline-flex;';
+            t+='    vertical-align : top;';
+            /* t+='    height : ' + (hauteur_bouton + 2 * t_marge_hb) + 'px;'; */
+            t+='    flex-wrap : wrap;';
+            t+='}';
+        }
+        if(afficher_les_boutons_d_edition === 0){
+            t+='.yy__elt_sl1{display:none;}';
+        }else{
+            t+='.yy__elt_sl1{';
+            t+='display: inline-block;';
+            t+='margin: auto;';
+            t+='padding: ' + t_padding + 'px;';
+            t+='}';
+        }
+        if(afficher_les_boutons_d_edition === 0){
+            t+='.yy__aff_be1{';
+            t+='    display:none!important;';
+            t+='}';
+        }
+        t+='.yy_contient_description{';
+        t+='display:inline-block;';
+        t+='width:100%;';
+        t+='}';
+        t+='.yy_lien1{';
+        t+='display:inline-flex;';
+        t+='}';
+        t+='.yy_dt1{min-width:' + Math.ceil( larg_de_num * 10 ) + 'px;}';
+        t+='input[type="range"]{color:' + couleur8hex + ';outline:auto;}';
+        t+='input[type="range"]:focus{background:red;color:red;cursor:pointer;outline:auto;}';
+        t+='button{font-size:' + t_police + 'px;vertical-align:top;}';
+        t+='button:focus{box-shadow: inset 0px 0px 5px 4px red;outline:auto!important;}';
+        t+='textarea[data-editeur1="rev"],textarea[data-editeur1="source_editeur1"]{font-family:monospace;}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -1899,102 +2801,98 @@ class __ig1{
             "aspect" : {
                 "--t_police" : {
                     "min" : 12 ,
-                    "max" : 22 ,
+                    "max" : 24 ,
                     "valeur" : 16 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        12,
-                        14,
-                        16,
-                        18,
-                        20,
-                        22
-                    ] ,
+                        /* tbel */
+                        12,14,16,18,20,22,24] ,
                     "step" : 2 ,
                     "defaut" : 16 ,
-                    "libelle0" : 'taille de la police' ,
+                    "libelle0" : 'police' ,
                     "nom_du_style" : 'fontSize'
                 } ,
                 "--t_padding" : {
-                    "min" : 0 ,
-                    "max" : 6 ,
-                    "valeur" : 2 ,
+                    "min" : 1 ,
+                    "max" : 10 ,
+                    "valeur" : 1 ,
                     "dimension" : 'px' ,
                     "valeurs" : [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6
-                    ] ,
+                        /* tbel */
+                        0,1,2,3,4,5,6,8,9,10                ] ,
                     "step" : 1 ,
-                    "defaut" : 2 ,
-                    "libelle0" : 'taille des espaces intérieurs' ,
+                    "defaut" : 1 ,
+                    "libelle0" : 'espaces boutons' ,
                     "nom_du_style" : 'padding'
                 } ,
                 "--t_border" : {
-                    "min" : 0 ,
+                    "min" : 1 ,
                     "max" : 4 ,
                     "valeur" : 1 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,1,2,3,4] ,
+                    "valeurs" : [1,2,3,4] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
-                    "libelle0" : 'taille des bordures' ,
+                    "libelle0" : 'bordures' ,
                     "nom_du_style" : 'borderWidth'
                 } ,
+                "--t_pad_inp" : {
+                    "min" : 3 ,
+                    "max" : 6 ,
+                    "valeur" : 1 ,
+                    "dimension" : 'px' ,
+                    "valeurs" : [3,4,5,6] ,
+                    "step" : 1 ,
+                    "defaut" : 3 ,
+                    "libelle0" : 'espaces zones saisies' ,
+                    "nom_du_style" : 'padding'
+                } ,
                 "--t_input_border" : {
-                    "min" : 0 ,
+                    "min" : 2 ,
                     "max" : 4 ,
                     "valeur" : 2 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,1,2,3,4] ,
+                    "valeurs" : [2,3,4,5,6] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des bordures des zones de saisie' ,
+                    "libelle0" : 'bordures des saisies' ,
                     "nom_du_style" : 'borderWidth'
                 } ,
                 "--t_marge_gd" : {
                     "min" : 0 ,
-                    "max" : 6 ,
+                    "max" : 20 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,2,4,6] ,
-                    "step" : 2 ,
-                    "defaut" : 2 ,
-                    "libelle0" : 'taille des marges gauche/droites' ,
+                    "valeurs" : [
+                        /* tbel */
+                        0,2,4,6,8,10,12,14,16,18                ,20] ,
+                    "step" : 1 ,
+                    "defaut" : 0 ,
+                    "libelle0" : 'marges g/d' ,
                     "nom_du_style" : 'marginLeft'
                 } ,
                 "--t_marge_hb" : {
                     "min" : 0 ,
-                    "max" : 6 ,
+                    "max" : 20 ,
                     "valeur" : 0 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [0,2,4,6] ,
+                    "valeurs" : [
+                        /* tbel */
+                        0,2,4,6,8,10,12,14,16,18                ,20] ,
                     "step" : 2 ,
-                    "defaut" : 2 ,
-                    "libelle0" : 'taille des marges haut/bas' ,
+                    "defaut" : 0 ,
+                    "libelle0" : 'marges haut/bas' ,
                     "nom_du_style" : 'marginTop'
                 } ,
                 "--t_rayon_b" : {
-                    "min" : 0 ,
+                    "min" : 2 ,
                     "max" : 6 ,
-                    "valeur" : 4 ,
+                    "valeur" : 2 ,
                     "dimension" : 'px' ,
-                    "valeurs" : [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6
-                    ] ,
+                    "valeurs" : [2,3,4,5,6] ,
                     "step" : 1 ,
                     "defaut" : 2 ,
-                    "libelle0" : 'taille des rayons des boutons' ,
+                    "libelle0" : 'rayons des boutons' ,
                     "nom_du_style" : 'borderRadius'
                 } ,
                 "--t_fenetre" : {
@@ -2005,10 +2903,10 @@ class __ig1{
                     "valeurs" : [800,1000,1200,1400] ,
                     "step" : 200 ,
                     "defaut" : 800 ,
-                    "libelle0" : 'taille de la fenêtre' ,
+                    "libelle0" : 'fenêtre' ,
                     "nom_du_style" : ''
                 } ,
-                "--c_profile_de_couleur1" : {
+                "--fond_est_gris" : {
                     "min" : 0 ,
                     "max" : 1 ,
                     "valeur" : 1 ,
@@ -2016,7 +2914,7 @@ class __ig1{
                     "valeurs" : [0,1] ,
                     "step" : 1 ,
                     "defaut" : 1 ,
-                    "libelle0" : 'profile de couleur' ,
+                    "libelle0" : 'fond gris' ,
                     "nom_du_style" : ''
                 } ,
                 "--c_couleur1" : {
@@ -2026,13 +2924,34 @@ class __ig1{
                     "dimension" : 'deg' ,
                     "valeurs" : [
                         /* tbel */
-                        0,10,20,30,40,50,60,70,80,90                ,100,110,120,130,140,150,160,170,180,190
-                        ,200,210,220,230,240,250,260,270,280,290                ,300,310,320,330,340,350,360] ,
-                    "step" : 10 ,
+                        0,20,40,60,80,100,120,140,160,180                ,200,220,240,260,280,300,320,340,360] ,
+                    "step" : 20 ,
                     "defaut" : 210 ,
-                    "libelle0" : 'couleur principale' ,
+                    "libelle0" : 'couleur' ,
                     "nom_du_style" : '' ,
-                    "style_interface" : 'min-width: calc(min(60vw, 500px));'
+                    "style_interface" : 'min-width: calc(min(60vw, 190px));'
+                } ,
+                "--supprimer_les_messages_affiches_lors_d_un_envoi_de_colis" : {
+                    "min" : 0 ,
+                    "max" : 1 ,
+                    "valeur" : 1 ,
+                    "dimension" : '' ,
+                    "valeurs" : [0,1] ,
+                    "step" : 1 ,
+                    "defaut" : 1 ,
+                    "libelle0" : 'vide les messages automatique' ,
+                    "nom_du_style" : ''
+                } ,
+                "--afficher_les_boutons_d_edition" : {
+                    "min" : 0 ,
+                    "max" : 1 ,
+                    "valeur" : 0 ,
+                    "dimension" : '' ,
+                    "valeurs" : [0,1] ,
+                    "step" : 1 ,
+                    "defaut" : 1 ,
+                    "libelle0" : 'boutons d\'édition des zones texte' ,
+                    "nom_du_style" : ''
                 }
             } ,
             "parametres" : {
@@ -2044,7 +2963,7 @@ class __ig1{
                     "valeurs" : [0,1,2] ,
                     "step" : 1 ,
                     "defaut" : 0 ,
-                    "libelle0" : '🐞 niveau de déverminage 🐞' ,
+                    "libelle0" : '🐞 déverminage 🐞' ,
                     "nom_du_style" : ''
                 } ,
                 "--bidon" : {
@@ -2052,15 +2971,22 @@ class __ig1{
                     "max" : 100 ,
                     "valeur" : 0 ,
                     "dimension" : '' ,
-                    "valeurs" : [0,1] ,
-                    "step" : 20 ,
+                    "valeurs" : [
+                        /* tbel */
+                        0,10,20,30,40,50,60,70,80,90                ,100] ,
+                    "step" : 10 ,
                     "defaut" : 0 ,
-                    "libelle0" : 'afficher les données bidon sur la page d\'accueil' ,
+                    "libelle0" : 'données sur la page d\'accueil' ,
                     "nom_du_style" : ''
                 }
             } ,
             "zones_sauvegardées" : {}
         };
+        let largeur_reelle_de_l_ecran=window.innerWidth;
+        if(largeur_reelle_de_l_ecran < this.largeur_ecran_limite){
+            this.reference_stockage_local.aspect['--t_padding'].valeur=4;
+            this.reference_stockage_local.aspect['--t_rayon_b'].valeur=4;
+        }
         /*
           initialisation du lsto qui conditionne le css
         */
@@ -2080,23 +3006,27 @@ class __ig1{
         this.cle_lst0=this.cle_lst0.replace( '//' + window.location.host + '/' , window.location.host + '/' ).replace( /\//g , '_' );
         let lsto=localStorage.getItem( this.cle_lst0 );
         if(lsto !== null){
-            let jlsto=JSON.parse( lsto );
-            for(let i in jlsto.aspect){
-                if(this.stockage_local['aspect'].hasOwnProperty( i )){
-                    if(jlsto['aspect'][i].hasOwnProperty( 'valeur' ) && jlsto['aspect'][i].hasOwnProperty( 'dimension' )){
-                        this.stockage_local['aspect'][i]=jlsto.aspect[i];
+            try{
+                let jlsto=JSON.parse( lsto );
+                for(let i in jlsto.aspect){
+                    if(this.stockage_local['aspect'].hasOwnProperty( i )){
+                        if(jlsto['aspect'][i].hasOwnProperty( 'valeur' ) && jlsto['aspect'][i].hasOwnProperty( 'dimension' )){
+                            this.stockage_local['aspect'][i]=jlsto.aspect[i];
+                        }
                     }
                 }
-            }
-            for(let i in jlsto.parametres){
-                if(this.stockage_local['parametres'].hasOwnProperty( i )){
-                    if(jlsto['parametres'][i].hasOwnProperty( 'valeur' ) && jlsto['parametres'][i].hasOwnProperty( 'dimension' )){
-                        this.stockage_local['parametres'][i]=jlsto.parametres[i];
+                for(let i in jlsto.parametres){
+                    if(this.stockage_local['parametres'].hasOwnProperty( i )){
+                        if(jlsto['parametres'][i].hasOwnProperty( 'valeur' ) && jlsto['parametres'][i].hasOwnProperty( 'dimension' )){
+                            this.stockage_local['parametres'][i]=jlsto.parametres[i];
+                        }
                     }
                 }
-            }
-            for(let i in jlsto['zones_sauvegardées']){
-                this.stockage_local['zones_sauvegardées'][i]=jlsto['zones_sauvegardées'][i];
+                for(let i in jlsto['zones_sauvegardées']){
+                    this.stockage_local['zones_sauvegardées'][i]=jlsto['zones_sauvegardées'][i];
+                }
+            }catch{
+                /* si il y a une erreur on considère que c'est un nouvel accès */
             }
         }else{
             /* nouvel accès */
@@ -2108,29 +3038,76 @@ class __ig1{
     */
     #html_initial(){
         let t='';
-        t+='<div id="vv_haut_de_page" style="' + (this.#est_sous_fenetre === true ? ( 'display:none;' ) : ( '' )) + '" role="navigation">';
+        let les_svg={
+            "poubelle" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g transform="translate(0 5)   "><path d=" m -40 -35 c 0 -15 80 -15 80 0 c 0 15 -80 15 -80 0 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:lime;stroke-width:4;"></path><path d=" M -9 -33 C -9 -47 9 -46 9 -33 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:5;"></path><path d=" m -40 -35 c 0 15 80 15 80 0 l 0 11 c 0 3 -5 5 -8 6 l 0 46 c 0 12 -64 12 -64 0 l 0 -46 c -3 -1 -8 -3 -8 -6 l 0 -11 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:lime;stroke-width:4;"></path><path d="M -32 -18 C -18 -12 18 -12 32 -18 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:4;"></path><path d="M -20 -14 L -20 35 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 0 -13 L 0 36 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 20 -14 L 20 35 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path></g>' ,
+            "dupliquer" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g transform="   "><path d="M -15 -40 L -40 -40 L -40 20 L 20 20 L 20 -40 L -15 -40 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="   " style="stroke:black;fill:white;stroke-width:6;"></path><path d="M 5 -20 L -20 -20 L -20 40 L 40 40 L 40 -20 L 5 -20 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></path></g>' ,
+            "agrandir" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -19 -30 L 7 -26 C 10 -25 12 -23 14 -21  L 40 31 L 12 44 L 3 27 C 1 29 -2 27 -6 22 L -32 25 C -40 25 -44 12 -33 12 L -15 9 L -6 8 c 10 -3 12 -16 -3 -21 L -38 -21 C -46 -23 -45 -34 -36 -33 L -19 -30" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:6;"></path>' ,
+            "retrecir" : '<path d="M -20 -32 L 11 -32 C 13 -32 17 -30 18 -26 L 46 31 L 17 46 L 7 26 C 5 28 1 26 -1 24 L -25 7 L -32 7 C -46 7 -46 -8 -37 -7 L -20 -8 L -7 0 A 6 5 8 1 0 -2 -16 L -18 -16 L -37 -7 C -44 -5 -50 -16 -43 -20 L -20 -32 " stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:5;"></path><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
+            "scotcher" : '<g transform=""><path d=" M -50 -50 C -14 -50 15 -50 50 -50 v 100 h -100 v -100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.1;fill-opacity:0.5;"></path><path stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 18 13 C 47 16 47 32 42 39 C 36 46 -2 48 -14 37 C -25 27 1 29 24 33 C 17 26 22 24 12 19" style="stroke:fuchsia;fill:gold;stroke-width:5;fill-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -47 -22 C -40 -30 -30 -40 -23 -47 C -20 -40 -8 -24 15 -3 C 17 -1 16 2 14 4 C 16 6 18 8 20 10 C 18 13 13 17 10 20 C 8 18 7 17 5 15 C 3 17 -1 15 -3 14 C -25 -11 -39 -20 -47 -22" style="stroke:rgb(0, 0, 0);fill:fuchsia;stroke-width:4;"></path></g>' ,
+            "copier_la_selection" : '<path stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d="M -50 -50 H 50 v 100 h -100 v -100 " style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path><g transform="translate(2 -2)   "><path d=" M -32 -35 C -26 -35 -19 -35 -12 -35 C -12 -46 8 -46 9 -35 C 15 -35 22 -35 29 -35 C 32 -35 34 -32 34 -29 V 39 C 34 42 32 45 29 45 H -32 C -35 45 -37 42 -37 39 V -29 C -37 -32 -35 -35 -32 -35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></path><rect x="-26" y="-25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="-26" y="-7" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="-26" y="11" width="23" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="-23" y1="-20" x2="18" y2="-20" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="-23" y1="-2" x2="18" y2="-2" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="-23" y1="16" x2="18" y2="16" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="-23" y1="33" x2="18" y2="33" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line></g>' ,
+            "copier_tout" : '<g><path d="M -50 -50 H 50 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path><g transform="translate(2 -2)   "><path d=" M -32 -35 C -26 -35 -19 -35 -12 -35 C -12 -46 8 -46 9 -35 C 15 -35 22 -35 29 -35 C 32 -35 34 -32 34 -29 V 39 C 34 42 32 45 29 45 H -32 C -35 45 -37 42 -37 39 V -29 C -37 -32 -35 -35 -32 -35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></path><rect x="-26" y="-25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="-26" y="-7" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="-26" y="11" width="48" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="-26" y="28" width="48" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="-23" y1="-20" x2="18" y2="-20" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="-23" y1="-2" x2="18" y2="-2" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="-23" y1="16" x2="18" y2="16" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="-23" y1="33" x2="18" y2="33" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line></g></g>' ,
+            "ensemble_vide" : '<path d="M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:gold;stroke-width:0.1;fill-opacity:0.3;"></path><g transform="translate(0 2)   "><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></circle><path d=" M -40 40 l 80 -80 " stroke="rgb(0, 0, 0)" stroke-width="10" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="   "></path></g>' ,
+            "dossier" : '<path d="M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;fill-opacity:0.3;"></path><g transform="translate(0 2)   "></g><path d=" M -42 -18 L -42 36 L 25 36 L 41 -7  L 26 -7 L 26 -18 L -42 -18" stroke="rgb(0, 0, 0)" stroke-width="10" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:gold;stroke-width:6;"></path><path stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="square" d=" M -38 -15 C -38 -22 -35 -24 -32 -24 L -21 -24 C -19 -24 -16 -22 -16 -15 " style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></path><path d=" M -39 33 L 23 33 L 37 -4  L -24 -4 L -39 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:khaki;stroke-width:0.1;"></path><path d=" M 28 -7 H -23 l -17 40 " stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path>' ,
+            "editer" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 40 L -34 14 L -15 35  L -40 40 M -28 8 L 10 -30 L 30 -10 L -9 29 L -28 8 M 15 -35 L 20 -40 C 25 -45 45 -25 40 -20 L 35 -15 L 15 -35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:6;"></path>' ,
+            "disquette" : '<g transform="translate(-50 -50)   "><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path></g><path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path>' ,
+            "bdd" : '<path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.1;fill-opacity:0.5;"></path><rect x="-45" y="-43" width="33" height="53" stroke="rgb(0, 0, 0)" stroke-width="9" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></rect><path d=" M -38 -33 l 19 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><path d=" M -38 -21 l 19 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -38 -9 l 19 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -38 3 C -38 3 -17 3 -19 3 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><rect x="9" y="-27" width="36" height="68" stroke="rgb(0, 0, 0)" stroke-width="9" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:yellow;stroke-width:6;"></rect><path d=" M 16 -17  l 22 0" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><path d=" M 16 -5 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -12 -33 C 0 -33 -4 -5 8 -5 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:darkred;fill:white;stroke-width:6;"></path><path d="M 16 7 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 16 19 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 16 31 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path>' ,
+            "croix_carre" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -47 47 L 47 -47 M -47 -47 L 47 47 m -94 -94 l 94 0 l 0 94 l -94 0 l 0 -94 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path>' ,
+            "cle" : '<g transform=""><path d=" M -7 7 A 24 25 48 1 1 7 -7 L 39 24 L 39 39 L 23 39 L 23 31 L 15 31 L 15 23 L 7 23 L 7 15 L 1 15 L -7 7 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:4;"></path><circle cx="-21" cy="-21" r="6" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" style="stroke:red;fill:black;stroke-width:4;"></circle></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
+            "maison" : '<g transform="translate(0 -0.125)   "><path d=" M -47 -3 L -1 -49 L 45 -3 V 5 H 39 V 48 H -41 V 5 H -47 V -3" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.01;"></path><path d="M -29 45 H -41 c 0 -4 2 -8 4 -4 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:7;"></path><rect x="-23" y="-7" width="14" height="14" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:1;"></rect><rect x="5" y="-7" width="14" height="14" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:1;"></rect><rect x="5" y="21" width="14" height="14" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:1;"></rect><rect x="-23" y="16" width="14" height="32" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></rect><path d=" M -41 -1 l 40 -40 l 40 40" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:12;"></path><path d="M 1 46 H 41 c 0 -4 -2 -8 -4 -4 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:6;"></path></g><rect x="-50.2" y="-50.1" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
+            "message" : '<g transform=""><path stroke="rgb(0, 0, 0)" stroke-linejoin="miter" stroke-linecap="square" d=" M -35 -32 H 34 C 38 -32 41 -30 41 -26 V 14 C 41 18 38 21 34 21 H -14 L -30 38 V 21 H -35 C -39 21 -41 18 -41 14 V -26 C -41 -30 -39 -32 -35 -32" style="stroke:red;fill:white;stroke-width:3;"></path><circle cx="19" cy="-5" r="4" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" style="stroke:red;fill:red;stroke-width:3;"></circle><circle cx="0" cy="-5" r="4" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" style="stroke:red;fill:red;stroke-width:3;"></circle><circle cx="-19" cy="-5" r="4" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" style="stroke:red;fill:red;stroke-width:3;"></circle></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect>' ,
+            "parametres_et_aide" : '<g transform=""><path d=" M 45.5 0.5 C 42.6809 1.342 36.3994 3.1903 36.3994 3.1903 C 36.3994 3.1903 35.5974 8.5108 35.5974 8.5108 C 35.5974 8.5108 43.5008 13.764 43.5008 13.764 C 43.5008 13.764 41.0437 20.0248 41.0437 20.0248 C 41.0437 20.0248 31.6769 18.5 31.6769 18.5 C 31.6769 18.5 28.646 22.9456 28.646 22.9456 C 28.646 22.9456 33.4873 31.1078 33.4873 31.1078 C 33.4873 31.1078 28.5571 35.6824 28.5571 35.6824 C 28.5571 35.6824 20.7795 30.2446 20.7795 30.2446 C 20.7795 30.2446 16.1199 32.9349 16.1199 32.9349 L 15.2929 23.152 A 27.0834 27.1852 0 1 0 -10.8375 24.9759 L -10.1106 34.9005 C -11.2293 34.4537 -15.1198 32.9349 -15.1198 32.9349 C -15.1198 32.9349 -22 39.4712 -22 39.4712 C -22 39.4712 -27.557 35.6824 -27.557 35.6824 C -27.557 35.6824 -23.9862 26.8899 -23.9862 26.8899 C -23.9862 26.8899 -27.6459 22.9456 -27.6459 22.9456 C -27.6459 22.9456 -36.6808 25.8494 -36.6808 25.8494 C -36.6808 25.8494 -40.0436 20.0248 -40.0436 20.0248 C -40.0436 20.0248 -33.0114 13.6523 -33.0114 13.6523 C -33.0114 13.6523 -34.5974 8.5108 -34.5974 8.5108 C -34.5974 8.5108 -43.9973 7.2069 -43.9973 7.2069 C -43.9973 7.2069 -44.5 0.5 -44.5 0.5 C -44.5 0.5 -35.3994 -2.1903 -35.3994 -2.1903 C -35.3994 -2.1903 -34.5974 -7.5107 -34.5974 -7.5107 C -34.5974 -7.5107 -42.5007 -12.7639 -42.5007 -12.7639 C -42.5007 -12.7639 -40.0436 -19.0248 -40.0436 -19.0248 C -40.0436 -19.0248 -30.6769 -17.5 -30.6769 -17.5 C -30.6769 -17.5 -27.6459 -21.9456 -27.6459 -21.9456 C -27.6459 -21.9456 -32.4873 -30.1078 -32.4873 -30.1078 C -32.4873 -30.1078 -27.557 -34.6824 -27.557 -34.6824 C -27.557 -34.6824 -19.7795 -29.2446 -19.7795 -29.2446 C -19.7795 -29.2446 -15.1198 -31.9348 -15.1198 -31.9348 C -15.1198 -31.9348 -15.9403 -41.3893 -15.9403 -41.3893 C -15.9403 -41.3893 -9.5134 -43.3718 -9.5134 -43.3718 C -9.5134 -43.3718 -4.8655 -35.0979 -4.8655 -35.0979 C -4.8655 -35.0979 0.5 -35.5 0.5 -35.5 C 0.5 -35.5 3.8629 -44.3742 3.8629 -44.3742 C 3.8629 -44.3742 10.5135 -43.3718 10.5135 -43.3718 C 10.5135 -43.3718 11.1112 -33.9006 11.1112 -33.9006 C 11.1112 -33.9006 16.1199 -31.9348 16.1199 -31.9348 C 16.1199 -31.9348 23 -38.4712 23 -38.4712 C 23 -38.4712 28.5571 -34.6824 28.5571 -34.6824 C 28.5571 -34.6824 24.9862 -25.8898 24.9862 -25.8898 C 24.9862 -25.8898 28.646 -21.9456 28.646 -21.9456 C 28.646 -21.9456 37.6808 -24.8494 37.6808 -24.8494 C 37.6808 -24.8494 41.0437 -19.0248 41.0437 -19.0248 C 41.0437 -19.0248 34.0115 -12.6522 34.0115 -12.6522 C 34.0115 -12.6522 35.5974 -7.5107 35.5974 -7.5107 C 35.5974 -7.5107 44.9974 -6.2069 44.9974 -6.2069 C 44.9974 -6.2069 45.3492 -3.9389 45.5 0.4999 l -9.0735 2.6884" style="stroke-width:3;stroke:aqua;fill:blue;" transform="rotate(4.3643 0 0 )"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -8.2065 1.78 H -20.6661 C -20.6611 -13.8722 -12.4045 -20.1366 0.8363 -20.1187 C 17.2228 -20.1399 21.3684 -9.7224 21.2567 1.728 C 21.0604 8.2125 16.5963 14.445 9.547 21.5076 C 5.4469 24.9578 5.6242 27.9612 5.6242 29.6487 H -4.6514 C -4.733 29.0432 -4.5537 23.2473 -3.1277 21.0394 C 0.0788 16.0362 8.7954 6.9633 8.8118 1.7364 C 9.1206 -5.6137 6.1839 -9.2975 0.4172 -9.0496 C -5.5121 -9.0383 -8.5234 -5.4297 -8.2728 1.6668 M -5.0464 35.2605 H 5.9006 L 4.1682 43.8533 H -2.6161 Z" style="stroke:forestgreen;fill:lime;stroke-width:3;"></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect>' ,
+            "deliler_vers_le_bas" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform="   "></g><path d=" m 0 -47 h 24 v 8 h -19 v 13 h 19 v 8 h -19 v 13 h 19 v 8 h -19 v 11 h 35 l -40 34 l -40 -34 h 35 v -11 h -20 v -8 h 20 v -13 h -21 v -8 h 21 v -13 h -21 v -8 h 26 m 0 81 l 12 -10 h -25 l 13 10 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:aqua;stroke-width:3;"></path>' ,
+            "defiler_vers_le_haut" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform="rotate(-180 0 0 )"><path d=" m 0 -47 h 24 v 8 h -19 v 13 h 19 v 8 h -19 v 13 h 19 v 8 h -19 v 11 h 35 l -40 34 l -40 -34 h 35 v -11 h -20 v -8 h 20 v -13 h -21 v -8 h 21 v -13 h -21 v -8 h 26 m 0 81 l 12 -10 h -25 l 13 10 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:aqua;stroke-width:3;"></path></g>' ,
+            "haut_de_page" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform=""><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 0 -47 L 32 -47 L 32 -39 L 6 -39 L 30 -16 L 24 -10 L 5 -29 L 5 47 L -5 47 L -4 -29 L -24 -10 L -30 -17  L -6 -39 L -32 -39 L -32 -47 H 0" style="stroke:black;fill:aqua;stroke-width:3;"></path></g>' ,
+            "bas_de_page" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform=""><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 0 47 L 32 47 L 32 39 L 6 39 L 30 16 L 24 10 L 5 29 L 5 -47 L -5 -47 L -4 29 L -24 10 L -30 17 L -6 39 L -32 39 L -32 47 H 0" style="stroke:black;fill:aqua;stroke-width:3;"></path></g>' ,
+            "nouveau_document" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M 0 -35 C 5 -35 15 -35 25 -35 C 25 -20 25 20 25 35 C 15 35 -17 34 -25 35 C -25 25 -25 -5 -25 -10  L 0 -35 L 0 -10 L -25 -10 M 0 -2 L 0 26 M 14 12 L -15 12" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:white;stroke-width:8;"></path>' ,
+            "reordonner" : '<path d="M 0 -46 L 0 -36 C 0 -14 25 12 25 -17 C 25 -46 0 -19 0 4 L 0 17 L 20 17 L 0 46 L -20 17 L 0 17 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:white;fill:black;stroke-width:6;"></path><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect>' ,
+            "renuméroter" : '<g stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;" fill="transparent" stroke="rgb(0, 0, 0)" stroke-width="1"><rect x="-50" y="-50" width="100" height="100" stroke-width="0.1"></rect><path d="M -45 -40 l 18 0 "></path><path d="M -45 -20 l 18 0 "></path><path d="M -45 0 l 18 0 "></path><path d="M -45 20 l 18 0 "></path><path d="M -45 40 l 18 0 "></path><path d="M 26 -40 l 18 0 "></path><path d="M 26 -20 l 18 0 "></path><path d="M 26 0 l 18 0 "></path><path d="M 26 20 l 18 0 "></path><path d="M 26 40 l 18 0 "></path><path d=" M -19 -40 C -13 -40 -11 -36 -10 -26 C -9 -15 -9 -3 -9 7 C -9 11 -9 20 4 20 L 4 33 L 19 20 L 4 6 L 4 20 " stroke-width="6" style="stroke:red;fill:transparent;stroke-width:8;"></path></g>' ,
+            "loupe" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;stroke-opacity:0.5;opacity:0.5;"></rect><g><circle cx="14" cy="-14" r="29.25" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></circle><path d=" M -4 8 C -10 6 -15 6 -18 9 C -23 14 -30 24 -37 32  A 8 8 0 1 0 -25 44 C -19 38 -10 28 -4 22 C -1 18 -1 14 -4 8" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><circle cx="14" cy="-14" r="27" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" style="stroke:rgb(0, 0, 0);fill:#4FC3F7;stroke-width:0.01;"></circle><path d=" M -3 7  C 12 -12 12 -12 31 -35 A 4 4 0 1 1 -3 7" stroke="rgb(0, 0, 0)" stroke-width="0.01" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:lightskyblue;stroke-width:0.01;"></path></g>' ,
+            "compiler" : '<polygon points=" 45 0 40 8 42 17 34 23 32 32 23 34 17 42 8 40 0 45 -8 40 -17 42 -22 34 -32 32 -33 23 -41 17 -39 8 -45 0 -39 -8 -41 -17 -33 -22 -32 -32 -22 -33 -17 -41 -8 -39 0 -45 8 -39 17 -41 23 -33 32 -32 34 -22 42 -17 40 -8 45 0" style="stroke-width:5;stroke:rgb(0, 0, 0);fill:white;" transform=""></polygon><text x="-34" y="18" style="font-size:55;stroke-width:2;stroke:red;fill:lime;font-family:Verdana;stroke-opacity:1;fill-opacity:1;opacity:1;">01</text><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
+            "rond_rouge1" : '<circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect>' ,
+            "rond_vert1" : '<circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:lime;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect>' ,
+            "lst_des_elts" : '<g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g>' ,
+            "televerser" : ' <g transform="translate(-50 -50)" stroke-linejoin="miter"  stroke-linecap="square">  <path d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path>  <path d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path>  <path  d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path>  <path d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path>  <path d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path> </g> <path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path> <path d=" M 0 -32  C 0 -25 0 19 0 30 L 18 9 H -18 L 0 30" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:yellow;stroke-width:10;"></path>' ,
+            "recharger_la_page" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path>' ,
+            "voir" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><circle cx="20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><ellipse cx="-25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><ellipse cx="25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><circle cx="-20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle>' ,
+            "calendrier" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path>' ,
+            "masquer" : '<g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
+            "outils" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -40 -40 L -38 -42 L -32 -39 L -32 -35 L 12 8 L 15 5 L 20 10 C 19 14 21 16 25 15 L 40 30 L 30 40 L 15 25 C 16 21 14 19 10 20 L 5 15 L 8 12 L -35 -32  L -39 -32 L -42 -38 L -40 -40" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path><path d=" M -35 35 L -40 30 L -9 -1 M -1 -9 L 12 -22 C 9 -27 5 -30 0 -30 L -2 -32 C 8 -39 18 -38 36 -25 C 34 -20 37 -18 40 -20 L 43 -17 L 31 -4 L 27 -7 C 29 -12 26 -14 22 -12 L 9 1 M -9 -1 L 1 9  L -30 40 L -35 35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path>' ,
+            "clav_supp" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -45 0 L -20 -25 L 45 -25 L 45 25 L -20 25 L -45 0 M -5 -15 L 25 15 M -5 15  L 25 -15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path>' ,
+            "palette" : '<g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></g><path d="M -9 17 C -11 13 -36 21 -42 8 C -47 -8 -35 -42 -3 -42 C 15 -42 41 -31 42 4 C 42 39 1 53 -13 38 C -20 27 -7 20 -9 17 " stroke="red" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:#FFF9C4;stroke-width:6;"></path><circle cx="-22" cy="-11" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:lime;fill:lime;stroke-width:1;"></circle><circle cx="-2" cy="-25" r="9.25" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:violet;fill:violet;stroke-width:1;"></circle><circle cx="20" cy="-12" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:gold;fill:gold;stroke-width:1;"></circle><circle cx="20" cy="12" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:blue;fill:blue;stroke-width:1;"></circle><ellipse cx="-1" cy="19" rx="5.5" ry="4" stroke="red" stroke-width="6" fill="transparent" transform="translate(17 13) rotate(39 0 0)  " style="stroke:white;fill:white;stroke-width:6;"></ellipse>' ,
+            "pdf" : '<g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -35 12 C -35 -4 -35 -45 -35 -45 L 15 -45 L 35 -25 L 35 11  M 35 -25 L 15 -25 L 15 -45 M -20 -15 L 19 -15 M -20 -5 L 19 -5 M -20 5 L 19 5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><rect x="-45" y="11" width="90" height="37" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;"></rect><text x="-41" y="45" style="font-size:41.861;stroke-width:1.68;stroke:white;fill:white;font-family:Verdana;stroke-opacity:1;fill-opacity:1;">PDF</text></g>'
+        };
+        t+='<svg id="les_svg1" style="display:none;">';
+        for(let i in les_svg){
+            t+='<g id="les_svg1_' + i + '">' + les_svg[i] + '</g>';
+            this.les_svg[i]='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><use xlink:href="#les_svg1_' + i + '"></use></svg>';
+        }
+        t+='</svg>';
+        t+='<div id="vv_haut_de_page" role="navigation">';
         t+='    <div id="vv_nav">';
-        t+='                    <div id="vv_nav_gauche">';
-        t+='                        <div data-id_menu="-1" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</div>';
-        t+='                        <div id="vv_bouton_messages" class="rev_bouton_carre" data-rev_click="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</div>';
-        t+='                    </div>';
-        t+='                    <div id="vv_nav_centre">';
-        t+='                      <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
-        t+='                    </div>';
-        t+='                    <div id="vv_nav_droite">';
-        t+='                        <div data-id_menu="-2" class="rev_bouton_carre" id="vv_bouton_aide" data-rev_click="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</div>\n';
-        t+='                        <div data-id_menu="-3" class="rev_bouton_carre yy__1" id="vv_bouton_connexion" data-rev_click="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</div>\n';
-        t+='                    </div>';
-        t+='                </div>';
+        t+='        <div id="vv_nav_gauche">';
+        t+='            <button data-id_menu="-1" class="yy__bcar1" rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="page d\'accueil">' + this.les_svg.maison + '</button>';
+        t+='            <button id="vv_bouton_messages" class="yy__bcar1" rev_clic1="m1(n1(__ig1),f1(affiche_ou_masque_les_messages()))" title="affiche ou masque les messages">' + this.les_svg.message + '</button>';
+        t+='        </div>';
+        t+='        <div id="vv_nav_centre">';
+        t+='            <div id="vv_nav_centre_defilement" class="vv_nav_centre_defilement"></div>';
+        t+='        </div>';
+        t+='        <div id="vv_nav_droite">';
+        t+='            <button data-id_menu="-2" class="yy__bcar1" id="vv_bouton_aide" rev_clic1="m1(n1(__fnt1),f1(lsto()))" title="aide et paramètres">' + this.les_svg.parametres_et_aide + '</button>\n';
+        t+='            <button data-id_menu="-3" class="yy__bcar1 yy__1" id="vv_bouton_connexion" rev_clic1="pm1(m1(n1(_connexion1),f1(page_connexion1())))" title="vers la page de connexion">' + this.les_svg.cle + '</button>\n';
+        t+='        </div>';
         t+='    </div>';
+        t+='</div>';
         t+='<div id="vv_messages" style="visibility:hidden;"></div>';
         t+='<div id="vv_contenu_principal" role="main"></div>';
         t+='<div id="vv_pied_de_page">';
-        t+='      <div data-id_menu="-4" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</div>';
-        t+='      <div data-id_menu="-5" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</div>';
-        t+='      <div data-id_menu="-6" class="rev_bouton_carre" style="" data-rev_click="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</div>';
+        t+='      <button data-id_menu="-9" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(page_bas()))">' + this.les_svg.bas_de_page + '</button>';
+        t+='      <button data-id_menu="-4" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(defilement_bas()))">' + this.les_svg.deliler_vers_le_bas + '</button>';
+        t+='      <button data-id_menu="-5" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(defilement_haut()))">' + this.les_svg.defiler_vers_le_haut + '</button>';
+        t+='      <button data-id_menu="-6" class="yy__bcar1" style="" rev_clic1="m1(n1(__ig1),f1(page_haut()))">' + this.les_svg.haut_de_page + '</button>';
         t+='      <div data-id_menu="-7" class="" style="display:flex;" id="vv_info_projet"></div>';
-        t+='      <div data-id_menu="-7" class="" style="display:flex;" id="vv_info_connexion">' + this.les_svg.rond_rouge1 + '</div>';
+        t+='      <div data-id_menu="-8" class="" style="display:flex;" id="vv_info_connexion">' + this.les_svg.rond_rouge1 + '</div>';
         t+='</div>';
         t+='<dialog id="vv_sous_fenetre1"></dialog>';
         return t;
@@ -2156,6 +3133,13 @@ class __ig1{
     */
     page_haut( mat , d ){
         window.scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_bas( mat , d ){
+        window.scrollTo( {"top" : 999999 ,"left" : 0 ,"behavior" : "smooth"} );
         return({"__xst" : __xsu});
     }
     /*
@@ -2307,10 +3291,10 @@ class __ig1{
                 for( let i=0 ; i < lst.length ; i++ ){
                     let aa=lst[i].getAttribute( 'data-id_menu' );
                     if(aa == id){
-                        lst[i].classList.add( 'rev_bouton_actif' );
-                        /* console.log('on ajoute rev_bouton_actif ','background:yellow;', lst[i] , '__xva_param=\n' , __xva_param ,'\n\n\n') */
+                        lst[i].classList.add( 'yy_b1_actif' );
+                        /* console.log('on ajoute yy_b1_actif ','background:yellow;', lst[i] , '__xva_param=\n' , __xva_param ,'\n\n\n') */
                     }else{
-                        lst[i].classList.remove( 'rev_bouton_actif' );
+                        lst[i].classList.remove( 'yy_b1_actif' );
                     }
                     if(lst[i].tagName.toLowerCase() === 'select'){
                         lst[i].selectedIndex=0;
@@ -2452,8 +3436,9 @@ class __ig1{
     fermer_la_sous_fenetre( mat , d ){
         try{
             this.#la_sous_fenetre1.removeAttribute( 'style' );
+            this.#la_sous_fenetre1.className='';
         } catch {}
-        document.getElementById( 'vv_sous_fenetre1' ).innerHTML='';
+        this.maj_htm2( 'vv_sous_fenetre1' , '' );
         this.#la_sous_fenetre1.close();
         return({"__xst" : __xsu});
     }
@@ -2478,7 +3463,16 @@ class __ig1{
             }
         }
         document.getElementById( nom_champ_dans_parent2 ).value=id2;
-        document.getElementById( nom_libelle_dans_parent2 ).innerHTML=libelle2;
+        this.maj_htm2( nom_libelle_dans_parent2 , '<div>' + libelle2 + '</div>' );
+        try{
+            if(document.getElementById( nom_champ_dans_parent2 ).parentNode.tagName.toUpperCase() === 'LABEL'){
+                let lst=document.getElementById( nom_champ_dans_parent2 ).parentNode.querySelectorAll( '[data-libelle_de="' + nom_champ_dans_parent2 + '"]' );
+                if(lst.length === 1){
+                    lst[0].style.fontWeight='bold';
+                    lst[0].style.opacity='1';
+                }
+            }
+        }catch(e){}
         this.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
@@ -2489,9 +3483,10 @@ class __ig1{
         let contenu_a_afficher='<div id="vv_les_messages_dans_la_sous_fenetre"></div>';
         contenu_a_afficher+=le_cheml;
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
-        vv_sous_fenetre1.innerHTML=contenu_a_afficher;
+        vv_sous_fenetre1.style.maxWidth='80vw';
+        vv_sous_fenetre1.style.minWidth='min(80vw, ' + this.css_dimensions.t_fenetre + 'px)';
+        this.maj_htm1( vv_sous_fenetre1 , contenu_a_afficher );
         vv_sous_fenetre1.showModal();
-        this.ajoute_les_evenements_aux_boutons( null );
         return({"__xst" : __xsu});
     }
     /*
@@ -2523,31 +3518,33 @@ class __ig1{
             p.setAttribute( 'data-numero_page' , __num_page - 1 );
             p.classList.remove( 'yy_suivant_precedent_inactif' );
             p.classList.add( 'yy_suivant_precedent_actif' );
+            p.classList.add( 'yy_suivant_precedent_actif' );
+            p.removeAttribute( 'disabled' );
         }else{
             p.setAttribute( 'data-numero_page' , '-1' );
             p.classList.add( 'yy_suivant_precedent_inactif' );
             p.classList.remove( 'yy_suivant_precedent_actif' );
+            p.setAttribute( 'disabled' , 'true' );
         }
         let s=document.getElementById( 'vv_ecran_liste_bouton_suivants' );
         if(__debut + __nbMax < __nbEnregs){
             s.classList.remove( 'yy_suivant_precedent_inactif' );
             s.classList.add( 'yy_suivant_precedent_actif' );
             s.setAttribute( 'data-numero_page' , __num_page + 1 );
+            s.removeAttribute( 'disabled' );
         }else{
             s.classList.remove( 'yy_suivant_precedent_actif' );
             s.classList.add( 'yy_suivant_precedent_inactif' );
             s.setAttribute( 'data-numero_page' , '-1' );
+            s.setAttribute( 'disabled' , 'true' );
         }
         let t='';
         t+='page ';
-        t+='<div style="display:inline-block;min-width:2em;text-align:right;">' + (__num_page + 1) + '</div>';
+        t+='<div style="display:inline-block;min-width:1em;text-align:right;">' + (__num_page + 1) + '</div>';
         t+='/';
-        t+='<div style="display:inline-block;min-width:2em;text-align:left;">' + Math.ceil( __nbEnregs / __nbMax ) + '</div>';
-        t+=' (';
-        t+='<div style="display:inline-block;min-width:3em;text-align:left;">' + __nbEnregs + '</div>';
-        t+=' enregistrements )';
-        let z=document.getElementById( 'vv_ecran_liste_zone_pages' );
-        z.innerHTML=t;
+        t+='<div style="display:inline-block;min-width:1em;text-align:left;">' + Math.ceil( __nbEnregs / __nbMax ).toLocaleString( undefined ) + '</div>';
+        t+=' (<div style="display:inline-block;min-width:3em;text-align:left;">' + __nbEnregs.toLocaleString( undefined ) + '</div> enregistrements)';
+        this.maj_htm2( 'vv_ecran_liste_zone_pages' , t );
     }
     /*
       =============================================================================================================
@@ -2556,7 +3553,7 @@ class __ig1{
         let o1='';
         if(le_colis11 !== null){
             /* && le_colis11.__xva.__formulaire1 !== null]{ */
-            document.getElementById( 'vv_ecran_liste_boutons_avant' ).innerHTML=vv_ecran_liste_boutons_avant;
+            this.maj_htm2( 'vv_ecran_liste_boutons_avant' , vv_ecran_liste_boutons_avant );
             this.construire_navigation_pour_liste( /*  */ le_colis11.__xva.__debut , le_colis11.__xva.__nbMax , le_colis11.__xva[fonction_liste].nombre , le_colis11.__xva.__num_page );
         }
         return o1;
@@ -2591,12 +3588,12 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    fi2( s ){
-        if(s === null){
+    fi3( s ){
+        if(s === null || s === undefined){
             return '';
         }
         let t=s + '';
-        return(t.replace( /&/g , '&amp;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ));
+        return(t.replace( /&quot;/g , '"' ).replace( /&gt;/g , '>' ).replace( /&lt;/g , '<' ).replace( /&amp;/g , '&' ));
     }
     /*
       =============================================================================================================
@@ -2615,6 +3612,36 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    fi2( s ){
+        if(s === null || s === undefined){
+            return '';
+        }
+        let t=s + '';
+        return(t.replace( /&/g , '&amp;' ).replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ));
+    }
+    /*
+      =============================================================================================================
+    */
+    est_entier( mot ){
+        if( typeof mot === 'number'){
+            let texte_mot=String( mot );
+            if(texte_mot.indexOf( '.' ) >= 0){
+                return false;
+            }
+            return true;
+        }
+        if( typeof mot !== 'string'){
+            return false;
+        }
+        if(mot.indexOf( '.' ) >= 0){
+            return false;
+        }
+        var le_test=!isNaN( mot ) && !isNaN( parseInt( mot , 10 ) );
+        return le_test;
+    }
+    /*
+      =============================================================================================================
+    */
     est_num( mot ){
         if( typeof mot === 'number'){
             return true;
@@ -2629,6 +3656,9 @@ class __ig1{
       =============================================================================================================
     */
     est_entier_positif( mot ){
+        if(!this.est_entier( mot )){
+            return false;
+        }
         if(!this.est_num( mot )){
             return false;
         }
@@ -2740,12 +3770,12 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    supprimer_les_messages( mat ){
+    supprimer_les_messages( mat=[] ){
         let a1=document.getElementById( 'vv_les_messages_dans_la_sous_fenetre' );
         if(a1 === null){
             a1=document.getElementById( 'vv_messages' );
         }
-        a1.innerHTML='';
+        this.maj_htm1( a1 , '' );
         a1.style.visibility='hidden';
         return({"__xst" : __xsu});
     }
@@ -2761,9 +3791,10 @@ class __ig1{
         /* ancien empiler_erreur */
         let message='';
         if(obj.hasOwnProperty( '__xme' )){
-            message=obj.__xme;
+            if( typeof obj.__xme === 'string'){
+                message=obj.__xme.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            }
         }
-        message=message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
         try{
             let t='';
             let la_zone='vv_les_messages_dans_la_sous_fenetre';
@@ -2773,31 +3804,36 @@ class __ig1{
                 a1=document.getElementById( la_zone );
             }
             let la_classe=this.est_num( obj.__xst ) ? ( 'yy__' + obj.__xst ) : ( 'yy' + obj.__xst );
+            if(message === '__nur_ko1_'){
+                let tt='';
+                tt+='<div style="display:flex;">';
+                tt+='<div>';
+                tt+='cet enregistrement a été mis à jour par un autre utilisateur<br />veuillez recharger la page et modifier à nouveau';
+                tt+='</div>';
+                tt+='<div>';
+                tt+='<button class="yy__bcar1 yy__1" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</button>';
+                tt+='</div>';
+                tt+='</div>';
+                message=tt;
+            }
             if(obj.hasOwnProperty( 'lig_col' )){
-                t+='<div';
-                t+=' class="rev_bouton ' + la_classe + '"';
-                t+=' data-rev_click="';
+                t+='<button class="yy_b1 ' + la_classe + '"  rev_clic1="';
                 t+='m1(n1(__fnt1),f1(placer_le_curseur_en_lig_col1(';
                 t+=' zone_source(' + (obj.zone_edition === undefined ? ( __ig1.zone_d_edition_en_cours ) : ( obj.zone_edition )) + '),';
                 t+=' ligne(' + obj.lig_col[0] + '),';
                 t+=' colonne(' + obj.lig_col[1] + '),';
                 t+=')))';
-                t+='" ';
-                t+=' title="aller à la ligne" ';
-                t+='>lig_col[' + obj.lig_col[0] + ',' + obj.lig_col[1] + ']</div>';
-                t='<div class="' + la_classe + '">' + t + message + '</div>';
-            }else{
-                t='<div class="' + la_classe + '">' + message + '</div>';
+                t+='" title="aller à la ligne" >lig_col[' + obj.lig_col[0] + ',' + obj.lig_col[1] + ']</button>';
+                message=t + message;
             }
+            t='<div class="' + la_classe + '">' + message + '</div>';
             if(a1.innerHTML === ''){
-                a1.innerHTML=t;
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm1( a1 , t );
             }else{
                 let temp=document.createElement( 'div' );
                 temp.setAttribute( 'class' , la_classe );
-                temp.innerHTML=t;
+                this.maj_htm1( temp , t );
                 a1.insertBefore( temp , document.getElementById( la_zone ).firstChild );
-                this.ajoute_les_evenements_aux_boutons();
             }
         }catch(e2){
             console.log( '%ce2=' + e2.stack , 'background:yellow;color:black;' );
@@ -2838,23 +3874,25 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    #quand_change_ou_entree( e ){
-        e.stopPropagation();
-        let elt=e.target;
-        let action=elt.getAttribute( 'data-rev_change_ou_entree' );
-        do{
-            if(action === null){
-                elt=elt.parentNode;
-                action=elt.getAttribute( 'data-rev_change_ou_entree' );
-            }
-        }while(action === null);
-        if(action !== null){
-            /* console.log( 'action=' , action ,e ); */
-            elt.classList.add( 'yy_invisible' );
-            this.#boutons_masques_avant_appel.push( elt );
-            this.#action_change_ou_entree( e , action );
-        }
-    }
+    /*
+      #quand_change_ou_entree( e ){
+      e.stopPropagation();
+      let elt=e.target;
+      let action=elt.getAttribute( 'data-rev_change_ou_entree' );
+      do{
+      if(action === null){
+      elt=elt.parentNode;
+      action=elt.getAttribute( 'data-rev_change_ou_entree' );
+      }
+      }while(action === null);
+      if(action !== null){
+      // console.log( 'action=' , action ,e ); 
+      elt.classList.add( 'yy_invisible' );
+      this.#boutons_masques_avant_appel.push( elt );
+      this.#action_change_ou_entree( e , action );
+      }
+      }
+    */
     /*
       =============================================================================================================
     */
@@ -2882,7 +3920,7 @@ class __ig1{
     */
     #blur_sur_editeur1( e ){
         try{
-            this.#vv_div_des_positions_du_curseur.innerHTML='';
+            this.maj_htm1( this.#vv_div_des_positions_du_curseur , '' );
         } catch {}
     }
     /*
@@ -2908,7 +3946,7 @@ class __ig1{
             let lng=zoneSource.value.substr( 0 , zoneSource.selectionStart ).split( '\n' ).length;
             le_texte_a_afficher+=' [' + lng + ']';
         }
-        this.#vv_div_des_positions_du_curseur.innerHTML=le_texte_a_afficher;
+        this.maj_htm1( this.#vv_div_des_positions_du_curseur , le_texte_a_afficher );
         this.derniere_zone_editee=zoneSource;
         this.position_dans_la_derniere_zone_editee=zoneSource.selectionStart;
         var ttt=zoneSource.getBoundingClientRect();
@@ -2928,7 +3966,7 @@ class __ig1{
         var tabtext=[];
         /* var elem=this.#global_tableau_des_textareas[e.target.id]; */
         var zoneSource=document.getElementById( e.target.id );
-        this.#vv_div_des_positions_du_curseur.innerHTML=zoneSource.selectionStart;
+        this.maj_htm1( this.#vv_div_des_positions_du_curseur , zoneSource.selectionStart );
         this.derniere_zone_editee=zoneSource;
         this.position_dans_la_derniere_zone_editee=zoneSource.selectionStart;
         var ttt=zoneSource.getBoundingClientRect();
@@ -3014,116 +4052,6 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    quand_click( e ){
-        try{
-            e.stopPropagation();
-        } catch {}
-        let elt=e.target;
-        let action_rev=elt.getAttribute( 'data-rev_click' );
-        do{
-            if(action_rev === null){
-                elt=elt.parentNode;
-                action_rev=elt.getAttribute( 'data-rev_click' );
-            }
-        }while(action_rev === null);
-        if(action_rev === null || action_rev === ''){
-            this.ajoute_message( {"__xst" : __xer ,"__xme" : 'l\'action_rev n\'est pas définie ' + this.nl2()} );
-            this.affiche_les_messages();
-            return({"__xst" : __xer ,"__xme" : this.nl2()});
-        }
-        let source=action_rev + '';
-        let obj1=this.__rev1.rev_tcm( source );
-        if(obj1.__xst !== __xsu){
-            this.ajoute_message( {
-                    "__xst" : __xer ,
-                    "__xme" : 'erreur de convertion de source en matrice sur le click <br /><br /><b>' + source + '</b><br /><br />' + this.nl2() + '<br />' + obj1.__xme
-                } );
-            this.affiche_les_messages();
-            __ig1.fermer_la_sous_fenetre();
-            return({"__xst" : __xer ,"__xme" : this.nl2()});
-        }
-        elt.classList.add( 'yy_invisible' );
-        if(this.#liste_des_appels_au_serveur.length > 0){
-            this.ajoute_message( {"__xst" : __xal ,"__xme" : 'Un appel au serveur est déjà en cours '} );
-            this.affiche_les_messages();
-        }
-        try{
-            document.getElementById( 'vv_div_des_positions_du_curseur' ).innerHTML='';
-        } catch {}
-        this.#boutons_masques_avant_appel.push( elt );
-        let mat=obj1.__xva;
-        let obj=this.__xac( mat , 0 , null , e );
-        if(obj.__xst === __xer){
-            this.ajoute_message( {
-                    "__xst" : __xer ,
-                    "__xme" : 'le source de quand_clic :<br /><b>' + source + '</b><br /> ne provoque pas d\'action fo1() , pm1() ou m1()' + this.nl2()
-                } );
-            this.affiche_les_messages();
-            this.retablir_les_boutons_masques();
-            return({"__xst" : __xer ,"__xme" : this.nl2()});
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    ajoute_les_evenements_aux_boutons(){
-        /* console.log('ajoute_les_evenements_aux_boutons'); */
-        let lst=document.querySelectorAll( "[data-rev_menu]" );
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(!lst[i].getAttribute( 'data-rev_event' )){
-                lst[i].setAttribute( "data-rev_event" , "1" );
-                /* console.log('traite menu de ', lst[i] ) */
-                this.traite_menu( lst[i] );
-            }
-        }
-        /* les zones cliquables */
-        lst=document.querySelectorAll( "[data-rev_click]" );
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(!lst[i].getAttribute( 'data-rev_event_click' )){
-                lst[i].addEventListener( "click" , this.quand_click.bind( this ) );
-                if(lst[i].nodeName.toLowerCase() === 'input' || lst[i].nodeName.toLowerCase() === 'textarea'){
-                    lst[i].addEventListener( "touchend" , this.quand_click.bind( this ) );
-                }else{
-                    lst[i].addEventListener( "keyup" , this.quand_keyup.bind( this ) );
-                }
-                lst[i].setAttribute( "data-rev_event_click" , "1" );
-                lst[i].setAttribute( "tabindex" , 0 );
-            }
-        }
-        /* les "inputs" par exemple pour les sliders cliquables */
-        lst=document.querySelectorAll( "[data-rev_change_ou_entree]" );
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(!lst[i].getAttribute( 'data-rev_event_change_ou_entree' )){
-                lst[i].addEventListener( "click" , this.#quand_change_ou_entree.bind( this ) );
-                lst[i].addEventListener( "input" , this.#quand_change_ou_entree.bind( this ) );
-                lst[i].addEventListener( "touchend" , this.#quand_change_ou_entree.bind( this ) );
-                lst[i].addEventListener( "keyup" , this.#quand_change_ou_entree.bind( this ) );
-                lst[i].setAttribute( "data-rev_event_change_ou_entree" , "1" );
-            }
-        }
-        lst=document.querySelectorAll( "[data-rev_change]" );
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(!lst[i].getAttribute( 'data-rev_event_change' )){
-                lst[i].addEventListener( "change" , this.quand_change.bind( this ) );
-                lst[i].setAttribute( "data-rev_event_change" , "1" );
-            }
-        }
-        lst=document.querySelectorAll( "[data-editeur1]" );
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(!lst[i].getAttribute( 'data-rev_event' )){
-                /* lst[i].addEventListener( 'keydown' , this.#keydown_sur_editeur1.bind( this ) ); */
-                /* blur=lost focus */
-                lst[i].addEventListener( 'blur' , this.#blur_sur_editeur1.bind( this ) );
-                lst[i].addEventListener( 'mouseup' , this.#mouse_up_sur_editeur1.bind( this ) );
-                lst[i].addEventListener( 'keyup' , this.#analyse_key_up_editeur1.bind( this ) );
-                lst[i].setAttribute( "data-rev_event" , "1" );
-            }
-        }
-    }
-    /*
-      =============================================================================================================
-    */
     affiche_les_messages( obj=null , le_colis11=null ){
         if(obj !== null && !Array.isArray( obj )){
             this.ajoute_message( obj );
@@ -3155,29 +4083,25 @@ class __ig1{
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.style.position='sticky';
-                vv_supprimer_les_messages.innerHTML=texte_a_afficher;
-                vv_supprimer_les_messages.style.top='0';
+                this.maj_htm1( vv_supprimer_les_messages , texte_a_afficher );
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
             }else{
                 a1.style.visibility='visible';
                 let vv_supprimer_les_messages=document.createElement( 'div' );
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-                vv_supprimer_les_messages.style.position='sticky';
-                vv_supprimer_les_messages.style.top='0';
                 let t='';
-                t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
+                t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>';
                 if(dans_sous_fenetre === false){
-                    t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-                    t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                    t+='<button class="yy_svg1 yy__1" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
+                    t+='<button class="yy_svg1 yy__3" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
                 }
-                vv_supprimer_les_messages.innerHTML=t;
+                this.maj_htm1( vv_supprimer_les_messages , t );
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
                 for( let i=0 ; i < cumul.length ; i++ ){
                     let div1=document.createElement( 'div' );
                     div1.className='yy__' + cumul[i][0];
-                    div1.innerHTML=cumul[i][1];
+                    this.maj_htm1( div1 , cumul[i][1] );
                     a1.appendChild( div1 );
                 }
             }
@@ -3185,17 +4109,14 @@ class __ig1{
             let vv_supprimer_les_messages=document.createElement( 'div' );
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
-            vv_supprimer_les_messages.style.position='sticky';
-            vv_supprimer_les_messages.style.top='0';
             let t='';
-            t+='<div class="rev_bouton yy__2 " data-rev_click="m1(n1(__ig1),f1(supprimer_les_messages()))">Supprimer les messages</div>';
+            t+='<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>';
             if(dans_sous_fenetre === false){
-                t+='<div style="min-width:2.5em;" class="rev_bouton yy__1" data-rev_click="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + this.les_svg.retrecir + '</div>';
-                t+='<div class="rev_b_svg yy__3" style="transform: translate(0, 3px);" data-rev_click="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</div>';
+                t+='<button class="yy_svg1 yy__1" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(agrandir_la_zone_message()))" title="agrandir/retrécir la zone messages">' + this.les_svg.agrandir + '</button>';
+                t+='<button class="yy_svg1 yy__3" style="margin:0;" rev_clic1="m1(n1(__ig1),f1(masquer_la_zone_message()))" title="masquer la zone messages">' + this.les_svg.masquer + '</button>';
             }
-            vv_supprimer_les_messages.innerHTML=t;
+            this.maj_htm1( vv_supprimer_les_messages , t );
             a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
-            this.ajoute_les_evenements_aux_boutons();
             if(dans_sous_fenetre === true){
                 if(a1.innerHTML.indexOf( 'class="yy__0"' ) >= 0 || a1.innerHTML.indexOf( 'class="yy__2"' ) >= 0){
                     try{
@@ -3206,7 +4127,6 @@ class __ig1{
         }
         try{
             a1.style.visibility='visible';
-            this.ajoute_les_evenements_aux_boutons();
         }catch(e2){}
         if(this.#timeout_de_dispatition_de_message === null){
             this.#timeout_de_dispatition_de_message=setTimeout( this.#faire_disparaitre_les_messages_OK.bind( this ) , 1000 );
@@ -3306,6 +4226,7 @@ class __ig1{
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
         let hash=obj1.__xva;
+        this.#redirecting=true;
         window.location.hash='#' + hash;
         return({"__xst" : __xsu});
     }
@@ -3315,12 +4236,12 @@ class __ig1{
     init0( mat , d , __xva_param ){
         try{
             if(this._CA_ === 1){
-                document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="projet ' + __xva_param.chi_id_projet + '" style="margin:auto;">p' + __xva_param.chi_id_projet + '/' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>';
+                this.maj_htm2( 'vv_info_projet' , '<div class="yy_texte_clair_fond_fonce" title="projet ' + __xva_param.chi_id_projet + '" style="margin:auto;">p' + __xva_param.chi_id_projet + '/' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>' );
             }else{
                 if(__xva_param.chi_id_utilisateur === 0){
-                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chi_id_utilisateur + '" style="margin:auto;"></div>';
+                    this.maj_htm2( 'vv_info_projet' , '<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chi_id_utilisateur + '" style="margin:auto;"></div>' );
                 }else{
-                    document.getElementById( 'vv_info_projet' ).innerHTML='<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chp_nom_de_connexion_utilisateur + '" style="margin:auto;">' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>';
+                    this.maj_htm2( 'vv_info_projet' , '<div class="yy_texte_clair_fond_fonce" title="utilisateur ' + __xva_param.chp_nom_de_connexion_utilisateur + '" style="margin:auto;">' + __xva_param.chp_nom_de_connexion_utilisateur.substr( 0 , 3 ) + '</div>' );
                 }
             }
         } catch {}
@@ -3335,16 +4256,16 @@ class __ig1{
         for( let i=0 ; i < lst.length ; i++ ){
             if(lst[i].tagName.toLowerCase() === 'select'){
                 if(lst[i].getAttribute( 'data-id_menu' ) === id){
-                    lst[i].classList.add( 'rev_bouton_actif' );
+                    lst[i].classList.add( 'yy_b1_actif' );
                 }else{
                     lst[i].selectedIndex=0;
-                    lst[i].classList.remove( 'rev_bouton_actif' );
+                    lst[i].classList.remove( 'yy_b1_actif' );
                 }
             }else{
                 if(lst[i].getAttribute( 'data-id_menu' ) === id){
-                    lst[i].classList.add( 'rev_bouton_actif' );
+                    lst[i].classList.add( 'yy_b1_actif' );
                 }else{
-                    lst[i].classList.remove( 'rev_bouton_actif' );
+                    lst[i].classList.remove( 'yy_b1_actif' );
                 }
             }
         }
@@ -3353,9 +4274,71 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    maj_htm2( nzt , t ){
+        /* mise à jour par nom de zone en texte */
+        document.getElementById( nzt ).innerHTML=t;
+        if(false && this.__deverminage === 2){
+            let re=document.getElementById( nzt );
+            let lst1=re.getElementsByTagName( '*' );
+            for( let i=0 ; i < lst1.length ; i++ ){
+                let lst2=lst1[i].getAttributeNames( '*' );
+                for(let j in lst2){
+                    try{
+                        if(lst2[j].substr( 0 , 4 ) === 'rev_' && !['button','input','select'].includes( lst1[i].tagName.toLowerCase() )){
+                            console.log( '%ctag à passer en button' , 'color:red;background:yellow;' , lst1[i] );
+                        }
+                    }catch(ee){
+                        debugger;
+                    }
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    maj_htm1( z , t ){
+        if( typeof z === 'string'){
+            document.getElementById( z ).innerHTML=t;
+        }else{
+            z.innerHTML=t;
+        }
+        if(this.__deverminage === 2){
+            let re=null;
+            if( typeof z === 'string'){
+                re=document.getElementById( z );
+            }else{
+                re=z;
+            }
+            let lst1=re.getElementsByTagName( '*' );
+            for( let i=0 ; i < lst1.length ; i++ ){
+                let lst2=lst1[i].getAttributeNames( '*' );
+                for(let j in lst2){
+                    try{
+                        if(lst2[j].substr( 0 , 4 ) === 'rev_' && !['button','input','select'].includes( lst1[i].tagName.toLowerCase() )){
+                            console.log( '%ctag à passer en button' , 'color:red;background:yellow;' , lst1[i] );
+                        }
+                    }catch(ee){
+                        debugger;
+                    }
+                }
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
     maj_contenu_principal( t ){
-        document.getElementById( 'vv_contenu_principal' ).innerHTML=t;
-        this.ajoute_les_evenements_aux_boutons();
+        this.maj_htm2( 'vv_contenu_principal' , t );
+        let lst1=document.querySelectorAll( "[data-editeur1]" );
+        for( let i=0 ; i < lst1.length ; i++ ){
+            if(!lst1[i].getAttribute( 'data-rev_event' )){
+                lst1[i].addEventListener( 'blur' , this.#blur_sur_editeur1.bind( this ) );
+                lst1[i].addEventListener( 'mouseup' , this.#mouse_up_sur_editeur1.bind( this ) );
+                lst1[i].addEventListener( 'keyup' , this.#analyse_key_up_editeur1.bind( this ) );
+                lst1[i].setAttribute( "data-rev_event" , "1" );
+            }
+        }
         window.scrollTo( {"top" : 0 ,"left" : 0 ,"behavior" : "smooth"} );
         return({"__xst" : __xsu});
     }
@@ -3390,7 +4373,9 @@ class __ig1{
         let nom_du_style='';
         let dimension='';
         let valeur_constante='';
+        let type_constante=0;
         let nom_de_la_classe='';
+        let nom_du_champ='';
         for( let k=d + 1 ; k < l01 ; k=mat[k][12] ){
             if(mat[k][1] === 'maj_hash' && mat[k][2] === 'f'){
                 debugger;
@@ -3413,17 +4398,21 @@ class __ig1{
                         nom_de_la_classe=mat[l + 1][1];
                     }else if(mat[l][1] === 'dimension' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
                         dimension=mat[l + 1][1];
+                    }else if(mat[l][1] === 'nom_du_champ' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
+                        nom_du_champ=mat[l + 1][1];
                     }else if(mat[l][1] === 'valeur_constante' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
                         valeur_constante=mat[l + 1][1];
+                        type_constante=mat[l + 1][4];
                     }
                 }
             }
         }
         if(this.avec_maj_de_hash === __xsu){
+        }else if(id !== '' && type_cible === 'valeur_de_champ' && nom_du_champ !== ''){
+            document.getElementById( id ).value=document.getElementById( nom_du_champ ).value;
         }else if(id !== '' && type_cible === 'inner_html' && xva !== '' && le_colis11 !== null){
             try{
-                document.getElementById( id ).innerHTML=le_colis11.__xva[xva];
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm2( id , le_colis11.__xva[xva] );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3431,8 +4420,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'inner_html' && valeur_de_champ !== ''){
             try{
-                document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm2( id , document.getElementById( valeur_de_champ ).value );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3440,8 +4428,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'libelle_html'){
             try{
-                document.getElementById( id ).innerHTML=valeur_constante;
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm2( id , valeur_constante );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3449,7 +4436,11 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'valeur_constante'){
             try{
-                document.getElementById( id ).value=valeur_constante;
+                if(type_constante === 1){
+                    document.getElementById( id ).value=valeur_constante.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' );
+                }else{
+                    document.getElementById( id ).value=valeur_constante;
+                }
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3549,8 +4540,7 @@ class __ig1{
         if(this.avec_maj_de_hash === __xsu){
         }else if(id !== '' && type_cible === 'inner_html' && xva !== '' && le_colis11 !== null){
             try{
-                document.getElementById( id ).innerHTML=le_colis11.__xva[xva];
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm2( id , le_colis11.__xva[xva] );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3558,8 +4548,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'inner_html' && valeur_de_champ !== ''){
             try{
-                document.getElementById( id ).innerHTML=document.getElementById( valeur_de_champ ).value;
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm2( id , document.getElementById( valeur_de_champ ).value );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3567,8 +4556,7 @@ class __ig1{
             }
         }else if(id !== '' && type_cible === 'libelle_html'){
             try{
-                document.getElementById( id ).innerHTML=valeur_constante;
-                this.ajoute_les_evenements_aux_boutons();
+                this.maj_htm2( id , valeur_constante );
             }catch(e){
                 this.ajoute_message( {"__xst" : __xer ,"__xme" : 'Erreur de mise à jour du contenu ' + this.nl2( e )} );
                 this.affiche_les_messages();
@@ -3661,10 +4649,37 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    rendu_lst_grandeur1( chi_id_bdd , chi_id_grandeur ){
+        let lst='';
+        try{
+            if(this.est_num( chi_id_grandeur )){
+                if(this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond
+                       && this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond !== ''
+                ){
+                    lst+='<div style="display:inline-block;';
+                    lst+='color:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_texte + ';';
+                    lst+='background:' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__couleur_fond + ';';
+                    lst+='">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__cle + '</div> ';
+                }else{
+                    lst+='<div style="display:inline-block;">' + this.__liste_des_grandeurs[chi_id_bdd][chi_id_grandeur].__cle + '</div>';
+                }
+            }else{
+                lst+='<div style="display:inline-block;"></div>';
+            }
+        }catch(e){
+            console.log( '%c erreur sur chi_id_grandeur=' + chi_id_grandeur , 'background:red;color:yellow;' );
+            lst='<span class="yy__0" style="font-size:1.3em;">Erreur</span>';
+        }
+        return lst;
+    }
+    /*
+      =============================================================================================================
+    */
     affiche_page_d_accueil( mat , d , le_colis11 ){
         let l01=mat.length;
         let t='';
         let tri_affiche=false;
+        let un_menu_active=false;
         /* t+='<input type="text" style="margin:10px;"/>'; */
         t+='<h1>Accueil</h1>';
         t+='<div style="text-align:center;border:1px red solid;margin:0 auto;width:fit-content;height:' + (2 * this.css_dimensions.t_border + this.css_dimensions.t_police) + 'px;">';
@@ -3678,10 +4693,11 @@ class __ig1{
         t+='<div>\r\n';
         for( let i=0 ; i < this.stockage_local['parametres']['--bidon'].valeur ; i++ ){
             t+='<span>&nbsp;bidon=' + (i + 1) + '</span><br />';
-            if(false && i === 3){
+            if(true && i === 30){
                 for( let j=0 ; j <= 4 ; j++ ){
-                    t+='<div class="rev_bouton yy__' + j + '" data-rev_click="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</div><br />';
+                    t+='<button class="yy_b1 yy__' + j + '"  rev_clic1="m1(n1(' + this.moi + '),f1(exemple_de_message(numero(' + j + '))))" title="exemple de message">exemple de message ' + j + '</button>';
                 }
+                t+='<br />';
             }
             if(false && i === 8){
                 tri_affiche=true;
@@ -3717,44 +4733,45 @@ class __ig1{
                 t+='</div>';
             }
             /* ici un exemple de sous menu */
-            if(true && i === 8){
+            if(false && i === 8){
+                un_menu_active=true;
                 t+='<div style="display:flex;">';
                 /*
                   
                 */
-                t+='<ul data-rev_menu="1" id="vv_menu_bidon1">';
+                t+='<ul data-rev_menu="1" id="vv_menu_bidon1" style="display:none;">';
                 t+=' <li>';
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un menu dans la page</div>';
                 t+='  <ul>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</div>';
+                t+='     <button class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil</button>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(\'\'))))" title="liste des taches">taches 1</div>';
+                t+='     <button class="yy_b1"  rev_clic1="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(\'\'))))" title="liste des taches">taches 1</button>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</div>';
+                t+='     <button class="yy_b1"  rev_clic1="pm1(m1(n1(dossiers1),f1(liste1())))" title="liste des dossiers">dossiers 1</button>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</div>';
+                t+='     <button class="yy_b1"  rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))" title="convertion de js">convertion de js</button>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</div>';
+                t+='     <button class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 1</button>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</div>';
+                t+='     <button class="yy_b1"  rev_clic1="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 1</button>';
                 t+='   </li>';
                 t+='   <li>';
-                t+='     <div class="rev_bouton" data-rev_click="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</div>';
+                t+='     <button class="yy_b1"  rev_clic1="m1(n1(x_ecran_coordonnees1),f1(entree_module()))" title="mes coordonnées">mes coordonnées</button>';
                 t+='   </li>';
                 t+='   <li>';
                 t+='     bla';
                 t+='     <ul>';
                 t+='       <li>';
-                t+='         <div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</div>';
+                t+='         <button class="yy_b1"  rev_clic1="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 11</button>';
                 t+='       </li>';
                 t+='       <li>';
-                t+='         <div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</div>';
+                t+='         <button class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 11</button>';
                 t+='       </li>';
                 t+='     </ul>';
                 t+='   </li>';
@@ -3764,13 +4781,13 @@ class __ig1{
                 /*
                   
                 */
-                t+='<ul data-rev_menu="1" id="vv_menu_bidon2">';
+                t+='<ul data-rev_menu="1" id="vv_menu_bidon2" style="display:none;">';
                 t+=' <li>';
                 t+='  <div data-separateur="0" data-libelle_noeud_menu1="0">un autre menu</div>';
                 t+='  <ul>';
-                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</div></li>';
-                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</div></li>';
-                t+='   <li><div class="rev_bouton" data-rev_click="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(99))))" title="liste des taches">taches 2</div></li>';
+                t+='   <li><button class="yy_b1"  rev_clic1="m1(n1(__ig1),f1(affiche_page_d_accueil()))" title="accueil">accueil 2</button></li>';
+                t+='   <li><button class="yy_b1"  rev_clic1="m1(n1(projets1),f1(entree_module()))" title="liste des projets">projets 2</button></li>';
+                t+='   <li><button class="yy_b1"  rev_clic1="m1(n1(taches1),f1(entree_module(T0_che_priorite_tache2(99))))" title="liste des taches">taches 2</button></li>';
                 t+='  </ul>';
                 t+=' </li>';
                 t+='</ul>';
@@ -3787,15 +4804,15 @@ class __ig1{
                 "hauteur_max_en_vh" : /* entre 20 et 80 */20 ,
                 "largeur_max" : /* 'calc(100% - 50px)', */'340px' ,
                 "afficher_le_bouton_supprimer" : 0 ,
-                "class_du_bouton_supprimer" : 'rev_bouton yy__0' ,
+                "class_du_bouton_supprimer" : 'yy_b1 yy__0' ,
                 "arborescent" : 1 ,
-                "class_du_bouton_deplacer" : 'rev_bouton' ,
+                "class_du_bouton_deplacer" : 'yy_b1' ,
                 "boutons_du_menu" : [] ,
-                "class_du_bouton_menu" : 'rev_bouton' ,
-                "class_du_bouton_replier" : 'rev_bouton yy__2'
+                "class_du_bouton_menu" : 'yy_b1' ,
+                "class_du_bouton_replier" : 'yy_b1 yy__2'
             };
             options['afficher_le_bouton_editer']=0;
-            options['class_du_bouton_editer']='rev_bouton yy__xif';
+            options['class_du_bouton_editer']='yy_b1 yy__xif';
             import( './f0?n0=_tri_arbre1_c.js&__version=' + this.__version ).then( ( le_module ) => {
                     let aa=new le_module['_tri_arbre1']( this );
                     aa.construire_arbre( 'vv_tri_bidon1' , options );
@@ -3803,9 +4820,19 @@ class __ig1{
                     bb.construire_arbre( 'vv_tri_bidon2' , options );
             } );
         }
+        if(un_menu_active === true){
+            let lst=document.querySelectorAll( "[data-rev_menu]" );
+            for( let i=0 ; i < lst.length ; i++ ){
+                if(!lst[i].getAttribute( 'data-rev_event' )){
+                    lst[i].setAttribute( "data-rev_event" , "1" );
+                    /* console.log('traite menu de ', lst[i] ) */
+                    this.traite_menu( lst[i] );
+                }
+            }
+        }
         this.activer_menu( '-1' );
         this.maj_hash( mat , 0 );
-        this.#date_derniere_navigation=performance.now();
+        this.date_derniere_navigation=performance.now();
         this.maj_title_htm1( 'accueil' );
         return({"__xst" : __xsu});
     }
@@ -3824,7 +4851,16 @@ class __ig1{
         if(mat !== null && mat[d][8] > 0){
             let l01=mat.length;
             for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][1] === 'raz_filtres1' && mat[i][2] === 'f' && mat[i][8] === 0){
+                    for(let j in that.filtres[that.fonction_liste]){
+                        that.filtres[that.fonction_liste][j]='';
+                    }
+                }
+            }
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
                 if(mat[i][1] === '*' && mat[i][2] === 'f'){
+                    console.log( '%c pourquoi passe-t-on par là ?' , 'background:red;color:yellow;' );
+                    debugger;
                     for(let j in that.filtres[that.fonction_liste]){
                         that.filtres[that.fonction_liste][j]='';
                     }
@@ -3861,13 +4897,12 @@ class __ig1{
             "border_element_sous_menu" : '0px var(--c_coul_fond4) solid' ,
             "border_bloc_sous_menu" : '1px solid var(--c_coul_fond4)' ,
             "background_color" : 'var(--c_coul_fond1)' ,
-            "class_du_bouton_replier" : 'rev_bouton'
+            "class_du_bouton_replier" : 'yy_b1'
         };
         /* var menu1=new __navigation1( elt.id , options1 ); */
         /* let menu1=null; */
         import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
                 let menu1=new m['__navigation1']( elt.id , options1 , this );
-                this.ajoute_les_evenements_aux_boutons();
         } );
         return({"__xst" : __xsu});
     }
@@ -3888,12 +4923,15 @@ class __ig1{
       =============================================================================================================
     */
     executer1( rev_txt , données=null , evenement ){
+        this.__decallage_page_avant_envoi=parseInt( document.documentElement.scrollTop , 10 );
         let obj1=this.__rev1.rev_tm( rev_txt );
         if(obj1.__xst !== __xsu){
             this.ajoute_message( {"__xst" : __xer ,"__xme" : this.nl2()} );
             this.affiche_les_messages();
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
+        this.date_derniere_navigation=performance.now();
+        this.#redirecting=true;
         this.__xac( obj1.__xva , 0 , données , evenement );
         return({"__xst" : __xsu});
     }
@@ -3933,8 +4971,30 @@ class __ig1{
             document.getElementById( 'vv_bouton_connexion' ).classList.remove( 'yy__0' );
             document.getElementById( 'vv_bouton_connexion' ).classList.add( 'yy__1' );
         }
-        document.getElementById( 'vv_nav_centre' ).innerHTML=les_menu1;
-        this.ajoute_les_evenements_aux_boutons();
+        this.maj_htm2( 'vv_nav_centre' , les_menu1 );
+        /*  */
+        let lst=document.querySelectorAll( "[data-rev_menu]" );
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(!lst[i].getAttribute( 'data-rev_event' )){
+                lst[i].setAttribute( "data-rev_event" , "1" );
+                /* console.log('traite menu de ', lst[i] ) */
+                let options1={
+                    "hauteur_max_en_vh" : 80 ,
+                    "disposition_verticale" : 0 ,
+                    "border_zone_principale" : '0px yellow inset' ,
+                    "border_element_racine" : '0px blue outset' ,
+                    "border_element_sous_menu" : '0px var(--c_coul_fond4) solid' ,
+                    "border_bloc_sous_menu" : '1px solid var(--c_coul_fond4)' ,
+                    "background_color" : 'var(--c_coul_fond1)' ,
+                    "class_du_bouton_replier" : 'yy_b1'
+                };
+                /* var menu1=new __navigation1( elt.id , options1 ); */
+                /* let menu1=null; */
+                import( '/f0?n0=__navigation1_c.js&__version=' + this.__version ).then( ( m ) => {
+                        let menu1=new m['__navigation1']( lst[i].id , options1 , this );
+                } );
+            }
+        }
         this.maj_fav_icone( le_colis11._CA_ , le_colis11.chi_id_projet );
         return({"__xst" : __xsu});
     }
@@ -4005,7 +5065,7 @@ class __ig1{
     */
     connexion_socket_etablie( mat , d ){
         this.#nombre_de_tentatives_de_reconnexion_au_websocket=0;
-        document.getElementById( 'vv_info_connexion' ).innerHTML=this.les_svg.rond_vert1;
+        this.maj_htm2( 'vv_info_connexion' , this.les_svg.rond_vert1 );
         const lst=document.querySelectorAll( '.yy__bidon_reconnexion1' );
         if(lst.length > 0){
             for( let i=lst.length - 1 ; i >= 0 ; i-- ){
@@ -4016,46 +5076,6 @@ class __ig1{
         }
         return({"__xst" : __xsu});
     }
-    /*
-      =============================================================================================================
-    */
-    les_svg={
-        "poubelle" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g transform="translate(0 5)   "><path d=" m -40 -35 c 0 -15 80 -15 80 0 c 0 15 -80 15 -80 0 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:lime;stroke-width:4;"></path><path d=" M -9 -33 C -9 -47 9 -46 9 -33 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:5;"></path><path d=" m -40 -35 c 0 15 80 15 80 0 l 0 11 c 0 3 -5 5 -8 6 l 0 46 c 0 12 -64 12 -64 0 l 0 -46 c -3 -1 -8 -3 -8 -6 l 0 -11 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:lime;stroke-width:4;"></path><path d="M -32 -18 C -18 -12 18 -12 32 -18 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:4;"></path><path d="M -20 -14 L -20 35 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 0 -13 L 0 36 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 20 -14 L 20 35 " stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path></g></svg>' ,
-        "dupliquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g transform="   "><path d="M -15 -40 L -40 -40 L -40 20 L 20 20 L 20 -40 L -15 -40 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="   " style="stroke:black;fill:white;stroke-width:6;"></path><path d="M 5 -20 L -20 -20 L -20 40 L 40 40 L 40 -20 L 5 -20 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></path></g></svg>' ,
-        "agrandir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -19 -30 L 7 -26 C 10 -25 12 -23 14 -21  L 40 31 L 12 44 L 3 27 C 1 29 -2 27 -6 22 L -32 25 C -40 25 -44 12 -33 12 L -15 9 L -6 8 c 10 -3 12 -16 -3 -21 L -38 -21 C -46 -23 -45 -34 -36 -33 L -19 -30" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:6;"></path></svg>' ,
-        "retrecir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><path d="M -20 -32 L 11 -32 C 13 -32 17 -30 18 -26 L 46 31 L 17 46 L 7 26 C 5 28 1 26 -1 24 L -25 7 L -32 7 C -46 7 -46 -8 -37 -7 L -20 -8 L -7 0 A 6 5 8 1 0 -2 -16 L -18 -16 L -37 -7 C -44 -5 -50 -16 -43 -20 L -20 -32 " stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:5;"></path><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
-        "scotcher" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0  100 100"><g transform=""><path d=" M 0 0 C 36 0 65 0 100 0 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.1;fill-opacity:0.5;"></path><path stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 68 63 C 97 66 97 82 92 89  C 86 96 48 98 36 87 C 25 77 51 79 74 83 C 67 76 72 74 62 69" style="stroke:fuchsia;fill:gold;stroke-width:5;fill-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 3 28 C 10 20 20 10 27 3 C 30 10 42 26 65 47 C 67 49 66 52 64 54 C 66 56 68 58 70 60 C 68 63 63 67 60 70 C 58 68 57 67 55 65 C 53 67 49 65 47 64 C 25 39 11 30 3 28 " style="stroke:rgb(0, 0, 0);fill:fuchsia;stroke-width:4;"></path></g></svg>' ,
-        "copier_la_selection" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0  100 100"><g transform="   "></g><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path><g transform="translate(2 -2)   "><path d=" M 18 15 C 24 15 31 15 38 15 C 38 4 58 4 59 15  C 65 15 72 15 79 15 C 82 15 84 18 84 21 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 21 C 13 18 15 15 18 15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="23" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line></g></svg>' ,
-        "copier_tout" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0  100 100"><g transform="   "></g><path d=" M 0 0 H 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path><g transform="translate(2 -2)   "><path d=" M 18 15 C 24 15 31 15 38 15 C 38 4 58 4 59 15  C 65 15 72 15 79 15 C 82 15 84 18 84 21 V 89 C 84 92 82 95 79 95 H 18 C 15 95 13 92 13 89 V 21 C 13 18 15 15 18 15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></path><rect x="24" y="25" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="43" width="48" height="11" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="61" width="48" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><rect x="24" y="78" width="48" height="10" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:fuchsia;fill:fuchsia;stroke-width:4;"></rect><line x1="27" y1="30" x2="68" y2="30" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="27" y1="48" x2="68" y2="48" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="27" y1="66" x2="68" y2="66" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line><line x1="27" y1="83" x2="68" y2="83" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:aqua;fill:transparent;stroke-width:6;"></line></g></svg>' ,
-        "ensemble_vide" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><path d="M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:gold;stroke-width:0.1;fill-opacity:0.3;"></path><g transform="translate(0 2)   "><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></circle><path d=" M -40 40 l 80 -80 " stroke="rgb(0, 0, 0)" stroke-width="10" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="   "></path></g></svg>' ,
-        "dossier" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><path d="M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;fill-opacity:0.3;"></path><g transform="translate(0 2)   "></g><path d=" M -42 -18 L -42 36 L 25 36 L 41 -7  L 26 -7 L 26 -18 L -42 -18" stroke="rgb(0, 0, 0)" stroke-width="10" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:gold;stroke-width:6;"></path><path stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="square" d=" M -38 -15 C -38 -22 -35 -24 -32 -24 L -21 -24 C -19 -24 -16 -22 -16 -15 " style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></path><path d=" M -39 33 L 23 33 L 37 -4  L -24 -4 L -39 33" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:khaki;stroke-width:0.1;"></path><path d=" M 28 -7 H -23 l -17 40 " stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path></svg>' ,
-        "editer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 40 L -34 14 L -15 35  L -40 40 M -28 8 L 10 -30 L 30 -10 L -9 29 L -28 8 M 15 -35 L 20 -40 C 25 -45 45 -25 40 -20 L 35 -15 L 15 -35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:6;"></path></svg>' ,
-        "disquette" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g transform="translate(-50 -50)   "><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="miter" stroke-linecap="square" d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path></g><path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path></svg>' ,
-        "bdd" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.1;fill-opacity:0.5;"></path><rect x="-45" y="-43" width="33" height="53" stroke="rgb(0, 0, 0)" stroke-width="9" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:white;stroke-width:6;"></rect><path d=" M -38 -33 l 19 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><path d=" M -38 -21 l 19 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -38 -9 l 19 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -38 3 C -38 3 -17 3 -19 3 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><rect x="9" y="-27" width="36" height="68" stroke="rgb(0, 0, 0)" stroke-width="9" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:yellow;stroke-width:6;"></rect><path d=" M 16 -17  l 22 0" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><path d=" M 16 -5 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -12 -33 C 0 -33 -4 -5 8 -5 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:darkred;fill:white;stroke-width:6;"></path><path d="M 16 7 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 16 19 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d="M 16 31 l 22 0 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path></svg>' ,
-        "croix_carre" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -47 47 L 47 -47 M -47 -47 L 47 47 m -94 -94 l 94 0 l 0 94 l -94 0 l 0 -94 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path></svg>' ,
-        "cle" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g transform=""><path d=" M -7 7 A 24 25 48 1 1 7 -7 L 39 24 L 39 39 L 23 39 L 23 31 L 15 31 L 15 23 L 7 23 L 7 15 L 1 15 L -7 7 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:gold;stroke-width:4;"></path><circle cx="-21" cy="-21" r="6" stroke="rgb(0, 0, 0)" stroke-width="4" fill="transparent" style="stroke:red;fill:black;stroke-width:4;"></circle></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
-        "maison" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g transform="translate(0 -0.125)   "><path d=" M -47 -3 L -1 -49 L 45 -3 V 5 H 39 V 48 H -41 V 5 H -47 V -3" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:0.01;"></path><path d="M -29 45 H -41 c 0 -4 2 -8 4 -4 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:7;"></path><rect x="-23" y="-7" width="14" height="14" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:1;"></rect><rect x="5" y="-7" width="14" height="14" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:1;"></rect><rect x="5" y="21" width="14" height="14" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:deepskyblue;stroke-width:1;"></rect><rect x="-23" y="16" width="14" height="32" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></rect><path d=" M -41 -1 l 40 -40 l 40 40" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:12;"></path><path d="M 1 46 H 41 c 0 -4 -2 -8 -4 -4 " stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:lawngreen;fill:transparent;stroke-width:6;"></path></g><rect x="-50.2" y="-50.1" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
-        "message" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g transform=""><path stroke="rgb(0, 0, 0)" stroke-linejoin="miter" stroke-linecap="square" d=" M -35 -32 H 34 C 38 -32 41 -30 41 -26 V 14 C 41 18 38 21 34 21 H -14 L -30 38 V 21 H -35 C -39 21 -41 18 -41 14 V -26 C -41 -30 -39 -32 -35 -32" style="stroke:red;fill:white;stroke-width:3;"></path><circle cx="19" cy="-5" r="4" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" style="stroke:red;fill:red;stroke-width:3;"></circle><circle cx="0" cy="-5" r="4" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" style="stroke:red;fill:red;stroke-width:3;"></circle><circle cx="-19" cy="-5" r="4" stroke="rgb(0, 0, 0)" stroke-width="3" fill="transparent" style="stroke:red;fill:red;stroke-width:3;"></circle></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect></svg>' ,
-        "parametres_et_aide" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g transform=""><path d=" M 45.5 0.5 C 42.6809 1.342 36.3994 3.1903 36.3994 3.1903 C 36.3994 3.1903 35.5974 8.5108 35.5974 8.5108 C 35.5974 8.5108 43.5008 13.764 43.5008 13.764 C 43.5008 13.764 41.0437 20.0248 41.0437 20.0248 C 41.0437 20.0248 31.6769 18.5 31.6769 18.5 C 31.6769 18.5 28.646 22.9456 28.646 22.9456 C 28.646 22.9456 33.4873 31.1078 33.4873 31.1078 C 33.4873 31.1078 28.5571 35.6824 28.5571 35.6824 C 28.5571 35.6824 20.7795 30.2446 20.7795 30.2446 C 20.7795 30.2446 16.1199 32.9349 16.1199 32.9349 L 15.2929 23.152 A 27.0834 27.1852 0 1 0 -10.8375 24.9759 L -10.1106 34.9005 C -11.2293 34.4537 -15.1198 32.9349 -15.1198 32.9349 C -15.1198 32.9349 -22 39.4712 -22 39.4712 C -22 39.4712 -27.557 35.6824 -27.557 35.6824 C -27.557 35.6824 -23.9862 26.8899 -23.9862 26.8899 C -23.9862 26.8899 -27.6459 22.9456 -27.6459 22.9456 C -27.6459 22.9456 -36.6808 25.8494 -36.6808 25.8494 C -36.6808 25.8494 -40.0436 20.0248 -40.0436 20.0248 C -40.0436 20.0248 -33.0114 13.6523 -33.0114 13.6523 C -33.0114 13.6523 -34.5974 8.5108 -34.5974 8.5108 C -34.5974 8.5108 -43.9973 7.2069 -43.9973 7.2069 C -43.9973 7.2069 -44.5 0.5 -44.5 0.5 C -44.5 0.5 -35.3994 -2.1903 -35.3994 -2.1903 C -35.3994 -2.1903 -34.5974 -7.5107 -34.5974 -7.5107 C -34.5974 -7.5107 -42.5007 -12.7639 -42.5007 -12.7639 C -42.5007 -12.7639 -40.0436 -19.0248 -40.0436 -19.0248 C -40.0436 -19.0248 -30.6769 -17.5 -30.6769 -17.5 C -30.6769 -17.5 -27.6459 -21.9456 -27.6459 -21.9456 C -27.6459 -21.9456 -32.4873 -30.1078 -32.4873 -30.1078 C -32.4873 -30.1078 -27.557 -34.6824 -27.557 -34.6824 C -27.557 -34.6824 -19.7795 -29.2446 -19.7795 -29.2446 C -19.7795 -29.2446 -15.1198 -31.9348 -15.1198 -31.9348 C -15.1198 -31.9348 -15.9403 -41.3893 -15.9403 -41.3893 C -15.9403 -41.3893 -9.5134 -43.3718 -9.5134 -43.3718 C -9.5134 -43.3718 -4.8655 -35.0979 -4.8655 -35.0979 C -4.8655 -35.0979 0.5 -35.5 0.5 -35.5 C 0.5 -35.5 3.8629 -44.3742 3.8629 -44.3742 C 3.8629 -44.3742 10.5135 -43.3718 10.5135 -43.3718 C 10.5135 -43.3718 11.1112 -33.9006 11.1112 -33.9006 C 11.1112 -33.9006 16.1199 -31.9348 16.1199 -31.9348 C 16.1199 -31.9348 23 -38.4712 23 -38.4712 C 23 -38.4712 28.5571 -34.6824 28.5571 -34.6824 C 28.5571 -34.6824 24.9862 -25.8898 24.9862 -25.8898 C 24.9862 -25.8898 28.646 -21.9456 28.646 -21.9456 C 28.646 -21.9456 37.6808 -24.8494 37.6808 -24.8494 C 37.6808 -24.8494 41.0437 -19.0248 41.0437 -19.0248 C 41.0437 -19.0248 34.0115 -12.6522 34.0115 -12.6522 C 34.0115 -12.6522 35.5974 -7.5107 35.5974 -7.5107 C 35.5974 -7.5107 44.9974 -6.2069 44.9974 -6.2069 C 44.9974 -6.2069 45.3492 -3.9389 45.5 0.4999 l -9.0735 2.6884" style="stroke-width:3;stroke:aqua;fill:blue;" transform="rotate(4.3643 0 0 )"></path><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -8.2065 1.78 H -20.6661 C -20.6611 -13.8722 -12.4045 -20.1366 0.8363 -20.1187 C 17.2228 -20.1399 21.3684 -9.7224 21.2567 1.728 C 21.0604 8.2125 16.5963 14.445 9.547 21.5076 C 5.4469 24.9578 5.6242 27.9612 5.6242 29.6487 H -4.6514 C -4.733 29.0432 -4.5537 23.2473 -3.1277 21.0394 C 0.0788 16.0362 8.7954 6.9633 8.8118 1.7364 C 9.1206 -5.6137 6.1839 -9.2975 0.4172 -9.0496 C -5.5121 -9.0383 -8.5234 -5.4297 -8.2728 1.6668 M -5.0464 35.2605 H 5.9006 L 4.1682 43.8533 H -2.6161 Z" style="stroke:forestgreen;fill:lime;stroke-width:3;"></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect></svg>' ,
-        "deliler_vers_le_bas" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform="   "></g><path d=" m 0 -47 h 24 v 8 h -19 v 13 h 19 v 8 h -19 v 13 h 19 v 8 h -19 v 11 h 35 l -40 34 l -40 -34 h 35 v -11 h -20 v -8 h 20 v -13 h -21 v -8 h 21 v -13 h -21 v -8 h 26 m 0 81 l 12 -10 h -25 l 13 10 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:aqua;stroke-width:3;"></path></svg>' ,
-        "defiler_vers_le_haut" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform="rotate(-180 0 0 )"><path d=" m 0 -47 h 24 v 8 h -19 v 13 h 19 v 8 h -19 v 13 h 19 v 8 h -19 v 11 h 35 l -40 34 l -40 -34 h 35 v -11 h -20 v -8 h 20 v -13 h -21 v -8 h 21 v -13 h -21 v -8 h 26 m 0 81 l 12 -10 h -25 l 13 10 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:aqua;stroke-width:3;"></path></g></svg>' ,
-        "haut_de_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><g style="stroke-width:6" transform=""><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M 0 -47 L 32 -47 L 32 -39 L 6 -39 L 30 -16 L 24 -10 L 5 -29 L 5 47 L -5 47 L -4 -29 L -24 -10 L -30 -17  L -6 -39 L -32 -39 L -32 -47 H 0" style="stroke:black;fill:aqua;stroke-width:3;"></path></g></svg>' ,
-        "nouveau_document" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M 0 -35 C 5 -35 15 -35 25 -35 C 25 -20 25 20 25 35 C 15 35 -17 34 -25 35 C -25 25 -25 -5 -25 -10  L 0 -35 L 0 -10 L -25 -10 M 0 -2 L 0 26 M 14 12 L -15 12" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:white;stroke-width:8;"></path></svg>' ,
-        "reordonner" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><path d="M 0 -46 L 0 -36 C 0 -14 25 12 25 -17 C 25 -46 0 -19 0 4 L 0 17 L 20 17 L 0 46 L -20 17 L 0 17 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:white;fill:black;stroke-width:6;"></path><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect></svg>' ,
-        "renuméroter" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;" fill="transparent" stroke="rgb(0, 0, 0)" stroke-width="1"><rect x="-50" y="-50" width="100" height="100" stroke-width="0.1"></rect><path d="M -45 -40 l 18 0 "></path><path d="M -45 -20 l 18 0 "></path><path d="M -45 0 l 18 0 "></path><path d="M -45 20 l 18 0 "></path><path d="M -45 40 l 18 0 "></path><path d="M 26 -40 l 18 0 "></path><path d="M 26 -20 l 18 0 "></path><path d="M 26 0 l 18 0 "></path><path d="M 26 20 l 18 0 "></path><path d="M 26 40 l 18 0 "></path><path d=" M -19 -40 C -13 -40 -11 -36 -10 -26 C -9 -15 -9 -3 -9 7 C -9 11 -9 20 4 20 L 4 33 L 19 20 L 4 6 L 4 20 " stroke-width="6" style="stroke:red;fill:transparent;stroke-width:8;"></path></g></svg>' ,
-        "loupe" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;stroke-opacity:0.5;opacity:0.5;"></rect><g><circle cx="14" cy="-14" r="29.25" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></circle><path d=" M -4 8 C -10 6 -15 6 -18 9 C -23 14 -30 24 -37 32  A 8 8 0 1 0 -25 44 C -19 38 -10 28 -4 22 C -1 18 -1 14 -4 8" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><circle cx="14" cy="-14" r="27" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" style="stroke:rgb(0, 0, 0);fill:#4FC3F7;stroke-width:0.01;"></circle><path d=" M -3 7  C 12 -12 12 -12 31 -35 A 4 4 0 1 1 -3 7" stroke="rgb(0, 0, 0)" stroke-width="0.01" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:lightskyblue;stroke-width:0.01;"></path></g></svg>' ,
-        "compiler" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><polygon points=" 45 0 40 8 42 17 34 23 32 32 23 34 17 42 8 40 0 45 -8 40 -17 42 -22 34 -32 32 -33 23 -41 17 -39 8 -45 0 -39 -8 -41 -17 -33 -22 -32 -32 -22 -33 -17 -41 -8 -39 0 -45 8 -39 17 -41 23 -33 32 -32 34 -22 42 -17 40 -8 45 0" style="stroke-width:5;stroke:rgb(0, 0, 0);fill:white;" transform=""></polygon><text x="-34" y="18" style="font-size:55;stroke-width:2;stroke:red;fill:lime;font-family:Verdana;stroke-opacity:1;fill-opacity:1;opacity:1;">01</text><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
-        "rond_rouge1" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect></svg>' ,
-        "rond_vert1" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:lime;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect></svg>' ,
-        "lst_des_elts" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g></svg>' ,
-        "televerser" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"> <g transform="translate(-50 -50)" stroke-linejoin="miter"  stroke-linecap="square">  <path d=" M 8 8 L 78 8 L 93 23  L 93 92 L 8 92 L 8 8" style="stroke:rgb(0, 0, 0);fill:gray;stroke-width:6;fill-opacity:1;"></path>  <path d="M 20 13 L 20 16 " style="stroke:#424242;fill:dimgray;stroke-width:7;"></path>  <path  d="M 34 13 L 34 33 l 38 0 l 0 -20 l -38 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 22 44 L 22 87 l 56 0 l 0 -43 l -56 0 " style="stroke:gainsboro;fill:gainsboro;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 65 17L 65 29" style="stroke:#424242;fill:dimgray;stroke-width:8;"></path>  <path d="M 86 85L 86 85" style="stroke:lightgrey;fill:lightgrey;stroke-width:5;stroke-opacity:1;"></path>  <path d="M 24 85L 76 85" style="stroke:red;fill:lightgrey;stroke-width:9;stroke-opacity:1;"></path>  <path d="M 29 50 L 72 50 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 61 L 72 61 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path>  <path d="M 29 72 L 72 72 " style="stroke:#424242;fill:dimgray;stroke-width:6;"></path> </g> <path d=" M -50 -50 L 50 -50 l 0 100 l -100 0 l 0 -100 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></path> <path d=" M 0 -32  C 0 -25 0 19 0 30 L 18 9 H -18 L 0 30" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:yellow;fill:yellow;stroke-width:10;"></path></svg>' ,
-        "recharger_la_page" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 255, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M 38 10 A 40 39 0 1 1 38 -10 L 21 -17  L 38 -10 L 38 -31" stroke="rgb(0, 255, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:10;"></path></svg>' ,
-        "voir" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50.915 -50  101.83 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><circle cx="20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle><ellipse cx="-25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><ellipse cx="25" cy="0" rx="20" ry="38" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" transform="rotate(-10 0 0 )" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></ellipse><circle cx="-20" cy="9" r="9" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:black;stroke-width:1;"></circle></svg>' ,
-        "calendrier" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect><path d=" M -40 -40 L 40 -40 l 0 80 l -80 0 v -80 m 0 20  h 80" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path><path d="  m -17 -6   l 4 0   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m 10 0   h 4   m -60 15   h 4   m 10 0   h 4   m 9 0   h 4 " stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;"></path><path d=" M -10 -30  H 6" stroke="rgb(0, 0, 0)" stroke-width="8" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></path><path d=" M -15 -45 V -42  M 15 -45 V -42" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:10;"></path></svg>' ,
-        "masquer" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g fill="none" fill-rule="evenodd"><path fill="#FF0000" d="M 22 5   C 14 5 6 10 5 17     C 1 16 -3 16 -6 17     C -8 10 -14 5 -23 5     C -32 5 -40 12 -40 21     C -40 31 -32 39 -23 39     C -14 39 -6 31 -5 22     C -4 22 0 20 5 22     C 5 31 13 39 22 39     C 32 39 40 31 40 21     C 40 12 32 5 22 5     Z M -23 10   C -15 10 -10 15 -10 21     C -10 29 -15 34 -23 34     C -30 34 -35 29 -35 21     C -35 15 -30 10 -23 10     Z M 22 10   C 30 10 35 15 35 21     C 35 29 30 34 22 34     C 15 34 10 29 10 21     C 10 15 15 10 22 10     Z M 45 -6   H -45       V -1       H 45       V -6       Z M 17 -41   C 15 -44 15 -45 12 -44  L 0 -40L 0 -40L -12 -44   C -14 -45 -15 -44 -17 -41  L -28 -11   H 30    L 17 -41   Z "></path></g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></svg>' ,
-        "outils" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -40 -40 L -38 -42 L -32 -39 L -32 -35 L 12 8 L 15 5 L 20 10 C 19 14 21 16 25 15 L 40 30 L 30 40 L 15 25 C 16 21 14 19 10 20 L 5 15 L 8 12 L -35 -32  L -39 -32 L -42 -38 L -40 -40" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path><path d=" M -35 35 L -40 30 L -9 -1 M -1 -9 L 12 -22 C 9 -27 5 -30 0 -30 L -2 -32 C 8 -39 18 -38 36 -25 C 34 -20 37 -18 40 -20 L 43 -17 L 31 -4 L 27 -7 C 29 -12 26 -14 22 -12 L 9 1 M -9 -1 L 1 9  L -30 40 L -35 35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path></svg>' ,
-        "clav_supp" : '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -45 0 L -20 -25 L 45 -25 L 45 25 L -20 25 L -45 0 M -5 -15 L 25 15 M -5 15  L 25 -15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path></svg>'
-    };
     /*
       =============================================================================================================
     */
@@ -4111,35 +5131,48 @@ class __ig1{
     connexion_au_websocket_fermee( mat , d ){
         this.#nombre_de_tentatives_de_reconnexion_au_websocket++;
         if(this.#nombre_de_tentatives_de_reconnexion_au_websocket > 2){
-            document.getElementById( 'vv_nav_centre' ).innerHTML='';
             let tt='';
-            tt+='<h5 class="yy__0">la connexion au site distant n\'a pas pu être rétablie !</h5>';
-            tt+='<div style="text-align:center;font-size:1.3rem;"> cliquez là : ';
-            tt+=' <div class="rev_bouton_carre yy__1" title="rechargez la page" data-rev_click="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</div>';
+            tt+='<h2 class="yy__0" style="margin-top:5em;min-height:3em;padding:1em;text-shadow:none;line-height:1.5em;">la connexion au site distant n\'a pas pu être rétablie !</h2>';
+            tt+='<div style="text-align:center;font-size:1.3rem;line-height:1.3em;"> cliquez là : ';
+            tt+=' <button class="yy__bcar1 yy__1 yy_svg1" style="min-height: 2em;min-width: 2em;" title="rechargez la page"  rev_clic1="m1(n1(__ig1),f1(recharger_la_page()))">' + this.les_svg.recharger_la_page + '</button>';
             tt+=' pour recharger la page ou bien appuyez sur la touche <b>F5</b>';
             tt+='</div>';
-            this.ajoute_message( {"__xst" : __xal ,"__xme" : tt} );
             this.fermer_la_sous_fenetre();
-            this.affiche_les_messages();
+            this.maj_contenu_principal( tt );
             try{
-                document.getElementById( 'vv_contenu_principal' ).innerHTML='';
+                this.maj_htm2( 'vv_nav' , '' );
             } catch {}
-            this.retablir_les_boutons_masques( null );
-            return({"__xst" : __xer ,"__xme" : this.nl2()});
+            return({"__xst" : __xsu});
         }else{
             let tt='tentatuve de reconnexion en cours, surveillez le rond ';
-            tt+='<div class="rev_bouton_carre yy__bidon_reconnexion1">' + this.les_svg.rond_rouge1 + '</div>';
-            tt+='<div class="rev_bouton_carre yy__bidon_reconnexion2">' + this.les_svg.rond_vert1 + '</div>';
+            tt+='<div class="yy__bcar1 yy__bidon_reconnexion1">' + this.les_svg.rond_rouge1 + '</div>';
+            tt+='<div class="yy__bcar1 yy__bidon_reconnexion2">' + this.les_svg.rond_vert1 + '</div>';
             tt+='en bas à droite de la page ';
             this.ajoute_message( {"__xst" : __xal ,"__xme" : tt} );
             this.fermer_la_sous_fenetre();
             this.affiche_les_messages();
-            document.getElementById( 'vv_info_connexion' ).innerHTML=this.les_svg.rond_rouge1;
+            this.maj_htm2( 'vv_info_connexion' , this.les_svg.rond_rouge1 );
             setTimeout( () => {
                     this.retablir_la_connexion_au_ws();
                 } , 1000 );
             return({"__xst" : __xsu});
         }
+    }
+    /*
+      =============================================================================================================
+    */
+    __action_interactive1(){
+        let __xac='m1(n1(' + arguments[0][0] + '),f1(' + arguments[0][1] + '(';
+        let lst='';
+        for( let i=2 ; i < arguments[0].length ; i++ ){
+            lst+=',' + arguments[0][i];
+        }
+        if(lst !== ''){
+            lst=lst.substr( 1 );
+        }
+        __xac+=lst + ')))';
+        /* console.log('__xac=',__xac); */
+        this.executer1( __xac );
     }
     /*
       =============================================================================================================

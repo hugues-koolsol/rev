@@ -87,17 +87,7 @@ class taches2{
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
         /* sélection du champ à modifier */
         let criteres_select_2022={"T0_chi_id_tache" : form['chi_id_tache']};
-        let tt2022=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , criteres_select_2022 , this.__ig1.donnees_retournees , __db1 );
+        let tt2022=await this.__ig1.sql_iii( 2022 , criteres_select_2022 , this.__ig1.donnees_retournees , __db1 );
         if(tt2022.__xst !== __xsu || tt2022.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [2022 ' + this.__ig1.nl2() + ']'});
         }
@@ -115,16 +105,7 @@ class taches2{
             "n_chx_utilisateur_tache" : form['chx_utilisateur_tache']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt2024=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_taches SET 
-           `chp_texte_tache` = :n_chp_texte_tache , 
-           `che_priorite_tache` = :n_che_priorite_tache , 
-           `chd__dtm_tache` = :n_chd__dtm_tache , 
-           `chx_utilisateur_tache` = :n_chx_utilisateur_tache
-        WHERE `chi_id_tache` = :c_chi_id_tache ;
-        */
-        /*sql_inclure_fin*/ 2024 , criteres_2024 , this.__ig1.donnees_retournees , __db1 );
+        let tt2024=await this.__ig1.sql_iii( 2024 , criteres_2024 , this.__ig1.donnees_retournees , __db1 );
         if(tt2024.__xst !== __xsu || tt2024.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt2024.__xme});
@@ -142,17 +123,7 @@ class taches2{
             }
             return({"__xst" : __xsu});
         }
-        let tt2022_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , criteres_select_2022 , this.__ig1.donnees_retournees , __db1 );
+        let tt2022_bis=await this.__ig1.sql_iii( 2022 , criteres_select_2022 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt2022_bis;
         return({"__xst" : __xsu});
     }
@@ -181,17 +152,7 @@ class taches2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt2022=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
+        let tt2022=await this.__ig1.sql_iii( 2022 , {"T0_chi_id_tache" : chi_id_tache} , this.__ig1.donnees_retournees , __db1 );
         if(tt2022.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2022.__xme});
         }
@@ -225,17 +186,7 @@ class taches2{
              /*  */
             "T0_chi_id_tache" : chi_id_tache
         };
-        let tt2022=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , criteres_2022 , this.__ig1.donnees_retournees , __db1 );
+        let tt2022=await this.__ig1.sql_iii( 2022 , criteres_2022 , this.__ig1.donnees_retournees , __db1 );
         if(tt2022.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2022.__xme});
         }
@@ -263,17 +214,7 @@ class taches2{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let critere_2022={"T0_chi_id_tache" : chi_id_tache};
-        let tt2022=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , critere_2022 , this.__ig1.donnees_retournees , __db1 );
+        let tt2022=await this.__ig1.sql_iii( 2022 , critere_2022 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt2022;
         return({"__xst" : __xsu});
     }
@@ -289,17 +230,7 @@ class taches2{
              /*  */
             "T0_chi_id_tache" : form['chi_id_tache']
         };
-        let tt2022=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , criteres_2022 , this.__ig1.donnees_retournees , __db1 );
+        let tt2022=await this.__ig1.sql_iii( 2022 , criteres_2022 , this.__ig1.donnees_retournees , __db1 );
         if(tt2022.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2022.__xme});
         }
@@ -312,12 +243,7 @@ class taches2{
              /*  */
             "chi_id_tache" : form['chi_id_tache']
         };
-        let tt2025=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b1.tbl_taches
-        WHERE `chi_id_tache` = :chi_id_tache ;
-        */
-        /*sql_inclure_fin*/ 2025 , criteres_2025 , this.__ig1.donnees_retournees , __db1 );
+        let tt2025=await this.__ig1.sql_iii( 2025 , criteres_2025 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt2025.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2025.__xme});
@@ -354,17 +280,7 @@ class taches2{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let critere_2022={"T0_chi_id_tache" : chi_id_tache};
-        let tt2022=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE `T0`.`chi_id_tache` = :T0_chi_id_tache
-        ;
-        */
-        /*sql_inclure_fin*/ 2022 , critere_2022 , this.__ig1.donnees_retournees , __db1 );
+        let tt2022=await this.__ig1.sql_iii( 2022 , critere_2022 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt2022;
         return({"__xst" : __xsu});
     }
@@ -399,23 +315,7 @@ class taches2{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt2023=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        INSERT INTO b1.`tbl_taches`(
-            `chx_utilisateur_tache` , 
-            `chp_texte_tache` , 
-            `che_priorite_tache` , 
-            `chd__dtm_tache` , 
-            `chd__dtc_tache`
-        ) VALUES (
-            :chx_utilisateur_tache , 
-            :chp_texte_tache , 
-            :che_priorite_tache , 
-            :chd__dtm_tache , 
-            :chd__dtc_tache
-        );
-        */
-        /*sql_inclure_fin*/ 2023 , criteres_2023 , this.__ig1.donnees_retournees , __db1 );
+        let tt2023=await this.__ig1.sql_iii( 2023 , criteres_2023 , this.__ig1.donnees_retournees , __db1 );
         if(tt2023.__xst !== __xsu || tt2023['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt2023.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -487,25 +387,7 @@ class taches2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt2021=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
-        `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-         FROM b1.tbl_taches T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-        
-        WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-           AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-           AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-           AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
-           AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
-           AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur) 
-        ORDER BY `T0`.`che_priorite_tache` ASC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 2021 , criteres_2021 , this.__ig1.donnees_retournees , __db1 );
+        let tt2021=await this.__ig1.sql_iii( 2021 , criteres_2021 , this.__ig1.donnees_retournees , __db1 );
         if(tt2021.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2021.__xme});
         }
@@ -516,25 +398,7 @@ class taches2{
             __debut=0;
             __num_page=0;
             criteres_2021['debut']=__debut;
-            tt2021=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_tache` , `T0`.`chx_utilisateur_tache` , `T0`.`chp_texte_tache` , `T0`.`che_priorite_tache` , `T0`.`chd__dtm_tache` , 
-            `T0`.`chd__dtc_tache` , `T0`.`che__nur_tache` , `T1`.`chp_nom_de_connexion_utilisateur`
-             FROM b1.tbl_taches T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_tache
-            
-            WHERE (`T0`.`chi_id_tache` = :T0_chi_id_tache
-               AND `T0`.`chx_utilisateur_tache` = :T0_chx_utilisateur_tache
-               AND `T0`.`chp_texte_tache` LIKE :T0_chp_texte_tache
-               AND `T0`.`che_priorite_tache` = :T0_che_priorite_tache
-               AND `T0`.`che_priorite_tache` < :T0_che_priorite_tache2
-               AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur) 
-            ORDER BY `T0`.`che_priorite_tache` ASC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 2021 , criteres_2021 , this.__ig1.donnees_retournees , __db1 );
+            tt2021=await this.__ig1.sql_iii( 2021 , criteres_2021 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;

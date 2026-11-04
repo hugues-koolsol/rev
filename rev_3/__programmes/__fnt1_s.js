@@ -14,6 +14,12 @@ class __fnt1{
     */
     moi='__fnt1';
     __ig1=null;
+    /*
+      les caractères accentués peuvent être sous 2 formats, par exemple : 
+      a + un cran en arrière + accent "`"
+      ou bien
+      à
+    */
     tab_de_remplacement1={
          /* tbel */
         "à" : 'à' ,
@@ -37,17 +43,131 @@ class __fnt1{
     /*
       =============================================================================================================
     */
+    tester_les_zonnes_saisies( les_tests , fo1 ){
+        for(let i in les_tests){
+            let le_test=les_tests[i];
+            if(le_test.nt === 'non_vide1'){
+                let une_erreur=false;
+                let le_message_d_erreur='';
+                if(fo1[le_test.nz] === ''){
+                    une_erreur=true;
+                    le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" doit être renseignée';
+                }
+                if(une_erreur === false && le_test.ldc !== undefined && le_test.ldc !== ''){
+                    let pos1=le_test.ldc.indexOf( '.' );
+                    if(pos1 > 0){
+                        let lngmin=parseInt( le_test.ldc.substr( pos1 + 1 ) , 10 );
+                        if(fo1[le_test.nz].length < lngmin){
+                            une_erreur=true;
+                            le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" contenir au moins ' + lngmin + ' caractères ';
+                        }
+                        if(fo1[le_test.nz].substr( 0 , 1 ) === ' ' || fo1[le_test.nz].charCodeAt( 0 ) === 160){
+                            une_erreur=true;
+                            le_message_d_erreur='SE : la valeur pour "' + le_test.lib + '" ne doit pas commencer par un espace';
+                        }
+                    }
+                }
+                if(une_erreur === true){
+                    return({"__xst" : __xer ,"__xme" : le_message_d_erreur});
+                }
+            }else if(le_test.nt === 'parmis1'){
+                if(fo1[le_test.nz] !== ''){
+                    if(!le_test.p.includes( fo1[le_test.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + le_test.lib + '" doit être correctement renseignée (utilisez les boutons)'});
+                    }
+                }
+            }else if(le_test.nt === 'zero_un1'){
+                if(!(fo1[le_test.nz] === 0 || fo1[le_test.nz] === 1)){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit 0 ou 1'});
+                }
+            }else if(le_test.nt === 'null_zero_un1'){
+                if(!(fo1[le_test.nz] === null || fo1[le_test.nz] === 0 || fo1[le_test.nz] === 1)){
+                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "' + le_test.lib + '" doit 0 ou 1 ou vide'});
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    convertir_les_zonnes_saisies( les_convertions , fo1 ){
+        for(let i in les_convertions){
+            let la_convertion=les_convertions[i];
+            if(la_convertion.nc === 'id1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
+                if(fo1[la_convertion.nz] === null){
+                    return({"__xst" : __xer ,"__xme" : 'SE : ' + la_convertion.m});
+                }
+            }else if(la_convertion.nc === 'float1'){
+                fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + la_convertion.lib + '" doit être numérique'});
+                    }
+                }
+            }else if(la_convertion.nc === 'decim1'){
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseFloat( fo1[la_convertion.nz] ) );
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + la_convertion.lib + '" doit être numérique'});
+                    }
+                    let nb_entier=1;
+                    let nb_decim=0;
+                    let min=0;
+                    if(la_convertion.ldc.indexOf( ',' ) >= 0){
+                        let tabt=la_convertion.ldc.split( ',' );
+                        nb_decim=parseInt( tabt[1] , 10 );
+                        nb_entier=parseInt( tabt[0] , 10 ) - nb_decim;
+                    }
+                    let max=parseFloat( '9'.repeat( nb_entier ) , 10 );
+                    if(nb_decim > 0){
+                        let tt=parseInt( '9'.repeat( nb_decim ) , 10 );
+                        let dd=parseInt( '1' + '0'.repeat( nb_decim ) , 10 );
+                        max+=tt / dd;
+                    }
+                    if(!(fo1[la_convertion.nz] >= min && fo1[la_convertion.nz] <= max)){
+                        return({
+                                "__xst" : __xer ,
+                                "__xme" : 'SE : la valeur pour "' + la_convertion.lib + '" doit être comprise entre ' + min + ' et ' + max.toLocaleString( undefined , {"minimumFractionDigits" : nb_decim} ) + ''
+                            });
+                    }
+                }
+            }else if(la_convertion.nc === 'entier1'){
+                if(la_convertion.vpd === null && fo1[la_convertion.nz] === null){
+                    /* c'est OK si la valeur peut être nulle */
+                }else{
+                    fo1[la_convertion.nz]=fo1[la_convertion.nz] === '' ? ( null ) : ( parseInt( fo1[la_convertion.nz] , 10 ) );
+                    if(isNaN( fo1[la_convertion.nz] )){
+                        return({"__xst" : __xer ,"__xme" : 'SE : la valeur pour "' + la_convertion.lib + '" doit être numérique' + this.__ig1.nl2()});
+                    }
+                }
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
     }
     /*
       =============================================================================================================
     */
-    async supprimer_fichier_sans_sauvegarde( chemin , donnees_retournees ){
+    async supprimer_fichier_sans_sauvegarde( chemin , chemin_en_absolu=true ){
+        const currentWorkingDirectory=Deno.cwd();
+        if(chemin_en_absolu === false){
+            chemin=currentWorkingDirectory.replace( /\\/g , '/' ) + chemin;
+        }
         try{
             await Deno.remove( chemin );
         }catch(e){
-            donnees_retournees[__xsi][__xdv].push( 'erreur supprimer_fichier_sans_sauvegarde "' + chemin + '" ' + this.__ig1.nl2( e ) );
+            this.__ig1.donnees_retournees[__xsi][__xdv].push( 'erreur supprimer_fichier_sans_sauvegarde "' + chemin + '" ' + this.__ig1.nl2( e ) );
         }
         return({"__xst" : __xsu});
     }
@@ -152,17 +272,42 @@ class __fnt1{
     }
     /*
       =============================================================================================================
+    */
+    formater_message_sqlxx( message ){
+        let tt=message;
+        if(this.__ig1.__deverminage === 2){
+            let e1=(new Error()).stack;
+            let tabe1=e1.split( '\n' );
+            for( let i=0 ; i < tabe1.length ; i++ ){
+                let t=tabe1[i];
+                if(t.indexOf( '__fichiers_generes/__sqls' ) >= 0
+                       || t.indexOf( '__programmes/' ) >= 0
+                           && (t.indexOf( '__ig1' ) < 0
+                               && t.indexOf( '__fnt1' ) < 0)
+                ){
+                    t=t.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/ , '' );
+                    t=t.replace( /file\:\/\/\// , '' ).replace( this.__ig1.repertoire_du_pgm_serveur , '' ).replace( /    at/ , '' );
+                    t=t.replace( /__programmes\// , '' );
+                    tt+='<br />' + t;
+                }
+            }
+            /* tt+='<hr />'+e1.replace(/\n/g,'<br />'); */
+        }
+        return tt;
+    }
+    /*
+      =============================================================================================================
       si s=0o777, on veut quand même mettre cette valeur en texte donc on ne teste pas est_num
     */
     sq4( s , nom_du_parametre='' ){
         if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq4 "' + nom_du_parametre + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq4 "' + nom_du_parametre + '" non défini' );
+            throw new Error( le_message );
         }else if( typeof s !== 'string'){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq4 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq4 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            throw new Error( le_message );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );
@@ -181,8 +326,8 @@ class __fnt1{
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq3 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq3 "' + nom_du_parametre + '" non défini' );
+            throw new Error( le_message );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -207,8 +352,8 @@ class __fnt1{
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'Paramètre de sq2 "' + nom_du_parametre + '" non défini , e1=' + e1.replace( /\n/g , '<br />' ) );
+            let le_message=this.formater_message_sqlxx( 'paramètre de sq2 "' + nom_du_parametre + '" non défini' );
+            throw new Error( le_message );
         }
         /* cette fonction escapeString remplace les apostrophes par des doubles apostrophes */
         /* $s1=SQLite3::escapeString($s); */
@@ -231,11 +376,11 @@ class __fnt1{
         }else if(s === null){
             return 'NULL';
         }else if(s === undefined){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas défini , e1=' + e1.replace( /\n/g , '\n' ) );
+            let le_message=this.formater_message_sqlxx( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas défini' );
+            throw new Error( le_message );
         }else if( typeof s !== 'string'){
-            let e1=(new Error()).stack;
-            throw new Error( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            let le_message=this.formater_message_sqlxx( 'le paramètre de sq1 "' + nom_du_parametre + '" n\'est pas une valeur de type "string"' );
+            throw new Error( le_message );
         }
         /* cette fonction remplace les apostrophes par des doubles apostrophes */
         let s1=s.replace( /\'/g , '\'\'' );

@@ -74,15 +74,7 @@ class sources2{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let critere_2012={"T0_chi_id_source" : chi_id_source};
-        let tt2012=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 2012 , critere_2012 , this.__ig1.donnees_retournees , __db1 );
+        let tt2012=await this.__ig1.sql_iii( 2012 , critere_2012 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt2012;
         return({"__xst" : __xsu});
     }
@@ -98,15 +90,7 @@ class sources2{
              /*  */
             "T0_chi_id_source" : form['chi_id_source']
         };
-        let tt2012=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 2012 , criteres_2012 , this.__ig1.donnees_retournees , __db1 );
+        let tt2012=await this.__ig1.sql_iii( 2012 , criteres_2012 , this.__ig1.donnees_retournees , __db1 );
         if(tt2012.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2012.__xme});
         }
@@ -119,12 +103,7 @@ class sources2{
              /*  */
             "chi_id_source" : form['chi_id_source']
         };
-        let tt2015=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b1.tbl_sources
-        WHERE `chi_id_source` = :chi_id_source ;
-        */
-        /*sql_inclure_fin*/ 2015 , criteres_2015 , this.__ig1.donnees_retournees , __db1 );
+        let tt2015=await this.__ig1.sql_iii( 2015 , criteres_2015 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt2015.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2015.__xme});
@@ -161,15 +140,7 @@ class sources2{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 1 );
         let critere_2012={"T0_chi_id_source" : chi_id_source};
-        let tt2012=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 2012 , critere_2012 , this.__ig1.donnees_retournees , __db1 );
+        let tt2012=await this.__ig1.sql_iii( 2012 , critere_2012 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt2012;
         return({"__xst" : __xsu});
     }
@@ -211,23 +182,7 @@ class sources2{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 1 );
         }
-        let tt2011=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
-         FROM b1.tbl_sources T0
-        WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
-           AND `T0`.`chi_id_source` = :T0_chi_id_source
-           AND `T0`.`chi_id_source` > :T0_chi_id_source2
-           AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-           AND `T0`.`che_binaire_source` = :T0_che_binaire_source
-           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
-           AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
-        ORDER BY `T0`.`chi_id_source` DESC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 2011 , criteres_2011 , this.__ig1.donnees_retournees , __db1 );
+        let tt2011=await this.__ig1.sql_iii( 2011 , criteres_2011 , this.__ig1.donnees_retournees , __db1 );
         if(tt2011.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2011.__xme});
         }
@@ -238,23 +193,7 @@ class sources2{
             __debut=0;
             __num_page=0;
             criteres_2011['debut']=__debut;
-            tt2011=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
-             FROM b1.tbl_sources T0
-            WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
-               AND `T0`.`chi_id_source` = :T0_chi_id_source
-               AND `T0`.`chi_id_source` > :T0_chi_id_source2
-               AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-               AND `T0`.`che_binaire_source` = :T0_che_binaire_source
-               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
-               AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
-            ORDER BY `T0`.`chi_id_source` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 2011 , criteres_2011 , this.__ig1.donnees_retournees , __db1 );
+            tt2011=await this.__ig1.sql_iii( 2011 , criteres_2011 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;

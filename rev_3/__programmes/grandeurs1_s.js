@@ -96,18 +96,7 @@ class grandeurs1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
         let criteres_select_1202={"T0_chi_id_grandeur" : form['chi_id_grandeur']};
-        let tt1202=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , criteres_select_1202 , this.__ig1.donnees_retournees , __db1 );
+        let tt1202=await this.__ig1.sql_iii( 1202 , criteres_select_1202 , this.__ig1.donnees_retournees , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1202 ' + this.__ig1.nl2() + ']'});
         }
@@ -126,19 +115,7 @@ class grandeurs1{
             "n_che_actif_grandeur" : form['che_actif_grandeur']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1204=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_grandeurs SET 
-           `chx_parametre_grandeur` = :n_chx_parametre_grandeur , 
-           `chp_cle_grandeur` = :n_chp_cle_grandeur , 
-           `cht_rev_grandeur` = :n_cht_rev_grandeur , 
-           `che_actif_grandeur` = :n_che_actif_grandeur , 
-           `chd__dtc_grandeur` = :n_chd__dtc_grandeur , 
-           `chd__dtm_grandeur` = :n_chd__dtm_grandeur , 
-           `che__nur_grandeur` = :n_che__nur_grandeur
-        WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
-        */
-        /*sql_inclure_fin*/ 1204 , criteres_1204 , this.__ig1.donnees_retournees , __db1 );
+        let tt1204=await this.__ig1.sql_iii( 1204 , criteres_1204 , this.__ig1.donnees_retournees , __db1 );
         if(tt1204.__xst !== __xsu || tt1204.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1204.__xme});
@@ -157,18 +134,7 @@ class grandeurs1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1202_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , criteres_select_1202 , this.__ig1.donnees_retournees , __db1 );
+        let tt1202_bis=await this.__ig1.sql_iii( 1202 , criteres_select_1202 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1202_bis;
         return({"__xst" : __xsu});
     }
@@ -197,18 +163,7 @@ class grandeurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1202=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , {"T0_chi_id_grandeur" : chi_id_grandeur} , this.__ig1.donnees_retournees , __db1 );
+        let tt1202=await this.__ig1.sql_iii( 1202 , {"T0_chi_id_grandeur" : chi_id_grandeur} , this.__ig1.donnees_retournees , __db1 );
         if(tt1202.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1202.__xme});
         }
@@ -242,18 +197,7 @@ class grandeurs1{
              /*  */
             "T0_chi_id_grandeur" : chi_id_grandeur
         };
-        let tt1202=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
+        let tt1202=await this.__ig1.sql_iii( 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
         if(tt1202.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1202.__xme});
         }
@@ -276,18 +220,7 @@ class grandeurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1202={"T0_chi_id_grandeur" : chi_id_grandeur};
-        let tt1202=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , critere_1202 , this.__ig1.donnees_retournees , __db1 );
+        let tt1202=await this.__ig1.sql_iii( 1202 , critere_1202 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1202;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt1202[__xva][0] , __db1 );
         if(__aetapv.__xst !== __xsu){
@@ -307,18 +240,7 @@ class grandeurs1{
              /*  */
             "T0_chi_id_grandeur" : form['chi_id_grandeur']
         };
-        let tt1202=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
+        let tt1202=await this.__ig1.sql_iii( 1202 , criteres_1202 , this.__ig1.donnees_retournees , __db1 );
         if(tt1202.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1202.__xme});
         }
@@ -331,12 +253,7 @@ class grandeurs1{
              /*  */
             "chi_id_grandeur" : form['chi_id_grandeur']
         };
-        let tt1205=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b1.tbl_grandeurs
-        WHERE `chi_id_grandeur` = :chi_id_grandeur ;
-        */
-        /*sql_inclure_fin*/ 1205 , criteres_1205 , this.__ig1.donnees_retournees , __db1 );
+        let tt1205=await this.__ig1.sql_iii( 1205 , criteres_1205 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt1205.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1205.__xme});
@@ -373,18 +290,7 @@ class grandeurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1202={"T0_chi_id_grandeur" : chi_id_grandeur};
-        let tt1202=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-        ;
-        */
-        /*sql_inclure_fin*/ 1202 , critere_1202 , this.__ig1.donnees_retournees , __db1 );
+        let tt1202=await this.__ig1.sql_iii( 1202 , critere_1202 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1202;
         return({"__xst" : __xsu});
     }
@@ -420,27 +326,7 @@ class grandeurs1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1203=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        INSERT INTO b1.`tbl_grandeurs`(
-            `chx_parametre_grandeur` , 
-            `chp_cle_grandeur` , 
-            `cht_rev_grandeur` , 
-            `che_actif_grandeur` , 
-            `chd__dtc_grandeur` , 
-            `chd__dtm_grandeur` , 
-            `che__nur_grandeur`
-        ) VALUES (
-            :chx_parametre_grandeur , 
-            :chp_cle_grandeur , 
-            :cht_rev_grandeur , 
-            :che_actif_grandeur , 
-            :chd__dtc_grandeur , 
-            :chd__dtm_grandeur , 
-            :che__nur_grandeur
-        );
-        */
-        /*sql_inclure_fin*/ 1203 , criteres_1203 , this.__ig1.donnees_retournees , __db1 );
+        let tt1203=await this.__ig1.sql_iii( 1203 , criteres_1203 , this.__ig1.donnees_retournees , __db1 );
         if(tt1203.__xst !== __xsu || tt1203['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1203.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -512,24 +398,7 @@ class grandeurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1201=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`che_actif_grandeur` , 
-        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-         FROM b1.tbl_grandeurs T0
-         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-        
-        WHERE (`T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
-           AND `T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur
-           AND `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-           AND `T0`.`cht_rev_grandeur` LIKE :T0_cht_rev_grandeur
-           AND `T0`.`che_actif_grandeur` = :T0_che_actif_grandeur) 
-        ORDER BY `T0`.`chi_id_grandeur` DESC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 1201 , criteres_1201 , this.__ig1.donnees_retournees , __db1 );
+        let tt1201=await this.__ig1.sql_iii( 1201 , criteres_1201 , this.__ig1.donnees_retournees , __db1 );
         if(tt1201.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1201.__xme});
         }
@@ -540,24 +409,7 @@ class grandeurs1{
             __debut=0;
             __num_page=0;
             criteres_1201['debut']=__debut;
-            tt1201=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`che_actif_grandeur` , 
-            `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
-             FROM b1.tbl_grandeurs T0
-             LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
-            
-            WHERE (`T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
-               AND `T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur
-               AND `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
-               AND `T0`.`cht_rev_grandeur` LIKE :T0_cht_rev_grandeur
-               AND `T0`.`che_actif_grandeur` = :T0_che_actif_grandeur) 
-            ORDER BY `T0`.`chi_id_grandeur` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 1201 , criteres_1201 , this.__ig1.donnees_retournees , __db1 );
+            tt1201=await this.__ig1.sql_iii( 1201 , criteres_1201 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;

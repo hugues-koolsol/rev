@@ -9,7 +9,7 @@ CREATE TABLE `tbl_televersements`(
    table('tbl_televersements'),
    genre_meta(table_de_base),rang_de_la_table(0),permet_la_gestion_de('televersement'),
    distinction_pour_liste('liste des televersements'),
-   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(741,533))) 
+   distinction_pour_isad('d\'un televersement'),transform_base_sur_svg(translate(784,575))) 
 */
     
             /*
@@ -161,6 +161,31 @@ CREATE TABLE `tbl_televersements`(
             )
             */
              `chp_comm_fichier_televersement` VARCHAR(255) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('chp_mime_televersement'),
+            nom_bref_du_champ('mime'),libelle_du_champ('type mime navigateur'),suggestion_du_champ(''),description_du_champ(''),
+            typologie(chp),
+            genre(12),
+            longueur_du_champ(32)
+            )
+            */
+             `chp_mime_televersement` VARCHAR(32) DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che_ordre_televersement'),
+            nom_bref_du_champ('ordre'),libelle_du_champ('ordre'),suggestion_du_champ(''),description_du_champ(''),
+            typologie(che),
+            genre(9)
+            )
+            */
+             `che_ordre_televersement` INTEGER NOT NULL DEFAULT  0
     );
 
 
@@ -272,7 +297,7 @@ CREATE TABLE `tbl_groupes`(
    table('tbl_groupes'),
    genre_meta(table_de_base),rang_de_la_table(10),permet_la_gestion_de('groupe'),
    distinction_pour_liste('liste des groupes'),
-   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(30,33))) 
+   distinction_pour_isad('d\'un groupe'),fonctions_spéciales1('ne_pas_supprimer_id_un(0,1,2)'),transform_base_sur_svg(translate(30,33))) 
 */
     
             /*
@@ -307,11 +332,11 @@ CREATE TABLE `tbl_groupes`(
             nom_du_champ('chx_parent_groupe'),
             nom_bref_du_champ('id parent'),libelle_du_champ('id parent'),entete_distant_du_champ('groupe'),
             typologie(chx),
-            genre(8),
+            genre(4),
             refe_parent_gauche(1)
             )
             */
-             `chx_parent_groupe` INTEGER REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_groupe` INTEGER NOT NULL REFERENCES tbl_groupes(chi_id_groupe) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -327,7 +352,7 @@ CREATE TABLE `tbl_metiers`(
    table('tbl_metiers'),
    genre_meta(table_de_base),rang_de_la_table(20),permet_la_gestion_de('metier'),
    distinction_pour_liste('liste des metiers'),
-   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(29,189))) 
+   distinction_pour_isad('d\'un metier'),fonctions_spéciales1('ne_pas_supprimer_id_un(0,1,2)'),transform_base_sur_svg(translate(27,148))) 
 */
     
             /*
@@ -362,11 +387,11 @@ CREATE TABLE `tbl_metiers`(
             nom_du_champ('chx_parent_metier'),
             nom_bref_du_champ('id parent'),libelle_du_champ('id parent'),entete_distant_du_champ('métier'),
             typologie(chx),
-            genre(8),
+            genre(4),
             refe_parent_gauche(1)
             )
             */
-             `chx_parent_metier` INTEGER REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
+             `chx_parent_metier` INTEGER NOT NULL REFERENCES tbl_metiers(chi_id_metier) ON UPDATE CASCADE DEFAULT  NULL
     );
 
 
@@ -576,7 +601,7 @@ choix(si(condition(non(ou(egalstricte(tup.cht_condition_rev_source,null),egalstr
 choix(si(condition(et(egalstricte(tup.che_est_fragment_source,1),diffstricte(tup.chx_dossier_id_source,null))),alors(
       throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier ne doit pas être indiqué\')))))))
 choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.che_est_fragment_source,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(525,16))) 
+      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(516,9))) 
 */
     
             /*
@@ -758,6 +783,19 @@ choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.ch
             /*
             meta(
             genre_meta(champ),
+            nom_du_champ('cht_import_module_rev_source'),
+            nom_bref_du_champ('liste des imports'),libelle_du_champ('liste des imports'),
+            typologie(cht),
+            genre(98),
+            longueur_du_champ(2.200)
+            )
+            */
+             `cht_import_module_rev_source` TEXT DEFAULT  NULL
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
             nom_du_champ('chd__dtm_source'),
             nom_bref_du_champ(' dtm'),libelle_du_champ(' dtm'),entete_distant_du_champ(' dtm source'),
             typologie(chd),
@@ -809,7 +847,7 @@ CREATE TABLE `tbl_autorisations`(
    table('tbl_autorisations'),
    genre_meta(table_de_base),rang_de_la_table(75),permet_la_gestion_de('autorisation'),
    distinction_pour_liste('liste des autorisations'),
-   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(846,278))) 
+   distinction_pour_isad('d\'une autorisation'),transform_base_sur_svg(translate(888,292))) 
 */
     
             /*
@@ -873,7 +911,7 @@ CREATE TABLE `tbl_menus`(
    table('tbl_menus'),
    genre_meta(table_de_base),rang_de_la_table(78),permet_la_gestion_de('menu'),
    distinction_pour_liste('liste des menus'),
-   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1121,298))) 
+   distinction_pour_isad('d\'un menu'),transform_base_sur_svg(translate(1201,282))) 
 */
     
             /*
@@ -996,7 +1034,7 @@ CREATE TABLE `tbl_utilisateurs`(
    table('tbl_utilisateurs'),
    genre_meta(table_de_base),rang_de_la_table(80),permet_la_gestion_de('utilisateur'),
    distinction_pour_liste('liste des utilisateurs'),
-   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(497,325))) 
+   distinction_pour_isad('d\'un utilisateur'),fonctions_spéciales1('ne_pas_supprimer_id_un(1,2)'),transform_base_sur_svg(translate(517,325))) 
 */
     
             /*
@@ -1015,7 +1053,7 @@ CREATE TABLE `tbl_utilisateurs`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_de_connexion_utilisateur'),
-            nom_bref_du_champ('nom de connexion'),libelle_du_champ('nom de connexion de l\'utilisateur'),entete_distant_du_champ('utilisateur'),
+            nom_bref_du_champ('nom de connexion'),libelle_du_champ('nom de connexion'),entete_distant_du_champ('nom utilisateur'),
             typologie(cht),
             genre(3),
             est_libelle_lien(1),
@@ -1068,7 +1106,7 @@ affectop(\'+=\' , lst , appelf(element(appelf(element(this.__ig1),nomf(fi2),p(tu
             meta(
             genre_meta(champ),
             nom_du_champ('chx_acces_utilisateur'),
-            nom_bref_du_champ('acces'),libelle_du_champ('acces'),entete_distant_du_champ('acces utilisateur'),
+            nom_bref_du_champ('accès'),libelle_du_champ('accès'),entete_distant_du_champ('acces utilisateur'),
             typologie(chx),
             genre(4)
             )
@@ -1144,9 +1182,15 @@ CREATE TABLE `tbl_genres`(
    distinction_pour_liste('liste des genres'),
    distinction_pour_isad('d\'un genre'),fonctions_spéciales1('ne_pas_supprimer_id_un(1)'),fonctions_coherence1('
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'VARCHAR\'),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce VARCHAR\')))))))
+      throw(new(appelf(nomf(Error),p(\'cohérence bdd 1 : une longueur est obligatoire pour l\\\'espèce VARCHAR\')))))))
 choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'),egalstricte(tup.che_longueur_genre,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))'),transform_base_sur_svg(translate(512,514))) 
+      throw(new(appelf(nomf(Error),p(\'une longueur doit être indiquée pour le l\\\'espèce DECIMAL\')))))))
+choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstricte(appelf(element(tup.chp_espece_genre),nomf(toUpperCase),p()),\'DECIMAL\'))),alors(
+      choix(si(condition(inf(appelf(element(tup.che_longueur_genre),nomf(indexOf),p(\',\')),0)),alors(
+            throw(new(appelf(nomf(Error),p(\'cohérence bdd 2 : la longueur doit être de type n,d avec d<=n\')))))))
+      declare_variable(tt , appelf(element(tup.che_longueur_genre),nomf(split),p(\',\')))
+      choix(si(condition(ou(diffstricte(tt.length,2),non(appelf(element(this.__ig1),nomf(est_entier),p(tt[0]))),non(appelf(element(this.__ig1),nomf(est_entier),p(tt[1]))),sup(appelf(nomf(parseInt),p(tt[0]),p(10)),17),non(infeg(appelf(nomf(parseInt),p(tt[1]),p(10)),appelf(nomf(parseInt),p(tt[0]),p(10)))))),alors(
+            throw(new(appelf(nomf(Error),p(\'cohérence bdd 3 : la longueur doit être de type n,d avec d<=n\'))))))))))'),transform_base_sur_svg(translate(512,514))) 
 */
     
             /*
@@ -1169,7 +1213,7 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             typologie(chp),
             genre(3),
             est_libelle_lien(1),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_nom_genre` VARCHAR(64) NOT NULL
@@ -1221,10 +1265,10 @@ choix(si(condition(et(ou(tup.chp_espece_genre,tup.che_longueur_genre),egalstrict
             nom_bref_du_champ('longueur'),libelle_du_champ('longueur du genre'),entete_distant_du_champ('longueur genre'),
             typologie(chp),
             genre(110),
-            longueur_du_champ(20)
+            longueur_du_champ(8)
             )
             */
-             `che_longueur_genre` VARCHAR(20) DEFAULT  NULL
+             `che_longueur_genre` VARCHAR(8) DEFAULT  NULL
     ,
     
             /*
@@ -1688,11 +1732,12 @@ CREATE TABLE `tbl_requetes`(
             genre_meta(champ),
             nom_du_champ('che_base_reference_requete'),
             nom_bref_du_champ('base'),libelle_du_champ('base'),
-            typologie(che),
-            genre(9)
+            typologie(chn),
+            genre(27),
+            longueur_du_champ(3,0)
             )
             */
-             `che_base_reference_requete` INTEGER NOT NULL DEFAULT  1
+             `che_base_reference_requete` DECIMAL(3,0) NOT NULL DEFAULT  1
     );
 
 
@@ -1708,7 +1753,7 @@ CREATE TABLE `tbl_travaux`(
    table('tbl_travaux'),
    genre_meta(table_de_base),rang_de_la_table(130),permet_la_gestion_de('travail'),
    distinction_pour_liste('liste des travaux'),
-   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1112,472))) 
+   distinction_pour_isad('d\'un travail'),transform_base_sur_svg(translate(1177,471))) 
 */
     
             /*
@@ -1869,10 +1914,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_cle_parametre'),
-            nom_bref_du_champ('cle'),libelle_du_champ('cle du paramètre'),entete_distant_du_champ('paramètre'),
+            nom_bref_du_champ('clé'),libelle_du_champ('clé'),entete_distant_du_champ('paramètre'),
             typologie(chp),
             genre(3),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_cle_parametre` VARCHAR(64) NOT NULL
@@ -1882,10 +1927,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('chp_nom_parametre'),
-            nom_bref_du_champ('nom'),libelle_du_champ('nom du paramètre'),entete_distant_du_champ('paramètre'),
+            nom_bref_du_champ('nom'),libelle_du_champ('nom'),entete_distant_du_champ('paramètre'),
             typologie(chp),
             genre(3),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_nom_parametre` VARCHAR(64) NOT NULL
@@ -1895,10 +1940,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_commentaire_parametre'),
-            nom_bref_du_champ('commentaire'),libelle_du_champ('commentaire du parametre'),entete_distant_du_champ('commentaire paramètre'),
+            nom_bref_du_champ('commentaire'),libelle_du_champ('commentaire'),entete_distant_du_champ('commentaire paramètre'),
             typologie(cht),
             genre(11),
-            longueur_du_champ(10.200)
+            longueur_du_champ(2.100)
             )
             */
              `cht_commentaire_parametre` TEXT
@@ -1908,10 +1953,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_rev_parametre'),
-            nom_bref_du_champ('rev'),libelle_du_champ('rev du parametre'),entete_distant_du_champ('rev paramètre'),
+            nom_bref_du_champ('rev'),libelle_du_champ('rev'),entete_distant_du_champ('rev paramètre'),
             typologie(cht),
             genre(98),
-            longueur_du_champ(10.200)
+            longueur_du_champ(2.100)
             )
             */
              `cht_rev_parametre` TEXT DEFAULT  '#()'
@@ -1921,10 +1966,10 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_ordre_parametre'),
-            nom_bref_du_champ('ordre'),libelle_du_champ('ordre du parametre'),entete_distant_du_champ('ordre paramètre'),
+            nom_bref_du_champ('ordre'),libelle_du_champ('ordre'),entete_distant_du_champ('ordre paramètre'),
             typologie(cht),
             genre(6),
-            longueur_du_champ(10.200)
+            longueur_du_champ(2.100)
             )
             */
              `cht_ordre_parametre` TEXT DEFAULT  NULL
@@ -1974,7 +2019,7 @@ CREATE TABLE `tbl_parametres`(
             meta(
             genre_meta(champ),
             nom_du_champ('che__nur_parametre'),
-            nom_bref_du_champ(' nur'),libelle_du_champ(' nur'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
+            nom_bref_du_champ('nur'),libelle_du_champ('nur'),entete_distant_du_champ('fld cntupd parnams tbl_parametres'),
             typologie(che),
             genre(15),
             masquer_champ_dans_svg(1)
@@ -2029,9 +2074,9 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('chp_cle_grandeur'),
             nom_bref_du_champ('cle'),libelle_du_champ('cle de la grandeur'),entete_distant_du_champ('grandeur'),libelle_grandeur('voir_champ_dependant'),
             typologie(chp),
-            genre(12),
+            genre(3),
             est_libelle_lien(1),
-            longueur_du_champ(64)
+            longueur_du_champ(64.2)
             )
             */
              `chp_cle_grandeur` VARCHAR(64) NOT NULL DEFAULT  NULL
@@ -2043,11 +2088,11 @@ CREATE TABLE `tbl_grandeurs`(
             nom_du_champ('cht_rev_grandeur'),
             nom_bref_du_champ('rev'),libelle_du_champ('rev de la grandeur'),entete_distant_du_champ('rev grandeur'),
             typologie(cht),
-            genre(98),
+            genre(11),
             longueur_du_champ(10.200)
             )
             */
-             `cht_rev_grandeur` TEXT DEFAULT  NULL
+             `cht_rev_grandeur` TEXT NOT NULL DEFAULT  NULL
     ,
     
             /*
@@ -2155,7 +2200,7 @@ CREATE TABLE `tbl_taches`(
    table('tbl_taches'),
    genre_meta(table_de_base),rang_de_la_table(330),permet_la_gestion_de('tâche'),
    distinction_pour_liste('liste des tâches'),
-   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1074,700))) 
+   distinction_pour_isad('d\'une tâche'),transform_base_sur_svg(translate(1155,705))) 
 */
     
             /*

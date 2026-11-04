@@ -7,55 +7,55 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_2024{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_texte_tache" */
-        if(par['n_chp_texte_tache'] === null || par['n_chp_texte_tache'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_chp_texte_tache === null || tup.n_chp_texte_tache === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "texte" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "che_priorite_tache" */
-        if(par['n_che_priorite_tache'] === null || par['n_che_priorite_tache'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "priorite de la tâche" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_che_priorite_tache === null || tup.n_che_priorite_tache === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "priorité" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /*
           === test spécifique sur le champ "che_priorite_tache" ===
         */
-        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , par['n_che_priorite_tache'] , 'priorite de la tâche' );
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , tup.n_che_priorite_tache , 'priorité' );
         if(__test_1_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme});
         }
         /*
           === pas === de test sur le champ "chd__dtm_tache"
         */
         /* test "non nul" sur le champ "chx_utilisateur_tache" */
-        if(par['n_chx_utilisateur_tache'] === null || par['n_chx_utilisateur_tache'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_chx_utilisateur_tache === null || tup.n_chx_utilisateur_tache === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_texte_tache'] === undefined || par['n_chp_texte_tache'] === '' || par['n_chp_texte_tache'] === null){
+            if(tup.n_chp_texte_tache === undefined || tup.n_chp_texte_tache === '' || tup.n_chp_texte_tache === null){
                 tableau_champs.push( '`chp_texte_tache` = NULL' );
             }else{
-                tableau_champs.push( '`chp_texte_tache` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_texte_tache'] , 'n_chp_texte_tache' ) + '\'' );
+                tableau_champs.push( '`chp_texte_tache` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_texte_tache , 'n_chp_texte_tache' ) + '\'' );
             }
-            if(par['n_che_priorite_tache'] === undefined || par['n_che_priorite_tache'] === '' || par['n_che_priorite_tache'] === null){
+            if(tup.n_che_priorite_tache === undefined || tup.n_che_priorite_tache === '' || tup.n_che_priorite_tache === null){
                 tableau_champs.push( '`che_priorite_tache` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_che_priorite_tache'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "priorite" doit être numérique'});
+                if(isNaN(parseInt( tup.n_che_priorite_tache , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "priorité" doit être numérique'});
                 }
-                tableau_champs.push( '`che_priorite_tache` = ' + this.__ig1.__fnt1.sq0( par['n_che_priorite_tache'] , 'n_che_priorite_tache' ) + '' );
+                tableau_champs.push( '`che_priorite_tache` = ' + this.__ig1.__fnt1.sq0( tup.n_che_priorite_tache , 'n_che_priorite_tache' ) + '' );
             }
             tableau_champs.push( '`chd__dtm_tache` = \'' + this.__ig1.donnees_retournees.date_heure_serveur + '\' ' );
-            if(par['n_chx_utilisateur_tache'] === undefined || par['n_chx_utilisateur_tache'] === '' || par['n_chx_utilisateur_tache'] === null){
+            if(tup.n_chx_utilisateur_tache === undefined || tup.n_chx_utilisateur_tache === '' || tup.n_chx_utilisateur_tache === null){
                 tableau_champs.push( '`chx_utilisateur_tache` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_utilisateur_tache'] , 10 ))){
+                if(isNaN(parseInt( tup.n_chx_utilisateur_tache , 10 ))){
                     return({"__xst" : __xer ,"__xme" : 'le champ "utilisateur" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_utilisateur_tache` = ' + this.__ig1.__fnt1.sq0( par['n_chx_utilisateur_tache'] , 'n_chx_utilisateur_tache' ) + '' );
+                tableau_champs.push( '`chx_utilisateur_tache` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_utilisateur_tache , 'n_chx_utilisateur_tache' ) + '' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -69,9 +69,13 @@ class sql_2024{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
+            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_tache , 'c_chi_id_tache' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_2024= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_2024= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){

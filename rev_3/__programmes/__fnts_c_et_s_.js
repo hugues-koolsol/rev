@@ -29,11 +29,49 @@ class __fnts_c_et_s{
     /*
       =============================================================================================================
     */
-    test_est_au_format_rev( valeur , nom_du_champ ){
+    fmt_dec1( v , nbd ){
+        if(v === null){
+            return '';
+        }
+        return(v.toLocaleString( undefined , {"minimumFractionDigits" : nbd} ));
+    }
+    /*
+      =============================================================================================================
+    */
+    test_est_au_format_une_constante_rev( valeur , nom_du_champ ){
+        /* une seule constantes au formar rev , genre 95 */
         if(valeur !== null && valeur !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( valeur , true );
             if(obj1.__xst !== __xsu){
-                return(this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le champ "' + nom_du_champ + '" doit être au format rev (' + this.__cote_c_ou_s + ')'} ));
+                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_du_champ + '" doit être une constante au format rev (' + this.__cote_c_ou_s + ')'});
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    test_est_au_format_constantes_rev( valeur , nom_du_champ ){
+        /* plusieurs constantes au formar rev , genre 96 */
+        if(valeur !== null && valeur !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( valeur , true );
+            if(obj1.__xst !== __xsu){
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : 'le champ "' + nom_du_champ + '" doit être plusieurs constantes au format rev (' + this.__cote_c_ou_s + ')'
+                    });
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    test_est_au_format_rev( valeur , nom_du_champ ){
+        if(valeur !== null && valeur !== ''){
+            let obj1=this.__ig1.__rev1.rev_tm( valeur );
+            if(obj1.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_du_champ + '" doit être une fonction au format rev (' + this.__cote_c_ou_s + ')'});
             }
         }
         return({"__xst" : __xsu});
@@ -43,7 +81,7 @@ class __fnts_c_et_s{
     */
     test_heure_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
         let sepa_heure=':';
-        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  00:00:00 et 23:59:59 inclus<br />';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être entre 00:00:00 et 23:59:59 inclus<br />';
         if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
         }
@@ -81,7 +119,7 @@ class __fnts_c_et_s{
     */
     test_date_nulle_ou_comprise_entre( inf , sup , valeur , nom_du_champ ){
         let sepa_date='-';
-        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être  1000_01_01 et 9999_12_31 inclus<br />';
+        let mes_err='Erreur sur le champ ' + nom_du_champ + ' qui doit être entre 1000-01-01 et 9999-12-31 inclus<br />';
         if(valeur === '' || valeur === null){
             return({"__xst" : __xsu});
         }
@@ -189,46 +227,6 @@ class __fnts_c_et_s{
             }
         }
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-    }
-    /*
-      =============================================================================================================
-    */
-    test_longueur_de_champ_dans_genre( valeur , nom_champ ){
-        if(valeur === null || valeur === ''){
-            return({"__xst" : __xsu});
-        }
-        if(this.__ig1.est_num( valeur )){
-            let v=parseFloat( valeur );
-            /* si on a entré "3.4" 34  est différent de 30 ] */
-            if(v * 10 !== parseInt( v , 10 ) * 10){
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir une nombre avec une virgule ( "," )' + this.__ig1.nl2()});
-            }
-            return({"__xst" : __xsu});
-        }
-        let contient_virgule=false;
-        for( let i=0 ; i < valeur.length ; i++ ){
-            let c=valeur.substr( i , 1 );
-            if(c >= '0' && c <= '9' || c === ','){
-                if(c === ','){
-                    contient_virgule=true;
-                }
-            }else{
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit contenir des chiffres et/ou des virgules' + this.__ig1.nl2()});
-            }
-        }
-        if(contient_virgule === true){
-            /* c'est probablement un champ décimal */
-            let tab=valeur.split( ',' );
-            if(tab.length > 2){
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" doit  contenir une virgule uniquement' + this.__ig1.nl2()});
-            }
-            let val1=parseInt( tab[0] , 10 );
-            let val2=parseInt( tab[1] , 10 );
-            if(val1 + val2 > 20){
-                return({"__xst" : __xer ,"__xme" : 'le champ "' + nom_champ + '" contenir une longueur cumulée de 20' + this.__ig1.nl2()});
-            }
-        }
-        return({"__xst" : __xsu});
     }
     /*
       =============================================================================================================

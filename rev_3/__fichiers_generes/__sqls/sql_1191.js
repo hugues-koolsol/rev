@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1191{
     /*
-      =============================================================================================================
+      ================================select=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_grandeur\` , \`T0\`.\`chx_parametre_grandeur\` , \`T0\`.\`chp_cle_grandeur\` , \`T0\`.\`cht_rev_grandeur\` , \`T0\`.\`che_actif_grandeur\`
         `;
@@ -17,7 +17,7 @@ class sql_1191{
         const from0=`
           FROM  tbl_grandeurs T0        `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_grandeur'] , 'T0_chi_id_grandeur' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_grandeur , 'T0_chi_id_grandeur' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1191 sql0=',sql0); */
         let lignes=[];
@@ -31,11 +31,11 @@ class sql_1191{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_grandeur" : col[0] ,
-                    "T0.chx_parametre_grandeur" : col[1] ,
-                    "T0.chp_cle_grandeur" : col[2] ,
-                    "T0.cht_rev_grandeur" : col[3] ,
-                    "T0.che_actif_grandeur" : col[4]
+                    "T0_chi_id_grandeur" : col[0] ,
+                    "T0_chx_parametre_grandeur" : col[1] ,
+                    "T0_chp_cle_grandeur" : col[2] ,
+                    "T0_cht_rev_grandeur" : col[3] ,
+                    "T0_che_actif_grandeur" : col[4]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

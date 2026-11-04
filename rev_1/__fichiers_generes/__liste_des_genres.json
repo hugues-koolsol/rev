@@ -556,7 +556,7 @@
     "che_ordre_genre": 14,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,
-    "cht_fonctions_genre": null,
+    "cht_fonctions_genre": "test_est_au_format_une_constante_rev()",
     "che_est_nur_genre": 0
   },
   "96": {
@@ -576,7 +576,7 @@
     "che_ordre_genre": 13,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,
-    "cht_fonctions_genre": null,
+    "cht_fonctions_genre": "test_est_au_format_plusieurs_constantes_rev()",
     "che_est_nur_genre": 0
   },
   "97": {
@@ -616,7 +616,7 @@
     "che_ordre_genre": 15,
     "che_est_tsc_genre": 0,
     "che_est_tsm_genre": 0,
-    "cht_fonctions_genre": null,
+    "cht_fonctions_genre": "test_est_au_format_rev()",
     "che_est_nur_genre": 0
   },
   "99": {

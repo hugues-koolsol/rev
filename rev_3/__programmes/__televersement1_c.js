@@ -324,7 +324,8 @@ class __televersement1{
         let l01=mat.length;
         let id=null;
         let id_du_bouton=null;
-        let la_zone_des_fichiers;
+        let la_zone_des_fichiers=0;
+        let dans_un_formulaire=false;
         for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
             if(mat[i][1] === 'id' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 id=mat[i + 1][1];
@@ -332,6 +333,8 @@ class __televersement1{
                 id_du_bouton=mat[i + 1][1];
             }else if(mat[i][1] === 'la_zone_des_fichiers' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 la_zone_des_fichiers=mat[i + 1][1];
+            }else if(mat[i][1] === 'dans_un_formulaire' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                dans_un_formulaire=parseInt( mat[i + 1][1] , 10 );
             }
         }
         if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){
@@ -431,11 +434,11 @@ class __televersement1{
             o1+='          cliquez ici pour sélectionner les fichiers';
             o1+='        </label>';
             o1+='        <input type="file" multiple id="vv_input_fichier_a_telecharger4" style="display:none;" ';
-            o1+=' data-rev_change="m1(n1(' + this.moi + '),f1(fichiers_ajoutés_pour_téléversement4(';
+            o1+=' rev_change1="m1(n1(' + this.moi + '),f1(fichiers_ajoutés_pour_téléversement4(';
             o1+='id(vv_input_fichier_a_telecharger4),';
             o1+='id_du_bouton(vv_bouton_téléverser4),';
             o1+='la_zone_des_fichiers(vv_la_liste_des_fichiers4))))" />';
-            o1+='        <button type="submit" style="visibility:hidden;" class="rev_bouton" id="vv_bouton_téléverser4">téléverser4</button>';
+            o1+='        <button type="submit" style="visibility:hidden;" class="yy_b1" id="vv_bouton_téléverser4">téléverser4</button>';
             o1+='    </form>';
             o1+='    <br />';
             o1+='    <div id="vv_la_liste_des_fichiers4" style="display:none;"></div>';

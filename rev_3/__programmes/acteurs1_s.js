@@ -92,28 +92,7 @@ class acteurs1{
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
         /* sélection du champ à modifier */
         let criteres_select_2002={"T0_chx_utilisateur_acteur" : form['chx_utilisateur_acteur']};
-        let tt2002=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , criteres_select_2002 , this.__ig1.donnees_retournees , __db1 );
+        let tt2002=await this.__ig1.sql_iii( 2002 , criteres_select_2002 , this.__ig1.donnees_retournees , __db1 );
         if(tt2002.__xst !== __xsu || tt2002.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [2002 ' + this.__ig1.nl2() + ']'});
         }
@@ -131,15 +110,7 @@ class acteurs1{
             "n_chx_statut_acteur" : form['chx_statut_acteur']
         };
         /* =========================== mise à jour effective ======================== */
-        let tt2004=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b2.tbl_acteurs SET 
-           `chp_nom_acteur` = :n_chp_nom_acteur , 
-           `chp_prenom_acteur` = :n_chp_prenom_acteur , 
-           `chx_statut_acteur` = :n_chx_statut_acteur
-        WHERE `chx_utilisateur_acteur` = :c_chx_utilisateur_acteur ;
-        */
-        /*sql_inclure_fin*/ 2004 , criteres_2004 , this.__ig1.donnees_retournees , __db1 );
+        let tt2004=await this.__ig1.sql_iii( 2004 , criteres_2004 , this.__ig1.donnees_retournees , __db1 );
         if(tt2004.__xst !== __xsu || tt2004.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt2004.__xme});
@@ -157,28 +128,7 @@ class acteurs1{
             }
             return({"__xst" : __xsu});
         }
-        let tt2002_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , criteres_select_2002 , this.__ig1.donnees_retournees , __db1 );
+        let tt2002_bis=await this.__ig1.sql_iii( 2002 , criteres_select_2002 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt2002_bis;
         return({"__xst" : __xsu});
     }
@@ -207,28 +157,7 @@ class acteurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 2 );
         }
-        let tt2002=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , {"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur} , this.__ig1.donnees_retournees , __db1 );
+        let tt2002=await this.__ig1.sql_iii( 2002 , {"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur} , this.__ig1.donnees_retournees , __db1 );
         if(tt2002.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2002.__xme});
         }
@@ -262,28 +191,7 @@ class acteurs1{
              /*  */
             "T0_chx_utilisateur_acteur" : chx_utilisateur_acteur
         };
-        let tt2002=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , criteres_2002 , this.__ig1.donnees_retournees , __db1 );
+        let tt2002=await this.__ig1.sql_iii( 2002 , criteres_2002 , this.__ig1.donnees_retournees , __db1 );
         if(tt2002.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2002.__xme});
         }
@@ -306,28 +214,7 @@ class acteurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
         let critere_2002={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
-        let tt2002=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , critere_2002 , this.__ig1.donnees_retournees , __db1 );
+        let tt2002=await this.__ig1.sql_iii( 2002 , critere_2002 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt2002;
         let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt2002[__xva][0] , __db1 );
         if(__aetapv.__xst !== __xsu){
@@ -347,28 +234,7 @@ class acteurs1{
              /*  */
             "T0_chx_utilisateur_acteur" : form['chx_utilisateur_acteur']
         };
-        let tt2002=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , criteres_2002 , this.__ig1.donnees_retournees , __db1 );
+        let tt2002=await this.__ig1.sql_iii( 2002 , criteres_2002 , this.__ig1.donnees_retournees , __db1 );
         if(tt2002.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2002.__xme});
         }
@@ -381,12 +247,7 @@ class acteurs1{
              /*  */
             "chx_utilisateur_acteur" : form['chx_utilisateur_acteur']
         };
-        let tt2005=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b2.tbl_acteurs
-        WHERE `chx_utilisateur_acteur` = :chx_utilisateur_acteur ;
-        */
-        /*sql_inclure_fin*/ 2005 , criteres_2005 , this.__ig1.donnees_retournees , __db1 );
+        let tt2005=await this.__ig1.sql_iii( 2005 , criteres_2005 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt2005.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2005.__xme});
@@ -423,28 +284,7 @@ class acteurs1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( 2 );
         let critere_2002={"T0_chx_utilisateur_acteur" : chx_utilisateur_acteur};
-        let tt2002=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
-        `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
-        `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-        ;
-        */
-        /*sql_inclure_fin*/ 2002 , critere_2002 , this.__ig1.donnees_retournees , __db1 );
+        let tt2002=await this.__ig1.sql_iii( 2002 , critere_2002 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt2002;
         return({"__xst" : __xsu});
     }
@@ -479,23 +319,7 @@ class acteurs1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt2003=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        
-        INSERT INTO b2.`tbl_acteurs`(
-            `chx_utilisateur_acteur` , 
-            `chp_nom_acteur` , 
-            `chp_prenom_acteur` , 
-            `chx_statut_acteur`
-        ) VALUES (
-            :chx_utilisateur_acteur , 
-            :chp_nom_acteur , 
-            :chp_prenom_acteur , 
-            :chx_statut_acteur
-        );
-        */
-        /*sql_inclure_fin*/ 2003 , criteres_2003 , this.__ig1.donnees_retournees , __db1 );
+        let tt2003=await this.__ig1.sql_iii( 2003 , criteres_2003 , this.__ig1.donnees_retournees , __db1 );
         if(tt2003.__xst !== __xsu || tt2003['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt2003.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -567,34 +391,7 @@ class acteurs1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( 2 );
         }
-        let tt2001=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-        SELECT 
-        `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
-        `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-        `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
-         LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-        
-         LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-        
-         LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-        
-         LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-        
-         LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-        
-        WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
-           AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur
-           AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-           AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-           AND `T0`.`chx_statut_acteur` = :T0_chx_statut_acteur) 
-        ORDER BY `T0`.`chx_utilisateur_acteur` DESC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 2001 , criteres_2001 , this.__ig1.donnees_retournees , __db1 );
+        let tt2001=await this.__ig1.sql_iii( 2001 , criteres_2001 , this.__ig1.donnees_retournees , __db1 );
         if(tt2001.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt2001.__xme});
         }
@@ -605,34 +402,7 @@ class acteurs1{
             __debut=0;
             __num_page=0;
             criteres_2001['debut']=__debut;
-            tt2001=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
-            SELECT 
-            `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
-            `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-            `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-             FROM b2.tbl_acteurs T0
-             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
-            
-             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
-            
-             LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
-            
-             LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-            
-             LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
-            
-            WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
-               AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur
-               AND `T1`.`chp_nom_de_connexion_utilisateur` LIKE :T1_chp_nom_de_connexion_utilisateur
-               AND `T0`.`chx_utilisateur_acteur` = :T0_chx_utilisateur_acteur
-               AND `T0`.`chx_statut_acteur` = :T0_chx_statut_acteur) 
-            ORDER BY `T0`.`chx_utilisateur_acteur` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 2001 , criteres_2001 , this.__ig1.donnees_retournees , __db1 );
+            tt2001=await this.__ig1.sql_iii( 2001 , criteres_2001 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;

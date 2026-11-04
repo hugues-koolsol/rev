@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1211{
     /*
-      =============================================================================================================
+      ================================liste_ecran=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let donnees0=[];
         let __nbEnregs=0;
         let where0='';
@@ -25,13 +25,28 @@ class sql_1211{
           FROM  tbl_grandeurs T0    `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
-        where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
-        if(par.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && par['T0_chx_parametre_grandeur'] !== ''){
-            where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , par['T0_chx_parametre_grandeur'] );
+        /* this.__ig1.ma_trace1( 'tup=' , tup ); */
+        try{
+            where0+=` AND \`T0\`.\`che_actif_grandeur\` = 1`;
+            if(tup.hasOwnProperty( 'T0_chx_parametre_grandeur' ) && tup.T0_chx_parametre_grandeur !== ''){
+                if(tup.T0_chx_parametre_grandeur === 0){
+                    where0+=' AND `T0`.`chx_parametre_grandeur` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parametre_grandeur`' , tup.T0_chx_parametre_grandeur );
+                }
+            }
+        }catch(e){
+            return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
+            
         }
         sql0+=where0;
-    const order0=` ORDER BY ` + par['liste_des_tris'] + ``;
-        sql0+=order0;
+        if(tup.hasOwnProperty( '__ordre_de_tri_de_la_liste1' ) && tup.__ordre_de_tri_de_la_liste1 !== ''){
+            sql0+=`
+              ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;
+        }else{
+            sql0+=`
+           ORDER BY   :liste_des_tris`;
+        }
         /* ATTENTION : pas de limites */
         const plage0='';
         sql0+=plage0;
@@ -47,9 +62,9 @@ class sql_1211{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0.chi_id_grandeur" : lignes[numero_de_ligne][0] ,
-                    "T0.chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
-                    "T0.cht_rev_grandeur" : lignes[numero_de_ligne][2]
+                    "T0_chi_id_grandeur" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_cle_grandeur" : lignes[numero_de_ligne][1] ,
+                    "T0_cht_rev_grandeur" : (lignes[numero_de_ligne][2]===null?null:lignes[numero_de_ligne][2].substr(0,200))
                 } );
         }
         /* comptage */

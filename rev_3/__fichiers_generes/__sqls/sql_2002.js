@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_2002{
     /*
-      =============================================================================================================
+      ================================select=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chx_utilisateur_acteur\` , \`T0\`.\`chp_nom_acteur\` , \`T0\`.\`chp_prenom_acteur\` , \`T1\`.\`chi_id_utilisateur\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\` , 
           \`T1\`.\`chx_acces_utilisateur\` , \`T1\`.\`che_actif_utilisateur\` , \`T2\`.\`chp_nom_acces\` , \`T2\`.\`chx_groupe_acces\` , \`T2\`.\`chx_metier_acces\` , 
@@ -29,7 +29,7 @@ class sql_2002{
            LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chx_utilisateur_acteur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chx_utilisateur_acteur'] , 'T0_chx_utilisateur_acteur' ) + ``;
+        const where0=` WHERE \`T0\`.\`chx_utilisateur_acteur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chx_utilisateur_acteur , 'T0_chx_utilisateur_acteur' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_2002 sql0=',sql0); */
         let lignes=[];
@@ -43,20 +43,20 @@ class sql_2002{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chx_utilisateur_acteur" : col[0] ,
-                    "T0.chp_nom_acteur" : col[1] ,
-                    "T0.chp_prenom_acteur" : col[2] ,
-                    "T1.chi_id_utilisateur" : col[3] ,
-                    "T1.chp_nom_de_connexion_utilisateur" : col[4] ,
-                    "T1.chx_acces_utilisateur" : col[5] ,
-                    "T1.che_actif_utilisateur" : col[6] ,
-                    "T2.chp_nom_acces" : col[7] ,
-                    "T2.chx_groupe_acces" : col[8] ,
-                    "T2.chx_metier_acces" : col[9] ,
-                    "T3.chp_nom_groupe" : col[10] ,
-                    "T4.chp_nom_metier" : col[11] ,
-                    "T0.chx_statut_acteur" : col[12] ,
-                    "T5.chp_cle_grandeur" : col[13]
+                    "T0_chx_utilisateur_acteur" : col[0] ,
+                    "T0_chp_nom_acteur" : col[1] ,
+                    "T0_chp_prenom_acteur" : col[2] ,
+                    "T1_chi_id_utilisateur" : col[3] ,
+                    "T1_chp_nom_de_connexion_utilisateur" : col[4] ,
+                    "T1_chx_acces_utilisateur" : col[5] ,
+                    "T1_che_actif_utilisateur" : col[6] ,
+                    "T2_chp_nom_acces" : col[7] ,
+                    "T2_chx_groupe_acces" : col[8] ,
+                    "T2_chx_metier_acces" : col[9] ,
+                    "T3_chp_nom_groupe" : col[10] ,
+                    "T4_chp_nom_metier" : col[11] ,
+                    "T0_chx_statut_acteur" : col[12] ,
+                    "T5_chp_cle_grandeur" : col[13]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

@@ -7,24 +7,40 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1190{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
-    async sql( par ){
-        /* test "non nul" sur le champ "che_actif_grandeur" */
-        if(par['n_che_actif_grandeur'] === null || par['n_che_actif_grandeur'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.n_che_actif_grandeur || 1 === tup.n_che_actif_grandeur ) ){
+            throw new Error( tete + '"' + tup.n_che_actif_grandeur + '" pour "la grandeur est active" '  + this.__ig1.nl2() );
         }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================update=============================================================================
+    */
+    async sql( tup ){
+        /* test 0,1 sur le champ "che_actif_grandeur" */
+        if(!( tup.n_che_actif_grandeur === 0 ||  tup.n_che_actif_grandeur === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_che_actif_grandeur'] === undefined || par['n_che_actif_grandeur'] === '' || par['n_che_actif_grandeur'] === null){
-                tableau_champs.push( '`che_actif_grandeur` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_che_actif_grandeur'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
-                }
-                tableau_champs.push( '`che_actif_grandeur` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_grandeur'] , 'n_che_actif_grandeur' ) + '' );
-            }
+            tableau_champs.push( '`che_actif_grandeur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_grandeur , 'n_che_actif_grandeur' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */
@@ -37,9 +53,13 @@ class sql_1190{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_grandeur'] , 'c_chi_id_grandeur' ) + '\r\n';
+            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_grandeur , 'c_chi_id_grandeur' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1190= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1190= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){

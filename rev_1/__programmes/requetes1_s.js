@@ -278,6 +278,9 @@ class requetes1{
       =============================================================================================================
     */
     async importer_requete_de_1( mat , d ){
+        /*
+          cette fonction ne sert qu'au projet 3 et permet d'importer les requêtes de l'environnement 1
+        */
         let chi_id_requete=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -320,7 +323,8 @@ class requetes1{
             "n_cht_rev_requete" : tt1373_1.__xva[0].T0_cht_rev_requete === '' ? ( null ) : ( tt1373_1.__xva[0].T0_cht_rev_requete ) ,
             "n_cht_sql_requete" : tt1373_1.__xva[0].T0_cht_sql_requete === '' ? ( null ) : ( tt1373_1.__xva[0].T0_cht_sql_requete ) ,
             "n_cht_commentaire_requete" : tt1373_1.__xva[0].T0_cht_commentaire_requete === '' ? ( null ) : ( tt1373_1.__xva[0].T0_cht_commentaire_requete ) ,
-            "n_chp_table_reference_requete" : tt1373_1.__xva[0].T0_chp_table_reference_requete === '' ? ( null ) : ( tt1373_1.__xva[0].T0_chp_table_reference_requete )
+            "n_chp_table_reference_requete" : tt1373_1.__xva[0].T0_chp_table_reference_requete === '' ? ( null ) : ( tt1373_1.__xva[0].T0_chp_table_reference_requete ) ,
+            "n_che_base_reference_requete" : tt1373_1.__xva[0].T0_che_base_reference_requete === '' ? ( null ) : ( tt1373_1.__xva[0].T0_che_base_reference_requete )
         };
         /* =========================== mise à jour effective ======================== */
         let tt1355=await this.__ig1.sql_iij(
@@ -335,7 +339,7 @@ class requetes1{
            `che_base_reference_requete` = :n_che_base_reference_requete
         WHERE `chi_id_requete` = :c_chi_id_requete ;
         */
-        /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db3 );
+        /*sql_inclure_fin*/ 1355 , criteres_1355 , __db3 );
         if(tt1355.__xst !== __xsu || tt1355.changements !== 1){
             return({"__xst" : __xer ,"__xme" : tt1355.__xme});
         }

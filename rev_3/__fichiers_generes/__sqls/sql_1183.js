@@ -7,9 +7,21 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1183{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
-    async sql( par ){
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.che_pour_admin_parametre || 1 === tup.che_pour_admin_parametre ) ){
+            throw new Error( tete + '"' + tup.che_pour_admin_parametre + '" pour "pour admin" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================insert=============================================================================
+    */
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_parametres\`(
          \`chp_cle_parametre\` , 
@@ -23,19 +35,25 @@ class sql_1183{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chp_cle_parametre" */
-                if(elem['chp_cle_parametre'] === null || elem['chp_cle_parametre'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "cle du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chp_cle_parametre === null || tup.chp_cle_parametre === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "clé" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                if(tup.chp_cle_parametre.length < 2 || tup.chp_cle_parametre.substr( 0 , 1 ) === ' '  || tup.chp_cle_parametre.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "clé" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_parametre" */
-                if(elem['chp_nom_parametre'] === null || elem['chp_nom_parametre'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chp_nom_parametre === null || tup.chp_nom_parametre === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_pour_admin_parametre" */
-                if(elem['che_pour_admin_parametre'] === null || elem['che_pour_admin_parametre'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "pour admin du parametre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chp_nom_parametre.length < 2 || tup.chp_nom_parametre.substr( 0 , 1 ) === ' '  || tup.chp_nom_parametre.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
+                /* test 0,1 sur le champ "che_pour_admin_parametre" */
+                if(!( tup.che_pour_admin_parametre === 0 ||  tup.che_pour_admin_parametre === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "pour admin" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd__dtc_parametre"
@@ -46,17 +64,28 @@ class sql_1183{
                 /*
                   === pas === de test sur le champ "che__nur_parametre"
                 */
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_cle_parametre'] , 'chp_cle_parametre' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_parametre'] , 'chp_nom_parametre' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_pour_admin_parametre'] , 'che_pour_admin_parametre' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_commentaire_parametre'] , 'cht_commentaire_parametre' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_cle_parametre , 'chp_cle_parametre' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_parametre , 'chp_nom_parametre' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_pour_admin_parametre , 'che_pour_admin_parametre' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_commentaire_parametre , 'cht_commentaire_parametre' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      '+this.__ig1.__fnt1.sq1('0') + '';
+                liste_des_valeurs+='\r\n      0';
                 liste_des_valeurs+=')';
             }
             let res=0;
@@ -83,7 +112,12 @@ class sql_1183{
                     "__xme" : ''
                 });
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1183 , e , sql0 , {} ));
+            if(this.__ig1.options_generales.erreur_controlee === true){
+                this.__ig1.ma_trace1("e.message=",e.message);
+                return({__xst : __xer , __xme : e.message});
+            }else{
+                return(this.__ig1.traite_erreur_sql( 1183 , e , sql0 , {} ));
+            }
         }
     }
     /*

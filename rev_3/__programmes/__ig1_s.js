@@ -79,10 +79,12 @@ class __ig1{
     };
     donnees_recues=null;
     asynchrone=false;
+    __liste_des_grandeurs={};
+    __les_ressources=[];
     /*
       =============================================================================================================
     */
-    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null , __liste_des_bases=[1] ){
+    constructor( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , __socket=null , __liste_des_bases=[1] , les_ressources ){
         /* , repertoire_du_pgm_serveur , repertoire_des_programmes , repertoire_racine_de_tous_les_projets , __deverminage ]{ */
         /* console.log('dans __ig1_s.constructor , _CA_='+_CA_+',__le_port='+__le_port+',__version='+__version) */
         this._CA_=_CA_;
@@ -90,14 +92,17 @@ class __ig1{
         this.__version=__version;
         this.repertoire_du_pgm_serveur=repertoire_du_pgm_serveur;
         this.repertoire_racine_de_tous_les_projets=repertoire_racine_de_tous_les_projets;
+        this.__liste_des_bases=__liste_des_bases;
+        this.__socket=__socket;
+        /*  */
+        this.lire_les_grandeurs();
         this.__fnt1=new __fnt1( [] , 0 , this );
         this.__rev1=new __rev1( this );
         this.__fnts_c_et_s=new __fnts_c_et_s( [] , 0 , this , 'serveur' );
         this.objet_des_modules_charges['__fnt1']=this.__fnt1;
         this.objet_des_modules_charges['__rev1']=this.__rev1;
         this.__ndlcs='cle_de_session_rev_' + _CA_ + '_websocket';
-        this.__liste_des_bases=__liste_des_bases;
-        this.__socket=__socket;
+        this.__les_ressources=les_ressources;
     }
     /*
       =============================================================================================================
@@ -167,10 +172,9 @@ class __ig1{
                                                 /* this.ma_trace1('autorisation OK pour "'+cle_pour_json_du_fichier+'"'); */
                                             }
                                             if(controler_les_autorisations === true){
-                                                /*
-                                                  this.ma_trace1("là cle_pour_json_du_fichier=" , cle_pour_json_du_fichier );
-                                                */
-                                                if(this.__session_json.__autorisations_serveur.hasOwnProperty( cle_pour_json_du_fichier )){
+                                                if(this.__session_json.__autorisations_serveur !== undefined
+                                                       && this.__session_json.__autorisations_serveur.hasOwnProperty( cle_pour_json_du_fichier )
+                                                ){
                                                     /*
                                                       on a déjà mis cette autorisation en session 
                                                     */
@@ -204,14 +208,18 @@ class __ig1{
                                                 try{
                                                     let contenu_texte=await this.file_get_contents( chemin_des_autorisations );
                                                     let contenu_json=JSON.parse( contenu_texte );
-                                                    /* this.ma_trace1('contenu_json=',contenu_json); */
+                                                    /* this.ma_trace1('cle_pour_json_du_fichier=' + cle_pour_json_du_fichier + ' , contenu_json=',contenu_json); */
                                                     if(contenu_json.hasOwnProperty( cle_pour_json_du_fichier )){
+                                                        /* this.ma_trace1('cle_pour_json_du_fichier=' + cle_pour_json_du_fichier + ' , contenu_json=',contenu_json); */
                                                         let elem=contenu_json[cle_pour_json_du_fichier];
                                                         /* this.ma_trace1("elem[" + cle_pour_json_du_fichier + "]=" , elem ); */
                                                         /* http://localhost:6003/#pm1(m1(n1(autorisations1),f1(liste1(__num_page(0))))) */
                                                         if(elem.che_pour_sous_liste_autorisation === 1){
                                                             /* this.ma_trace1( "vérifier nom_de_la_fonction_a_appeler=" + nom_de_la_fonction_a_appeler ); */
-                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2'){
+                                                            if(nom_de_la_fonction_a_appeler === 'sous_liste2'
+                                                                   || nom_de_la_fonction_a_appeler === 'obtenir_les_grandeurs_pour_filtre_liste2'
+                                                                   || nom_de_la_fonction_a_appeler === 'obtenir_les_grandeurs_pour_sous_liste2'
+                                                            ){
                                                                 /*
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
@@ -222,7 +230,7 @@ class __ig1{
                                                                   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
                                                                 */
                                                             }else{
-                                                                return({"__xst" : __xer ,"__xme" : '<b>1autorisation non référencée ' + m1 + '.' + n1 + '</b>' + this.nl2()});
+                                                                return({"__xst" : __xer ,"__xme" : '<b>1autorisation non référencée ' + '' + n1 + '.' + nom_de_la_fonction_a_appeler + '</b>' + this.nl2()});
                                                             }
                                                         }else if(elem.che_pour_sous_liste_autorisation === 0){
                                                             if(elem.cht_condition_js_source === null){
@@ -257,7 +265,14 @@ class __ig1{
                                                             }
                                                         }
                                                     }else{
-                                                        return({"__xst" : __xer ,"__xme" : '<b>3:autorisation serveur non référencée ' + n1 + '</b>'});
+                                                        /*
+                                                          console.log('00264 this.donnees_retournees.chi_id_utilisateur=',this.donnees_retournees.chi_id_utilisateur);
+                                                        */
+                                                        if(this.donnees_retournees.chi_id_utilisateur === 0){
+                                                            return({"__xst" : __xer ,"__xme" : '<b>connectez vous !</b>'});
+                                                        }else{
+                                                            return({"__xst" : __xer ,"__xme" : '<b>3:autorisation serveur non référencée ' + n1 + '</b>'});
+                                                        }
                                                     }
                                                 }catch(e){
                                                     return({"__xst" : __xer ,"__xme" : 'erreur autorisation serveur 4 ' + this.nl2( e )});
@@ -322,6 +337,9 @@ class __ig1{
                                                         this.donnees_retournees.__xsi[__xer].push( 'SERVEUR : il manque "return({__xst:__xsu});" à ' + n1 + '_s.' + nom_de_la_fonction_a_appeler + '() ' );
                                                         continuer=false;
                                                     }else{
+                                                        if(!ret.hasOwnProperty( '__xst' )){
+                                                            this.donnees_retournees.__xsi[__xer].push( 'Il manque un statut de retour dans ' + n1 + '.' + nom_de_la_fonction_a_appeler + '()' );
+                                                        }
                                                         if(ret.hasOwnProperty( '__xme' ) && ret.__xme !== ''){
                                                             this.donnees_retournees.__xsi[ret.__xst].push( ret.__xme );
                                                             ret.__xme='';
@@ -335,7 +353,11 @@ class __ig1{
                                                 }catch(e){
                                                     /* this.ma_trace1("e=",e.stack); */
                                                     if(e.message.indexOf( 'is not a function' ) >= 0){
-                                                        this.donnees_retournees.__xsi[__xer].push( 'la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\'a pas été trouvée' );
+                                                        let le_message='la fonction serveur "' + n1 + '.' + nom_de_la_fonction_a_appeler + '" n\'a pas été trouvée ou bien contient une erreur';
+                                                        if(this.__deverminage >= 2){
+                                                            le_message+='<br />' + e.stack.replace( /\n/g , '<\n<br />' );
+                                                        }
+                                                        this.donnees_retournees.__xsi[__xer].push( le_message );
                                                         continuer=false;
                                                         continue;
                                                     }
@@ -352,7 +374,11 @@ class __ig1{
                                                         this.donnees_retournees.__xsi[__xer].push( this.nl2( e ) );
                                                     }else{
                                                         /* this.ma_trace1("e=",e.stack); */
-                                                        this.donnees_retournees.__xsi[__xer].push( e.message );
+                                                        if(this.__deverminage >= 2){
+                                                            this.donnees_retournees.__xsi[__xer].push( this.retirer_informations_fichier_de_stack( e.stack.replace( /\n/g , '<br />' ) ) );
+                                                        }else{
+                                                            this.donnees_retournees.__xsi[__xer].push( e.message );
+                                                        }
                                                     }
                                                     continuer=false;
                                                     continue;
@@ -401,6 +427,8 @@ class __ig1{
         let nom_champ_dans_parent2='';
         let nom_libelle_dans_parent2='';
         let chi_id_parametre=0;
+        let methode_sur_click2='';
+        let __sous_titre_a_afficher='';
         let l01=mat.length;
         let option_de_13='';
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -414,12 +442,22 @@ class __ig1{
                 nom_champ_dans_parent2=mat[i + 1][1];
             }else if(mat[i][1] === 'nom_libelle_dans_parent2' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 nom_libelle_dans_parent2=mat[i + 1][1];
+            }else if(mat[i][1] === '__sous_titre_a_afficher' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                __sous_titre_a_afficher=mat[i + 1][1];
             }else if(mat[i][1] === 'chi_id_parametre' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
                 chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                let objm2=this.__rev1.m2t( mat , i );
+                if(objm2.__xst === __xsu){
+                }else{
+                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                }
+                methode_sur_click2=objm2.__xva;
             }
         }
         let __num_page=0;
         let formulaire=this.__fnt1.debut_filtre1( mat , d , 'sous_liste2' );
+        /* this.ma_trace1("criteres_xxx",criteres_xxx); */
         if(!formulaire.hasOwnProperty( '__num_page' ) || !this.est_num( formulaire.__num_page )){
             __num_page=0;
         }else{
@@ -435,7 +473,7 @@ class __ig1{
         if(__db1 === null){
             __db1=await this.ouvrir_bdd( this.options_generales.base_de_travail );
         }
-        let ttxxx=await this.sql_iii( id_sql , criteres_xxx , this.donnees_retournees , __db1 );
+        let ttxxx=await this.sql_iij( id_sql , criteres_xxx , __db1 );
         if(ttxxx.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.nl2()});
         }
@@ -443,21 +481,28 @@ class __ig1{
             __debut=0;
             __num_page=0;
             criteres_xxx['debut']=__debut;
-            ttxxx=await this.__ig1.sql_iii( id_sql , criteres_xxx , this.__ig1.donnees_retournees , __db1 );
+            ttxxx=await this.__ig1.sql_iij( id_sql , criteres_xxx , __db1 );
         }
         this.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.donnees_retournees[__xva]['__debut']=__debut;
-        this.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.donnees_retournees[__xac]='pm1(m1(n1(' + module_appelant1 + '),f1(sous_liste2(' + option_de_13;
+        this.donnees_retournees.__xva['__debut']=__debut;
+        this.donnees_retournees.__xva['__num_page']=__num_page;
+        this.donnees_retournees.__xac='pm1(m1(n1(' + module_appelant1 + '),f1(sous_liste2(' + option_de_13;
         for(let i in formulaire){
             this.donnees_retournees[__xac]+=this.__fnt1.critere_liste( formulaire , i );
         }
-        this.donnees_retournees[__xac]+=',module_appelant1(' + module_appelant1 + ')';
-        this.donnees_retournees[__xac]+=',module_appele1(' + module_appele1 + ')';
-        this.donnees_retournees[__xac]+=',nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
-        this.donnees_retournees[__xac]+=',nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
+        this.donnees_retournees.__xac+='module_appelant1(' + module_appelant1 + ')';
+        this.donnees_retournees.__xac+='module_appele1(' + module_appele1 + ')';
+        this.donnees_retournees.__xac+='nom_champ_dans_parent2(' + nom_champ_dans_parent2 + ')';
+        this.donnees_retournees.__xac+='nom_libelle_dans_parent2(' + nom_libelle_dans_parent2 + ')';
         if(chi_id_parametre > 0){
-            this.donnees_retournees[__xac]+=',chi_id_parametre(' + chi_id_parametre + ')';
+            this.donnees_retournees.__xac+='chi_id_parametre(' + chi_id_parametre + ')';
+        }
+        if(methode_sur_click2 !== ''){
+            this.donnees_retournees.__xac+='methode_sur_click2(' + methode_sur_click2 + ')';
+            this.donnees_retournees.__xva['methode_sur_click2']=methode_sur_click2;
+        }
+        if(__sous_titre_a_afficher !== ''){
+            this.donnees_retournees.__xva['__sous_titre_a_afficher']=__sous_titre_a_afficher;
         }
         this.donnees_retournees[__xac]+='))))';
         this.donnees_retournees[__xva]['criteres2']=criteres_xxx;
@@ -499,7 +544,8 @@ class __ig1{
             "base_de_reference" : 1 ,
             "base_de_travail" : 1 ,
             "erreur_controlee" : false ,
-            "les_clients_du_ws" : les_clients_du_ws
+            "les_clients_du_ws" : les_clients_du_ws ,
+            "base_cible_ou_base_un" : 1
         };
         /* this.ma_trace1('this.__ndlcs='+this.__ndlcs+',cookies=',cookies); */
         if(cookies.hasOwnProperty( this.__ndlcs )
@@ -534,6 +580,7 @@ class __ig1{
                     */
                     if(this._CA_ > 2){
                         this.donnees_retournees.chi_id_projet=this._CA_;
+                        this.options_generales.base_cible_ou_base_un=1;
                     }
                     if(this.donnees_retournees.chi_id_projet === 0){
                         /*
@@ -542,21 +589,26 @@ class __ig1{
                         if(this._CA_ === 1){
                             this.options_generales.chemin_absolu_projet='../rev_1/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }else if(this._CA_ === 2){
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
                             this.options_generales.chemin_absolu_projet='../rev_2/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }
                     }else{
                         if(this._CA_ === 1){
                             this.options_generales.chemin_absolu_projet='../rev_' + this.donnees_retournees.chi_id_projet + '/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
                             this.options_generales.base_de_travail=this.donnees_retournees.chi_id_projet;
+                            this.options_generales.base_cible_ou_base_un=this.donnees_retournees.chi_id_projet;
                         }else if(this._CA_ === 2){
                             this.options_generales.chemin_absolu_projet='../rev_2/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }else{
                             this.options_generales.chemin_absolu_projet='../rev_' + this.donnees_retournees.chi_id_projet + '/';
                             this.options_generales.chemin_des_bdd='./__bases_de_donnees/';
+                            this.options_generales.base_cible_ou_base_un=1;
                         }
                     }
                     /* console.log('this.donnees_retournees',this.donnees_retournees); */
@@ -660,24 +712,125 @@ class __ig1{
                 let chemin_du_fichier='';
                 if(n0.slice( -4 ) === '_.js' || n0.slice( -5 ) === '_c.js'){
                     chemin_du_fichier='./__programmes/' + n0;
+                    let contenu_fichier='';
+                    let entetes_reponse_http={};
+                    let l_erreur='';
+                    let tester_auto1=1;
+                    /* ici on met les modules clients qui ne requièrent pas d'autorisation spéciale */
+                    if('__rev1_.js' === n0
+                           || '__fnt1_c.js' === n0
+                           || '__fnts_c_et_s_.js' === n0
+                           || '__worker1_c.js' === n0
+                           || '__navigation1_c.js' === n0
+                           || '_tri_arbre1_c.js' === n0
+                    ){
+                        tester_auto1=0;
+                        try{
+                            contenu_fichier=await Deno.readFile( chemin_du_fichier );
+                        }catch(e){
+                            l_erreur='01 contenu du fichier';
+                        }
+                    }
+                    let cookies=getCookies( req1.headers );
+                    if(cookies.hasOwnProperty( this.__ndlcs )
+                           && cookies[this.__ndlcs] !== ''
+                           && cookies[this.__ndlcs].substr( 0 , String( (prefixe_nom_fichier_session + this._CA_) + '_' ).length ) === (prefixe_nom_fichier_session + this._CA_) + '_'
+                    ){
+                        this.options_generales.cle_de_session=cookies[this.__ndlcs];
+                        try{
+                            const text_json=await Deno.readTextFile( './__sessions/' + cookies[this.__ndlcs] + '.json' );
+                            try{
+                                this.__session_json=JSON.parse( text_json );
+                                if(this.__session_json.hasOwnProperty( 'chi_id_acces' )){
+                                    this.donnees_retournees.chi_id_acces=this.__session_json.chi_id_acces;
+                                }
+                                if(this.__session_json.hasOwnProperty( 'chi_id_utilisateur' )){
+                                    this.donnees_retournees.chi_id_utilisateur=this.__session_json.chi_id_utilisateur;
+                                }
+                                if(this.__session_json.hasOwnProperty( 'chi_id_projet' )){
+                                    this.donnees_retournees.chi_id_projet=this.__session_json.chi_id_projet;
+                                }
+                                if(this.__session_json.hasOwnProperty( 'chp_nom_de_connexion_utilisateur' )){
+                                    this.donnees_retournees.chp_nom_de_connexion_utilisateur=this.__session_json.chp_nom_de_connexion_utilisateur;
+                                }
+                            }catch{
+                                l_erreur='02 conversion json';
+                            }
+                        }catch{
+                            l_erreur='03 lecture du json ';
+                        }
+                    }
+                    if(this.donnees_retournees.chi_id_utilisateur === 1){
+                        tester_auto1=0;
+                    }
+                    if(tester_auto1 === 1){
+                        let chemin_fichier1='./__fichiers_generes/___autorisations1_pour_acces_' + this.donnees_retournees.chi_id_acces + '_client.json';
+                        if((await this.is_file( chemin_fichier1 ))){
+                            let fichier_des_autorisations=await Deno.readTextFile( chemin_fichier1 );
+                            let json_des_autorisations=JSON.parse( fichier_des_autorisations );
+                            let l_autorisation=json_des_autorisations[n0]??null;
+                            if(l_autorisation === null){
+                                l_erreur='04 autorisation non trouvée ' + n0;
+                            }else{
+                                try{
+                                    entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                                }catch(e){
+                                    l_erreur='05 autorisation non trouvée';
+                                }
+                            }
+                        }else{
+                            l_erreur='06 lecture du fichier';
+                        }
+                    }
+                    if(l_erreur !== ''){
+                        if(l_erreur.substr( 0 , 2 ) !== '03'){
+                            console.log( 'l_erreur=' + l_erreur );
+                        }
+                    }
+                    try{
+                        contenu_fichier=await Deno.readFile( chemin_du_fichier );
+                        entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                    }catch(e){
+                        entetes_reponse_http={"status" : 404};
+                    }
+                    return({"__xst" : __xsu ,"__xva" : {"contenu" : contenu_fichier ,"entetes_reponse_http" : entetes_reponse_http}});
                 }else{
-                    /* console.log( 'req1=' , req1 ); */
-                    chemin_du_fichier='./__fichiers_binaires/' + n0;
-                    if(chemin_du_fichier.slice( -4 ) === '.gif'){
+                    content_type='';
+                    chemin_du_fichier='./__fichiers_binaires' + n0;
+                    if(chemin_du_fichier.slice( -4 ) === '.pdf'){
+                        content_type='application/pdf';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.gif'){
                         content_type='image/gif';
                     }else if(chemin_du_fichier.slice( -4 ) === '.png'){
                         content_type='image/png';
                     }else if(chemin_du_fichier.slice( -4 ) === '.jpg'){
                         content_type='image/jpeg';
+                    }else if(chemin_du_fichier.slice( -4 ) === '.svg'){
+                        content_type='image/svg+xml';
                     }else{
-                        return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} ));
+                        content_type='';
+                        /* return(new Response( "404: Not Found :  ce type de fichier n'est pas pris en compte" , {"status" : 404} )); */
                     }
                 }
                 let contenu_fichier='';
                 let entetes_reponse_http={};
                 try{
                     contenu_fichier=await Deno.readFile( chemin_du_fichier );
-                    entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                    if(content_type === ''){
+                        let chp_nom_original_televersement='fichier';
+                        try{
+                            chp_nom_original_televersement=url0.searchParams.get( "chp_nom_original_televersement" );
+                        } catch {}
+                        /* console.log('ici content_type="'+content_type+'" , chp_nom_original_televersement="' + chp_nom_original_televersement + '"') */
+                        /* header('Content-Disposition: attachment; filename='.basename($filename)); */
+                        entetes_reponse_http={
+                            "status" : 200 ,
+                            "headers" : {"Cache-Control" : "public, max-age=31536000" ,"Content-Disposition" : "attachment; filename=" + chp_nom_original_televersement + ""}
+                        };
+                    }else{
+                        /* console.log("==================== dans __ig1_s/contenu_de_get req1= chemin_du_fichier=",chemin_du_fichier); */
+                        entetes_reponse_http={"status" : 200 ,"headers" : {"Content-Type" : content_type ,"Cache-Control" : "public, max-age=31536000"}};
+                    }
                 }catch(e){
                     entetes_reponse_http={"status" : 404};
                 }
@@ -723,7 +876,12 @@ class __ig1{
                 contenu+='</script>\r\n';
                 contenu+='</head>';
                 contenu+='<body id="vv_le_body1"></body>\r\n';
-                contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>';
+                contenu+='<script type="module" src="f0?n0=__ig1_c.js&__version=' + this.__version + '"></script>\r\n';
+                contenu+='<script type="text/javascript">\r\n';
+                contenu+='function __action_interactive1(){\r\n';
+                contenu+='    __ig0.__action_interactive1(arguments);\r\n';
+                contenu+='}\r\n';
+                contenu+='</script>\r\n';
                 contenu+='</html>';
                 const date_heure_serveur=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
                 /* console.log("__ig1_s contenu_de_get date_heure_serveur" , date_heure_serveur ); // */
@@ -833,11 +991,15 @@ class __ig1{
             for(let i in les_dependances){
                 let sql1='';
                 if(this.donnees_retournees._CA_ === 1){
-                    sql1='SELECT count( * ) FROM b' + this.donnees_retournees.chi_id_projet + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    sql1='SELECT COUNT(*) FROM b' + this.donnees_retournees.chi_id_projet + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
                 }else{
-                    sql1='SELECT count( * ) FROM b' + les_dependances[i]['id_bdd_de_la_base_dependante'] + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    if('b' + les_dependances[i]['id_bdd_de_la_base_dependante'] === obj1.__ref_base){
+                        sql1='SELECT COUNT(*) FROM ' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    }else{
+                        sql1='SELECT COUNT(*) FROM b' + les_dependances[i]['id_bdd_de_la_base_dependante'] + '.' + les_dependances[i]['table_dependante'] + ' WHERE ' + les_dependances[i]['champ_dependant'] + ' = ' + obj1['id_enregistrement'];
+                    }
                 }
-                /* this.ma_trace1('sql1='+sql1); */
+                /* this.ma_trace1('sql1='+sql1 , obj1.__db1 ); */
                 let statement1=await obj1.__db1.prepare( sql1 );
                 let lignes=await statement1.values();
                 await statement1.finalize();
@@ -912,6 +1074,8 @@ class __ig1{
         const chi_id_projet=req1.headers.get( "x-chi_id_projet" ) || 0;
         const numero_morceau_de_fichier=req1.headers.get( "x-numero_morceau_de_fichier" ) || 0;
         const nombre_de_morceaux=req1.headers.get( "x-nombre_de_morceaux" ) || 0;
+        const date_de_reference_televersement=req1.headers.get( "x-date_de_reference_televersement" ) || 0;
+        const type_mime_detecte_par_navigateur=req1.headers.get( "x-type_mime_detecte_par_navigateur" ) || 0;
         this.__deverminage=req1.headers.get( "x-__deverminage" ) || 0;
         const cookies=getCookies( req1.headers );
         let la_cle=null;
@@ -944,6 +1108,7 @@ class __ig1{
                     "__xva" : {"contenu" : 'erreur_dans_serveur(message(\'session non trouvée\'))' ,"entetes_reponse_http" : entetes_reponse_http}
                 });
         }
+        /* this.ma_trace1("chemin_session=",chemin_session); */
         if(!(_CA_ > 0 && chi_id_acces > 0 && chi_id_utilisateur > 0 && chi_id_projet > 0)){
             const headers=new Headers();
             headers.append( "status" , "200" );
@@ -960,7 +1125,53 @@ class __ig1{
         */
         /* https://docs.deno.com/api/web/~/Body */
         let aaa=await req1.arrayBuffer();
-        let chemin_fichier='../rev_' + chi_id_projet + '/__fichiers_binaires/' + this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + '.txt';
+        let repertoire_fichier0='../rev_' + chi_id_projet;
+        let repertoire_fichier1='';
+        if(date_de_reference_televersement === 0){
+            repertoire_fichier1='/__fichiers_binaires/';
+        }else{
+            repertoire_fichier1='/__fichiers_binaires/televersements/' + date_de_reference_televersement + '/';
+        }
+        let repertoire_fichier2=repertoire_fichier0 + repertoire_fichier1;
+        if(!(await this.is_dir( repertoire_fichier2 ))){
+            try{
+                await Deno.mkdir( repertoire_fichier2 , {"mode" : 0o777 ,"recursive" : true} );
+            }catch(e){
+                const headers=new Headers();
+                headers.append( "status" , "200" );
+                headers.append( "Content-Type" , "text/html; charset=utf-8" );
+                let entetes_reponse_http={"headers" : headers};
+                return({
+                        "__xst" : __xer ,
+                        "__xva" : {
+                            "contenu" : 'erreur_dans_serveur(message(\'impossible de créer le répertoire sur disque\'))' ,
+                            "entetes_reponse_http" : entetes_reponse_http
+                        }
+                    });
+            }
+        }
+        let extension='.dat';
+        if(type_mime_detecte_par_navigateur === 'application%2Fpdf'){
+            extension='.pdf';
+        }else if(type_mime_detecte_par_navigateur === 'text%2Fcsv'){
+            extension='.csv';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fpng'){
+            extension='.png';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fjpeg'){
+            extension='.jpg';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fgif'){
+            extension='.gif';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fx-icon'){
+            extension='.ico';
+        }else if(type_mime_detecte_par_navigateur === 'image%2Fsvg%2Bxml'){
+            extension='.svg';
+        }else if(type_mime_detecte_par_navigateur === 'application%2Fx-zip-compressed'){
+            extension='.zip';
+        }else{
+            console.log( "type_mime_detecte_par_navigateur=" + type_mime_detecte_par_navigateur );
+        }
+        let nom_fichier_sur_disque1=this.nettoyer_chaine_pour_id_vv( nom_original + '-' + nom_du_fichier ) + extension;
+        let chemin_fichier=repertoire_fichier2 + nom_fichier_sur_disque1;
         if(!(await this.is_file( chemin_fichier ))){
             /*
               si le fichier n'existe pas on le crée ...
@@ -979,80 +1190,17 @@ class __ig1{
         headers.append( "Content-Type" , "text/html; charset=utf-8" );
         headers.append( "Set-Cookie" , le_cookie );
         let entetes_reponse_http={"headers" : headers};
-        let le_json_de_retour={
-            "contenu" : 'ok_dans_serveur(nom_du_fichier(' + nom_du_fichier + '),numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),nombre_de_morceaux(' + nombre_de_morceaux + '))' ,
-            "entetes_reponse_http" : entetes_reponse_http
-        };
+        let contenu='';
+        contenu+='ok_dans_serveur(';
+        contenu+='nom_du_fichier(' + nom_du_fichier + '),';
+        contenu+='numero_morceau_de_fichier(' + numero_morceau_de_fichier + '),';
+        contenu+='nombre_de_morceaux(' + nombre_de_morceaux + '),';
+        contenu+='repertoire_fichier1(\'' + repertoire_fichier1 + '\'),';
+        contenu+='nom_fichier_sur_disque1(\'' + nom_fichier_sur_disque1 + '\')';
+        contenu+='type_mime_detecte_par_navigateur(\'' + type_mime_detecte_par_navigateur + '\')';
+        contenu+=')';
+        let le_json_de_retour={"contenu" : contenu ,"entetes_reponse_http" : entetes_reponse_http};
         return({"__xst" : __xsu ,"__xva" : le_json_de_retour});
-    }
-    /*
-      =============================================================================================================
-    */
-    traite_erreur_sql( numero_de_requete , e , chaine_sql , objet_dependances ){
-        let __xme='';
-        if(e.stack.indexOf( 'API misuse' ) >= 0){
-            console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
-        }
-        let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
-        let le_message='';
-        if(this.options_generales.erreur_controlee === true){
-            le_message=e.message;
-        }else{
-            let no_such_table='no such table';
-            if(e.stack.indexOf( no_such_table ) >= 0){
-                le_message=e.stack.substr( 0 , e.stack.indexOf( '\n' ) );
-            }else{
-                le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
-                le_message=le_message.replace( /__programmes\// , '' );
-                le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
-            }
-        }
-        if(this.__deverminage === 0){
-            if(this.options_generales.erreur_controlee === true){
-                this.donnees_retournees.__xsi[__xer].push( le_message );
-            }else{
-                this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance' );
-            }
-        }else if(this.__deverminage === 1){
-            this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
-        }else if(this.__deverminage === 2){
-            this.donnees_retournees.__xsi[__xdv].push( le_message );
-            /*
-              dans le cas d'un appel asynchrone
-            */
-            if(this.options_generales.erreur_controlee === false){
-                this.ma_trace1( "e8478324" , le_message );
-            }
-        }
-        if(this.__deverminage > 0){
-            if(this.options_generales.erreur_controlee === false){
-                this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
-            }
-        }
-        if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
-            __xme+='<b>doublon</b>';
-        }
-        let obj={"__xst" : __xer ,"__xme" : __xme ,"__xva" : {} ,"sql0" : chaine_sql};
-        return obj;
-    }
-    /*
-      =============================================================================================================
-    */
-    async sql_iii( numero_de_sql , par , donnees_retournees , db=null ){
-        let la_classe_sql='sql_' + numero_de_sql;
-        let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
-        if(!this.is_file( '..' + nom_du_fichier )){
-            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2( e ) + ']'});
-        }
-        try{
-            /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */
-            let m=await import( '..' + nom_du_fichier );
-            let o=new m[la_classe_sql]( this , db );
-            let ret=o.sql( par , donnees_retournees );
-            return ret;
-        }catch(e){
-            return({"__xst" : __xer ,"__xme" : 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']'});
-        }
     }
     /*
       =============================================================================================================
@@ -1081,23 +1229,31 @@ class __ig1{
         let chemin_complet_bdd='./__bases_de_donnees/' + 'bdd_' + chi_id_basedd + '.sqlite';
         try{
             /* this.ma_trace1( "on ouvre Effectivement la base chemin_complet_bdd=" + chemin_complet_bdd ); */
-            let __db=new Database( chemin_complet_bdd , {"create" : false} );
-            let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
+            const __db=new Database( chemin_complet_bdd , {"create" : false} );
+            this.__les_ressources.push( {"v" : __db ,"t" : 'bdd' ,"c" : chemin_complet_bdd} );
+            const les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
                 for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){
                     if(chi_id_basedd !== this.__liste_des_bases[i]){
-                        let chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.__liste_des_bases[i] + '.sqlite';
+                        const chemin_complet_bdd1=this.options_generales.chemin_des_bdd + 'bdd_' + this.__liste_des_bases[i] + '.sqlite';
                         les_pragma_set.push( 'attach database "' + chemin_complet_bdd1 + '" as b' + this.__liste_des_bases[i] );
                     }
                 }
             }
             for(let i in les_pragma_set){
-                let a=await __db.exec( les_pragma_set[i] );
+                try{
+                    await __db.exec( les_pragma_set[i] );
+                }catch{
+                    /*
+                      il se peut que le attach database soit KO car la base n a pu être existante à un certainn moment
+                      puis ne l'est plus
+                    */
+                }
             }
             this.options_generales.bdd_ouvertes[chi_id_basedd]={"base" : __db ,"ouverte" : true};
             return __db;
         }catch(e){
-            this.ma_trace1( 'impossible d\'ouvrir la base ' + chemin_complet_bdd , this.donnees_retournees._CA_ , e.stack );
+            this.ma_trace1( 'impossible d\'ouvrir la base ' + chemin_complet_bdd , this.donnees_retournees._CA_ , this.retirer_informations_fichier_de_stack( e.stack ) );
             throw new Error( 'erreur sur ' + chemin_complet_bdd );
         }
     }
@@ -1107,6 +1263,7 @@ class __ig1{
     async ouvrir_bdd_temp( chemin_complet_bdd ){
         try{
             let __db=new Database( chemin_complet_bdd , {"create" : false} );
+            this.__les_ressources.push( {"v" : __db ,"t" : 'bdd' ,"c" : chemin_complet_bdd} );
             let les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;'];
             for(let i in les_pragma_set){
                 let a=await __db.exec( les_pragma_set[i] );
@@ -1217,6 +1374,46 @@ class __ig1{
     /*
       =============================================================================================================
     */
+    lire_les_grandeurs( mat , d ){
+        this.__liste_des_grandeurs={};
+        for(let i in this.__liste_des_bases){
+            let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + this.__liste_des_bases[i] + '_.json';
+            try{
+                const fileInfo=Deno.lstatSync( chemin_fichier__liste_des_grandeurs );
+                if(fileInfo.isFile){
+                    try{
+                        const decoder=new TextDecoder( "utf-8" );
+                        const contenu_texte=decoder.decode( Deno.readFileSync( chemin_fichier__liste_des_grandeurs ) );
+                        const contenu_json=JSON.parse( contenu_texte );
+                        this.__liste_des_grandeurs[this.__liste_des_bases[i]]=contenu_json;
+                    }catch(e){
+                        console.log( 'raaaah' + retirer_informations_fichier_de_stack( e.stack ) );
+                    }
+                }
+            } catch {}
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async transmettre_les_grandeurs_au_client( mat , d ){
+        let __liste_des_grandeurs={};
+        for(let i in this.__liste_des_bases){
+            let chemin_fichier__liste_des_grandeurs='./__fichiers_generes/__json_des_grandeurs_de_la_base_' + this.__liste_des_bases[i] + '_.json';
+            if((await this.is_file( chemin_fichier__liste_des_grandeurs ))){
+                try{
+                    let contenu_texte=await this.file_get_contents( chemin_fichier__liste_des_grandeurs );
+                    let contenu_json=JSON.parse( contenu_texte );
+                    __liste_des_grandeurs[this.__liste_des_bases[i]]=contenu_json;
+                } catch {}
+            }
+        }
+        this.donnees_retournees['__liste_des_grandeurs']=__liste_des_grandeurs;
+        this.donnees_retournees['__maj_interactive_des_grandeurs']=0;
+    }
+    /*
+      =============================================================================================================
+    */
     async obtenir_les_sql( mat , d ){
         /* this.ma_trace1('ici this.donnees_retournees=',this.donnees_retournees); */
         if(this.donnees_retournees.chi_id_projet === 0){
@@ -1292,8 +1489,46 @@ class __ig1{
             await this.obtenir_les_genres( mat , d );
             await this.obtenir_les_sql( mat , d );
         }
+        await this.transmettre_les_grandeurs_au_client( mat , d );
         /* console.clear(); */
         return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    est_entier( mot ){
+        if( typeof mot === 'number'){
+            let texte_mot=String( mot );
+            if(texte_mot.indexOf( '.' ) >= 0){
+                return false;
+            }
+            return true;
+        }
+        if( typeof mot !== 'string'){
+            return false;
+        }
+        if(mot.indexOf( '.' ) >= 0){
+            return false;
+        }
+        var le_test=!isNaN( mot ) && !isNaN( parseInt( mot , 10 ) );
+        return le_test;
+    }
+    /*
+      =============================================================================================================
+    */
+    est_entier_positif( mot ){
+        if(!this.est_num( mot )){
+            return false;
+        }
+        let mot1=parseFloat( mot );
+        if(mot1 === 0){
+            return true;
+        }
+        let mot2=parseInt( mot , 10 );
+        if(mot1 >= 0 && mot1 === mot2){
+            return true;
+        }
+        return false;
     }
     /*
       =============================================================================================================
@@ -1368,12 +1603,104 @@ class __ig1{
     /*
       =============================================================================================================
     */
-    formatter_erreur_serveur( str ){
+    async sql_iij( numero_de_sql , par , db=null ){
+        let la_classe_sql='sql_' + numero_de_sql;
+        let nom_du_fichier='/__fichiers_generes/__sqls/' + la_classe_sql + '.js';
+        if(!this.is_file( '..' + nom_du_fichier )){
+            return({"__xst" : __xer ,"__xme" : 'Le fichier sql_' + numero_de_sql + ' n\'a pas été trouvé [' + this.nl2() + ']'});
+        }
+        try{
+            /* this.ma_trace1('nom_du_fichier='+nom_du_fichier); */
+            let m=await import( '..' + nom_du_fichier );
+            let o=new m[la_classe_sql]( this , db );
+            let ret=o.sql( par , this.donnees_retournees );
+            return ret;
+        }catch(e){
+            return({"__xst" : __xer ,"__xme" : 'Le sql_' + numero_de_sql + ' comporte une erreur [' + this.nl2( e ) + ']'});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    traite_erreur_sql( numero_de_requete , e , chaine_sql , objet_dependances ){
+        let __xme='';
+        if(e.stack.indexOf( 'API misuse' ) >= 0){
+            console.log( '%c\nATTENTION API MISUSE, un await est il manquant quelquepart avant sql_' + numero_de_requete + ' ?\n\n' + e.stack , 'color:red;background-color:yellow;' );
+        }
+        let a=RegExp( this.repertoire_du_pgm_serveur , 'g' );
+        let le_message='';
+        if(this.options_generales.erreur_controlee === true){
+            le_message=e.message;
+        }else{
+            let no_such_table='no such table';
+            if(e.stack.indexOf( no_such_table ) >= 0){
+                le_message=e.stack.substr( 0 , e.stack.indexOf( '\n' ) );
+            }else{
+                le_message=e.stack.replace( /\n/g , '\n' ).replace( a , '' ).replace( /\(file\:\/\//g , '' ).replace( / at/g , '<br />' ) + '<hr />';
+                le_message=le_message.replace( /__programmes\// , '' );
+                le_message=le_message.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+            }
+        }
+        if(this.__deverminage === 0){
+            if(this.options_generales.erreur_controlee === true){
+                this.donnees_retournees.__xsi[__xer].push( le_message );
+            }else{
+                this.donnees_retournees.__xsi[__xer].push( 'Il y a une erreur dans le programme, veuillez appeler la maintenance' );
+            }
+        }else if(this.__deverminage === 1){
+            this.donnees_retournees.__xsi[__xdv].push( this.nl2( e ) );
+        }else if(this.__deverminage === 2){
+            /* this.ma_trace1("ici le_message=" , le_message , e.stack); */
+            le_message='<pre style="text-wrap:auto;">' + chaine_sql.replace( /</g , '&lt;' ) + '</pre>';
+            let tabsta=e.stack.split( '\n' );
+            /* this.ma_trace1("tabsta=",tabsta); */
+            for( let i=0 ; i < tabsta.length ; i++ ){
+                let t=tabsta[i];
+                if(t.indexOf( 'deno.land' ) < 0 && t.indexOf( '__ig1' ) < 0 && t.indexOf( '__serveur' ) < 0 && t.indexOf( '__fnt1' ) < 0){
+                    t=t.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/ , '' );
+                    t=t.replace( /file\:\/\/\// , '' ).replace( this.repertoire_du_pgm_serveur , '' ).replace( /    at/ , '' );
+                    t=t.replace( /__programmes\// , '' );
+                    le_message+='<br />' + t;
+                }
+            }
+            this.donnees_retournees.__xsi[__xdv].push( le_message );
+            /*
+              dans le cas d'un appel asynchrone
+            */
+            if(this.options_generales.erreur_controlee === false){
+                this.ma_trace1( "e8478324" , le_message );
+            }
+        }
+        if(this.__deverminage > 0){
+            if(this.options_generales.erreur_controlee === false){
+                this.donnees_retournees.__xsi[__xer].push( 'aaaaaaa<b>' + le_message + 'xxxxxxxxx</b><br><br> erreur sql_' + numero_de_requete + '=' + chaine_sql.replace( /\n/g , '<br />' ) );
+            }
+        }
+        if(e.stack.indexOf( 'UNIQUE constraint' ) >= 0){
+            __xme+='<b>doublon</b>';
+        }
+        let obj={"__xst" : __xer ,"__xme" : __xme ,"__xva" : {} ,"sql0" : chaine_sql};
+        return obj;
+    }
+    /*
+      =============================================================================================================
+    */
+    retirer_informations_fichier_de_stack( str ){
         let o=str;
         const repl0=new RegExp( this.repertoire_du_pgm_serveur , 'g' );
         o=o.replace( repl0 , '' );
         const repl1=new RegExp( 'file:////' , 'g' );
         o=o.replace( repl1 , '' );
+        const repl2=new RegExp( '__programmes\/\/' , 'g' );
+        o=o.replace( repl2 , '' );
+        o=o.replace( /\?__version=\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}_\d{3}/g , '' );
+        return o;
+    }
+    /*
+      =============================================================================================================
+    */
+    formatter_erreur_serveur( str ){
+        let o=this.retirer_informations_fichier_de_stack( str );
         o=o.replace( /\n/g , '<br />\n' );
         return o;
     }
@@ -1448,12 +1775,20 @@ class __ig1{
                 }else{
                     nom_fonction=texte_erreur.match( / at ([^\.]+) \(/ )[1];
                 }
+                if(this.options_generales.erreur_controlee === true){
+                    return(this.retirer_informations_fichier_de_stack( e.message ));
+                }
                 var libelle_erreur='';
                 try{
                     libelle_erreur='<br />' + e.stack.toString().split( /\r\n|\n/ )[0];
                 } catch {}
                 var numero_de_ligne=modele_champ_erreur.exec( texte_erreur )[1];
-                return((libelle_erreur == '' ? ( '' ) : ( '<b>' + libelle_erreur + '</b><br />' )) + '^G ' + numero_de_ligne + ' ' + nom_fichier + ' ' + nom_fonction + ' ');
+                return((libelle_erreur == '' ?
+                          ( 
+                            ''
+                          ) : ( 
+                            '954646 ' + this.retirer_informations_fichier_de_stack( libelle_erreur ) + '<hr />'
+                          )) + '^G ' + numero_de_ligne + ' ' + nom_fichier + ' ' + nom_fonction + ' ');
             }else{
                 /* console.error( e_originale ); */
                 return('Voir la console pour le numéro de ligne <br /> ' + e.stack.toString());
@@ -1485,7 +1820,7 @@ class __ig1{
                 nom_fonction=texte_erreur.match( / at ([^\.]+) \(/ )[1];
             }
             var numero_de_ligne=modele_champ_erreur.exec( texte_erreur )[1];
-            return('^G ' + nom_fichier + ' ' + nom_fonction + ' ' + numero_de_ligne + ' ');
+            return(this.retirer_informations_fichier_de_stack( '^G ' + nom_fichier + ' ' + nom_fonction + ' ' + numero_de_ligne + ' ' ));
         }
     }
 }

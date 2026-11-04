@@ -7,9 +7,21 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1187{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
-    async sql( par ){
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.che_actif_grandeur || 1 === tup.che_actif_grandeur ) ){
+            throw new Error( tete + '"' + tup.che_actif_grandeur + '" pour "la grandeur est active" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================insert=============================================================================
+    */
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_grandeurs\`(
          \`chx_parametre_grandeur\` , 
@@ -23,27 +35,26 @@ class sql_1187{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chx_parametre_grandeur" */
-                if(elem['chx_parametre_grandeur'] === null || elem['chx_parametre_grandeur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chx_parametre_grandeur === null || tup.chx_parametre_grandeur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id du paramètre" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /*
-                  === test spécifique sur le champ "chp_cle_grandeur" ===
-                */
-                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(elem['chp_cle_grandeur'],'cle de la grandeur');
-                if(__test_1_1.__xst !== __xsu){
-                    return{"__xst" : __xer ,"__xme" : __test_1_1.__xme};
+                /* test "non nul" sur le champ "chp_cle_grandeur" */
+                if(tup.chp_cle_grandeur === null || tup.chp_cle_grandeur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-
+                if(tup.chp_cle_grandeur.length < 2 || tup.chp_cle_grandeur.substr( 0 , 1 ) === ' '  || tup.chp_cle_grandeur.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
                 /* test "non nul" sur le champ "cht_rev_grandeur" */
-                if(elem['cht_rev_grandeur'] === null || elem['cht_rev_grandeur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.cht_rev_grandeur === null || tup.cht_rev_grandeur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
-                /* test "non nul" sur le champ "che_actif_grandeur" */
-                if(elem['che_actif_grandeur'] === null || elem['che_actif_grandeur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                /* test 0,1 sur le champ "che_actif_grandeur" */
+                if(!( tup.che_actif_grandeur === 0 ||  tup.che_actif_grandeur === 1 )){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "la grandeur est active" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /*
                   === pas === de test sur le champ "chd__dtc_grandeur"
@@ -54,17 +65,31 @@ class sql_1187{
                 /*
                   === pas === de test sur le champ "che__nur_grandeur"
                 */
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                this.verifier_parmis( tup );
+                /*
+                  =====================================================================================================
+                  ================== appel de la fonction parmis qui fait un throw ====================================
+                  =====================================================================================================
+                */
+                if(tup.chx_parametre_grandeur !== null && isNaN( parseInt( tup.chx_parametre_grandeur , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id paramètre" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_parametre_grandeur'] , 'chx_parametre_grandeur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_cle_grandeur'] , 'chp_cle_grandeur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['cht_rev_grandeur'] , 'cht_rev_grandeur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['che_actif_grandeur'] , 'che_actif_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_parametre_grandeur , 'chx_parametre_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_cle_grandeur , 'chp_cle_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.cht_rev_grandeur , 'cht_rev_grandeur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.che_actif_grandeur , 'che_actif_grandeur' ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
                 liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( this.__ig1.donnees_retournees.date_heure_serveur ) + '' + ',';
-                liste_des_valeurs+='\r\n      '+this.__ig1.__fnt1.sq1('0') + '';
+                liste_des_valeurs+='\r\n      0';
                 liste_des_valeurs+=')';
             }
             let res=0;
@@ -91,7 +116,12 @@ class sql_1187{
                     "__xme" : ''
                 });
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1187 , e , sql0 , {} ));
+            if(this.__ig1.options_generales.erreur_controlee === true){
+                this.__ig1.ma_trace1("e.message=",e.message);
+                return({__xst : __xer , __xme : e.message});
+            }else{
+                return(this.__ig1.traite_erreur_sql( 1187 , e , sql0 , {} ));
+            }
         }
     }
     /*

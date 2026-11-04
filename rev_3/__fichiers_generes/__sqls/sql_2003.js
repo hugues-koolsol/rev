@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_2003{
     /*
-      =============================================================================================================
+      ================================insert=============================================================================
     */
-    async sql( par ){
+    async sql( les_tups ){
         let sql0=`
       INSERT  INTO \`tbl_acteurs\`(
          \`chx_utilisateur_acteur\` , 
@@ -20,32 +20,38 @@ class sql_2003{
         `;
         let liste_des_valeurs='';
         try{
-            for( let i=0 ; i < par.donnees.length ; i++ ){
-                const elem=par.donnees[i];
+            for( let i=0 ; i < les_tups.donnees.length ; i++ ){
+                const tup=les_tups.donnees[i];
                 /* test "non nul" sur le champ "chx_utilisateur_acteur" */
-                if(elem['chx_utilisateur_acteur'] === null || elem['chx_utilisateur_acteur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "id de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chx_utilisateur_acteur === null || tup.chx_utilisateur_acteur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_nom_acteur" */
-                if(elem['chp_nom_acteur'] === null || elem['chp_nom_acteur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chp_nom_acteur === null || tup.chp_nom_acteur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "nom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chp_prenom_acteur" */
-                if(elem['chp_prenom_acteur'] === null || elem['chp_prenom_acteur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "prénom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chp_prenom_acteur === null || tup.chp_prenom_acteur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "prénom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test "non nul" sur le champ "chx_statut_acteur" */
-                if(elem['chx_statut_acteur'] === null || elem['chx_statut_acteur'] === ''){
-                    return({"__xst" : __xer ,"__xme" : 'la valeur pour "statut de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                if(tup.chx_statut_acteur === null || tup.chx_statut_acteur === ''){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "statut de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                }
+                if(tup.chx_utilisateur_acteur !== null && isNaN( parseInt( tup.chx_utilisateur_acteur , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "id acteur" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
+                }
+                if(tup.chx_statut_acteur !== null && isNaN( parseInt( tup.chx_statut_acteur , 10 ) ) ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "statut" doit être numérique '+(i === 0 ? '' : ' pour i="'+i+'"')});
                 }
                 if(liste_des_valeurs != ''){
                     liste_des_valeurs+=',';
                 }
                 liste_des_valeurs+='(';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_utilisateur_acteur'] , 'chx_utilisateur_acteur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_nom_acteur'] , 'chp_nom_acteur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( par.donnees[i]['chp_prenom_acteur'] , 'chp_prenom_acteur' ) + '' + ',';
-                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( par.donnees[i]['chx_statut_acteur'] , 'chx_statut_acteur' ) + '';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_utilisateur_acteur , 'chx_utilisateur_acteur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_nom_acteur , 'chp_nom_acteur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq4( tup.chp_prenom_acteur , 'chp_prenom_acteur' ) + '' + ',';
+                liste_des_valeurs+='\r\n      ' + this.__ig1.__fnt1.sq1( tup.chx_statut_acteur , 'chx_statut_acteur' ) + '';
                 liste_des_valeurs+=')';
             }
             let res=0;
@@ -72,7 +78,12 @@ class sql_2003{
                     "__xme" : ''
                 });
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 2003 , e , sql0 , {} ));
+            if(this.__ig1.options_generales.erreur_controlee === true){
+                this.__ig1.ma_trace1("e.message=",e.message);
+                return({__xst : __xer , __xme : e.message});
+            }else{
+                return(this.__ig1.traite_erreur_sql( 2003 , e , sql0 , {} ));
+            }
         }
     }
     /*

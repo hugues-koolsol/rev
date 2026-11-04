@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1121{
     /*
-      =============================================================================================================
+      ================================select=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_utilisateur\` , \`T0\`.\`chp_nom_de_connexion_utilisateur\` , \`T0\`.\`chp_mot_de_passe_utilisateur\` , \`T0\`.\`chp_parametres_utilisateur\` , \`T0\`.\`chi_compteur1_utilisateur\` , 
           \`T0\`.\`che__nur_utilisateur\` , \`T0\`.\`chd__dtm_utilisateur\` , \`T0\`.\`chd__dtc_utilisateur\` , \`T0\`.\`chx_acces_utilisateur\` , \`T1\`.\`chp_nom_acces\` , 
@@ -21,7 +21,7 @@ class sql_1121{
            LEFT JOIN tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
         `;
         sql0+=from0;
-        const where0=` WHERE \`T0\`.\`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['T0_chi_id_utilisateur'] , 'T0_chi_id_utilisateur' ) + ``;
+        const where0=` WHERE \`T0\`.\`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chi_id_utilisateur , 'T0_chi_id_utilisateur' ) + ``;
         sql0+=where0;
         /* this.__ig1.ma_trace1('sql_1121 sql0=',sql0); */
         let lignes=[];
@@ -35,17 +35,17 @@ class sql_1121{
         let donnees0=[];
         for(let col of lignes){
             donnees0.push( {
-                    "T0.chi_id_utilisateur" : col[0] ,
-                    "T0.chp_nom_de_connexion_utilisateur" : col[1] ,
-                    "T0.chp_mot_de_passe_utilisateur" : col[2] ,
-                    "T0.chp_parametres_utilisateur" : col[3] ,
-                    "T0.chi_compteur1_utilisateur" : col[4] ,
-                    "T0.che__nur_utilisateur" : col[5] ,
-                    "T0.chd__dtm_utilisateur" : col[6] ,
-                    "T0.chd__dtc_utilisateur" : col[7] ,
-                    "T0.chx_acces_utilisateur" : col[8] ,
-                    "T1.chp_nom_acces" : col[9] ,
-                    "T0.che_actif_utilisateur" : col[10]
+                    "T0_chi_id_utilisateur" : col[0] ,
+                    "T0_chp_nom_de_connexion_utilisateur" : col[1] ,
+                    "T0_chp_mot_de_passe_utilisateur" : col[2] ,
+                    "T0_chp_parametres_utilisateur" : col[3] ,
+                    "T0_chi_compteur1_utilisateur" : col[4] ,
+                    "T0_che__nur_utilisateur" : col[5] ,
+                    "T0_chd__dtm_utilisateur" : col[6] ,
+                    "T0_chd__dtc_utilisateur" : col[7] ,
+                    "T0_chx_acces_utilisateur" : col[8] ,
+                    "T1_chp_nom_acces" : col[9] ,
+                    "T0_che_actif_utilisateur" : col[10]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

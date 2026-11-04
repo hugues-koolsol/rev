@@ -60,7 +60,9 @@ class __rev1{
     m2t( matrice_rev , parentId=1 ){
         return(this.matrice_vers_source_rev1( matrice_rev , parentId , true , parentId + 1 ));
     }
-    /* function t2m */
+    /*
+      =============================================================================================================
+    */
     t2m( texte_rev ){
         return(this.rev_tm( texte_rev , false ));
     }
@@ -72,7 +74,7 @@ class __rev1{
         if(ob1.__xst === __xsu){
             return(this.matrice_vers_source_rev1( ob1.__xva , 0 , true , 1 ));
         }
-        return({__xst : __xer, __xme : this.__ig1.nl2() });
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
       =============================================================================================================
@@ -161,7 +163,6 @@ class __rev1{
                 break;
                 
             default:
-                debugger;
                 /* constante non quotée, généralement une variable ou une valeur numérique ou une constante */
                 if(eltTab[1] === 'true'){
                     t='vrai';

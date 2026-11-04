@@ -2655,9 +2655,9 @@ class x_ecran_generer_programmes1{
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
                 }else{
-                    if(obj_champ.genre_numerique_du_champ === 95
+                    if(false && (obj_champ.genre_numerique_du_champ === 95
                            || obj_champ.genre_numerique_du_champ === 96
-                           || obj_champ.genre_numerique_du_champ === 98
+                           || obj_champ.genre_numerique_du_champ === 98 )
                     ){
                         les_tests_particuliers_modifier_update_client1+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
                         if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96){
@@ -2721,6 +2721,8 @@ class x_ecran_generer_programmes1{
                                 }
                                 les_tests_particuliers_modifier_update_client1+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
                                 les_tests_particuliers_modifier_update_client1+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
+                                les_tests_particuliers_modifier_update_client1+='            return(__test_' + i + '_' + j + ')\r\n';
+/*
                                 les_tests_particuliers_modifier_update_client1+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
                                 les_tests_particuliers_modifier_update_client1+='            this.__ig1.affiche_les_messages();\r\n';
                                 les_tests_particuliers_modifier_update_client1+='            this.__ig1.retablir_les_boutons_masques();\r\n';
@@ -2728,6 +2730,7 @@ class x_ecran_generer_programmes1{
                                 les_tests_particuliers_modifier_update_client1+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
                                 les_tests_particuliers_modifier_update_client1+='            }catch{}\r\n';
                                 les_tests_particuliers_modifier_update_client1+='            return({__xst:__xsu})\r\n';
+*/                                
                                 les_tests_particuliers_modifier_update_client1+='        }\r\n';
                                 /*  */
                                 les_tests_particuliers_modifier_update_serveur1+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
@@ -4810,9 +4813,9 @@ class x_ecran_generer_programmes1{
                       pas de test pour ces cas
                     */
                 }else{
-                    if(obj_champ.genre_numerique_du_champ === 95
+                    if(false && (obj_champ.genre_numerique_du_champ === 95
                            || obj_champ.genre_numerique_du_champ === 96
-                           || obj_champ.genre_numerique_du_champ === 98
+                           || obj_champ.genre_numerique_du_champ === 98 )
                     ){
                         les_tests_particuliers_client_creer2+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
                         if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96){
@@ -4885,13 +4888,16 @@ class x_ecran_generer_programmes1{
                                 }
                                 les_tests_particuliers_client_creer2+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
                                 les_tests_particuliers_client_creer2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
-                                les_tests_particuliers_client_creer2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
-                                les_tests_particuliers_client_creer2+='            this.__ig1.affiche_les_messages();\r\n';
-                                les_tests_particuliers_client_creer2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
-                                les_tests_particuliers_client_creer2+='            try{\r\n';
-                                les_tests_particuliers_client_creer2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                                les_tests_particuliers_client_creer2+='            }catch{}\r\n';
-                                les_tests_particuliers_client_creer2+='            return({__xst:__xsu})\r\n';
+                                les_tests_particuliers_client_creer2+='            return __test_' + i + '_' + j + ';\r\n';
+                                /*#
+                                  les_tests_particuliers_client_creer2+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
+                                  les_tests_particuliers_client_creer2+='            this.__ig1.affiche_les_messages();\r\n';
+                                  les_tests_particuliers_client_creer2+='            this.__ig1.retablir_les_boutons_masques();\r\n';
+                                  les_tests_particuliers_client_creer2+='            try{\r\n';
+                                  les_tests_particuliers_client_creer2+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                                  les_tests_particuliers_client_creer2+='            }catch{}\r\n';
+                                  les_tests_particuliers_client_creer2+='            return({__xst:__xsu})\r\n';
+                                */
                                 les_tests_particuliers_client_creer2+='        }\r\n';
                                 les_tests_particuliers_serveur_creer2+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
                                 les_tests_particuliers_serveur_creer2+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';

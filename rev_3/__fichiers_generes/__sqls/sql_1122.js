@@ -7,45 +7,61 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1122{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
-    async sql( par ){
+    verifier_parmis( tup ){
+        let tete=this.moi + ' : valeur incorrecte : ';
+        this.__ig1.options_generales.erreur_controlee=true;
+        if( ! ( 0 === tup.n_che_actif_utilisateur || 1 === tup.n_che_actif_utilisateur ) ){
+            throw new Error( tete + '"' + tup.n_che_actif_utilisateur + '" pour "actif" '  + this.__ig1.nl2() );
+        }
+        this.__ig1.options_generales.erreur_controlee=false;
+        return({"__xst" : __xsu});
+    }
+    /*
+      ================================update=============================================================================
+    */
+    async sql( tup ){
         /* test "non nul" sur le champ "chp_nom_de_connexion_utilisateur" */
-        if(par['n_chp_nom_de_connexion_utilisateur'] === null || par['n_chp_nom_de_connexion_utilisateur'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "nom de connexion de l\'utilisateur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_chp_nom_de_connexion_utilisateur === null || tup.n_chp_nom_de_connexion_utilisateur === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "nom de connexion" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test "non nul" sur le champ "chx_acces_utilisateur" */
-        if(par['n_chx_acces_utilisateur'] === null || par['n_chx_acces_utilisateur'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "acces" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_chx_acces_utilisateur === null || tup.n_chx_acces_utilisateur === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "accès" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "che_actif_utilisateur" */
-        if(par['n_che_actif_utilisateur'] === null || par['n_che_actif_utilisateur'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        /* test 0,1 sur le champ "che_actif_utilisateur" */
+        if(!( tup.n_che_actif_utilisateur === 0 ||  tup.n_che_actif_utilisateur === 1 ) ){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "actif" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
+        this.verifier_parmis( tup );
+        /*
+          =====================================================================================================
+          ================== appel de la fonction parmis qui fait un throw ====================================
+          =====================================================================================================
+        */
         let sql0='UPDATE `tbl_utilisateurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_nom_de_connexion_utilisateur'] === undefined || par['n_chp_nom_de_connexion_utilisateur'] === '' || par['n_chp_nom_de_connexion_utilisateur'] === null){
+            if(tup.n_chp_nom_de_connexion_utilisateur === undefined || tup.n_chp_nom_de_connexion_utilisateur === '' || tup.n_chp_nom_de_connexion_utilisateur === null){
                 tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_nom_de_connexion_utilisateur'] , 'n_chp_nom_de_connexion_utilisateur' ) + '\'' );
+                tableau_champs.push( '`chp_nom_de_connexion_utilisateur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_de_connexion_utilisateur , 'n_chp_nom_de_connexion_utilisateur' ) + '\'' );
             }
-            if(par['n_chx_acces_utilisateur'] === undefined || par['n_chx_acces_utilisateur'] === '' || par['n_chx_acces_utilisateur'] === null){
+            if(tup.n_chx_acces_utilisateur === undefined || tup.n_chx_acces_utilisateur === '' || tup.n_chx_acces_utilisateur === null){
                 tableau_champs.push( '`chx_acces_utilisateur` = NULL' );
             }else{
-                if(isNaN(parseInt( par['n_chx_acces_utilisateur'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "acces" doit être numérique'});
+                if(isNaN(parseInt( tup.n_chx_acces_utilisateur , 10 ))){
+                    return({"__xst" : __xer ,"__xme" : 'le champ "accès" doit être numérique'});
                 }
-                tableau_champs.push( '`chx_acces_utilisateur` = ' + this.__ig1.__fnt1.sq0( par['n_chx_acces_utilisateur'] , 'n_chx_acces_utilisateur' ) + '' );
+                tableau_champs.push( '`chx_acces_utilisateur` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_acces_utilisateur , 'n_chx_acces_utilisateur' ) + '' );
             }
-            if(par['n_che_actif_utilisateur'] === undefined || par['n_che_actif_utilisateur'] === '' || par['n_che_actif_utilisateur'] === null){
-                tableau_champs.push( '`che_actif_utilisateur` = NULL' );
-            }else{
-                if(isNaN(parseInt( par['n_che_actif_utilisateur'] , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "actif" doit être numérique'});
-                }
-                tableau_champs.push( '`che_actif_utilisateur` = ' + this.__ig1.__fnt1.sq0( par['n_che_actif_utilisateur'] , 'n_che_actif_utilisateur' ) + '' );
-            }
+            tableau_champs.push( '`che_actif_utilisateur` = ' + this.__ig1.__fnt1.sq0( tup.n_che_actif_utilisateur , 'n_che_actif_utilisateur' ) + '' );
             if(tableau_champs.length === 0){
                 return({
                          /*  */
@@ -58,9 +74,13 @@ class sql_1122{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_utilisateur'] , 'c_chi_id_utilisateur' ) + '\r\n';
+            where0+=` AND \`chi_id_utilisateur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_utilisateur , 'c_chi_id_utilisateur' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1122= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1122= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             /* si c'est une requete souche la maj DOIT se faire */
             if(res === 0){

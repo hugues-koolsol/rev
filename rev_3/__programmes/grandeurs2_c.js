@@ -92,12 +92,14 @@ class grandeurs2{
         let id_zone=le_colis1.__xva.id_zone;
         let tab_valeurs=[];
         try{
-            let valeurs_dans_zone=document.getElementById(id_zone).value
-            if(valeurs_dans_zone!==''){
-                tab_valeurs=valeurs_dans_zone.split(',');
-                tab_valeurs=tab_valeurs.map(str => parseInt(str,10));
+            let valeurs_dans_zone=document.getElementById( id_zone ).value;
+            if(valeurs_dans_zone !== ''){
+                tab_valeurs=valeurs_dans_zone.split( ',' );
+                tab_valeurs=tab_valeurs.map( ( str ) => {
+                    return(parseInt( str , 10 ));
+            } );
             }
-        }catch{}
+        } catch {}
         let o1='';
         o1+='<h1>Choisir une grandeur</h1>';
         o1+='<table border="1" id="vv_liste_des_grandeurs">';
@@ -112,8 +114,8 @@ class grandeurs2{
         for(let i in le_colis1.__xva.liste_des_grandeurs){
             o1+='<tr>';
             o1+='<td>';
-            let cochee=' unchecked'
-            if(tab_valeurs.includes(le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'])){
+            let cochee=' unchecked';
+            if(tab_valeurs.includes( le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] )){
                 cochee=' checked';
             }
             o1+='<input type="checkbox" unchecked value="' + le_colis1.__xva.liste_des_grandeurs[i]['T0.chi_id_grandeur'] + '" ' + cochee + ' />';

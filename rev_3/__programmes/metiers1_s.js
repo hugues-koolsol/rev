@@ -92,17 +92,7 @@ class metiers1{
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         /* sélection du champ à modifier */
         let criteres_select_1125={"T0_chi_id_metier" : form['chi_id_metier']};
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.__ig1.sql_iii( 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
         if(tt1125.__xst !== __xsu || tt1125.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1125 ' + this.__ig1.nl2() + ']'});
         }
@@ -119,14 +109,7 @@ class metiers1{
             "n_chx_parent_metier" : form['chx_parent_metier'] === '' ? ( null ) : ( form['chx_parent_metier'] )
         };
         /* =========================== mise à jour effective ======================== */
-        let tt1127=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_metiers SET 
-           `chp_nom_metier` = :n_chp_nom_metier , 
-           `chx_parent_metier` = :n_chx_parent_metier
-        WHERE `chi_id_metier` = :c_chi_id_metier ;
-        */
-        /*sql_inclure_fin*/ 1127 , criteres_1127 , this.__ig1.donnees_retournees , __db1 );
+        let tt1127=await this.__ig1.sql_iii( 1127 , criteres_1127 , this.__ig1.donnees_retournees , __db1 );
         if(tt1127.__xst !== __xsu || tt1127.changements !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1127.__xme});
@@ -144,17 +127,7 @@ class metiers1{
             }
             return({"__xst" : __xsu});
         }
-        let tt1125_bis=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125_bis=await this.__ig1.sql_iii( 1125 , criteres_select_1125 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_modification1']=tt1125_bis;
         return({"__xst" : __xsu});
     }
@@ -183,17 +156,7 @@ class metiers1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , {"T0_chi_id_metier" : chi_id_metier} , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.__ig1.sql_iii( 1125 , {"T0_chi_id_metier" : chi_id_metier} , this.__ig1.donnees_retournees , __db1 );
         if(tt1125.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1125.__xme});
         }
@@ -227,17 +190,7 @@ class metiers1{
              /*  */
             "T0_chi_id_metier" : chi_id_metier
         };
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.__ig1.sql_iii( 1125 , criteres_1125 , this.__ig1.donnees_retournees , __db1 );
         if(tt1125.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1125.__xme});
         }
@@ -265,17 +218,7 @@ class metiers1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1125={"T0_chi_id_metier" : chi_id_metier};
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , critere_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.__ig1.sql_iii( 1125 , critere_1125 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_voir1']=tt1125;
         return({"__xst" : __xsu});
     }
@@ -295,17 +238,7 @@ class metiers1{
              /*  */
             "T0_chi_id_metier" : form['chi_id_metier']
         };
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , criteres_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.__ig1.sql_iii( 1125 , criteres_1125 , this.__ig1.donnees_retournees , __db1 );
         if(tt1125.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1125.__xme});
         }
@@ -318,12 +251,7 @@ class metiers1{
              /*  */
             "chi_id_metier" : form['chi_id_metier']
         };
-        let tt1129=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b1.tbl_metiers
-        WHERE `chi_id_metier` = :chi_id_metier ;
-        */
-        /*sql_inclure_fin*/ 1129 , criteres_1129 , this.__ig1.donnees_retournees , __db1 );
+        let tt1129=await this.__ig1.sql_iii( 1129 , criteres_1129 , this.__ig1.donnees_retournees , __db1 );
         /*  */
         if(tt1129.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1129.__xme});
@@ -360,17 +288,7 @@ class metiers1{
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1125={"T0_chi_id_metier" : chi_id_metier};
-        let tt1125=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T1`.`chp_nom_metier` , `T0`.`chx_parent_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE `T0`.`chi_id_metier` = :T0_chi_id_metier
-        ;
-        */
-        /*sql_inclure_fin*/ 1125 , critere_1125 , this.__ig1.donnees_retournees , __db1 );
+        let tt1125=await this.__ig1.sql_iii( 1125 , critere_1125 , this.__ig1.donnees_retournees , __db1 );
         this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt1125;
         return({"__xst" : __xsu});
     }
@@ -403,17 +321,7 @@ class metiers1{
         };
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tt1126=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        INSERT INTO b1.`tbl_metiers`(
-            `chp_nom_metier` , 
-            `chx_parent_metier`
-        ) VALUES (
-            :chp_nom_metier , 
-            :chx_parent_metier
-        );
-        */
-        /*sql_inclure_fin*/ 1126 , criteres_1126 , this.__ig1.donnees_retournees , __db1 );
+        let tt1126=await this.__ig1.sql_iii( 1126 , criteres_1126 , this.__ig1.donnees_retournees , __db1 );
         if(tt1126.__xst !== __xsu || tt1126['changements'] !== 1){
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1126.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
@@ -489,23 +397,7 @@ class metiers1{
         if(__db1 === null){
             __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         }
-        let tt1124=await this.__ig1.sql_iii(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`
-         FROM b1.tbl_metiers T0
-         LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-        
-        WHERE (   `T0`.`chi_id_metier` = :T0_chi_id_metier
-           AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
-           AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier
-           AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier
-           AND `T0`.`chi_id_metier` >= :metier_mini) 
-        ORDER BY `T0`.`chi_id_metier` DESC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 1124 , criteres_1124 , this.__ig1.donnees_retournees , __db1 );
+        let tt1124=await this.__ig1.sql_iii( 1124 , criteres_1124 , this.__ig1.donnees_retournees , __db1 );
         if(tt1124.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : tt1124.__xme});
         }
@@ -516,23 +408,7 @@ class metiers1{
             __debut=0;
             __num_page=0;
             criteres_1124['debut']=__debut;
-            tt1124=await this.__ig1.sql_iii(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`
-             FROM b1.tbl_metiers T0
-             LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
-            
-            WHERE (   `T0`.`chi_id_metier` = :T0_chi_id_metier
-               AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
-               AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier
-               AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier
-               AND `T0`.`chi_id_metier` >= :metier_mini) 
-            ORDER BY `T0`.`chi_id_metier` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 1124 , criteres_1124 , this.__ig1.donnees_retournees , __db1 );
+            tt1124=await this.__ig1.sql_iii( 1124 , criteres_1124 , this.__ig1.donnees_retournees , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees[__xva]['__debut']=__debut;

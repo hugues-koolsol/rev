@@ -7,23 +7,23 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1188{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
-    async sql( par ){
-        /*
-          === test spécifique sur le champ "chp_cle_grandeur" ===
-        */
-        let __test_0_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( par['n_chp_cle_grandeur'] , 'cle de la grandeur' );
-        if(__test_0_1.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
+    async sql( tup ){
+        /* test "non nul" sur le champ "chp_cle_grandeur" */
+        if(tup.n_chp_cle_grandeur === null || tup.n_chp_cle_grandeur === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "cle de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+                if(tup.n_chp_cle_grandeur.length < 2 || tup.n_chp_cle_grandeur.substr( 0 , 1 ) === ' '  || tup.n_chp_cle_grandeur.charCodeAt( 0 ) === 160 ){
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "cle de la grandeur" doit contenir au moins 2 caractères et ne doit pas commencer par un espace [' + this.__ig1.nl2() + ']'});
+                }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_chp_cle_grandeur'] === undefined || par['n_chp_cle_grandeur'] === '' || par['n_chp_cle_grandeur'] === null){
+            if(tup.n_chp_cle_grandeur === undefined || tup.n_chp_cle_grandeur === '' || tup.n_chp_cle_grandeur === null){
                 tableau_champs.push( '`chp_cle_grandeur` = NULL' );
             }else{
-                tableau_champs.push( '`chp_cle_grandeur` = \'' + this.__ig1.__fnt1.sq0( par['n_chp_cle_grandeur'] , 'n_chp_cle_grandeur' ) + '\'' );
+                tableau_champs.push( '`chp_cle_grandeur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_cle_grandeur , 'n_chp_cle_grandeur' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -37,9 +37,13 @@ class sql_1188{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_grandeur'] , 'c_chi_id_grandeur' ) + '\r\n';
+            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_grandeur , 'c_chi_id_grandeur' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1188= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1188= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){

@@ -33,6 +33,20 @@ INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  ch
 
 /*========================================================================================================================*/
 
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (7) */
+INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_contient_version_source ,  che_autorisation_globale_source ,  cht_condition_js_source ,  cht_condition_rev_source ,  cht_notification_ko_source ,  che_pour_util_source ) VALUES
+('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1',NULL,NULL,NULL,'1'),
+('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1',NULL,NULL,NULL,'1'),
+('88','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0',NULL,NULL,NULL,'0'),
+('89','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0',NULL,NULL,NULL,'0'),
+('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','1',NULL,NULL,NULL,'0'),
+('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0',NULL,NULL,NULL,'0'),
+('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0','0',NULL,NULL,NULL,'0');
+/*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
+
+
+/*========================================================================================================================*/
+
 /*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (7) */
 INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation ,  chx_acces_autorisation ,  che_pour_sous_liste_autorisation ) VALUES
 ('19','88','3','0'),
@@ -57,25 +71,11 @@ INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  ch
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (7) */
-INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ,  che_autorisation_globale_source ,  cht_condition_js_source ,  cht_condition_rev_source ,  cht_notification_ko_source ,  che_pour_util_source ) VALUES
-('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'1'),
-('80','_connexion1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'1'),
-('88','x_ecran_coordonnees1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0'),
-('89','x_ecran_coordonnees1_s.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0'),
-('1000','x_ecran_a_propos1_c.js',NULL,NULL,'0','2',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1',NULL,NULL,NULL,'0'),
-('1011','taches1_c.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0'),
-('1012','taches1_s.js',NULL,NULL,'0','2','mes tâches','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','0',NULL,NULL,NULL,'0');
-/*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
-
-
-/*========================================================================================================================*/
-
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (3) */
-INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'137','1','2025-11-08 11:43:00.312','2025-11-08 11:43:00.312','0','1'),
-('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'99','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1'),
-('3','u1','$2a$10$9tcW5wIlXLa9Csrgwrl3UeniOzmp54dXfw.cyxp.lsDJV8Jp77ry6',NULL,'0','3','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
+INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ,  cht_commentaire_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ) VALUES
+('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'137','1','0','1',NULL,'2025-11-08 11:43:00.312','2025-11-08 11:43:00.312'),
+('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'99','2','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('3','u1','$2a$10$9tcW5wIlXLa9Csrgwrl3UeniOzmp54dXfw.cyxp.lsDJV8Jp77ry6',NULL,'0','3','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
@@ -108,7 +108,7 @@ INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_p
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_grandeurs offset 0 (2) */
-INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cle_grandeur ,  cht_rev_grandeur ,  che_actif_grandeur ,  chd__dtc_grandeur ,  chd__dtm_grandeur ,  che__nur_grandeur ) VALUES
-('1','1','actif','autre_libelle(''oui'')','1','2026-07-05 11:32:29.204','2026-07-05 11:32:29.204','0'),
-('2','1','passif','autre_libelle(''non'')','1','2026-07-05 11:32:40.947','2026-07-05 11:32:40.947','0');
+INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cle_grandeur ,  cht_rev_grandeur ,  che_actif_grandeur ,  chd__dtc_grandeur ,  chd__dtm_grandeur ,  che__nur_grandeur ,  che_verouillee_grandeur ,  chc_couleur_texte_grandeur ,  chc_couleur_fond_grandeur ) VALUES
+('1','1','actif','autre_libelle(''oui'')','1','2026-07-05 11:32:29.204','2026-07-05 11:32:29.204','0','0',NULL,NULL),
+('2','1','passif','autre_libelle(''non'')','1','2026-07-05 11:32:40.947','2026-07-05 11:32:40.947','0','0',NULL,NULL);
 /*================================================================================ FIN BLOC TABLE tbl_grandeurs offset 0 */

@@ -16,7 +16,7 @@ let repertoire_du_pgm_serveur=Deno.cwd().replace( /\\/g , '/' );
 let repertoire_racine_de_tous_les_projets=repertoire_du_pgm_serveur.substr( 0 , repertoire_du_pgm_serveur.lastIndexOf( '/' ) ) + '/';
 /* clé application */
 const _CA_=parseInt( repertoire_du_pgm_serveur.substr( repertoire_du_pgm_serveur.lastIndexOf( '_' ) + 1 ) , 10 );
-const __le_port=_CA_ + 6000;
+const __le_port=_CA_ + 7000;
 let __liste_des_bases=[1];
 if(_CA_ > 2){
     try{
@@ -39,58 +39,80 @@ Deno.serve( {
     
     } , async ( req1 ) => {
         if(req1.headers.get( "upgrade" ) !== "websocket"){
-            let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets );
             /*
-              si ce n'est pas un websocket
+              =============================================================================================
+              si GET ou POST, ce n'est pas un websocket
             */
+            let les_ressources=[];
+            let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , null , __liste_des_bases , les_ressources );
             if(req1.method === 'GET'){
                 let le_contenu_de_get=await __ig1.contenu_de_get( req1 );
                 if(le_contenu_de_get.__xst === __xsu){
                     __ig1=null;
                     return(new Response( le_contenu_de_get.__xva.contenu , le_contenu_de_get.__xva.entetes_reponse_http ));
                 }
-            }else{
+            }else if(req1.method === 'POST'){
                 let le_contenu_de_post=await __ig1.contenu_de_post( req1 );
                 __ig1=null;
                 return(new Response( le_contenu_de_post.__xva.contenu , le_contenu_de_post.__xva.entetes_reponse_http ));
             }
+            __ig1=null;
             return(new Response( null , {"status" : 501} ));
-        }
-        let cookies=getCookies( req1.headers );
-        const { socket  , response }=Deno.upgradeWebSocket( req1 );
-        socket.addEventListener( "close" , () => {
-                for(let i in les_clients_du_ws){
-                    /* console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]); */
-                    if(les_clients_du_ws[i].socket === socket){
-                        /* console.log('on a un match sur i=',i) */
-                        les_clients_du_ws.splice( i , 1 );
+            /*
+            */
+        }else if(req1.headers.get( "upgrade" ) === "websocket"){
+            /*
+              =============================================================================================
+              si c'est un websocket
+            */
+            let les_ressources=[];
+            let cookies=getCookies( req1.headers );
+            const { socket  , response }=Deno.upgradeWebSocket( req1 );
+            socket.addEventListener( "close" , () => {
+                    for(let i in les_clients_du_ws){
+                        if(les_clients_du_ws[i].socket === socket){
+                            les_clients_du_ws.splice( i , 1 );
+                        }
                     }
-                }
-                /* console.log( 'dans __serveur.js les_clients_du_ws.length après fermeture=' + les_clients_du_ws.length ); */
-        } );
-        socket.addEventListener( "open" , () => {
-                const date_heure_connexion=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
-                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies ,"date_heure_connexion" : date_heure_connexion} );
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies , les_clients_du_ws );
-                les_clients_du_ws.push( {"socket" : socket ,"cookies" : cookies} );
-                /*#
-                  for( let i in les_clients_du_ws){
-                      console.log( 'les_clients_du_ws[i]=' , les_clients_du_ws[i]);
-                  }
-                */
-                __ig1=null;
-                /* console.log( 'dans __serveur.js les_clients_du_ws.length=' + les_clients_du_ws.length ); */
-        } );
-        socket.addEventListener( "message" , async ( evenement ) => {
-                let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases );
-                let traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies , les_clients_du_ws );
-                if(traitement_mesage_socket.__xst === __xsu){
-                    socket.send( JSON.stringify( traitement_mesage_socket ) );
-                }else{
-                    socket.send( JSON.stringify( traitement_mesage_socket ) );
-                }
-                __ig1=null;
-        } );
-        return response;
+                    /* console.log( 'dans __serveur.js les_clients_du_ws.length après fermeture=' + les_clients_du_ws.length ); */
+                } );
+            socket.addEventListener( "open" , async () => {
+                    const date_heure_connexion=formater_la_date( new Date() , "yyyy-MM-dd HH:mm:ss.SSS" , {"timeZone" : 'Europe/Paris'} );
+                    let objet_des_cookies={};
+                    for(let i in cookies){
+                        if(i.indexOf( 'cle_de_session_rev_' + _CA_ + '_websocket' ) >= 0){
+                            objet_des_cookies[i]=cookies[i];
+                        }
+                    }
+                    les_clients_du_ws.push( {"socket" : socket ,"cookies" : objet_des_cookies ,"date_heure_connexion" : date_heure_connexion} );
+                    let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases , les_ressources );
+                    let traitement_open_socket=__ig1.traiter_open_socket( socket , cookies , les_clients_du_ws );
+                    __ig1=null;
+                } );
+            socket.addEventListener( "message" , async ( evenement ) => {
+                    let __ig1=new m__ig1['__ig1']( _CA_ , __le_port , __version , repertoire_du_pgm_serveur , repertoire_racine_de_tous_les_projets , socket , __liste_des_bases , les_ressources );
+                    let traitement_mesage_socket=null;
+                    try{
+                        traitement_mesage_socket=await __ig1.traiter_message_socket( evenement , cookies , les_clients_du_ws );
+                        if(traitement_mesage_socket.__xst === __xsu){
+                            socket.send( JSON.stringify( traitement_mesage_socket ) );
+                        }else{
+                            traitement_mesage_socket.__xsi[0].push( 'dans __serveur, traitement en erreur ' + e.stack );
+                        }
+                    }catch(e){
+                        console.log( 'dans catch de socket.addEventListener("message") ' );
+                        socket.send( JSON.stringify( traitement_mesage_socket ) );
+                    }finally{
+                        for( let i=les_ressources.length - 1 ; i >= 0 ; i-- ){
+                            try{
+                                await les_ressources[i].v.close();
+                            }catch(e){}
+                            les_ressources.shift();
+                        }
+                    }
+                    __ig1=null;
+                } );
+            return response;
+        }
+        return(new Response( null , {"status" : 204} ));
     } );

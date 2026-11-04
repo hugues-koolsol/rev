@@ -7,9 +7,9 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1159{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         let sql0='UPDATE `tbl_taches` SET \r\n';
         let tableau_champs=[];
         try{
@@ -26,11 +26,15 @@ class sql_1159{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_tache'] , 'c_chi_id_tache' ) + '\r\n';
+            where0+=` AND \`chi_id_tache\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_tache , 'c_chi_id_tache' ) + '\r\n';
             where0+=` AND \`chx_utilisateur_tache\` = ` + this.__ig1.donnees_retournees.chi_id_utilisateur + ``+'\r\n';
             where0+=` AND \`che_priorite_tache\` < 99`+'\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1159= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1159= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){

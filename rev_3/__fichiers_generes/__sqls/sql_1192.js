@@ -7,20 +7,20 @@ const __xst='__xst';
 const __xsi='__xsi';
 class sql_1192{
     /*
-      =============================================================================================================
+      ================================update=============================================================================
     */
-    async sql( par ){
+    async sql( tup ){
         /* test "non nul" sur le champ "cht_rev_grandeur" */
-        if(par['n_cht_rev_grandeur'] === null || par['n_cht_rev_grandeur'] === ''){
-            return({"__xst" : __xer ,"__xme" : 'la valeur pour "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        if(tup.n_cht_rev_grandeur === null || tup.n_cht_rev_grandeur === ''){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "rev de la grandeur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         let sql0='UPDATE `tbl_grandeurs` SET \r\n';
         let tableau_champs=[];
         try{
-            if(par['n_cht_rev_grandeur'] === undefined || par['n_cht_rev_grandeur'] === '' || par['n_cht_rev_grandeur'] === null){
+            if(tup.n_cht_rev_grandeur === undefined || tup.n_cht_rev_grandeur === '' || tup.n_cht_rev_grandeur === null){
                 tableau_champs.push( '`cht_rev_grandeur` = NULL' );
             }else{
-                tableau_champs.push( '`cht_rev_grandeur` = \'' + this.__ig1.__fnt1.sq0( par['n_cht_rev_grandeur'] , 'n_cht_rev_grandeur' ) + '\'' );
+                tableau_champs.push( '`cht_rev_grandeur` = \'' + this.__ig1.__fnt1.sq0( tup.n_cht_rev_grandeur , 'n_cht_rev_grandeur' ) + '\'' );
             }
             if(tableau_champs.length === 0){
                 return({
@@ -34,9 +34,13 @@ class sql_1192{
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
             where0+=' WHERE 1=1 \r\n';
-            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( par['c_chi_id_grandeur'] , 'c_chi_id_grandeur' ) + '\r\n';
+            where0+=` AND \`chi_id_grandeur\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_grandeur , 'c_chi_id_grandeur' ) + '\r\n';
             sql0+=where0;
-            /* this.__ig1.ma_trace1(' sql_1192= ' + sql0 ); */
+        }catch(e){
+            return({__xst:__xer , __xme: this.__ig1.nl2(e)});
+        }
+        /* this.__ig1.ma_trace1(' sql_1192= ' + sql0 ); */
+        try{
             let res=await this.__db1.exec( sql0 );
             return({"__xst" : __xsu ,"changements" : res});
         }catch(e){
