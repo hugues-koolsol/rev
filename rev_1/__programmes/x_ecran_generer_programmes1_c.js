@@ -3064,7 +3064,7 @@ class x_ecran_generer_programmes1{
                                     "longueur_du_champ" : obj_champ.longueur_du_champ ,
                                     "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                     "description_du_champ" : obj_champ.meta.description_du_champ ,
-                                    "chi_id_basedd" : chi_id_basedd_de_reference ,
+                                    "chi_id_basedd" :  ( this.__ig1.est_num( obj_champ.base_mere ) ? parseInt( obj_champ.base_mere , 10 ) :  chi_id_basedd_de_reference ) ,
                                     "chi_id_parametre" : obj_champ.meta.chi_id_parametre ,
                                     "bouton_vider" : !obj_champ.non_nulle ,
                                     "nom_du_lien" : nom_du_lien
@@ -3376,13 +3376,14 @@ class x_ecran_generer_programmes1{
                         nom_du_lien=nom_de_la_classe_lien + exception_grandeur;
                     }
                     if(obj_champ.table_mere === 'tbl_grandeurs'){
+                        debugger
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
                             "longueur_du_champ" : obj_champ.longueur_du_champ ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
-                            "chi_id_basedd" : chi_id_basedd_de_reference ,
+                            "chi_id_basedd" : ( this.__ig1.est_num( obj_champ.base_mere ) ? parseInt( obj_champ.base_mere , 10 ) :  chi_id_basedd_de_reference ) ,
                             "chi_id_parametre" : obj_champ.meta.chi_id_parametre ,
                             "bouton_vider" : !obj_champ.non_nulle ,
                             "nom_du_lien" : nom_du_lien
@@ -5932,9 +5933,13 @@ class x_ecran_generer_programmes1{
                                        && obj_champ.nom_du_champ === les_jointures[j].champ2
                                 ){
                                     if( typeof ( typeof les_jointures[j].libelles_lien) === 'string'){
-                                        for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
-                                            liste_des_champs_libelles.push( les_jointures[j].alias1 + '_' + les_jointures[j].libelles_lien[k] );
-                                        }
+                                        /*#
+                                          for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
+                                              liste_des_champs_libelles.push( les_jointures[j].alias1 + '_' + les_jointures[j].libelles_lien[k] );
+                                          }
+                                        */
+                                        debugger
+                                        liste_des_champs_libelles.push( les_jointures[j].alias1 + '_' + les_jointures[j].libelles_lien );
                                     }else{
                                         if(Array.isArray( les_jointures[j].libelles_lien ) === true){
                                             for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
@@ -7249,7 +7254,11 @@ class x_ecran_generer_programmes1{
                                     if(liste_des_champs_liste_ecran[i].champ_dans_la_base.table_mere === 'tbl_grandeurs'){
                                         src_client2+='                /* cas 7.1 */\r\n';
                                         src_client2+='                if(tup.' + cle + ' !== null){\r\n';
-                                        src_client2+='                    lst+=this.__ig1.rendu_lst_grandeur1( ' + chi_id_basedd_de_reference + ' , tup.' + cle + ' )\r\n';
+                                        if(this.__ig1.est_num( el.champ_dans_la_base.base_mere )){
+                                            src_client2+='                    lst+=this.__ig1.rendu_lst_grandeur1( ' + el.champ_dans_la_base.base_mere + ' , tup.' + cle + ' )\r\n';
+                                        }else{
+                                            src_client2+='                    lst+=this.__ig1.rendu_lst_grandeur1( ' + chi_id_basedd_de_reference + ' , tup.' + cle + ' )\r\n';
+                                        }
                                         src_client2+='                }\r\n';
                                         /* src_client2+='                /_* lst+=\'(\' + this.__ig1.fi2( tup.' + cle + ' ) + \')\' *_/;\r\n'; */
                                     }else{
@@ -7263,7 +7272,11 @@ class x_ecran_generer_programmes1{
                                           src_client2+='                /' + '* lst+=\'(\' + this.__ig1.fi2( tup.' + cle + ' ) + \')\'; *' + '/\r\n';
                                         */
                                         src_client2+='                if(tup.' + cle + ' !== null){\r\n';
-                                        src_client2+='                    lst+=this.__ig1.rendu_lst_grandeur1( ' + chi_id_basedd_de_reference + ' , tup.' + cle + ' );\r\n';
+                                        if(this.__ig1.est_num( el.champ_dans_la_base.base_mere )){
+                                            src_client2+='                    lst+=this.__ig1.rendu_lst_grandeur1( ' + el.champ_dans_la_base.base_mere + ' , tup.' + cle + ' );\r\n';
+                                        }else{
+                                            src_client2+='                    lst+=this.__ig1.rendu_lst_grandeur1( ' + chi_id_basedd_de_reference + ' , tup.' + cle + ' );\r\n';
+                                        }
                                         src_client2+='                }\r\n';
                                     }else{
                                         src_client2+='                /* cas 8.2 */\r\n';

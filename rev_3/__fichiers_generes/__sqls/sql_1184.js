@@ -106,8 +106,8 @@ class sql_1184{
             }
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';
             let where0='';
-            /* ATTENTION : pas de condition */
-            where0+=' WHERE 1 ';
+            where0+=' WHERE 1=1 \r\n';
+            where0+=` AND \`chi_id_parametre\` = ` + this.__ig1.__fnt1.sq1( tup.c_chi_id_parametre , 'c_chi_id_parametre' ) + '\r\n';
             sql0+=where0;
         }catch(e){
             return({__xst:__xer , __xme: this.__ig1.nl2(e)});

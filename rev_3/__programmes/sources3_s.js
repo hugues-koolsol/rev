@@ -1,0 +1,229 @@
+const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */'__xst';
+const __xva=/* valeurs */'__xva';
+const __xsi=/* signaux */'__xsi';
+const __xac=/* actions */'__xac';
+/*
+  =====================================================================================================================
+*/
+class sources3{
+    /*
+      =============================================================================================================
+    */
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let form=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        /*  */
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_2012={
+             /*  */
+            "T0_chi_id_source" : form.chi_id_source
+        };
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , criteres_2012 , __db1 );
+        if(tt2012.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2012.__xme});
+        }
+        /*  */
+        let tas=await this.test_avant_supprimer( mat , d , form , tt2012.__xva[0] , __db1 );
+        if(tas.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
+        }
+        let criteres_2015={
+             /*  */
+            "chi_id_source" : form.chi_id_source
+        };
+        let tt2015=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_sources
+        WHERE `chi_id_source` = :chi_id_source ;
+        */
+        /*sql_inclure_fin*/ 2015 , criteres_2015 , __db1 );
+        /*  */
+        if(tt2015.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2015.__xme});
+        }
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt2012.__xva[0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
+        }
+        /*  */
+        if(form.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
+            await this.filtre1( mat1 , 1 , __db1 );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_confirmation_supprimer1( mat , d ){
+        let chi_id_source=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_source' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_source === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let critere_2012={"T0_chi_id_source" : chi_id_source};
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , critere_2012 , __db1 );
+        this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt2012;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async filtre1( mat , d , __db1=null ){
+        const l01=mat.length;
+        let option_de_13='';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                option_de_13='de_13(' + mat[i + 1][1] + ')';
+            }
+        }
+        const __nbMax=40;
+        let __num_page=0;
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , 'liste1' );
+        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
+            __num_page=0;
+        }else{
+            __num_page=parseInt( formulaire.__num_page , 10 );
+        }
+        let __debut=__num_page * __nbMax;
+        let criteres_2011={
+             /*  */
+            "quantitee" : __nbMax ,
+            "debut" : __debut
+        };
+        for(let i in formulaire){
+            if(i !== '__num_page'){
+                criteres_2011[i]=formulaire[i];
+            }
+        }
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_2011[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( 1 );
+        }
+        let tt2011=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+         FROM b1.tbl_sources T0
+        WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+           AND `T0`.`chi_id_source` = :T0_chi_id_source
+           AND `T0`.`chi_id_source` > :T0_chi_id_source2
+           AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+           AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+           AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+        ORDER BY `T0`.`chi_id_source` DESC  
+        LIMIT :quantitee OFFSET :debut 
+        ;
+        */
+        /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
+        if(tt2011.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2011.__xme});
+        }
+        if(tt2011.__xst === __xsu && tt2011.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
+            __debut=0;
+            __num_page=0;
+            criteres_2011['debut']=__debut;
+            tt2011=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+             FROM b1.tbl_sources T0
+            WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+               AND `T0`.`chi_id_source` = :T0_chi_id_source
+               AND `T0`.`chi_id_source` > :T0_chi_id_source2
+               AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+               AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+               AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+            ORDER BY `T0`.`chi_id_source` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
+        }
+        this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
+        this.__ig1.donnees_retournees.__xva['__debut']=__debut;
+        this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
+        this.__ig1.donnees_retournees.__xac='pm1(m1(n1(' + this.moi + '),f1(liste1(' + option_de_13;
+        for(let i in formulaire){
+            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
+        }
+        this.__ig1.donnees_retournees.__xac+='))))';
+        this.__ig1.donnees_retournees.__xva['liste1']=tt2011;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        return(await this.filtre1( mat , d ));
+    }
+    /*
+      =============================================================================================================
+    */
+    moi='sources3';
+    __ig1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{sources3 as sources3};

@@ -1,0 +1,32 @@
+{
+  "20001": {
+    "__cle": "actif",
+    "__rev": "autre_libelle('oui')",
+    "__actif": 1,
+    "__couleur_texte": "black",
+    "__couleur_fond": "lime",
+    "__liste_des_parametres": [
+      {
+        "__nom": "autre_libelle",
+        "genre_du_parametre": 12,
+        "libelle": "un autre libellé pour cette valeur"
+      }
+    ],
+    "autre_libelle": "oui"
+  },
+  "20002": {
+    "__cle": "passif",
+    "__rev": "autre_libelle('non')",
+    "__actif": 1,
+    "__couleur_texte": "yellow",
+    "__couleur_fond": "red",
+    "__liste_des_parametres": [
+      {
+        "__nom": "autre_libelle",
+        "genre_du_parametre": 12,
+        "libelle": "un autre libellé pour cette valeur"
+      }
+    ],
+    "autre_libelle": "non"
+  }
+}

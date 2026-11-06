@@ -296,11 +296,9 @@ class menus1{
         /*
           =====================================================================================================
         */
-        
         let boutons_avant2=[];
         boutons_avant2.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
         boutons_avant2.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_menu),zone_resultat(cht_condition_menu),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</button>' );
-        
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_menu" ,
             "__contexte" : "modification1" ,

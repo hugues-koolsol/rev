@@ -51,7 +51,7 @@ class __fnts_c_et_s{
     /*
       =============================================================================================================
     */
-    test_est_au_format_constantes_rev( valeur , nom_du_champ ){
+    test_est_au_format_plusieurs_constantes_rev( valeur , nom_du_champ ){
         /* plusieurs constantes au formar rev , genre 96 */
         if(valeur !== null && valeur !== ''){
             let obj1=this.__ig1.__rev1.rev_tm( valeur , true );

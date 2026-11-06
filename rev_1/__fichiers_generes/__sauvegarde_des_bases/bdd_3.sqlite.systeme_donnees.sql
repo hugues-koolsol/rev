@@ -32,8 +32,8 @@ INSERT INTO tbl_metiers (  chi_id_metier ,  chp_nom_metier ,  chx_parent_metier 
 /*================================================================================ DEBUT BLOC TABLE tbl_acces offset 0 (3) */
 INSERT INTO tbl_acces (  chi_id_acces ,  chp_nom_acces ,  chx_groupe_acces ,  chx_metier_acces ,  cht_parametres_acces ,  che_actif_acces ) VALUES
 ('0','anonymes','1','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"à propos\",\"attributs\":{\"data-chi_id_source\":\"1000\",\"data-chp_nom_source\":\"x_ecran_a_propos1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"17\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"à propos\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"38\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"1000\" data-chp_nom_source=\"x_ecran_a_propos1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"17\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"à propos\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"38\" data-separateur=\"0\">à propos</li>    "}','1'),
-('1','dev_dev','1','1','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"88\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"10\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"mes tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"1\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"les tâches\",\"attributs\":{\"data-chi_id_source\":\"991\",\"data-chp_nom_source\":\"taches2_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"les tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"11\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":8,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"paramètres\",\"attributs\":{\"data-chi_id_source\":\"1019\",\"data-chp_nom_source\":\"parametres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"paramètres\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"49\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"94\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"groupes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"9\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métier\",\"attributs\":{\"data-chi_id_source\":\"96\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"métier\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"5\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"99\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"accès\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"7\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"101\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"3\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"1014\",\"data-chp_nom_source\":\"sources2_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"sources\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"43\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"105\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"autorisations\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"4\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"107\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"menus\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"6\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"88\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"10\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"1\" data-separateur=\"0\">mes tâches</li><li data-chi_id_source=\"991\" data-chp_nom_source=\"taches2_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"les tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"11\" data-separateur=\"0\">les tâches</li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"1019\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"paramètres\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\">paramètres</li><li data-chi_id_source=\"94\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"groupes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"9\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"96\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"métier\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"5\" data-separateur=\"0\">métier</li><li data-chi_id_source=\"99\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"accès\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"7\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"101\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"3\" data-separateur=\"0\">utilisateurs</li><li data-chi_id_source=\"1014\" data-chp_nom_source=\"sources2_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"sources\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"43\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"105\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"autorisations\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"4\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"107\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"menus\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"6\" data-separateur=\"0\">menus</li></ul></li>"}','1'),
-('2','admin_admin','2','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"88\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"12\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"mes tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"13\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acteurs\",\"attributs\":{\"data-chi_id_source\":\"1016\",\"data-chp_nom_source\":\"acteurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"47\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":6,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"94\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"groupes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métier\",\"attributs\":{\"data-chi_id_source\":\"96\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"métier\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"99\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"accès\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"105\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"autorisations\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"107\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"menus\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"101\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"88\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"12\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"13\" data-separateur=\"0\">mes tâches</li><li data-chi_id_source=\"1016\" data-chp_nom_source=\"acteurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"47\" data-separateur=\"0\">acteurs</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"94\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"groupes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"96\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"métier\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">métier</li><li data-chi_id_source=\"99\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"accès\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"105\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"autorisations\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"107\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"menus\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"101\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">utilisateurs</li></ul></li>    "}','1');
+('1','dev_dev','1','1','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"88\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"8\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"10\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"mes tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"1\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"1\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"les tâches\",\"attributs\":{\"data-chi_id_source\":\"991\",\"data-chp_nom_source\":\"taches2_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"10\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"les tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"11\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":8,\"contenu\":\"organisation\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"paramètres\",\"attributs\":{\"data-chi_id_source\":\"1019\",\"data-chp_nom_source\":\"parametres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"21\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"paramètres\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"49\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"94\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"9\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"groupes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"9\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métier\",\"attributs\":{\"data-chi_id_source\":\"96\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"5\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"métier\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"5\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"99\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"7\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"accès\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"7\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"101\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"3\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"3\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"sources\",\"attributs\":{\"data-chi_id_source\":\"1031\",\"data-chp_nom_source\":\"sources3_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"2\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"sources\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"43\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"105\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"4\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"autorisations\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"4\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":12,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"107\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"6\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"menus\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"6\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"88\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"8\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"10\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"1\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"1\" data-separateur=\"0\">mes tâches</li><li data-chi_id_source=\"991\" data-chp_nom_source=\"taches2_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"10\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"les tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"11\" data-separateur=\"0\">les tâches</li><li data-liste_des_menus=\"1\">organisation<ul><li data-chi_id_source=\"1019\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"21\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"paramètres\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"49\" data-separateur=\"0\">paramètres</li><li data-chi_id_source=\"94\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"9\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"groupes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"9\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"96\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"5\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"métier\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"5\" data-separateur=\"0\">métier</li><li data-chi_id_source=\"99\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"7\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"accès\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"7\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"101\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"3\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"3\" data-separateur=\"0\">utilisateurs</li><li data-chi_id_source=\"1031\" data-chp_nom_source=\"sources3_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"2\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"sources\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"43\" data-separateur=\"0\">sources</li><li data-chi_id_source=\"105\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"4\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"autorisations\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"4\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"107\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"6\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"menus\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"6\" data-separateur=\"0\">menus</li></ul></li>    "}','1'),
+('2','admin_admin','2','2','{"le_json_du_menu":"[{\"id_interne\":1,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"<svg class=\\\"rev_svg_dans_menu1\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"-50 -50  100 100\\\"><g style=\\\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\\\" transform=\\\"   \\\"><circle cx=\\\"0\\\" cy=\\\"-10\\\" r=\\\"34\\\"></circle><path d=\\\" M -43 46 C -30 20 30 20 43 46 \\\"></path><circle cx=\\\"-10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><circle cx=\\\"10\\\" cy=\\\"-15\\\" r=\\\"5\\\"></circle><path d=\\\" M -10 0 C -15 10 15 10 10 0\\\"></path><path d=\\\" M 0 -10 V 0\\\"></path><path d=\\\" M -15 -15 H -30\\\"></path><path d=\\\" M 15 -15 H 30\\\"></path><path d=\\\" M -5 -15 c 0 -5 10 -5 10 0\\\"></path></g><path d=\\\" M -50 -50 h 100 v 100 h -100 v -100 \\\" stroke=\\\"rgb(0, 0, 0)\\\" stroke-width=\\\"0\\\" fill=\\\"transparent\\\" stroke-linejoin=\\\"round\\\" stroke-linecap=\\\"round\\\" transform=\\\"\\\" style=\\\"stroke:black;fill:transparent;stroke-width:0.1;\\\"></path></svg>\",\"attributs\":{\"data-chi_id_source\":\"88\",\"data-chp_nom_source\":\"x_ecran_coordonnees1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"11\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"mes coordonnées\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"12\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":2,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"mes tâches\",\"attributs\":{\"data-chi_id_source\":\"1011\",\"data-chp_nom_source\":\"taches1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"12\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"tâches\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"13\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":3,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"acteurs\",\"attributs\":{\"data-chi_id_source\":\"1016\",\"data-chp_nom_source\":\"acteurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"20\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"47\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":4,\"id_interne_parent\":0,\"replie\":0,\"contient_des_enfants\":7,\"contenu\":\"admin\",\"attributs\":{\"data-liste_des_menus\":\"1\"},\"separateur\":0},{\"id_interne\":11,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"param1\",\"attributs\":{\"data-chi_id_source\":\"1019\",\"data-chp_nom_source\":\"parametres1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"22\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"param1\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"59\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":5,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"groupes\",\"attributs\":{\"data-chi_id_source\":\"94\",\"data-chp_nom_source\":\"groupes1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"13\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"groupes\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"25\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":6,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"métier\",\"attributs\":{\"data-chi_id_source\":\"96\",\"data-chp_nom_source\":\"metiers1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"14\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"métier\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"27\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":7,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"accès\",\"attributs\":{\"data-chi_id_source\":\"99\",\"data-chp_nom_source\":\"acces1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"15\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"accès\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"29\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":8,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"autorisations\",\"attributs\":{\"data-chi_id_source\":\"105\",\"data-chp_nom_source\":\"autorisations1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"16\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"autorisations\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"31\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":9,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"menus\",\"attributs\":{\"data-chi_id_source\":\"107\",\"data-chp_nom_source\":\"menus1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"18\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"menus\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"33\",\"data-separateur\":\"0\"},\"separateur\":0},{\"id_interne\":10,\"id_interne_parent\":4,\"replie\":0,\"contient_des_enfants\":0,\"contenu\":\"utilisateurs\",\"attributs\":{\"data-chi_id_source\":\"101\",\"data-chp_nom_source\":\"utilisateurs1_c.js\",\"data-chp_methode_menu\":\"entree_module\",\"data-chi_id_menu\":\"19\",\"data-cht_initialisation_menu\":\"null\",\"data-chp_titre_menu\":\"utilisateurs\",\"data-cht_condition_js_menu\":\"null\",\"data-cht_condition_menu\":\"null\",\"data-chx_autorisation_menu\":\"36\",\"data-separateur\":\"0\"},\"separateur\":0}]","le_html_ul_li_du_menu":"<li data-chi_id_source=\"88\" data-chp_nom_source=\"x_ecran_coordonnees1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"11\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"mes coordonnées\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"12\" data-separateur=\"0\"><svg class=\"rev_svg_dans_menu1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-50 -50  100 100\"><g style=\"stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;\" transform=\"   \"><circle cx=\"0\" cy=\"-10\" r=\"34\"></circle><path d=\" M -43 46 C -30 20 30 20 43 46 \"></path><circle cx=\"-10\" cy=\"-15\" r=\"5\"></circle><circle cx=\"10\" cy=\"-15\" r=\"5\"></circle><path d=\" M -10 0 C -15 10 15 10 10 0\"></path><path d=\" M 0 -10 V 0\"></path><path d=\" M -15 -15 H -30\"></path><path d=\" M 15 -15 H 30\"></path><path d=\" M -5 -15 c 0 -5 10 -5 10 0\"></path></g><path d=\" M -50 -50 h 100 v 100 h -100 v -100 \" stroke=\"rgb(0, 0, 0)\" stroke-width=\"0\" fill=\"transparent\" stroke-linejoin=\"round\" stroke-linecap=\"round\" transform=\"\" style=\"stroke:black;fill:transparent;stroke-width:0.1;\"></path></svg></li><li data-chi_id_source=\"1011\" data-chp_nom_source=\"taches1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"12\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"tâches\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"13\" data-separateur=\"0\">mes tâches</li><li data-chi_id_source=\"1016\" data-chp_nom_source=\"acteurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"20\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"47\" data-separateur=\"0\">acteurs</li><li data-liste_des_menus=\"1\">admin<ul><li data-chi_id_source=\"1019\" data-chp_nom_source=\"parametres1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"22\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"param1\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"59\" data-separateur=\"0\">param1</li><li data-chi_id_source=\"94\" data-chp_nom_source=\"groupes1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"13\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"groupes\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"25\" data-separateur=\"0\">groupes</li><li data-chi_id_source=\"96\" data-chp_nom_source=\"metiers1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"14\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"métier\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"27\" data-separateur=\"0\">métier</li><li data-chi_id_source=\"99\" data-chp_nom_source=\"acces1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"15\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"accès\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"29\" data-separateur=\"0\">accès</li><li data-chi_id_source=\"105\" data-chp_nom_source=\"autorisations1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"16\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"autorisations\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"31\" data-separateur=\"0\">autorisations</li><li data-chi_id_source=\"107\" data-chp_nom_source=\"menus1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"18\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"menus\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"33\" data-separateur=\"0\">menus</li><li data-chi_id_source=\"101\" data-chp_nom_source=\"utilisateurs1_c.js\" data-chp_methode_menu=\"entree_module\" data-chi_id_menu=\"19\" data-cht_initialisation_menu=\"null\" data-chp_titre_menu=\"utilisateurs\" data-cht_condition_js_menu=\"null\" data-cht_condition_menu=\"null\" data-chx_autorisation_menu=\"36\" data-separateur=\"0\">utilisateurs</li></ul></li>"}','1');
 /*================================================================================ FIN BLOC TABLE tbl_acces offset 0 */
 
 
@@ -55,7 +55,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (48) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (60) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('77','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -99,18 +99,3138 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 ('1016','acteurs1_c.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1018','__televersement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1024','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1024','grandeurs2_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1025','acces2_c.js',NULL,'class acces2{
+    /*
+      ref_liste_ecran=1219;
+      ref_select=;
+      ref_insert=;
+      ref_update=;
+      ref_delete=;
+      pour_sous_liste_uniquement=1;
+    */
+    moi=''acces2'';
+    DUN_DUNE_ELEMENT_GERE=''d\''un accès'';
+    LISTE_DES_ELEMENTS_GERES=''liste des accès'';
+    __ig1=null;
+    /*
+      filtres liste
+    */
+    tableau_des_filtres={
+        "sous_liste2" : {
+            "__num_page" : {"nom" : ''__num_page'' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chi_id_acces" : {"nom" : ''id'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chp_nom_acces" : {"nom" : ''nom'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_che_actif_acces" : {"nom" : ''actif'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false ,"genre" : 5} ,
+            "T0_chx_groupe_acces" : {"nom" : ''id groupe'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T1_chp_nom_groupe" : {"nom" : ''nom'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chx_metier_acces" : {"nom" : ''id métier'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T2_chp_nom_metier" : {"nom" : ''[n] id métier'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false}
+        }
+    };
+    /*
+    */
+    filtres={};
+    __variables_module={};
+    vv_ecran_liste_boutons_avant='''';
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''xxxxx'' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres[''sous_liste2'']){
+                this.filtres[''sous_liste2''][i]=jso[i]??this.tableau_des_filtres[''sous_liste2''][i].défaut;
+            }
+        }else{
+            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+        }
+        /*
+          this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(''+this.moi+''),f1(page_creer1()))" title="création''+this.DUN_DUNE_ELEMENT_GERE +''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        */
+    }
+    /*
+      =============================================================================================================
+    */
+    entree_module( mat , d ){
+        this.__ig1.recupere_liste_initiale( mat , d , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
+    */
+    sous_liste2( mat , d , le_colis1 ){
+        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_sous_liste2( mat , d , le_colis1 ){
+        let o1='''';
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , ''grandeurs2'' );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
+            let la_methode='''';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( ''methode_sur_click2'' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2=''m1('' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='''' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
+            }
+            let lst='''';
+            for(let i in le_colis1.__xva[''sous_liste2''].__xva){
+                let tup=le_colis1.__xva[''sous_liste2''].__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td style="text-wrap-mode: nowrap;">'';
+                let parametres='''';
+                parametres+=la_methode;
+                parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
+                parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
+                parametres+='' id2('' + tup.T0_chi_id_acces + '')'';
+                let libelle2='''';
+                libelle2+=''('' + tup.T0_chi_id_acces + '') '';
+                libelle2+=tup.T0_chp_nom_acces ? ( '' , '' + this.__ig1.fi2( tup.T0_chp_nom_acces ) ) : ( '''' );
+                parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                parametres+='')))'';
+                lst+=''  <div class="yy_b1 yy__2" rev_clic1="'' + parametres + ''">=&gt;</div>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                lst+=this.__ig1.fi2( tup.T0_chi_id_acces );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(tup.T0_che_actif_acces === 0){
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                }else{
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                }
+                /* cas liste2 5.4 */
+                lst+=''<span class="" style="">'' + this.__ig1.fi2( tup.T0_chp_nom_acces ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
+                /* cas liste2 6.2 */
+                lst+=''('' + this.__ig1.fi2( tup.T0_chx_groupe_acces ) + '') '';
+                /* cas liste2 6.4 */
+                lst+=''<span class="" style="">'' + this.__ig1.fi2( tup.T1_chp_nom_groupe ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
+                /* cas liste2 6.2 */
+                lst+=''('' + this.__ig1.fi2( tup.T0_chx_metier_acces ) + '') '';
+                /* cas liste2 6.4 */
+                lst+=''<span class="" style="">'' + this.__ig1.fi2( tup.T2_chp_nom_metier ) + ''</span>'';
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table>'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_acces */''<th>id</th>'';
+                o1+=/* combinaison */''<th>actif / nom</th>'';
+                o1+=/* combinaison */''<th>groupe</th>'';
+                o1+=/* combinaison */''<th>métier</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        this.__ig1.initialisation_filtre_sous_fenetre2( ''sous_liste2'' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{acces2 as acces2};','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1026','acces2_s.js',NULL,'const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+/*
+  =====================================================================================================================
+*/
+class acces2{
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async sous_liste2( mat , d ){
+        let contexte='''';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''methode_sur_click2'' && mat[i][2] === ''f''){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === ''f1'' && mat[j][2] === ''f''){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === ''nom_du_contexte'' && mat[k][2] === ''f''){
+                                contexte=''nom_du_contexte'';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === ''nom_de_variable'' && mat[l][2] === ''f'' && mat[l][8] === 1 && mat[l + 1][2] === ''c''){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        const __nbMax=40;
+        let __num_page=0;
+        let liste2={};
+        let criteres_xxxx={};
+        criteres_xxxx[''quantitee'']=__nbMax;
+        if(true || contexte === ''nom_du_contexte''){
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1219 , criteres_xxxx , __nbMax , __db1 );
+        }
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* voir par exemple dossiers1_s.js */
+        }
+        return liste2;
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        return(await this.filtre1( mat , d ));
+    }
+    /*
+      =============================================================================================================
+    */
+    moi=''acces2'';
+    __ig1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{acces2 as acces2};','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1027','autorisations2_c.js',NULL,'class autorisations2{
+    /*
+      ref_liste_ecran=1220;
+      ref_select=;
+      ref_insert=;
+      ref_update=;
+      ref_delete=;
+      pour_sous_liste_uniquement=1;
+    */
+    moi=''autorisations2'';
+    DUN_DUNE_ELEMENT_GERE=''d\''une autorisation'';
+    LISTE_DES_ELEMENTS_GERES=''liste des autorisations'';
+    __ig1=null;
+    /*
+      filtres liste
+    */
+    tableau_des_filtres={
+        "sous_liste2" : {
+            "__num_page" : {"nom" : ''__num_page'' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T2_chp_nom_source" : {"nom" : ''nom source'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T1_chp_nom_acces" : {"nom" : ''nom accès'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chx_source_autorisation" : {"nom" : ''id source'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chx_acces_autorisation" : {"nom" : ''id accès'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_che_pour_sous_liste_autorisation" : {"nom" : ''pour s/liste'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false ,"genre" : 5} ,
+            "T0_chi_id_autorisation" : {"nom" : ''id'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false}
+        }
+    };
+    /*
+    */
+    filtres={};
+    __variables_module={};
+    vv_ecran_liste_boutons_avant='''';
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''xxxxx'' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres.sous_liste2){
+                this.filtres.sous_liste2[i]=jso[i]??this.tableau_des_filtres.sous_liste2[i].défaut;
+            }
+        }else{
+            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+        }
+        /*
+          this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" rev_clic1="m1(n1(''+this.moi+''),f1(page_creer1()))" title="création''+this.DUN_DUNE_ELEMENT_GERE +''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        */
+    }
+    /*
+      =============================================================================================================
+    */
+    entree_module( mat , d ){
+        this.__ig1.recupere_liste_initiale( mat , d , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
+    */
+    sous_liste2( mat , d , le_colis1 ){
+        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_sous_liste2( mat , d , le_colis1 ){
+        let o1='''';
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , ''grandeurs2'' );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
+            let la_methode='''';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( ''methode_sur_click2'' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2=''m1('' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='''' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
+            }
+            let lst='''';
+            for(let i in le_colis1.__xva.sous_liste2.__xva){
+                let tup=le_colis1.__xva.sous_liste2.__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td style="text-wrap-mode: nowrap;">'';
+                let parametres='''';
+                parametres+=la_methode;
+                parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
+                parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
+                parametres+='' id2('' + tup.T0_chi_id_autorisation + '')'';
+                let libelle2='''';
+                libelle2+=''('' + tup.T0_chi_id_autorisation + '') '';
+                libelle2+=''       / '' + this.__ig1.fi2( tup.T2_chp_nom_source );
+                libelle2+=''       / '' + this.__ig1.fi2( tup.T1_chp_nom_acces );
+                parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                parametres+='')))'';
+                lst+=''  <div class="yy_b1 yy__2" rev_clic1="'' + parametres + ''">=&gt;</div>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                /* cas liste2 4.2 */
+                lst+=this.__ig1.fi2( tup.T0_chi_id_autorisation );
+                lst+=''</td>'';
+                /*
+                */
+                /* combinaison */
+                lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
+                /* cas liste2 4.1 */
+                lst+=''('' + this.__ig1.fi2( tup.T0_chx_source_autorisation ) + '') '';
+                /* cas liste2 5.1 */
+                lst+=''<span class="" style="">'' + this.__ig1.fi2( tup.T2_chp_nom_source ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                */
+                /* combinaison */
+                lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
+                /* cas liste2 4.1 */
+                lst+=''('' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + '') '';
+                /* cas liste2 5.1 */
+                lst+=''<span class="" style="">'' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                */
+                /* cas liste2 3.0 */
+                lst+=''<td style="text-align:center;">'';
+                if(tup.T0_che_pour_sous_liste_autorisation === 0){
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                }else{
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                }
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table>'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_autorisation */''<th>id</th>'';
+                o1+=/* combinaison */''<th>source</th>'';
+                o1+=/* combinaison */''<th>accès</th>'';
+                o1+=/* che_pour_sous_liste_autorisation */''<th>pour s/liste</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        this.__ig1.initialisation_filtre_sous_fenetre2( ''sous_liste2'' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{autorisations2 as autorisations2};','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1028','autorisations2_s.js',NULL,'const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+/*
+  =====================================================================================================================
+*/
+class autorisations2{
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async sous_liste2( mat , d ){
+        let contexte='''';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''methode_sur_click2'' && mat[i][2] === ''f''){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === ''f1'' && mat[j][2] === ''f''){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === ''nom_du_contexte'' && mat[k][2] === ''f''){
+                                contexte=''nom_du_contexte'';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === ''nom_de_variable'' && mat[l][2] === ''f'' && mat[l][8] === 1 && mat[l + 1][2] === ''c''){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        const __nbMax=40;
+        let __num_page=0;
+        let liste2={};
+        let criteres_xxxx={};
+        criteres_xxxx[''quantitee'']=__nbMax;
+        if(true || contexte === ''nom_du_contexte''){
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1220 , criteres_xxxx , __nbMax , __db1 );
+        }
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* voir par exemple dossiers1_s.js */
+        }
+        return liste2;
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        return(await this.filtre1( mat , d ));
+    }
+    /*
+      =============================================================================================================
+    */
+    moi=''autorisations2'';
+    __ig1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{autorisations2 as autorisations2};','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1029','groupes2_c.js',NULL,'class groupes2{
+    /*
+      ref_liste_ecran=1216;
+      ref_select=;
+      ref_insert=;
+      ref_update=;
+      ref_delete=;
+      pour_sous_liste_uniquement=1;
+    */
+    moi=''groupes2'';
+    DUN_DUNE_ELEMENT_GERE=''d\''un groupe'';
+    LISTE_DES_ELEMENTS_GERES=''liste des groupes'';
+    __ig1=null;
+    /*
+      filtres liste
+    */
+    tableau_des_filtres={
+        "sous_liste2" : {
+            "__num_page" : {"nom" : ''__num_page'' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chi_id_groupe" : {"nom" : ''id'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chp_nom_groupe" : {"nom" : ''nom'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chx_parent_groupe" : {"nom" : ''id parent'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T1_chp_nom_groupe" : {"nom" : ''groupe parent'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false}
+        }
+    };
+    /*
+    */
+    filtres={};
+    __variables_module={};
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''xxxxx'' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres.sous_liste2){
+                this.filtres.sous_liste2[i]=jso[i]??this.tableau_des_filtres.sous_liste2[i].défaut;
+            }
+        }else{
+            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    entree_module( mat , d ){
+        this.__ig1.recupere_liste_initiale( mat , d , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_sous_liste2( mat , d , le_colis1 ){
+        let o1='''';
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , ''grandeurs2'' );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
+            let la_methode='''';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( ''methode_sur_click2'' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2=''m1('' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='''' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
+            }
+            let lst='''';
+            for(let i in le_colis1.__xva.sous_liste2.__xva){
+                let tup=le_colis1.__xva.sous_liste2.__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td style="text-wrap-mode: nowrap;">'';
+                let parametres='''';
+                parametres+=la_methode;
+                parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
+                parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
+                parametres+='' id2('' + tup.T0_chi_id_groupe + '')'';
+                let libelle2='''';
+                libelle2+=''('' + tup.T0_chi_id_groupe + '') '';
+                libelle2+=tup.T0_chp_nom_groupe ? ( '' , '' + this.__ig1.fi2( tup.T0_chp_nom_groupe ) ) : ( '''' );
+                parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                parametres+='')))'';
+                lst+=''  <button class="yy_b1 yy__2" rev_clic1="'' + parametres + ''">=&gt;</button>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                /* cas liste2 4.2 */
+                lst+=this.__ig1.fi2( tup.T0_chi_id_groupe );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                lst+=this.__ig1.fi2( tup.T0_chp_nom_groupe );
+                lst+=''</td>'';
+                /*
+                */
+                /* combinaison */
+                lst+=''<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">'';
+                /* cas liste2 4.1 */
+                lst+=''('' + this.__ig1.fi2( tup.T0_chx_parent_groupe ) + '') '';
+                /* cas liste2 5.1 */
+                lst+='' <span class="" style="">'' + this.__ig1.fi2( tup.T1_chp_nom_groupe ) + ''</span>'';
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table>'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_groupe */''<th>id</th>'';
+                o1+=/* chp_nom_groupe */''<th>nom</th>'';
+                o1+=/* combinaison */''<th>groupe parent</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        this.__ig1.initialisation_filtre_sous_fenetre2( ''sous_liste2'' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{groupes2 as groupes2};','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1030','groupes2_s.js',NULL,'const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+/*
+  =====================================================================================================================
+*/
+class groupes2{
+    /*
+      =========================== fragment ========================================================================
+    */
+    ajoute_criteres_sous_liste2( criteres_xxxx ){
+        criteres_xxxx[''groupe_a_exclure'']=''-1'';
+        if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
+            /* on peut sélectionner le groupe admin comme parent */
+            criteres_xxxx[''groupe_a_exclure'']=''0,1'';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async sous_liste2( mat , d ){
+        let contexte='''';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''methode_sur_click2'' && mat[i][2] === ''f''){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === ''f1'' && mat[j][2] === ''f''){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === ''nom_du_contexte'' && mat[k][2] === ''f''){
+                                contexte=''nom_du_contexte'';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === ''nom_de_variable'' && mat[l][2] === ''f'' && mat[l][8] === 1 && mat[l + 1][2] === ''c''){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        const __nbMax=40;
+        let __num_page=0;
+        let liste2={};
+        let criteres_xxxx={};
+        criteres_xxxx[''quantitee'']=__nbMax;
+        this.ajoute_criteres_sous_liste2( criteres_xxxx );
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
+        if(true || contexte === ''nom_du_contexte''){
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 1216 , criteres_xxxx , __nbMax , __db1 );
+        }
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* voir par exemple dossiers1_s.js */
+        }
+        return liste2;
+    }
+    /*
+      =============================================================================================================
+    */
+    moi=''groupes2'';
+    __ig1=null;
+    __variables_module={};
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{groupes2 as groupes2};','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1031','sources3_c.js',NULL,'class sources3{
+    /*
+      ref_liste_ecran=2011;
+      ref_select=2012;
+      ref_insert=;
+      ref_update=;
+      ref_delete=2015;
+    */
+    moi=''sources3'';
+    DUN_DUNE_ELEMENT_GERE=''d\''un source'';
+    LISTE_DES_ELEMENTS_GERES=''liste des sources'';
+    __ig1=null;
+    /*
+      filtres liste
+    */
+    tableau_des_filtres={
+        "liste1" : {
+            "__num_page" : {"nom" : ''__num_page'' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chp_nom_source" : {"nom" : ''nom'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chi_id_source" : {"nom" : ''id'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chi_id_source2" : {"nom" : ''id >'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chi_id_source3" : {"nom" : ''id <='' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_che_binaire_source" : {"nom" : ''binaire'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_autorisation_globale_source" : {"nom" : ''autorisation globale'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false ,"genre" : 5}
+        }
+    };
+    /*
+    */
+    filtres={};
+    __variables_module={};
+    vv_ecran_liste_boutons_avant='''';
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''xxxxx'' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres[''liste1'']){
+                this.filtres[''liste1''][i]=jso[i]??this.tableau_des_filtres[''liste1''][i].défaut;
+            }
+        }
+        /*
+          this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(''+this.moi+''),f1(page_creer1()))" title="création''+this.DUN_DUNE_ELEMENT_GERE +''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        */
+    }
+    /*
+      =============================================================================================================
+    */
+    page_confirmation_supprimer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( ''page_confirmation_supprimer1'' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''cet élément n\''a pas été trouvé''} ));
+        }
+        let tup=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(tup.T0_chi_id_source === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0_chi_id_source n''est pas en sortie dans la requête select "});
+        }
+        this.__ig1.afficher_le_titre_des_zones( ''vv_ecran_suppression'' , ''entree_module'' , this.DUN_DUNE_ELEMENT_GERE , tup.T0_chi_id_source , this.moi , ''chi_id_source'' );
+        let o1='''';
+        /*
+          =====================================================================================================
+        */
+        o1+=''      <input type="hidden" id="chi_id_source" value="'' + tup.T0_chi_id_source + ''" />'';
+        /*
+          =====================================================================================================
+        */
+        let cmd='''';
+        cmd+=''liste1('';
+        for(let i in this.tableau_des_filtres[''liste1'']){
+            if(this.filtres[''liste1''][i] !== ''''){
+                cmd+=i + ''(\'''' + this.__ig1.fi2( this.filtres[''liste1''][i] ) + ''\'')'';
+            }
+        }
+        cmd+='')'';
+        let obj2=this.__ig1.__rev1.rev_tm( cmd );
+        let jso=JSON.stringify( obj2.__xva );
+        o1+=''      <input type="hidden" id="__mat_liste_si_ok" value="'' + this.__ig1.fi2( jso ) + ''" />'';
+        document.getElementById( ''vv_ecran_suppression_zone_contenu'' ).innerHTML=o1;
+        this.__ig1.maj_title_htm1( ''suppression '' + this.DUN_DUNE_ELEMENT_GERE );
+        if(this.__ig1.stockage_local[''parametres''][''__deverminage''][''valeur''] > 0){
+            this.__ig1.maj_hash( mat , 0 );
+        }
+        
+        this.__ig1.repositionner_les_boutons_action( ''vv_ecran_suppression_zone_boutons'' );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    filtre1( mat , d , le_colis1=null ){
+        let a=document.getElementById( ''vv_ecran_liste_zone_contenu'' );
+        if(a === null){
+            return(this.liste1( mat , d , le_colis1 ));
+        }
+        let tt=this.zones_liste1( le_colis1 );
+        document.getElementById( ''vv_ecran_liste_zone_contenu'' ).innerHTML=tt.o1;
+        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
+        
+        let lst=document.getElementById( ''vv_filtre1'' ).querySelectorAll( "input" );
+        this.filtres={};
+        for( let i=0 ; i < lst.length ; i++ ){
+            if(lst[i].id){
+                this.filtres[lst[i].id]=lst[i].value;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi );
+        if(aa === null){
+            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+        }else{
+            let jso=JSON.parse( aa );
+            jso[''filtres'']=this.filtres;
+            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( jso ) );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    raz_champ_filtre_grandeurs0( mat , d ){
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            this.filtres[''liste1''][mat[i][1]]='''';
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_filtres1( mat , d , le_colis1 ){
+        this.__ig1.__fnt1.zones_filtres0( mat , d , le_colis1 , this , false , ''grandeurs2'' );
+    }
+    /*
+      =============================================================================================================
+    */
+    aller_a_la_page( mat , d , ref_zone=null , num_page=null , est_table_virtuelle=false , de_13='''' ){
+        return(this.__ig1.aller_a_la_page( mat , d , this.moi , ''liste1'' , this.filtres , ref_zone , num_page , est_table_virtuelle , de_13 ));
+    }
+    /*
+      =============================================================================================================
+    */
+    supprimer1( mat , d , le_colis1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    creer1( mat , d , le_colis1 ){
+        /* redirection vers modification */
+        if(le_colis1 && le_colis1.__xva.hasOwnProperty( ''page_modification1'' )){
+            this.page_modification1( mat , d , le_colis1 );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    liste1( mat , d , le_colis1=null ){
+        if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( ''liste1'' )){
+            if(le_colis1.__xva.hasOwnProperty( ''__nbEnregs'' )){
+            }else{
+                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''il manque les données pour la liste de '' + this.moi} );
+                this.__ig1.affiche_les_messages();
+                return({"__xst" : __xsu});
+            }
+        }
+        let o1='''';
+        let initialisation_fait=false;
+        let a=document.getElementById( ''vv_titre_de_la_page'' );
+        if(a === null){
+            this.__ig1.initialisation_des_zones( this.moi , ''chi_id_source'' );
+            initialisation_fait=true;
+        }
+        a=document.getElementById( ''vv_titre_de_la_page'' );
+        if(a.innerHTML === this.LISTE_DES_ELEMENTS_GERES && a.getAttribute( ''data-contexte'' ) === this.moi){
+        }else{
+            if(initialisation_fait === false){
+                this.__ig1.initialisation_des_zones( this.moi , ''chi_id_source'' );
+                a=document.getElementById( ''vv_titre_de_la_page'' );
+            }
+            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
+            this.__ig1.afficher_les_zones( ''vv_ecran_liste'' );
+        }
+        this.zones_filtres1( mat , d , le_colis1 );
+        this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , ''liste1'' );
+        document.getElementById( ''vv_ecran_liste_zone_contenu'' ).innerHTML=this.zones_liste1( le_colis1 );
+        
+        this.__ig1.maj_hash( mat , 0 );
+        this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    entree_module( mat , d ){
+        this.__ig1.recupere_liste_initiale( mat , d , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='''';
+        lst+=''<div style="display:inline-flex;">'';
+        lst+=''<div class="yy_svg1 yy__2" data-rev_click="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_source('' + tup.T0_chi_id_source + '')))))">'' + this.__ig1.les_svg.poubelle + ''</div>'';
+        /*
+          lst+=''<div class="yy_svg1 yy__3" data-rev_click="pm1(m1(n1(''+this.moi+''),f1(page_modification1(chi_id_source('' + tup.T0_chi_id_source + '')))))">''+this.__ig1.les_svg.editer+''</div>'';
+        */
+        /*
+          lst+=''<div class="yy_svg1 yy__4" data-rev_click="pm1(m1(n1(''+this.moi+''),f1(page_duplication1(chi_id_source('' + tup.T0_chi_id_source + '')))))">''+this.__ig1.les_svg.dupliquer+''</div>'';
+        */
+        lst+=''</div>'';
+        return lst;
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_liste1( le_colis1 ){
+        let o1='''';
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''liste1'' )){
+            let lst='''';
+            for(let i in le_colis1.__xva[''liste1''].__xva){
+                let tup=le_colis1.__xva[''liste1''].__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td>'';
+                lst+=this.liste_des_boutons_action1( tup , le_colis1 );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                lst+=''<span data-chi_id_source="'' + this.__ig1.fi2( tup.T0_chi_id_source ) + ''">'' + this.__ig1.fi2( tup.T0_chi_id_source ) + ''</span>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                /* cas 3.4 */
+                lst+=this.__ig1.fi2( tup.T0_chp_nom_source );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                /* cas 5 */
+                if(tup.T0_che_binaire_source === 0){
+                    lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                }else{
+                    lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:24em;overflow:hidden;">'';
+                /* cas 1 */
+                lst+=this.__ig1.fi2( tup.T0_cht_commentaire_source ).substr( 0 , 200 );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                /* cas 5 */
+                if(tup.T0_che_autorisation_globale_source === 0){
+                    lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                }else{
+                    lst+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                }
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table>'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_source */''<th>id</th>'';
+                o1+=/* chp_nom_source */''<th>nom</th>'';
+                o1+=/* che_binaire_source */''<th>binaire</th>'';
+                o1+=/* cht_commentaire_source */''<th>commentaire</th>'';
+                o1+=/* che_autorisation_globale_source */''<th>autorisation globale</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        return o1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{sources3 as sources3};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1032','sources3_s.js',NULL,'const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+/*
+  =====================================================================================================================
+*/
+class sources3{
+    /*
+      =============================================================================================================
+    */
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues.__xva[''__co1''];
+        let form=this.__ig1.donnees_recues.__xva[''__fo1''][nom_formulaire];
+        /*  */
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_2012={
+             /*  */
+            "T0_chi_id_source" : form.chi_id_source
+        };
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , criteres_2012 , __db1 );
+        if(tt2012.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2012.__xme});
+        }
+        /*  */
+        let tas=await this.test_avant_supprimer( mat , d , form , tt2012.__xva[0] , __db1 );
+        if(tas.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
+        }
+        let criteres_2015={
+             /*  */
+            "chi_id_source" : form.chi_id_source
+        };
+        let tt2015=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_sources
+        WHERE `chi_id_source` = :chi_id_source ;
+        */
+        /*sql_inclure_fin*/ 2015 , criteres_2015 , __db1 );
+        /*  */
+        if(tt2015.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2015.__xme});
+        }
+        let __aavc=await this.actions_apres_supprimer( mat , d , form , tt2012.__xva[0] , __db1 );
+        if(__aavc.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
+        }
+        /*  */
+        if(form.__mat_liste_si_ok !== ''''){
+            let mat1=JSON.parse( form.__mat_liste_si_ok );
+            await this.filtre1( mat1 , 1 , __db1 );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_confirmation_supprimer1( mat , d ){
+        let chi_id_source=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_source'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_source === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let critere_2012={"T0_chi_id_source" : chi_id_source};
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , critere_2012 , __db1 );
+        this.__ig1.donnees_retournees.__xva[''page_confirmation_supprimer1'']=tt2012;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async filtre1( mat , d , __db1=null ){
+        const l01=mat.length;
+        let option_de_13='''';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''de_13'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                option_de_13=''de_13('' + mat[i + 1][1] + '')'';
+            }
+        }
+        const __nbMax=40;
+        let __num_page=0;
+        const formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , ''liste1'' );
+        if(!formulaire.hasOwnProperty( ''__num_page'' ) || !this.__ig1.est_num( formulaire.__num_page )){
+            __num_page=0;
+        }else{
+            __num_page=parseInt( formulaire.__num_page , 10 );
+        }
+        let __debut=__num_page * __nbMax;
+        let criteres_2011={
+             /*  */
+            "quantitee" : __nbMax ,
+            "debut" : __debut
+        };
+        for(let i in formulaire){
+            if(i !== ''__num_page''){
+                criteres_2011[i]=formulaire[i];
+            }
+        }
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_2011[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( 1 );
+        }
+        let tt2011=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+         FROM b1.tbl_sources T0
+        WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+           AND `T0`.`chi_id_source` = :T0_chi_id_source
+           AND `T0`.`chi_id_source` > :T0_chi_id_source2
+           AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+           AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+           AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+        ORDER BY `T0`.`chi_id_source` DESC  
+        LIMIT :quantitee OFFSET :debut 
+        ;
+        */
+        /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
+        if(tt2011.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2011.__xme});
+        }
+        if(tt2011.__xst === __xsu && tt2011.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
+            __debut=0;
+            __num_page=0;
+            criteres_2011[''debut'']=__debut;
+            tt2011=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+             FROM b1.tbl_sources T0
+            WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+               AND `T0`.`chi_id_source` = :T0_chi_id_source
+               AND `T0`.`chi_id_source` > :T0_chi_id_source2
+               AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+               AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+               AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+            ORDER BY `T0`.`chi_id_source` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
+        }
+        this.__ig1.donnees_retournees.__xva[''__nbMax'']=__nbMax;
+        this.__ig1.donnees_retournees.__xva[''__debut'']=__debut;
+        this.__ig1.donnees_retournees.__xva[''__num_page'']=__num_page;
+        this.__ig1.donnees_retournees.__xac=''pm1(m1(n1('' + this.moi + ''),f1(liste1('' + option_de_13;
+        for(let i in formulaire){
+            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
+        }
+        this.__ig1.donnees_retournees.__xac+=''))))'';
+        this.__ig1.donnees_retournees.__xva[''liste1'']=tt2011;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        return(await this.filtre1( mat , d ));
+    }
+    /*
+      =============================================================================================================
+    */
+    moi=''sources3'';
+    __ig1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{sources3 as sources3};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1033','sources4_c.js',NULL,'class sources4{
+    /*
+      ref_liste_ecran=2011;
+      ref_select=;
+      ref_insert=;
+      ref_update=;
+      ref_delete=;
+      pour_sous_liste_uniquement=1;
+    */
+    moi=''sources4'';
+    DUN_DUNE_ELEMENT_GERE=''d\''un source'';
+    LISTE_DES_ELEMENTS_GERES=''liste des sources'';
+    __ig1=null;
+    /*
+      filtres liste
+    */
+    tableau_des_filtres={
+        "sous_liste2" : {
+            "__num_page" : {"nom" : ''__num_page'' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T0_chp_nom_source" : {"nom" : ''nom'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chi_id_source" : {"nom" : ''id'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chi_id_source2" : {"nom" : ''id >'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_chi_id_source3" : {"nom" : ''id <='' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false} ,
+            "T0_che_binaire_source" : {"nom" : ''binaire'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_autorisation_globale_source" : {"nom" : ''autorisation globale'' ,"taille" : 9 ,"défaut" : '''' ,"masqué" : false ,"genre" : 5}
+        }
+    };
+    /*
+    */
+    filtres={};
+    __variables_module={};
+    vv_ecran_liste_boutons_avant='''';
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        switch (mat[d][1]){
+            case ''xxxxx'' :
+                /*
+                  this.__ig1.fermer_la_sous_fenetre();
+                  this.entree_module( null );
+                */
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres[''sous_liste2'']){
+                this.filtres[''sous_liste2''][i]=jso[i]??this.tableau_des_filtres[''sous_liste2''][i].défaut;
+            }
+        }else{
+            sessionStorage.setItem( this.__ig1.cle_lst0 + ''_'' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
+        }
+        /*
+          this.vv_ecran_liste_boutons_avant+=''<div class="yy_svg1 yy__xif" data-rev_click="m1(n1(''+this.moi+''),f1(page_creer1()))" title="création''+this.DUN_DUNE_ELEMENT_GERE +''" >'' + this.__ig1.les_svg.nouveau_document + ''</div>'';
+        */
+    }
+    /*
+      =============================================================================================================
+    */
+    entree_module( mat , d ){
+        this.__ig1.recupere_liste_initiale( mat , d , this );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    zones_sous_liste2( mat , d , le_colis1 ){
+        let o1='''';
+        let obj2=this.__ig1.construire_les_zones_filtres2( mat , d , le_colis1 , this , ''grandeurs2'' );
+        o1+=obj2.html2;
+        if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( ''sous_liste2'' )){
+            let la_methode='''';
+            let contient_une_methode=false;
+            if(le_colis1.__xva.hasOwnProperty( ''methode_sur_click2'' ) && le_colis1.__xva.methode_sur_click2.trim() !== ''''){
+                let methode_sur_click2=le_colis1.__xva.methode_sur_click2.trim();
+                methode_sur_click2=''m1('' + methode_sur_click2.substr( methode_sur_click2 , methode_sur_click2.length - 2 );
+                la_methode='''' + methode_sur_click2;
+                contient_une_methode=true;
+            }else{
+                la_methode=''m1(n1(__ig1),f1(choisir_dans_sous_fenetre2('';
+            }
+            let lst='''';
+            for(let i in le_colis1.__xva[''sous_liste2''].__xva){
+                let tup=le_colis1.__xva[''sous_liste2''].__xva[i];
+                lst+=''<tr>'';
+                lst+=''<td style="text-wrap-mode: nowrap;">'';
+                let parametres='''';
+                parametres+=la_methode;
+                parametres+='' nom_champ_dans_parent2('' + obj2.nom_champ_dans_parent2 + '')'';
+                parametres+='' nom_libelle_dans_parent2('' + obj2.nom_libelle_dans_parent2 + '')'';
+                parametres+='' id2('' + tup.T0_chi_id_source + '')'';
+                let libelle2='''';
+                libelle2+=''('' + tup.T0_chi_id_source + '') '';
+                libelle2+=tup.T0_chp_nom_source ? ( '' , '' + this.__ig1.fi2( tup.T0_chp_nom_source ) ) : ( '''' );
+                parametres+='' libelle2(\'''' + this.__ig1.fi1( libelle2 ).replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                parametres+='')))'';
+                lst+=''  <div class="yy_b1 yy__2" data-rev_click="'' + parametres + ''">=&gt;</div>'';
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                lst+=this.__ig1.fi2( tup.T0_chi_id_source );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                lst+=this.__ig1.fi2( tup.T0_chp_nom_source );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(tup.T0_che_binaire_source === 0){
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                }else{
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                }
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="max-width:24em;overflow:hidden;">'';
+                lst+=this.__ig1.fi2( tup.T0_cht_commentaire_source ).substr( 0 , 200 );
+                lst+=''</td>'';
+                /*
+                */
+                lst+=''<td style="text-align:center;">'';
+                if(tup.T0_che_autorisation_globale_source === 0){
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                }else{
+                    lst+=''<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                }
+                lst+=''</td>'';
+                lst+=''</tr>'';
+            }
+            if(lst !== ''''){
+                o1+=''<div class="yy_conteneur_table">'';
+                o1+=''<table>'';
+                o1+=''<tr>'';
+                o1+=''<th>action</th>'';
+                o1+=/* chi_id_source */''<th>id</th>'';
+                o1+=/* chp_nom_source */''<th>nom</th>'';
+                o1+=/* che_binaire_source */''<th>binaire</th>'';
+                o1+=/* cht_commentaire_source */''<th>commentaire</th>'';
+                o1+=/* che_autorisation_globale_source */''<th>autorisation globale</th>'';
+                o1+=''</tr>'';
+                o1+=lst;
+                o1+=''</table>'';
+                o1+=''</div>'';
+            }else{
+                o1+=this.__ig1.la_liste_est_vide();
+            }
+        }
+        this.__ig1.initialisation_filtre_sous_fenetre2( ''sous_liste2'' , o1 , this.DUN_DUNE_ELEMENT_GERE );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{sources4 as sources4};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1034','sources4_s.js',NULL,'const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+/*
+  =====================================================================================================================
+*/
+class sources4{
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tests_avant_creer( mat , d , form , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_voir1( mat , d ){
+        let chi_id_source=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_source''
+                   && mat[i][2] === ''f''
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === ''c''
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_source === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let critere_2012={"T0_chi_id_source" : chi_id_source};
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , critere_2012 , __db1 );
+        this.__ig1.donnees_retournees[__xva][''page_voir1'']=tt2012;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        /*  */
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_2012={
+             /*  */
+            "T0_chi_id_source" : form[''chi_id_source'']
+        };
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , criteres_2012 , __db1 );
+        if(tt2012.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2012.__xme});
+        }
+        /*  */
+        let tas=await this.test_avant_supprimer( mat , d , form , tt2012[__xva][0] , __db1 );
+        if(tas.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
+        }
+        let criteres_2015={
+             /*  */
+            "chi_id_source" : form[''chi_id_source'']
+        };
+        let tt2015=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_sources
+        WHERE `chi_id_source` = :chi_id_source ;
+        */
+        /*sql_inclure_fin*/ 2015 , criteres_2015 , __db1 );
+        /*  */
+        if(tt2015.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2015.__xme});
+        }
+        let aac=await this.actions_apres_supprimer( mat , d , form , tt2012[__xva][0] , __db1 );
+        if(aac.__xst === __xer){
+            return({"__xst" : __xer ,"__xme" : aac.__xme});
+        }
+        /*  */
+        if(form[''__mat_liste_si_ok''] !== ''''){
+            let mat1=JSON.parse( form[''__mat_liste_si_ok''] );
+            await this.filtre1( mat1 , 1 , __db1 );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_confirmation_supprimer1( mat , d ){
+        let chi_id_source=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_source''
+                   && mat[i][2] === ''f''
+                   && mat[i][8] === 1
+                   && mat[i + 1][2] === ''c''
+                   && mat[i + 1][4] === 0
+            ){
+                chi_id_source=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_source === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let critere_2012={"T0_chi_id_source" : chi_id_source};
+        let tt2012=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
+         FROM b1.tbl_sources T0
+        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
+        ;
+        */
+        /*sql_inclure_fin*/ 2012 , critere_2012 , __db1 );
+        this.__ig1.donnees_retournees[__xva][''page_confirmation_supprimer1'']=tt2012;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async filtre1( mat , d , __db1=null ){
+        let l01=mat.length;
+        let option_de_13='''';
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''de_13'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                option_de_13=''de_13('' + mat[i + 1][1] + '')'';
+            }
+        }
+        const __nbMax=40;
+        let __num_page=0;
+        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
+        if(!formulaire.hasOwnProperty( ''__num_page'' ) || !this.__ig1.est_num( formulaire.__num_page )){
+            __num_page=0;
+        }else{
+            __num_page=parseInt( formulaire.__num_page , 10 );
+        }
+        let __debut=__num_page * __nbMax;
+        let criteres_2011={
+             /*  */
+            "quantitee" : __nbMax ,
+            "debut" : __debut
+        };
+        for(let i in formulaire){
+            if(i !== ''__num_page''){
+                criteres_2011[i]=formulaire[i];
+            }
+        }
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( ''__complements_sous_liste'' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_2011[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( 1 );
+        }
+        let tt2011=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+         FROM b1.tbl_sources T0
+        WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+           AND `T0`.`chi_id_source` = :T0_chi_id_source
+           AND `T0`.`chi_id_source` > :T0_chi_id_source2
+           AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+           AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+           AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+        ORDER BY `T0`.`chi_id_source` DESC  
+        LIMIT :quantitee OFFSET :debut 
+        ;
+        */
+        /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
+        if(tt2011.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt2011.__xme});
+        }
+        if(tt2011.__xst === __xsu && tt2011.__xva.length === 0 && __debut > 0){
+            /*
+              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
+            */
+            __debut=0;
+            __num_page=0;
+            criteres_2011[''debut'']=__debut;
+            tt2011=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            SELECT 
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
+             FROM b1.tbl_sources T0
+            WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+               AND `T0`.`chi_id_source` = :T0_chi_id_source
+               AND `T0`.`chi_id_source` > :T0_chi_id_source2
+               AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+               AND `T0`.`che_binaire_source` = :T0_che_binaire_source
+               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
+               AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
+            ORDER BY `T0`.`chi_id_source` DESC  
+            LIMIT :quantitee OFFSET :debut 
+            ;
+            */
+            /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
+        }
+        this.__ig1.donnees_retournees.__xva[''__nbMax'']=__nbMax;
+        this.__ig1.donnees_retournees[__xva][''__debut'']=__debut;
+        this.__ig1.donnees_retournees[__xva][''__num_page'']=__num_page;
+        this.__ig1.donnees_retournees[__xac]=''pm1(m1(n1('' + this.moi + ''),f1('' + this.fonction_liste + ''('' + option_de_13;
+        for(let i in formulaire){
+            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
+        }
+        this.__ig1.donnees_retournees[__xac]+=''))))'';
+        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt2011;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async sous_liste2( mat , d ){
+        const __nbMax=40;
+        let criteres_2011={};
+        criteres_2011[''quantitee'']=__nbMax;
+        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 2011 , criteres_2011 , __nbMax , __db1 );
+        if(liste2.__xst === __xsu){
+            /* faire éventuellement faire quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* voir par exemple dossiers1_s.js */
+        }
+        return liste2;
+    }
+    /*
+      =============================================================================================================
+    */
+    async liste1( mat , d ){
+        this.fonction_liste=''liste1'';
+        await this.filtre1( mat , d );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    moi=''sources4'';
+    __ig1=null;
+    fonction_liste=''liste1'';
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{sources4 as sources4};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1035','__televersement2_c.js',NULL,'"use strict";
+/* CLIENT */
+const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+class __televersement2{
+    moi=''__televersement2'';
+    #les_morceaux_televerses=[];
+    #le_colis={};
+    /*
+      un fichier est découpé en morceaux
+      chaque morceau contient la caractéristique du fichier concerné
+      car il peut y avoir plusieurs fichiers à télécharger
+      #les_morceaux_a_televerser contient tous les morceaux
+    */
+    #les_morceaux_a_televerser=[];
+    /*
+      en réalité 802 736 280  : c''est le plus gros fichier que j''ai essayé de télécharger
+      ici on met 900 000 000
+    */
+    #poids_max_televersement=900e6;
+    /*
+      cette taille de 10 000 000 octets ( 10 millions ) est
+      un bon compromis entre la vitesse de téléchargement et la capacité
+      du navigateur
+      Pour les tests, je le mets à 10e3 ( 10 ko )
+    */
+    #taille_du_morceau_pour_televersement=10e6;
+    /* 10e6; */
+    /*
+      entre chaque envoi de paquet on attend 20 ms
+      pour mes tests, je mets 200
+      mettre une valeur plus basse a peu d''intérêt
+    */
+    #duree_d_attente_televersement=20;
+    #televersement_en_cours=false;
+    #parametres_televersement='''';
+    date_de_reference_televersement='''';
+    plusieurs_fichiers_possibles=1;
+    __variables_module={};
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        import( ''/f0?n0=_tri_arbre1_c.js&__version='' + this.__ig1.__version ).then( ( m ) => {
+                this.__variables_module[''_tri_arbre1'']=new m[''_tri_arbre1'']( this );
+        } );
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier1( mat , d ){
+        this.__ig1.executer1( location.hash.substr( 1 ) );
+        this.__ig1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregister_l_ordre_des_televersements1( mat , d ){
+        let recharger_la_page_courante=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''recharger_la_page_courante'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                recharger_la_page_courante=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(recharger_la_page_courante === 1){
+            this.__ig1.executer1( location.hash.substr( 1 ) );
+        }
+        this.__ig1.fermer_la_sous_fenetre();
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_l_ordre_des_televersements_du_bouton1( evenement , reference_arbre ){
+        let tableau_des_ordre=[];
+        let ordre=1;
+        for(let i in reference_arbre.arbre){
+            tableau_des_ordre.push( [parseInt( reference_arbre.arbre[i].attributs.id , 10 ),ordre++] );
+        }
+        /* let id_original=reference_arbre.reference_zone_triable.getAttribute( ''data-id_original_pour_tri'' ); */
+        /* let le_json=JSON.stringify( reference_arbre.arbre ); */
+        /* let le_html=document.getElementById( id_original ).innerHTML; */
+        let obj={
+             /*  */
+            "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregister_l_ordre_des_televersements1(recharger_la_page_courante(1)))))'' ,
+            "__xva" : {"tableau_des_ordre" : tableau_des_ordre}
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_la_boite_de_tri(){
+        let options={
+            "hauteur_max_en_vh" : /* entre 20 et 80 */60 ,
+            "largeur_max" : /* ''calc(100% - 50px)'', */''400px'' ,
+            "afficher_le_bouton_supprimer" : 0 ,
+            "class_du_bouton_supprimer" : ''yy_b1 yy__0'' ,
+            "arborescent" : 0 ,
+            "class_du_bouton_deplacer" : ''yy_b1'' ,
+            "boutons_du_menu" : [] ,
+            "class_du_bouton_menu" : ''yy_b1'' ,
+            "class_du_bouton_replier" : ''yy_b1 yy__2''
+        };
+        options.boutons_du_menu.push( {"libelle" : ''💾 enregistrer cet ordre'' ,"fonction" : this.enregistrer_l_ordre_des_televersements_du_bouton1.bind( this )} );
+        options[''afficher_le_bouton_editer'']=0;
+        options[''class_du_bouton_editer'']=''yy_b1 yy__xif'';
+        this.__variables_module[''_tri_arbre1''][''construire_arbre'']( ''trier_les_televersements'' , options );
+    }
+    /*
+      =============================================================================================================
+    */
+    recupere_les_fichiers_televersements_pour_tri1( mat , d , le_colis1 ){
+        if(le_colis1.__xva.length > 0){
+            let che_id_element_televersement=0;
+            let che_bdd_televersement=0;
+            let chp_nom_table_televersement='''';
+            let chp_champ_cle_televersement='''';
+            let l01=mat.length;
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][2] === ''f'' && ''che_id_element_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                    che_id_element_televersement=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][2] === ''f'' && ''che_bdd_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                    che_bdd_televersement=parseInt( mat[i + 1][1] , 10 );
+                }else if(mat[i][2] === ''f'' && ''chp_nom_table_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                    chp_nom_table_televersement=mat[i + 1][1];
+                }else if(mat[i][2] === ''f'' && ''chp_champ_cle_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                    chp_champ_cle_televersement=mat[i + 1][1];
+                }
+            }
+            let o1='''';
+            o1+=''<h1>tri des téléversements</h1>'';
+            o1+=''<input type="hidden" id="che_id_element_televersement" value="'' + che_id_element_televersement + ''" />'';
+            o1+=''<input type="hidden" id="che_bdd_televersement" value="'' + che_bdd_televersement + ''" />'';
+            o1+=''<input type="hidden" id="chp_nom_table_televersement" value="'' + chp_nom_table_televersement + ''" />'';
+            o1+=''<input type="hidden" id="chp_champ_cle_televersement" value="'' + chp_champ_cle_televersement + ''" />'';
+            o1+=''<ul id="trier_les_televersements">'';
+            for(let i in le_colis1.__xva){
+                o1+=''<li id="'' + le_colis1.__xva[i].T0_chi_id_televersement + ''">'';
+                o1+=this.__ig1.fi2( le_colis1.__xva[i].T0_chp_nom_original_televersement );
+                o1+=''</li>'';
+            }
+            o1+=''</ul>'';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            /* on se donne un peu de temps pour charger _tri_arbre1 */
+            setTimeout( this.afficher_la_boite_de_tri.bind( this ) , 250 , {} );
+            return({"__xst" : __xsu});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_televersement_standard1( mat , d ){
+        let recharger_la_page_courante=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''recharger_la_page_courante'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                recharger_la_page_courante=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(recharger_la_page_courante === 1){
+            this.__ig1.executer1( location.hash.substr( 1 ) );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    televerser2(){
+        /*
+          exemple pris de :        
+          https://developer.mozilla.org/fr/docs/Learn_web_development/Extensions/Forms/Sending_forms_through_JavaScript 
+        */
+        if(this.#les_morceaux_a_televerser.length > 0){
+            let tt=this.#les_morceaux_a_televerser.splice( 0 , 1 );
+            tt=tt[0];
+            /* console.log(tt); */
+            this.#les_morceaux_televerses.push( {
+                    "nombre_de_morceaux" : tt.__xva.nombre_de_morceaux ,
+                    "numero_morceau_de_fichier" : tt.__xva.numero_morceau_de_fichier ,
+                    "nom_du_fichier" : tt.__xva.nom_du_fichier ,
+                    "nom_original" : tt.__xva.nom_original ,
+                    "poids_du_fichier" : tt.__xva.poids_du_fichier ,
+                    "type_mime_detecte_par_navigateur" : tt.__xva.type_mime_detecte_par_navigateur
+                } );
+            try{
+                let header_post={
+                    "Content-Type" : ''application/octet-stream'' ,
+                    "x-nom_original" : encodeURIComponent( tt.__xva.nom_original ) ,
+                    "x-nom_du_fichier" : encodeURIComponent( tt.__xva.nom_du_fichier ) ,
+                    "x-_CA_" : encodeURIComponent( tt.__xva._CA_ ) ,
+                    "x-chi_id_utilisateur" : encodeURIComponent( tt.__xva.chi_id_utilisateur ) ,
+                    "x-chi_id_acces" : encodeURIComponent( tt.__xva.chi_id_acces ) ,
+                    "x-chi_id_projet" : encodeURIComponent( tt.__xva.chi_id_projet ) ,
+                    "x-numero_morceau_de_fichier" : encodeURIComponent( tt.__xva.numero_morceau_de_fichier ) ,
+                    "x-nombre_de_morceaux" : encodeURIComponent( tt.__xva.nombre_de_morceaux ) ,
+                    "x-__deverminage" : encodeURIComponent( tt.__xva.__deverminage ) ,
+                    "x-date_de_reference_televersement" : this.date_de_reference_televersement ,
+                    "x-type_mime_detecte_par_navigateur" : encodeURIComponent( tt.__xva.type_mime_detecte_par_navigateur )
+                };
+                const response=fetch( ''http://'' + this.__ig1.__le_serveur + '':'' + this.__ig1.__le_port + ''/'' , {
+                    "method" : ''POST'' ,
+                    "headers" : header_post ,
+                     /*
+                      on envoie des données binaires brutes
+                     */
+                    "body" : tt.__xva.fichier_binaire
+                } ).then( ( response ) => {
+                    tt=null;
+                    const reader=response.body.getReader();
+                    /*
+                      When no more data needs to be consumed, close the stream
+                      Enqueue the next data chunk into our target stream
+                    */
+                    return(new ReadableStream( {
+                             start( controller ){
+                                return(pump());
+                                function pump(){
+                                    return(reader.read().then( ( { done  , value } ) => {
+                                            if(done){
+                                                controller.close();
+                                                return;
+                                            }
+                                            controller.enqueue( value );
+                                            return(pump());
+                                    } ));
+                                }
+                            } 
+                        
+                        } ));
+            } ).then( ( stream ) => {
+                    return(new Response( stream ));
+            } ).then( ( response ) => {
+                    return(response.blob());
+            } ).then( ( blob ) => {
+                    (blob.text()).then( ( val ) => {
+                            if(val.substr( 0 , 19 ) === ''erreur_dans_serveur''){
+                                console.error( ''val='' , val );
+                                let temporaire1=this.__ig1.__rev1.rev_tm( val );
+                                if(temporaire1.__xst === __xsu){
+                                    let l01=temporaire1.__xva.length;
+                                    let message='''';
+                                    for( let i=1 ; i < l01 ; i=temporaire1.__xva[i][12] ){
+                                        if(temporaire1.__xva[i][1] === ''erreur_dans_serveur'' && temporaire1.__xva[i][2] === ''f''){
+                                            for( let j=i + 1 ; j < l01 ; j=temporaire1.__xva[j][12] ){
+                                                if(temporaire1.__xva[j][1] === ''message''
+                                                       && temporaire1.__xva[j][2] === ''f''
+                                                       && temporaire1.__xva[j][8] === 1
+                                                       && temporaire1.__xva[j + 1][2] === ''c''
+                                                ){
+                                                    message=temporaire1.__xva[j + 1][1];
+                                                }
+                                            }
+                                        }
+                                    }
+                                    this.#televersement_en_cours=false;
+                                    this.__ig1.fermer_la_sous_fenetre();
+                                    if(message !== ''''){
+                                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : message} );
+                                    }else{
+                                        this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : ''il y a eu une erreur lors du téléversement''} );
+                                    }
+                                    this.__ig1.affiche_les_messages();
+                                }
+                                return;
+                            }else if(val.substr( 0 , 15 ) === ''ok_dans_serveur''){
+                                let tt=this.__ig1.__rev1.rev_tm( val );
+                                if(tt.__xst === __xsu){
+                                    let l01=tt.__xva.length;
+                                    let nom_du_fichier='''';
+                                    let numero_morceau_de_fichier=0;
+                                    let nombre_de_morceaux=0;
+                                    let repertoire_fichier1='''';
+                                    let nom_fichier_sur_disque1='''';
+                                    for( let i=1 ; i < l01 ; i=tt.__xva[i][12] ){
+                                        if(tt.__xva[i][1] === ''ok_dans_serveur'' && tt.__xva[i][2] === ''f''){
+                                            for( let j=i + 1 ; j < l01 ; j=tt.__xva[j][12] ){
+                                                if(tt.__xva[j][1] === ''nom_du_fichier'' && tt.__xva[j][2] === ''f'' && tt.__xva[j][8] === 1 && tt.__xva[j + 1][2] === ''c''){
+                                                    nom_du_fichier=tt.__xva[j + 1][1];
+                                                }else if(tt.__xva[j][1] === ''numero_morceau_de_fichier''
+                                                       && tt.__xva[j][2] === ''f''
+                                                       && tt.__xva[j][8] === 1
+                                                       && tt.__xva[j + 1][2] === ''c''
+                                                ){
+                                                    numero_morceau_de_fichier=parseInt( tt.__xva[j + 1][1] , 10 );
+                                                }else if(tt.__xva[j][1] === ''nombre_de_morceaux'' && tt.__xva[j][2] === ''f'' && tt.__xva[j][8] === 1 && tt.__xva[j + 1][2] === ''c''){
+                                                    nombre_de_morceaux=parseInt( tt.__xva[j + 1][1] , 10 );
+                                                }else if(tt.__xva[j][1] === ''repertoire_fichier1'' && tt.__xva[j][2] === ''f'' && tt.__xva[j][8] === 1 && tt.__xva[j + 1][2] === ''c''){
+                                                    repertoire_fichier1=tt.__xva[j + 1][1];
+                                                    this.#les_morceaux_televerses[this.#les_morceaux_televerses.length - 1][''repertoire_fichier1'']=repertoire_fichier1;
+                                                }else if(tt.__xva[j][1] === ''nom_fichier_sur_disque1''
+                                                       && tt.__xva[j][2] === ''f''
+                                                       && tt.__xva[j][8] === 1
+                                                       && tt.__xva[j + 1][2] === ''c''
+                                                ){
+                                                    nom_fichier_sur_disque1=tt.__xva[j + 1][1];
+                                                    this.#les_morceaux_televerses[this.#les_morceaux_televerses.length - 1][''nom_fichier_sur_disque1'']=nom_fichier_sur_disque1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if(nombre_de_morceaux > 0 && numero_morceau_de_fichier > 0 && nom_du_fichier !== ''''){
+                                        let pourcent=parseInt( (10 * 100 * numero_morceau_de_fichier) / nombre_de_morceaux , 10 ) / 10;
+                                        if(pourcent === 100){
+                                            console.log( "%c pourcent=" + pourcent , ''background:lightgreen;'' );
+                                        }else{
+                                            /* console.log("%c pourcent="+pourcent , ''background:lightblue;''); */
+                                        }
+                                        try{
+                                            document.getElementById( nom_du_fichier + ''_1'' ).innerText=pourcent + '' %'';
+                                            document.getElementById( nom_du_fichier + ''_1'' ).style.backgroundColor=''lime'';
+                                            if(pourcent <= 10){
+                                                document.getElementById( nom_du_fichier + ''_1'' ).style.width=''10%'';
+                                            }else{
+                                                document.getElementById( nom_du_fichier + ''_1'' ).style.width=pourcent + ''%'';
+                                            }
+                                        } catch {}
+                                    }
+                                }
+                                setTimeout( this.televerser2.bind( this ) , this.#duree_d_attente_televersement );
+                            }else{
+                                this.#televersement_en_cours=false;
+                                this.__ig1.fermer_la_sous_fenetre();
+                                this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''erreur non traitée<br />'' + val + ''<br />'' + this.__ig1.nl2()} );
+                                return;
+                            }
+                    } );
+            } ).catch( ( e ) => {
+                    console.log( e.stack );
+                    this.#televersement_en_cours=false;
+                    this.__ig1.fermer_la_sous_fenetre();
+                    this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''erreur non traitée<br />'' + e.stack + ''<br />'' + this.__ig1.nl2()} );
+                    return;
+            } );
+            }catch(err){
+                console.log( err.stack );
+                this.#televersement_en_cours=false;
+                this.__ig1.fermer_la_sous_fenetre();
+                this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''erreur non traitée '' + err.stack + ''<br />'' + this.__ig1.nl2()} );
+                return;
+            }
+        }else{
+            this.#televersement_en_cours=false;
+            /* à la fin de tous les téléchargements */
+            /* console.log( "this.#les_morceaux_televerses=" , this.#les_morceaux_televerses ); */
+            let les_fichiers_reellement_televerses=[];
+            for(let i in this.#les_morceaux_televerses){
+                if(this.#les_morceaux_televerses[i].nombre_de_morceaux === this.#les_morceaux_televerses[i].numero_morceau_de_fichier){
+                    les_fichiers_reellement_televerses.push( {
+                            "nom_du_fichier" : this.#les_morceaux_televerses[i].nom_du_fichier ,
+                            "nom_fichier_sur_disque1" : this.#les_morceaux_televerses[i].nom_fichier_sur_disque1 ,
+                            "nom_original" : this.#les_morceaux_televerses[i].nom_original ,
+                            "poids_du_fichier" : this.#les_morceaux_televerses[i].poids_du_fichier ,
+                            "repertoire_fichier1" : this.#les_morceaux_televerses[i].repertoire_fichier1 ,
+                            "type_mime_detecte_par_navigateur" : this.#les_morceaux_televerses[i].type_mime_detecte_par_navigateur ,
+                            "vv_commentaire_global_sur_le_televersement" : document.getElementById( ''vv_commentaire_global_sur_le_televersement'' ).value ,
+                            "commentaire_fichier_" : document.getElementById( ''commentaire_fichier_'' + this.#les_morceaux_televerses[i].nom_du_fichier + ''_1'' ).value
+                        } );
+                }
+            }
+            this.#les_morceaux_televerses=[];
+            console.log( ''les_fichiers_reellement_televerses='' , les_fichiers_reellement_televerses );
+            console.log( ''parametres_televersement'' , this.#parametres_televersement );
+            /* if(this.#parametres_televersement.indexOf(''enregistrer_reference_fichier__televerse_standard1'')>=0) */
+            let obj2=this.__ig1.__rev1.t2m( this.#parametres_televersement );
+            if(obj2.__xst !== __xsu){
+                this.__ig1.affiche_les_messages( {"__xst" : __xsu ,"__xme" : ''téléversement terminé''} );
+            }else{
+                /*#
+                  traitement_final(
+                     pm1(
+                        n1(__ig1),
+                        f1(enregistrer_reference_fichier__televerse_standard1(nom_de_la_table_referente(''tbl_dessins''),id_element(819),nom_champ_cle(chi_id_dessin)))
+                     )
+                  ),plusieurs_fichiers_possibles(5)
+                */
+                let mat3=obj2.__xva;
+                let l03=mat3.length;
+                let traitement_final='''';
+                for( let i=1 ; i < l03 ; i=mat3[i][12] ){
+                    if(mat3[i][1] === ''traitement_final'' && mat3[i][8] > 0){
+                        let obj4=this.__ig1.__rev1.m2t( mat3 , i );
+                        if(obj4.__xst === __xsu){
+                            traitement_final=obj4.__xva;
+                        }
+                        break;
+                    }
+                }
+                if(traitement_final !== ''''){
+                    let le_colis={"__xac" : traitement_final ,"__xva" : {"les_fichiers_televerses" : les_fichiers_reellement_televerses}};
+                    this.__ig1.envoyer_un_colis_au_worker( le_colis );
+                }else{
+                    this.__ig1.affiche_les_messages( {"__xst" : __xsu ,"__xme" : ''téléversement terminé''} );
+                }
+                this.__ig1.fermer_la_sous_fenetre();
+                return({"__xst" : __xsu});
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    initialisation_boucle_sur_televersement4(){
+        let les_fichiers=document.getElementById( ''vv_input_fichier_a_telecharger4'' );
+        for( let numero_fichier=0 ; numero_fichier < les_fichiers.files.length ; numero_fichier++ ){
+            const reader=new FileReader();
+            reader.readAsArrayBuffer( les_fichiers.files[numero_fichier] );
+            reader.onload=function( {} ){
+                let nom_original=arguments[0];
+                let nom_du_fichier=arguments[1];
+                let type_mime_detecte_par_navigateur=arguments[2];
+                let numero_fichier=arguments[3];
+                let nombre_de_fichiers=arguments[4];
+                let numero_argument_donnees=5;
+                let poids_du_fichier=arguments[numero_argument_donnees].target.result.byteLength;
+                this.__ig1.ma_trace1( "arguments[numero_argument_donnees]" , arguments[numero_argument_donnees].target );
+                document.getElementById( nom_du_fichier + ''_1'' ).innerText=''préparation du morceau '';
+                if(arguments[numero_argument_donnees].target.result.byteLength > this.#taille_du_morceau_pour_televersement){
+                    /* console.log(arguments[numero_argument_donnees]); */
+                    let tt=arguments[numero_argument_donnees].target.result;
+                    let nombre_de_morceaux=parseInt( tt.byteLength / this.#taille_du_morceau_pour_televersement , 10 ) + (tt.byteLength% this.#taille_du_morceau_pour_televersement === 0 ? ( 0 ) : ( 1 ));
+                    let numero_morceau_de_fichier=1;
+                    let poids_cumule=0;
+                    let position=0;
+                    while(position < tt.byteLength){
+                        let aa=tt.slice( position , position + this.#taille_du_morceau_pour_televersement );
+                        poids_cumule+=aa.byteLength;
+                        let fichier_binaire=aa;
+                        let xva={
+                             /*  */
+                            "fichier_binaire" : fichier_binaire ,
+                            "nom_zone" : arguments[0] ,
+                            "numero_morceau_de_fichier" : numero_morceau_de_fichier ,
+                            "nombre_de_morceaux" : nombre_de_morceaux ,
+                            "nom_du_fichier" : nom_du_fichier ,
+                            "poids_du_fichier" : poids_du_fichier ,
+                            "poids_max_par_paquet" : this.#taille_du_morceau_pour_televersement ,
+                            "nom_original" : nom_original ,
+                            "poids_cumule" : poids_cumule ,
+                            "poids_envoye" : aa.byteLength ,
+                            "type_mime_detecte_par_navigateur" : type_mime_detecte_par_navigateur ,
+                            "_CA_" : this.__ig1._CA_ ,
+                            "chi_id_utilisateur" : this.__ig1.chi_id_utilisateur ,
+                            "chi_id_acces" : this.__ig1.chi_id_acces ,
+                            "chi_id_projet" : this.__ig1.chi_id_projet ,
+                            "__deverminage" : this.__ig1.__deverminage
+                        };
+                        this.#les_morceaux_a_televerser.push( {
+                                 /*  */
+                                "__xva" : xva ,
+                                "position" : 0 ,
+                                "numero_morceau_de_fichier" : numero_morceau_de_fichier ,
+                                "__xac" : ''pm1(n1(afr),f1(afr()))''
+                            } );
+                        numero_morceau_de_fichier++;
+                        position+=this.#taille_du_morceau_pour_televersement;
+                    }
+                }else{
+                    let nombre_de_morceaux=1;
+                    let numero_morceau_de_fichier=1;
+                    let fichier_binaire=arguments[numero_argument_donnees].target.result;
+                    let poids_envoye=arguments[numero_argument_donnees].target.result.byteLength;
+                    let xva={
+                         /*  */
+                        "fichier_binaire" : fichier_binaire ,
+                        "nom_zone" : arguments[0] ,
+                        "numero_morceau_de_fichier" : numero_morceau_de_fichier ,
+                        "nombre_de_morceaux" : nombre_de_morceaux ,
+                        "nom_du_fichier" : nom_du_fichier ,
+                        "poids_du_fichier" : poids_du_fichier ,
+                        "poids_max_par_paquet" : this.#taille_du_morceau_pour_televersement ,
+                        "nom_original" : nom_original ,
+                        "poids_envoye" : poids_envoye ,
+                        "poids_cumule" : poids_envoye ,
+                        "type_mime_detecte_par_navigateur" : type_mime_detecte_par_navigateur ,
+                        "_CA_" : this.__ig1._CA_ ,
+                        "chi_id_utilisateur" : this.__ig1.chi_id_utilisateur ,
+                        "chi_id_acces" : this.__ig1.chi_id_acces ,
+                        "chi_id_projet" : this.__ig1.chi_id_projet ,
+                        "__deverminage" : this.__ig1.__deverminage
+                    };
+                    this.#les_morceaux_a_televerser.push( {
+                             /*  */
+                            "__xva" : xva ,
+                            "position" : 0 ,
+                            "numero_morceau_de_fichier" : numero_morceau_de_fichier ,
+                            "nombre_de_morceaux" : nombre_de_morceaux ,
+                            "__xac" : ''pm1(n1(afr),f1(afr()))''
+                        } );
+                }
+                if(numero_fichier === nombre_de_fichiers - 1){
+                    if(this.#televersement_en_cours === false){
+                        this.#televersement_en_cours=true;
+                        setTimeout( this.televerser2.bind( this ) , this.#duree_d_attente_televersement );
+                    }
+                    try{
+                        document.getElementById( ''vv_message_televersement_th'' ).innerHTML=''Téléversement en cours...'';
+                    } catch {}
+                }
+            }.bind( this , les_fichiers.files[numero_fichier].name , les_fichiers.files[numero_fichier].cle_du_fichier , les_fichiers.files[numero_fichier].type , numero_fichier , les_fichiers.files.length );
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    action_bouton_envoyer_televersement4( e ){
+        setTimeout( this.initialisation_boucle_sur_televersement4.bind( this ) , 50 );
+    }
+    /*
+      =============================================================================================================
+    */
+    fichiers_ajoutés_pour_téléversement4( mat , d , e ){
+        let aa=new Date();
+        this.date_de_reference_televersement=aa.getFullYear() + ''/'' + (aa.getMonth() + 1 < 10 ? ( ''0'' + (aa.getMonth() + 1) ) : ( aa.getMonth() + 1 )) + ''/'' + (aa.getDate() < 10 ? ( ''0'' + aa.getDate() ) : ( aa.getDate() ));
+        let l01=mat.length;
+        let id=null;
+        let id_du_bouton=null;
+        let la_zone_des_fichiers=0;
+        let dans_un_formulaire=false;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''id'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                id=mat[i + 1][1];
+            }else if(mat[i][1] === ''id_du_bouton'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                id_du_bouton=mat[i + 1][1];
+            }else if(mat[i][1] === ''la_zone_des_fichiers'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                la_zone_des_fichiers=mat[i + 1][1];
+            }else if(mat[i][1] === ''dans_un_formulaire'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                dans_un_formulaire=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(id_du_bouton !== null && id !== null && la_zone_des_fichiers !== null){
+            let a=null;
+            try{
+                a=document.getElementById( id_du_bouton );
+            } catch {}
+            let b=null;
+            try{
+                b=document.getElementById( id );
+            } catch {}
+            let c=null;
+            try{
+                c=document.getElementById( la_zone_des_fichiers );
+            } catch {}
+            if(a !== null && b !== null && c !== null){
+                document.getElementById( ''vv_bouton_pour_selectionner'' ).style.visibility=''hidden'';
+                if(b.files.length > 0){
+                    let cumul_taille=0;
+                    let t='''';
+                    t+=''<table style="width:100%;border:1px var(--c_coul_fond5) solid;border-collapse: collapse;">'';
+                    t+=''<tr>'';
+                    t+=''<th style="width:100%;" id="vv_message_televersement_th">'';
+                    t+=''veuillez cliquer sur le bouton'';
+                    t+=''</tr>'';
+                    t+=''<tr>'';
+                    t+=''<td style="width:100%;">'';
+                    t+=''<div id="vv_message_televersement" style="height:'' + (this.__ig1.css_dimensions.t_police + 2) + ''px;width:0%;text-align:right;"></div>'';
+                    t+=''</td>'';
+                    t+=''</th>'';
+                    t+=''</tr>'';
+                    for( let i=0 ; i < b.files.length ; i++ ){
+                        /* console.log(''b.files[i]='' , b.files[i].type ) */
+                        b.files[i][''cle_du_fichier'']=self.crypto.randomUUID();
+                        t+=''<tr>'';
+                        t+=''<td style="width:100%;" id="'' + b.files[i][''cle_du_fichier''] + ''_0">'';
+                        cumul_taille+=b.files[i].size;
+                        t+=''['' + b.files[i].type + '']  ('' + b.files[i].size + '') '' + b.files[i].name + '''';
+                        t+=''</td>'';
+                        t+=''</tr>'';
+                        t+=''<tr>'';
+                        t+=''<td style="width:100%;">'';
+                        t+=''<div id="'' + b.files[i][''cle_du_fichier''] + ''_1" style="height:10px;width:100%;"></div>'';
+                        t+=''</td>'';
+                        t+=''</tr>'';
+                        t+=''<tr>'';
+                        t+=''<td style="width:100%;">'';
+                        t+=''<input id="commentaire_fichier_'' + b.files[i][''cle_du_fichier''] + ''_1" placeholder="commentaire éventuel sur le fichier '' + b.files[i].name.replace( /"/g , ''&quot;'' ) + ''" style="height: var(--t_hauteur_input1);width:100%;" /></div>'';
+                        t+=''</td>'';
+                        t+=''</tr>'';
+                    }
+                    t+=''<tr>'';
+                    t+=''<td style="width:100%;">'';
+                    if(cumul_taille > this.#poids_max_televersement || b.files.length > this.plusieurs_fichiers_possibles){
+                        if(cumul_taille > this.#poids_max_televersement){
+                            t+=''<span style="background:red;">'' + cumul_taille.toLocaleString( ''fr-FR'' , {"minimumFractionDigits" : 0} ) + ''o</span> &gt; '' + this.#poids_max_televersement + ''o'';
+                            t+=''<br />'';
+                            t+=''la taille totale est supérieur à la taille limite de téléchargement'';
+                            t+=''<br />'';
+                            t+=''mettez moins de fichiers'';
+                        }else{
+                            t+=''<span style="background:red;">vous êtes limité à '' + this.plusieurs_fichiers_possibles + '' fichiers</span>'';
+                            t+=''mettez moins de fichiers'';
+                        }
+                    }else{
+                        t+=''<span id="vv_total_a_televerser" data-entier="'' + cumul_taille + ''">'' + cumul_taille.toLocaleString( ''fr-FR'' , {"minimumFractionDigits" : 0} ) + ''</span> octets au total à téléverser'';
+                    }
+                    t+=''</td>'';
+                    t+=''</tr>'';
+                    c.innerHTML=t;
+                    c.style.display=''block'';
+                    if(cumul_taille > this.#poids_max_televersement || b.files.length > this.plusieurs_fichiers_possibles){
+                    }else{
+                        a.style.visibility=''visible'';
+                    }
+                    return({"__xst" : __xsu});
+                }
+            }
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_la_sous_fenetre_televersement1( mat , d ){
+        this.plusieurs_fichiers_possibles=1;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''plusieurs_fichiers_possibles'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                this.plusieurs_fichiers_possibles=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let chi_id_dossier=0;
+        let chp_nom_dossier='''';
+        let nom_de_la_table='''';
+        let id_element=0;
+        let nom_champ_cle='''';
+        let obj2=this.__ig1.__rev1.m2t( mat , d );
+        if(obj2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        this.#les_morceaux_televerses=[];
+        this.#parametres_televersement=obj2.__xva;
+        let o1='''';
+        if(this.plusieurs_fichiers_possibles > 1){
+            o1+=''<h1>téléverser des fichiers ( '' + this.plusieurs_fichiers_possibles + '' max )</h1>'';
+        }else{
+            o1+=''<h1>téléverser un fichier</h1>'';
+        }
+        o1+=''<br />'';
+        o1+=''<div id="vv_telecharger4">'';
+        o1+=''    <label for="vv_commentaire_global_sur_le_televersement">'';
+        o1+=''       entrez ici un commentaire éventuel'';
+        o1+=''       <textarea rows="5" cols="50" id="vv_commentaire_global_sur_le_televersement"></textarea>'';
+        o1+=''    </label>'';
+        o1+=''    <form method="post" id="vv_id_televersement4">'';
+        o1+=''        <label id="vv_bouton_pour_selectionner" for="vv_input_fichier_a_telecharger4" style="border: 1px solid #ccc;display: inline-block;padding: 6px 12px;">'';
+        o1+=''          cliquez ici pour sélectionner les fichiers'';
+        o1+=''        </label>'';
+        o1+=''        <input type="file" '' + (this.plusieurs_fichiers_possibles > 1 ? ( ''multiple'' ) : ( '''' )) + '' id="vv_input_fichier_a_telecharger4" style="display:none;" '';
+        o1+='' rev_change1="m1(n1('' + this.moi + ''),f1(fichiers_ajoutés_pour_téléversement4('';
+        o1+=''id(vv_input_fichier_a_telecharger4),'';
+        o1+=''id_du_bouton(vv_bouton_téléverser4),'';
+        o1+=''la_zone_des_fichiers(vv_la_liste_des_fichiers4))))" />'';
+        o1+=''        <button type="submit" style="visibility:hidden;" class="yy_b1" id="vv_bouton_téléverser4">téléverser4</button>'';
+        o1+=''    </form>'';
+        o1+=''    <br />'';
+        o1+=''    <div id="vv_la_liste_des_fichiers4" style="display:none;"></div>'';
+        o1+=''</div>'';
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        let aa=document.getElementById( ''vv_id_televersement4'' );
+        aa.addEventListener( "submit" , ( event ) => {
+                event.preventDefault();
+                this.action_bouton_envoyer_televersement4();
+        } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_editer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( ''page_editer1'' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''cet élément n\''a pas été trouvé''} ));
+        }
+        let tup=le_colis1.__xva.page_editer1.__xva[0];
+        let o1='''';
+        o1+=''<h1>modifier fichier téléversé</h1>'';
+        o1+=''<div id="vv_ecran_modification_commentaire_televersement">'';
+        o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
+            "nom_du_champ" : "chp_comm_fichier_televersement" ,
+            "__contexte" : "modification1" ,
+            "longueur_du_champ" : 255 ,
+            "libelle_du_champ" : "commentaire fichier"
+        } );
+        /*
+          =====================================================================================================
+        */
+        o1+=''      <input type="hidden" id="chi_id_televersement" value="'' + tup.T0_chi_id_televersement + ''" />'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''</div>'';
+        o1+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_ecran_modification_commentaire_televersement),pm1(m1(n1('' + this.moi + ''),f1(modifier1()))))" title="modifier" >modifier</button>'';
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      au retour de la suppression
+    */
+    supprimer1(){
+        this.__ig1.fermer_la_sous_fenetre();
+        this.__ig1.executer1( location.hash.substr( 1 ) );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    page_confirmation_supprimer1( mat , d , le_colis1=null ){
+        if(!le_colis1.__xva.hasOwnProperty( ''page_confirmation_supprimer1'' )){
+            return(this.__ig1.affiche_les_messages( {"__xst" : __xer ,"__xme" : ''cet élément n\''a pas été trouvé''} ));
+        }
+        let enreg=le_colis1.__xva.page_confirmation_supprimer1.__xva[0];
+        if(enreg[''T0_chi_id_televersement''] === undefined){
+            return({"__xst" : __xer ,"__xme" : "Attention, le champ T0.chi_id_televersement n''est pas en sortie dans la requête select "});
+        }
+        let o1='''';
+        o1+=''  <h1>suprimer un fichier téléversé</h1>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>id</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled type="number" size="32" maxlength="32" id="chi_id_televersement"  value="'' + this.__ig1.fi2( enreg[''T0_chi_id_televersement''] ) + ''" />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chi_id_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>ref bdd</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled type="number" size="32" maxlength="32" id="che_bdd_televersement"  value="'' + this.__ig1.fi2( enreg[''T0_che_bdd_televersement''] ) + ''" />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''che_bdd_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>nom de la table</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled  type="text" id="chp_nom_table_televersement"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0_chp_nom_table_televersement''] ) + ''"   />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_nom_table_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>id element</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled type="number" size="32" maxlength="32" id="che_id_element_televersement"  value="'' + this.__ig1.fi2( enreg[''T0_che_id_element_televersement''] ) + ''" />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''che_id_element_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>utilisateur</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''        <input type="hidden" value="'';
+        o1+=enreg[''T0_chx_utilisateur_televersement''];
+        o1+=''"  id="chx_utilisateur_televersement" />'';
+        o1+=''        <span>'';
+        o1+=''('' + enreg[''T0_chx_utilisateur_televersement''] + '') '';
+        o1+=''</span>'';
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>champ cle</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled  type="text" id="chp_champ_cle_televersement"  size="64"   maxlength="64"  value="'' + this.__ig1.fi2( enreg[''T0_chp_champ_cle_televersement''] ) + ''"   />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_champ_cle_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>nom original</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled  type="text" id="chp_nom_original_televersement"   maxlength="255"  value="'' + this.__ig1.fi2( enreg[''T0_chp_nom_original_televersement''] ) + ''"   />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_nom_original_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>poids</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled type="number" size="32" maxlength="32" id="che_poids_televersement"  value="'' + this.__ig1.fi2( enreg[''T0_che_poids_televersement''] ) + ''" />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''che_poids_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>nom fichier sur disque</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled  type="text" id="chp_nom_fichier_sur_disque_televersement"   maxlength="255"  value="'' + this.__ig1.fi2( enreg[''T0_chp_nom_fichier_sur_disque_televersement''] ) + ''"   />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_nom_fichier_sur_disque_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>nom du dossier</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled  type="text" id="chp_nom_du_dossier_televersement"   maxlength="255"  value="'' + this.__ig1.fi2( enreg[''T0_chp_nom_du_dossier_televersement''] ) + ''"   />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_nom_du_dossier_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>commentaire global</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''        <div class="yy_conteneur_txtara">'';
+        o1+=''<div>\r\n'';
+        o1+=this.__ig1.__fnt1.boutons_suppression1( ''cht_comm_glob_televersement'' );
+        o1+=''</div>\r\n'';
+        o1+=''            <textarea disabled id="cht_comm_glob_televersement" rows="2"  cols="50" >'' + this.__ig1.fi2( enreg[''T0_cht_comm_glob_televersement''] ) + ''</textarea>'';
+        o1+=''        </div>'';
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''  <div class="yy_edition_champ1">'';
+        o1+=''    <div class="yy_edition_libelle1">'';
+        o1+=''      <span>commentaire fichier</span>'';
+        o1+=''    </div>'';
+        o1+=''    <div class="yy_edition_valeur1">'';
+        o1+=''      <input disabled  type="text" id="chp_comm_fichier_televersement"   maxlength="255"  value="'' + this.__ig1.fi2( enreg[''T0_chp_comm_fichier_televersement''] ) + ''"   />'';
+        o1+=this.__ig1.__fnt1.boutons_suppression2( ''chp_comm_fichier_televersement'' );
+        o1+=''    </div>'';
+        o1+=''  </div>'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''      <input type="hidden" id="chi_id_televersement" value="'' + enreg[''T0_chi_id_televersement''] + ''" />'';
+        /*
+          =====================================================================================================
+        */
+        o1+=''<button class="yy_b1 yy__2" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(supprimer1(chi_id_televersement('' + enreg[''T0_chi_id_televersement''] + '')))))" title="">je confirme la suppression</button>'';
+        this.__ig1.affiche_sous_fenetre1( o1 );
+        return({"__xst" : __xsu});
+    }
+}
+export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1036','__televersement2_s.js',NULL,'const __xer=/* code erreur */0;
+const __xsu=/* code succès */1;
+const __xal=/* code alarme */2;
+const __xif=/* code information */3;
+const __xdv=/* code déverminage */4;
+const __xst=/* statut */''__xst'';
+const __xva=/* valeurs */''__xva'';
+const __xsi=/* signaux */''__xsi'';
+const __xac=/* actions */''__xac'';
+/*
+  =====================================================================================================================
+*/
+class __televersement2{
+    /*
+      =============================================================================================================
+    */
+    moi=''__televersement2'';
+    __ig1=null;
+    /*
+      =============================================================================================================
+    */
+    constructor( __ig1 ){
+        this.__ig1=__ig1;
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async enregister_l_ordre_des_televersements1( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        for(let k1 in this.__ig1.donnees_recues[__xva][''tableau_des_ordre'']){
+            let v1=this.__ig1.donnees_recues[__xva][''tableau_des_ordre''][k1];
+            let criteres_select_1222={"c_chi_id_televersement" : v1[0] ,"n_che_ordre_televersement" : v1[1]};
+            let tt1222=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_televersements SET 
+               `che_ordre_televersement` = :n_che_ordre_televersement
+            WHERE `chi_id_televersement` = :c_chi_id_televersement ;
+            */
+            /*sql_inclure_fin*/ 1222 , criteres_select_1222 , __db1 );
+            if(tt1222.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : tt1222.__xme});
+            }
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async recupere_les_fichiers_televersements_pour_tri1( mat , d ){
+        let che_id_element_televersement=0;
+        let che_bdd_televersement=0;
+        let chp_nom_table_televersement='''';
+        let chp_champ_cle_televersement='''';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][2] === ''f'' && ''che_id_element_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                che_id_element_televersement=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === ''f'' && ''che_bdd_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                che_bdd_televersement=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][2] === ''f'' && ''chp_nom_table_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chp_nom_table_televersement=mat[i + 1][1];
+            }else if(mat[i][2] === ''f'' && ''chp_champ_cle_televersement'' === mat[i][1] && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chp_champ_cle_televersement=mat[i + 1][1];
+            }
+        }
+        let ob1=await this.recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement );
+        this.__ig1.ma_trace1( "ob1" , ob1 );
+        if(ob1.__xst === __xsu){
+            this.__ig1.donnees_retournees.__xva=ob1.__xva;
+            return({"__xst" : __xsu});
+        }else{
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    async recuperer_la_liste( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , chp_champ_cle_televersement , __db1=null ){
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( 1 );
+        }
+        let criteres_1166={
+            "T0_che_id_element_televersement" : che_id_element_televersement ,
+            "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
+            "T0_che_bdd_televersement" : che_bdd_televersement ,
+            "T0_chp_champ_cle_televersement" : chp_champ_cle_televersement
+        };
+        let tt1166=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
+        `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
+         FROM b1.tbl_televersements T0
+        WHERE (   `T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+           AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+           AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement
+           AND `T0`.`chp_champ_cle_televersement` = :T0_chp_champ_cle_televersement) 
+        ORDER BY `T0`.`che_ordre_televersement` ASC, `T0`.`chi_id_televersement` DESC  
+        LIMIT 500 OFFSET 0 
+        ;
+        */
+        /*sql_inclure_fin*/ 1166 , criteres_1166 , __db1 );
+        return tt1166;
+    }
+    /*
+      =============================================================================================================
+    */
+    async enregistrer_televersement_standard1( mat , d ){
+        let chi_id_basedd=0;
+        let nom_de_la_table_referente='''';
+        let id_element=0;
+        let nom_champ_cle='''';
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_basedd'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''id_element'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                id_element=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''nom_de_la_table_referente'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                nom_de_la_table_referente=mat[i + 1][1];
+            }else if(mat[i][1] === ''nom_champ_cle'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                nom_champ_cle=mat[i + 1][1];
+            }
+        }
+        if(nom_champ_cle !== '''' && nom_de_la_table_referente !== '''' && id_element > 0 && chi_id_basedd > 0){
+            let __db1=await this.__ig1.ouvrir_bdd( 1 );
+            /* this.__ig1.ma_trace1("this.__ig1.donnees_recues" , this.__ig1.donnees_recues.__xva.les_fichiers_televerses ); */
+            /*#
+              les_fichiers_televerses: [
+                 {
+                    nom_du_fichier: "5b5d6bed-c8f3-425d-8c9c-ed7083a1b810",
+                    nom_fichier_sur_disque1: "t_C3_A9l_C3_A9charger_20_2__pdf_5b5d6bed_c8f3_425d_8c9c_ed7083a1b810.txt",
+                    nom_original: "télécharger (2).pdf",
+                    poids_du_fichier: 2306,
+                    repertoire_fichier1: "/__fichiers_binaires/televersements/2026/08/03/"
+                 },
+                 {
+                    nom_du_fichier: "63fd2597-23e5-4ade-9598-5dea1074e9c1",
+                    nom_fichier_sur_disque1: "t_C3_A9l_C3_A9charger_20_1__pdf_63fd2597_23e5_4ade_9598_5dea1074e9c1.txt",
+                    nom_original: "télécharger (1).pdf",
+                    poids_du_fichier: 1521,
+                    repertoire_fichier1: "/__fichiers_binaires/televersements/2026/08/03/"
+                 }
+              ],
+            */
+            for(let i in this.__ig1.donnees_recues.__xva.les_fichiers_televerses){
+                let le_fichier_televerse=this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i];
+                /* this.__ig1.ma_trace1( "le_fichier_televerse=" , le_fichier_televerse ); */
+                /*  */
+                let repertoire_fichier1=le_fichier_televerse.repertoire_fichier1.substr( ''/__fichiers_binaires''.length );
+                let criteres_1165={
+                    "donnees" : [{
+                                "che_bdd_televersement" : chi_id_basedd ,
+                                "chp_nom_table_televersement" : nom_de_la_table_referente ,
+                                "che_id_element_televersement" : id_element ,
+                                "chp_champ_cle_televersement" : nom_champ_cle ,
+                                "chp_nom_original_televersement" : le_fichier_televerse.nom_original ,
+                                "che_poids_televersement" : le_fichier_televerse.poids_du_fichier ,
+                                "chp_nom_fichier_sur_disque_televersement" : le_fichier_televerse.nom_fichier_sur_disque1 ,
+                                "chp_nom_du_dossier_televersement" : repertoire_fichier1 ,
+                                "cht_comm_glob_televersement" : le_fichier_televerse.vv_commentaire_global_sur_le_televersement ,
+                                "chp_comm_fichier_televersement" : le_fichier_televerse.commentaire_fichier_ ,
+                                "chp_mime_televersement" : le_fichier_televerse.type_mime_detecte_par_navigateur
+                            }]
+                };
+                let tt1165=await this.__ig1.sql_iij(
+                /*sql_inclure_deb*/ /*#
+                INSERT INTO b1.`tbl_televersements`(
+                    `che_bdd_televersement` , 
+                    `chp_nom_table_televersement` , 
+                    `che_id_element_televersement` , 
+                    `chx_utilisateur_televersement` , 
+                    `chp_champ_cle_televersement` , 
+                    `chp_nom_original_televersement` , 
+                    `che_poids_televersement` , 
+                    `chp_nom_fichier_sur_disque_televersement` , 
+                    `chp_nom_du_dossier_televersement` , 
+                    `cht_comm_glob_televersement` , 
+                    `chp_comm_fichier_televersement` , 
+                    `chp_mime_televersement`
+                ) VALUES (
+                    :che_bdd_televersement , 
+                    :chp_nom_table_televersement , 
+                    :che_id_element_televersement , 
+                    chi_id_utilisateur , 
+                    :chp_champ_cle_televersement , 
+                    :chp_nom_original_televersement , 
+                    :che_poids_televersement , 
+                    :chp_nom_fichier_sur_disque_televersement , 
+                    :chp_nom_du_dossier_televersement , 
+                    :cht_comm_glob_televersement , 
+                    :chp_comm_fichier_televersement , 
+                    :chp_mime_televersement
+                );
+                */
+                /*sql_inclure_fin*/ 1165 , criteres_1165 , __db1 );
+                if(tt1165.__xst !== __xsu || tt1165[''changements''] !== 1){
+                    return({"__xst" : __xer ,"__xme" : tt1165.__xme + '' l\''insertion a échoué ['' + this.__ig1.nl2() + '']''});
+                }
+                let nouveau_nom='''';
+                let ancien_nom=this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_fichier_sur_disque1;
+                let cle=this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_du_fichier.replace( /-/g , ''_'' );
+                const repl0=new RegExp( cle , ''g'' );
+                nouveau_nom=ancien_nom.replace( repl0 , '''' );
+                nouveau_nom=''id_'' + tt1165[''nouvel_id''] + ''_b_'' + chi_id_basedd + ''_t_'' + nom_de_la_table_referente.replace( /_/g , '''' ) + ''_e_'' + id_element + ''_'' + nouveau_nom;
+                /* console.log(''nouveau_nom="'' + nouveau_nom + ''"\nnom_du_fichier="'' + this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_du_fichier + ''"'' ); */
+                /* this.__ig1.ma_trace1("tt1165=",tt1165); */
+                let criteres_1171={
+                     /*  */
+                    "c_chi_id_televersement" : tt1165[''nouvel_id''] ,
+                    "n_chp_nom_fichier_sur_disque_televersement" : nouveau_nom
+                };
+                await __db1.exec( ''BEGIN TRANSACTION;'' );
+                let tt1171=await this.__ig1.sql_iij(
+                /*sql_inclure_deb*/ /*#
+                UPDATE b1.tbl_televersements SET 
+                   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement
+                WHERE `chi_id_televersement` = :c_chi_id_televersement ;
+                */
+                /*sql_inclure_fin*/ 1171 , criteres_1171 , __db1 );
+                if(tt1171.__xst !== __xsu || tt1171[''changements''] !== 1){
+                    await __db1.exec( ''COMMIT;'' );
+                    /* pas grave */
+                    /* return({"__xst" : __xer ,"__xme" : tt1171.__xme}); */
+                }else{
+                    try{
+                        const currentWorkingDirectory=Deno.cwd().replace( /\\/g , ''/'' );
+                        Deno.renameSync( currentWorkingDirectory + this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].repertoire_fichier1 + this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].nom_fichier_sur_disque1 , currentWorkingDirectory + this.__ig1.donnees_recues.__xva.les_fichiers_televerses[i].repertoire_fichier1 + nouveau_nom );
+                        await __db1.exec( ''COMMIT;'' );
+                    }catch(e){
+                        await __db1.exec( ''ROLLBACK;'' );
+                        this.__ig1.ma_trace1( "e" , e.stack );
+                    }
+                }
+            }
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    async verifier_presence_fichiers_televerses( che_id_element_televersement , chp_nom_table_televersement , che_bdd_televersement , __db1 ){
+        /* televersement2 */
+        let criteres_select_1172={
+             /*  */
+            "T0_che_bdd_televersement" : che_bdd_televersement ,
+            "T0_chp_nom_table_televersement" : chp_nom_table_televersement ,
+            "T0_che_id_element_televersement" : che_id_element_televersement
+        };
+        let tt1172=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        COUNT( * )
+         FROM b1.tbl_televersements T0
+        WHERE (`T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+           AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+           AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement)
+        ;
+        */
+        /*sql_inclure_fin*/ 1172 , criteres_select_1172 , __db1 );
+        if(tt1172.__xst !== __xsu || tt1172.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1172 '' + this.__ig1.nl2() + '']''});
+        }
+        this.__ig1.ma_trace1( "tt1172.__xva[0]" , tt1172.__xva[0][''COUNT_____''] );
+        if(tt1172.__xva[0][''COUNT_____''] > 0){
+            return({"__xst" : __xer ,"__xme" : ''il existe des éléments téléversés attachés '' + this.__ig1.nl2() + '']''});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer1( mat , d ){
+        let chi_id_televersement=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_televersement'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_televersement=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_televersement === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        /*  */
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_1168={
+             /*  */
+            "T0_chi_id_televersement" : chi_id_televersement
+        };
+        let tt1168=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+        `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
+         FROM b1.tbl_televersements T0
+        WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
+        ;
+        */
+        /*sql_inclure_fin*/ 1168 , criteres_1168 , __db1 );
+        if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1168.__xme});
+        }
+        if(!this.__ig1.donnees_retournees.chi_id_utilisateur === tt1168[__xva][0][''T0_chx_utilisateur_televersement'']){
+            return({"__xst" : __xer ,"__xme" : "ce n''est pas vous qui avez téléversé ce fichier en conséquence, vous ne pouvez par le supprimer"});
+        }
+        /* this.__ig1.ma_trace1("tt1168.__xva=",tt1168.__xva); */
+        await this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( ''/__fichiers_binaires'' + tt1168[__xva][0][''T0_chp_nom_du_dossier_televersement''] + tt1168[__xva][0][''T0_chp_nom_fichier_sur_disque_televersement''] , false );
+        /*  */
+        let criteres_1170={
+             /*  */
+            "chi_id_televersement" : chi_id_televersement
+        };
+        let tt1170=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_televersements
+        WHERE `chi_id_televersement` = :chi_id_televersement
+        */
+        /*sql_inclure_fin*/ 1170 , criteres_1170 , __db1 );
+        /*  */
+        if(tt1170.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1170.__xme});
+        }
+        /*  */
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async recup_chi_id_televersement( criteres_select_1168 , __db1 ){
+        let tt1168=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+        `T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+        `T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
+         FROM b1.tbl_televersements T0
+        WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
+        ;
+        */
+        /*sql_inclure_fin*/ 1168 , criteres_select_1168 , __db1 );
+        return tt1168;
+    }
+    /*
+      =============================================================================================================
+    */
+    async modifier1( mat , d ){
+        this.__ig1.ma_trace1( "this.__ig1.donnees_recues.__xva=" , this.__ig1.donnees_recues.__xva );
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        this.__ig1.ma_trace1( "fo1=" , fo1 );
+        let criteres_1223={
+             /*  */
+            "c_chi_id_televersement" : parseInt( fo1.chi_id_televersement , 10 ) ,
+            "n_chp_comm_fichier_televersement" : fo1.chp_comm_fichier_televersement === '''' ? ( null ) : ( fo1.chp_comm_fichier_televersement )
+        };
+        this.__ig1.ma_trace1( "criteres_1223=" , criteres_1223 );
+        let tt1223=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_televersements SET 
+           `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement
+        WHERE `chi_id_televersement` = :c_chi_id_televersement ;
+        */
+        /*sql_inclure_fin*/ 1223 , criteres_1223 , __db1 );
+        if(tt1223.__xst !== __xsu || tt1223[''changements''] !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1223.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_editer1( mat , d ){
+        let chi_id_televersement=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_televersement'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_televersement=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_televersement === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_select_1168={"T0_chi_id_televersement" : chi_id_televersement};
+        let tt1168=await this.recup_chi_id_televersement( criteres_select_1168 , __db1 );
+        if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé :  [1168 '' + this.__ig1.nl2() + '']''});
+        }
+        this.__ig1.donnees_retournees[__xva][''page_editer1'']=tt1168;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_confirmation_supprimer1( mat , d ){
+        let chi_id_televersement=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_televersement'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_televersement=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_televersement === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( 1 );
+        let criteres_select_1168={"T0_chi_id_televersement" : chi_id_televersement};
+        let tt1168=await this.recup_chi_id_televersement( criteres_select_1168 , __db1 );
+        if(tt1168.__xst !== __xsu || tt1168.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé :  [1168 '' + this.__ig1.nl2() + '']''});
+        }
+        this.__ig1.donnees_retournees[__xva][''page_confirmation_supprimer1'']=tt1168;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+}
+export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (49) */
+/*================================================================================ DEBUT BLOC TABLE tbl_autorisations offset 0 (53) */
 INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation ,  chx_acces_autorisation ,  che_pour_sous_liste_autorisation ) VALUES
 ('1','1011','1','0'),
 ('3','101','1','0'),
@@ -147,8 +3267,8 @@ INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation 
 ('36','101','2','0'),
 ('38','1000','0','0'),
 ('41','95','2','0'),
-('43','1014','1','0'),
-('44','1015','1','0'),
+('43','1031','1','0'),
+('44','1032','1','0'),
 ('45','1014','2','1'),
 ('46','1015','2','1'),
 ('47','1016','2','0'),
@@ -160,13 +3280,17 @@ INSERT INTO tbl_autorisations (  chi_id_autorisation ,  chx_source_autorisation 
 ('53','1023','1','0'),
 ('54','1024','1','0'),
 ('55','1023','2','0'),
-('56','1024','2','0');
+('56','1024','2','0'),
+('57','1033','1','1'),
+('58','1034','1','1'),
+('59','1019','2','0'),
+('60','1020','2','0');
 /*================================================================================ FIN BLOC TABLE tbl_autorisations offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_menus offset 0 (21) */
+/*================================================================================ DEBUT BLOC TABLE tbl_menus offset 0 (22) */
 INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  chx_autorisation_menu ,  chp_methode_menu ,  cht_initialisation_menu ,  cht_condition_menu ,  cht_condition_js_menu ) VALUES
 ('1','mes tâches','tâches','1','entree_module',NULL,NULL,NULL),
 ('2','sources','sources','43','entree_module',NULL,NULL,NULL),
@@ -188,7 +3312,8 @@ INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  ch
 ('18','menus','menus','33','entree_module',NULL,NULL,NULL),
 ('19','utilisateurs','utilisateurs','36','entree_module',NULL,NULL,NULL),
 ('20','acteurs','utilisateurs','47','entree_module',NULL,NULL,NULL),
-('21','paramètres','paramètres','49','entree_module',NULL,NULL,NULL);
+('21','paramètres','paramètres','49','entree_module',NULL,NULL,NULL),
+('22','param1','param1','59','entree_module',NULL,NULL,NULL);
 /*================================================================================ FIN BLOC TABLE tbl_menus offset 0 */
 
 
@@ -202,9 +3327,9 @@ INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utili
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (29) */
+/*================================================================================ DEBUT BLOC TABLE tbl_genres offset 0 (30) */
 INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  chp_prefixe_genre ,  chp_espece_genre ,  che_longueur_genre ,  che_est_primaire_genre ,  che_est_incrément_genre ,  che_est_obligatoire_genre ,  che_a_init_genre ,  che_init_est_mot_genre ,  cht_valeur_init_genre ,  che_est_parmis_genre ,  cht_parmis_genre ,  cht_fonctions_genre ,  che_est_nur_genre ,  che_est_tsm_genre ,  che_est_tsc_genre ,  chd__dtc_genre ,  chd__dtm_genre ,  che__nur_genre ) VALUES
-('1','***indéfini***','27','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1','***indéfini***','29','cht','TEXT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','id primaire non nulle','1','chi','INTEGER',NULL,'1','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2025-09-25 16:55:08.841','18'),
 ('3','varchar 64 NON NULLE','2','chp','VARCHAR','64','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('4','lien NON NULL','6','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -216,23 +3341,24 @@ INSERT INTO tbl_genres (  chi_id_genre ,  chp_nom_genre ,  che_ordre_genre ,  ch
 ('10','entier NON NULL à zéro','9','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('11','texte NON NULL','12','cht','TEXT',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('12','varchar 64 NULL','3','chp','VARCHAR','64','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('13','mot de passe','22','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('13','mot de passe','23','chp','VARCHAR','256','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('14','dt23 création','20','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','0','1','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('15','nur','24','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('15','nur','25','che','INTEGER',NULL,'0','0','1','1','0','0','0',NULL,NULL,'1','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('16','dt23 modification','21','chd','VARCHAR','23','0','0','1','1','1','2000-01-01 00:00:00.000','0',NULL,NULL,'0','1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('17','varchar 255 NON NULLE','4','chp','VARCHAR','255','0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('18','id utilisateur','25','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8'),
-('19','nom technique','23','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0'),
+('18','id utilisateur','27','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2025-09-06 14:10:54.357','2025-10-04 07:03:24.668','8'),
+('19','nom technique','24','cht','VARCHAR','128','0','0','1','0','0',NULL,'0',NULL,'test_du_nom_technique1()','0','0','0','2025-11-19 12:07:33.326','2025-11-19 12:07:33.326','0'),
 ('21','durée_du_travail','11','chn','FLOAT',NULL,'0','0','0','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-02-15 13:48:23.907','2026-02-15 14:10:08.496','1'),
 ('22','dt10 aaaa_mm_jj','17','chd','VARCHAR','10','0','0','0','1','0','NULL','0',NULL,'date_nulle_ou_comprise_entre(''1000_01_01'',''9999_12_31'')','0','0','0','2026-03-16 12:16:06.262','2026-03-16 12:16:06.262','0'),
 ('23','tp8 hh_mm_ss','18','chd','VARCHAR','8','0','0','1','1','1','00:00:00','0',NULL,'test_heure_nulle_ou_comprise_entre(''00:00:00'',''23:59:59'')','0','0','0','2026-03-17 15:45:36.973','2026-07-22 11:30:30.103','3'),
 ('24','varchar 255 NULLE','5','chp','VARCHAR','255','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-07-12 14:44:48.369','2026-07-12 14:45:57.613','1'),
 ('25','nulle_zero_un','15','che','INTEGER',NULL,'0','0','0','1','0','NULL','1','0,1',NULL,'0','0','0','2026-08-08 10:04:11.393','2026-08-09 12:25:48.134','1'),
+('26','couleur','26','chc','VARCHAR','7','0','0','0','1','0','NULL','0',NULL,NULL,'0','0','0','2026-11-05 08:18:51.542','2026-11-05 08:18:51.542','0'),
 ('27','décimal','22','chn','DECIMAL','17,2','0','0','0','1','0','0','0',NULL,NULL,'0','0','0','2026-10-08 13:19:54.803','2026-10-08 13:19:54.803','0'),
 ('97','texte NULL source_non_rev','16','cht','TEXT','','0','0','0','1','0','NULL','0','','','0','0','0','2025-10-21 10:14:55.512','2025-10-21 10:14:55.512','0'),
 ('98','texte NULL source_au_format_rev','14','cht','TEXT',NULL,'0','0','0','1','0','NULL','0',NULL,'test_est_au_format_rev()','0','0','0','2025-10-20 17:48:22.207','2026-06-08 12:56:45.307','6'),
-('99','priorité','26','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-07 09:26:44.793','1'),
-('109','id projet','28','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0');
+('99','priorité','28','che','INTEGER','2','0','0','1','1','0','0','0',NULL,'test_entier_compris_entre(0,99)','0','0','0','2025-09-06 09:19:20.196','2026-05-07 09:26:44.793','1'),
+('109','id projet','30','chx','INTEGER',NULL,'0','0','1','0','0',NULL,'0',NULL,NULL,'0','0','0','2026-01-17 12:12:01.759','2026-01-17 12:12:01.759','0');
 /*================================================================================ FIN BLOC TABLE tbl_genres offset 0 */
 
 
@@ -245,7 +3371,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''''),
    collate(''''),
-   transform_base_sur_svg(translate(-354.5,-14.5))
+   transform_base_sur_svg(translate(-58.5,-57.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_televersements''),
@@ -2146,7 +5272,7 @@ créer_table(
          non_nulle(1),
          a_une_valeur_par_defaut(1),
          la_valeur_par_defaut_est_caractere(0),
-         valeur_par_defaut(2),
+         valeur_par_defaut(20001),
          meta(
             genre_meta(champ),
             nom_du_champ(''chx_statut_acteur''),
@@ -2154,7 +5280,7 @@ créer_table(
             libelle_du_champ(''statut de l\''acteur''),
             entete_distant_du_champ(''statut''),
             libelle_grandeur(''statut''),
-            chi_id_parametre(''1''),
+            chi_id_parametre(''10000''),
             typologie(chx),
             genre(4),
             reference_externe(1,''tbl_grandeurs'',''chi_id_grandeur'')
@@ -2176,7 +5302,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (84) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (86) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ,  che_base_reference_requete ) VALUES
 ('1101','tbl_utilisateurs','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -3498,6 +6624,16 @@ WHERE (`T1`.`chx_acces_autorisation` = 0)
       champ(`T0`,`cht_rev_parametre`),
       champ(`T0`,`cht_ordre_parametre`)
    ),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''cle<br />nom''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T0`,`chp_cle_parametre`)),
+         utiliser(champ(`T0`,`chp_nom_parametre`),htm_pref(''<br />''),htm_prop(''color:blue;''))
+      )
+   ),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))
@@ -3509,7 +6645,9 @@ WHERE (`T1`.`chx_acces_autorisation` = 0)
          egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre),
          comme(champ(`T0`,`chp_nom_parametre`),:T0_chp_nom_parametre),
          egal(champ(`T0`,`che_pour_admin_parametre`),:T0_che_pour_admin_parametre),
-         comme(champ(`T0`,`cht_rev_parametre`),:T0_cht_rev_parametre)
+         comme(champ(`T0`,`cht_commentaire_parametre`),:T0_cht_commentaire_parametre),
+         comme(champ(`T0`,`cht_rev_parametre`),:T0_cht_rev_parametre),
+         comme(champ(`T0`,`cht_ordre_parametre`),:T0_cht_ordre_parametre)
       )
    ),
    complements(
@@ -3524,7 +6662,9 @@ WHERE (`T0`.`chp_cle_parametre` LIKE :T0_chp_cle_parametre
    AND `T0`.`chi_id_parametre` = :T0_chi_id_parametre
    AND `T0`.`chp_nom_parametre` LIKE :T0_chp_nom_parametre
    AND `T0`.`che_pour_admin_parametre` = :T0_che_pour_admin_parametre
-   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre) 
+   AND `T0`.`cht_commentaire_parametre` LIKE :T0_cht_commentaire_parametre
+   AND `T0`.`cht_rev_parametre` LIKE :T0_cht_rev_parametre
+   AND `T0`.`cht_ordre_parametre` LIKE :T0_cht_ordre_parametre) 
 ORDER BY `T0`.`chi_id_parametre` DESC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
@@ -3536,7 +6676,8 @@ LIMIT :quantitee OFFSET :debut
       champ(`T0`,`cht_commentaire_parametre`),
       champ(`T0`,`cht_rev_parametre`),
       champ(`T0`,`cht_ordre_parametre`),
-      champ(`T0`,`che_pour_admin_parametre`)
+      champ(`T0`,`che_pour_admin_parametre`),
+      champ(`T0`,`che__nur_parametre`)
    ),
    provenance(
       table_reference(
@@ -3547,7 +6688,7 @@ LIMIT :quantitee OFFSET :debut
    complements(egal(champ(`T0`,`chi_id_parametre`),:T0_chi_id_parametre))
 )  ','SELECT 
 `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
-`T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre`
+`T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
  FROM b1.tbl_parametres T0
 WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
@@ -3583,7 +6724,7 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
     :chd__dtm_parametre , 
     :che__nur_parametre
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
-('1184','','update','modifier(
+('1184',NULL,'update','modifier(
    valeurs(
       affecte(champ(`chp_cle_parametre`),:n_chp_cle_parametre),
       affecte(champ(`chp_nom_parametre`),:n_chp_nom_parametre),
@@ -3598,7 +6739,8 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
       table_reference(
          source(nom_de_la_table(tbl_parametres,alias(T0),base(b1)))
       )
-   )
+   ),
+   conditions(egal(champ(`chi_id_parametre`),:c_chi_id_parametre))
 )  ','UPDATE b1.tbl_parametres SET 
    `chp_cle_parametre` = :n_chp_cle_parametre , 
    `chp_nom_parametre` = :n_chp_nom_parametre , 
@@ -3607,7 +6749,8 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
    `cht_commentaire_parametre` = :n_cht_commentaire_parametre , 
    `chd__dtc_parametre` = :n_chd__dtc_parametre , 
    `chd__dtm_parametre` = :n_chd__dtm_parametre , 
-   `che__nur_parametre` = :n_che__nur_parametre',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
+   `che__nur_parametre` = :n_che__nur_parametre
+WHERE `chi_id_parametre` = :c_chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
 ('1185','','delete','supprimer(
    provenance(
       table_reference(
@@ -3617,7 +6760,7 @@ WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
    conditions(egal(champ(`chi_id_parametre`),:chi_id_parametre))
 )  ','DELETE FROM b1.tbl_parametres
 WHERE `chi_id_parametre` = :chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
-('1186','','select','sélectionner(
+('1186',NULL,'select','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_grandeur`),
       champ(`T0`,`chx_parametre_grandeur`),
@@ -3627,7 +6770,10 @@ WHERE `chi_id_parametre` = :chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.00
       champ(`T1`,`chp_cle_parametre`),
       champ(`T1`,`chp_nom_parametre`),
       champ(`T1`,`cht_rev_parametre`),
-      champ(`T1`,`cht_ordre_parametre`)
+      champ(`T1`,`cht_ordre_parametre`),
+      champ(`T0`,`che_verouillee_grandeur`),
+      champ(`T0`,`chc_couleur_texte_grandeur`),
+      champ(`T0`,`chc_couleur_fond_grandeur`)
    ),
    provenance(
       table_reference(
@@ -3641,7 +6787,8 @@ WHERE `chi_id_parametre` = :chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.00
    conditions(egal(champ(`T0`,`chx_parametre_grandeur`),:T0_chx_parametre_grandeur))
 )  ','SELECT 
 `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
-`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre`
+`T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T0`.`che_verouillee_grandeur` , 
+`T0`.`chc_couleur_texte_grandeur` , `T0`.`chc_couleur_fond_grandeur`
  FROM b1.tbl_grandeurs T0
  LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
 
@@ -3679,8 +6826,8 @@ WHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
     :chd__dtm_grandeur , 
     :che__nur_grandeur
 );',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
-('1188','','update','modifier(
-   valeurs(affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur)),
+('1188',NULL,'update','modifier(
+   valeurs(affecte(champ(`chp_cle_grandeur`),:n_chp_cle_grandeur),affecte(champ(`chc_couleur_texte_grandeur`),:n_chc_couleur_texte_grandeur),affecte(champ(`chc_couleur_fond_grandeur`),:n_chc_couleur_fond_grandeur)),
    provenance(
       table_reference(
          source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))
@@ -3688,7 +6835,9 @@ WHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
    ),
    conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))
 )  ','UPDATE b1.tbl_grandeurs SET 
-   `chp_cle_grandeur` = :n_chp_cle_grandeur
+   `chp_cle_grandeur` = :n_chp_cle_grandeur , 
+   `chc_couleur_texte_grandeur` = :n_chc_couleur_texte_grandeur , 
+   `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
 WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
 ('1189','','update','modifier(
    valeurs(affecte(champ(`cht_ordre_parametre`),:n_cht_ordre_parametre)),
@@ -3971,6 +7120,47 @@ WHERE (`T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur
 ORDER BY  :liste_des_tris  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
+('1215',NULL,'update','modifier(
+   valeurs(affecte(champ(`che_verouillee_grandeur`),:n_che_verouillee_grandeur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))
+)  ','UPDATE b1.tbl_grandeurs SET 
+   `che_verouillee_grandeur` = :n_che_verouillee_grandeur
+WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
+('1224',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_grandeur`),
+      champ(`T0`,`chx_parametre_grandeur`),
+      champ(`T0`,`chp_cle_grandeur`),
+      champ(`T0`,`cht_rev_grandeur`),
+      champ(`T0`,`che_actif_grandeur`),
+      champ(`T0`,`chc_couleur_texte_grandeur`),
+      champ(`T0`,`chc_couleur_fond_grandeur`),
+      champ(`T1`,`cht_rev_parametre`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_parametres,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_parametre),champ(T0,chx_parametre_grandeur)))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chx_parametre_grandeur`),croissant()),(champ(`T0`,`chi_id_grandeur`),croissant()))
+   )
+)  ','SELECT 
+`T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+`T0`.`chc_couleur_texte_grandeur` , `T0`.`chc_couleur_fond_grandeur` , `T1`.`cht_rev_parametre`
+ FROM b1.tbl_grandeurs T0
+ LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+ ORDER BY  `T0`.`chx_parametre_grandeur` ASC, `T0`.`chi_id_grandeur` ASC
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
 ('2001',NULL,'liste_ecran','#(meta(inclure_le_prefixe_de_la_base_devant_la_table(1))),
 sélectionner(
    valeurs(
@@ -3986,8 +7176,7 @@ sélectionner(
       champ(`T3`,`chp_nom_groupe`),
       champ(`T4`,`chp_nom_metier`),
       champ(`T0`,`chx_utilisateur_acteur`),
-      champ(`T0`,`chx_statut_acteur`),
-      champ(`T5`,`chp_cle_grandeur`)
+      champ(`T0`,`chx_statut_acteur`)
    ),
    provenance(
       table_reference(
@@ -4008,10 +7197,6 @@ sélectionner(
       jointure_gauche(
          source(nom_de_la_table(tbl_metiers,alias(T4),base(b1))),
          contrainte(egal(champ(T4,chi_id_metier),champ(T2,chx_metier_acces)))
-      ),
-      jointure_gauche(
-         source(nom_de_la_table(tbl_grandeurs,alias(T5),base(b1))),
-         contrainte(egal(champ(T5,chi_id_grandeur),champ(T0,chx_statut_acteur)))
       )
    ),
    conditions(
@@ -4031,7 +7216,7 @@ sélectionner(
 SELECT 
 `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
 `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
-`T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
+`T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur`
  FROM b2.tbl_acteurs T0
  LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
 
@@ -4040,8 +7225,6 @@ SELECT
  LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
 
  LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-
- LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
 
 WHERE (`T0`.`chp_nom_acteur` LIKE :T0_chp_nom_acteur
    AND `T0`.`chp_prenom_acteur` LIKE :T0_chp_prenom_acteur

@@ -44,8 +44,14 @@ class sql_1181{
             if(tup.hasOwnProperty( 'T0_che_pour_admin_parametre' ) && tup.T0_che_pour_admin_parametre !== ''){
                 where0+=` AND \`T0\`.\`che_pour_admin_parametre\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_pour_admin_parametre , 'T0_che_pour_admin_parametre' ) + `` + '\r\n';
             }
+            if(tup.hasOwnProperty( 'T0_cht_commentaire_parametre' ) && tup.T0_cht_commentaire_parametre !== ''){
+                where0+=` AND \`T0\`.\`cht_commentaire_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_commentaire_parametre , 'T0_cht_commentaire_parametre' ) + '\r\n';
+            }
             if(tup.hasOwnProperty( 'T0_cht_rev_parametre' ) && tup.T0_cht_rev_parametre !== ''){
                 where0+=` AND \`T0\`.\`cht_rev_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_parametre , 'T0_cht_rev_parametre' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_cht_ordre_parametre' ) && tup.T0_cht_ordre_parametre !== ''){
+                where0+=` AND \`T0\`.\`cht_ordre_parametre\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_ordre_parametre , 'T0_cht_ordre_parametre' ) + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });

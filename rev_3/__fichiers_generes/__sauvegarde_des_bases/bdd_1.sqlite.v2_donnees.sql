@@ -73,18 +73,16 @@ INSERT INTO tbl_menus (  chi_id_menu ,  cht_libelle_menu ,  chp_titre_menu ,  ch
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (3) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ,  cht_commentaire_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ) VALUES
-('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'137','1','0','1',NULL,'2025-11-08 11:43:00.312','2025-11-08 11:43:00.312'),
-('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'99','2','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
+('1','dev','$2a$10$3484.miHmi7ffCX/7AbEVe9XHgIKmi//YPtuB77BFOmTB6/jx3TVG',NULL,'141','1','0','1',NULL,'2025-11-08 11:43:00.312','2025-11-08 11:43:00.312'),
+('2','admin','$2a$10$Z6ff6VhYskADIYnPxKmBJeYigip4dMWsExi5d2glHP6GwmwJYDl6y',NULL,'104','2','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('3','u1','$2a$10$9tcW5wIlXLa9Csrgwrl3UeniOzmp54dXfw.cyxp.lsDJV8Jp77ry6',NULL,'0','3','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (6) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (4) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
-('3','2','admin aaaaa','1','2026-06-06 12:23:29.273','2025-11-13 16:51:07.215','0'),
-('6','2','admin bbbbb','2','2026-06-06 12:23:29.843','2026-02-17 14:08:16.212','0'),
 ('8','1','dev aaaaa','0','2026-06-04 16:53:39.439','2026-05-04 16:34:01.581','0'),
 ('9','1','dev bbbbb','0','2026-05-04 16:35:18.663','2026-05-04 16:35:18.663','0'),
 ('10','3','u1 aaaaa','0','2026-05-04 16:36:17.726','2026-05-04 16:35:57.680','0'),
@@ -96,12 +94,12 @@ INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tac
 
 /*================================================================================ DEBUT BLOC TABLE tbl_parametres offset 0 (1) */
 INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_parametre ,  cht_commentaire_parametre ,  cht_rev_parametre ,  cht_ordre_parametre ,  che_pour_admin_parametre ,  chd__dtc_parametre ,  chd__dtm_parametre ,  che__nur_parametre ) VALUES
-('1','actif','actif(1) ou inactif(2)',NULL,'champs_des_parametres(
+('10000','actif','actif(1) ou inactif(2)',NULL,'champs_des_parametres(
    autre_libelle(
       #(un autre libellé pour cette valeur),
       genre_du_parametre(12)
    )
-)','1,2','0','2026-07-05 11:24:00.894','2026-07-05 11:24:00.894','1');
+)','1,2','0','2026-11-06 14:32:20.895','2026-11-06 14:32:20.895','2');
 /*================================================================================ FIN BLOC TABLE tbl_parametres offset 0 */
 
 
@@ -109,6 +107,6 @@ INSERT INTO tbl_parametres (  chi_id_parametre ,  chp_cle_parametre ,  chp_nom_p
 
 /*================================================================================ DEBUT BLOC TABLE tbl_grandeurs offset 0 (2) */
 INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cle_grandeur ,  cht_rev_grandeur ,  che_actif_grandeur ,  chd__dtc_grandeur ,  chd__dtm_grandeur ,  che__nur_grandeur ,  che_verouillee_grandeur ,  chc_couleur_texte_grandeur ,  chc_couleur_fond_grandeur ) VALUES
-('1','1','actif','autre_libelle(''oui'')','1','2026-07-05 11:32:29.204','2026-07-05 11:32:29.204','0','0',NULL,NULL),
-('2','1','passif','autre_libelle(''non'')','1','2026-07-05 11:32:40.947','2026-07-05 11:32:40.947','0','0',NULL,NULL);
+('20001','10000','actif','autre_libelle(''oui'')','1','2026-07-05 11:32:29.204','2026-07-05 11:32:29.204','0','1','black','lime'),
+('20002','10000','passif','autre_libelle(''non'')','1','2026-07-05 11:32:40.947','2026-07-05 11:32:40.947','0','1','yellow','red');
 /*================================================================================ FIN BLOC TABLE tbl_grandeurs offset 0 */

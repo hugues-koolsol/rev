@@ -762,7 +762,7 @@ choix(si(condition(diffstricte(tup.T0_cht_libelle_menu,null)),alors(
             meta(
             genre_meta(champ),
             nom_du_champ('cht_initialisation_menu'),
-            nom_bref_du_champ('initialisation'),libelle_du_champ('initialisation'),entete_distant_du_champ('initialisation menu'),
+            nom_bref_du_champ('initialisation'),libelle_du_champ('initialisation'),
             typologie(cht),
             genre(98),
             longueur_du_champ(3.200)

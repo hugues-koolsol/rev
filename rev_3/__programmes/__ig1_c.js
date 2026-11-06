@@ -2503,9 +2503,8 @@ class __ig1{
         t+='}';
         t+='.yy__fil_btns1{';
         t+=' display: inline-flex!important;';
-        t+=' flex-wrap: balance!important;';
+        t+=' flex-wrap: wrap;';
         t+=' height:' + hauteur_bouton + 'px;';
-        /* hauteur_lgn_avec_pad_et_bordure */
         t+=' margin-top: ' + (yy_diff_filtre1 < 0 ? ( 0 ) : ( yy_diff_filtre1 )) + 'px;';
         t+=' width: 100%;';
         t+=' justify-content: space-around;';

@@ -12,7 +12,7 @@ class sql_1182{
     async sql( tup ){
         const champs0=`
           \`T0\`.\`chi_id_parametre\` , \`T0\`.\`chp_cle_parametre\` , \`T0\`.\`chp_nom_parametre\` , \`T0\`.\`cht_commentaire_parametre\` , \`T0\`.\`cht_rev_parametre\` , 
-          \`T0\`.\`cht_ordre_parametre\` , \`T0\`.\`che_pour_admin_parametre\`
+          \`T0\`.\`cht_ordre_parametre\` , \`T0\`.\`che_pour_admin_parametre\` , \`T0\`.\`che__nur_parametre\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -24,7 +24,7 @@ class sql_1182{
     sql0+=order0;
     const plage0='';
     sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_1182 sql0=',sql0); */
+        this.__ig1.ma_trace1('sql_1182 sql0=',sql0);
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
@@ -42,7 +42,8 @@ class sql_1182{
                     "T0_cht_commentaire_parametre" : col[3] ,
                     "T0_cht_rev_parametre" : col[4] ,
                     "T0_cht_ordre_parametre" : col[5] ,
-                    "T0_che_pour_admin_parametre" : col[6]
+                    "T0_che_pour_admin_parametre" : col[6] ,
+                    "T0_che__nur_parametre" : col[7]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});
