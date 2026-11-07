@@ -476,15 +476,6 @@
     "chp_table_reference_requete": "tbl_televersements",
     "che_base_reference_requete": 1
   },
-  "1167": {
-    "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , \r\n`T0`.`chp_comm_fichier_televersement`\r\n FROM b1.tbl_televersements T0\r\nWHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement \r\nORDER BY `T0`.`chi_id_televersement` DESC  \r\nLIMIT :quantitee OFFSET :debut \r\n;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "liste_ecran",
-    "che_est_souche_requete": 1,
-    "cht_rev_requete": "sélectionner(\n   valeurs(\n      champ(`T0`,`chi_id_televersement`),\n      champ(`T0`,`chp_nom_du_dossier_televersement`),\n      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),\n      champ(`T0`,`chp_nom_original_televersement`),\n      champ(`T0`,`cht_comm_glob_televersement`),\n      champ(`T0`,`chp_comm_fichier_televersement`)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`T0`,`chi_id_televersement`),:T0_chi_id_televersement)),\n   complements(\n      trier_par((champ(`T0`,`chi_id_televersement`),décroissant())),\n      limité_à(quantité(:quantitee),début(:debut))\n   )\n)  ",
-    "chp_table_reference_requete": "tbl_televersements",
-    "che_base_reference_requete": 1
-  },
   "1168": {
     "cht_sql_requete": "SELECT \r\n`T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , \r\n`T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , \r\n`T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`\r\n FROM b1.tbl_televersements T0\r\nWHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement\r\n;",
     "cht_commentaire_requete": null,

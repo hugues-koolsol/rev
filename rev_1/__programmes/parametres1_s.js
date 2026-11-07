@@ -15,6 +15,23 @@ class parametres1{
     /*
       =========================== fragment ========================================================================
     */
+    signaler_une_erreur_asynchrone( le_message ){
+        for( let i=0 ; i < this.__ig1.options_generales.les_clients_du_ws.length ; i++ ){
+            let le_colis={
+                 /*  */
+                "__xst" : __xsu ,
+                "__xsi" : {0 : [le_message] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+                "__xva" : {} ,
+                "__xac" : ''
+            };
+            try{
+                this.__ig1.options_generales.les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+            } catch {}
+        }
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
     async produire_les_json_des_paramètres( mat , d , chi_id_bdd ){
         /*
           appel asynchrone
@@ -971,11 +988,9 @@ class parametres1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_parametre !== null && fo1.cht_rev_parametre !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_parametre );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'});
-            }
+        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_parametre , 'rev' );
+        if(__test_3_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_3_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;

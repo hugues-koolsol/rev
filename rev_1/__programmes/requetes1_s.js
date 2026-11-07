@@ -51,10 +51,11 @@ class requetes1{
         if(tt1354.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [' + this.__ig1.nl2()});
         }
+        /* this.__ig1.ma_trace1("chi_id_requete="+chi_id_requete+" , tt1354=",tt1354); */
         /*
           ouverture de l'autre base système
         */
-        let __db_autre=await this.__ig1.ouvrir_bdd( chi_id_projet , this.__ig1.donnees_retournees , this.__ig1.options_generales );
+        let __db_autre=await this.__ig1.ouvrir_bdd( chi_id_projet );
         /*
           =====================================================================================================
           essai de lecture de la requête dans la base autre
@@ -69,11 +70,12 @@ class requetes1{
         WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
         ;
         */
-        /*sql_inclure_fin*/ 1373 , criteres_1373_n , this.__ig1.donnees_retournees , __db_autre );
+        /*sql_inclure_fin*/ 1373 , criteres_1373_n , __db_autre );
         if(tt1373_3.__xst !== __xsu){
+            await __db_autre.close();
             return({"__xst" : __xer ,"__xme" : tt1373_3.__xme});
         }
-        /* this.__ig1.ma_trace1( "tt1373_3" , tt1373_3 ); */
+        this.__ig1.ma_trace1( "tt1373_3" , tt1373_3 );
         if(tt1373_3.__xva.length === 0){
             /*
               la requête n'existe pas, c'est un insert 
@@ -113,8 +115,9 @@ class requetes1{
                 :che_base_reference_requete
             );
             */
-            /*sql_inclure_fin*/ 1423 , donnees_sql , this.__ig1.donnees_retournees , __db_autre );
+            /*sql_inclure_fin*/ 1423 , donnees_sql , __db_autre );
             if(tt1423.__xst !== __xsu){
+                await __db_autre.close();
                 return({"__xst" : __xer ,"__xme" : tt1423.__xme});
             }
         }else{
@@ -145,8 +148,9 @@ class requetes1{
                `che_base_reference_requete` = :n_che_base_reference_requete
             WHERE `chi_id_requete` = :c_chi_id_requete ;
             */
-            /*sql_inclure_fin*/ 1355 , criteres_1355 , this.__ig1.donnees_retournees , __db_autre );
+            /*sql_inclure_fin*/ 1355 , criteres_1355 , __db_autre );
             if(tt1355.__xst !== __xsu || tt1355.changements !== 1){
+                await __db_autre.close();
                 return({"__xst" : __xer ,"__xme" : tt1355.__xme});
             }
         }

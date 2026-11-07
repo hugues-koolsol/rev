@@ -24,7 +24,7 @@ class sql_1182{
     sql0+=order0;
     const plage0='';
     sql0+=plage0;
-        this.__ig1.ma_trace1('sql_1182 sql0=',sql0);
+        /* this.__ig1.ma_trace1('sql_1182 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );

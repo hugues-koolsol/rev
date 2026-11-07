@@ -5,7 +5,7 @@ const __xif=3;
 const __xdv=4;
 const __xst='__xst';
 const __xsi='__xsi';
-class sql_1167{
+class sql_1216{
     /*
       ================================liste_ecran=============================================================================
     */
@@ -18,22 +18,39 @@ class sql_1167{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_televersement\` , \`T0\`.\`chp_nom_du_dossier_televersement\` , \`T0\`.\`chp_nom_fichier_sur_disque_televersement\` , \`T0\`.\`chp_nom_original_televersement\` , \`T0\`.\`cht_comm_glob_televersement\` , 
-          \`T0\`.\`chp_comm_fichier_televersement\`
+          \`T0\`.\`chi_id_groupe\` , \`T0\`.\`chp_nom_groupe\` , \`T0\`.\`chx_parent_groupe\` , \`T1\`.\`chp_nom_groupe\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
-          FROM  tbl_televersements T0    `;
+          FROM  tbl_groupes T0
+            LEFT JOIN tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+         `;
         sql0+=from0;
         where0=' WHERE 1=1 ';
         /* this.__ig1.ma_trace1( 'tup=' , tup ); */
         try{
-            if(tup.hasOwnProperty( 'T0_chi_id_televersement' ) && tup.T0_chi_id_televersement !== ''){
-                if(tup.T0_chi_id_televersement === 0){
-                    where0+=' AND `T0`.`chi_id_televersement` IS NULL \r\n';
+            if(tup.hasOwnProperty( 'T0_chi_id_groupe' ) && tup.T0_chi_id_groupe !== ''){
+                if(tup.T0_chi_id_groupe === 0){
+                    where0+=' AND `T0`.`chi_id_groupe` IS NULL \r\n';
                 }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_televersement`' , tup.T0_chi_id_televersement );
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_groupe`' , tup.T0_chi_id_groupe );
                 }
+            }
+            if(tup.hasOwnProperty( 'T0_chp_nom_groupe' ) && tup.T0_chp_nom_groupe !== ''){
+                where0+=` AND \`T0\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_chp_nom_groupe , 'T0_chp_nom_groupe' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T0_chx_parent_groupe' ) && tup.T0_chx_parent_groupe !== ''){
+                if(tup.T0_chx_parent_groupe === 0){
+                    where0+=' AND `T0`.`chx_parent_groupe` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_parent_groupe`' , tup.T0_chx_parent_groupe );
+                }
+            }
+            if(tup.hasOwnProperty( 'T1_chp_nom_groupe' ) && tup.T1_chp_nom_groupe !== ''){
+                where0+=` AND \`T1\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_groupe , 'T1_chp_nom_groupe' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'groupe_a_exclure' ) && tup.groupe_a_exclure !== ''){
+                where0+=` AND \`T0\`.\`chi_id_groupe\` NOT IN (` + tup.groupe_a_exclure + `)` + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
@@ -45,29 +62,27 @@ class sql_1167{
               ORDER BY ` + tup.__ordre_de_tri_de_la_liste1 + ``;
         }else{
             sql0+=`
-           ORDER BY  \`T0\`.\`chi_id_televersement\` DESC`;
+           ORDER BY  \`T0\`.\`chi_id_groupe\` DESC`;
         }
         const plage0=`
         LIMIT ` + this.__ig1.__fnt1.sq1( tup.quantitee , 'quantitee' ) + ` OFFSET ` + this.__ig1.__fnt1.sq1( tup.debut , 'debut' ) + ` `;
         sql0+=plage0;
-        /* this.__ig1.ma_trace1('sql_1167 sql0=',sql0); */
+        /* this.__ig1.ma_trace1('sql_1216 sql0=',sql0); */
         let lignes=[];
         try{
             let statement=await this.__db1.prepare( sql0 );
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1167 , e , sql0 , {} ));
+            return(this.__ig1.traite_erreur_sql( 1216 , e , sql0 , {} ));
         }
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0_chi_id_televersement" : lignes[numero_de_ligne][0] ,
-                    "T0_chp_nom_du_dossier_televersement" : lignes[numero_de_ligne][1] ,
-                    "T0_chp_nom_fichier_sur_disque_televersement" : lignes[numero_de_ligne][2] ,
-                    "T0_chp_nom_original_televersement" : lignes[numero_de_ligne][3] ,
-                    "T0_cht_comm_glob_televersement" : (lignes[numero_de_ligne][4]===null?null:lignes[numero_de_ligne][4].substr(0,100)) ,
-                    "T0_chp_comm_fichier_televersement" : lignes[numero_de_ligne][5]
+                    "T0_chi_id_groupe" : lignes[numero_de_ligne][0] ,
+                    "T0_chp_nom_groupe" : lignes[numero_de_ligne][1] ,
+                    "T0_chx_parent_groupe" : lignes[numero_de_ligne][2] ,
+                    "T1_chp_nom_groupe" : lignes[numero_de_ligne][3]
                 } );
         }
         /* comptage */
@@ -91,7 +106,7 @@ class sql_1167{
     /*
       =============================================================================================================
     */
-    moi='sql_1167';
+    moi='sql_1216';
     __ig1=null;
     __db1=null;
     /*
@@ -102,4 +117,4 @@ class sql_1167{
         this.__db1=__db1;
     }
 }
-export{sql_1167 as sql_1167};
+export{sql_1216 as sql_1216};

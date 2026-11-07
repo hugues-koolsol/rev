@@ -12,21 +12,22 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
   =====================================================================================================================
 */
 class parametres1{
-    signaler_une_erreur_asynchrone(le_message){
-     
+    /*
+      =========================== fragment ========================================================================
+    */
+    signaler_une_erreur_asynchrone( le_message ){
         for( let i=0 ; i < this.__ig1.options_generales.les_clients_du_ws.length ; i++ ){
             let le_colis={
+                 /*  */
                 "__xst" : __xsu ,
                 "__xsi" : {0 : [le_message] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
                 "__xva" : {} ,
-                "__xac" : '' ,
+                "__xac" : ''
             };
             try{
                 this.__ig1.options_generales.les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
             } catch {}
         }
-     
-     
     }
     /*
       =========================== fragment ========================================================================
@@ -35,7 +36,6 @@ class parametres1{
         /*
           appel asynchrone
         */
-        console.log("dans produire_les_json_des_paramètres chi_id_bdd="+chi_id_bdd);
         /* let __db1=await this.__ig1.ouvrir_bdd( chi_id_bdd ); */
         let chemin_bdd_1='./__bases_de_donnees/bdd_' + chi_id_bdd + '.sqlite';
         let __db1=null;
@@ -60,7 +60,7 @@ class parametres1{
         if(tt1224.__xst !== __xsu){
             this.__ig1.ma_trace1( "ici" , tt1224 );
             __db1.close();
-            this.signaler_une_erreur_asynchrone(this.__ig1.nl2());
+            this.signaler_une_erreur_asynchrone( this.__ig1.nl2() );
             return({"__xst" : __xer ,"__xme" : tt1224.__xme});
         }
         let chx_parametre_grandeur=0;
@@ -75,7 +75,7 @@ class parametres1{
                     /* this.__ig1.ma_trace1("tt1224.__xva[i].T1_cht_rev_parametre="+le_rev_texte); */
                     let obj1=this.__ig1.__rev1.t2m( le_rev_texte );
                     if(obj1.__xst !== __xsu){
-                        this.signaler_une_erreur_asynchrone("erreur de conversion de paramètre \"" + le_rev_texte + '"' + this.__ig1.nl2() );
+                        this.signaler_une_erreur_asynchrone( "erreur de conversion de paramètre \"" + le_rev_texte + '"' + this.__ig1.nl2() );
                         return({"__xst" : __xer ,"__xme" : "erreur de conversion de paramètre \"" + le_rev_texte + '"'});
                     }
                     let mat1=obj1.__xva;
@@ -147,7 +147,7 @@ class parametres1{
             await this.__ig1.file_put_contents( chemin_fichier__liste_des_grandeurs , contenu_fichier__json_des_parametres_de_la_base );
         }catch{
             __db1.close();
-            this.signaler_une_erreur_asynchrone('erreur d\'écriture du fichier json des genres [' + this.__ig1.nl2( e ) + ']' );
+            this.signaler_une_erreur_asynchrone( 'erreur d\'écriture du fichier json des genres [' + this.__ig1.nl2( e ) + ']' );
             return({"__xst" : __xer ,"__xme" : 'erreur d\'écriture du fichier json des genres [' + this.__ig1.nl2( e ) + ']'});
         }
         /* this.__ig1.ma_trace1("this.__ig1.options_generales.les_clients_du_ws=",this.__ig1.options_generales.les_clients_du_ws); */
@@ -990,11 +990,9 @@ class parametres1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_parametre !== null && fo1.cht_rev_parametre !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_parametre );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'});
-            }
+        let __test_3_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_parametre , 'rev' );
+        if(__test_3_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_3_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -1173,7 +1171,7 @@ class parametres1{
         let tt1185=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_parametres
-        WHERE `chi_id_parametre` = :chi_id_parametre
+        WHERE `chi_id_parametre` = :chi_id_parametre ;
         */
         /*sql_inclure_fin*/ 1185 , criteres_1185 , __db1 );
         /*  */
