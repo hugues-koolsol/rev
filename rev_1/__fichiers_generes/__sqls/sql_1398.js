@@ -41,6 +41,14 @@ class sql_1398{
                 if(tup.chp_resume_travail === null || tup.chp_resume_travail === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "résumé du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
+                /*
+                  === test spécifique sur le champ "cht_rev_travail" ===
+                */
+                let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev(tup.cht_rev_travail , 'description rev du travail');
+                if(__test_1_1.__xst !== __xsu){
+                    return{"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_1_1.__xme};
+                }
+
                 /* test "non nul" sur le champ "chx_utilisateur_travail" */
                 if(tup.chx_utilisateur_travail === null || tup.chx_utilisateur_travail === ''){
                     return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "id utilisateur du travail" doit être renseignée [' + this.__ig1.nl2() + ']'});

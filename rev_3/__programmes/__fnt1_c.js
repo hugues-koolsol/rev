@@ -5058,7 +5058,7 @@ class __fnt1{
         let t='';
         let haut1=36;
         let haut2=haut1 - 2;
-        t+='<h1 style="font-size:18px;width:100%;height:' + haut1 + 'px;margin-bottom:20px;">paramètres et aides</h1>';
+        t+='<h1 style="font-size:18px;width:100%;height:' + haut1 + 'px;margin-bottom:20px;">apparences et aides</h1>';
         t+='<div class="yy_edition_champ2" style="width:100%;border-width:1px!important;">';
         for(let i in this.__ig1.reference_stockage_local['aspect']){
             if('--t_police' === i

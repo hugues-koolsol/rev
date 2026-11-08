@@ -2655,9 +2655,10 @@ class x_ecran_generer_programmes1{
                        || obj_champ.genre_objet_du_champ.che_est_nur_genre === 1
                 ){
                 }else{
-                    if(false && (obj_champ.genre_numerique_du_champ === 95
-                           || obj_champ.genre_numerique_du_champ === 96
-                           || obj_champ.genre_numerique_du_champ === 98 )
+                    if(false
+                           && (obj_champ.genre_numerique_du_champ === 95
+                               || obj_champ.genre_numerique_du_champ === 96
+                               || obj_champ.genre_numerique_du_champ === 98)
                     ){
                         les_tests_particuliers_modifier_update_client1+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
                         if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96){
@@ -2722,15 +2723,15 @@ class x_ecran_generer_programmes1{
                                 les_tests_particuliers_modifier_update_client1+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
                                 les_tests_particuliers_modifier_update_client1+='        if(__test_' + i + '_' + j + '.__xst!==__xsu){\r\n';
                                 les_tests_particuliers_modifier_update_client1+='            return(__test_' + i + '_' + j + ')\r\n';
-/*
-                                les_tests_particuliers_modifier_update_client1+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
-                                les_tests_particuliers_modifier_update_client1+='            this.__ig1.affiche_les_messages();\r\n';
-                                les_tests_particuliers_modifier_update_client1+='            this.__ig1.retablir_les_boutons_masques();\r\n';
-                                les_tests_particuliers_modifier_update_client1+='            try{\r\n';
-                                les_tests_particuliers_modifier_update_client1+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
-                                les_tests_particuliers_modifier_update_client1+='            }catch{}\r\n';
-                                les_tests_particuliers_modifier_update_client1+='            return({__xst:__xsu})\r\n';
-*/                                
+                                /*
+                                  les_tests_particuliers_modifier_update_client1+='            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_' + i + '_' + j + '.__xme} );\r\n';
+                                  les_tests_particuliers_modifier_update_client1+='            this.__ig1.affiche_les_messages();\r\n';
+                                  les_tests_particuliers_modifier_update_client1+='            this.__ig1.retablir_les_boutons_masques();\r\n';
+                                  les_tests_particuliers_modifier_update_client1+='            try{\r\n';
+                                  les_tests_particuliers_modifier_update_client1+='              document.getElementById(\'' + nom_du_champ + '\').focus();\r\n';
+                                  les_tests_particuliers_modifier_update_client1+='            }catch{}\r\n';
+                                  les_tests_particuliers_modifier_update_client1+='            return({__xst:__xsu})\r\n';
+                                */
                                 les_tests_particuliers_modifier_update_client1+='        }\r\n';
                                 /*  */
                                 les_tests_particuliers_modifier_update_serveur1+='fo1.' + nom_du_champ + ' , \'' + obj_champ.meta.libelle_du_champ.replace( /"/g , '&quot;' ).replace( /\'/g , '&apos;' ) + '\');\r\n';
@@ -3064,7 +3065,7 @@ class x_ecran_generer_programmes1{
                                     "longueur_du_champ" : obj_champ.longueur_du_champ ,
                                     "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                                     "description_du_champ" : obj_champ.meta.description_du_champ ,
-                                    "chi_id_basedd" :  ( this.__ig1.est_num( obj_champ.base_mere ) ? parseInt( obj_champ.base_mere , 10 ) :  chi_id_basedd_de_reference ) ,
+                                    "chi_id_basedd" : this.__ig1.est_num( obj_champ.base_mere ) ? ( parseInt( obj_champ.base_mere , 10 ) ) : ( chi_id_basedd_de_reference ) ,
                                     "chi_id_parametre" : obj_champ.meta.chi_id_parametre ,
                                     "bouton_vider" : !obj_champ.non_nulle ,
                                     "nom_du_lien" : nom_du_lien
@@ -3376,14 +3377,14 @@ class x_ecran_generer_programmes1{
                         nom_du_lien=nom_de_la_classe_lien + exception_grandeur;
                     }
                     if(obj_champ.table_mere === 'tbl_grandeurs'){
-                        debugger
+                        debugger;
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
                             "longueur_du_champ" : obj_champ.longueur_du_champ ,
                             "libelle_du_champ" : obj_champ.meta.libelle_du_champ ,
                             "description_du_champ" : obj_champ.meta.description_du_champ ,
-                            "chi_id_basedd" : ( this.__ig1.est_num( obj_champ.base_mere ) ? parseInt( obj_champ.base_mere , 10 ) :  chi_id_basedd_de_reference ) ,
+                            "chi_id_basedd" : this.__ig1.est_num( obj_champ.base_mere ) ? ( parseInt( obj_champ.base_mere , 10 ) ) : ( chi_id_basedd_de_reference ) ,
                             "chi_id_parametre" : obj_champ.meta.chi_id_parametre ,
                             "bouton_vider" : !obj_champ.non_nulle ,
                             "nom_du_lien" : nom_du_lien
@@ -4814,9 +4815,10 @@ class x_ecran_generer_programmes1{
                       pas de test pour ces cas
                     */
                 }else{
-                    if(false && (obj_champ.genre_numerique_du_champ === 95
-                           || obj_champ.genre_numerique_du_champ === 96
-                           || obj_champ.genre_numerique_du_champ === 98 )
+                    if(false
+                           && (obj_champ.genre_numerique_du_champ === 95
+                               || obj_champ.genre_numerique_du_champ === 96
+                               || obj_champ.genre_numerique_du_champ === 98)
                     ){
                         les_tests_particuliers_client_creer2+='        if(fo1.' + nom_du_champ + ' !== null && fo1.' + nom_du_champ + ' !== \'\'){\r\n';
                         if(obj_champ.genre_numerique_du_champ === 95 || obj_champ.genre_numerique_du_champ === 96){
@@ -5938,7 +5940,7 @@ class x_ecran_generer_programmes1{
                                               liste_des_champs_libelles.push( les_jointures[j].alias1 + '_' + les_jointures[j].libelles_lien[k] );
                                           }
                                         */
-                                        debugger
+                                        debugger;
                                         liste_des_champs_libelles.push( les_jointures[j].alias1 + '_' + les_jointures[j].libelles_lien );
                                     }else{
                                         if(Array.isArray( les_jointures[j].libelles_lien ) === true){

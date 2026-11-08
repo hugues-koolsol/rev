@@ -55,7 +55,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (60) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (62) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('77','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -100,7 +100,7 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 ('1017','acteurs1_s.js',NULL,NULL,'0','2','les acteurs','0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1018','__televersement1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1019','parametres1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1020','parametres1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0','importer(bibliotheque_spécifiée(Database),provenance("https://deno.land/x/sqlite3/mod.ts"))','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1021','grandeurs1_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1022','grandeurs1_s.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('1023','grandeurs2_c.js',NULL,NULL,'0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -3224,7 +3224,6338 @@ class __televersement2{
       =============================================================================================================
     */
 }
-export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
+export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1037','parametres1_s.js','definition_de_classe(
+   nom_classe(parametres1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(signaler_une_erreur_asynchrone),argument(le_message)),
+         contenu(
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,this.__ig1.options_generales.les_clients_du_ws.length)),
+               increment(i++),
+               faire(
+                  declare_variable(
+                     le_colis,
+                     obj(
+                        #(  ),
+                        ("__xst",__xsu),
+                        (
+                           "__xsi",
+                           obj(
+                              (0,[le_message]),
+                              (1,[]),
+                              (2,[]),
+                              (3,[]),
+                              (4,[])
+                           )
+                        ),
+                        ("__xva",obj()),
+                        ("__xac",'''')
+                     )
+                  ),
+                  essayer(
+                     faire(
+                        appelf(
+                           element(this.__ig1.options_generales.les_clients_du_ws[i].socket),
+                           nomf(send),
+                           p(appelf(element(JSON),nomf(stringify),p(le_colis)))
+                        )
+                     ),
+                     sierreur(null(),faire())
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(
+            nom(actions_et_tests_apres_page_voir),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(__xva_avant),
+            argument(__db1)
+         ),
+         contenu(
+            declare_variable(
+               criteres_select_1186,
+               obj(
+                  ("T0_chx_parametre_grandeur",tableau(nomt(__xva_avant),p(''T0_chi_id_parametre'')))
+               )
+            ),
+            declare_variable(
+               tt1186,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1186),
+                     p(criteres_select_1186),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1186.__xst,__xsu)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''erreur [1186 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            affecte(tableau(nomt(this.__ig1.donnees_retournees.__xva),p(''parametres_actuels'')),tt1186.__xva),
+            retourner(obj(("__xst",__xsu),("",tt1186.__xva)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(
+            nom(produire_les_json_des_paramètres),
+            asynchrone(),
+            argument(mat),
+            argument(d),
+            argument(chi_id_bdd)
+         ),
+         contenu(
+            #(
+              appel asynchrone
+            ),
+            declare_variable(chemin_bdd_1,concat(''./__bases_de_donnees/bdd_'',chi_id_bdd,''.sqlite'')),
+            declare_variable(__db1,null),
+            essayer(
+               faire(
+                  affecte(
+                     __db1,
+                     new(
+                        appelf(
+                           nomf(Database),
+                           p(chemin_bdd_1),
+                           p(obj(("create",false)))
+                        )
+                     )
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(
+                     appelf(
+                        element(this),
+                        nomf(signaler_une_erreur_asynchrone),
+                        p(appelf(element(this.__ig1),nomf(nl2),p()))
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p(e)))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(chemin_fichier__liste_des_grandeurs,concat(''./__fichiers_generes/__json_des_grandeurs_de_la_base_'',chi_id_bdd,''_.json'')),
+            declare_variable(__json_des_parametres_de_la_base,obj()),
+            declare_variable(
+               tt1224,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1224),
+                     p(obj()),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1224.__xst,__xsu)),
+                  alors(
+                     appelf(element(__db1),nomf(close),p()),
+                     appelf(
+                        element(this),
+                        nomf(signaler_une_erreur_asynchrone),
+                        p(appelf(element(this.__ig1),nomf(nl2),p()))
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",tt1224.__xme)))
+                  )
+               )
+            ),
+            declare_variable(chx_parametre_grandeur,0),
+            declare_variable(__liste_des_grandeurs,obj()),
+            declare_variable(liste_des_complements,obj()),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),tt1224.__xva)),
+               faire(
+                  choix(
+                     si(
+                        condition(diffstricte(tt1224.__xva[i].T0_chx_parametre_grandeur,chx_parametre_grandeur)),
+                        alors(
+                           affecte(chx_parametre_grandeur,tt1224.__xva[i].T0_chx_parametre_grandeur),
+                           affecte(liste_des_complements,obj()),
+                           choix(
+                              si(
+                                 condition(diffstricte(tt1224.__xva[i].T1_cht_rev_parametre,''#()'')),
+                                 alors(
+                                    declare_variable(le_rev_texte,tt1224.__xva[i].T1_cht_rev_parametre),
+                                    declare_variable(obj1,appelf(element(this.__ig1.__rev1),nomf(t2m),p(le_rev_texte))),
+                                    choix(
+                                       si(
+                                          condition(diffstricte(obj1.__xst,__xsu)),
+                                          alors(
+                                             appelf(element(__db1),nomf(close),p()),
+                                             appelf(
+                                                element(this),
+                                                nomf(signaler_une_erreur_asynchrone),
+                                                p(
+                                                   concat("erreur de conversion de paramètre \"",le_rev_texte,''"'',appelf(element(this.__ig1),nomf(nl2),p()))
+                                                )
+                                             ),
+                                             retourner(
+                                                obj(("__xst",__xer),("__xme",concat("erreur de conversion de paramètre \"",le_rev_texte,''"'')))
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    declare_variable(mat1,obj1.__xva),
+                                    declare_constante(l01,mat1.length),
+                                    boucle(
+                                       initialisation(declare_variable(j,1)),
+                                       condition(inf(j,l01)),
+                                       increment(affecte(j,mat1[j][12])),
+                                       faire(
+                                          choix(
+                                             si(
+                                                condition(et(egalstricte(mat1[j][1],''champs_des_parametres''),egalstricte(mat1[j][2],''f''))),
+                                                alors(
+                                                   boucle(
+                                                      initialisation(declare_variable(k,plus(j,1))),
+                                                      condition(inf(k,l01)),
+                                                      increment(affecte(k,mat1[k][12])),
+                                                      faire(
+                                                         choix(
+                                                            si(
+                                                               condition(et(egalstricte(mat1[k][1],''#''),egalstricte(mat1[k][2],''f''))),
+                                                               alors()
+                                                            ),
+                                                            sinonsi(
+                                                               condition(egalstricte(mat1[k][2],''f'')),
+                                                               alors(
+                                                                  declare_variable(nom_du_complement,mat1[k][1]),
+                                                                  declare_variable(genre_du_parametre,0),
+                                                                  declare_variable(libelle,''''),
+                                                                  boucle(
+                                                                     initialisation(declare_variable(l,plus(k,1))),
+                                                                     condition(inf(l,l01)),
+                                                                     increment(affecte(l,mat1[l][12])),
+                                                                     faire(
+                                                                        choix(
+                                                                           si(
+                                                                              condition(
+                                                                                 et(
+                                                                                    egalstricte(mat1[l][1],''genre_du_parametre''),
+                                                                                    egalstricte(mat1[l][2],''f''),
+                                                                                    egalstricte(mat1[l][8],1),
+                                                                                    egalstricte(
+                                                                                       tableau(
+                                                                                          nomt(
+                                                                                             tableau(nomt(mat1),p(plus(l,1)))
+                                                                                          ),
+                                                                                          p(2)
+                                                                                       ),
+                                                                                       ''c''
+                                                                                    )
+                                                                                 )
+                                                                              ),
+                                                                              alors(
+                                                                                 affecte(
+                                                                                    genre_du_parametre,
+                                                                                    appelf(
+                                                                                       nomf(parseInt),
+                                                                                       p(
+                                                                                          tableau(
+                                                                                             nomt(
+                                                                                                tableau(nomt(mat1),p(plus(l,1)))
+                                                                                             ),
+                                                                                             p(1)
+                                                                                          )
+                                                                                       ),
+                                                                                       p(10)
+                                                                                    )
+                                                                                 )
+                                                                              )
+                                                                           ),
+                                                                           sinonsi(
+                                                                              condition(et(egalstricte(mat1[l][1],''#''),egalstricte(mat1[l][2],''f''))),
+                                                                              alors(affecte(libelle,mat1[l][13]))
+                                                                           )
+                                                                        )
+                                                                     )
+                                                                  ),
+                                                                  affecte(liste_des_complements[nom_du_complement],obj(("genre_du_parametre",genre_du_parametre),("libelle",libelle)))
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  ),
+                  affecte(
+                     __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur],
+                     obj(
+                        ("__cle",tt1224.__xva[i].T0_chp_cle_grandeur),
+                        ("__rev",tt1224.__xva[i].T0_cht_rev_grandeur),
+                        ("__actif",tt1224.__xva[i].T0_che_actif_grandeur),
+                        ("__couleur_texte",tt1224.__xva[i].T0_chc_couleur_texte_grandeur),
+                        ("__couleur_fond",tt1224.__xva[i].T0_chc_couleur_fond_grandeur),
+                        ("__liste_des_parametres",[])
+                     )
+                  ),
+                  choix(
+                     si(
+                        condition(diffstricte(tt1224.__xva[i].T0_cht_rev_grandeur,''0'')),
+                        alors(
+                           declare_variable(objt,appelf(element(this.__ig1.__rev1),nomf(t2m),p(tt1224.__xva[i].T0_cht_rev_grandeur))),
+                           choix(
+                              si(
+                                 condition(egalstricte(objt.__xst,__xsu)),
+                                 alors(
+                                    declare_constante(l01,objt.__xva.length),
+                                    boucle(
+                                       initialisation(declare_variable(j,1)),
+                                       condition(inf(j,l01)),
+                                       increment(affecte(j,objt.__xva[j][12])),
+                                       faire(
+                                          choix(
+                                             si(
+                                                condition(
+                                                   et(
+                                                      egalstricte(objt.__xva[j][2],''f''),
+                                                      egalstricte(objt.__xva[j][8],1),
+                                                      egalstricte(
+                                                         tableau(
+                                                            nomt(
+                                                               tableau(nomt(objt.__xva),p(plus(j,1)))
+                                                            ),
+                                                            p(2)
+                                                         ),
+                                                         ''c''
+                                                      )
+                                                   )
+                                                ),
+                                                alors(
+                                                   choix(
+                                                      si(
+                                                         condition(appelf(element(liste_des_complements),nomf(hasOwnProperty),p(objt.__xva[j][1]))),
+                                                         alors(
+                                                            appelf(
+                                                               element(tableau(nomt(__liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]),p(''__liste_des_parametres''))),
+                                                               nomf(push),
+                                                               p(
+                                                                  obj(
+                                                                     #(  ),
+                                                                     ("__nom",objt.__xva[j][1]),
+                                                                     ("genre_du_parametre",tableau(nomt(liste_des_complements),p(objt.__xva[j][1]),prop(genre_du_parametre))),
+                                                                     ("libelle",tableau(nomt(liste_des_complements),p(objt.__xva[j][1]),prop(libelle)))
+                                                                  )
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   ),
+                                                   choix(
+                                                      si(
+                                                         condition(
+                                                            appelf(
+                                                               element(this.__ig1),
+                                                               nomf(est_num),
+                                                               p(
+                                                                  tableau(
+                                                                     nomt(
+                                                                        tableau(nomt(objt.__xva),p(plus(j,1)))
+                                                                     ),
+                                                                     p(1)
+                                                                  )
+                                                               )
+                                                            )
+                                                         ),
+                                                         alors(
+                                                            choix(
+                                                               si(
+                                                                  condition(
+                                                                     appelf(
+                                                                        element(this.__ig1),
+                                                                        nomf(est_entier_positif),
+                                                                        p(
+                                                                           tableau(
+                                                                              nomt(
+                                                                                 tableau(nomt(objt.__xva),p(plus(j,1)))
+                                                                              ),
+                                                                              p(1)
+                                                                           )
+                                                                        )
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     affecte(
+                                                                        tableau(nomt(__liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]),p(objt.__xva[j][1])),
+                                                                        appelf(
+                                                                           nomf(parseInt),
+                                                                           p(
+                                                                              tableau(
+                                                                                 nomt(
+                                                                                    tableau(nomt(objt.__xva),p(plus(j,1)))
+                                                                                 ),
+                                                                                 p(1)
+                                                                              )
+                                                                           ),
+                                                                           p(10)
+                                                                        )
+                                                                     )
+                                                                  )
+                                                               ),
+                                                               sinon(
+                                                                  alors(
+                                                                     affecte(
+                                                                        tableau(nomt(__liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]),p(objt.__xva[j][1])),
+                                                                        appelf(
+                                                                           nomf(parseFloat),
+                                                                           p(
+                                                                              tableau(
+                                                                                 nomt(
+                                                                                    tableau(nomt(objt.__xva),p(plus(j,1)))
+                                                                                 ),
+                                                                                 p(1)
+                                                                              )
+                                                                           )
+                                                                        )
+                                                                     )
+                                                                  )
+                                                               )
+                                                            )
+                                                         )
+                                                      ),
+                                                      sinon(
+                                                         alors(
+                                                            affecte(
+                                                               tableau(nomt(__liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]),p(objt.__xva[j][1])),
+                                                               tableau(
+                                                                  nomt(
+                                                                     tableau(nomt(objt.__xva),p(plus(j,1)))
+                                                                  ),
+                                                                  p(1)
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               contenu_fichier__json_des_parametres_de_la_base,
+               concat(
+                  '''',
+                  appelf(
+                     element(JSON),
+                     nomf(stringify),
+                     p(__liste_des_grandeurs),
+                     p(null),
+                     p(2)
+                  )
+               )
+            ),
+            essayer(
+               faire(
+                  await(appelf(element(this.__ig1),nomf(file_put_contents),p(chemin_fichier__liste_des_grandeurs),p(contenu_fichier__json_des_parametres_de_la_base)))
+               ),
+               sierreur(
+                  null(),
+                  faire(
+                     appelf(element(__db1),nomf(close),p()),
+                     appelf(
+                        element(this),
+                        nomf(signaler_une_erreur_asynchrone),
+                        p(
+                           concat(''erreur d\''écriture du fichier json des genres ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                        )
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''erreur d\''écriture du fichier json des genres ['',appelf(element(this.__ig1),nomf(nl2),p(e)),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            boucle(
+               initialisation(declare_variable(i,0)),
+               condition(inf(i,this.__ig1.options_generales.les_clients_du_ws.length)),
+               increment(i++),
+               faire(
+                  declare_variable(
+                     le_colis,
+                     obj(
+                        ("__xst",__xsu),
+                        (
+                           "__xsi",
+                           obj(
+                              (0,defTab(p(''maj __liste_des_grandeurs par une autre session''))),
+                              (1,[]),
+                              (2,[]),
+                              (3,[]),
+                              (4,[])
+                           )
+                        ),
+                        ("__xva",obj()),
+                        ("__xac",''''),
+                        ("__liste_des_grandeurs",__liste_des_grandeurs),
+                        ("__base_des_grandeurs",chi_id_bdd),
+                        ("__maj_interactive_des_grandeurs",1)
+                     )
+                  ),
+                  essayer(
+                     faire(
+                        appelf(
+                           element(this.__ig1.options_generales.les_clients_du_ws[i].socket),
+                           nomf(send),
+                           p(appelf(element(JSON),nomf(stringify),p(le_colis)))
+                        )
+                     ),
+                     sierreur(null(),faire())
+                  )
+               )
+            ),
+            appelf(element(__db1),nomf(close),p())
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(supprimer_une_grandeur1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_grandeur,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(infeg(chi_id_grandeur,0)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(infeg(chi_id_grandeur,20000)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''on ne peut pas supprimer la grandeur 20000'')))
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(
+               criteres_1202,
+               obj(
+                  #(  ),
+                  ("T0_chi_id_grandeur",chi_id_grandeur)
+               )
+            ),
+            declare_variable(
+               tt1202,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1202),
+                     p(criteres_1202),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1202.__xst,__xsu),diffstricte(tt1202.__xva.length,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1202.__xme)))
+                  )
+               )
+            ),
+            declare_variable(
+               criteres_1214,
+               obj(
+                  #(  ),
+                  ("chi_id_grandeur",chi_id_grandeur)
+               )
+            ),
+            declare_variable(
+               tt1214,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1214),
+                     p(criteres_1214),
+                     p(__db1)
+                  )
+               )
+            ),
+            #(  ),
+            choix(
+               si(
+                  condition(diffstricte(tt1214.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1214.__xme)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(vv_grandeurs_nouveau_numero1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_grandeur_ancienne,0),
+            declare_variable(chi_id_grandeur_nouvelle,0),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        tableau(nomt(form),p(''vv_nouveau_numero_de_grandeur'')),
+                        appelf(
+                           element(this.__ig1),
+                           nomf(est_num),
+                           p(tableau(nomt(form),p(''vv_nouveau_numero_de_grandeur'')))
+                        )
+                     )
+                  ),
+                  alors(
+                     affecte(
+                        chi_id_grandeur_nouvelle,
+                        appelf(
+                           nomf(parseInt),
+                           p(tableau(nomt(form),p(''vv_nouveau_numero_de_grandeur''))),
+                           p(10)
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat('' le nouveau numéro doit être numérique ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(infeg(chi_id_grandeur_nouvelle,20000)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''on ne peut pas donner à une grandeur une valeur inférieure à 20 000'')))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        tableau(nomt(form),p(''vv_ancien_numero_de_grandeur'')),
+                        appelf(
+                           element(this.__ig1),
+                           nomf(est_num),
+                           p(tableau(nomt(form),p(''vv_ancien_numero_de_grandeur'')))
+                        )
+                     )
+                  ),
+                  alors(
+                     affecte(
+                        chi_id_grandeur_ancienne,
+                        appelf(
+                           nomf(parseInt),
+                           p(tableau(nomt(form),p(''vv_ancien_numero_de_grandeur''))),
+                           p(10)
+                        )
+                     )
+                  )
+               ),
+               sinon(
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''l\''ancien numéro doit être numérique ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(infeg(chi_id_grandeur_ancienne,20000)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",''on ne peut pas renuméroter la grandeur 20 000'')))
+                  )
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            #(
+              Essai de récupération de la nouvelle grandeur.
+            ),
+            declare_variable(criteres_1202_2,obj(("T0_chi_id_grandeur",chi_id_grandeur_nouvelle))),
+            declare_variable(
+               tt1202_2,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1202),
+                     p(criteres_1202_2),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(tt1202_2.__xst,__xsu)),
+                  alors(
+                     appelf(
+                        element(this.__ig1.donnees_retournees.__xsi[__xer]),
+                        nomf(push),
+                        p(
+                           concat(''Erreur de sélection de la grandeur nouvelle ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     ),
+                     retourner(obj(("__xst",__xer),("__xme",tt1202_2.__xme)))
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(supeg(tt1202_2[__xva].length,1)),
+                  alors(
+                     #(
+                       c''est une erreur si la grandeur existe déjà en base.
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''la grandeur portant le numéro '',chi_id_grandeur_nouvelle,'' existe déjà ['',appelf(element(this.__ig1),nomf(nl2),p()))
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               criteres_1213,
+               obj(
+                  #(  ),
+                  ("c_chi_id_grandeur",chi_id_grandeur_ancienne),
+                  ("n_chi_id_grandeur",chi_id_grandeur_nouvelle)
+               )
+            ),
+            #( =========================== mise à jour effective ======================== ),
+            declare_variable(
+               tt1213,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1213),
+                     p(criteres_1213),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1213.__xst,__xsu),diffstricte(tt1213.changements,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1213.__xme)))
+                  )
+               )
+            ),
+            appelf(
+               element(this),
+               nomf(produire_les_json_des_paramètres),
+               p(mat),
+               p(d),
+               p(1)
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(enregistrer_l_ordre_des_grandeurs2),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(
+               criteres_1189,
+               obj(
+                  #(  ),
+                  ("c_chi_id_parametre",this.__ig1.donnees_recues.__xva.chi_id_parametre_en_cours_de_trie),
+                  ("n_cht_ordre_parametre",this.__ig1.donnees_recues.__xva.nouvel_ordre)
+               )
+            ),
+            #( =========================== mise à jour effective ======================== ),
+            declare_variable(
+               tt1189,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1189),
+                     p(criteres_1189),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1189.__xst,__xsu),diffstricte(tt1189.changements,1))),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme",tt1189.__xme)))
+                  )
+               )
+            ),
+            appelf(
+               element(this),
+               nomf(produire_les_json_des_paramètres),
+               p(mat),
+               p(d),
+               p(1)
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(modifier_la_valeur_de2),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_parametre,0),
+            declare_variable(chi_id_grandeur,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1182,obj(("T0_chi_id_parametre",chi_id_parametre))),
+            declare_variable(
+               tt1182,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1182),
+                     p(criteres_select_1182),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1182.__xst,__xsu),diffstricte(tt1182.__xva.length,1))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée [1182 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(liste_des_champs_a_pourvoir,[]),
+            declare_variable(cht_rev_parametre,tableau(nomt(tt1182.__xva[0]),p(''T0_cht_rev_parametre''))),
+            choix(
+               si(
+                  condition(et(diffstricte(cht_rev_parametre,''''),diffstricte(cht_rev_parametre,null))),
+                  alors(
+                     declare_variable(obj_mat2,appelf(element(this.__ig1.__rev1),nomf(t2m),p(cht_rev_parametre))),
+                     choix(
+                        si(
+                           condition(diffstricte(obj_mat2.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat(
+                                          ''erreur de conversion de '',
+                                          cht_rev_parametre,
+                                          '' ['',
+                                          appelf(element(this.__ig1),nomf(nl2),p()),
+                                          '']''
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(mat2,obj_mat2.__xva),
+                     declare_variable(l02,mat2.length),
+                     boucle(
+                        initialisation(declare_variable(i,1)),
+                        condition(inf(i,l02)),
+                        increment(affecte(i,mat2[i][12])),
+                        faire(
+                           choix(
+                              si(
+                                 condition(et(egalstricte(mat2[i][1],''champs_des_parametres''),egalstricte(mat2[i][2],''f''))),
+                                 alors(
+                                    boucle(
+                                       initialisation(declare_variable(j,plus(i,1))),
+                                       condition(inf(j,l02)),
+                                       increment(affecte(j,mat2[j][12])),
+                                       faire(
+                                          choix(
+                                             si(
+                                                condition(egalstricte(mat2[j][2],''f'')),
+                                                alors(appelf(element(liste_des_champs_a_pourvoir),nomf(push),p(mat2[j][1])))
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(criteres_select_1191,obj(("T0_chi_id_grandeur",chi_id_grandeur))),
+            declare_variable(
+               tt1191,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1191),
+                     p(criteres_select_1191),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1191.__xst,__xsu),diffstricte(tt1191.__xva.length,1))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée [1191 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_de_la_propriete,''''),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),form)),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           egalstricte(appelf(element(i),nomf(substr),p(0),p(21)),''__le_nom_de_la_valeur'')
+                        ),
+                        alors(affecte(nom_de_la_propriete,form[i]),break())
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        appelf(element(form),nomf(hasOwnProperty),p(concat(nom_de_la_propriete,''_'',chi_id_grandeur))),
+                        diffstricte(
+                           tableau(nomt(form),p(concat(nom_de_la_propriete,''_'',chi_id_grandeur))),
+                           ''''
+                        )
+                     )
+                  ),
+                  alors(
+                     declare_variable(
+                        nouvelle_valeur,
+                        tableau(nomt(form),p(concat(nom_de_la_propriete,''_'',chi_id_grandeur)))
+                     ),
+                     declare_variable(nouveau_rev_de_la_grandeur,''''),
+                     choix(
+                        si(
+                           condition(
+                              egalstricte(tableau(nomt(tt1191.__xva[0]),p(''T0_cht_rev_grandeur'')),''0'')
+                           ),
+                           alors(
+                              #( l''ancien paramètre n''avait pas de valeur ),
+                              choix(
+                                 si(
+                                    condition(diffstricte(nouvelle_valeur,'''')),
+                                    alors(
+                                       choix(
+                                          si(
+                                             condition(appelf(element(this.__ig1),nomf(est_num),p(nouvelle_valeur))),
+                                             alors(affecte(nouveau_rev_de_la_grandeur,concat(nom_de_la_propriete,''('',nouvelle_valeur,'')'')))
+                                          ),
+                                          sinon(
+                                             alors(
+                                                affecte(
+                                                   nouveau_rev_de_la_grandeur,
+                                                   concat(
+                                                      nom_de_la_propriete,
+                                                      ''(\'''',
+                                                      appelf(
+                                                         element(appelf(element(nouvelle_valeur),nomf(replace),p(/\\/g),p(''\\\\''))),
+                                                         nomf(replace),
+                                                         p(/\''/g),
+                                                         p(''\\\'''')
+                                                      ),
+                                                      ''\'')''
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        ),
+                        sinon(
+                           alors(
+                              declare_variable(liste_des_indices_a_supprimer,[]),
+                              declare_variable(
+                                 obj_ancien_rev,
+                                 appelf(
+                                    element(this.__ig1.__rev1),
+                                    nomf(t2m),
+                                    p(tableau(nomt(tt1191.__xva[0]),p(''T0_cht_rev_grandeur'')))
+                                 )
+                              ),
+                              choix(
+                                 si(
+                                    condition(diffstricte(obj_ancien_rev.__xst,__xsu)),
+                                    alors(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(
+                                                   ''erreur de conversion de '',
+                                                   tableau(nomt(tt1191.__xva[0]),p(''T0_cht_rev_grandeur'')),
+                                                   '' [ '',
+                                                   appelf(element(this.__ig1),nomf(nl2),p()),
+                                                   '']''
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              declare_variable(mat2,obj_ancien_rev.__xva),
+                              declare_variable(l02,mat2.length),
+                              boucle(
+                                 initialisation(declare_variable(i,1)),
+                                 condition(inf(i,l02)),
+                                 increment(affecte(i,mat2[i][12])),
+                                 faire(
+                                    choix(
+                                       si(
+                                          condition(
+                                             et(
+                                                egalstricte(mat2[i][1],nom_de_la_propriete),
+                                                egalstricte(mat2[i][2],''f''),
+                                                egalstricte(mat2[i][8],1),
+                                                egalstricte(
+                                                   tableau(
+                                                      nomt(
+                                                         tableau(nomt(mat2),p(plus(i,1)))
+                                                      ),
+                                                      p(2)
+                                                   ),
+                                                   ''c''
+                                                )
+                                             )
+                                          ),
+                                          alors(
+                                             choix(
+                                                si(
+                                                   condition(appelf(element(this.__ig1),nomf(est_num),p(nouvelle_valeur))),
+                                                   alors(
+                                                      affecte(
+                                                         tableau(
+                                                            nomt(
+                                                               tableau(nomt(mat2),p(plus(i,1)))
+                                                            ),
+                                                            p(1)
+                                                         ),
+                                                         nouvelle_valeur
+                                                      ),
+                                                      affecte(
+                                                         tableau(
+                                                            nomt(
+                                                               tableau(nomt(mat2),p(plus(i,1)))
+                                                            ),
+                                                            p(4)
+                                                         ),
+                                                         0
+                                                      )
+                                                   )
+                                                ),
+                                                sinon(
+                                                   alors(
+                                                      affecte(
+                                                         tableau(
+                                                            nomt(
+                                                               tableau(nomt(mat2),p(plus(i,1)))
+                                                            ),
+                                                            p(1)
+                                                         ),
+                                                         appelf(
+                                                            element(appelf(element(nouvelle_valeur),nomf(replace),p(/\\/g),p(''\\\\''))),
+                                                            nomf(replace),
+                                                            p(/\''/g),
+                                                            p(''\\\'''')
+                                                         )
+                                                      ),
+                                                      affecte(
+                                                         tableau(
+                                                            nomt(
+                                                               tableau(nomt(mat2),p(plus(i,1)))
+                                                            ),
+                                                            p(4)
+                                                         ),
+                                                         1
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       ),
+                                       sinon(
+                                          alors(
+                                             choix(
+                                                si(
+                                                   condition(
+                                                      non(appelf(element(liste_des_champs_a_pourvoir),nomf(includes),p(mat2[i][1])))
+                                                   ),
+                                                   alors(
+                                                      #( on a supprimé ce champ ),
+                                                      appelf(element(liste_des_indices_a_supprimer),nomf(push),p(i))
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              declare_variable(mat3,null),
+                              choix(
+                                 si(
+                                    condition(sup(liste_des_indices_a_supprimer.length,0)),
+                                    alors(
+                                       #(
+                                         il faut enlever de la matrice les champs complémentaires supprimés 
+                                         en commençant par la fin
+                                       ),
+                                       boucle(
+                                          initialisation(declare_variable(i,moins(liste_des_indices_a_supprimer.length,1))),
+                                          condition(supeg(i,0)),
+                                          increment(i--),
+                                          faire(
+                                             affecte(
+                                                mat3,
+                                                appelf(
+                                                   element(this.__ig1.__rev1),
+                                                   nomf(supprimer_un_element_de_la_matrice),
+                                                   p(mat2),
+                                                   p(liste_des_indices_a_supprimer[i]),
+                                                   p(0)
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 ),
+                                 sinon(alors(affecte(mat3,mat2)))
+                              ),
+                              declare_variable(obj_nouveau_rev,appelf(element(this.__ig1.__rev1),nomf(m2t),p(mat3),p(0))),
+                              choix(
+                                 si(
+                                    condition(diffstricte(obj_nouveau_rev.__xst,__xsu)),
+                                    alors(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat(
+                                                   ''erreur de conversion de '',
+                                                   tableau(nomt(tt1191.__xva[0]),p(''T0_cht_rev_grandeur'')),
+                                                   '' [ '',
+                                                   appelf(element(this.__ig1),nomf(nl2),p()),
+                                                   '']''
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              affecte(nouveau_rev_de_la_grandeur,obj_nouveau_rev.__xva)
+                           )
+                        )
+                     ),
+                     boucle(
+                        initialisation(declare_variable(i,0)),
+                        condition(inf(i,liste_des_champs_a_pourvoir.length)),
+                        increment(i++),
+                        faire(
+                           choix(
+                              si(
+                                 condition(
+                                    inf(
+                                       appelf(element(nouveau_rev_de_la_grandeur),nomf(indexOf),p(concat(liste_des_champs_a_pourvoir[i],''(''))),
+                                       0
+                                    )
+                                 ),
+                                 alors(
+                                    #( on a mis un nouveau champ qui n''est pas encore renseigné ),
+                                    choix(
+                                       si(
+                                          condition(egalstricte(liste_des_champs_a_pourvoir[i],nom_de_la_propriete)),
+                                          alors(
+                                             choix(
+                                                si(
+                                                   condition(diffstricte(nouvelle_valeur,'''')),
+                                                   alors(
+                                                      choix(
+                                                         si(
+                                                            condition(appelf(element(this.__ig1),nomf(est_num),p(nouvelle_valeur))),
+                                                            alors(affectop(''+='',nouveau_rev_de_la_grandeur,concat(nom_de_la_propriete,''('',nouvelle_valeur,'')'')))
+                                                         ),
+                                                         sinon(
+                                                            alors(
+                                                               affectop(
+                                                                  ''+='',
+                                                                  nouveau_rev_de_la_grandeur,
+                                                                  concat(
+                                                                     nom_de_la_propriete,
+                                                                     ''(\'''',
+                                                                     appelf(
+                                                                        element(appelf(element(nouvelle_valeur),nomf(replace),p(/\\/g),p(''\\\\''))),
+                                                                        nomf(replace),
+                                                                        p(/\''/g),
+                                                                        p(''\\\'''')
+                                                                     ),
+                                                                     ''\'')''
+                                                                  )
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(condition(egalstricte(nouveau_rev_de_la_grandeur,'''')),alors(affecte(nouveau_rev_de_la_grandeur,''0'')))
+                     ),
+                     declare_variable(
+                        criteres_1192,
+                        obj(
+                           #(  ),
+                           ("c_chi_id_grandeur",chi_id_grandeur),
+                           ("n_cht_rev_grandeur",nouveau_rev_de_la_grandeur)
+                        )
+                     ),
+                     #( =========================== mise à jour effective ======================== ),
+                     declare_variable(
+                        tt1192,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iij),
+                              p(1192),
+                              p(criteres_1192),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(ou(diffstricte(tt1192.__xst,__xsu),diffstricte(tt1192.changements,1))),
+                           alors(
+                              retourner(obj(("__xst",__xer),("__xme",tt1192.__xme)))
+                           )
+                        )
+                     ),
+                     appelf(
+                        element(this),
+                        nomf(produire_les_json_des_paramètres),
+                        p(mat),
+                        p(d),
+                        p(1)
+                     ),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xer)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(modifier_verouille_de2),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            choix(
+               si(
+                  condition(diffstricte(this.__ig1.donnees_retournees.chi_id_utilisateur,1)),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''seul l\''utilisateur principal peut vérouiller ou dévérouiller une grandeur '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(chi_id_parametre,0),
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(decallage_vertical,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''decallage_vertical''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              decallage_vertical,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1182,obj(("T0_chi_id_parametre",chi_id_parametre))),
+            declare_variable(
+               tt1182,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1182),
+                     p(criteres_select_1182),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1182.__xst,__xsu),diffstricte(tt1182.__xva.length,1))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée [1182 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        appelf(element(form),nomf(hasOwnProperty),p(concat(''che_verouillee_grandeur_'',chi_id_grandeur))),
+                        diffstricte(
+                           tableau(nomt(form),p(concat(''chp_cle_grandeur_'',chi_id_grandeur))),
+                           ''''
+                        )
+                     )
+                  ),
+                  alors(
+                     declare_variable(
+                        criteres_1215,
+                        obj(
+                           #(  ),
+                           ("c_chi_id_grandeur",chi_id_grandeur),
+                           (
+                              "n_che_verouillee_grandeur",
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(nomt(form),p(concat(''che_verouillee_grandeur_'',chi_id_grandeur)))
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     #( =========================== mise à jour effective ======================== ),
+                     declare_variable(
+                        tt1215,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iij),
+                              p(1215),
+                              p(criteres_1215),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(ou(diffstricte(tt1215.__xst,__xsu),diffstricte(tt1215.changements,1))),
+                           alors(
+                              retourner(obj(("__xst",__xer),("__xme",tt1215.__xme)))
+                           )
+                        )
+                     ),
+                     appelf(
+                        element(this),
+                        nomf(produire_les_json_des_paramètres),
+                        p(mat),
+                        p(d),
+                        p(1)
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xsu),
+                           ("__xva",obj(("decallage_vertical",decallage_vertical)))
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xer)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(modifier_actif_de2),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_parametre,0),
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(decallage_vertical,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''decallage_vertical''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              decallage_vertical,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1182,obj(("T0_chi_id_parametre",chi_id_parametre))),
+            declare_variable(
+               tt1182,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1182),
+                     p(criteres_select_1182),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1182.__xst,__xsu),diffstricte(tt1182.__xva.length,1))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée [1182 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        appelf(element(form),nomf(hasOwnProperty),p(concat(''che_actif_grandeur_'',chi_id_grandeur))),
+                        diffstricte(
+                           tableau(nomt(form),p(concat(''chp_cle_grandeur_'',chi_id_grandeur))),
+                           ''''
+                        )
+                     )
+                  ),
+                  alors(
+                     declare_variable(
+                        criteres_1190,
+                        obj(
+                           #(  ),
+                           ("c_chi_id_grandeur",chi_id_grandeur),
+                           (
+                              "n_che_actif_grandeur",
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(nomt(form),p(concat(''che_actif_grandeur_'',chi_id_grandeur)))
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     #( =========================== mise à jour effective ======================== ),
+                     declare_variable(
+                        tt1190,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iij),
+                              p(1190),
+                              p(criteres_1190),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(ou(diffstricte(tt1190.__xst,__xsu),diffstricte(tt1190.changements,1))),
+                           alors(
+                              retourner(obj(("__xst",__xer),("__xme",tt1190.__xme)))
+                           )
+                        )
+                     ),
+                     appelf(
+                        element(this),
+                        nomf(produire_les_json_des_paramètres),
+                        p(mat),
+                        p(d),
+                        p(1)
+                     ),
+                     retourner(
+                        obj(
+                           ("__xst",__xsu),
+                           ("__xva",obj(("decallage_vertical",decallage_vertical)))
+                        )
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xer)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(modifier_la_cle_de2),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_parametre,0),
+            declare_variable(chi_id_grandeur,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1182,obj(("T0_chi_id_parametre",chi_id_parametre))),
+            declare_variable(
+               tt1182,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1182),
+                     p(criteres_select_1182),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1182.__xst,__xsu),diffstricte(tt1182.__xva.length,1))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée [1182 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(chc_couleur_texte_grandeur,null),
+            choix(
+               si(
+                  condition(
+                     appelf(element(form),nomf(hasOwnProperty),p(concat(''chc_couleur_texte_grandeur_'',chi_id_grandeur)))
+                  ),
+                  alors(
+                     affecte(
+                        chc_couleur_texte_grandeur,
+                        tableau(nomt(form),p(concat(''chc_couleur_texte_grandeur_'',chi_id_grandeur)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(chc_couleur_fond_grandeur,null),
+            choix(
+               si(
+                  condition(
+                     appelf(element(form),nomf(hasOwnProperty),p(concat(''chc_couleur_fond_grandeur_'',chi_id_grandeur)))
+                  ),
+                  alors(
+                     affecte(
+                        chc_couleur_fond_grandeur,
+                        tableau(nomt(form),p(concat(''chc_couleur_fond_grandeur_'',chi_id_grandeur)))
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(egalstricte(chc_couleur_fond_grandeur,null),egalstricte(chc_couleur_texte_grandeur,null),egalstricte(chc_couleur_fond_grandeur,''''),egalstricte(chc_couleur_texte_grandeur,''''))),
+                  alors(affecte(chc_couleur_fond_grandeur,null),affecte(chc_couleur_texte_grandeur,null))
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     et(
+                        appelf(element(form),nomf(hasOwnProperty),p(concat(''chp_cle_grandeur_'',chi_id_grandeur))),
+                        diffstricte(
+                           tableau(nomt(form),p(concat(''chp_cle_grandeur_'',chi_id_grandeur))),
+                           ''''
+                        )
+                     )
+                  ),
+                  alors(
+                     declare_variable(
+                        criteres_1188,
+                        obj(
+                           #(  ),
+                           ("c_chi_id_grandeur",chi_id_grandeur),
+                           (
+                              "n_chp_cle_grandeur",
+                              tableau(nomt(form),p(concat(''chp_cle_grandeur_'',chi_id_grandeur)))
+                           ),
+                           ("n_chc_couleur_texte_grandeur",chc_couleur_texte_grandeur),
+                           ("n_chc_couleur_fond_grandeur",chc_couleur_fond_grandeur)
+                        )
+                     ),
+                     #( =========================== mise à jour effective ======================== ),
+                     declare_variable(
+                        tt1188,
+                        await(
+                           appelf(
+                              element(this.__ig1),
+                              nomf(sql_iij),
+                              p(1188),
+                              p(criteres_1188),
+                              p(__db1)
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(ou(diffstricte(tt1188.__xst,__xsu),diffstricte(tt1188.changements,1))),
+                           alors(
+                              retourner(obj(("__xst",__xer),("__xme",tt1188.__xme)))
+                           )
+                        )
+                     ),
+                     appelf(
+                        element(this),
+                        nomf(produire_les_json_des_paramètres),
+                        p(mat),
+                        p(d),
+                        p(1)
+                     ),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xer)))
+         )
+      ),
+      #(
+        =========================== fragment ========================================================================
+      ),
+      méthode(
+         definition(nom(enregister_nouveau_parametre1),asynchrone(),argument(mat),argument(d)),
+         contenu(
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(nom_formulaire,tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__co1''))),
+            declare_variable(
+               form,
+               tableau(
+                  nomt(tableau(nomt(this.__ig1.donnees_recues[__xva]),p(''__fo1''))),
+                  p(nom_formulaire)
+               )
+            ),
+            declare_variable(
+               __db1,
+               await(appelf(element(this.__ig1),nomf(ouvrir_bdd),p(this.__ig1.options_generales.base_de_travail)))
+            ),
+            declare_variable(criteres_select_1182,obj(("T0_chi_id_parametre",chi_id_parametre))),
+            declare_variable(
+               tt1182,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1182),
+                     p(criteres_select_1182),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1182.__xst,__xsu),diffstricte(tt1182.__xva.length,1))),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''enregistrement non trouvé : aucune modification effectuée [1182 '',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               obj_mat2,
+               appelf(
+                  element(this.__ig1.__rev1),
+                  nomf(t2m),
+                  p(tableau(nomt(tt1182.__xva[0]),p(''T0_cht_rev_parametre'')))
+               )
+            ),
+            choix(
+               si(
+                  condition(diffstricte(obj_mat2.__xst,__xsu)),
+                  alors(
+                     retourner(obj(("__xst",__xer),("__xme","erreur de conversion de rev")))
+                  )
+               )
+            ),
+            declare_variable(mat2,obj_mat2.__xva),
+            declare_variable(l02,mat2.length),
+            declare_variable(le_tableau_parametre,[]),
+            boucle(
+               initialisation(declare_variable(i,1)),
+               condition(inf(i,l02)),
+               increment(affecte(i,mat2[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(et(egalstricte(mat2[i][1],''champs_des_parametres''),egalstricte(mat2[i][2],''f''))),
+                        alors(
+                           boucle(
+                              initialisation(declare_variable(j,plus(i,1))),
+                              condition(inf(j,l02)),
+                              increment(affecte(j,mat2[j][12])),
+                              faire(
+                                 declare_variable(nom_du_parametre,''''),
+                                 declare_variable(genre_du_parametre,0),
+                                 declare_variable(commentaire_du_parametre,''''),
+                                 choix(
+                                    si(
+                                       condition(egalstricte(mat2[j][2],''f'')),
+                                       alors(
+                                          affecte(nom_du_parametre,mat2[j][1]),
+                                          boucle(
+                                             initialisation(declare_variable(k,plus(j,1))),
+                                             condition(inf(k,l02)),
+                                             increment(affecte(k,mat2[k][12])),
+                                             faire(
+                                                choix(
+                                                   si(
+                                                      condition(
+                                                         et(
+                                                            egalstricte(mat2[k][1],''genre_du_parametre''),
+                                                            egalstricte(mat2[k][2],''f''),
+                                                            egalstricte(mat2[k][8],1),
+                                                            egalstricte(
+                                                               tableau(
+                                                                  nomt(
+                                                                     tableau(nomt(mat2),p(plus(k,1)))
+                                                                  ),
+                                                                  p(2)
+                                                               ),
+                                                               ''c''
+                                                            )
+                                                         )
+                                                      ),
+                                                      alors(
+                                                         affecte(
+                                                            genre_du_parametre,
+                                                            appelf(
+                                                               nomf(parseInt),
+                                                               p(
+                                                                  tableau(
+                                                                     nomt(
+                                                                        tableau(nomt(mat2),p(plus(k,1)))
+                                                                     ),
+                                                                     p(1)
+                                                                  )
+                                                               ),
+                                                               p(10)
+                                                            )
+                                                         )
+                                                      )
+                                                   ),
+                                                   sinonsi(
+                                                      condition(et(egalstricte(mat2[k][1],''#''),egalstricte(mat2[k][2],''f''))),
+                                                      alors(
+                                                         affecte(commentaire_du_parametre,mat2[k][13]),
+                                                         #(  )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 ),
+                                 appelf(
+                                    element(le_tableau_parametre),
+                                    nomf(push),
+                                    p(obj(("nom_du_parametre",nom_du_parametre),("genre_du_parametre",genre_du_parametre),("commentaire_du_parametre",commentaire_du_parametre)))
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(chemin_fichier__liste_des_genres,concat(''../rev_'',this.__ig1.donnees_retournees.chi_id_projet,''/__fichiers_generes/__liste_des_genres.json'')),
+            choix(
+               si(condition(egalstricte(this.__ig1.donnees_retournees._CA_,2)),alors(affecte(chemin_fichier__liste_des_genres,''../rev_2/__fichiers_generes/__liste_des_genres.json'')))
+            ),
+            choix(
+               si(
+                  condition(
+                     non(
+                        await(appelf(element(this.__ig1),nomf(is_file),p(chemin_fichier__liste_des_genres)))
+                     )
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(contenu_texte__liste_des_genres,''''),
+            essayer(
+               faire(
+                  affecte(
+                     contenu_texte__liste_des_genres,
+                     await(appelf(element(this.__ig1),nomf(file_get_contents),p(chemin_fichier__liste_des_genres)))
+                  )
+               ),
+               sierreur(
+                  e,
+                  faire(appelf(element(this.__ig1),nomf(ma_trace1),p("e="),p(e.stack)))
+               )
+            ),
+            declare_variable(contenu_json__liste_des_genres,appelf(element(JSON),nomf(parse),p(contenu_texte__liste_des_genres))),
+            declare_variable(cht_rev_grandeur,''''),
+            declare_variable(le_genre_est_numerique,false),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),le_tableau_parametre)),
+               faire(
+                  declare_variable(genre_du_parametre,le_tableau_parametre[i].genre_du_parametre),
+                  declare_variable(nom_du_parametre,le_tableau_parametre[i].nom_du_parametre),
+                  choix(
+                     si(
+                        condition(
+                           et(appelf(element(form),nomf(hasOwnProperty),p(nom_du_parametre)),diffstricte(form[nom_du_parametre],''''))
+                        ),
+                        alors(
+                           declare_variable(valeur,form[nom_du_parametre]),
+                           choix(
+                              si(
+                                 condition(
+                                    non(appelf(element(contenu_json__liste_des_genres),nomf(hasOwnProperty),p(genre_du_parametre)))
+                                 ),
+                                 alors(
+                                    retourner(
+                                       obj(
+                                          ("__xst",__xer),
+                                          (
+                                             "__xme",
+                                             concat("genre non trouvé ",appelf(element(this.__ig1),nomf(nl2),p()))
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           ),
+                           declare_variable(le_genre,contenu_json__liste_des_genres[genre_du_parametre]),
+                           declare_variable(chp_espece_genre,appelf(element(le_genre.chp_espece_genre),nomf(toUpperCase),p())),
+                           choix(
+                              si(
+                                 condition(
+                                    ou(
+                                       supeg(appelf(element(chp_espece_genre),nomf(indexOf),p(''INT'')),0),
+                                       supeg(appelf(element(chp_espece_genre),nomf(indexOf),p(''DECIMAL'')),0),
+                                       supeg(appelf(element(chp_espece_genre),nomf(indexOf),p(''FLOAT'')),0)
+                                    )
+                                 ),
+                                 alors(affectop(''+='',cht_rev_grandeur,concat(nom_du_parametre,''('',valeur,'')'')))
+                              ),
+                              sinon(
+                                 alors(
+                                    affectop(
+                                       ''+='',
+                                       cht_rev_grandeur,
+                                       concat(
+                                          nom_du_parametre,
+                                          ''(\'''',
+                                          appelf(
+                                             element(appelf(element(valeur),nomf(replace),p(/\\/g),p(''\\\\''))),
+                                             nomf(replace),
+                                             p(/\''/g),
+                                             p(''\\\'''')
+                                          ),
+                                          ''\'')''
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(condition(egalstricte(cht_rev_grandeur,'''')),alors(affecte(cht_rev_grandeur,''0'')))
+            ),
+            choix(
+               si(
+                  condition(
+                     non(
+                        et(
+                           appelf(element(form),nomf(hasOwnProperty),p(''che_actif_grandeur'')),
+                           appelf(
+                              element(this.__ig1),
+                              nomf(est_num),
+                              p(tableau(nomt(form),p(''che_actif_grandeur'')))
+                           )
+                        )
+                     )
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''che_actif_grandeur est absent ou non numérique ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     non(
+                        et(
+                           appelf(element(form),nomf(hasOwnProperty),p(''chp_cle_grandeur'')),
+                           diffstricte(tableau(nomt(form),p(''chp_cle_grandeur'')),'''')
+                        )
+                     )
+                  ),
+                  alors(
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(''chp_cle_grandeur est absent ou vide ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            await(appelf(element(__db1),nomf(exec),p(''BEGIN TRANSACTION;''))),
+            #(
+              on insert avec un rev null et on ira le modifier plus bas
+            ),
+            declare_variable(
+               criteres_1187,
+               obj(
+                  (
+                     "donnees",
+                     defTab(
+                        p(
+                           obj(
+                              ("chx_parametre_grandeur",chi_id_parametre),
+                              ("chp_cle_grandeur",tableau(nomt(form),p(''chp_cle_grandeur''))),
+                              ("cht_rev_grandeur",cht_rev_grandeur),
+                              ("che_actif_grandeur",0)
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               tt1187,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1187),
+                     p(criteres_1187),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(
+                     ou(
+                        diffstricte(tt1187.__xst,__xsu),
+                        diffstricte(tableau(nomt(tt1187),p(''changements'')),1)
+                     )
+                  ),
+                  alors(
+                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
+                     retourner(
+                        obj(
+                           ("__xst",__xer),
+                           (
+                              "__xme",
+                              concat(tt1187.__xme,'' l\''insertion a échoué ['',appelf(element(this.__ig1),nomf(nl2),p()),'']'')
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(chi_id_grandeur,tableau(nomt(tt1187),p(''nouvel_id''))),
+            declare_variable(che_actif_grandeur,0),
+            declare_variable(chp_cle_grandeur,tableau(nomt(form),p(''chp_cle_grandeur''))),
+            #(
+              on réécrit le rev au bon format
+            ),
+            affecte(che_actif_grandeur,0),
+            #( let cht_rev_grandeur=''''; ),
+            declare_variable(
+               criteres_1188,
+               obj(
+                  #(  ),
+                  ("c_chi_id_grandeur",chi_id_grandeur),
+                  ("n_chp_cle_grandeur",chp_cle_grandeur),
+                  ("n_chc_couleur_texte_grandeur",null),
+                  ("n_chc_couleur_fond_grandeur",null)
+               )
+            ),
+            declare_variable(
+               tt1188,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1188),
+                     p(criteres_1188),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1188.__xst,__xsu),diffstricte(tt1188.changements,1))),
+                  alors(
+                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
+                     retourner(obj(("__xst",__xer),("__xme",tt1188.__xme)))
+                  )
+               )
+            ),
+            #(
+              une fois qu''on a ajouté une grandeur pour ce paramètre,
+              il faut aller modifier le rev de tri des paramètres
+            ),
+            declare_variable(le_rev_ordre,tableau(nomt(tt1182.__xva[0]),p(''T0_cht_ordre_parametre''))),
+            choix(
+               si(
+                  condition(egalstricte(le_rev_ordre,null)),
+                  alors(
+                     affecte(le_rev_ordre,appelf(nomf(String),p(chi_id_grandeur)))
+                  )
+               ),
+               sinon(
+                  alors(affecte(le_rev_ordre,concat(chi_id_grandeur,'','',le_rev_ordre)))
+               )
+            ),
+            declare_variable(
+               criteres_1189,
+               obj(
+                  #(  ),
+                  ("c_chi_id_parametre",chi_id_parametre),
+                  ("n_cht_ordre_parametre",le_rev_ordre)
+               )
+            ),
+            #( =========================== mise à jour effective ======================== ),
+            declare_variable(
+               tt1189,
+               await(
+                  appelf(
+                     element(this.__ig1),
+                     nomf(sql_iij),
+                     p(1189),
+                     p(criteres_1189),
+                     p(__db1)
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(ou(diffstricte(tt1189.__xst,__xsu),diffstricte(tt1189.changements,1))),
+                  alors(
+                     await(appelf(element(__db1),nomf(exec),p(''ROLLBACK;''))),
+                     retourner(obj(("__xst",__xer),("__xme",tt1189.__xme)))
+                  )
+               )
+            ),
+            await(appelf(element(__db1),nomf(exec),p(''COMMIT;''))),
+            retourner(obj(("__xst",__xsu)))
+         )
+      )
+   )
+)','class parametres1{
+    /*
+      =============================================================================================================
+    */
+    signaler_une_erreur_asynchrone( le_message ){
+        for( let i=0 ; i < this.__ig1.options_generales.les_clients_du_ws.length ; i++ ){
+            let le_colis={
+                 /*  */
+                "__xst" : __xsu ,
+                "__xsi" : {0 : [le_message] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+                "__xva" : {} ,
+                "__xac" : ''''
+            };
+            try{
+                this.__ig1.options_generales.les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+            } catch {}
+        }
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant[''T0_chi_id_parametre'']};
+        let tt1186=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T0`.`che_verouillee_grandeur` , 
+        `T0`.`chc_couleur_texte_grandeur` , `T0`.`chc_couleur_fond_grandeur`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+        
+        WHERE `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1186 , criteres_select_1186 , __db1 );
+        if(tt1186.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : ''erreur [1186 '' + this.__ig1.nl2() + '']''});
+        }
+        this.__ig1.donnees_retournees.__xva[''parametres_actuels'']=tt1186.__xva;
+        return({"__xst" : __xsu ,"" : tt1186.__xva});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async produire_les_json_des_paramètres( mat , d , chi_id_bdd ){
+        /*
+          appel asynchrone
+        */
+        let chemin_bdd_1=''./__bases_de_donnees/bdd_'' + chi_id_bdd + ''.sqlite'';
+        let __db1=null;
+        try{
+            __db1=new Database( chemin_bdd_1 , {"create" : false} );
+        }catch(e){
+            this.signaler_une_erreur_asynchrone( this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
+        }
+        let chemin_fichier__liste_des_grandeurs=''./__fichiers_generes/__json_des_grandeurs_de_la_base_'' + chi_id_bdd + ''_.json'';
+        let __json_des_parametres_de_la_base={};
+        let tt1224=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T0`.`chc_couleur_texte_grandeur` , `T0`.`chc_couleur_fond_grandeur` , `T1`.`cht_rev_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+         ORDER BY  `T0`.`chx_parametre_grandeur` ASC, `T0`.`chi_id_grandeur` ASC
+        ;
+        */
+        /*sql_inclure_fin*/ 1224 , {} , __db1 );
+        if(tt1224.__xst !== __xsu){
+            __db1.close();
+            this.signaler_une_erreur_asynchrone( this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : tt1224.__xme});
+        }
+        let chx_parametre_grandeur=0;
+        let __liste_des_grandeurs={};
+        let liste_des_complements={};
+        for(let i in tt1224.__xva){
+            if(tt1224.__xva[i].T0_chx_parametre_grandeur !== chx_parametre_grandeur){
+                chx_parametre_grandeur=tt1224.__xva[i].T0_chx_parametre_grandeur;
+                liste_des_complements={};
+                if(tt1224.__xva[i].T1_cht_rev_parametre !== ''#()''){
+                    let le_rev_texte=tt1224.__xva[i].T1_cht_rev_parametre;
+                    let obj1=this.__ig1.__rev1.t2m( le_rev_texte );
+                    if(obj1.__xst !== __xsu){
+                        __db1.close();
+                        this.signaler_une_erreur_asynchrone( "erreur de conversion de paramètre \"" + le_rev_texte + ''"'' + this.__ig1.nl2() );
+                        return({"__xst" : __xer ,"__xme" : "erreur de conversion de paramètre \"" + le_rev_texte + ''"''});
+                    }
+                    let mat1=obj1.__xva;
+                    const l01=mat1.length;
+                    for( let j=1 ; j < l01 ; j=mat1[j][12] ){
+                        if(mat1[j][1] === ''champs_des_parametres'' && mat1[j][2] === ''f''){
+                            for( let k=j + 1 ; k < l01 ; k=mat1[k][12] ){
+                                if(mat1[k][1] === ''#'' && mat1[k][2] === ''f''){
+                                }else if(mat1[k][2] === ''f''){
+                                    let nom_du_complement=mat1[k][1];
+                                    let genre_du_parametre=0;
+                                    let libelle='''';
+                                    for( let l=k + 1 ; l < l01 ; l=mat1[l][12] ){
+                                        if(mat1[l][1] === ''genre_du_parametre'' && mat1[l][2] === ''f'' && mat1[l][8] === 1 && mat1[l + 1][2] === ''c''){
+                                            genre_du_parametre=parseInt( mat1[l + 1][1] , 10 );
+                                        }else if(mat1[l][1] === ''#'' && mat1[l][2] === ''f''){
+                                            libelle=mat1[l][13];
+                                        }
+                                    }
+                                    liste_des_complements[nom_du_complement]={"genre_du_parametre" : genre_du_parametre ,"libelle" : libelle};
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur]={
+                "__cle" : tt1224.__xva[i].T0_chp_cle_grandeur ,
+                "__rev" : tt1224.__xva[i].T0_cht_rev_grandeur ,
+                "__actif" : tt1224.__xva[i].T0_che_actif_grandeur ,
+                "__couleur_texte" : tt1224.__xva[i].T0_chc_couleur_texte_grandeur ,
+                "__couleur_fond" : tt1224.__xva[i].T0_chc_couleur_fond_grandeur ,
+                "__liste_des_parametres" : []
+            };
+            if(tt1224.__xva[i].T0_cht_rev_grandeur !== ''0''){
+                let objt=this.__ig1.__rev1.t2m( tt1224.__xva[i].T0_cht_rev_grandeur );
+                if(objt.__xst === __xsu){
+                    const l01=objt.__xva.length;
+                    for( let j=1 ; j < l01 ; j=objt.__xva[j][12] ){
+                        if(objt.__xva[j][2] === ''f'' && objt.__xva[j][8] === 1 && objt.__xva[j + 1][2] === ''c''){
+                            if(liste_des_complements.hasOwnProperty( objt.__xva[j][1] )){
+                                __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][''__liste_des_parametres''].push( {
+                                         /*  */
+                                        "__nom" : objt.__xva[j][1] ,
+                                        "genre_du_parametre" : liste_des_complements[objt.__xva[j][1]].genre_du_parametre ,
+                                        "libelle" : liste_des_complements[objt.__xva[j][1]].libelle
+                                    } );
+                            }
+                            if(this.__ig1.est_num( objt.__xva[j + 1][1] )){
+                                if(this.__ig1.est_entier_positif( objt.__xva[j + 1][1] )){
+                                    __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][objt.__xva[j][1]]=parseInt( objt.__xva[j + 1][1] , 10 );
+                                }else{
+                                    __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][objt.__xva[j][1]]=parseFloat( objt.__xva[j + 1][1] );
+                                }
+                            }else{
+                                __liste_des_grandeurs[tt1224.__xva[i].T0_chi_id_grandeur][objt.__xva[j][1]]=objt.__xva[j + 1][1];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let contenu_fichier__json_des_parametres_de_la_base='''' + JSON.stringify( __liste_des_grandeurs , null , 2 );
+        try{
+            await this.__ig1.file_put_contents( chemin_fichier__liste_des_grandeurs , contenu_fichier__json_des_parametres_de_la_base );
+        }catch{
+            __db1.close();
+            this.signaler_une_erreur_asynchrone( ''erreur d\''écriture du fichier json des genres ['' + this.__ig1.nl2( e ) + '']'' );
+            return({"__xst" : __xer ,"__xme" : ''erreur d\''écriture du fichier json des genres ['' + this.__ig1.nl2( e ) + '']''});
+        }
+        for( let i=0 ; i < this.__ig1.options_generales.les_clients_du_ws.length ; i++ ){
+            let le_colis={
+                "__xst" : __xsu ,
+                "__xsi" : {0 : [''maj __liste_des_grandeurs par une autre session''] ,1 : [] ,2 : [] ,3 : [] ,4 : []} ,
+                "__xva" : {} ,
+                "__xac" : '''' ,
+                "__liste_des_grandeurs" : __liste_des_grandeurs ,
+                "__base_des_grandeurs" : chi_id_bdd ,
+                "__maj_interactive_des_grandeurs" : 1
+            };
+            try{
+                this.__ig1.options_generales.les_clients_du_ws[i].socket.send( JSON.stringify( le_colis ) );
+            } catch {}
+        }
+        __db1.close();
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async supprimer_une_grandeur1( mat , d ){
+        let chi_id_grandeur=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_grandeur <= 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        if(chi_id_grandeur <= 20000){
+            return({"__xst" : __xer ,"__xme" : ''on ne peut pas supprimer la grandeur 20000''});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_1202={
+             /*  */
+            "T0_chi_id_grandeur" : chi_id_grandeur
+        };
+        let tt1202=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+        
+        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1202 , criteres_1202 , __db1 );
+        if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1202.__xme});
+        }
+        let criteres_1214={
+             /*  */
+            "chi_id_grandeur" : chi_id_grandeur
+        };
+        let tt1214=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_grandeurs
+        WHERE (   `chi_id_grandeur` = :chi_id_grandeur
+           AND `che_verouillee_grandeur` = 0)
+        */
+        /*sql_inclure_fin*/ 1214 , criteres_1214 , __db1 );
+        /*  */
+        if(tt1214.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : tt1214.__xme});
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async vv_grandeurs_nouveau_numero1( mat , d ){
+        let chi_id_grandeur_ancienne=0;
+        let chi_id_grandeur_nouvelle=0;
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        if(form[''vv_nouveau_numero_de_grandeur''] && this.__ig1.est_num( form[''vv_nouveau_numero_de_grandeur''] )){
+            chi_id_grandeur_nouvelle=parseInt( form[''vv_nouveau_numero_de_grandeur''] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : '' le nouveau numéro doit être numérique ['' + this.__ig1.nl2() + '']''});
+        }
+        if(chi_id_grandeur_nouvelle <= 20000){
+            return({"__xst" : __xer ,"__xme" : ''on ne peut pas donner à une grandeur une valeur inférieure à 20 000''});
+        }
+        if(form[''vv_ancien_numero_de_grandeur''] && this.__ig1.est_num( form[''vv_ancien_numero_de_grandeur''] )){
+            chi_id_grandeur_ancienne=parseInt( form[''vv_ancien_numero_de_grandeur''] , 10 );
+        }else{
+            return({"__xst" : __xer ,"__xme" : ''l\''ancien numéro doit être numérique ['' + this.__ig1.nl2() + '']''});
+        }
+        if(chi_id_grandeur_ancienne <= 20000){
+            return({"__xst" : __xer ,"__xme" : ''on ne peut pas renuméroter la grandeur 20 000''});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        /*
+          Essai de récupération de la nouvelle grandeur.
+        */
+        let criteres_1202_2={"T0_chi_id_grandeur" : chi_id_grandeur_nouvelle};
+        let tt1202_2=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur` , 
+        `T1`.`chp_cle_parametre` , `T1`.`chp_nom_parametre` , `T1`.`cht_rev_parametre` , `T1`.`cht_ordre_parametre` , `T1`.`che_pour_admin_parametre`
+         FROM b1.tbl_grandeurs T0
+         LEFT JOIN b1.tbl_parametres T1 ON T1.chi_id_parametre = T0.chx_parametre_grandeur
+        
+        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1202 , criteres_1202_2 , __db1 );
+        if(tt1202_2.__xst !== __xsu){
+            this.__ig1.donnees_retournees.__xsi[__xer].push( ''Erreur de sélection de la grandeur nouvelle ['' + this.__ig1.nl2() );
+            return({"__xst" : __xer ,"__xme" : tt1202_2.__xme});
+        }
+        if(tt1202_2[__xva].length >= 1){
+            /*
+              c''est une erreur si la grandeur existe déjà en base.
+            */
+            return({"__xst" : __xer ,"__xme" : ''la grandeur portant le numéro '' + chi_id_grandeur_nouvelle + '' existe déjà ['' + this.__ig1.nl2()});
+        }
+        let criteres_1213={
+             /*  */
+            "c_chi_id_grandeur" : chi_id_grandeur_ancienne ,
+            "n_chi_id_grandeur" : chi_id_grandeur_nouvelle
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt1213=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_grandeurs SET 
+           `chi_id_grandeur` = :n_chi_id_grandeur
+        WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+        */
+        /*sql_inclure_fin*/ 1213 , criteres_1213 , __db1 );
+        if(tt1213.__xst !== __xsu || tt1213.changements !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1213.__xme});
+        }
+        this.produire_les_json_des_paramètres( mat , d , 1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async enregistrer_l_ordre_des_grandeurs2( mat , d ){
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_1189={
+             /*  */
+            "c_chi_id_parametre" : this.__ig1.donnees_recues.__xva.chi_id_parametre_en_cours_de_trie ,
+            "n_cht_ordre_parametre" : this.__ig1.donnees_recues.__xva.nouvel_ordre
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt1189=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_parametres SET 
+           `cht_ordre_parametre` = :n_cht_ordre_parametre
+        WHERE `chi_id_parametre` = :c_chi_id_parametre ;
+        */
+        /*sql_inclure_fin*/ 1189 , criteres_1189 , __db1 );
+        if(tt1189.__xst !== __xsu || tt1189.changements !== 1){
+            return({"__xst" : __xer ,"__xme" : tt1189.__xme});
+        }
+        this.produire_les_json_des_paramètres( mat , d , 1 );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async modifier_la_valeur_de2( mat , d ){
+        let chi_id_parametre=0;
+        let chi_id_grandeur=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
+        let tt1182=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1182 '' + this.__ig1.nl2() + '']''});
+        }
+        let liste_des_champs_a_pourvoir=[];
+        let cht_rev_parametre=tt1182.__xva[0][''T0_cht_rev_parametre''];
+        if(cht_rev_parametre !== '''' && cht_rev_parametre !== null){
+            let obj_mat2=this.__ig1.__rev1.t2m( cht_rev_parametre );
+            if(obj_mat2.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : ''erreur de conversion de '' + cht_rev_parametre + '' ['' + this.__ig1.nl2() + '']''});
+            }
+            let mat2=obj_mat2.__xva;
+            let l02=mat2.length;
+            for( let i=1 ; i < l02 ; i=mat2[i][12] ){
+                if(mat2[i][1] === ''champs_des_parametres'' && mat2[i][2] === ''f''){
+                    for( let j=i + 1 ; j < l02 ; j=mat2[j][12] ){
+                        if(mat2[j][2] === ''f''){
+                            liste_des_champs_a_pourvoir.push( mat2[j][1] );
+                        }
+                    }
+                }
+            }
+        }
+        let criteres_select_1191={"T0_chi_id_grandeur" : chi_id_grandeur};
+        let tt1191=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_grandeur` , `T0`.`chx_parametre_grandeur` , `T0`.`chp_cle_grandeur` , `T0`.`cht_rev_grandeur` , `T0`.`che_actif_grandeur`
+         FROM b1.tbl_grandeurs T0
+        WHERE `T0`.`chi_id_grandeur` = :T0_chi_id_grandeur
+        ;
+        */
+        /*sql_inclure_fin*/ 1191 , criteres_select_1191 , __db1 );
+        if(tt1191.__xst !== __xsu || tt1191.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1191 '' + this.__ig1.nl2() + '']''});
+        }
+        let nom_de_la_propriete='''';
+        for(let i in form){
+            if(i.substr( 0 , 21 ) === ''__le_nom_de_la_valeur''){
+                nom_de_la_propriete=form[i];
+                break;
+            }
+        }
+        if(form.hasOwnProperty( nom_de_la_propriete + ''_'' + chi_id_grandeur )
+               && form[nom_de_la_propriete + ''_'' + chi_id_grandeur] !== ''''
+        ){
+            let nouvelle_valeur=form[nom_de_la_propriete + ''_'' + chi_id_grandeur];
+            let nouveau_rev_de_la_grandeur='''';
+            if(tt1191.__xva[0][''T0_cht_rev_grandeur''] === ''0''){
+                /* l''ancien paramètre n''avait pas de valeur */
+                if(nouvelle_valeur !== ''''){
+                    if(this.__ig1.est_num( nouvelle_valeur )){
+                        nouveau_rev_de_la_grandeur=nom_de_la_propriete + ''('' + nouvelle_valeur + '')'';
+                    }else{
+                        nouveau_rev_de_la_grandeur=nom_de_la_propriete + ''(\'''' + nouvelle_valeur.replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                    }
+                }
+            }else{
+                let liste_des_indices_a_supprimer=[];
+                let obj_ancien_rev=this.__ig1.__rev1.t2m( tt1191.__xva[0][''T0_cht_rev_grandeur''] );
+                if(obj_ancien_rev.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : ''erreur de conversion de '' + tt1191.__xva[0][''T0_cht_rev_grandeur''] + '' [ '' + this.__ig1.nl2() + '']''});
+                }
+                let mat2=obj_ancien_rev.__xva;
+                let l02=mat2.length;
+                for( let i=1 ; i < l02 ; i=mat2[i][12] ){
+                    if(mat2[i][1] === nom_de_la_propriete && mat2[i][2] === ''f'' && mat2[i][8] === 1 && mat2[i + 1][2] === ''c''){
+                        if(this.__ig1.est_num( nouvelle_valeur )){
+                            mat2[i + 1][1]=nouvelle_valeur;
+                            mat2[i + 1][4]=0;
+                        }else{
+                            mat2[i + 1][1]=nouvelle_valeur.replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' );
+                            mat2[i + 1][4]=1;
+                        }
+                    }else{
+                        if(!liste_des_champs_a_pourvoir.includes( mat2[i][1] )){
+                            /* on a supprimé ce champ */
+                            liste_des_indices_a_supprimer.push( i );
+                        }
+                    }
+                }
+                let mat3=null;
+                if(liste_des_indices_a_supprimer.length > 0){
+                    /*
+                      il faut enlever de la matrice les champs complémentaires supprimés 
+                      en commençant par la fin
+                    */
+                    for( let i=liste_des_indices_a_supprimer.length - 1 ; i >= 0 ; i-- ){
+                        mat3=this.__ig1.__rev1.supprimer_un_element_de_la_matrice( mat2 , liste_des_indices_a_supprimer[i] , 0 );
+                    }
+                }else{
+                    mat3=mat2;
+                }
+                let obj_nouveau_rev=this.__ig1.__rev1.m2t( mat3 , 0 );
+                if(obj_nouveau_rev.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : ''erreur de conversion de '' + tt1191.__xva[0][''T0_cht_rev_grandeur''] + '' [ '' + this.__ig1.nl2() + '']''});
+                }
+                nouveau_rev_de_la_grandeur=obj_nouveau_rev.__xva;
+            }
+            for( let i=0 ; i < liste_des_champs_a_pourvoir.length ; i++ ){
+                if(nouveau_rev_de_la_grandeur.indexOf( liste_des_champs_a_pourvoir[i] + ''('' ) < 0){
+                    /* on a mis un nouveau champ qui n''est pas encore renseigné */
+                    if(liste_des_champs_a_pourvoir[i] === nom_de_la_propriete){
+                        if(nouvelle_valeur !== ''''){
+                            if(this.__ig1.est_num( nouvelle_valeur )){
+                                nouveau_rev_de_la_grandeur+=nom_de_la_propriete + ''('' + nouvelle_valeur + '')'';
+                            }else{
+                                nouveau_rev_de_la_grandeur+=nom_de_la_propriete + ''(\'''' + nouvelle_valeur.replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                            }
+                        }
+                    }
+                }
+            }
+            if(nouveau_rev_de_la_grandeur === ''''){
+                nouveau_rev_de_la_grandeur=''0'';
+            }
+            let criteres_1192={
+                 /*  */
+                "c_chi_id_grandeur" : chi_id_grandeur ,
+                "n_cht_rev_grandeur" : nouveau_rev_de_la_grandeur
+            };
+            /* =========================== mise à jour effective ======================== */
+            let tt1192=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_grandeurs SET 
+               `cht_rev_grandeur` = :n_cht_rev_grandeur
+            WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+            */
+            /*sql_inclure_fin*/ 1192 , criteres_1192 , __db1 );
+            if(tt1192.__xst !== __xsu || tt1192.changements !== 1){
+                return({"__xst" : __xer ,"__xme" : tt1192.__xme});
+            }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async modifier_verouille_de2( mat , d ){
+        if(this.__ig1.donnees_retournees.chi_id_utilisateur !== 1){
+            return({"__xst" : __xer ,"__xme" : ''seul l\''utilisateur principal peut vérouiller ou dévérouiller une grandeur '' + this.__ig1.nl2() + '']''});
+        }
+        let chi_id_parametre=0;
+        let chi_id_grandeur=0;
+        let decallage_vertical=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''decallage_vertical'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                decallage_vertical=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
+        let tt1182=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1182 '' + this.__ig1.nl2() + '']''});
+        }
+        if(form.hasOwnProperty( ''che_verouillee_grandeur_'' + chi_id_grandeur )
+               && form[''chp_cle_grandeur_'' + chi_id_grandeur] !== ''''
+        ){
+            let criteres_1215={
+                 /*  */
+                "c_chi_id_grandeur" : chi_id_grandeur ,
+                "n_che_verouillee_grandeur" : parseInt( form[''che_verouillee_grandeur_'' + chi_id_grandeur] , 10 )
+            };
+            /* =========================== mise à jour effective ======================== */
+            let tt1215=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_grandeurs SET 
+               `che_verouillee_grandeur` = :n_che_verouillee_grandeur
+            WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+            */
+            /*sql_inclure_fin*/ 1215 , criteres_1215 , __db1 );
+            if(tt1215.__xst !== __xsu || tt1215.changements !== 1){
+                return({"__xst" : __xer ,"__xme" : tt1215.__xme});
+            }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
+            return({"__xst" : __xsu ,"__xva" : {"decallage_vertical" : decallage_vertical}});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async modifier_actif_de2( mat , d ){
+        let chi_id_parametre=0;
+        let chi_id_grandeur=0;
+        let decallage_vertical=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''decallage_vertical'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                decallage_vertical=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
+        let tt1182=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1182 '' + this.__ig1.nl2() + '']''});
+        }
+        if(form.hasOwnProperty( ''che_actif_grandeur_'' + chi_id_grandeur ) && form[''chp_cle_grandeur_'' + chi_id_grandeur] !== ''''){
+            let criteres_1190={
+                 /*  */
+                "c_chi_id_grandeur" : chi_id_grandeur ,
+                "n_che_actif_grandeur" : parseInt( form[''che_actif_grandeur_'' + chi_id_grandeur] , 10 )
+            };
+            /* =========================== mise à jour effective ======================== */
+            let tt1190=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_grandeurs SET 
+               `che_actif_grandeur` = :n_che_actif_grandeur
+            WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+            */
+            /*sql_inclure_fin*/ 1190 , criteres_1190 , __db1 );
+            if(tt1190.__xst !== __xsu || tt1190.changements !== 1){
+                return({"__xst" : __xer ,"__xme" : tt1190.__xme});
+            }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
+            return({"__xst" : __xsu ,"__xva" : {"decallage_vertical" : decallage_vertical}});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async modifier_la_cle_de2( mat , d ){
+        let chi_id_parametre=0;
+        let chi_id_grandeur=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
+        let tt1182=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1182 '' + this.__ig1.nl2() + '']''});
+        }
+        let chc_couleur_texte_grandeur=null;
+        if(form.hasOwnProperty( ''chc_couleur_texte_grandeur_'' + chi_id_grandeur )){
+            chc_couleur_texte_grandeur=form[''chc_couleur_texte_grandeur_'' + chi_id_grandeur];
+        }
+        let chc_couleur_fond_grandeur=null;
+        if(form.hasOwnProperty( ''chc_couleur_fond_grandeur_'' + chi_id_grandeur )){
+            chc_couleur_fond_grandeur=form[''chc_couleur_fond_grandeur_'' + chi_id_grandeur];
+        }
+        if(chc_couleur_fond_grandeur === null
+               || chc_couleur_texte_grandeur === null
+               || chc_couleur_fond_grandeur === ''''
+               || chc_couleur_texte_grandeur === ''''
+        ){
+            chc_couleur_fond_grandeur=null;
+            chc_couleur_texte_grandeur=null;
+        }
+        if(form.hasOwnProperty( ''chp_cle_grandeur_'' + chi_id_grandeur ) && form[''chp_cle_grandeur_'' + chi_id_grandeur] !== ''''){
+            let criteres_1188={
+                 /*  */
+                "c_chi_id_grandeur" : chi_id_grandeur ,
+                "n_chp_cle_grandeur" : form[''chp_cle_grandeur_'' + chi_id_grandeur] ,
+                "n_chc_couleur_texte_grandeur" : chc_couleur_texte_grandeur ,
+                "n_chc_couleur_fond_grandeur" : chc_couleur_fond_grandeur
+            };
+            /* =========================== mise à jour effective ======================== */
+            let tt1188=await this.__ig1.sql_iij(
+            /*sql_inclure_deb*/ /*#
+            UPDATE b1.tbl_grandeurs SET 
+               `chp_cle_grandeur` = :n_chp_cle_grandeur , 
+               `chc_couleur_texte_grandeur` = :n_chc_couleur_texte_grandeur , 
+               `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
+            WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+            */
+            /*sql_inclure_fin*/ 1188 , criteres_1188 , __db1 );
+            if(tt1188.__xst !== __xsu || tt1188.changements !== 1){
+                return({"__xst" : __xer ,"__xme" : tt1188.__xme});
+            }
+            this.produire_les_json_des_paramètres( mat , d , 1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer});
+    }
+    /*
+      =========================== fragment ========================================================================
+    */
+    async enregister_nouveau_parametre1( mat , d ){
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let nom_formulaire=this.__ig1.donnees_recues[__xva][''__co1''];
+        let form=this.__ig1.donnees_recues[__xva][''__fo1''][nom_formulaire];
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let criteres_select_1182={"T0_chi_id_parametre" : chi_id_parametre};
+        let tt1182=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_parametre` , `T0`.`chp_cle_parametre` , `T0`.`chp_nom_parametre` , `T0`.`cht_commentaire_parametre` , `T0`.`cht_rev_parametre` , 
+        `T0`.`cht_ordre_parametre` , `T0`.`che_pour_admin_parametre` , `T0`.`che__nur_parametre`
+         FROM b1.tbl_parametres T0
+        WHERE `T0`.`chi_id_parametre` = :T0_chi_id_parametre
+        ;
+        */
+        /*sql_inclure_fin*/ 1182 , criteres_select_1182 , __db1 );
+        if(tt1182.__xst !== __xsu || tt1182.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : ''enregistrement non trouvé : aucune modification effectuée [1182 '' + this.__ig1.nl2() + '']''});
+        }
+        let obj_mat2=this.__ig1.__rev1.t2m( tt1182.__xva[0][''T0_cht_rev_parametre''] );
+        if(obj_mat2.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : "erreur de conversion de rev"});
+        }
+        let mat2=obj_mat2.__xva;
+        let l02=mat2.length;
+        let le_tableau_parametre=[];
+        for( let i=1 ; i < l02 ; i=mat2[i][12] ){
+            if(mat2[i][1] === ''champs_des_parametres'' && mat2[i][2] === ''f''){
+                for( let j=i + 1 ; j < l02 ; j=mat2[j][12] ){
+                    let nom_du_parametre='''';
+                    let genre_du_parametre=0;
+                    let commentaire_du_parametre='''';
+                    if(mat2[j][2] === ''f''){
+                        nom_du_parametre=mat2[j][1];
+                        for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
+                            if(mat2[k][1] === ''genre_du_parametre'' && mat2[k][2] === ''f'' && mat2[k][8] === 1 && mat2[k + 1][2] === ''c''){
+                                genre_du_parametre=parseInt( mat2[k + 1][1] , 10 );
+                            }else if(mat2[k][1] === ''#'' && mat2[k][2] === ''f''){
+                                commentaire_du_parametre=mat2[k][13];
+                                /*  */
+                            }
+                        }
+                    }
+                    le_tableau_parametre.push( {"nom_du_parametre" : nom_du_parametre ,"genre_du_parametre" : genre_du_parametre ,"commentaire_du_parametre" : commentaire_du_parametre} );
+                }
+            }
+        }
+        let chemin_fichier__liste_des_genres=''../rev_'' + this.__ig1.donnees_retournees.chi_id_projet + ''/__fichiers_generes/__liste_des_genres.json'';
+        if(this.__ig1.donnees_retournees._CA_ === 2){
+            chemin_fichier__liste_des_genres=''../rev_2/__fichiers_generes/__liste_des_genres.json'';
+        }
+        if(!(await this.__ig1.is_file( chemin_fichier__liste_des_genres ))){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let contenu_texte__liste_des_genres='''';
+        try{
+            contenu_texte__liste_des_genres=await this.__ig1.file_get_contents( chemin_fichier__liste_des_genres );
+        }catch(e){
+            this.__ig1.ma_trace1( "e=" , e.stack );
+        }
+        let contenu_json__liste_des_genres=JSON.parse( contenu_texte__liste_des_genres );
+        let cht_rev_grandeur='''';
+        let le_genre_est_numerique=false;
+        for(let i in le_tableau_parametre){
+            let genre_du_parametre=le_tableau_parametre[i].genre_du_parametre;
+            let nom_du_parametre=le_tableau_parametre[i].nom_du_parametre;
+            if(form.hasOwnProperty( nom_du_parametre ) && form[nom_du_parametre] !== ''''){
+                let valeur=form[nom_du_parametre];
+                if(!contenu_json__liste_des_genres.hasOwnProperty( genre_du_parametre )){
+                    return({"__xst" : __xer ,"__xme" : "genre non trouvé " + this.__ig1.nl2()});
+                }
+                let le_genre=contenu_json__liste_des_genres[genre_du_parametre];
+                let chp_espece_genre=le_genre.chp_espece_genre.toUpperCase();
+                if(chp_espece_genre.indexOf( ''INT'' ) >= 0
+                       || chp_espece_genre.indexOf( ''DECIMAL'' ) >= 0
+                       || chp_espece_genre.indexOf( ''FLOAT'' ) >= 0
+                ){
+                    cht_rev_grandeur+=nom_du_parametre + ''('' + valeur + '')'';
+                }else{
+                    cht_rev_grandeur+=nom_du_parametre + ''(\'''' + valeur.replace( /\\/g , ''\\\\'' ).replace( /\''/g , ''\\\'''' ) + ''\'')'';
+                }
+            }
+        }
+        if(cht_rev_grandeur === ''''){
+            cht_rev_grandeur=''0'';
+        }
+        if(!(form.hasOwnProperty( ''che_actif_grandeur'' ) && this.__ig1.est_num( form[''che_actif_grandeur''] ))){
+            return({"__xst" : __xer ,"__xme" : ''che_actif_grandeur est absent ou non numérique ['' + this.__ig1.nl2() + '']''});
+        }
+        if(!(form.hasOwnProperty( ''chp_cle_grandeur'' ) && form[''chp_cle_grandeur''] !== '''')){
+            return({"__xst" : __xer ,"__xme" : ''chp_cle_grandeur est absent ou vide ['' + this.__ig1.nl2() + '']''});
+        }
+        await __db1.exec( ''BEGIN TRANSACTION;'' );
+        /*
+          on insert avec un rev null et on ira le modifier plus bas
+        */
+        let criteres_1187={
+            "donnees" : [{
+                        "chx_parametre_grandeur" : chi_id_parametre ,
+                        "chp_cle_grandeur" : form[''chp_cle_grandeur''] ,
+                        "cht_rev_grandeur" : cht_rev_grandeur ,
+                        "che_actif_grandeur" : 0
+                    }]
+        };
+        let tt1187=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        INSERT INTO b1.`tbl_grandeurs`(
+            `chx_parametre_grandeur` , 
+            `chp_cle_grandeur` , 
+            `cht_rev_grandeur` , 
+            `che_actif_grandeur` , 
+            `chd__dtc_grandeur` , 
+            `chd__dtm_grandeur` , 
+            `che__nur_grandeur`
+        ) VALUES (
+            :chx_parametre_grandeur , 
+            :chp_cle_grandeur , 
+            :cht_rev_grandeur , 
+            :che_actif_grandeur , 
+            :chd__dtc_grandeur , 
+            :chd__dtm_grandeur , 
+            :che__nur_grandeur
+        );
+        */
+        /*sql_inclure_fin*/ 1187 , criteres_1187 , __db1 );
+        if(tt1187.__xst !== __xsu || tt1187[''changements''] !== 1){
+            await __db1.exec( ''ROLLBACK;'' );
+            return({"__xst" : __xer ,"__xme" : tt1187.__xme + '' l\''insertion a échoué ['' + this.__ig1.nl2() + '']''});
+        }
+        let chi_id_grandeur=tt1187[''nouvel_id''];
+        let che_actif_grandeur=0;
+        let chp_cle_grandeur=form[''chp_cle_grandeur''];
+        /*
+          on réécrit le rev au bon format
+        */
+        che_actif_grandeur=0;
+        /* let cht_rev_grandeur=''''; */
+        let criteres_1188={
+             /*  */
+            "c_chi_id_grandeur" : chi_id_grandeur ,
+            "n_chp_cle_grandeur" : chp_cle_grandeur ,
+            "n_chc_couleur_texte_grandeur" : null ,
+            "n_chc_couleur_fond_grandeur" : null
+        };
+        let tt1188=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_grandeurs SET 
+           `chp_cle_grandeur` = :n_chp_cle_grandeur , 
+           `chc_couleur_texte_grandeur` = :n_chc_couleur_texte_grandeur , 
+           `chc_couleur_fond_grandeur` = :n_chc_couleur_fond_grandeur
+        WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;
+        */
+        /*sql_inclure_fin*/ 1188 , criteres_1188 , __db1 );
+        if(tt1188.__xst !== __xsu || tt1188.changements !== 1){
+            await __db1.exec( ''ROLLBACK;'' );
+            return({"__xst" : __xer ,"__xme" : tt1188.__xme});
+        }
+        /*
+          une fois qu''on a ajouté une grandeur pour ce paramètre,
+          il faut aller modifier le rev de tri des paramètres
+        */
+        let le_rev_ordre=tt1182.__xva[0][''T0_cht_ordre_parametre''];
+        if(le_rev_ordre === null){
+            le_rev_ordre=String( chi_id_grandeur );
+        }else{
+            le_rev_ordre=chi_id_grandeur + '','' + le_rev_ordre;
+        }
+        let criteres_1189={
+             /*  */
+            "c_chi_id_parametre" : chi_id_parametre ,
+            "n_cht_ordre_parametre" : le_rev_ordre
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt1189=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_parametres SET 
+           `cht_ordre_parametre` = :n_cht_ordre_parametre
+        WHERE `chi_id_parametre` = :c_chi_id_parametre ;
+        */
+        /*sql_inclure_fin*/ 1189 , criteres_1189 , __db1 );
+        if(tt1189.__xst !== __xsu || tt1189.changements !== 1){
+            await __db1.exec( ''ROLLBACK;'' );
+            return({"__xst" : __xer ,"__xme" : tt1189.__xme});
+        }
+        await __db1.exec( ''COMMIT;'' );
+        return({"__xst" : __xsu});
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1038','parametres1_c.js','definition_de_classe(
+   nom_classe(parametres1),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(renumeroter_cette_grandeur1),argument(mat),argument(d)),
+         contenu(
+            declare_variable(l01,mat.length),
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(chi_id_parametre,0),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,mat.length)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(et(sup(chi_id_grandeur,0),sup(chi_id_parametre,0))),
+                  alors(
+                     declare_variable(o1,''''),
+                     affectop(''+='',o1,''<h1>Attribuer un nouveau numéro à une grandeur</h1>''),
+                     affectop(''+='',o1,concat(''le numéro actuel est <b>'',chi_id_grandeur,''</b>'')),
+                     affectop(''+='',o1,''<br />''),
+                     affectop(''+='',o1,''<div id="vv_grandeurs_nouveau_numero1">''),
+                     affectop(''+='',o1,concat(''    <input type="hidden" id="vv_ancien_numero_de_grandeur" value="'',chi_id_grandeur,''" />'')),
+                     affectop(''+='',o1,''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_grandeur" value="" aria-autocomplete="list"/>''),
+                     affectop(''+='',o1,''    <br />''),
+                     affectop(''+='',o1,''    <button class="yy_b1" rev_clic1="''),
+                     affectop(
+                        ''+='',
+                        o1,
+                        concat(
+                           ''fo1(co1(vv_grandeurs_nouveau_numero1),pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(vv_grandeurs_nouveau_numero1(chi_id_parametre('',
+                           chi_id_parametre,
+                           ''))))))''
+                        )
+                     ),
+                     affectop(''+='',o1,''">attribuer ce nouveau numéro</button>''),
+                     affectop(''+='',o1,''</div>''),
+                     appelf(element(this.__ig1),nomf(affiche_sous_fenetre1),p(o1)),
+                     retourner(obj(("__xst",__xsu)))
+                  )
+               )
+            ),
+            retourner(
+               obj(
+                  ("__xst",__xer),
+                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(enregistrer_l_ordre_des_grandeurs1),argument(evenement),argument(reference_arbre)),
+         contenu(
+            declare_variable(chi_id_parametre_en_cours_de_trie,appelf(element(document),nomf(getElementById),p(''chi_id_parametre_en_cours_de_trie''),prop(value))),
+            declare_variable(nouvel_ordre,''''),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),reference_arbre.arbre)),
+               faire(
+                  affectop(
+                     ''+='',
+                     nouvel_ordre,
+                     concat('','',tableau(nomt(reference_arbre.arbre[i].attributs),p(''data-chi_id_grandeur'')))
+                  )
+               )
+            ),
+            affecte(nouvel_ordre,appelf(element(nouvel_ordre),nomf(substr),p(1))),
+            declare_variable(
+               obj,
+               obj(
+                  (
+                     "__xac",
+                     concat(
+                        ''pm1(m1(n1('',
+                        this.moi,
+                        ''),f1(enregistrer_l_ordre_des_grandeurs2(chi_id_parametre('',
+                        chi_id_parametre_en_cours_de_trie,
+                        '')))))''
+                     )
+                  ),
+                  ("__xva",obj(("chi_id_parametre_en_cours_de_trie",chi_id_parametre_en_cours_de_trie),("nouvel_ordre",nouvel_ordre)))
+               )
+            ),
+            appelf(element(this.__ig1),nomf(envoyer_un_colis_au_worker),p(obj)),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(modifier_la_valeur_de1),argument(mat),argument(d),argument(données)),
+         contenu(
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(co1,données.__co1),
+            declare_variable(fo1,données.__fo1[co1]),
+            declare_variable(__fo1,obj()),
+            affecte(__fo1[co1],fo1),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     (
+                        "__xac",
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(modifier_la_valeur_de2(chi_id_grandeur('',
+                           chi_id_grandeur,
+                           ''),chi_id_parametre('',
+                           chi_id_parametre,
+                           '')))))''
+                        )
+                     ),
+                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(modifier_verouillee_de1),argument(mat),argument(d),argument(données)),
+         contenu(
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(co1,données.__co1),
+            declare_variable(fo1,données.__fo1[co1]),
+            declare_variable(__fo1,obj()),
+            affecte(__fo1[co1],fo1),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     (
+                        "__xac",
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(modifier_verouille_de2(chi_id_grandeur('',
+                           chi_id_grandeur,
+                           ''),chi_id_parametre('',
+                           chi_id_parametre,
+                           '')))))''
+                        )
+                     ),
+                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(modifier_actif_de1),argument(mat),argument(d),argument(données)),
+         contenu(
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(co1,données.__co1),
+            declare_variable(fo1,données.__fo1[co1]),
+            declare_variable(__fo1,obj()),
+            affecte(__fo1[co1],fo1),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     (
+                        "__xac",
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(modifier_actif_de2(chi_id_grandeur('',
+                           chi_id_grandeur,
+                           ''),chi_id_parametre('',
+                           chi_id_parametre,
+                           '')))))''
+                        )
+                     ),
+                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(modifier_la_cle_de1),argument(mat),argument(d),argument(données)),
+         contenu(
+            declare_variable(chi_id_grandeur,0),
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_grandeur''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_grandeur,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     ),
+                     sinonsi(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(co1,données.__co1),
+            declare_variable(fo1,données.__fo1[co1]),
+            declare_variable(__fo1,obj()),
+            affecte(__fo1[co1],fo1),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     (
+                        "__xac",
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(modifier_la_cle_de2(chi_id_grandeur('',
+                           chi_id_grandeur,
+                           ''),chi_id_parametre('',
+                           chi_id_parametre,
+                           '')))))''
+                        )
+                     ),
+                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(enregister_nouveau_parametre),argument(mat),argument(d),argument(données)),
+         contenu(
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            boucle(
+               initialisation(declare_variable(i,plus(d,1))),
+               condition(inf(i,l01)),
+               increment(affecte(i,mat[i][12])),
+               faire(
+                  choix(
+                     si(
+                        condition(
+                           et(
+                              egalstricte(mat[i][1],''chi_id_parametre''),
+                              egalstricte(mat[i][2],''f''),
+                              egalstricte(mat[i][8],1),
+                              egalstricte(
+                                 tableau(
+                                    nomt(
+                                       tableau(nomt(mat),p(plus(i,1)))
+                                    ),
+                                    p(2)
+                                 ),
+                                 ''c''
+                              )
+                           )
+                        ),
+                        alors(
+                           affecte(
+                              chi_id_parametre,
+                              appelf(
+                                 nomf(parseInt),
+                                 p(
+                                    tableau(
+                                       nomt(
+                                          tableau(nomt(mat),p(plus(i,1)))
+                                       ),
+                                       p(1)
+                                    )
+                                 ),
+                                 p(10)
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            declare_variable(co1,données.__co1),
+            declare_variable(fo1,données.__fo1[co1]),
+            declare_variable(__fo1,obj()),
+            affecte(__fo1[co1],fo1),
+            appelf(
+               element(this.__ig1),
+               nomf(envoyer_un_colis_au_worker),
+               p(
+                  obj(
+                     #(  ),
+                     (
+                        "__xac",
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(enregister_nouveau_parametre1(chi_id_parametre('',
+                           chi_id_parametre,
+                           '')))))''
+                        )
+                     ),
+                     ("__xva",obj(("__fo1",__fo1),("__co1",co1)))
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(chi_id_parametre,0),
+            declare_constante(l01,mat.length),
+            bascule(
+               quand(mat[d][1]),
+               est(valeur(''enregistrer_l_ordre_des_grandeurs2''),faire()),
+               est(valeur(''modifier_la_valeur_de2''),faire()),
+               est(valeur(''modifier_actif_de2''),faire()),
+               est(valeur(''modifier_verouille_de2''),faire()),
+               est(valeur(''modifier_la_cle_de2''),faire()),
+               est(valeur(''vv_grandeurs_nouveau_numero1''),faire()),
+               est(valeur(''enregister_nouveau_parametre1''),faire()),
+               est(
+                  valeur(''supprimer_une_grandeur1''),
+                  faire(
+                     appelf(element(this.__ig1),nomf(fermer_la_sous_fenetre),p()),
+                     boucle(
+                        initialisation(declare_variable(i,plus(d,1))),
+                        condition(inf(i,l01)),
+                        increment(affecte(i,mat[i][12])),
+                        faire(
+                           choix(
+                              si(
+                                 condition(
+                                    et(
+                                       egalstricte(mat[i][1],''chi_id_parametre''),
+                                       egalstricte(mat[i][2],''f''),
+                                       egalstricte(mat[i][8],1),
+                                       egalstricte(
+                                          tableau(
+                                             nomt(
+                                                tableau(nomt(mat),p(plus(i,1)))
+                                             ),
+                                             p(2)
+                                          ),
+                                          ''c''
+                                       )
+                                    )
+                                 ),
+                                 alors(
+                                    affecte(
+                                       chi_id_parametre,
+                                       appelf(
+                                          nomf(parseInt),
+                                          p(
+                                             tableau(
+                                                nomt(
+                                                   tableau(nomt(mat),p(plus(i,1)))
+                                                ),
+                                                p(1)
+                                             )
+                                          ),
+                                          p(10)
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     choix(
+                        si(
+                           condition(sup(chi_id_parametre,0)),
+                           alors(
+                              declare_variable(
+                                 cmd,
+                                 concat(
+                                    ''pm1(m1(n1('',
+                                    this.moi,
+                                    ''),f1(page_voir1(chi_id_parametre('',
+                                    chi_id_parametre,
+                                    '')))))''
+                                 )
+                              ),
+                              appelf(
+                                 element(this.__ig1),
+                                 nomf(executer1),
+                                 p(cmd),
+                                 p(null),
+                                 p(null)
+                              )
+                           )
+                        )
+                     ),
+                     break()
+                  )
+               ),
+               est(
+                  valeurNonPrevue(),
+                  faire(
+                     retourner(
+                        obj(("__xst",__xer),("__xme",concat(''dans l\''interface client "'',mat[d][1],''" n\''est pas traitée ou bien comporte une erreur'')))
+                     )
+                  )
+               )
+            ),
+            retourner(obj(("__xst",__xsu)))
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
+         contenu(
+            affecte(this.__ig1,__ig1),
+            boucle_sur_objet_dans(
+               pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres)),
+               faire(
+                  affecte(this.filtres[i],obj()),
+                  boucle_sur_objet_dans(
+                     pourChaque(dans(declare_variable(j,null()),this.tableau_des_filtres[i])),
+                     faire(
+                        affecte(tableau(nomt(this.filtres[i]),p(j)),tableau(nomt(this.tableau_des_filtres[i]),p(j),prop(défaut)))
+                     )
+                  )
+               )
+            ),
+            declare_variable(
+               aa,
+               appelf(element(sessionStorage),nomf(getItem),p(concat(this.__ig1.cle_lst0,''_'',this.moi,''_liste1'')))
+            ),
+            choix(
+               si(
+                  condition(diffstricte(aa,null)),
+                  alors(
+                     declare_variable(jso,appelf(element(JSON),nomf(parse),p(aa))),
+                     boucle_sur_objet_dans(
+                        pourChaque(dans(declare_variable(i,null()),this.tableau_des_filtres.liste1)),
+                        faire(affecte(this.filtres.liste1[i],??(jso[i],this.tableau_des_filtres.liste1[i].défaut)))
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(
+                  condition(egalstricte(this.__ig1.chi_id_utilisateur,1)),
+                  alors(
+                     affectop(''+='',this.vv_ecran_liste_boutons_avant,''<button class="yy_svg1 yy__xif" rev_clic1="''),
+                     affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''m1(n1('',this.moi,''),f1(page_creer1()))'')),
+                     affectop(
+                        ''+='',
+                        this.vv_ecran_liste_boutons_avant,
+                        concat(
+                           ''" title="création '',
+                           this.DUN_DUNE_ELEMENT_GERE,
+                           ''" >'',
+                           this.__ig1.les_svg.nouveau_document,
+                           ''</button>''
+                        )
+                     )
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(afficher_le_contenu_sous_pg_modif1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(o1,''''),
+            affectop(''+='',o1,''<pre>''),
+            affectop(''+='',o1,''champs_des_parametres(\r\n''),
+            affectop(''+='',o1,''    un_drapeau(\r\n''),
+            affectop(''+='',o1,''        #(un drapeau à 0 ou 1),\r\n''),
+            affectop(''+='',o1,''            genre_du_parametre(5)\r\n''),
+            affectop(''+='',o1,''        ),\r\n''),
+            affectop(''+='',o1,''        un_libellé_complémentaire_de_la_clé(\r\n''),
+            affectop(''+='',o1,''            #(un libellé complémentaire de la clé varchar 64 ),\r\n''),
+            affectop(''+='',o1,''            genre_du_parametre(12)\r\n''),
+            affectop(''+='',o1,''        ),\r\n''),
+            affectop(''+='',o1,''        un_texte_complémentaire_de_la_clé(\r\n''),
+            affectop(''+='',o1,''            #(un texte complémentaire de la clé TEXT NULL ),\r\n''),
+            affectop(''+='',o1,''            genre_du_parametre(6)\r\n''),
+            affectop(''+='',o1,''        )\r\n''),
+            affectop(''+='',o1,'')</pre>\r\n''),
+            choix(
+               si(condition(diffstricte(o1,'''')),alors(affectop(''+='',o1,''<div class="yy__bdp1"></div>'')))
+            ),
+            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_modification_zone_complement''),prop(innerHTML)),o1)
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(afficher_le_contenu_sous_pg_voir1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+         contenu(
+            declare_variable(tup,le_colis1.__xva.page_voir1.__xva[0]),
+            declare_variable(o2,''''),
+            choix(
+               si(
+                  condition(diffstricte(tup.T0_cht_rev_parametre,null)),
+                  alors(
+                     declare_variable(cht_rev_parametre,tup.T0_cht_rev_parametre),
+                     declare_variable(obj_mat2,appelf(element(this.__ig1.__rev1),nomf(t2m),p(cht_rev_parametre))),
+                     choix(
+                        si(
+                           condition(diffstricte(obj_mat2.__xst,__xsu)),
+                           alors(
+                              retourner(
+                                 obj(
+                                    ("__xst",__xer),
+                                    (
+                                       "__xme",
+                                       concat("erreur de conversion de cht_rev_parametre [",appelf(element(this.__ig1),nomf(nl2),p()),"]")
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     declare_variable(liste_des_champs_complementaires,[]),
+                     declare_variable(mat2,obj_mat2.__xva),
+                     affectop(''+='',o2,''<h2>ajouter une grandeur</h2>''),
+                     declare_variable(l02,mat2.length),
+                     declare_variable(
+                        le_tableau_parametre,
+                        defTab(
+                           #(  ),
+                           p(obj(("nom_du_parametre","che_actif_grandeur"),("genre_du_parametre",5),("commentaire_du_parametre",""))),
+                           p(obj(("nom_du_parametre","chp_cle_grandeur"),("genre_du_parametre",3),("commentaire_du_parametre","entrez la valeur")))
+                        )
+                     ),
+                     boucle(
+                        initialisation(declare_variable(i,1)),
+                        condition(inf(i,l02)),
+                        increment(affecte(i,mat2[i][12])),
+                        faire(
+                           choix(
+                              si(
+                                 condition(et(egalstricte(mat2[i][1],''champs_des_parametres''),egalstricte(mat2[i][2],''f''))),
+                                 alors(
+                                    boucle(
+                                       initialisation(declare_variable(j,plus(i,1))),
+                                       condition(inf(j,l02)),
+                                       increment(affecte(j,mat2[j][12])),
+                                       faire(
+                                          declare_variable(nom_du_parametre,''''),
+                                          declare_variable(genre_du_parametre,0),
+                                          declare_variable(commentaire_du_parametre,''''),
+                                          choix(
+                                             si(
+                                                condition(et(egalstricte(mat2[j][2],''f''),egalstricte(mat2[j][1],''#''))),
+                                                alors()
+                                             ),
+                                             sinonsi(
+                                                condition(egalstricte(mat2[j][2],''f'')),
+                                                alors(
+                                                   affecte(nom_du_parametre,mat2[j][1]),
+                                                   boucle(
+                                                      initialisation(declare_variable(k,plus(j,1))),
+                                                      condition(inf(k,l02)),
+                                                      increment(affecte(k,mat2[k][12])),
+                                                      faire(
+                                                         choix(
+                                                            si(
+                                                               condition(
+                                                                  et(
+                                                                     egalstricte(mat2[k][1],''genre_du_parametre''),
+                                                                     egalstricte(mat2[k][2],''f''),
+                                                                     egalstricte(mat2[k][8],1),
+                                                                     egalstricte(
+                                                                        tableau(
+                                                                           nomt(
+                                                                              tableau(nomt(mat2),p(plus(k,1)))
+                                                                           ),
+                                                                           p(2)
+                                                                        ),
+                                                                        ''c''
+                                                                     )
+                                                                  )
+                                                               ),
+                                                               alors(
+                                                                  affecte(
+                                                                     genre_du_parametre,
+                                                                     appelf(
+                                                                        nomf(parseInt),
+                                                                        p(
+                                                                           tableau(
+                                                                              nomt(
+                                                                                 tableau(nomt(mat2),p(plus(k,1)))
+                                                                              ),
+                                                                              p(1)
+                                                                           )
+                                                                        ),
+                                                                        p(10)
+                                                                     )
+                                                                  )
+                                                               )
+                                                            ),
+                                                            sinonsi(
+                                                               condition(et(egalstricte(mat2[k][1],''#''),egalstricte(mat2[k][2],''f''))),
+                                                               alors(
+                                                                  affecte(commentaire_du_parametre,mat2[k][13]),
+                                                                  #(  )
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             )
+                                          ),
+                                          appelf(element(liste_des_champs_complementaires),nomf(push),p(nom_du_parametre)),
+                                          appelf(
+                                             element(le_tableau_parametre),
+                                             nomf(push),
+                                             p(obj(("nom_du_parametre",nom_du_parametre),("genre_du_parametre",genre_du_parametre),("commentaire_du_parametre",commentaire_du_parametre)))
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                           )
+                        )
+                     ),
+                     affectop(''+='',o2,''<div id="vv_formulaire_du_parametre" style="text-align:center;">''),
+                     affectop(''+='',o2,''<b>clé : </b>''),
+                     affectop(''+='',o2,''<input id="chp_cle_grandeur" type="text" class="yy_input1" value="" size="48" style="width:12em;">''),
+                     affectop(''+='',o2,''<input id="che_actif_grandeur" type="hidden" value="0">''),
+                     affectop(
+                        ''+='',
+                        o2,
+                        concat(
+                           ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_formulaire_du_parametre),m1(n1('',
+                           this.moi,
+                           ''),f1(enregister_nouveau_parametre(chi_id_parametre('',
+                           tup.T0_chi_id_parametre,
+                           '')))))" title="ajouter" >ajouter</button>''
+                        )
+                     ),
+                     affectop(''+='',o2,''</div id="vv_formulaire_du_parametre">''),
+                     choix(
+                        si(
+                           condition(diffstricte(tup.T0_cht_ordre_parametre,null)),
+                           alors(
+                              affectop(''+='',o2,''<h2>grandeurs</h2>''),
+                              declare_variable(obj_ordre,appelf(element(this.__ig1.__rev1),nomf(rev_tm),p(tup.T0_cht_ordre_parametre),p(true))),
+                              choix(
+                                 si(
+                                    condition(diffstricte(obj_ordre.__xst,__xsu)),
+                                    alors(
+                                       retourner(
+                                          obj(
+                                             ("__xst",__xer),
+                                             (
+                                                "__xme",
+                                                concat("erreur de conversion de cht_ordre_parametre [",appelf(element(this.__ig1),nomf(nl2),p()),"]")
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              declare_variable(mat_ordre,obj_ordre.__xva),
+                              declare_variable(les_grandeurs_du_parametre,[]),
+                              boucle_sur_objet_dans(
+                                 pourChaque(dans(declare_variable(i,null()),le_colis1.__xva.parametres_actuels)),
+                                 faire(
+                                    appelf(
+                                       element(les_grandeurs_du_parametre),
+                                       nomf(push),
+                                       p(
+                                          obj(
+                                             (
+                                                "ordre_de_tri",
+                                                #( ordre de tri = 0 à priori ),
+                                                -1
+                                             ),
+                                             ("chi_id_grandeur",le_colis1.__xva.parametres_actuels[i].T0_chi_id_grandeur),
+                                             ("chp_cle_grandeur",le_colis1.__xva.parametres_actuels[i].T0_chp_cle_grandeur),
+                                             ("cht_rev_grandeur",le_colis1.__xva.parametres_actuels[i].T0_cht_rev_grandeur),
+                                             ("che_actif_grandeur",le_colis1.__xva.parametres_actuels[i].T0_che_actif_grandeur),
+                                             ("che_verouillee_grandeur",le_colis1.__xva.parametres_actuels[i].T0_che_verouillee_grandeur),
+                                             ("chc_couleur_texte_grandeur",le_colis1.__xva.parametres_actuels[i].T0_chc_couleur_texte_grandeur),
+                                             ("chc_couleur_fond_grandeur",le_colis1.__xva.parametres_actuels[i].T0_chc_couleur_fond_grandeur)
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              boucle(
+                                 initialisation(declare_variable(i,0)),
+                                 condition(inf(i,les_grandeurs_du_parametre.length)),
+                                 increment(i++),
+                                 faire(
+                                    boucle(
+                                       initialisation(declare_variable(j,1)),
+                                       condition(inf(j,mat_ordre.length)),
+                                       increment(affecte(j,mat_ordre[j][12])),
+                                       faire(
+                                          choix(
+                                             si(
+                                                condition(
+                                                   egalstricte(appelf(nomf(parseInt),p(mat_ordre[j][1]),p(10)),les_grandeurs_du_parametre[i].chi_id_grandeur)
+                                                ),
+                                                alors(affecte(les_grandeurs_du_parametre[i].ordre_de_tri,moins(j,1)),break())
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              appelf(
+                                 element(les_grandeurs_du_parametre),
+                                 nomf(sort),
+                                 p(
+                                    appelf(
+                                       flechee(),
+                                       p(a),
+                                       p(b),
+                                       contenu(
+                                          choix(
+                                             si(condition(inf(a.ordre_de_tri,b.ordre_de_tri)),alors(retourner(-1))),
+                                             sinonsi(condition(sup(a.ordre_de_tri,b.ordre_de_tri)),alors(retourner(1)))
+                                          ),
+                                          retourner(0)
+                                       )
+                                    )
+                                 )
+                              ),
+                              affectop(''+='',o2,''<div class="yy_conteneur_table">''),
+                              affectop(''+='',o2,''<table border="1"  style="min-width:90%;">''),
+                              affectop(''+='',o2,''<tr>''),
+                              affectop(''+='',o2,''<th style="min-width:5em;">id</th>''),
+                              affectop(''+='',o2,''<th style="max-width:5em;">actif</th>''),
+                              choix(
+                                 si(condition(egalstricte(this.__ig1.chi_id_utilisateur,1)),alors(affectop(''+='',o2,''<th style="max-width:5em;">vérouillé</th>'')))
+                              ),
+                              affectop(''+='',o2,''<th>cle / couleurs texte et fond</th>''),
+                              affectop(''+='',o2,''<th>valeurs</th>''),
+                              affectop(''+='',o2,''</tr>''),
+                              boucle(
+                                 initialisation(declare_variable(i,0)),
+                                 condition(inf(i,les_grandeurs_du_parametre.length)),
+                                 increment(i++),
+                                 faire(
+                                    affectop(''+='',o2,''<tr>''),
+                                    #(
+                                      colonne id
+                                    ),
+                                    affectop(''+='',o2,''<td style="max-width:3em;text-align:center;">''),
+                                    choix(
+                                       si(
+                                          condition(egalstricte(this.__ig1.chi_id_utilisateur,1)),
+                                          alors(affectop(''+='',o2,concat(''<button class="yy_svg1 yy__3" rev_clic1="m1(n1('',this.moi,''),f1(renumeroter_cette_grandeur1('')),affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,''),'')),affectop(''+='',o2,concat('')))" title="renumeroter cette grandeur">'',this.__ig1.les_svg.renuméroter,''</button>'')))
+                                       )
+                                    ),
+                                    choix(
+                                       si(
+                                          condition(egalstricte(les_grandeurs_du_parametre[i].che_verouillee_grandeur,0)),
+                                          alors(affectop(''+='',o2,concat(''<button class="yy_svg1 yy__0" rev_clic1="confirmer1(pm1(m1(n1('',this.moi,''),f1(supprimer_une_grandeur1('')),affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,''),'')),affectop(''+='',o2,concat('')))))" title="supprimer cette grandeur">'',this.__ig1.les_svg.poubelle,''</button>'')))
+                                       )
+                                    ),
+                                    affectop(''+='',o2,concat('' '',les_grandeurs_du_parametre[i].chi_id_grandeur)),
+                                    affectop(''+='',o2,''</td>''),
+                                    #(
+                                      colonne actif
+                                    ),
+                                    affectop(''+='',o2,''<td style="max-width:5em;">''),
+                                    affectop(''+='',o2,concat(''<div id="vv_modifier_actif_de_'',les_grandeurs_du_parametre[i].chi_id_grandeur,''">'')),
+                                    affectop(
+                                       ''+='',
+                                       o2,
+                                       concat(
+                                          ''<input type="range" id="che_actif_grandeur_'',
+                                          les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                          ''" class="yy_ouinon" min="0" max="1" step="1" value="'',
+                                          les_grandeurs_du_parametre[i].che_actif_grandeur,
+                                          ''">''
+                                       )
+                                    ),
+                                    #(  ),
+                                    affectop(
+                                       ''+='',
+                                       o2,
+                                       concat(
+                                          ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_actif_de_'',
+                                          les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                          ''),m1(n1('',
+                                          this.moi,
+                                          ''),f1(modifier_actif_de1(''
+                                       )
+                                    ),
+                                    affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),
+                                    affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,'')'')),
+                                    affectop(''+='',o2,''))))" title="modifier">💾</button>''),
+                                    affectop(''+='',o2,''</div>''),
+                                    affectop(''+='',o2,''</td>''),
+                                    #(
+                                      colonne vérouillé si dev
+                                    ),
+                                    choix(
+                                       si(
+                                          condition(egalstricte(this.__ig1.chi_id_utilisateur,1)),
+                                          alors(
+                                             affectop(''+='',o2,''<td style="max-width:3em;text-align:center;">''),
+                                             affectop(''+='',o2,concat(''<div id="vv_modifier_verouillee_de_'',les_grandeurs_du_parametre[i].chi_id_grandeur,''">'')),
+                                             affectop(
+                                                ''+='',
+                                                o2,
+                                                concat(
+                                                   ''<input type="range" id="che_verouillee_grandeur_'',
+                                                   les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                   ''" class="yy_ouinon" min="0" max="1" step="1" value="'',
+                                                   les_grandeurs_du_parametre[i].che_verouillee_grandeur,
+                                                   ''">''
+                                                )
+                                             ),
+                                             #(  ),
+                                             affectop(
+                                                ''+='',
+                                                o2,
+                                                concat(
+                                                   ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_verouillee_de_'',
+                                                   les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                   ''),m1(n1('',
+                                                   this.moi,
+                                                   ''),f1(modifier_verouillee_de1(''
+                                                )
+                                             ),
+                                             affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),
+                                             affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,'')'')),
+                                             affectop(''+='',o2,''))))" title="modifier">💾</button>''),
+                                             affectop(''+='',o2,''</div>''),
+                                             affectop(''+='',o2,''</td>'')
+                                          )
+                                       )
+                                    ),
+                                    #(
+                                      colonne cle et couleur
+                                    ),
+                                    affectop(''+='',o2,''<td>''),
+                                    #( clé ),
+                                    affectop(''+='',o2,concat(''<div id="vv_modifier_la_cle_de_'',les_grandeurs_du_parametre[i].chi_id_grandeur,''">'')),
+                                    #(  ),
+                                    affectop(
+                                       ''+='',
+                                       o2,
+                                       concat(
+                                          ''  <button style="" class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_cle_de_'',
+                                          les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                          ''),m1(n1('',
+                                          this.moi,
+                                          ''),f1(modifier_la_cle_de1(''
+                                       )
+                                    ),
+                                    affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),
+                                    affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,'')'')),
+                                    affectop(''+='',o2,''))))" title="modifier">💾</button>''),
+                                    #(  ),
+                                    affectop(
+                                       ''+='',
+                                       o2,
+                                       concat(
+                                          ''<input type="text" class="yy_input1" size="15" maxlength="64" id="chp_cle_grandeur_'',
+                                          les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                          ''" class="" value="'',
+                                          les_grandeurs_du_parametre[i].chp_cle_grandeur,
+                                          ''"''
+                                       )
+                                    ),
+                                    choix(
+                                       si(
+                                          condition(et(diffstricte(les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur,null),diffstricte(les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur,null))),
+                                          alors(
+                                             affectop(
+                                                ''+='',
+                                                o2,
+                                                concat(
+                                                   '' style="background:'',
+                                                   les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur,
+                                                   '';color:'',
+                                                   les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur,
+                                                   ''"''
+                                                )
+                                             )
+                                          )
+                                       )
+                                    ),
+                                    affectop(''+='',o2,'' />''),
+                                    #(  ),
+                                    #( couleur ),
+                                    affectop(''+='',o2,''<div style="display:inline-block;">''),
+                                    affectop(
+                                       ''+='',
+                                       o2,
+                                       concat(
+                                          ''  <input type="hidden" id="chc_couleur_texte_grandeur_'',
+                                          les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                          ''" value="'',
+                                          ??(les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur,''''),
+                                          ''" />''
+                                       )
+                                    ),
+                                    affectop(
+                                       ''+='',
+                                       o2,
+                                       concat(
+                                          ''  <input type="hidden" id="chc_couleur_fond_grandeur_'',
+                                          les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                          ''" value="'',
+                                          ??(les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur,''''),
+                                          ''" />''
+                                       )
+                                    ),
+                                    affectop(''+='',o2,''<div class="">''),
+                                    affectop(''+='',o2,''  <button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maj_couleur1(''),
+                                    affectop(''+='',o2,concat(''nom_du_champ1(chc_couleur_fond_grandeur_'',les_grandeurs_du_parametre[i].chi_id_grandeur,'')'')),
+                                    affectop(''+='',o2,concat(''nom_du_champ2(chc_couleur_texte_grandeur_'',les_grandeurs_du_parametre[i].chi_id_grandeur,'')'')),
+                                    affectop(''+='',o2,concat(''nom_du_champ_a_modifier(chp_cle_grandeur_'',les_grandeurs_du_parametre[i].chi_id_grandeur,'')'')),
+                                    affectop(''+='',o2,''format_palette(2_couleurs)''),
+                                    affectop(''+='',o2,concat('')))">'',this.__ig1.les_svg.palette,''</button>'')),
+                                    affectop(''+='',o2,''  <div class="yy_b1 yy__4" rev_clic1="m1(n1(__fnt1),f1(raz_zone_couleur2(''),
+                                    affectop(''+='',o2,concat(''nom_du_champ1(chc_couleur_fond_grandeur_'',les_grandeurs_du_parametre[i].chi_id_grandeur,'')'')),
+                                    affectop(''+='',o2,concat(''nom_du_champ2(chc_couleur_texte_grandeur_'',les_grandeurs_du_parametre[i].chi_id_grandeur,'')'')),
+                                    affectop(''+='',o2,concat(''nom_du_champ_a_modifier(chp_cle_grandeur_'',les_grandeurs_du_parametre[i].chi_id_grandeur,'')'')),
+                                    affectop(''+='',o2,'')))" >x</div>''),
+                                    affectop(''+='',o2,''</div>''),
+                                    #(  ),
+                                    affectop(''+='',o2,''</div>''),
+                                    affectop(''+='',o2,''</div>''),
+                                    affectop(''+='',o2,''</td>''),
+                                    #(
+                                    ),
+                                    affectop(''+='',o2,''<td>''),
+                                    choix(
+                                       si(
+                                          condition(diffstricte(les_grandeurs_du_parametre[i].cht_rev_grandeur,''0'')),
+                                          alors(
+                                             affectop(''+='',o2,''<table style="min-width:100%;">''),
+                                             declare_variable(obj_cht_rev_grandeur,appelf(element(this.__ig1.__rev1),nomf(t2m),p(les_grandeurs_du_parametre[i].cht_rev_grandeur))),
+                                             choix(
+                                                si(
+                                                   condition(diffstricte(obj_cht_rev_grandeur.__xst,__xsu)),
+                                                   alors(
+                                                      retourner(
+                                                         obj(
+                                                            ("__xst",__xer),
+                                                            (
+                                                               "__xme",
+                                                               concat("erreur de conversion de cht_rev_grandeur [",appelf(element(this.__ig1),nomf(nl2),p()),"]")
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             ),
+                                             declare_variable(mat3,obj_cht_rev_grandeur.__xva),
+                                             declare_variable(l03,mat3.length),
+                                             declare_variable(liste_des_noms_affiches,[]),
+                                             boucle(
+                                                initialisation(declare_variable(j,1)),
+                                                condition(inf(j,l03)),
+                                                increment(affecte(j,mat3[j][12])),
+                                                faire(
+                                                   choix(
+                                                      si(
+                                                         condition(egalstricte(mat3[j][2],''f'')),
+                                                         alors(
+                                                            declare_variable(nom_d_val,''''),
+                                                            declare_variable(valeur_de_val,''''),
+                                                            choix(
+                                                               si(
+                                                                  condition(
+                                                                     et(
+                                                                        egalstricte(mat3[j][2],''f''),
+                                                                        egalstricte(mat3[j][8],1),
+                                                                        egalstricte(
+                                                                           tableau(
+                                                                              nomt(
+                                                                                 tableau(nomt(mat3),p(plus(j,1)))
+                                                                              ),
+                                                                              p(2)
+                                                                           ),
+                                                                           ''c''
+                                                                        )
+                                                                     )
+                                                                  ),
+                                                                  alors(
+                                                                     affecte(nom_d_val,mat3[j][1]),
+                                                                     affecte(
+                                                                        valeur_de_val,
+                                                                        tableau(
+                                                                           nomt(
+                                                                              tableau(nomt(mat3),p(plus(j,1)))
+                                                                           ),
+                                                                           p(1)
+                                                                        )
+                                                                     ),
+                                                                     i
+                                                                  )
+                                                               )
+                                                            ),
+                                                            choix(
+                                                               si(
+                                                                  condition(
+                                                                     et(diffstricte(nom_d_val,''''),appelf(element(liste_des_champs_complementaires),nomf(includes),p(nom_d_val)))
+                                                                  ),
+                                                                  alors(
+                                                                     affectop(''+='',o2,''<tr>''),
+                                                                     affectop(''+='',o2,''<td>''),
+                                                                     appelf(element(liste_des_noms_affiches),nomf(push),p(nom_d_val)),
+                                                                     affectop(''+='',o2,nom_d_val),
+                                                                     affectop(''+='',o2,''</td>''),
+                                                                     affectop(''+='',o2,''<td>''),
+                                                                     #( o2+=valeur_de_val; ),
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<div id="vv_modifier_la_valeur_de_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''_'',
+                                                                           j,
+                                                                           ''">''
+                                                                        )
+                                                                     ),
+                                                                     #(  ),
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<input type="hidden" id="__le_nom_de_la_valeur_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''_'',
+                                                                           j,
+                                                                           ''" class="" value="'',
+                                                                           nom_d_val,
+                                                                           ''" />''
+                                                                        )
+                                                                     ),
+                                                                     declare_variable(genre_de_la_grandeur,0),
+                                                                     boucle(
+                                                                        initialisation(declare_variable(k,0)),
+                                                                        condition(inf(k,le_tableau_parametre.length)),
+                                                                        increment(k++),
+                                                                        faire(
+                                                                           choix(
+                                                                              si(condition(egalstricte(le_tableau_parametre[k].nom_du_parametre,nom_d_val)),alors(affecte(genre_de_la_grandeur,le_tableau_parametre[k].genre_du_parametre)))
+                                                                           )
+                                                                        )
+                                                                     ),
+                                                                     choix(
+                                                                        si(
+                                                                           condition(egalstricte(genre_de_la_grandeur,5)),
+                                                                           alors(
+                                                                              affectop(
+                                                                                 ''+='',
+                                                                                 o2,
+                                                                                 concat(
+                                                                                    ''<input type="range" id="'',
+                                                                                    nom_d_val,
+                                                                                    ''_'',
+                                                                                    les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                                    ''" class="yy_ouinon" min="0" max="1" step="1" value="'',
+                                                                                    valeur_de_val,
+                                                                                    ''" />''
+                                                                                 )
+                                                                              )
+                                                                           )
+                                                                        ),
+                                                                        sinonsi(
+                                                                           condition(egalstricte(genre_de_la_grandeur,6)),
+                                                                           alors(
+                                                                              affectop(
+                                                                                 ''+='',
+                                                                                 o2,
+                                                                                 concat(
+                                                                                    ''<textarea id="'',
+                                                                                    nom_d_val,
+                                                                                    ''_'',
+                                                                                    les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                                    ''">'',
+                                                                                    appelf(
+                                                                                       element(
+                                                                                          appelf(
+                                                                                             element(
+                                                                                                appelf(
+                                                                                                   element(
+                                                                                                      appelf(
+                                                                                                         element(appelf(element(valeur_de_val),nomf(replace),p(/\\\\/g),p(''\\''))),
+                                                                                                         nomf(replace),
+                                                                                                         p(/\\\''/g),
+                                                                                                         p(''\'''')
+                                                                                                      )
+                                                                                                   ),
+                                                                                                   nomf(replace),
+                                                                                                   p(/¶LF¶/g),
+                                                                                                   p(''\n'')
+                                                                                                )
+                                                                                             ),
+                                                                                             nomf(replace),
+                                                                                             p(/¶CR¶/g),
+                                                                                             p(''\r'')
+                                                                                          )
+                                                                                       ),
+                                                                                       nomf(replace),
+                                                                                       p(/¶CRLF¶/g),
+                                                                                       p(''\r\n'')
+                                                                                    ),
+                                                                                    ''</textarea>''
+                                                                                 )
+                                                                              )
+                                                                           )
+                                                                        ),
+                                                                        sinon(
+                                                                           alors(
+                                                                              affectop(
+                                                                                 ''+='',
+                                                                                 o2,
+                                                                                 concat(
+                                                                                    ''<input type="text" id="'',
+                                                                                    nom_d_val,
+                                                                                    ''_'',
+                                                                                    les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                                    ''" class="" value="'',
+                                                                                    appelf(
+                                                                                       element(appelf(element(valeur_de_val),nomf(replace),p(/\\\\/g),p(''\\''))),
+                                                                                       nomf(replace),
+                                                                                       p(/\\\''/g),
+                                                                                       p(''\'''')
+                                                                                    ),
+                                                                                    ''" />''
+                                                                                 )
+                                                                              )
+                                                                           )
+                                                                        )
+                                                                     ),
+                                                                     affecte(tableau(nomt(les_grandeurs_du_parametre[i]),p(''valeur_de_val'')),valeur_de_val),
+                                                                     #(  ),
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_valeur_de_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''_'',
+                                                                           j,
+                                                                           ''),m1(n1('',
+                                                                           this.moi,
+                                                                           ''),f1(modifier_la_valeur_de1(''
+                                                                        )
+                                                                     ),
+                                                                     affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),
+                                                                     affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,'')'')),
+                                                                     affectop(''+='',o2,''))))" title="modifier">💾</button>''),
+                                                                     #(  ),
+                                                                     affectop(''+='',o2,''</div>''),
+                                                                     affectop(''+='',o2,''</td>''),
+                                                                     affectop(''+='',o2,''</tr>'')
+                                                                  )
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             ),
+                                             boucle(
+                                                initialisation(declare_variable(k,0)),
+                                                condition(inf(k,le_tableau_parametre.length)),
+                                                increment(k++),
+                                                faire(
+                                                   #( k ),
+                                                   choix(
+                                                      si(
+                                                         condition(ou(egalstricte(le_tableau_parametre[k].nom_du_parametre,"che_actif_grandeur"),egalstricte(le_tableau_parametre[k].nom_du_parametre,"chp_cle_grandeur"))),
+                                                         alors()
+                                                      ),
+                                                      sinon(
+                                                         alors(
+                                                            choix(
+                                                               si(
+                                                                  condition(appelf(element(liste_des_noms_affiches),nomf(includes),p(le_tableau_parametre[k].nom_du_parametre))),
+                                                                  alors(
+                                                                     #( déjà affiché plus haut )
+                                                                  )
+                                                               ),
+                                                               sinon(
+                                                                  alors(
+                                                                     affectop(''+='',o2,''<tr>''),
+                                                                     affectop(''+='',o2,''<td>''),
+                                                                     affectop(''+='',o2,concat(''<span class="yy__0">'',le_tableau_parametre[k].nom_du_parametre,''</span>'')),
+                                                                     #( nom_d_val ),
+                                                                     affectop(''+='',o2,''</td>''),
+                                                                     affectop(''+='',o2,''<td>''),
+                                                                     #( debugger ),
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<div id="vv_modifier_la_valeur_de_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''_'',
+                                                                           k,
+                                                                           ''">''
+                                                                        )
+                                                                     ),
+                                                                     #(  ),
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<input type="hidden" id="__le_nom_de_la_valeur_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''_'',
+                                                                           k,
+                                                                           ''" class="" value="'',
+                                                                           le_tableau_parametre[k].nom_du_parametre,
+                                                                           ''" />''
+                                                                        )
+                                                                     ),
+                                                                     declare_variable(genre_de_la_grandeur,le_tableau_parametre[k].genre_du_parametre),
+                                                                     choix(
+                                                                        si(
+                                                                           condition(egalstricte(genre_de_la_grandeur,5)),
+                                                                           alors(
+                                                                              affectop(
+                                                                                 ''+='',
+                                                                                 o2,
+                                                                                 concat(
+                                                                                    ''<input type="range" id="'',
+                                                                                    le_tableau_parametre[k].nom_du_parametre,
+                                                                                    ''_'',
+                                                                                    les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                                    ''" class="yy_ouinon" min="0" max="1" step="1" value="0" />''
+                                                                                 )
+                                                                              )
+                                                                           )
+                                                                        ),
+                                                                        sinon(
+                                                                           alors(
+                                                                              affectop(
+                                                                                 ''+='',
+                                                                                 o2,
+                                                                                 concat(
+                                                                                    ''<input type="text" id="'',
+                                                                                    le_tableau_parametre[k].nom_du_parametre,
+                                                                                    ''_'',
+                                                                                    les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                                    ''" class="" value="" />''
+                                                                                 )
+                                                                              )
+                                                                           )
+                                                                        )
+                                                                     ),
+                                                                     #(  ),
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_valeur_de_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''_'',
+                                                                           k,
+                                                                           ''),m1(n1('',
+                                                                           this.moi,
+                                                                           ''),f1(modifier_la_valeur_de1(''
+                                                                        )
+                                                                     ),
+                                                                     affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),
+                                                                     affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,'')'')),
+                                                                     affectop(''+='',o2,''))))" title="modifier">💾</button>''),
+                                                                     #(  ),
+                                                                     affectop(''+='',o2,''</div>''),
+                                                                     affectop(''+='',o2,''</td>''),
+                                                                     affectop(''+='',o2,''</tr>'')
+                                                                  )
+                                                               )
+                                                            )
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             ),
+                                             affectop(''+='',o2,''</table>'')
+                                          )
+                                       ),
+                                       sinon(
+                                          alors(
+                                             #( si on modifie le rev du paramètre et que précédamment il est = ''0''; ),
+                                             affectop(''+='',o2,''<table style="min-width:100%;">''),
+                                             boucle(
+                                                initialisation(declare_variable(j,0)),
+                                                condition(inf(j,le_tableau_parametre.length)),
+                                                increment(j++),
+                                                faire(
+                                                   choix(
+                                                      si(
+                                                         condition(ou(egalstricte(le_tableau_parametre[j].nom_du_parametre,''che_actif_grandeur''),egalstricte(le_tableau_parametre[j].nom_du_parametre,''chp_cle_grandeur''))),
+                                                         alors(
+                                                            #( pas pour les champs toujours présents )
+                                                         )
+                                                      ),
+                                                      sinon(
+                                                         alors(
+                                                            affectop(''+='',o2,''<tr>''),
+                                                            affectop(''+='',o2,''<td>''),
+                                                            affectop(''+='',o2,concat(''<span class="yy__2">'',le_tableau_parametre[j].nom_du_parametre,''</span>'')),
+                                                            affectop(''+='',o2,''</td>''),
+                                                            affectop(''+='',o2,''<td>''),
+                                                            #( o2+=valeur_de_val; ),
+                                                            affectop(
+                                                               ''+='',
+                                                               o2,
+                                                               concat(
+                                                                  ''<div id="vv_modifier_la_valeur_de_'',
+                                                                  les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                  ''_'',
+                                                                  j,
+                                                                  ''">''
+                                                               )
+                                                            ),
+                                                            #(  ),
+                                                            affectop(
+                                                               ''+='',
+                                                               o2,
+                                                               concat(
+                                                                  ''<input type="hidden" id="__le_nom_de_la_valeur_'',
+                                                                  les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                  ''_'',
+                                                                  j,
+                                                                  ''" class="" value="'',
+                                                                  le_tableau_parametre[j].nom_du_parametre,
+                                                                  ''" />''
+                                                               )
+                                                            ),
+                                                            choix(
+                                                               si(
+                                                                  condition(egalstricte(le_tableau_parametre[j].genre_du_parametre,5)),
+                                                                  alors(
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<input type="range" id="'',
+                                                                           le_tableau_parametre[j].nom_du_parametre,
+                                                                           ''_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''" class="yy_ouinon" min="0" max="1" step="1" value="0" >''
+                                                                        )
+                                                                     )
+                                                                  )
+                                                               ),
+                                                               sinon(
+                                                                  alors(
+                                                                     affectop(
+                                                                        ''+='',
+                                                                        o2,
+                                                                        concat(
+                                                                           ''<input type="text" id="'',
+                                                                           le_tableau_parametre[j].nom_du_parametre,
+                                                                           ''_'',
+                                                                           les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                           ''" class="" value="" />''
+                                                                        )
+                                                                     )
+                                                                  )
+                                                               )
+                                                            ),
+                                                            #(  ),
+                                                            affectop(
+                                                               ''+='',
+                                                               o2,
+                                                               concat(
+                                                                  ''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_valeur_de_'',
+                                                                  les_grandeurs_du_parametre[i].chi_id_grandeur,
+                                                                  ''_'',
+                                                                  j,
+                                                                  ''),m1(n1('',
+                                                                  this.moi,
+                                                                  ''),f1(modifier_la_valeur_de1(''
+                                                               )
+                                                            ),
+                                                            affectop(''+='',o2,concat(''chi_id_grandeur('',les_grandeurs_du_parametre[i].chi_id_grandeur,''),'')),
+                                                            affectop(''+='',o2,concat(''chi_id_parametre('',tup.T0_chi_id_parametre,'')'')),
+                                                            affectop(''+='',o2,''))))" title="modifier">💾</button>''),
+                                                            #(  ),
+                                                            affectop(''+='',o2,''</div>''),
+                                                            affectop(''+='',o2,''</td>''),
+                                                            affectop(''+='',o2,''</tr>'')
+                                                         )
+                                                      )
+                                                   )
+                                                )
+                                             ),
+                                             affectop(''+='',o2,''</table>'')
+                                          )
+                                       )
+                                    ),
+                                    affectop(''+='',o2,''</td>''),
+                                    #( "1( chp_cle_grandeur(fr) che_actif_grandeur(1) val_1(''français''))" ),
+                                    affectop(''+='',o2,''</tr>'')
+                                 )
+                              ),
+                              affectop(''+='',o2,''</table>''),
+                              affectop(''+='',o2,''</div>''),
+                              #(
+                                tri
+                              ),
+                              choix(
+                                 si(
+                                    condition(supeg(les_grandeurs_du_parametre.length,1)),
+                                    alors(
+                                       affectop(''+='',o2,''<hr /><h2>tri des grandeurs</h2>''),
+                                       affectop(''+='',o2,concat(''<input type="hidden" id="chi_id_parametre_en_cours_de_trie" value="'',tup.T0_chi_id_parametre,''" />'')),
+                                       affectop(''+='',o2,''<div  style="display:flex;padding-bottom:3em;">''),
+                                       affectop(''+='',o2,'' <div style="margin : 0 auto 0 auto;">''),
+                                       affectop(''+='',o2,concat(''   <ul id="vv_tri_'',this.moi,''">'')),
+                                       boucle_sur_objet_dans(
+                                          pourChaque(dans(declare_variable(i,null()),les_grandeurs_du_parametre)),
+                                          faire(
+                                             affectop(''+='',o2,concat(''      <li data-chi_id_grandeur="'',les_grandeurs_du_parametre[i].chi_id_grandeur,''">'')),
+                                             affectop(''+='',o2,''      <div>''),
+                                             choix(
+                                                si(
+                                                   condition(egalstricte(les_grandeurs_du_parametre[i].che_actif_grandeur,0)),
+                                                   alors(affectop(''+='',o2,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_rouge1,''</div>'')))
+                                                ),
+                                                sinon(
+                                                   alors(affectop(''+='',o2,concat(''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'',this.__ig1.les_svg.rond_vert1,''</div>'')))
+                                                )
+                                             ),
+                                             affectop(''+='',o2,concat(les_grandeurs_du_parametre[i].chp_cle_grandeur,'''')),
+                                             affectop(''+='',o2,''      </div>''),
+                                             affectop(''+='',o2,''     </li>'')
+                                          )
+                                       ),
+                                       affectop(''+='',o2,''   </ul>''),
+                                       affectop(''+='',o2,'' </div>''),
+                                       affectop(''+='',o2,''</div>''),
+                                       declare_variable(
+                                          options1,
+                                          obj(
+                                             (
+                                                "hauteur_max_en_vh",
+                                                #( entre 20 et 80 ),
+                                                80
+                                             ),
+                                             (
+                                                "largeur_max",
+                                                #( ''calc(100% - 50px)'', ),
+                                                ''340px''
+                                             ),
+                                             ("afficher_le_bouton_supprimer",0),
+                                             ("class_du_bouton_supprimer",''yy_b1 yy__0''),
+                                             ("arborescent",0),
+                                             ("class_du_bouton_deplacer",''yy_b1''),
+                                             ("boutons_du_menu",[]),
+                                             ("class_du_bouton_menu",''yy_b1''),
+                                             ("class_du_bouton_replier",''yy_b1 yy__2'')
+                                          )
+                                       ),
+                                       appelf(
+                                          element(options1.boutons_du_menu),
+                                          nomf(push),
+                                          p(
+                                             obj(
+                                                ("libelle",''💾''),
+                                                ("fonction",appelf(element(this.enregistrer_l_ordre_des_grandeurs1),nomf(bind),p(this)))
+                                             )
+                                          )
+                                       ),
+                                       affecte(tableau(nomt(options1),p(''afficher_le_bouton_editer'')),0),
+                                       affecte(tableau(nomt(options1),p(''class_du_bouton_editer'')),''yy_b1 yy__xif''),
+                                       appelf(
+                                          element(
+                                             appelf(nomf(import),p(concat(''./f0?n0=_tri_arbre1_c.js&__version='',this.__version)))
+                                          ),
+                                          nomf(then),
+                                          p(
+                                             appelf(
+                                                flechee(),
+                                                p(le_module),
+                                                contenu(
+                                                   declare_variable(
+                                                      aa,
+                                                      new(
+                                                         appelf(
+                                                            nomf(tableau(nomt(le_module),p(''_tri_arbre1''))),
+                                                            p(this)
+                                                         )
+                                                      )
+                                                   ),
+                                                   appelf(element(aa),nomf(construire_arbre),p(concat(''vv_tri_'',this.moi)),p(options1))
+                                                )
+                                             )
+                                          )
+                                       )
+                                    )
+                                 )
+                              ),
+                              choix(
+                                 si(
+                                    condition(egalstricte(les_grandeurs_du_parametre.length,0)),
+                                    alors(affectop(''+='',o2,concat(''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(parametres1),f1(page_confirmation_supprimer1(chi_id_parametre('',tup.T0_chi_id_parametre,'')))))" >'')),affectop(''+='',o2,''vous pouvez supprimer ce paramétrage''),affectop(''+='',o2,''</button>''))
+                                 )
+                              )
+                           )
+                        )
+                     )
+                  )
+               )
+            ),
+            choix(
+               si(condition(diffstricte(o2,'''')),alors(affectop(''+='',o2,''<div class="yy__bdp1"></div>'')))
+            ),
+            affecte(appelf(element(document),nomf(getElementById),p(''vv_ecran_visualisation_zone_complement''),prop(innerHTML)),o2),
+            choix(
+               si(
+                  condition(sup(this.__ig1.__decallage_page_avant_envoi,0)),
+                  alors(
+                     essayer(
+                        faire(
+                           appelf(
+                              nomf(setTimeout),
+                              p(
+                                 appelf(
+                                    flechee(),
+                                    p(),
+                                    contenu(
+                                       appelf(
+                                          element(window),
+                                          nomf(scrollTo),
+                                          p(obj(("top",this.__ig1.__decallage_page_avant_envoi)))
+                                       ),
+                                       affecte(this.__ig1.__decallage_page_avant_envoi,0)
+                                    )
+                                 )
+                              ),
+                              p(50)
+                           )
+                        ),
+                        sierreur(e,faire(debugger()))
+                     )
+                  )
+               )
+            )
+         )
+      ),
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
+         contenu(
+            declare_variable(lst,''''),
+            affectop(''+='',lst,''<div class="yy_act1">''),
+            #( fonctions_spéciales1(ne_pas_supprimer_id_un(...)) ),
+            choix(
+               si(
+                  condition(egalstricte(this.__ig1.chi_id_utilisateur,1)),
+                  alors(
+                     choix(
+                        si(
+                           condition(appelf(element([10000]),nomf(includes),p(tup.T0_chi_id_parametre))),
+                           alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'',this.__ig1.les_svg.poubelle,''</button>'')))
+                        ),
+                        sinon(
+                           alors(
+                              affectop(''+='',lst,''<button class="yy_svg1 yy__2" rev_clic1="''),
+                              affectop(
+                                 ''+='',
+                                 lst,
+                                 concat(
+                                    ''pm1(m1(n1('',
+                                    this.moi,
+                                    ''),f1(page_confirmation_supprimer1(chi_id_parametre('',
+                                    tup.T0_chi_id_parametre,
+                                    '')))))''
+                                 )
+                              ),
+                              affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.poubelle,''</button>''))
+                           )
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_voir1(chi_id_parametre('',
+                           tup.T0_chi_id_parametre,
+                           '')))))">'',
+                           this.__ig1.les_svg.voir,
+                           ''</button>''
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_modification1(chi_id_parametre('',
+                           tup.T0_chi_id_parametre,
+                           '')))))">'',
+                           this.__ig1.les_svg.editer,
+                           ''</button>''
+                        )
+                     ),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_duplication1(chi_id_parametre('',
+                           tup.T0_chi_id_parametre,
+                           '')))))">'',
+                           this.__ig1.les_svg.dupliquer,
+                           ''</button>''
+                        )
+                     ),
+                     affectop(''+='',lst,''<button class="yy_b1 yy__1" rev_clic1="m1(n1(grandeurs1),f1(entree_module()))">grandeurs</button>'')
+                  )
+               ),
+               sinon(
+                  alors(
+                     affectop(''+='',lst,''<button class="yy_svg1 yy__2" rev_clic1="''),
+                     affectop(
+                        ''+='',
+                        lst,
+                        concat(
+                           ''pm1(m1(n1('',
+                           this.moi,
+                           ''),f1(page_voir1(chi_id_parametre('',
+                           tup.T0_chi_id_parametre,
+                           '')))))''
+                        )
+                     ),
+                     affectop(''+='',lst,concat(''">'',this.__ig1.les_svg.voir,''</button>''))
+                  )
+               )
+            ),
+            affectop(''+='',lst,''</div>''),
+            retourner(lst)
+         )
+      )
+   )
+)','class parametres1{
+    /*
+      =============================================================================================================
+    */
+    renumeroter_cette_grandeur1( mat , d ){
+        let l01=mat.length;
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        for( let i=d + 1 ; i < mat.length ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_grandeur > 0 && chi_id_parametre > 0){
+            let o1='''';
+            o1+=''<h1>Attribuer un nouveau numéro à une grandeur</h1>'';
+            o1+=''le numéro actuel est <b>'' + chi_id_grandeur + ''</b>'';
+            o1+=''<br />'';
+            o1+=''<div id="vv_grandeurs_nouveau_numero1">'';
+            o1+=''    <input type="hidden" id="vv_ancien_numero_de_grandeur" value="'' + chi_id_grandeur + ''" />'';
+            o1+=''    le nouveau numéro sera : <input type="text" id="vv_nouveau_numero_de_grandeur" value="" aria-autocomplete="list"/>'';
+            o1+=''    <br />'';
+            o1+=''    <button class="yy_b1" rev_clic1="'';
+            o1+=''fo1(co1(vv_grandeurs_nouveau_numero1),pm1(m1(n1('' + this.moi + ''),f1(vv_grandeurs_nouveau_numero1(chi_id_parametre('' + chi_id_parametre + ''))))))'';
+            o1+=''">attribuer ce nouveau numéro</button>'';
+            o1+=''</div>'';
+            this.__ig1.affiche_sous_fenetre1( o1 );
+            return({"__xst" : __xsu});
+        }
+        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregistrer_l_ordre_des_grandeurs1( evenement , reference_arbre ){
+        let chi_id_parametre_en_cours_de_trie=document.getElementById( ''chi_id_parametre_en_cours_de_trie'' ).value;
+        let nouvel_ordre='''';
+        for(let i in reference_arbre.arbre){
+            nouvel_ordre+='','' + reference_arbre.arbre[i].attributs[''data-chi_id_grandeur''];
+        }
+        nouvel_ordre=nouvel_ordre.substr( 1 );
+        let obj={
+            "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregistrer_l_ordre_des_grandeurs2(chi_id_parametre('' + chi_id_parametre_en_cours_de_trie + '')))))'' ,
+            "__xva" : {"chi_id_parametre_en_cours_de_trie" : chi_id_parametre_en_cours_de_trie ,"nouvel_ordre" : nouvel_ordre}
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier_la_valeur_de1( mat , d , données ){
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let co1=données.__co1;
+        let fo1=données.__fo1[co1];
+        let __fo1={};
+        __fo1[co1]=fo1;
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(modifier_la_valeur_de2(chi_id_grandeur('' + chi_id_grandeur + ''),chi_id_parametre('' + chi_id_parametre + '')))))'' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier_verouillee_de1( mat , d , données ){
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let co1=données.__co1;
+        let fo1=données.__fo1[co1];
+        let __fo1={};
+        __fo1[co1]=fo1;
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(modifier_verouille_de2(chi_id_grandeur('' + chi_id_grandeur + ''),chi_id_parametre('' + chi_id_parametre + '')))))'' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier_actif_de1( mat , d , données ){
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let co1=données.__co1;
+        let fo1=données.__fo1[co1];
+        let __fo1={};
+        __fo1[co1]=fo1;
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(modifier_actif_de2(chi_id_grandeur('' + chi_id_grandeur + ''),chi_id_parametre('' + chi_id_parametre + '')))))'' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    modifier_la_cle_de1( mat , d , données ){
+        let chi_id_grandeur=0;
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_grandeur'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_grandeur=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let co1=données.__co1;
+        let fo1=données.__fo1[co1];
+        let __fo1={};
+        __fo1[co1]=fo1;
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(modifier_la_cle_de2(chi_id_grandeur('' + chi_id_grandeur + ''),chi_id_parametre('' + chi_id_parametre + '')))))'' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    enregister_nouveau_parametre( mat , d , données ){
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        let co1=données.__co1;
+        let fo1=données.__fo1[co1];
+        let __fo1={};
+        __fo1[co1]=fo1;
+        this.__ig1.envoyer_un_colis_au_worker( {
+                 /*  */
+                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregister_nouveau_parametre1(chi_id_parametre('' + chi_id_parametre + '')))))'' ,
+                "__xva" : {"__fo1" : __fo1 ,"__co1" : co1}
+            } );
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    f1( mat , d , le_colis1=null ){
+        let chi_id_parametre=0;
+        const l01=mat.length;
+        switch (mat[d][1]){
+            case ''enregistrer_l_ordre_des_grandeurs2'' : 
+            case ''modifier_la_valeur_de2'' : 
+            case ''modifier_actif_de2'' : 
+            case ''modifier_verouille_de2'' : 
+            case ''modifier_la_cle_de2'' : 
+            case ''vv_grandeurs_nouveau_numero1'' : 
+            case ''enregister_nouveau_parametre1'' : 
+            case ''supprimer_une_grandeur1'' :
+                this.__ig1.fermer_la_sous_fenetre();
+                for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                    if(mat[i][1] === ''chi_id_parametre'' && mat[i][2] === ''f'' && mat[i][8] === 1 && mat[i + 1][2] === ''c''){
+                        chi_id_parametre=parseInt( mat[i + 1][1] , 10 );
+                    }
+                }
+                if(chi_id_parametre > 0){
+                    let cmd=''pm1(m1(n1('' + this.moi + ''),f1(page_voir1(chi_id_parametre('' + chi_id_parametre + '')))))'';
+                    this.__ig1.executer1( cmd , null , null );
+                }
+                break;
+                
+            default:
+                return({"__xst" : __xer ,"__xme" : ''dans l\''interface client "'' + mat[d][1] + ''" n\''est pas traitée ou bien comporte une erreur''});
+                
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    constructor( mat , d , __ig1 ){
+        this.__ig1=__ig1;
+        for(let i in this.tableau_des_filtres){
+            this.filtres[i]={};
+            for(let j in this.tableau_des_filtres[i]){
+                this.filtres[i][j]=this.tableau_des_filtres[i][j].défaut;
+            }
+        }
+        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + ''_'' + this.moi + ''_liste1'' );
+        if(aa !== null){
+            let jso=JSON.parse( aa );
+            for(let i in this.tableau_des_filtres.liste1){
+                this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
+            }
+        }
+        if(this.__ig1.chi_id_utilisateur === 1){
+            this.vv_ecran_liste_boutons_avant+=''<button class="yy_svg1 yy__xif" rev_clic1="'';
+            this.vv_ecran_liste_boutons_avant+=''m1(n1('' + this.moi + ''),f1(page_creer1()))'';
+            this.vv_ecran_liste_boutons_avant+=''" title="création '' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_le_contenu_sous_pg_modif1( mat , d , le_colis1=null ){
+        let o1='''';
+        o1+=''<pre>'';
+        o1+=''champs_des_parametres(\r\n'';
+        o1+=''    un_drapeau(\r\n'';
+        o1+=''        #(un drapeau à 0 ou 1),\r\n'';
+        o1+=''            genre_du_parametre(5)\r\n'';
+        o1+=''        ),\r\n'';
+        o1+=''        un_libellé_complémentaire_de_la_clé(\r\n'';
+        o1+=''            #(un libellé complémentaire de la clé varchar 64 ),\r\n'';
+        o1+=''            genre_du_parametre(12)\r\n'';
+        o1+=''        ),\r\n'';
+        o1+=''        un_texte_complémentaire_de_la_clé(\r\n'';
+        o1+=''            #(un texte complémentaire de la clé TEXT NULL ),\r\n'';
+        o1+=''            genre_du_parametre(6)\r\n'';
+        o1+=''        )\r\n'';
+        o1+='')</pre>\r\n'';
+        if(o1 !== ''''){
+            o1+=''<div class="yy__bdp1"></div>'';
+        }
+        document.getElementById( ''vv_ecran_modification_zone_complement'' ).innerHTML=o1;
+    }
+    /*
+      =============================================================================================================
+    */
+    afficher_le_contenu_sous_pg_voir1( mat , d , le_colis1=null ){
+        let tup=le_colis1.__xva.page_voir1.__xva[0];
+        let o2='''';
+        if(tup.T0_cht_rev_parametre !== null){
+            let cht_rev_parametre=tup.T0_cht_rev_parametre;
+            let obj_mat2=this.__ig1.__rev1.t2m( cht_rev_parametre );
+            if(obj_mat2.__xst !== __xsu){
+                return({"__xst" : __xer ,"__xme" : "erreur de conversion de cht_rev_parametre [" + this.__ig1.nl2() + "]"});
+            }
+            let liste_des_champs_complementaires=[];
+            let mat2=obj_mat2.__xva;
+            o2+=''<h2>ajouter une grandeur</h2>'';
+            let l02=mat2.length;
+            let le_tableau_parametre=[
+                /*  */
+                {"nom_du_parametre" : "che_actif_grandeur" ,"genre_du_parametre" : 5 ,"commentaire_du_parametre" : ""},
+                {"nom_du_parametre" : "chp_cle_grandeur" ,"genre_du_parametre" : 3 ,"commentaire_du_parametre" : "entrez la valeur"}
+            ];
+            for( let i=1 ; i < l02 ; i=mat2[i][12] ){
+                if(mat2[i][1] === ''champs_des_parametres'' && mat2[i][2] === ''f''){
+                    for( let j=i + 1 ; j < l02 ; j=mat2[j][12] ){
+                        let nom_du_parametre='''';
+                        let genre_du_parametre=0;
+                        let commentaire_du_parametre='''';
+                        if(mat2[j][2] === ''f'' && mat2[j][1] === ''#''){
+                        }else if(mat2[j][2] === ''f''){
+                            nom_du_parametre=mat2[j][1];
+                            for( let k=j + 1 ; k < l02 ; k=mat2[k][12] ){
+                                if(mat2[k][1] === ''genre_du_parametre'' && mat2[k][2] === ''f'' && mat2[k][8] === 1 && mat2[k + 1][2] === ''c''){
+                                    genre_du_parametre=parseInt( mat2[k + 1][1] , 10 );
+                                }else if(mat2[k][1] === ''#'' && mat2[k][2] === ''f''){
+                                    commentaire_du_parametre=mat2[k][13];
+                                    /*  */
+                                }
+                            }
+                        }
+                        liste_des_champs_complementaires.push( nom_du_parametre );
+                        le_tableau_parametre.push( {"nom_du_parametre" : nom_du_parametre ,"genre_du_parametre" : genre_du_parametre ,"commentaire_du_parametre" : commentaire_du_parametre} );
+                    }
+                }
+            }
+            o2+=''<div id="vv_formulaire_du_parametre" style="text-align:center;">'';
+            o2+=''<b>clé : </b>'';
+            o2+=''<input id="chp_cle_grandeur" type="text" class="yy_input1" value="" size="48" style="width:12em;">'';
+            o2+=''<input id="che_actif_grandeur" type="hidden" value="0">'';
+            o2+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_formulaire_du_parametre),m1(n1('' + this.moi + ''),f1(enregister_nouveau_parametre(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))" title="ajouter" >ajouter</button>'';
+            o2+=''</div id="vv_formulaire_du_parametre">'';
+            if(tup.T0_cht_ordre_parametre !== null){
+                o2+=''<h2>grandeurs</h2>'';
+                let obj_ordre=this.__ig1.__rev1.rev_tm( tup.T0_cht_ordre_parametre , true );
+                if(obj_ordre.__xst !== __xsu){
+                    return({"__xst" : __xer ,"__xme" : "erreur de conversion de cht_ordre_parametre [" + this.__ig1.nl2() + "]"});
+                }
+                let mat_ordre=obj_ordre.__xva;
+                let les_grandeurs_du_parametre=[];
+                for(let i in le_colis1.__xva.parametres_actuels){
+                    les_grandeurs_du_parametre.push( {
+                            "ordre_de_tri" : /* ordre de tri = 0 à priori */-1 ,
+                            "chi_id_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_chi_id_grandeur ,
+                            "chp_cle_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_chp_cle_grandeur ,
+                            "cht_rev_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_cht_rev_grandeur ,
+                            "che_actif_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_che_actif_grandeur ,
+                            "che_verouillee_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_che_verouillee_grandeur ,
+                            "chc_couleur_texte_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_chc_couleur_texte_grandeur ,
+                            "chc_couleur_fond_grandeur" : le_colis1.__xva.parametres_actuels[i].T0_chc_couleur_fond_grandeur
+                        } );
+                }
+                for( let i=0 ; i < les_grandeurs_du_parametre.length ; i++ ){
+                    for( let j=1 ; j < mat_ordre.length ; j=mat_ordre[j][12] ){
+                        if(parseInt( mat_ordre[j][1] , 10 ) === les_grandeurs_du_parametre[i].chi_id_grandeur){
+                            les_grandeurs_du_parametre[i].ordre_de_tri=j - 1;
+                            break;
+                        }
+                    }
+                }
+                les_grandeurs_du_parametre.sort( ( a , b ) => {
+                        if(a.ordre_de_tri < b.ordre_de_tri){
+                            return -1;
+                        }else if(a.ordre_de_tri > b.ordre_de_tri){
+                            return 1;
+                        }
+                        return 0;
+                    } );
+                o2+=''<div class="yy_conteneur_table">'';
+                o2+=''<table border="1"  style="min-width:90%;">'';
+                o2+=''<tr>'';
+                o2+=''<th style="min-width:5em;">id</th>'';
+                o2+=''<th style="max-width:5em;">actif</th>'';
+                if(this.__ig1.chi_id_utilisateur === 1){
+                    o2+=''<th style="max-width:5em;">vérouillé</th>'';
+                }
+                o2+=''<th>cle / couleurs texte et fond</th>'';
+                o2+=''<th>valeurs</th>'';
+                o2+=''</tr>'';
+                for( let i=0 ; i < les_grandeurs_du_parametre.length ; i++ ){
+                    o2+=''<tr>'';
+                    /*
+                      colonne id
+                    */
+                    o2+=''<td style="max-width:3em;text-align:center;">'';
+                    if(this.__ig1.chi_id_utilisateur === 1){
+                        o2+=''<button class="yy_svg1 yy__3" rev_clic1="m1(n1('' + this.moi + ''),f1(renumeroter_cette_grandeur1('';
+                        o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                        o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + ''),'';
+                        o2+='')))" title="renumeroter cette grandeur">'' + this.__ig1.les_svg.renuméroter + ''</button>'';
+                    }
+                    if(les_grandeurs_du_parametre[i].che_verouillee_grandeur === 0){
+                        o2+=''<button class="yy_svg1 yy__0" rev_clic1="confirmer1(pm1(m1(n1('' + this.moi + ''),f1(supprimer_une_grandeur1('';
+                        o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                        o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + ''),'';
+                        o2+='')))))" title="supprimer cette grandeur">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+                    }
+                    o2+='' '' + les_grandeurs_du_parametre[i].chi_id_grandeur;
+                    o2+=''</td>'';
+                    /*
+                      colonne actif
+                    */
+                    o2+=''<td style="max-width:5em;">'';
+                    o2+=''<div id="vv_modifier_actif_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''">'';
+                    o2+=''<input type="range" id="che_actif_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="yy_ouinon" min="0" max="1" step="1" value="'' + les_grandeurs_du_parametre[i].che_actif_grandeur + ''">'';
+                    /*  */
+                    o2+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_actif_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),m1(n1('' + this.moi + ''),f1(modifier_actif_de1('';
+                    o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                    o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + '')'';
+                    o2+=''))))" title="modifier">💾</button>'';
+                    o2+=''</div>'';
+                    o2+=''</td>'';
+                    /*
+                      colonne vérouillé si dev
+                    */
+                    if(this.__ig1.chi_id_utilisateur === 1){
+                        o2+=''<td style="max-width:3em;text-align:center;">'';
+                        o2+=''<div id="vv_modifier_verouillee_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''">'';
+                        o2+=''<input type="range" id="che_verouillee_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="yy_ouinon" min="0" max="1" step="1" value="'' + les_grandeurs_du_parametre[i].che_verouillee_grandeur + ''">'';
+                        /*  */
+                        o2+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_verouillee_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),m1(n1('' + this.moi + ''),f1(modifier_verouillee_de1('';
+                        o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                        o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + '')'';
+                        o2+=''))))" title="modifier">💾</button>'';
+                        o2+=''</div>'';
+                        o2+=''</td>'';
+                    }
+                    /*
+                      colonne cle et couleur
+                    */
+                    o2+=''<td>'';
+                    /* clé */
+                    o2+=''<div id="vv_modifier_la_cle_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''">'';
+                    /*  */
+                    o2+=''  <button style="" class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_cle_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),m1(n1('' + this.moi + ''),f1(modifier_la_cle_de1('';
+                    o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                    o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + '')'';
+                    o2+=''))))" title="modifier">💾</button>'';
+                    /*  */
+                    o2+=''<input type="text" class="yy_input1" size="15" maxlength="64" id="chp_cle_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="" value="'' + les_grandeurs_du_parametre[i].chp_cle_grandeur + ''"'';
+                    if(les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur !== null
+                           && les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur !== null
+                    ){
+                        o2+='' style="background:'' + les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur + '';color:'' + les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur + ''"'';
+                    }
+                    o2+='' />'';
+                    /*  */
+                    /* couleur */
+                    o2+=''<div style="display:inline-block;">'';
+                    o2+=''  <input type="hidden" id="chc_couleur_texte_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" value="'' + (les_grandeurs_du_parametre[i].chc_couleur_texte_grandeur??'''') + ''" />'';
+                    o2+=''  <input type="hidden" id="chc_couleur_fond_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" value="'' + (les_grandeurs_du_parametre[i].chc_couleur_fond_grandeur??'''') + ''" />'';
+                    o2+=''<div class="">'';
+                    o2+=''  <button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(maj_couleur1('';
+                    o2+=''nom_du_champ1(chc_couleur_fond_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + '')'';
+                    o2+=''nom_du_champ2(chc_couleur_texte_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + '')'';
+                    o2+=''nom_du_champ_a_modifier(chp_cle_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + '')'';
+                    o2+=''format_palette(2_couleurs)'';
+                    o2+='')))">'' + this.__ig1.les_svg.palette + ''</button>'';
+                    o2+=''  <div class="yy_b1 yy__4" rev_clic1="m1(n1(__fnt1),f1(raz_zone_couleur2('';
+                    o2+=''nom_du_champ1(chc_couleur_fond_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + '')'';
+                    o2+=''nom_du_champ2(chc_couleur_texte_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + '')'';
+                    o2+=''nom_du_champ_a_modifier(chp_cle_grandeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + '')'';
+                    o2+='')))" >x</div>'';
+                    o2+=''</div>'';
+                    /*  */
+                    o2+=''</div>'';
+                    o2+=''</div>'';
+                    o2+=''</td>'';
+                    /*
+                    */
+                    o2+=''<td>'';
+                    if(les_grandeurs_du_parametre[i].cht_rev_grandeur !== ''0''){
+                        o2+=''<table style="min-width:100%;">'';
+                        let obj_cht_rev_grandeur=this.__ig1.__rev1.t2m( les_grandeurs_du_parametre[i].cht_rev_grandeur );
+                        if(obj_cht_rev_grandeur.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : "erreur de conversion de cht_rev_grandeur [" + this.__ig1.nl2() + "]"});
+                        }
+                        let mat3=obj_cht_rev_grandeur.__xva;
+                        let l03=mat3.length;
+                        let liste_des_noms_affiches=[];
+                        for( let j=1 ; j < l03 ; j=mat3[j][12] ){
+                            if(mat3[j][2] === ''f''){
+                                let nom_d_val='''';
+                                let valeur_de_val='''';
+                                if(mat3[j][2] === ''f'' && mat3[j][8] === 1 && mat3[j + 1][2] === ''c''){
+                                    nom_d_val=mat3[j][1];
+                                    valeur_de_val=mat3[j + 1][1];
+                                    i;
+                                }
+                                if(nom_d_val !== '''' && liste_des_champs_complementaires.includes( nom_d_val )){
+                                    o2+=''<tr>'';
+                                    o2+=''<td>'';
+                                    liste_des_noms_affiches.push( nom_d_val );
+                                    o2+=nom_d_val;
+                                    o2+=''</td>'';
+                                    o2+=''<td>'';
+                                    /* o2+=valeur_de_val; */
+                                    o2+=''<div id="vv_modifier_la_valeur_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + j + ''">'';
+                                    /*  */
+                                    o2+=''<input type="hidden" id="__le_nom_de_la_valeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + j + ''" class="" value="'' + nom_d_val + ''" />'';
+                                    let genre_de_la_grandeur=0;
+                                    for( let k=0 ; k < le_tableau_parametre.length ; k++ ){
+                                        if(le_tableau_parametre[k].nom_du_parametre === nom_d_val){
+                                            genre_de_la_grandeur=le_tableau_parametre[k].genre_du_parametre;
+                                        }
+                                    }
+                                    if(genre_de_la_grandeur === 5){
+                                        o2+=''<input type="range" id="'' + nom_d_val + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="yy_ouinon" min="0" max="1" step="1" value="'' + valeur_de_val + ''" />'';
+                                    }else if(genre_de_la_grandeur === 6){
+                                        o2+=''<textarea id="'' + nom_d_val + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''">'' + valeur_de_val.replace( /\\\\/g , ''\\'' ).replace( /\\\''/g , ''\'''' ).replace( /¶LF¶/g , ''\n'' ).replace( /¶CR¶/g , ''\r'' ).replace( /¶CRLF¶/g , ''\r\n'' ) + ''</textarea>'';
+                                    }else{
+                                        o2+=''<input type="text" id="'' + nom_d_val + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="" value="'' + valeur_de_val.replace( /\\\\/g , ''\\'' ).replace( /\\\''/g , ''\'''' ) + ''" />'';
+                                    }
+                                    les_grandeurs_du_parametre[i][''valeur_de_val'']=valeur_de_val;
+                                    /*  */
+                                    o2+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_valeur_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + j + ''),m1(n1('' + this.moi + ''),f1(modifier_la_valeur_de1('';
+                                    o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                                    o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + '')'';
+                                    o2+=''))))" title="modifier">💾</button>'';
+                                    /*  */
+                                    o2+=''</div>'';
+                                    o2+=''</td>'';
+                                    o2+=''</tr>'';
+                                }
+                            }
+                        }
+                        for( let k=0 ; k < le_tableau_parametre.length ; k++ ){
+                            /* k */
+                            if(le_tableau_parametre[k].nom_du_parametre === "che_actif_grandeur"
+                                   || le_tableau_parametre[k].nom_du_parametre === "chp_cle_grandeur"
+                            ){
+                            }else{
+                                if(liste_des_noms_affiches.includes( le_tableau_parametre[k].nom_du_parametre )){
+                                    /* déjà affiché plus haut */
+                                }else{
+                                    o2+=''<tr>'';
+                                    o2+=''<td>'';
+                                    o2+=''<span class="yy__0">'' + le_tableau_parametre[k].nom_du_parametre + ''</span>'';
+                                    /* nom_d_val */
+                                    o2+=''</td>'';
+                                    o2+=''<td>'';
+                                    /* debugger */
+                                    o2+=''<div id="vv_modifier_la_valeur_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + k + ''">'';
+                                    /*  */
+                                    o2+=''<input type="hidden" id="__le_nom_de_la_valeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + k + ''" class="" value="'' + le_tableau_parametre[k].nom_du_parametre + ''" />'';
+                                    let genre_de_la_grandeur=le_tableau_parametre[k].genre_du_parametre;
+                                    if(genre_de_la_grandeur === 5){
+                                        o2+=''<input type="range" id="'' + le_tableau_parametre[k].nom_du_parametre + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="yy_ouinon" min="0" max="1" step="1" value="0" />'';
+                                    }else{
+                                        o2+=''<input type="text" id="'' + le_tableau_parametre[k].nom_du_parametre + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="" value="" />'';
+                                    }
+                                    /*  */
+                                    o2+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_valeur_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + k + ''),m1(n1('' + this.moi + ''),f1(modifier_la_valeur_de1('';
+                                    o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                                    o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + '')'';
+                                    o2+=''))))" title="modifier">💾</button>'';
+                                    /*  */
+                                    o2+=''</div>'';
+                                    o2+=''</td>'';
+                                    o2+=''</tr>'';
+                                }
+                            }
+                        }
+                        o2+=''</table>'';
+                    }else{
+                        /* si on modifie le rev du paramètre et que précédamment il est = ''0''; */
+                        o2+=''<table style="min-width:100%;">'';
+                        for( let j=0 ; j < le_tableau_parametre.length ; j++ ){
+                            if(le_tableau_parametre[j].nom_du_parametre === ''che_actif_grandeur''
+                                   || le_tableau_parametre[j].nom_du_parametre === ''chp_cle_grandeur''
+                            ){
+                                /* pas pour les champs toujours présents */
+                            }else{
+                                o2+=''<tr>'';
+                                o2+=''<td>'';
+                                o2+=''<span class="yy__2">'' + le_tableau_parametre[j].nom_du_parametre + ''</span>'';
+                                o2+=''</td>'';
+                                o2+=''<td>'';
+                                /* o2+=valeur_de_val; */
+                                o2+=''<div id="vv_modifier_la_valeur_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + j + ''">'';
+                                /*  */
+                                o2+=''<input type="hidden" id="__le_nom_de_la_valeur_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + j + ''" class="" value="'' + le_tableau_parametre[j].nom_du_parametre + ''" />'';
+                                if(le_tableau_parametre[j].genre_du_parametre === 5){
+                                    o2+=''<input type="range" id="'' + le_tableau_parametre[j].nom_du_parametre + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="yy_ouinon" min="0" max="1" step="1" value="0" >'';
+                                }else{
+                                    o2+=''<input type="text" id="'' + le_tableau_parametre[j].nom_du_parametre + ''_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''" class="" value="" />'';
+                                }
+                                /*  */
+                                o2+=''<button class="yy_b1 yy__3" rev_clic1="fo1(co1(vv_modifier_la_valeur_de_'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''_'' + j + ''),m1(n1('' + this.moi + ''),f1(modifier_la_valeur_de1('';
+                                o2+=''chi_id_grandeur('' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''),'';
+                                o2+=''chi_id_parametre('' + tup.T0_chi_id_parametre + '')'';
+                                o2+=''))))" title="modifier">💾</button>'';
+                                /*  */
+                                o2+=''</div>'';
+                                o2+=''</td>'';
+                                o2+=''</tr>'';
+                            }
+                        }
+                        o2+=''</table>'';
+                    }
+                    o2+=''</td>'';
+                    /* "1( chp_cle_grandeur(fr) che_actif_grandeur(1) val_1(''français''))" */
+                    o2+=''</tr>'';
+                }
+                o2+=''</table>'';
+                o2+=''</div>'';
+                /*
+                  tri
+                */
+                if(les_grandeurs_du_parametre.length >= 1){
+                    o2+=''<hr /><h2>tri des grandeurs</h2>'';
+                    o2+=''<input type="hidden" id="chi_id_parametre_en_cours_de_trie" value="'' + tup.T0_chi_id_parametre + ''" />'';
+                    o2+=''<div  style="display:flex;padding-bottom:3em;">'';
+                    o2+='' <div style="margin : 0 auto 0 auto;">'';
+                    o2+=''   <ul id="vv_tri_'' + this.moi + ''">'';
+                    for(let i in les_grandeurs_du_parametre){
+                        o2+=''      <li data-chi_id_grandeur="'' + les_grandeurs_du_parametre[i].chi_id_grandeur + ''">'';
+                        o2+=''      <div>'';
+                        if(les_grandeurs_du_parametre[i].che_actif_grandeur === 0){
+                            o2+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_rouge1 + ''</div>'';
+                        }else{
+                            o2+=''<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">'' + this.__ig1.les_svg.rond_vert1 + ''</div>'';
+                        }
+                        o2+=les_grandeurs_du_parametre[i].chp_cle_grandeur + '''';
+                        o2+=''      </div>'';
+                        o2+=''     </li>'';
+                    }
+                    o2+=''   </ul>'';
+                    o2+='' </div>'';
+                    o2+=''</div>'';
+                    let options1={
+                        "hauteur_max_en_vh" : /* entre 20 et 80 */80 ,
+                        "largeur_max" : /* ''calc(100% - 50px)'', */''340px'' ,
+                        "afficher_le_bouton_supprimer" : 0 ,
+                        "class_du_bouton_supprimer" : ''yy_b1 yy__0'' ,
+                        "arborescent" : 0 ,
+                        "class_du_bouton_deplacer" : ''yy_b1'' ,
+                        "boutons_du_menu" : [] ,
+                        "class_du_bouton_menu" : ''yy_b1'' ,
+                        "class_du_bouton_replier" : ''yy_b1 yy__2''
+                    };
+                    options1.boutons_du_menu.push( {"libelle" : ''💾'' ,"fonction" : this.enregistrer_l_ordre_des_grandeurs1.bind( this )} );
+                    options1[''afficher_le_bouton_editer'']=0;
+                    options1[''class_du_bouton_editer'']=''yy_b1 yy__xif'';
+                    import( ''./f0?n0=_tri_arbre1_c.js&__version='' + this.__version ).then( ( le_module ) => {
+                            let aa=new le_module[''_tri_arbre1'']( this );
+                            aa.construire_arbre( ''vv_tri_'' + this.moi , options1 );
+                    } );
+                }
+                if(les_grandeurs_du_parametre.length === 0){
+                    o2+=''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(parametres1),f1(page_confirmation_supprimer1(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))" >'';
+                    o2+=''vous pouvez supprimer ce paramétrage'';
+                    o2+=''</button>'';
+                }
+            }
+        }
+        if(o2 !== ''''){
+            o2+=''<div class="yy__bdp1"></div>'';
+        }
+        document.getElementById( ''vv_ecran_visualisation_zone_complement'' ).innerHTML=o2;
+        if(this.__ig1.__decallage_page_avant_envoi > 0){
+            try{
+                setTimeout( () => {
+                        window.scrollTo( {"top" : this.__ig1.__decallage_page_avant_envoi} );
+                        this.__ig1.__decallage_page_avant_envoi=0;
+                    } , 50 );
+            }catch(e){
+                debugger;
+            }
+        }
+    }
+    /*
+      =============================================================================================================
+    */
+    liste_des_boutons_action1( tup , le_colis1 ){
+        let lst='''';
+        lst+=''<div class="yy_act1">'';
+        /* fonctions_spéciales1(ne_pas_supprimer_id_un(...)) */
+        if(this.__ig1.chi_id_utilisateur === 1){
+            if([10000].includes( tup.T0_chi_id_parametre )){
+                lst+=''<button class="yy_svg1 yy__2 yy__2_inactif" disabled="true">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            }else{
+                lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
+                lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))'';
+                lst+=''">'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            }
+            lst+=''<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_voir1(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))">'' + this.__ig1.les_svg.voir + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_duplication1(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))">'' + this.__ig1.les_svg.dupliquer + ''</button>'';
+            lst+=''<button class="yy_b1 yy__1" rev_clic1="m1(n1(grandeurs1),f1(entree_module()))">grandeurs</button>'';
+        }else{
+            lst+=''<button class="yy_svg1 yy__2" rev_clic1="'';
+            lst+=''pm1(m1(n1('' + this.moi + ''),f1(page_voir1(chi_id_parametre('' + tup.T0_chi_id_parametre + '')))))'';
+            lst+=''">'' + this.__ig1.les_svg.voir + ''</button>'';
+        }
+        lst+=''</div>'';
+        return lst;
+    }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
 
@@ -5302,7 +11633,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (86) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (101) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ,  che_base_reference_requete ) VALUES
 ('1101','tbl_utilisateurs','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -6614,6 +12945,158 @@ WHERE `T0`.`chi_id_acces` >= 1
 
 WHERE (`T1`.`chx_acces_autorisation` = 0)
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_menus','1'),
+('1165',NULL,'insert','insérer(
+   valeurs(
+      affecte(champ(`che_bdd_televersement`),:che_bdd_televersement),
+      affecte(champ(`chp_nom_table_televersement`),:chp_nom_table_televersement),
+      affecte(champ(`che_id_element_televersement`),:che_id_element_televersement),
+      affecte(champ(`chx_utilisateur_televersement`),session(chi_id_utilisateur)),
+      affecte(champ(`chp_champ_cle_televersement`),:chp_champ_cle_televersement),
+      affecte(champ(`chp_nom_original_televersement`),:chp_nom_original_televersement),
+      affecte(champ(`che_poids_televersement`),:che_poids_televersement),
+      affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:chp_nom_fichier_sur_disque_televersement),
+      affecte(champ(`chp_nom_du_dossier_televersement`),:chp_nom_du_dossier_televersement),
+      affecte(champ(`cht_comm_glob_televersement`),:cht_comm_glob_televersement),
+      affecte(champ(`chp_comm_fichier_televersement`),:chp_comm_fichier_televersement),
+      affecte(champ(`chp_mime_televersement`),:chp_mime_televersement)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,base(b1)))
+      )
+   )
+)  ','INSERT INTO b1.`tbl_televersements`(
+    `che_bdd_televersement` , 
+    `chp_nom_table_televersement` , 
+    `che_id_element_televersement` , 
+    `chx_utilisateur_televersement` , 
+    `chp_champ_cle_televersement` , 
+    `chp_nom_original_televersement` , 
+    `che_poids_televersement` , 
+    `chp_nom_fichier_sur_disque_televersement` , 
+    `chp_nom_du_dossier_televersement` , 
+    `cht_comm_glob_televersement` , 
+    `chp_comm_fichier_televersement` , 
+    `chp_mime_televersement`
+) VALUES (
+    :che_bdd_televersement , 
+    :chp_nom_table_televersement , 
+    :che_id_element_televersement , 
+    chi_id_utilisateur , 
+    :chp_champ_cle_televersement , 
+    :chp_nom_original_televersement , 
+    :che_poids_televersement , 
+    :chp_nom_fichier_sur_disque_televersement , 
+    :chp_nom_du_dossier_televersement , 
+    :cht_comm_glob_televersement , 
+    :chp_comm_fichier_televersement , 
+    :chp_mime_televersement
+);',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
+('1166',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_televersement`),
+      champ(`T0`,`chp_nom_du_dossier_televersement`),
+      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),
+      champ(`T0`,`chp_nom_original_televersement`),
+      champ(`T0`,`cht_comm_glob_televersement`),
+      champ(`T0`,`chp_comm_fichier_televersement`),
+      champ(`T0`,`chp_mime_televersement`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`che_bdd_televersement`),:T0_che_bdd_televersement),
+         egal(champ(`T0`,`chp_nom_table_televersement`),:T0_chp_nom_table_televersement),
+         egal(champ(`T0`,`che_id_element_televersement`),:T0_che_id_element_televersement),
+         egal(champ(`T0`,`chp_champ_cle_televersement`),:T0_chp_champ_cle_televersement)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`che_ordre_televersement`),croissant()),(champ(`T0`,`chi_id_televersement`),décroissant())),
+      limité_à(quantité(500),début(0))
+   )
+)  ','SELECT 
+`T0`.`chi_id_televersement` , `T0`.`chp_nom_du_dossier_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`cht_comm_glob_televersement` , 
+`T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
+ FROM b1.tbl_televersements T0
+WHERE ( /* */ `T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+   AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+   AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement
+   AND `T0`.`chp_champ_cle_televersement` = :T0_chp_champ_cle_televersement) 
+ORDER BY `T0`.`che_ordre_televersement` ASC, `T0`.`chi_id_televersement` DESC  
+LIMIT 500 OFFSET 0 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
+('1168',NULL,'select','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_televersement`),
+      champ(`T0`,`che_bdd_televersement`),
+      champ(`T0`,`chp_nom_table_televersement`),
+      champ(`T0`,`che_id_element_televersement`),
+      champ(`T0`,`chx_utilisateur_televersement`),
+      champ(`T0`,`chp_champ_cle_televersement`),
+      champ(`T0`,`chp_nom_original_televersement`),
+      champ(`T0`,`che_poids_televersement`),
+      champ(`T0`,`chp_nom_fichier_sur_disque_televersement`),
+      champ(`T0`,`chp_nom_du_dossier_televersement`),
+      champ(`T0`,`cht_comm_glob_televersement`),
+      champ(`T0`,`chp_comm_fichier_televersement`),
+      champ(`T0`,`chp_mime_televersement`)
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`T0`,`chi_id_televersement`),:T0_chi_id_televersement))
+)  ','SELECT 
+`T0`.`chi_id_televersement` , `T0`.`che_bdd_televersement` , `T0`.`chp_nom_table_televersement` , `T0`.`che_id_element_televersement` , `T0`.`chx_utilisateur_televersement` , 
+`T0`.`chp_champ_cle_televersement` , `T0`.`chp_nom_original_televersement` , `T0`.`che_poids_televersement` , `T0`.`chp_nom_fichier_sur_disque_televersement` , `T0`.`chp_nom_du_dossier_televersement` , 
+`T0`.`cht_comm_glob_televersement` , `T0`.`chp_comm_fichier_televersement` , `T0`.`chp_mime_televersement`
+ FROM b1.tbl_televersements T0
+WHERE `T0`.`chi_id_televersement` = :T0_chi_id_televersement
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_televersements','1'),
+('1170',NULL,'delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:chi_id_televersement))
+)  ','DELETE FROM b1.tbl_televersements
+WHERE `chi_id_televersement` = :chi_id_televersement',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_televersements','1'),
+('1171',NULL,'update','modifier(
+   valeurs(affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:n_chp_nom_fichier_sur_disque_televersement)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))
+)  ','UPDATE b1.tbl_televersements SET 
+   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
+('1172',NULL,'select','sélectionner(
+   valeurs(compter(tous_les_champs())),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(egal(champ(`T0`,`che_bdd_televersement`),:T0_che_bdd_televersement),egal(champ(`T0`,`chp_nom_table_televersement`),:T0_chp_nom_table_televersement),egal(champ(`T0`,`che_id_element_televersement`),:T0_che_id_element_televersement))
+   )
+)  ','SELECT 
+COUNT( * )
+ FROM b1.tbl_televersements T0
+WHERE (`T0`.`che_bdd_televersement` = :T0_che_bdd_televersement
+   AND `T0`.`chp_nom_table_televersement` = :T0_chp_nom_table_televersement
+   AND `T0`.`che_id_element_televersement` = :T0_che_id_element_televersement)
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
 ('1181',NULL,'liste_ecran','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_parametre`),
@@ -6759,7 +13242,7 @@ WHERE `chi_id_parametre` = :c_chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.
    ),
    conditions(egal(champ(`chi_id_parametre`),:chi_id_parametre))
 )  ','DELETE FROM b1.tbl_parametres
-WHERE `chi_id_parametre` = :chi_id_parametre ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
+WHERE `chi_id_parametre` = :chi_id_parametre',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_parametres','1'),
 ('1186',NULL,'select','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_grandeur`),
@@ -7120,6 +13603,33 @@ WHERE (`T0`.`chp_cle_grandeur` LIKE :T0_chp_cle_grandeur
 ORDER BY  :liste_des_tris  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
+('1213','','update','modifier(
+   valeurs(affecte(champ(`chi_id_grandeur`),:n_chi_id_grandeur)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_grandeurs,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_grandeur`),:c_chi_id_grandeur))
+)  ','UPDATE b1.tbl_grandeurs SET 
+   `chi_id_grandeur` = :n_chi_id_grandeur
+WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
+('1214',NULL,'delete','supprimer(
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_grandeurs,base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`chi_id_grandeur`),:chi_id_grandeur),
+         egal(champ(`che_verouillee_grandeur`),0)
+      )
+   )
+)  ','DELETE FROM b1.tbl_grandeurs
+WHERE ( /* */ `chi_id_grandeur` = :chi_id_grandeur
+   AND `che_verouillee_grandeur` = 0)',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
 ('1215',NULL,'update','modifier(
    valeurs(affecte(champ(`che_verouillee_grandeur`),:n_che_verouillee_grandeur)),
    provenance(
@@ -7131,6 +13641,342 @@ LIMIT :quantitee OFFSET :debut
 )  ','UPDATE b1.tbl_grandeurs SET 
    `che_verouillee_grandeur` = :n_che_verouillee_grandeur
 WHERE `chi_id_grandeur` = :c_chi_id_grandeur ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_grandeurs','1'),
+('1216','pour sous liste','liste_ecran','sélectionner(
+   valeurs(champ(`T0`,`chi_id_groupe`),champ(`T0`,`chp_nom_groupe`),champ(`T0`,`chx_parent_groupe`),champ(`T1`,`chp_nom_groupe`)),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''groupe parent''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T0`,`chx_parent_groupe`)),
+         utiliser(champ(`T1`,`chp_nom_groupe`),htm_pref('' ''))
+      )
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_groupes,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_parent_groupe)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_groupe`),:T0_chi_id_groupe),
+         comme(champ(`T0`,`chp_nom_groupe`),:T0_chp_nom_groupe),
+         egal(champ(`T0`,`chx_parent_groupe`),:T0_chx_parent_groupe),
+         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
+         pas_dans(champ(`T0`,`chi_id_groupe`),(:groupe_a_exclure))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_groupe`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_groupe` , `T0`.`chp_nom_groupe` , `T0`.`chx_parent_groupe` , `T1`.`chp_nom_groupe`
+ FROM b1.tbl_groupes T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_parent_groupe
+
+WHERE (`T0`.`chi_id_groupe` = :T0_chi_id_groupe
+   AND `T0`.`chp_nom_groupe` LIKE :T0_chp_nom_groupe
+   AND `T0`.`chx_parent_groupe` = :T0_chx_parent_groupe
+   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+   AND `T0`.`chi_id_groupe` NOT IN (:groupe_a_exclure)) 
+ORDER BY `T0`.`chi_id_groupe` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_groupes','1'),
+('1217','pour sous_liste','liste_ecran','sélectionner(
+   valeurs(champ(`T0`,`chi_id_metier`),champ(`T0`,`chp_nom_metier`),champ(`T0`,`chx_parent_metier`),champ(`T1`,`chp_nom_metier`)),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''parent''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T0`,`chx_parent_metier`)),
+         utiliser(champ(`T1`,`chp_nom_metier`))
+      )
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_metiers,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_metiers,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_metier),champ(T0,chx_parent_metier)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         egal(champ(`T0`,`chi_id_metier`),:T0_chi_id_metier),
+         comme(champ(`T0`,`chp_nom_metier`),:T0_chp_nom_metier),
+         egal(champ(`T0`,`chx_parent_metier`),:T0_chx_parent_metier),
+         comme(champ(`T1`,`chp_nom_metier`),:T1_chp_nom_metier),
+         pas_dans(champ(`T0`,`chi_id_metier`),(:metier_a_exclure))
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_metier`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_metier` , `T0`.`chp_nom_metier` , `T0`.`chx_parent_metier` , `T1`.`chp_nom_metier`
+ FROM b1.tbl_metiers T0
+ LEFT JOIN b1.tbl_metiers T1 ON T1.chi_id_metier = T0.chx_parent_metier
+
+WHERE ( /* */ `T0`.`chi_id_metier` = :T0_chi_id_metier
+   AND `T0`.`chp_nom_metier` LIKE :T0_chp_nom_metier
+   AND `T0`.`chx_parent_metier` = :T0_chx_parent_metier
+   AND `T1`.`chp_nom_metier` LIKE :T1_chp_nom_metier
+   AND `T0`.`chi_id_metier` NOT IN (:metier_a_exclure)) 
+ORDER BY `T0`.`chi_id_metier` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_metiers','1'),
+('1219','pour sous_liste','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_acces`),
+      champ(`T0`,`chp_nom_acces`),
+      champ(`T0`,`che_actif_acces`),
+      champ(`T0`,`chx_groupe_acces`),
+      champ(`T0`,`chx_metier_acces`),
+      champ(`T1`,`chp_nom_groupe`),
+      champ(`T2`,`chp_nom_metier`)
+   ),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''actif / nom''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         utiliser(champ(`T0`,`che_actif_acces`)),
+         utiliser(champ(`T0`,`chp_nom_acces`))
+      ),
+      (
+         #(),
+         entete_liste(''groupe''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         utiliser(htm_pref(''(''),champ(`T0`,`chx_groupe_acces`),htm_post('') '')),
+         utiliser(champ(`T1`,`chp_nom_groupe`))
+      ),
+      (
+         #(),
+         entete_liste(''métier''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         utiliser(htm_pref(''(''),champ(`T0`,`chx_metier_acces`),htm_post('') '')),
+         utiliser(champ(`T2`,`chp_nom_metier`))
+      )
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_acces,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_groupes,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_groupe),champ(T0,chx_groupe_acces)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_metiers,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_metier),champ(T0,chx_metier_acces)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_acces`),:T0_chi_id_acces),
+         comme(champ(`T0`,`chp_nom_acces`),:T0_chp_nom_acces),
+         egal(champ(`T0`,`che_actif_acces`),:T0_che_actif_acces),
+         egal(champ(`T0`,`chx_groupe_acces`),:T0_chx_groupe_acces),
+         comme(champ(`T1`,`chp_nom_groupe`),:T1_chp_nom_groupe),
+         egal(champ(`T0`,`chx_metier_acces`),:T0_chx_metier_acces),
+         comme(champ(`T2`,`chp_nom_metier`),:T2_chp_nom_metier),
+         pas_dans(champ(`T0`,`chi_id_acces`),:acces_pas_dans)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chi_id_acces`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_acces` , `T0`.`chp_nom_acces` , `T0`.`che_actif_acces` , `T0`.`chx_groupe_acces` , `T0`.`chx_metier_acces` , 
+`T1`.`chp_nom_groupe` , `T2`.`chp_nom_metier`
+ FROM b1.tbl_acces T0
+ LEFT JOIN b1.tbl_groupes T1 ON T1.chi_id_groupe = T0.chx_groupe_acces
+
+ LEFT JOIN b1.tbl_metiers T2 ON T2.chi_id_metier = T0.chx_metier_acces
+
+WHERE (`T0`.`chi_id_acces` = :T0_chi_id_acces
+   AND `T0`.`chp_nom_acces` LIKE :T0_chp_nom_acces
+   AND `T0`.`che_actif_acces` = :T0_che_actif_acces
+   AND `T0`.`chx_groupe_acces` = :T0_chx_groupe_acces
+   AND `T1`.`chp_nom_groupe` LIKE :T1_chp_nom_groupe
+   AND `T0`.`chx_metier_acces` = :T0_chx_metier_acces
+   AND `T2`.`chp_nom_metier` LIKE :T2_chp_nom_metier
+   AND `T0`.`chi_id_acces` NOT IN :acces_pas_dans) 
+ORDER BY `T0`.`chi_id_acces` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces','1'),
+('1220','pour sous liste','liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_autorisation`),
+      champ(`T0`,`chx_source_autorisation`),
+      champ(`T2`,`chp_nom_source`),
+      champ(`T0`,`chx_acces_autorisation`),
+      champ(`T1`,`chp_nom_acces`),
+      champ(`T0`,`che_pour_sous_liste_autorisation`)
+   ),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''source''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         utiliser(htm_pref(''(''),champ(`T0`,`chx_source_autorisation`),htm_post('') '')),
+         utiliser(champ(`T2`,`chp_nom_source`))
+      ),
+      (
+         #(),
+         entete_liste(''accès''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         utiliser(htm_pref(''(''),champ(`T0`,`chx_acces_autorisation`),htm_post('') '')),
+         utiliser(champ(`T1`,`chp_nom_acces`))
+      )
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_autorisations,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_autorisation)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_sources,alias(T2),base(b1))),
+         contrainte(egal(champ(T2,chi_id_source),champ(T0,chx_source_autorisation)))
+      )
+   ),
+   conditions(
+      et(
+         comme(champ(`T2`,`chp_nom_source`),:T2_chp_nom_source),
+         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
+         egal(champ(`T0`,`chx_source_autorisation`),:T0_chx_source_autorisation),
+         egal(champ(`T0`,`chx_acces_autorisation`),:T0_chx_acces_autorisation),
+         egal(champ(`T0`,`che_pour_sous_liste_autorisation`),:T0_che_pour_sous_liste_autorisation),
+         pas_dans(champ(`T0`,`chx_acces_autorisation`),:acces_pas_dans),
+         egal(champ(`T0`,`chi_id_autorisation`),:T0_chi_id_autorisation)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chx_acces_autorisation`),décroissant()),(champ(`T2`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_autorisation`),décroissant()),(champ(`T2`,`chp_nom_source`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_autorisation` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , 
+`T0`.`che_pour_sous_liste_autorisation`
+ FROM b1.tbl_autorisations T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
+
+ LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
+
+WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+   AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
+   AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+   AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
+   AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
+   AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
+ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_autorisations','1'),
+('1221',NULL,'liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_source`),
+      champ(`T0`,`chp_nom_source`),
+      champ(`T0`,`cht_condition_rev_source`),
+      champ(`T0`,`cht_notification_ko_source`),
+      champ(`T0`,`cht_commentaire_source`),
+      champ(`T0`,`cht_rev_source`)
+   ),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''condition rev / message KO ''),
+         format_colonne(''text-align: center; max-width: 18em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T0`,`cht_condition_rev_source`)),
+         utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_notification_ko_source`))
+      ),
+      (
+         #(),
+         entete_liste(''commentaire / rev ''),
+         format_colonne(''text-align: center; max-width: 10em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T0`,`cht_commentaire_source`)),
+         utiliser(htm_pref(''<hr />''),champ(`T0`,`cht_rev_source`))
+      )
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_sources,alias(T0),base(b1)))
+      )
+   ),
+   conditions(
+      et(
+         #(),
+         comme(champ(`T0`,`chp_nom_source`),:T0_chp_nom_source),
+         egal(champ(`T0`,`chi_id_source`),:T0_chi_id_source),
+         sup(champ(`T0`,`chi_id_source`),:T0_chi_id_source2),
+         infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
+         comme(champ(`T0`,`cht_rev_source`),:T0_cht_rev_source),
+         egal(champ(`T0`,`che_autorisation_globale_source`),0),
+         egal(champ(`T0`,`che_pour_util_source`),1),
+         egal(champ(`T0`,`che_binaire_source`),0),
+         egal(champ(`T0`,`che_est_fragment_source`),0)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`chp_nom_source`),croissant()),(champ(`T0`,`chi_id_source`),croissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source` , 
+`T0`.`cht_rev_source`
+ FROM b1.tbl_sources T0
+WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
+   AND `T0`.`chi_id_source` = :T0_chi_id_source
+   AND `T0`.`chi_id_source` > :T0_chi_id_source2
+   AND `T0`.`chi_id_source` <= :T0_chi_id_source3
+   AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source
+   AND `T0`.`che_autorisation_globale_source` = 0
+   AND `T0`.`che_pour_util_source` = 1
+   AND `T0`.`che_binaire_source` = 0
+   AND `T0`.`che_est_fragment_source` = 0) 
+ORDER BY `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources','1'),
+('1222',NULL,'update','modifier(
+   valeurs(affecte(champ(`che_ordre_televersement`),:n_che_ordre_televersement)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))
+)  ','UPDATE b1.tbl_televersements SET 
+   `che_ordre_televersement` = :n_che_ordre_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
+('1223',NULL,'update','modifier(
+   valeurs(affecte(champ(`chp_comm_fichier_televersement`),:n_chp_comm_fichier_televersement)),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))
+      )
+   ),
+   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement)),
+   complements(trier_par(),limité_à(quantité(500),début(0)))
+)  ','UPDATE b1.tbl_televersements SET 
+   `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement
+WHERE `chi_id_televersement` = :c_chi_id_televersement ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','tbl_televersements','1'),
 ('1224',NULL,'select','sélectionner(
    valeurs(
       champ(`T0`,`chi_id_grandeur`),

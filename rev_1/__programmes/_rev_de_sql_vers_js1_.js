@@ -3033,28 +3033,28 @@ class _rev_de_sql_vers_js1{
                     for( let j=i + 1 ; j < l01 ; j=tab[j][12] ){
                         if("nom_de_la_table" === tab[j][1] && tab[j][2] === 'f'){
                             nom_de_la_table=tab[j + 1][1];
-                            let est_table_virtuelle=0;
-                            for( let k=i + 1 ; k < l01 && est_table_virtuelle === 0 ; k=tab[k][12] ){
-                                if(tab[k][1] === 'meta' && tab[k][2] === 'f'){
-                                    for( let l=k + 1 ; l < l01 && est_table_virtuelle === 0 ; l=tab[l][12] ){
-                                        if(tab[l][1] === 'est_table_virtuelle' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
-                                            est_table_virtuelle=parseInt( tab[l + 1][1] , 10 );
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            this.#obj_webs['bases'][ind]['tables'][nom_de_la_table]={
-                                 /*  */
-                                "active" : false ,
-                                "est_table_virtuelle" : est_table_virtuelle ,
-                                "champs" : [] ,
-                                "detail_table" : {"txt_meta" : '' ,"mat_meta" : []}
-                            };
                             break;
                         }
                     }
+                    let est_table_virtuelle=0;
+                    for( let k=i + 1 ; k < l01 && est_table_virtuelle === 0 ; k=tab[k][12] ){
+                        if(tab[k][1] === 'meta' && tab[k][2] === 'f'){
+                            for( let l=k + 1 ; l < l01 && est_table_virtuelle === 0 ; l=tab[l][12] ){
+                                if(tab[l][1] === 'est_table_virtuelle' && tab[l][2] === 'f' && tab[l][8] === 1 && tab[l + 1][2] === 'c'){
+                                    est_table_virtuelle=parseInt( tab[l + 1][1] , 10 );
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     if(nom_de_la_table !== ''){
+                        this.#obj_webs['bases'][ind]['tables'][nom_de_la_table]={
+                             /*  */
+                            "active" : false ,
+                            "est_table_virtuelle" : est_table_virtuelle ,
+                            "champs" : [] ,
+                            "detail_table" : {"txt_meta" : '' ,"mat_meta" : []}
+                        };
                         /* this.#obj_webs['bases'][indice_de_la_base]['tables'][nom_de_la_table]={champs:[]} */
                         /* debugger */
                         this.#obj_webs.tableau_des_bases_tables_champs[ind][nom_de_la_table]={"champs" : {}};

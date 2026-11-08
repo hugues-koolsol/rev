@@ -306,7 +306,7 @@ class menus1{
             "rows" : 3 ,
             "cols" : 50 ,
             "format_du_source" : 1 ,
-            "boutons_avant1" : boutons_avant2 ,
+            "boutons_avant1" : boutons_avant2
         } );
         /*
           =====================================================================================================

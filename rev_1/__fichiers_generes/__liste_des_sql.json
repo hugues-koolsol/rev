@@ -485,15 +485,6 @@
     "chp_table_reference_requete": "tbl_televersements",
     "che_base_reference_requete": 1
   },
-  "1169": {
-    "cht_sql_requete": "UPDATE b1.tbl_televersements SET \r\n   `chi_id_televersement` = :n_chi_id_televersement , \r\n   `che_bdd_televersement` = :n_che_bdd_televersement , \r\n   `chp_nom_table_televersement` = :n_chp_nom_table_televersement , \r\n   `che_id_element_televersement` = :n_che_id_element_televersement , \r\n   `chx_utilisateur_televersement` = :n_chx_utilisateur_televersement , \r\n   `chp_champ_cle_televersement` = :n_chp_champ_cle_televersement , \r\n   `chp_nom_original_televersement` = :n_chp_nom_original_televersement , \r\n   `che_poids_televersement` = :n_che_poids_televersement , \r\n   `chp_nom_fichier_sur_disque_televersement` = :n_chp_nom_fichier_sur_disque_televersement , \r\n   `chp_nom_du_dossier_televersement` = :n_chp_nom_du_dossier_televersement , \r\n   `cht_comm_glob_televersement` = :n_cht_comm_glob_televersement , \r\n   `chp_comm_fichier_televersement` = :n_chp_comm_fichier_televersement\r\nWHERE `chi_id_televersement` = :c_chi_id_televersement ;",
-    "cht_commentaire_requete": null,
-    "chp_type_requete": "update",
-    "che_est_souche_requete": 1,
-    "cht_rev_requete": "modifier(\n   valeurs(\n      affecte(champ(`chi_id_televersement`),:n_chi_id_televersement),\n      affecte(champ(`che_bdd_televersement`),:n_che_bdd_televersement),\n      affecte(champ(`chp_nom_table_televersement`),:n_chp_nom_table_televersement),\n      affecte(champ(`che_id_element_televersement`),:n_che_id_element_televersement),\n      affecte(champ(`chx_utilisateur_televersement`),:n_chx_utilisateur_televersement),\n      affecte(champ(`chp_champ_cle_televersement`),:n_chp_champ_cle_televersement),\n      affecte(champ(`chp_nom_original_televersement`),:n_chp_nom_original_televersement),\n      affecte(champ(`che_poids_televersement`),:n_che_poids_televersement),\n      affecte(champ(`chp_nom_fichier_sur_disque_televersement`),:n_chp_nom_fichier_sur_disque_televersement),\n      affecte(champ(`chp_nom_du_dossier_televersement`),:n_chp_nom_du_dossier_televersement),\n      affecte(champ(`cht_comm_glob_televersement`),:n_cht_comm_glob_televersement),\n      affecte(champ(`chp_comm_fichier_televersement`),:n_chp_comm_fichier_televersement)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_televersements,alias(T0),base(b1)))\n      )\n   ),\n   conditions(egal(champ(`chi_id_televersement`),:c_chi_id_televersement))\n)  ",
-    "chp_table_reference_requete": "tbl_televersements",
-    "che_base_reference_requete": 1
-  },
   "1170": {
     "cht_sql_requete": "DELETE FROM b1.tbl_televersements\r\nWHERE `chi_id_televersement` = :chi_id_televersement",
     "cht_commentaire_requete": null,

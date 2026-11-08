@@ -135,9 +135,23 @@ class sql_1331{
         if(!( tup.n_che_init_est_mot_genre === 0 ||  tup.n_che_init_est_mot_genre === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "init est mot" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
+        /*
+          === test spécifique sur le champ "cht_valeur_init_genre" ===
+        */
+        let __test_10_1=this.__ig1.__fnts_c_et_s.test_est_au_format_une_constante_rev( tup.n_cht_valeur_init_genre , 'valeur init' );
+        if(__test_10_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_10_1.__xme});
+        }
         /* test 0,1 sur le champ "che_est_parmis_genre" */
         if(!( tup.n_che_est_parmis_genre === 0 ||  tup.n_che_est_parmis_genre === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est parmis" doit être renseignée [' + this.__ig1.nl2() + ']'});
+        }
+        /*
+          === test spécifique sur le champ "cht_parmis_genre" ===
+        */
+        let __test_12_1=this.__ig1.__fnts_c_et_s.test_est_au_format_plusieurs_constantes_rev( tup.n_cht_parmis_genre , 'parmis' );
+        if(__test_12_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_12_1.__xme});
         }
         /*
           === test spécifique sur le champ "cht_fonctions_genre" ===

@@ -1809,14 +1809,10 @@ class x_ecran_concevoir_une_requete1{
         t+='</div>';
         /*
         */
-        t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;" ';
+        t+='<div id="champs_en_sortie" style="max-width:90%;height:6em;overflow-y:scroll;max-height:50em;display:flex;flex-flow:wrap;resize:vertical;overflow-wrap:anywhere;border:1px var(--c_coul_fond5) solid;">';
         var contenu='';
         for( let i=0 ; i < this.#obj_webs.champs_sortie.length ; i++ ){
-            /* t+='<div class="yy_b1" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" '; */
-            var cmd='';
-            cmd+='m1(n1(' + this.moi + '),f1(retirer_ce_champ_de_sortie(';
-            cmd+='  ind(' + i + '),';
-            cmd+=')))';
+            t+='<div class="yy_b1" style="max-width:90%;overflow-wrap:anywhere;max-height:fit-content;text-wrap:auto;" ';
             if(this.#obj_webs.type_de_requete !== 'select' || this.#obj_webs.type_de_requete !== 'liste_ecran'){
                 /* cas insert update */
                 /* debugger; */
@@ -1846,6 +1842,7 @@ class x_ecran_concevoir_une_requete1{
                     t+='>' + this.#obj_webs.champs_sortie[i].formule.replace( /</g , '&lt;' ).replace( />/g , '&gt;' ).replace( /"/g , '&quot;' ).replace( /affecte\(/g , ' affecte(' );
                 }
             }
+            t+='</div>';
         }
         t+='</div>';
         if(this.#obj_webs.type_de_requete === 'insert'){
