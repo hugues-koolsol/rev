@@ -18,8 +18,8 @@
     "__cle": "passif",
     "__rev": "autre_libelle('non')",
     "__actif": 1,
-    "__couleur_texte": "yellow",
-    "__couleur_fond": "red",
+    "__couleur_texte": "red",
+    "__couleur_fond": "white",
     "__liste_des_parametres": [
       {
         "__nom": "autre_libelle",

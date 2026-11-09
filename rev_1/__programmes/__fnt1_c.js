@@ -1624,12 +1624,6 @@ class __fnt1{
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="yy_input1" ';
             o1+=' />';
             o1+=this.__ig1.__fnt1.boutons_heure1( les_donnees_du_champ.nom_du_champ );
-            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'08:00:00\')))))">08</button>';
-            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'10:00:00\')))))">10</button>';
-            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'12:00:00\')))))">12</button>';
-            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'14:00:00\')))))">14</button>';
-            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'16:00:00\')))))">16</button>';
-            o1+='<button class="yy_b1" rev_clic1="m1(n1(__ig1),f1(maj_contenu(type_cible(valeur_constante),id(' + les_donnees_du_champ.nom_du_champ + '),valeur(valeur_constante(\'18:00:00\')))))">18</button>';
             o1+='          <div><i style="text-align:left;font-weight:100;">';
             if(les_donnees_du_champ.description_du_champ){
                 o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );

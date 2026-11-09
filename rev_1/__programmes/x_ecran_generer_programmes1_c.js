@@ -67,6 +67,7 @@ class x_ecran_generer_programmes1{
             "masquer_le_bouton_ajouter_et_retour" : document.getElementById( 'masquer_le_bouton_ajouter_et_retour' ).checked ? ( 1 ) : ( 0 ) ,
             "masquer_le_bouton_ajouter_seulement" : document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked ? ( 1 ) : ( 0 ) ,
             "masquer_le_bouton_modifier_et_retour" : document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 ) ,
+            "sans_bouton_dupliquer1" : document.getElementById( 'sans_bouton_dupliquer1' ).checked ? ( 1 ) : ( 0 ) ,
             "pour_sous_liste_uniquement" : document.getElementById( 'pour_sous_liste_uniquement' ).checked ? ( 1 ) : ( 0 ) ,
             "est_une_grandeur" : document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 ) ,
             "sans_sous_liste2" : 1 ,
@@ -222,6 +223,12 @@ class x_ecran_generer_programmes1{
                                 document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked=false;
                             }else{
                                 document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked=true;
+                            }
+                        }else if(i === 'sans_bouton_dupliquer1'){
+                            if(le_colis.__xva.tab_ref[i] === 0){
+                                document.getElementById( 'sans_bouton_dupliquer1' ).checked=false;
+                            }else{
+                                document.getElementById( 'sans_bouton_dupliquer1' ).checked=true;
                             }
                         }else if(i === 'est_une_grandeur'){
                             if(le_colis.__xva.tab_ref[i] === 0){
@@ -570,6 +577,7 @@ class x_ecran_generer_programmes1{
         let masquer_le_bouton_ajouter_et_retour=document.getElementById( 'masquer_le_bouton_ajouter_et_retour' ).checked ? ( 1 ) : ( 0 );
         let masquer_le_bouton_ajouter_seulement=document.getElementById( 'masquer_le_bouton_ajouter_seulement' ).checked ? ( 1 ) : ( 0 );
         let masquer_le_bouton_modifier_et_retour=document.getElementById( 'masquer_le_bouton_modifier_et_retour' ).checked ? ( 1 ) : ( 0 );
+        let sans_bouton_dupliquer1=document.getElementById( 'sans_bouton_dupliquer1' ).checked ? ( 1 ) : ( 0 );
         let est_une_grandeur=document.getElementById( 'est_une_grandeur' ).checked ? ( 1 ) : ( 0 );
         let sans_sous_liste2=1;
         let contient_televersement=this.#obj_bdd[table_de_reference].meta.hasOwnProperty( 'contient_televersement' ) && this.#obj_bdd[table_de_reference].meta.contient_televersement === '1' ? ( 1 ) : ( 0 );
@@ -1932,6 +1940,9 @@ class x_ecran_generer_programmes1{
         }
         if(masquer_le_bouton_modifier_et_retour !== 0){
             src_client2+='      masquer_le_bouton_modifier_et_retour=' + masquer_le_bouton_modifier_et_retour + ';\n';
+        }
+        if(sans_bouton_dupliquer1 !== 0){
+            src_client2+='      sans_bouton_dupliquer1=' + sans_bouton_dupliquer1 + ';\n';
         }
         if(masquer_le_bouton_ajouter_et_retour !== 0){
             src_client2+='      masquer_le_bouton_ajouter_et_retour=' + masquer_le_bouton_ajouter_et_retour + ';\n';
@@ -4439,45 +4450,44 @@ class x_ecran_generer_programmes1{
             /*
               
             */
-            src_serveur_js2+='    /*\r\n';
-            src_serveur_js2+='      =============================================================================================================\r\n';
-            src_serveur_js2+='      recherche dans la base de données l\'enregistrement à dupliquer.\r\n';
-            src_serveur_js2+='    */\r\n';
-            src_serveur_js2+='    async page_duplication1( mat , d ,' + champ_primaire + '=null){\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='        if(' + champ_primaire + '===null){\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='            const l01=mat.length;\r\n';
-            src_serveur_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
-            src_serveur_js2+='                if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
-            src_serveur_js2+='                       && mat[i][2] === \'f\'\r\n';
-            src_serveur_js2+='                       && mat[i][8] === 1\r\n';
-            src_serveur_js2+='                       && mat[i + 1][2] === \'c\'\r\n';
-            src_serveur_js2+='                ){\r\n';
-            src_serveur_js2+='                    ' + champ_primaire + '=parseInt( mat[i + 1][1] , 10 );\r\n';
-            src_serveur_js2+='                }\r\n';
-            src_serveur_js2+='            }\r\n';
-            src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='\r\n';
-            if(this.chi_id_projet <= 2){
-                src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+            if(sans_bouton_dupliquer1 === 1){
             }else{
-                if(chi_id_basedd_de_reference === 1){
+                src_serveur_js2+='    /*\r\n';
+                src_serveur_js2+='      =============================================================================================================\r\n';
+                src_serveur_js2+='      recherche dans la base de données l\'enregistrement à dupliquer.\r\n';
+                src_serveur_js2+='    */\r\n';
+                src_serveur_js2+='    async page_duplication1( mat , d ,' + champ_primaire + '=null){\r\n';
+                src_serveur_js2+='\r\n';
+                src_serveur_js2+='        if(' + champ_primaire + '===null){\r\n';
+                src_serveur_js2+='\r\n';
+                src_serveur_js2+='            const l01=mat.length;\r\n';
+                src_serveur_js2+='            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){\r\n';
+                src_serveur_js2+='                if(mat[i][1] === \'' + champ_primaire + '\'\r\n';
+                src_serveur_js2+='                       && mat[i][2] === \'f\'\r\n';
+                src_serveur_js2+='                       && mat[i][8] === 1\r\n';
+                src_serveur_js2+='                       && mat[i + 1][2] === \'c\'\r\n';
+                src_serveur_js2+='                ){\r\n';
+                src_serveur_js2+='                    ' + champ_primaire + '=parseInt( mat[i + 1][1] , 10 );\r\n';
+                src_serveur_js2+='                }\r\n';
+                src_serveur_js2+='            }\r\n';
+                src_serveur_js2+='        }\r\n';
+                if(this.chi_id_projet <= 2){
                     src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
                 }else{
-                    src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                    if(chi_id_basedd_de_reference === 1){
+                        src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                    }else{
+                        src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                    }
                 }
+                src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , __db1 );\r\n';
+                src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : duplication impossible [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+                src_serveur_js2+='        }\r\n';
+                src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'page_duplication1\']=tt' + ref_select + ';\r\n';
+                src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+                src_serveur_js2+='    }\r\n';
             }
-            src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , __db1 );\r\n';
-            src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : duplication impossible [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
-            src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'page_duplication1\']=tt' + ref_select + ';\r\n';
-            src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='    }\r\n';
-            src_serveur_js2+='\r\n';
-            src_serveur_js2+='\r\n';
         }
         if(ref_select !== '' && avec_page_voir1 === 1){
             src_serveur_js2+='    /*\r\n';
@@ -4607,13 +4617,16 @@ class x_ecran_generer_programmes1{
         /*
         */
         if(ref_insert !== '' && ref_select !== ''){
-            src_client2+='    /*\r\n';
-            src_client2+='      =============================================================================================================\r\n';
-            src_client2+='    */\r\n';
-            src_client2+='    page_duplication1( mat , d , le_colis1 ){\r\n';
-            src_client2+='        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0]);\r\n';
-            src_client2+='        return({"__xst" : __xsu});\r\n';
-            src_client2+='    }\r\n';
+            if(sans_bouton_dupliquer1 === 1){
+            }else{
+                src_client2+='    /*\r\n';
+                src_client2+='      =============================================================================================================\r\n';
+                src_client2+='    */\r\n';
+                src_client2+='    page_duplication1( mat , d , le_colis1 ){\r\n';
+                src_client2+='        this.page_creer1( mat , d , le_colis1.__xva.page_duplication1.__xva[0]);\r\n';
+                src_client2+='        return({"__xst" : __xsu});\r\n';
+                src_client2+='    }\r\n';
+            }
         }
         if(ref_insert !== '' && ref_select !== ''){
             src_client2+='    /*\r\n';
@@ -5183,21 +5196,10 @@ class x_ecran_generer_programmes1{
                         src_serveur_js2+='        }\r\n';
                     }else{
                         src_serveur_js2+='        if(__db1 === null){\r\n';
-                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                        src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
                         src_serveur_js2+='        }\r\n';
                     }
                 }
-                /*#
-                  if(this.chi_id_projet <= 3){
-                      src_serveur_js2+='        if(__db1 === null){\r\n';
-                      src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
-                      src_serveur_js2+='        }\r\n';
-                  }else{
-                      src_serveur_js2+='        if(__db1 === null){\r\n';
-                      src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-                      src_serveur_js2+='        }\r\n';
-                  }
-                */
                 src_serveur_js2+='        /* on peut initialiser une valeur ici, par exemple : */\r\n';
                 src_serveur_js2+='        /* this.__ig1.donnees_retournees.__xva[\'xxxxx\']=\'xxxxx\'; */\r\n';
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
@@ -5934,7 +5936,7 @@ class x_ecran_generer_programmes1{
                                        && les_jointures[j].alias_de_la_table === les_jointures[j].alias1
                                        && obj_champ.nom_du_champ === les_jointures[j].champ2
                                 ){
-                                    if( typeof ( typeof les_jointures[j].libelles_lien) === 'string'){
+                                    if( typeof les_jointures[j].libelles_lien === 'string'){
                                         /*#
                                           for( let k=0 ; k < les_jointures[j].libelles_lien.length ; k++ ){
                                               liste_des_champs_libelles.push( les_jointures[j].alias1 + '_' + les_jointures[j].libelles_lien[k] );
@@ -8157,6 +8159,12 @@ class x_ecran_generer_programmes1{
         o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> m &amp; r : ';
         o1+=' <input id="masquer_le_bouton_modifier_et_retour" type="checkbox" />';
         o1+='</label>';
+        
+        o1+='<label for="sans_bouton_dupliquer1" style="border:1px black solid;padding:1px;" title="sans bouton dupliquer">';
+        o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> sbd : ';
+        o1+=' <input id="sans_bouton_dupliquer1" type="checkbox" />';
+        o1+='</label>';
+        
         /*  */
         o1+='<label for="est_une_grandeur" style="border:1px black solid;padding:1px;" title="est une grandeur">';
         o1+=' ? grandeur : ';

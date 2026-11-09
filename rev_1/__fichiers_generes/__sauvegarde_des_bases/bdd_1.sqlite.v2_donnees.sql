@@ -7,7 +7,7 @@ INSERT INTO tbl_projets (  chi_id_projet ,  chp_nom_projet ,  cht_commentaire_pr
 ('1','projet de ce projet','C''est dans ce projet que ce projet est créé
 ','0','2000-01-01 00:00:00','2000-01-01 00:00:00'),
 ('2','clone du projet 1','projet utilisé en phase de développement du projet 1','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
-('3','ref 3','Projet de référence.
+('3','référence 3','Projet de référence.
 C''est le projet qui permet d''initialiser un nouveau projet','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000'),
 ('4','mon projet de test','mon projet de test','0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000');
 /*================================================================================ FIN BLOC TABLE tbl_projets offset 0 */
@@ -102,7 +102,7 @@ INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  
 ('489','dossiers1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_projet,0)','this.chi_id_projet > 0;','Vous devez sélectionner un projet','1','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('490','dossiers1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_projet > 0;','veuillez sélectionner un projet','1','0','1','importer(bibliotheque_spécifiée(Database),provenance("https://deno.land/x/sqlite3/mod.ts"))','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('493','projets1_c.js',NULL,NULL,'0','2',NULL,'0','sup(this.chi_id_utilisateur,0)','this.chi_id_utilisateur > 0;','vous devez être connecté','1','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('494','projets1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté','1','0','1',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('494','projets1_s.js',NULL,NULL,'0','2',NULL,'0','sup(this.donnees_retournees.chi_id_utilisateur,0)','this.donnees_retournees.chi_id_utilisateur > 0;','vous devez être connecté','1','0','1','importer(bibliotheque_spécifiée(Database),provenance("https://deno.land/x/sqlite3/mod.ts"))','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('498','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('499','_connexion1_s.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('506','w_ast_js_vers_rev1_.js',NULL,'','0','2',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -1530,7 +1530,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
-('1016','projets1_c.js','definition_de_classe(
+('1016','projets1_cccc.js','definition_de_classe(
    nom_classe(projets1),
    contenu(
       #(
@@ -1747,7 +1747,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================================================================================================
+        =========================== fragment ========================================================================
       ),
       méthode(
          definition(nom(liste_des_boutons_action1),argument(tup),argument(le_colis1)),
@@ -1759,12 +1759,12 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   condition(
                      egalstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                   ),
-                  alors(affectop(''+='',lst,''<button class="yy_b1 yy__3 yy__3_inactif" >=&gt;</button>''))
+                  alors(affectop(''+='',lst,''<button class="yy_b1 yy__3 yy__3_inactif" disabled="true" >=&gt;</button>''))
                ),
                sinon(
                   alors(
                      choix(
-                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<button class="yy_b1 yy__3 yy__3_inactif" >=&gt;</button>''))),
+                        si(condition(egalstricte(tup.T0_chi_id_projet,2)),alors(affectop(''+='',lst,''<button class="yy_b1 yy__3 yy__3_inactif" disabled="true">=&gt;</button>''))),
                         sinon(
                            alors(
                               affectop(
@@ -1820,7 +1820,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                      affectop(''+='',lst,''"  title="désactiver">=&lt;</button>'')
                   )
                ),
-               sinon(alors(affectop(''+='',lst,''<button class="yy_b1 yy__0 yy__0_inactif" >=&lt;</button>'')))
+               sinon(alors(affectop(''+='',lst,''<button class="yy_b1 yy__0 yy__0_inactif" disabled="true" >=&lt;</button>'')))
             ),
             choix(
                si(
@@ -1830,7 +1830,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                         diffstricte(tableau(nomt(this.__variables_module),p(''chi_id_projet'')),tup.T0_chi_id_projet)
                      )
                   ),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif" >'',this.__ig1.les_svg.editer,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true" >'',this.__ig1.les_svg.editer,''</button>'')))
                ),
                sinon(
                   alors(
@@ -1854,7 +1854,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(infeg(tup.T0_chi_id_projet,3)),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__0 yy__2_inactif" disabled="true" >'',this.__ig1.les_svg.poubelle,''</button>'')))
                ),
                sinon(
                   alors(
@@ -1879,7 +1879,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            )
                         ),
                         sinon(
-                           alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__0 yy__2_inactif" >'',this.__ig1.les_svg.poubelle,''</button>'')))
+                           alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__0 yy__2_inactif" disabled="true" >'',this.__ig1.les_svg.poubelle,''</button>'')))
                         )
                      )
                   )
@@ -1889,7 +1889,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             choix(
                si(
                   condition(ou(inf(tup.T0_chi_id_projet,3),diffstricte(tup.T0_chi_id_projet,le_colis1.chi_id_projet))),
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__1 yy__1_inactif" >'',this.__ig1.les_svg.disquette,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true" >'',this.__ig1.les_svg.disquette,''</button>'')))
                ),
                sinon(
                   alors(
@@ -1929,7 +1929,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   )
                ),
                sinon(
-                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__1 yy__1_inactif" >'',this.__ig1.les_svg.dossier,''</button>'')))
+                  alors(affectop(''+='',lst,concat(''<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true">'',this.__ig1.les_svg.dossier,''</button>'')))
                )
             ),
             affectop(''+='',lst,''</div>''),
@@ -2120,7 +2120,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            condition(diffstricte(lst,'''')),
                            alors(
                               affectop(''+='',o1,''<div class="yy_conteneur_table">''),
-                              affectop(''+='',o1,''<table border="1">''),
+                              affectop(''+='',o1,''<table>''),
                               affectop(''+='',o1,''<tr>''),
                               affectop(''+='',o1,''<th>action</th>''),
                               affectop(
@@ -2256,16 +2256,16 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         this.vv_ecran_liste_boutons_avant+=''<button id="vv_ajouter_un_element_'' + this.moi + ''" class="yy_svg1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_creer1())))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
     }
     /*
-      =============================================================================================================
+      =========================== fragment ========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='''';
         lst+=''<div class="yy_act1">'';
         if(this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet){
-            lst+=''<button class="yy_b1 yy__3 yy__3_inactif" >=&gt;</button>'';
+            lst+=''<button class="yy_b1 yy__3 yy__3_inactif" disabled="true" >=&gt;</button>'';
         }else{
             if(tup.T0_chi_id_projet === 2){
-                lst+=''<button class="yy_b1 yy__3 yy__3_inactif" >=&gt;</button>'';
+                lst+=''<button class="yy_b1 yy__3 yy__3_inactif" disabled="true">=&gt;</button>'';
             }else{
                 lst+=''<button class="yy_b1 yy__3 '' + (this.__variables_module[''chi_id_projet''] === tup.T0_chi_id_projet ? ( ''yy__3_inactif'' ) : ( '''' )) + ''" rev_clic1="'';
                 lst+=''pm1(m1(n1('' + this.moi + ''),f1(activer1('';
@@ -2282,34 +2282,34 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             lst+=''))))'';
             lst+=''"  title="désactiver">=&lt;</button>'';
         }else{
-            lst+=''<button class="yy_b1 yy__0 yy__0_inactif" >=&lt;</button>'';
+            lst+=''<button class="yy_b1 yy__0 yy__0_inactif" disabled="true" >=&lt;</button>'';
         }
         if(this.__variables_module[''chi_id_projet''] === 0 || this.__variables_module[''chi_id_projet''] !== tup.T0_chi_id_projet){
-            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif" >'' + this.__ig1.les_svg.editer + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__3 yy__3_inactif" disabled="true" >'' + this.__ig1.les_svg.editer + ''</button>'';
         }else{
             lst+=''<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_modification1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.editer + ''</button>'';
         }
         /* supprimer */
         if(tup.T0_chi_id_projet <= 3){
-            lst+=''<button class="yy_svg1 yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__0 yy__2_inactif" disabled="true" >'' + this.__ig1.les_svg.poubelle + ''</button>'';
         }else{
             /* seul le dev principal peut supprimer un projet */
             if(le_colis1.chi_id_projet === 1 && le_colis1.chi_id_utilisateur === 1 && this.__ig1._CA_ === 1){
                 lst+=''<button class="yy_svg1 yy__0" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(page_confirmation_supprimer1(chi_id_projet('' + tup.T0_chi_id_projet + '')))))">'' + this.__ig1.les_svg.poubelle + ''</button>'';
             }else{
-                lst+=''<button class="yy_svg1 yy__0 yy__2_inactif" >'' + this.__ig1.les_svg.poubelle + ''</button>'';
+                lst+=''<button class="yy_svg1 yy__0 yy__2_inactif" disabled="true" >'' + this.__ig1.les_svg.poubelle + ''</button>'';
             }
         }
         /* supprimer */
         if(tup.T0_chi_id_projet < 3 || tup.T0_chi_id_projet !== le_colis1.chi_id_projet){
-            lst+=''<button class="yy_svg1 yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.disquette + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true" >'' + this.__ig1.les_svg.disquette + ''</button>'';
         }else{
             lst+=''<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(sauvegarder_la_base_systeme(chi_id_projet('' + tup.T0_chi_id_projet + ''),base_systeme(1)))))" title="sauvegarder la base systeme">'' + this.__ig1.les_svg.disquette + ''</button>'';
         }
         if(tup.T0_chi_id_projet >= 3 || tup.T0_chi_id_projet === le_colis1.chi_id_projet){
             lst+=''<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(creer_le_repertoire_racine(chi_id_projet('' + tup.T0_chi_id_projet + '')))))" title="creer le repertoire racine">'' + this.__ig1.les_svg.dossier + ''</button>'';
         }else{
-            lst+=''<button class="yy_svg1 yy__1 yy__1_inactif" >'' + this.__ig1.les_svg.dossier + ''</button>'';
+            lst+=''<button class="yy_svg1 yy__1 yy__1_inactif" disabled="true">'' + this.__ig1.les_svg.dossier + ''</button>'';
         }
         lst+=''</div>'';
         return lst;
@@ -2374,7 +2374,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
             if(lst !== ''''){
                 o1+=''<div class="yy_conteneur_table">'';
-                o1+=''<table border="1">'';
+                o1+=''<table>'';
                 o1+=''<tr>'';
                 o1+=''<th>action</th>'';
                 o1+=/* chi_id_projet */''<th>id</th>'';
@@ -44710,7 +44710,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1854','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1856','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$xv.rjW4JKTTCufVo1hMVuuLcUwGkGktjC3vXwdw7XhG/kuT.qh5EW',NULL,'20','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -52638,7 +52638,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (608) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (609) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -55234,5 +55234,9 @@ mettre
 ('636','1','utilité du champ :
 che_contient_version_source','2','2026-11-04 09:58:44.689','2026-11-04 09:58:44.689','0'),
 ('637','1','pourquoi les requetes 1147.1148
-ne contiennent pas de test rev sur les champs cht_condition_menu et cht_initialisation_menu','1','2026-11-04 10:37:42.750','2026-11-04 10:37:42.750','0');
+ne contiennent pas de test rev sur les champs cht_condition_menu et cht_initialisation_menu','1','2026-11-04 10:37:42.750','2026-11-04 10:37:42.750','0'),
+('638','1','INSERT INTO tbl_groupes ( chi_id_groupe , chp_nom_groupe , chx_parent_groupe ) VALUES ( 0 , ''anonymes'' , 2 );
+INSERT INTO tbl_acces ( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , che_actif_acces ) VALUES ( 0 , ''anonymes'' , 1 , 2 , 1 );
+DELETE FROM tbl_groupes where chi_id_groupe = 0;
+','0','2026-11-09 09:28:29.060','2026-11-09 08:23:55.189','5');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

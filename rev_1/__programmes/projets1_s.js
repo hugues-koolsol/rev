@@ -516,7 +516,7 @@ class projets1{
         if(true || retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -542,7 +542,7 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_reference );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : chi_id_projet} , __db1 );
         if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
@@ -568,7 +568,7 @@ class projets1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : chi_id_projet} , __db1 );
         if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1375 ' + this.__ig1.nl2() + ']'});

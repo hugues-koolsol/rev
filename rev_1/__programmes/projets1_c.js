@@ -597,7 +597,7 @@ class projets1{
             }
             if(lst !== ''){
                 o1+='<div class="yy_conteneur_table">';
-                o1+='<table border="1">';
+                o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_projet */'<th>id</th>';

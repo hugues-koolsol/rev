@@ -458,7 +458,7 @@ class __ig1{
                                 }
                             }
                             this.affiche_les_messages();
-                            this.retablir_les_boutons_masques( __xva_param );
+                            this.retablir_les_boutons_masques( {"__xst" : __xer , "__xva_param" : __xva_param } );
                             return({"__xst" : __xer ,"cumul_message" : cumul_message});
                         }else if(obj3.__xst === __xsu){
                         }
@@ -850,9 +850,9 @@ class __ig1{
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+='   <button id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter</button>';
+        o1+='   <button id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '" data-indicateur_graphique="bouton_ajout_zone1">ajouter</button>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+='   <button id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '">ajouter et revenir à la liste</button>';
+        o1+='   <button id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '" data-indicateur_graphique="bouton_ajout_zone2">ajouter et revenir à la liste</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_creation_zone_complement" style="display:none;"></div>';
         /*
@@ -865,7 +865,7 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;">';
-        o1+='  <button class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="">je confirme la suppression</button>';
+        o1+='  <button class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="je confirme la suppression" data-indicateur_graphique="bouton_suppression_zone1">je confirme la suppression</button>';
         o1+='  <button class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_suppression_zone_complement" style="display:none;"></div>';
@@ -874,10 +874,10 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
-        o1+='  <button id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone" ';
+        o1+='  <button id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone1" ';
         o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
         o1+='    title="">modifier</button>    ';
-        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" ';
+        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" data-indicateur_graphique="bouton_modification_zone2" ';
         o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
         o1+='    title="">modifier et retour</button>';
         o1+='  <button class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
@@ -1530,7 +1530,7 @@ class __ig1{
                                 e.target.remove();
                             }else{
                                 try{
-                                    this.maj_htm( 'vv_sous_fenetre1' , '' );
+                                    this.maj_htm1( 'vv_sous_fenetre1' , '' );
                                     e.target.removeAttribute( 'style' );
                                 } catch {}
                                 e.target.className='';
@@ -1539,7 +1539,7 @@ class __ig1{
                         }
                     } catch {}
                 }
-        } );
+        }.bind( this ) );
         this.#vv_div_des_positions_du_curseur=document.createElement( 'div' );
         this.#vv_div_des_positions_du_curseur.id='vv_div_des_positions_du_curseur';
         this.#vv_div_des_positions_du_curseur.setAttribute( 'style' , 'position:absolute;top:60px;left:0px;background:white;display:inline-block;min-height:12px!important;line-height:12px;' );
@@ -2387,7 +2387,18 @@ class __ig1{
         t+='.yy__4_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='.yy_invisible{visibility:hidden;}';
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
-        /* t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;}'; */
+        /* animation temporaire pour le retour OK ou KO après modification */
+        t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ok1 0.25s;  animation-iteration-count: 3;}';
+        t+='@keyframes yy_bouge_bouton_ok1{ 0% { transform: translateY(0) } 25% { transform: translateY(15px) } 50% { transform: translateY(-15px)} 75% { transform: translateY(15px) } 100% { transform: translateY(0)  }}';
+        t+='.yy__KO{color:#FF3030;background:linear-gradient(to bottom, #FF3030, #C01010);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ko1 0.25s;  animation-iteration-count: 3;}';
+        let echelle1=4;
+        t+='@keyframes yy_bouge_bouton_ko1{';
+        t+='   0% { transform: rotate(0)      translateY(0)     scale(1) }';
+        t+='  25% { transform: rotate(90deg)  translateY(15px)  scale('+(echelle1/2)+') }';
+        t+='  50% { transform: rotate(180deg) translateY(-15px) scale('+(echelle1/1)+')}';
+        t+='  75% { transform: rotate(270deg) translateY(15px)  scale('+(echelle1/2)+') }';
+        t+=' 100% { transform: rotate(0)      translateY(0)     scale(1) }';
+        t+='}';
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
         t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.3em;text-wrap-style:balance;}';
         t+='h2{font-size:1.5em;margin-bottom:0.5em;}';
@@ -3063,7 +3074,7 @@ class __ig1{
             "reordonner" : '<path d="M 0 -46 L 0 -36 C 0 -14 25 12 25 -17 C 25 -46 0 -19 0 4 L 0 17 L 20 17 L 0 46 L -20 17 L 0 17 " stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:white;fill:black;stroke-width:6;"></path><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round"></rect>' ,
             "renuméroter" : '<g stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:8;" fill="transparent" stroke="rgb(0, 0, 0)" stroke-width="1"><rect x="-50" y="-50" width="100" height="100" stroke-width="0.1"></rect><path d="M -45 -40 l 18 0 "></path><path d="M -45 -20 l 18 0 "></path><path d="M -45 0 l 18 0 "></path><path d="M -45 20 l 18 0 "></path><path d="M -45 40 l 18 0 "></path><path d="M 26 -40 l 18 0 "></path><path d="M 26 -20 l 18 0 "></path><path d="M 26 0 l 18 0 "></path><path d="M 26 20 l 18 0 "></path><path d="M 26 40 l 18 0 "></path><path d=" M -19 -40 C -13 -40 -11 -36 -10 -26 C -9 -15 -9 -3 -9 7 C -9 11 -9 20 4 20 L 4 33 L 19 20 L 4 6 L 4 20 " stroke-width="6" style="stroke:red;fill:transparent;stroke-width:8;"></path></g>' ,
             "loupe" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;stroke-opacity:0.5;opacity:0.5;"></rect><g><circle cx="14" cy="-14" r="29.25" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></circle><path d=" M -4 8 C -10 6 -15 6 -18 9 C -23 14 -30 24 -37 32  A 8 8 0 1 0 -25 44 C -19 38 -10 28 -4 22 C -1 18 -1 14 -4 8" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><circle cx="14" cy="-14" r="27" stroke="rgb(0, 0, 0)" stroke-width="6" fill="transparent" style="stroke:rgb(0, 0, 0);fill:#4FC3F7;stroke-width:0.01;"></circle><path d=" M -3 7  C 12 -12 12 -12 31 -35 A 4 4 0 1 1 -3 7" stroke="rgb(0, 0, 0)" stroke-width="0.01" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:lightskyblue;stroke-width:0.01;"></path></g>' ,
-            "compiler" : '<polygon points=" 45 0 40 8 42 17 34 23 32 32 23 34 17 42 8 40 0 45 -8 40 -17 42 -22 34 -32 32 -33 23 -41 17 -39 8 -45 0 -39 -8 -41 -17 -33 -22 -32 -32 -22 -33 -17 -41 -8 -39 0 -45 8 -39 17 -41 23 -33 32 -32 34 -22 42 -17 40 -8 45 0" style="stroke-width:5;stroke:rgb(0, 0, 0);fill:white;" transform=""></polygon><text x="-34" y="18" style="font-size:55;stroke-width:2;stroke:red;fill:lime;font-family:Verdana;stroke-opacity:1;fill-opacity:1;opacity:1;">01</text><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
+            "compiler" : '<polygon points=" 45 0 40 8 42 17 34 23 32 32 23 34 17 42 8 40 0 45 -8 40 -17 42 -22 34 -32 32 -33 23 -41 17 -39 8 -45 0 -39 -8 -41 -17 -33 -22 -32 -32 -22 -33 -17 -41 -8 -39 0 -45 8 -39 17 -41 23 -33 32 -32 34 -22 42 -17 40 -8 45 0" style="stroke-width:5;stroke:rgb(0, 0, 0);fill:white;" transform=""></polygon><text x="-34" y="18" style="font-size:55;stroke-width:2;stroke:red;fill:lime;font-family:Verdana;stroke-opacity:1;fill-opacity:1;opacity:1; font:55px verdana;">01</text><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="5" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect>' ,
             "rond_rouge1" : '<circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:red;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect>' ,
             "rond_vert1" : '<circle cx="0" cy="0" r="40" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" style="stroke:rgb(0, 0, 0);fill:lime;stroke-width:1;"></circle><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="0.1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform=""></rect>' ,
             "lst_des_elts" : '<g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -25 -35 C -16 -35 29 -35 35 -35 C 35 -32 35 -28 35 -25 C 27 -25 -20 -25 -25 -25 a 8 8 0 1 1 0 -10"></path><path d="M -24 -5 C -15 -5 30 -5 36 -5 C 36 -2 36 2 36 5 C 28 5 -19 5 -24 5 a 8 8 0 1 1 0 -10"></path><path d="M -24 25 C -15 25 30 25 36 25 C 36 28 36 32 36 35 C 28 35 -19 35 -24 35 a 8 8 0 1 1 0 -10"></path></g>' ,
@@ -3075,7 +3086,7 @@ class __ig1{
             "outils" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" d=" M -40 -40 L -38 -42 L -32 -39 L -32 -35 L 12 8 L 15 5 L 20 10 C 19 14 21 16 25 15 L 40 30 L 30 40 L 15 25 C 16 21 14 19 10 20 L 5 15 L 8 12 L -35 -32  L -39 -32 L -42 -38 L -40 -40" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path><path d=" M -35 35 L -40 30 L -9 -1 M -1 -9 L 12 -22 C 9 -27 5 -30 0 -30 L -2 -32 C 8 -39 18 -38 36 -25 C 34 -20 37 -18 40 -20 L 43 -17 L 31 -4 L 27 -7 C 29 -12 26 -14 22 -12 L 9 1 M -9 -1 L 1 9  L -30 40 L -35 35" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:3;"></path>' ,
             "clav_supp" : '<rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -45 0 L -20 -25 L 45 -25 L 45 25 L -20 25 L -45 0 M -5 -15 L 25 15 M -5 15  L 25 -15" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:6;"></path>' ,
             "palette" : '<g><rect x="-50" y="-50" width="100" height="100" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.1;"></rect></g><path d="M -9 17 C -11 13 -36 21 -42 8 C -47 -8 -35 -42 -3 -42 C 15 -42 41 -31 42 4 C 42 39 1 53 -13 38 C -20 27 -7 20 -9 17 " stroke="red" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:#FFF9C4;stroke-width:6;"></path><circle cx="-22" cy="-11" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:lime;fill:lime;stroke-width:1;"></circle><circle cx="-2" cy="-25" r="9.25" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:violet;fill:violet;stroke-width:1;"></circle><circle cx="20" cy="-12" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:gold;fill:gold;stroke-width:1;"></circle><circle cx="20" cy="12" r="9" stroke="red" stroke-width="1" fill="transparent" transform="" style="stroke:blue;fill:blue;stroke-width:1;"></circle><ellipse cx="-1" cy="19" rx="5.5" ry="4" stroke="red" stroke-width="6" fill="transparent" transform="translate(17 13) rotate(39 0 0)  " style="stroke:white;fill:white;stroke-width:6;"></ellipse>' ,
-            "pdf" : '<g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -35 12 C -35 -4 -35 -45 -35 -45 L 15 -45 L 35 -25 L 35 11  M 35 -25 L 15 -25 L 15 -45 M -20 -15 L 19 -15 M -20 -5 L 19 -5 M -20 5 L 19 5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><rect x="-45" y="11" width="90" height="37" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;"></rect><text x="-41" y="45" style="font-size:41.861;stroke-width:1.68;stroke:white;fill:white;font-family:Verdana;stroke-opacity:1;fill-opacity:1;">PDF</text></g>'
+            "pdf" : '<g stroke-linecap="round" fill="transparent" stroke="rgb(0, 0, 0)" stroke-linejoin="round" style="stroke:rgb(0, 0, 0);fill:white;stroke-width:6;"><rect x="-50" y="-50" width="100" height="100" style="stroke:rgb(0, 0, 0);fill:transparent;stroke-width:0.01;"></rect><path d=" M -35 12 C -35 -4 -35 -45 -35 -45 L 15 -45 L 35 -25 L 35 11  M 35 -25 L 15 -25 L 15 -45 M -20 -15 L 19 -15 M -20 -5 L 19 -5 M -20 5 L 19 5" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:transparent;stroke-width:6;"></path><rect x="-45" y="11" width="90" height="37" stroke="rgb(0, 0, 0)" stroke-width="1" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:red;fill:red;stroke-width:1;"></rect><text x="-41" y="45" style="font-size:41.861;stroke-width:1.68;stroke:white;fill:white;font-family:Verdana;stroke-opacity:1;fill-opacity:1;font:40px verdana;">PDF</text></g>'
         };
         t+='<svg id="les_svg1" style="display:none;">';
         for(let i in les_svg){
@@ -3300,24 +3311,30 @@ class __ig1{
                     }
                 }
             }
-            if(elt.hasAttribute( 'data-indicateur_graphique' ) && elt.indicateur_graphique !== ''){
+            if(elt.hasAttribute( 'data-indicateur_graphique' ) && elt.getAttribute( 'data-indicateur_graphique' ) !== ''){
                 /*
                 */
-                let arg={"idtemp" : elt.getAttribute( 'data-indicateur_graphique' )};
+                let la_classe_pour_okko='yy__OK';
+                if(__xva_param && __xva_param.hasOwnProperty('__xst') && __xva_param.__xst !== 1){
+                   la_classe_pour_okko='yy__KO';
+                }
+                let arg={"idtemp" : elt.getAttribute( 'data-indicateur_graphique' ) , "la_classe_pour_okko" : la_classe_pour_okko };
                 let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
                 if(lst.length > 0){
-                    lst[0].classList.add( 'yy__OK' );
+                    lst[0].classList.add( la_classe_pour_okko );
                     setTimeout( function( arg ){
                             let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
+                            let la_classe_pour_okko=arg.la_classe_pour_okko;
                             if(lst.length > 0){
                                 /* console.log( 'indicateur on encore' , lst ); */
-                                lst[0].classList.add( 'yy__OK' );
-                                let arg1={"idtemp" : arg.idtemp};
-                                setTimeout( () => {
+                                lst[0].classList.add( la_classe_pour_okko );
+                                let arg1={"idtemp" : arg.idtemp , "la_classe_pour_okko" : la_classe_pour_okko };
+                                setTimeout( function( arg1 ){
                                         /* console.log( 'indicateur off' ); */
+                                        let la_classe_pour_okko=arg1.la_classe_pour_okko;
                                         let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
                                         if(lst.length > 0){
-                                            lst[0].classList.remove( 'yy__OK' );
+                                            lst[0].classList.remove( la_classe_pour_okko );
                                         }
                                     } , 250 , arg1 );
                             }

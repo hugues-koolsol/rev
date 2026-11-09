@@ -81,6 +81,7 @@ class x_ecran_generer_programmes1{
             "masquer_le_bouton_ajouter_et_retour" : 0 ,
             "masquer_le_bouton_ajouter_seulement" : 0 ,
             "masquer_le_bouton_modifier_et_retour" : 0 ,
+            "sans_bouton_dupliquer1" : 0 ,
             "est_une_grandeur" : 0 ,
             "sans_sous_liste2" : 0 ,
             "avec_page_voir1" : 0 ,
