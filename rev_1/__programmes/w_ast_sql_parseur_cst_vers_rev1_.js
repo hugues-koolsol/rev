@@ -46,6 +46,35 @@ class w_ast_sql_parseur_cst_vers_rev1{
     /*
       =============================================================================================================
     */
+    #traite_constraint_check( element , niveau , parent , options , vient_de ){
+        let t='';
+        let obj1=null;
+        let behaviorKw='';
+        let column='';
+        let ifExistsKw='';
+        let checkKw=null
+        let clauses=[];
+        let expr=null;
+        if(element.checkKw===null || element.checkKw.name !== 'CHECK' ){
+            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+        }
+        if(!Array.isArray(element.clauses) || element.clauses.length !== 0 ){
+            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+        }
+        if(element.expr===null ){
+            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+        }
+        obj1=this.#traite_expr( element.expr , niveau , element , options , vient_de );
+        if(obj1.__xst === __xsu){
+            expr=obj1.__xva;
+        }else{
+            return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+        }
+        return({"__xst" : __xsu ,"__xva" : 'verifier_contrainte('+expr+')'});
+    }
+    /*
+      =============================================================================================================
+    */
     #traite_constraint_primary_key( element , niveau , parent , options , vient_de ){
         let t='';
         let obj1=null;
@@ -724,10 +753,22 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 
         }
         if(t.substr( 0 , 6 ) === 'et(et('){
-            var obj=this.__rev1.rev_tm( t );
+            var obj=this.__ig1.__rev1.t2m( t );
             if(obj.__xst === __xsu){
-                var nouveau_tableau=this.__rev1.baisser_le_niveau_et_supprimer( obj.__xva , 2 , 0 );
-                obj=this.__rev1.matrice_vers_source_rev1( nouveau_tableau , 0 , false , 1 );
+                var nouveau_tableau=this.__ig1.__rev1.baisser_le_niveau_et_supprimer( obj.__xva , 2 , 0 );
+                obj=this.__ig1.__rev1.matrice_vers_source_rev1( nouveau_tableau , 0 , false , 1 );
+                if(obj.__xst === __xsu){
+                    t=obj.__xva;
+                }else{
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() ,"element" : element} ));
+                }
+            }
+        }
+        if(t.substr( 0 , 6 ) === 'ou(ou('){
+            var obj=this.__ig1.__rev1.t2m( t );
+            if(obj.__xst === __xsu){
+                var nouveau_tableau=this.__ig1.__rev1.baisser_le_niveau_et_supprimer( obj.__xva , 2 , 0 );
+                obj=this.__ig1.__rev1.matrice_vers_source_rev1( nouveau_tableau , 0 , false , 1 );
                 if(obj.__xst === __xsu){
                     t=obj.__xva;
                 }else{
@@ -1400,7 +1441,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 break;
                 
             case 'constraint_primary_key' :
-                vient_de.push( 'alter_action_drop_column' );
+                vient_de.push( 'constraint_primary_key' );
                 obj1=this.#traite_constraint_primary_key( element , niveau , parent , options , vient_de );
                 if(obj1.__xst === __xsu){
                     t=obj1.__xva;
@@ -1409,6 +1450,16 @@ class w_ast_sql_parseur_cst_vers_rev1{
                 }
                 vient_de.pop();
                 break;
+                
+            case 'constraint_check' :
+                vient_de.push( 'constraint_check' );
+                obj1=this.#traite_constraint_check( element , niveau , parent , options , vient_de );
+                if(obj1.__xst === __xsu){
+                    t=obj1.__xva;
+                }else{
+                    return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
+                }
+                vient_de.pop();
                 break;
                 
             default:

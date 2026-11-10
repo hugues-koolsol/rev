@@ -1907,6 +1907,20 @@ class w_rev_vers_sql1{
                         }
                         break;
                         
+
+                    case 'verifier_contrainte' :
+                        debugger
+                    
+                        obj=this.traite_sqlite_fonction_de_champ( this.#tb , i+1 , niveau , options );
+                        if(obj.__xst === __xsu){
+                            t+=' , CHECK' +obj.__xva;
+                        }else{
+                            return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'verifier_contrainte '} ));
+                        }
+                    
+
+                        break;
+
                     default:
                         return(this.#rev_sql_le( {"__xst" : __xer ,"__xme" : this.__ig1.__rev1.nl2() + 'fonction non traitée "' + this.#tb[i][1] + '"'} ));
                         
