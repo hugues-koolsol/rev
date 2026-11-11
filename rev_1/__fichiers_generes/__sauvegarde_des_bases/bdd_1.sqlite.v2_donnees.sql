@@ -44710,7 +44710,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1856','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1859','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$xv.rjW4JKTTCufVo1hMVuuLcUwGkGktjC3vXwdw7XhG/kuT.qh5EW',NULL,'20','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 
@@ -52638,7 +52638,7 @@ INSERT INTO tbl_grandeurs (  chi_id_grandeur ,  chx_parametre_grandeur ,  chp_cl
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (609) */
+/*================================================================================ DEBUT BLOC TABLE tbl_taches offset 0 (610) */
 INSERT INTO tbl_taches (  chi_id_tache ,  chx_utilisateur_tache ,  chp_texte_tache ,  che_priorite_tache ,  chd__dtm_tache ,  chd__dtc_tache ,  che__nur_tache ) VALUES
 ('1','1','capturer les erreurs php','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
 ('2','1','traiter le cookie initial quand il est incomplet','99','2000-01-01 00:00:00','2000-01-01 00:00:00','0'),
@@ -55238,5 +55238,75 @@ ne contiennent pas de test rev sur les champs cht_condition_menu et cht_initiali
 ('638','1','INSERT INTO tbl_groupes ( chi_id_groupe , chp_nom_groupe , chx_parent_groupe ) VALUES ( 0 , ''anonymes'' , 2 );
 INSERT INTO tbl_acces ( chi_id_acces , chp_nom_acces , chx_groupe_acces , chx_metier_acces , che_actif_acces ) VALUES ( 0 , ''anonymes'' , 1 , 2 , 1 );
 DELETE FROM tbl_groupes where chi_id_groupe = 0;
-','0','2026-11-09 09:28:29.060','2026-11-09 08:23:55.189','5');
+','0','2026-11-09 09:28:29.060','2026-11-09 08:23:55.189','5'),
+('639','1','CHECK sur table et champ
+
+
+CREATE TABLE  `ma_table`(
+    `fld_qte_prestation` INTEGER ,
+    `fld_type_prestation` TEXT , 
+     CHECK((fld_type_prestation = ''JOURNALIERE'' AND (fld_qte_prestation IS NOT NULL AND (fld_qte_prestation = 0 OR fld_qte_prestation = 0.25 OR fld_qte_prestation = 0.5 OR fld_qte_prestation = 0.75 OR fld_qte_prestation = 1))) OR fld_type_prestation = ''AUTRE'')
+    );
+
+créer_table(
+   nom_de_la_table(ma_table),
+   champs(
+      champ(nom_du_champ(`fld_qte_prestation`),espece_du_champ(INTEGER)),
+      champ(nom_du_champ(`fld_type_prestation`),espece_du_champ(TEXT)),
+      verifier_contrainte(
+         (
+            ou(
+               (
+                  et(
+                     egal(fld_type_prestation,''JOURNALIERE''),
+                     (
+                        et(
+                           n_est_pas(fld_qte_prestation,NULL),
+                           (
+                              ou(
+                                 egal(fld_qte_prestation,0),
+                                 egal(fld_qte_prestation,0.25),
+                                 egal(fld_qte_prestation,0.5),
+                                 egal(fld_qte_prestation,0.75),
+                                 egal(fld_qte_prestation,1)
+                              )
+                           )
+                        )
+                     )
+                  )
+               ),
+               egal(fld_type_prestation,''AUTRE'')
+            )
+         )
+      )
+   )
+)
+
+
+CREATE TABLE  `ma_table`(
+             `fld_qte_prestation` INTEGER    ,
+             `fld_type_prestation` TEXT
+     , CHECK((fld_type_prestation = ''JOURNALIERE'' AND (fld_qte_prestation IS NOT NULL AND (fld_qte_prestation = 0 OR fld_qte_prestation = 0.25 OR fld_qte_prestation = 0.5 OR fld_qte_prestation = 0.75 OR fld_qte_prestation = 1))) OR fld_type_prestation = ''AUTRE'')
+    );
+
+insert into ma_table( champ1 , champ2 ) VALUES ( 0.5 , ''JOURNALIERE'' );
+insert into ma_table( champ1 , champ2 ) VALUES ( 0.75 , ''JOURNALIERE'' );
+Error: CHECK constraint failed: ( champ2 = ''JOURNALIERE'' AND ( champ1 = 0.25 OR champ1 = 0.5 ) ) OR champ2 = ''AUTRE''
+
+CREATE TRIGGER verif_insertion
+BEFORE INSERT ON ma_table
+BEGIN
+    -- Si la condition échoue, on annule l''insertion
+    SELECT
+        CASE
+            WHEN NEW.champ1 <= 10 OR NEW.champ2 != ''OK''
+            THEN RAISE(ABORT, ''Conditions non respectées'')
+        END;
+END;
+
+
+
+https://sqlite.org/lang_createtable.html#ckconst
+
+ PRAGMA ignore_check_constraints=ON; ','0','2026-11-10 13:35:14.066','2026-11-10 10:54:32.784','24');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */

@@ -14,6 +14,20 @@ Comme il n'existe pas encore de compilateur, on s'appuie sur les langages html, 
 
 Les programmes écrits dans ces ces langages sont traduits en rev et puis retraduits dans leur langage.
 
+
+**échange de colis**
+
+
+Le système fonctionne grâce à un echange de colis, c'est à dire que les composants échangent des messages chargés de données.
+
+C'est à peu près la différence qu'il y a entre une carte postale qui présente toute l'information ( la photo, le texte et l'adresse )
+
+et un colis qui présente seulement l'adresse ( qui est une fonction ) et une boite fermée qui peut contenir des fonctions, du texte, des photos etc...
+
+L'envoi et la réception des colis peuvent être synchrone ou asynchrones.
+
+
+
 **Principe général du format rev**
 
 Il ya deux formats : le format texte qu'on peut écrire dans un éditeur de texte classique ou bien le format
@@ -351,25 +365,33 @@ Pout l'instant, les composants sont "révisables" partiellement mais le modèle 
       ),
       @php(
          #(commentaire php),
-         appelf(nomf(include),p('mes_fonctions_db.php')),
-         appelf(
-            nomf(executer_mafonction_db_avec_un_paramètre),
-            p(
-               @sql(
-                  sélectionner(
-                     valeurs(champ(`T0`,`id_utilisateur`)),
-                     provenance(
-                        table_reference(
-                           source(nom_de_la_table(ma_table,alias(T0)))
+         appelf(nomf(inclure),p('mes_fonctions_db.php')),
+         essayer(
+            faire(
+               appelf(
+                  nomf(executer_ma_fonction_db_contenue_dans_le_inclure_plus_haut),
+                  p(
+                     @sql(
+                        sélectionner(
+                           valeurs(champ(`T0`,`id_utilisateur`)),
+                           provenance(
+                              table_reference(
+                                 source(nom_de_la_table(ma_table,alias(T0)))
+                              )
+                           ),
+                           conditions(comme(champ(`T0`,`nom_utilisateur`),'%jo%')),
+                           complements(limité_à(quantité(10),début(0)))
                         )
-                     ),
-                     conditions(comme(champ(`T0`,`nom_utilisateur`),'%jo%')),
-                     complements(limité_à(quantité(10),début(0)))
+                     )
                   )
-               )
+               ),
+               appelf(nomf(echo),p(__FILE__))
+            ),
+            sierreur(
+               err(Exception,$e),
+               faire(appelf(nomf(raaaaah)))
             )
-         ),
-         appelf(nomf(echo),p(__FILE__))
+         )
       )
    )
 )

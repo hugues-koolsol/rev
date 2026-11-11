@@ -1741,7 +1741,7 @@ class _rev_de_sql_vers_js1{
         }else if(type_de_requete === 'liste_ecran'){
             let est_table_virtuelle=0;
             if(this.#obj_webs.bases[base_reference].tables[table_reference].hasOwnProperty( 'est_table_virtuelle' )
-                   && this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle === 1
+                   && parseInt(this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle , 10) === 1
             ){
                 est_table_virtuelle=1;
             }

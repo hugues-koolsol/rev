@@ -6219,7 +6219,7 @@ class x_ecran_generer_programmes1{
             src_client2+='        let jso=JSON.stringify(obj2.__xva);\r\n';
             src_client2+='        o1+=\'      <input type="hidden" id="__mat_liste_si_ok" value="\'+this.__ig1.fi2(jso)+\'" />\';\r\n';
             if(avec_creer_et_dupliquer1 === 1){
-                src_client2+='        o1+=\'      <button id="vv_zone_bouton___creer_et_dupliquer1" style="text-align:center;"></button>\';\r\n';
+                src_client2+='        o1+=\'      <div id="vv_zone_bouton___creer_et_dupliquer1" style="text-align:center;"></div>\';\r\n';
             }
             src_client2+='        o1+=\'<div class="yy__bdp1"></div>\';\r\n';
             src_client2+='        this.__ig1.maj_inner1( \'vv_ecran_creation_zone_contenu\' , o1 );\r\n';
@@ -6294,7 +6294,7 @@ class x_ecran_generer_programmes1{
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
             src_client2+='    zones_filtres1( mat , d , le_colis1 ){\r\n';
-            src_client2+='        this.__ig1.__fnt1.zones_filtres0(mat , d , le_colis1 , this , ' + (table_reference_est_table_virtuelle === 2 ? ( 'true' ) : ( 'false' )) + ' , \'grandeurs' + puiser_avec + '\' , this.__champs_sortie_pour_tri1 );\r\n';
+            src_client2+='        this.__ig1.__fnt1.zones_filtres0(mat , d , le_colis1 , this , ' + (table_reference_est_table_virtuelle.length === 2 ? ( 'true' ) : ( 'false' )) + ' , \'grandeurs' + puiser_avec + '\' , this.__champs_sortie_pour_tri1 );\r\n';
             src_client2+='    }\r\n';
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';

@@ -1815,7 +1815,7 @@ class __ig1{
       =============================================================================================================
     */
     repositionner_les_boutons_action( nom_de_zone_contenant_le_boutons ){
-        if(window.innerWidth > this.css_dimensions.t_fenetre){
+        if(window.innerWidth >= this.css_dimensions.t_fenetre){
             let a=parseInt( (window.innerWidth - this.css_dimensions.t_fenetre) / 2 , 10 );
             document.getElementById( nom_de_zone_contenant_le_boutons ).style.right=a + 'px';
         }

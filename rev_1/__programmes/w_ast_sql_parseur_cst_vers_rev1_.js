@@ -1530,7 +1530,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }
         if(element.kind){
             if(element.kind.kindKw && element.kind.kindKw.name === 'VIRTUAL'){
-                est_virtuelle='      est_table_virtuelle(\'1\')\r\n';
+                est_virtuelle='      est_table_virtuelle(1)\r\n';
             }else{
                 return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
             }

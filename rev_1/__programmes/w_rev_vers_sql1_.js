@@ -1909,8 +1909,6 @@ class w_rev_vers_sql1{
                         
 
                     case 'verifier_contrainte' :
-                        debugger
-                    
                         obj=this.traite_sqlite_fonction_de_champ( this.#tb , i+1 , niveau , options );
                         if(obj.__xst === __xsu){
                             t+=' , CHECK' +obj.__xva;
