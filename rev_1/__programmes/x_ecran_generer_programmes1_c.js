@@ -1953,11 +1953,6 @@ class x_ecran_generer_programmes1{
         if(est_une_grandeur !== 0){
             src_client2+='      est_une_grandeur=' + est_une_grandeur + ';\n';
         }
-        /*
-          if(sans_sous_liste2 !== 0){
-          src_client2+='      sans_sous_liste2=' + sans_sous_liste2 + ';\n';
-          }
-        */
         if(avec_page_voir1 !== 0){
             src_client2+='      avec_page_voir1=' + avec_page_voir1 + ';\n';
         }
@@ -3388,7 +3383,6 @@ class x_ecran_generer_programmes1{
                         nom_du_lien=nom_de_la_classe_lien + exception_grandeur;
                     }
                     if(obj_champ.table_mere === 'tbl_grandeurs'){
-                        debugger;
                         let a_transmettre={
                             "nom_du_champ" : obj_champ.nom_du_champ ,
                             "__contexte" : 'modification1' ,
@@ -5500,11 +5494,11 @@ class x_ecran_generer_programmes1{
                     src_serveur_js2+='\r\n';
                 }
             }
-            src_serveur_js2+='    /*\r\n';
-            src_serveur_js2+='      =============================================================================================================\r\n';
-            src_serveur_js2+='    */\r\n';
-            src_serveur_js2+='    async sous_liste2( mat , d ){\r\n';
             if(est_une_grandeur === 1){
+                src_serveur_js2+='    /*\r\n';
+                src_serveur_js2+='      =============================================================================================================\r\n';
+                src_serveur_js2+='    */\r\n';
+                src_serveur_js2+='    async sous_liste2( mat , d ){\r\n';
                 src_serveur_js2+='        /*\r\n';
                 src_serveur_js2+='          utilisé pour sélectionner une valeur active dans un écran de création ou de modification\r\n';
                 src_serveur_js2+='        */\r\n';
@@ -5526,120 +5520,137 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        }\r\n';
                 src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'sous_liste2\']=les_valeurs;\r\n';
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
+                src_serveur_js2+='    }\r\n';
             }else{
-                src_serveur_js2+='        let contexte=\'\'\r\n';
-                src_serveur_js2+='        let nom_de_variable=0;\r\n';
-                src_serveur_js2+='        let l01=mat.length;\r\n';
-                src_serveur_js2+='        for(let i=d+1 ; i < l01 ; i=mat[i][12]){\r\n';
-                src_serveur_js2+='            if(mat[i][1]===\'methode_sur_click2\' && mat[i][2]===\'f\'){\r\n';
-                src_serveur_js2+='                for(let j=i+1 ; j < l01 ; j=mat[j][12]){\r\n';
-                src_serveur_js2+='                    if(mat[j][1]===\'f1\' && mat[j][2]===\'f\'){\r\n';
-                src_serveur_js2+='                        for(let k=j+1 ; k < l01 ; k=mat[k][12]){\r\n';
-                src_serveur_js2+='                            if(mat[k][1]===\'nom_du_contexte\' && mat[k][2]===\'f\'){\r\n';
-                src_serveur_js2+='                                contexte=\'nom_du_contexte\';\r\n';
-                src_serveur_js2+='                                for(let l=k+1 ; l < l01 ; l=mat[l][12]){\r\n';
-                src_serveur_js2+='                                    if(mat[l][1]===\'nom_de_variable\' && mat[l][2]===\'f\' && mat[l][8]===1 && mat[l+1][2]===\'c\'){\r\n';
-                src_serveur_js2+='                                        nom_de_variable=parseInt( mat[l+1][1] , 10 );\r\n';
-                src_serveur_js2+='                                    }\r\n';
-                src_serveur_js2+='                                }\r\n';
-                src_serveur_js2+='                            }\r\n';
-                src_serveur_js2+='                        }\r\n';
-                src_serveur_js2+='                    }\r\n';
-                src_serveur_js2+='                }\r\n';
-                src_serveur_js2+='            }\r\n';
-                src_serveur_js2+='        }\r\n';
-                if(this.chi_id_projet <= 2){
-                    src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
-                }else{
-                    if(chi_id_basedd_de_reference === 1){
-                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
-                    }else{
-                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+             
+                fragment_trouve=-1;
+                for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
+                    if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'sous_liste2'){
+                        fragment_trouve=i;
+                        break;
                     }
                 }
-                src_serveur_js2+='        const __nbMax=40;\r\n';
-                src_serveur_js2+='        let __num_page=0;\r\n';
-                src_serveur_js2+='        let liste2={};\r\n';
-                src_serveur_js2+='        let criteres_xxxx={}\r\n';
-                src_serveur_js2+='        criteres_xxxx[\'quantitee\']=__nbMax;\r\n';
-                src_serveur_js2+='        this.ajoute_criteres_sous_liste2( criteres_xxxx );\r\n';
-                src_serveur_js2+='        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( \'__complements_sous_liste\' )){\r\n';
-                src_serveur_js2+='            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){\r\n';
-                src_serveur_js2+='                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];\r\n';
-                src_serveur_js2+='            }\r\n';
-                src_serveur_js2+='        }\r\n';
-                src_serveur_js2+='\r\n';
-                src_serveur_js2+='        if(true || contexte === \'nom_du_contexte\'){\r\n';
-                if(est_une_grandeur === 1){
-                    /*
-                      il faut aller chercher la requete souche sur la table mère
-                      dans this.__ig1.__liste_des_sql
-                    */
-                    let nom_de_la_table_mere='';
-                    for(let i in liste_des_champs_condition_liste_ecran){
-                        let el=liste_des_champs_condition_liste_ecran[i];
-                        if(el.champ_dans_la_base.hasOwnProperty( 'table_mere' ) && el.champ_dans_la_base.table_mere !== ''){
-                            nom_de_la_table_mere=el.champ_dans_la_base.table_mere;
-                            break;
-                        }
-                    }
-                    if(nom_de_la_table_mere === ''){
-                        return({"__xst" : __xer ,"__xme" : 'la table mère n\' pas été trouvée pour une requete liste d\'une grandeur'});
-                    }
-                    let numero_requete_souche_sur_la_table_mere='';
-                    for(let i in this.__ig1.__liste_des_sql){
-                        let req=this.__ig1.__liste_des_sql[i];
-                        if(req.che_est_souche_requete === 1
-                               && req.chp_table_reference_requete === nom_de_la_table_mere
-                               && req.chp_type_requete === 'select'
-                        ){
-                            numero_requete_souche_sur_la_table_mere=i;
-                            break;
-                        }
-                    }
-                    if(numero_requete_souche_sur_la_table_mere === ''){
-                        return({"__xst" : __xer ,"__xme" : 'le numéro de requete souche n\'a pas été trouvé pour une requete liste d\'une grandeur'});
-                    }
-                    src_serveur_js2+='            let chi_id_parametre=0;\r\n';
-                    src_serveur_js2+='            let l01=mat.length;\r\n';
-                    src_serveur_js2+='            for(let i=d+1 ; i < l01 ; i=mat[i][12]){\r\n';
-                    src_serveur_js2+='                    if(mat[i][1]===\'chi_id_parametre\' && mat[i][2]===\'f\' && mat[i][8]===1 && mat[i+1][2]===\'c\'){\r\n';
-                    src_serveur_js2+='                    chi_id_parametre=parseInt( mat[i+1][1] , 10 );\r\n';
-                    src_serveur_js2+='                }else if(mat[i][1] === \'__num_page\' && mat[i][2] === \'f\' && mat[i][8] === 1 && mat[i + 1][2] === \'c\'){\r\n';
-                    src_serveur_js2+='                    __num_page=parseInt( mat[i + 1][1] , 10 );\r\n';
+                if(fragment_trouve >= 0){
+                    src_serveur_js2+=tableau_des_fragments_serveur[fragment_trouve].src_js;
+                }else{
+                    src_serveur_js2+='    /*\r\n';
+                    src_serveur_js2+='      =============================================================================================================\r\n';
+                    src_serveur_js2+='    */\r\n';
+                    src_serveur_js2+='    async sous_liste2( mat , d ){\r\n';
+                    src_serveur_js2+='        let contexte=\'\'\r\n';
+                    src_serveur_js2+='        let nom_de_variable=0;\r\n';
+                    src_serveur_js2+='        let l01=mat.length;\r\n';
+                    src_serveur_js2+='        for(let i=d+1 ; i < l01 ; i=mat[i][12]){\r\n';
+                    src_serveur_js2+='            if(mat[i][1]===\'methode_sur_click2\' && mat[i][2]===\'f\'){\r\n';
+                    src_serveur_js2+='                for(let j=i+1 ; j < l01 ; j=mat[j][12]){\r\n';
+                    src_serveur_js2+='                    if(mat[j][1]===\'f1\' && mat[j][2]===\'f\'){\r\n';
+                    src_serveur_js2+='                        for(let k=j+1 ; k < l01 ; k=mat[k][12]){\r\n';
+                    src_serveur_js2+='                            if(mat[k][1]===\'nom_du_contexte\' && mat[k][2]===\'f\'){\r\n';
+                    src_serveur_js2+='                                contexte=\'nom_du_contexte\';\r\n';
+                    src_serveur_js2+='                                for(let l=k+1 ; l < l01 ; l=mat[l][12]){\r\n';
+                    src_serveur_js2+='                                    if(mat[l][1]===\'nom_de_variable\' && mat[l][2]===\'f\' && mat[l][8]===1 && mat[l+1][2]===\'c\'){\r\n';
+                    src_serveur_js2+='                                        nom_de_variable=parseInt( mat[l+1][1] , 10 );\r\n';
+                    src_serveur_js2+='                                    }\r\n';
+                    src_serveur_js2+='                                }\r\n';
+                    src_serveur_js2+='                            }\r\n';
+                    src_serveur_js2+='                        }\r\n';
+                    src_serveur_js2+='                    }\r\n';
                     src_serveur_js2+='                }\r\n';
                     src_serveur_js2+='            }\r\n';
-                    src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'T0_chx_parametre_grandeur\']=chi_id_parametre;\r\n';
-                    src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'__num_page\']=__num_page;\r\n';
-                    src_serveur_js2+='            let criteres_select_' + numero_requete_souche_sur_la_table_mere + '={"T0_chi_id_parametre" : chi_id_parametre};\r\n';
-                    src_serveur_js2+='            let tt' + numero_requete_souche_sur_la_table_mere + '=await this.__ig1.sql_iij(' + numero_requete_souche_sur_la_table_mere + ' , criteres_select_' + numero_requete_souche_sur_la_table_mere + ' , __db1 );\r\n';
-                    src_serveur_js2+='            if(tt' + numero_requete_souche_sur_la_table_mere + '.__xst !== __xsu || tt' + numero_requete_souche_sur_la_table_mere + '.__xva.length !== 1){\r\n';
-                    src_serveur_js2+='                return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + numero_requete_souche_sur_la_table_mere + ' \' + this.__ig1.nl2() + \']\'});\r\n';
-                    src_serveur_js2+='            }\r\n';
-                    src_serveur_js2+='            let liste_des_tris=\'\';\r\n';
-                    src_serveur_js2+='            let tab=tt' + numero_requete_souche_sur_la_table_mere + '.__xva[0][\'T0_cht_ordre_parametre\'].split(\',\');\r\n';
-                    src_serveur_js2+='            if(tab.length===0){\r\n';
-                    src_serveur_js2+='                return({"__xst" : __xer ,"__xme" : \'pas de tri trouvé [' + numero_requete_souche_sur_la_table_mere + ' \' + this.__ig1.nl2() + \']\'});\r\n';
-                    src_serveur_js2+='            }\r\n';
-                    src_serveur_js2+='            for( let i in tab){\r\n';
-                    src_serveur_js2+='                liste_des_tris+=\'    WHEN \' + tab[i] + \' THEN \' + i + \'\\r\\n\';\r\n';
-                    src_serveur_js2+='            }\r\n';
-                    src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'liste_des_tris\']=\'CASE chi_id_grandeur\\r\\n\' + liste_des_tris + \'    ELSE 999999\\r\\n    END\';\r\n';
-                }
-                src_serveur_js2+='            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */\r\n';
-                /* ' + ref_liste_ecran + ' */
-                src_serveur_js2+='            liste2=await this.__ig1.generique_sous_liste2( mat , d , ' + ref_liste_ecran + ' , criteres_xxxx , __nbMax , __db1 );\r\n';
-                if(est_une_grandeur === 1){
-                }else{
                     src_serveur_js2+='        }\r\n';
+                    if(this.chi_id_projet <= 2){
+                        src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                    }else{
+                        if(chi_id_basedd_de_reference === 1){
+                            src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
+                        }else{
+                            src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
+                        }
+                    }
+                    src_serveur_js2+='        const __nbMax=40;\r\n';
+                    src_serveur_js2+='        let __num_page=0;\r\n';
+                    src_serveur_js2+='        let liste2={};\r\n';
+                    src_serveur_js2+='        let criteres_xxxx={}\r\n';
+                    src_serveur_js2+='        criteres_xxxx[\'quantitee\']=__nbMax;\r\n';
+                    src_serveur_js2+='        this.ajoute_criteres_sous_liste2( criteres_xxxx );\r\n';
+                    src_serveur_js2+='        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( \'__complements_sous_liste\' )){\r\n';
+                    src_serveur_js2+='            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){\r\n';
+                    src_serveur_js2+='                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];\r\n';
+                    src_serveur_js2+='            }\r\n';
+                    src_serveur_js2+='        }\r\n';
+                    src_serveur_js2+='\r\n';
+                    src_serveur_js2+='        if(true || contexte === \'nom_du_contexte\'){\r\n';
+                    if(est_une_grandeur === 1){
+                        /*
+                          il faut aller chercher la requete souche sur la table mère
+                          dans this.__ig1.__liste_des_sql
+                        */
+                        let nom_de_la_table_mere='';
+                        for(let i in liste_des_champs_condition_liste_ecran){
+                            let el=liste_des_champs_condition_liste_ecran[i];
+                            if(el.champ_dans_la_base.hasOwnProperty( 'table_mere' ) && el.champ_dans_la_base.table_mere !== ''){
+                                nom_de_la_table_mere=el.champ_dans_la_base.table_mere;
+                                break;
+                            }
+                        }
+                        if(nom_de_la_table_mere === ''){
+                            return({"__xst" : __xer ,"__xme" : 'la table mère n\' pas été trouvée pour une requete liste d\'une grandeur'});
+                        }
+                        let numero_requete_souche_sur_la_table_mere='';
+                        for(let i in this.__ig1.__liste_des_sql){
+                            let req=this.__ig1.__liste_des_sql[i];
+                            if(req.che_est_souche_requete === 1
+                                   && req.chp_table_reference_requete === nom_de_la_table_mere
+                                   && req.chp_type_requete === 'select'
+                            ){
+                                numero_requete_souche_sur_la_table_mere=i;
+                                break;
+                            }
+                        }
+                        if(numero_requete_souche_sur_la_table_mere === ''){
+                            return({"__xst" : __xer ,"__xme" : 'le numéro de requete souche n\'a pas été trouvé pour une requete liste d\'une grandeur'});
+                        }
+                        src_serveur_js2+='            let chi_id_parametre=0;\r\n';
+                        src_serveur_js2+='            let l01=mat.length;\r\n';
+                        src_serveur_js2+='            for(let i=d+1 ; i < l01 ; i=mat[i][12]){\r\n';
+                        src_serveur_js2+='                    if(mat[i][1]===\'chi_id_parametre\' && mat[i][2]===\'f\' && mat[i][8]===1 && mat[i+1][2]===\'c\'){\r\n';
+                        src_serveur_js2+='                    chi_id_parametre=parseInt( mat[i+1][1] , 10 );\r\n';
+                        src_serveur_js2+='                }else if(mat[i][1] === \'__num_page\' && mat[i][2] === \'f\' && mat[i][8] === 1 && mat[i + 1][2] === \'c\'){\r\n';
+                        src_serveur_js2+='                    __num_page=parseInt( mat[i + 1][1] , 10 );\r\n';
+                        src_serveur_js2+='                }\r\n';
+                        src_serveur_js2+='            }\r\n';
+                        src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'T0_chx_parametre_grandeur\']=chi_id_parametre;\r\n';
+                        src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'__num_page\']=__num_page;\r\n';
+                        src_serveur_js2+='            let criteres_select_' + numero_requete_souche_sur_la_table_mere + '={"T0_chi_id_parametre" : chi_id_parametre};\r\n';
+                        src_serveur_js2+='            let tt' + numero_requete_souche_sur_la_table_mere + '=await this.__ig1.sql_iij(' + numero_requete_souche_sur_la_table_mere + ' , criteres_select_' + numero_requete_souche_sur_la_table_mere + ' , __db1 );\r\n';
+                        src_serveur_js2+='            if(tt' + numero_requete_souche_sur_la_table_mere + '.__xst !== __xsu || tt' + numero_requete_souche_sur_la_table_mere + '.__xva.length !== 1){\r\n';
+                        src_serveur_js2+='                return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + numero_requete_souche_sur_la_table_mere + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+                        src_serveur_js2+='            }\r\n';
+                        src_serveur_js2+='            let liste_des_tris=\'\';\r\n';
+                        src_serveur_js2+='            let tab=tt' + numero_requete_souche_sur_la_table_mere + '.__xva[0][\'T0_cht_ordre_parametre\'].split(\',\');\r\n';
+                        src_serveur_js2+='            if(tab.length===0){\r\n';
+                        src_serveur_js2+='                return({"__xst" : __xer ,"__xme" : \'pas de tri trouvé [' + numero_requete_souche_sur_la_table_mere + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+                        src_serveur_js2+='            }\r\n';
+                        src_serveur_js2+='            for( let i in tab){\r\n';
+                        src_serveur_js2+='                liste_des_tris+=\'    WHEN \' + tab[i] + \' THEN \' + i + \'\\r\\n\';\r\n';
+                        src_serveur_js2+='            }\r\n';
+                        src_serveur_js2+='            criteres_' + ref_liste_ecran + '[\'liste_des_tris\']=\'CASE chi_id_grandeur\\r\\n\' + liste_des_tris + \'    ELSE 999999\\r\\n    END\';\r\n';
+                    }
+                    src_serveur_js2+='            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */\r\n';
+                    /* ' + ref_liste_ecran + ' */
+                    src_serveur_js2+='            liste2=await this.__ig1.generique_sous_liste2( mat , d , ' + ref_liste_ecran + ' , criteres_xxxx , __nbMax , __db1 );\r\n';
+                    if(est_une_grandeur === 1){
+                    }else{
+                        src_serveur_js2+='        }\r\n';
+                    }
+                    src_serveur_js2+='        if(liste2.__xst === __xsu){\r\n';
+                    src_serveur_js2+='            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */\r\n';
+                    src_serveur_js2+='            /* voir par exemple dossiers1_s.js */\r\n';
+                    src_serveur_js2+='        }\r\n';
+                    src_serveur_js2+='        return(liste2);\r\n';
+                    src_serveur_js2+='    }\r\n';
                 }
-                src_serveur_js2+='        if(liste2.__xst === __xsu){\r\n';
-                src_serveur_js2+='            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */\r\n';
-                src_serveur_js2+='            /* voir par exemple dossiers1_s.js */\r\n';
-                src_serveur_js2+='        }\r\n';
-                src_serveur_js2+='        return(liste2);\r\n';
             }
-            src_serveur_js2+='    }\r\n';
         }
         /*
         */

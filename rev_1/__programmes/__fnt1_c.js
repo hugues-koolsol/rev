@@ -1739,7 +1739,7 @@ class __fnt1{
             if(les_donnees_du_champ.hasOwnProperty( 'liens_parmis_du_genre1' )
                    && les_donnees_du_champ.liens_parmis_du_genre1.length > 0
             ){
-                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.liens_parmis_du_genre1.length ; i++ ){
                     let tt=les_donnees_du_champ.liens_parmis_du_genre1[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
                     o1+='<button class="yy_b1" rev_clic1="';
@@ -1752,7 +1752,7 @@ class __fnt1{
                 o1+='</div>';
             }
             if(les_donnees_du_champ.hasOwnProperty( 'les_suggestions' ) && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
                     o1+='<button class="yy_b1" rev_clic1="';
@@ -1765,14 +1765,16 @@ class __fnt1{
                 o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-            o1+='          <div><i style="text-align:left;font-weight:100;">';
-            if(les_donnees_du_champ.description_du_champ){
-                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                if(les_donnees_du_champ.description_du_champ){
+                    o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+                }
+                o1+='            </i></details>\r\n';
             }
-            o1+='            </i></div>\r\n';
             o1+='        </div>\r\n';
             if(les_donnees_du_champ.hasOwnProperty( 'boutons_avant1' ) && les_donnees_du_champ.boutons_avant1.length > 0){
-                o1+='            <div class="yy__lst_btns1">';
+                o1+='            <div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.boutons_avant1.length ; i++ ){
                     o1+=les_donnees_du_champ.boutons_avant1[i];
                 }
@@ -1832,7 +1834,7 @@ class __fnt1{
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
             if(les_donnees_du_champ.hasOwnProperty( 'les_suggestions' ) && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
                     o1+='<button class="yy_b1" rev_clic1="';
@@ -1845,11 +1847,13 @@ class __fnt1{
                 o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-            o1+='          <div><i style="text-align:left;font-weight:100;">';
-            if(les_donnees_du_champ.description_du_champ){
-                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                if(les_donnees_du_champ.description_du_champ){
+                    o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+                }
+                o1+='            </i></details>\r\n';
             }
-            o1+='            </i></div>\r\n';
             o1+='        </div>\r\n';
         }
         o1+='    </div>';
@@ -1900,7 +1904,7 @@ class __fnt1{
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
             if(les_donnees_du_champ.hasOwnProperty( 'les_suggestions' ) && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
                     o1+='<button class="yy_b1" rev_clic1="';
@@ -1976,7 +1980,7 @@ class __fnt1{
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             o1+=' />';
             if(les_donnees_du_champ.hasOwnProperty( 'les_suggestions' ) && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
                     o1+='<button class="yy_b1" rev_clic1="';
@@ -2021,7 +2025,7 @@ class __fnt1{
             o1+='        <div class="yy_contient_description">\r\n';
             o1+='            <div class="yy_conteneur_txtara">';
             if(les_donnees_du_champ.hasOwnProperty( 'boutons_avant1' ) && les_donnees_du_champ.boutons_avant1.length > 0){
-                o1+='            <div class="yy__lst_btns1">';
+                o1+='            <div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.boutons_avant1.length ; i++ ){
                     o1+=les_donnees_du_champ.boutons_avant1[i];
                 }
@@ -2033,16 +2037,13 @@ class __fnt1{
                 o1+=this.__ig1.__fnt1.boutons_edition1( les_donnees_du_champ.nom_du_champ );
             }
             if(les_donnees_du_champ.hasOwnProperty( 'boutons_apres1' ) && les_donnees_du_champ.boutons_apres1.length > 0){
-                o1+='            <div class="yy__lst_btns1" style="float:right;">';
+                o1+='            <div class="yy__lst_btns1" style="float:right;opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.boutons_apres1.length ; i++ ){
                     o1+=les_donnees_du_champ.boutons_apres1[i];
                 }
                 o1+='            </div>';
             }
-            o1+='                <textarea ';
-            o1+=' id="' + les_donnees_du_champ.nom_du_champ + '"';
-            o1+=' rows="' + les_donnees_du_champ.rows + '"';
-            o1+=' cols="' + les_donnees_du_champ.cols + '"';
+            o1+='                <textarea id="' + les_donnees_du_champ.nom_du_champ + '" rows="' + les_donnees_du_champ.rows + '" cols="' + les_donnees_du_champ.cols + '"';
             o1+=' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"';
             if(les_donnees_du_champ.hasOwnProperty( 'format_du_source' ) && les_donnees_du_champ.format_du_source === 2){
                 o1+=' data-editeur1="rev"';
@@ -2064,7 +2065,7 @@ class __fnt1{
             }
             o1+='</textarea>';
             if(les_donnees_du_champ.hasOwnProperty( 'les_suggestions' ) && les_donnees_du_champ.les_suggestions.length > 0){
-                o1+='<div class="yy__lst_btns1" style="display:inline-flex;">';
+                o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
                     let tt=les_donnees_du_champ.les_suggestions[i].replace( /&apos;/g , '\\\'' ).replace( /&#92;/g , '\\\\' );
                     o1+='<button class="yy_b1" rev_clic1="';
@@ -2076,11 +2077,13 @@ class __fnt1{
                 }
                 o1+='</div>';
             }
-            o1+='                <div><i style="text-align:left;font-weight:100;">';
-            if(les_donnees_du_champ.description_du_champ){
-                o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                if(les_donnees_du_champ.description_du_champ){
+                    o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
+                }
+                o1+='            </i></details>\r\n';
             }
-            o1+='                </i></div>\r\n';
             o1+='            </div>\r\n';
         }
         o1+='        </div>';

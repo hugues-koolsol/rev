@@ -1993,8 +1993,9 @@ class _rev_de_sql_vers_js1{
                             }
                         }
                         if(genre_numerique_du_champ === 25){
-                            /* a voir */
-                            debugger;
+                            /* 
+                              dans un select list on peut vouloir choisir les types 25 NULL(cle=-1) , 0(cle=0) ,1(cle=1) 
+                            */
                             t+='            if(tup.hasOwnProperty( \'' + elem.tableau_des_noms_des_variables[0] + '\' )){' + CRLF;
                         }else{
                             if(elem.tableau_des_noms_des_variables.length === 1){
