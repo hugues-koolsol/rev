@@ -1741,7 +1741,7 @@ class _rev_de_sql_vers_js1{
         }else if(type_de_requete === 'liste_ecran'){
             let est_table_virtuelle=0;
             if(this.#obj_webs.bases[base_reference].tables[table_reference].hasOwnProperty( 'est_table_virtuelle' )
-                   && parseInt(this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle , 10) === 1
+                   && parseInt( this.#obj_webs.bases[base_reference].tables[table_reference].est_table_virtuelle , 10 ) === 1
             ){
                 est_table_virtuelle=1;
             }
@@ -1993,7 +1993,7 @@ class _rev_de_sql_vers_js1{
                             }
                         }
                         if(genre_numerique_du_champ === 25){
-                            /* 
+                            /*
                               dans un select list on peut vouloir choisir les types 25 NULL(cle=-1) , 0(cle=0) ,1(cle=1) 
                             */
                             t+='            if(tup.hasOwnProperty( \'' + elem.tableau_des_noms_des_variables[0] + '\' )){' + CRLF;

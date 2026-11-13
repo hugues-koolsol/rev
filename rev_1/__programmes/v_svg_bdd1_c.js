@@ -19,8 +19,6 @@ import {w_ast_js_vers_rev1} from './f0?n0=w_ast_js_vers_rev1_.js';
 import {w_rev_vers_js1} from './f0?n0=w_rev_vers_js1_.js';
 import {w_ast_sqliteparseur_vers_rev1} from '/f0?n0=w_ast_sqliteparseur_vers_rev1_.js';
 import {w_ast_sql_parseur_cst_vers_rev1} from '/f0?n0=w_ast_sql_parseur_cst_vers_rev1_.js';
-
-
 class v_svg_bdd1{
     __ig1=null;
     moi='v_svg_bdd1';
@@ -70,7 +68,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'un_zero' ,
                 "valeur_normale_pour_meta" : 0 ,
                 "valeur_brut_pour_meta" : null ,
-                "doit_etre_dans_meta" : false, 
+                "doit_etre_dans_meta" : false
             },
         {
                 "nom_du_meta_table" : 'contient_televersement' ,
@@ -86,7 +84,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : 0 ,
                 "valeur_brut_pour_meta" : 0 ,
-                "doit_etre_dans_meta" : true,
+                "doit_etre_dans_meta" : true ,
                 "lng" : 4
             },
         {
@@ -95,7 +93,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
-                "doit_etre_dans_meta" : true,
+                "doit_etre_dans_meta" : true ,
                 "lng" : 16
             },
         {
@@ -104,7 +102,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
-                "doit_etre_dans_meta" : true,
+                "doit_etre_dans_meta" : true ,
                 "lng" : 16
             },
         {
@@ -113,7 +111,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
-                "doit_etre_dans_meta" : true,
+                "doit_etre_dans_meta" : true ,
                 "lng" : 16
             },
         {
@@ -122,7 +120,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
-                "doit_etre_dans_meta" : false,
+                "doit_etre_dans_meta" : false ,
                 "lng" : 8
             },
         {
@@ -131,7 +129,7 @@ class v_svg_bdd1{
                 "zone_html2" : 'text' ,
                 "valeur_normale_pour_meta" : null ,
                 "valeur_brut_pour_meta" : null ,
-                "doit_etre_dans_meta" : false,
+                "doit_etre_dans_meta" : false ,
                 "lng" : 8
             },
         {
@@ -166,7 +164,6 @@ class v_svg_bdd1{
     __liste_des_projets=[];
     #parseur_mysql=null;
     #objet_conversion_rev_vers_sql=null;
-
     /*
       =============================================================================================================
     */
@@ -375,7 +372,6 @@ class v_svg_bdd1{
         this.#parseur_mysql=new w_ast_sql_parseur_cst_vers_rev1( this.__ig1 );
         this.#objet_conversion_rev_vers_sql=new w_rev_vers_sql1( '#objet_conversion_rev_vers_sql' , this.__ig1 );
         this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/sql_parser_cst1_c.js' );
-        
     }
     /*
       =============================================================================================================
@@ -781,7 +777,7 @@ class v_svg_bdd1{
             var a=this.#ajouter_table_a_svg( nom_de_la_table , indice_courant , [20,20] , meta_table );
             var id_svg_conteneur_table=a.id_svg_conteneur_table;
             indice_courant+=2;
-            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 , /* est_table_virtuelle */ 0 , false );
+            var a=this.#ajouter_nom_de_table_au_svg( nom_de_la_table , indice_courant , id_svg_conteneur_table , 0 ,  /* est_table_virtuelle */ 0 , false );
             this.__ig1.fermer_la_sous_fenetre();
             this.#dessiner_le_svg();
         }
@@ -5203,18 +5199,11 @@ class v_svg_bdd1{
         let nouveau_meta=this.#corrige_meta_table( document.getElementById( id_svg_rectangle_de_la_table ).getAttribute( 'meta_rev_de_la_table' ) , {} , nom_de_la_table );
         t+='<div class="yy_edition_champ2">';
         for(let i in this.#liste_des_meta_table){
-         
-         
-         
             let elem1=this.#liste_des_meta_table[i];
-            
-            let l_exemple='';           
+            let l_exemple='';
             if(this.#liste_des_meta_table[i].hasOwnProperty( 'exemple' )){
                 l_exemple+='<pre style="margin-left:1em;border:1px var(--c_coul_fond3) solid;">' + this.#liste_des_meta_table[i].exemple + '</pre>';
             }
-            
-            
-            
             if(this.#liste_des_meta_table[i].zone_html2 === 'text'){
                 t+='<label for="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" class="yy_lib1">';
                 t+=elem1.nom_du_meta_table.replace( /_/g , ' ' );
@@ -5245,7 +5234,7 @@ class v_svg_bdd1{
                     contenu=nouveau_meta[this.#liste_des_meta_table[i].nom_du_meta_table];
                 }
                 t+='<details style="min-width:100%;">';
-                t+='<summary ' + ( contenu === '' ? '':' style="color:red;" ' )+ '>'+elem1.nom_du_meta_table.replace( /_/g , ' ' )+'</summary>';
+                t+='<summary ' + (contenu === '' ? ( '' ) : ( ' style="color:red;" ' )) + '>' + elem1.nom_du_meta_table.replace( /_/g , ' ' ) + '</summary>';
                 if(contenu.trim() !== '' && this.#liste_des_meta_table[i].nom_du_meta_table === 'fonctions_coherence1'){
                     let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( contenu.replace( /¶CRLF¶/g , '\r\n' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ) , {} );
                     if(obj1.__xst === __xsu){
@@ -5256,15 +5245,15 @@ class v_svg_bdd1{
                 }
                 if(contenu.trim() !== '' && this.#liste_des_meta_table[i].nom_du_meta_table === 'fonctions_coherence_sql1'){
                     let tt='créer_table(nom_de_la_table(ma_table),champs(champ(nom_du_champ(`a`),espece_du_champ(INTEGER)),verifier_contrainte(' + contenu.trim().replace( /¶CRLF¶/g , '\r\n' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ) + ')))';
-                    let objtt1=this.__ig1.__rev1.t2m(tt);
+                    let objtt1=this.__ig1.__rev1.t2m( tt );
                     if(objtt1.__xst === __xsu){
                         let obj0=this.#objet_conversion_rev_vers_sql.c_tab_vers_sql( objtt1.__xva , false , true , '' );
                         if(obj0.__xst === __xsu){
-                            let xx1=obj0.__xva.substr(obj0.__xva.indexOf('CHECK(')).substr(6);
-                            // parenthèse qui ferme le create table */
-                            xx1=xx1.substr(0,xx1.lastIndexOf(')'));
-                            // parenthèse qui ferme le check */
-                            xx1=xx1.substr(0,xx1.lastIndexOf(')'));
+                            let xx1=obj0.__xva.substr( obj0.__xva.indexOf( 'CHECK(' ) ).substr( 6 );
+                            /* parenthèse qui ferme le create table *_/ */
+                            xx1=xx1.substr( 0 , xx1.lastIndexOf( ')' ) );
+                            /* parenthèse qui ferme le check *_/ */
+                            xx1=xx1.substr( 0 , xx1.lastIndexOf( ')' ) );
                             contenu=xx1;
                         }
                     }else{
@@ -5287,7 +5276,8 @@ class v_svg_bdd1{
             }
             t+='<br />';
         }
-        t+='</div>'; // class="yy_edition_champ2">';
+        t+='</div>';
+        /* class="yy_edition_champ2">'; */
         t+='<br />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_la_table_de_modale(';
@@ -6067,8 +6057,8 @@ class v_svg_bdd1{
             }else if(this.#liste_des_meta_table[i].nom_du_meta_table === 'fonctions_coherence_sql1'){
                 let source_sql=document.getElementById( 'vv_' + this.#liste_des_meta_table[i].nom_du_meta_table ).value;
                 if(source_sql.trim() !== ''){
-                    //debugger /* parser le sql */
-                    let temp_sql = 'CREATE TABLE table_ma_table_temporaire_pour_validation( a integer , CHECK(' + source_sql +') )';
+                    /* debugger /_* parser le sql *_/ */
+                    let temp_sql='CREATE TABLE table_ma_table_temporaire_pour_validation( a integer , CHECK(' + source_sql + ') )';
                     temp_sql=temp_sql.replace( /\:/g , '___deux___points___' );
                     try{
                         let options_pour_le_parseur={
@@ -6078,22 +6068,22 @@ class v_svg_bdd1{
                             "includeComments" : /* Adds newlines */true ,
                             "includeRange" : /* Adds comments */true ,
                              /* Adds source code location data */
-                        };
+                            };
                         let ast_de_sql=window.sql_parser_cst2.parse( temp_sql , options_pour_le_parseur );
                         let obj1=this.#parseur_mysql.traite_ast_de_sql_parseur_cst( ast_de_sql , {} );
                         if(obj1.__xst === __xsu){
                             let obj0=this.__ig1.__rev1.t2m( obj1.__xva );
-                            if(obj0.__xst === __xsu ){
+                            if(obj0.__xst === __xsu){
                                 let mat1=obj0.__xva;
                                 let l02=mat1.length;
-                                for(let i=1 ; i < l02 ; i=mat1[i][12]){
-                                    if(mat1[i][1]==='créer_table' && mat1[i][2]==='f'){
-                                        for(let j=i+1 ; j < l02 ; j=mat1[j][12]){
-                                            if(mat1[j][1]==='champs' && mat1[j][2]==='f'){
-                                                for(let k=j+1 ; k < l02 ; k=mat1[k][12]){
-                                                    if(mat1[k][1]==='verifier_contrainte' && mat1[k][2]==='f' ){
+                                for( let i=1 ; i < l02 ; i=mat1[i][12] ){
+                                    if(mat1[i][1] === 'créer_table' && mat1[i][2] === 'f'){
+                                        for( let j=i + 1 ; j < l02 ; j=mat1[j][12] ){
+                                            if(mat1[j][1] === 'champs' && mat1[j][2] === 'f'){
+                                                for( let k=j + 1 ; k < l02 ; k=mat1[k][12] ){
+                                                    if(mat1[k][1] === 'verifier_contrainte' && mat1[k][2] === 'f'){
                                                         let obj2=this.__ig1.__rev1.m2t( mat1 , k );
-                                                        if(obj2.__xst === __xsu ){
+                                                        if(obj2.__xst === __xsu){
                                                             source_sql=obj2.__xva;
                                                         }else{
                                                             return({"__xst" : __xer ,"__xme" : 'sous matrice en texte'});
@@ -6110,12 +6100,11 @@ class v_svg_bdd1{
                             return({"__xst" : __xer ,"__xme" : 'conversion ast vers sql'});
                         }
                     }catch(err_sql){
-                      return({"__xst" : __xer ,"__xme" : 'conversion sql vers ast ' + err_sql.message});
+                        return({"__xst" : __xer ,"__xme" : 'conversion sql vers ast ' + err_sql.message});
                     }
                 }else{
                     obj[this.#liste_des_meta_table[i].nom_du_meta_table]='';
                 }
-                
             }else{
                 obj[this.#liste_des_meta_table[i].nom_du_meta_table]=document.getElementById( 'vv_' + this.#liste_des_meta_table[i].nom_du_meta_table ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
             }
@@ -6169,7 +6158,6 @@ class v_svg_bdd1{
                 definition_de_table+='\n' + tt;
             }
             /* ajouter check */
-            
             if(nouveau_meta.fonctions_coherence_sql1 !== ''){
                 definition_de_table+='verifier_contrainte(' + nouveau_meta.fonctions_coherence_sql1.trim().replace( /¶CRLF¶/g , '\r\n' ).replace( /¶LF¶/g , '\n' ).replace( /¶CR¶/g , '\r' ) + ')';
             }
@@ -8193,7 +8181,7 @@ class v_svg_bdd1{
             }else if(nouvelles_valeurs.hasOwnProperty( le_meta_table.nom_du_meta_table )){
                 if(false && le_meta_table.nom_du_meta_table === "fonctions_coherence_sql1"){
                     o1+=' ' + le_meta_table.nom_du_meta_table + '(' + nouvelles_valeurs[le_meta_table.nom_du_meta_table] + '),';
-                    debugger
+                    debugger;
                 }else{
                     le_meta_table.valeur_brut_pour_meta=nouvelles_valeurs[le_meta_table.nom_du_meta_table].replace( /\\'/g , '\'' ).replace( /\\\\/g , '\\' );
                     if(le_meta_table.zone_html2 === 'un_zero'){
@@ -9062,7 +9050,7 @@ class v_svg_bdd1{
                                 let obj_meta_de_la_table=this.#corrige_meta_table( objxx.__xva , {"nom_de_la_table" : nom_de_la_table} , nom_de_la_table );
                                 table_permet_la_gestion_de=obj_meta_de_la_table.permet_la_gestion_de;
                                 meta_de_la_table=obj_meta_de_la_table.texte;
-                                est_table_virtuelle=meta_de_la_table.indexOf( 'est_table_virtuelle(1)' ) >= 0 ? 1 : 0;
+                                est_table_virtuelle=meta_de_la_table.indexOf( 'est_table_virtuelle(1)' ) >= 0 ? ( 1 ) : ( 0 );
                                 contient_televersement=meta_de_la_table.indexOf( 'contient_televersement(\'1\')' ) >= 0;
                                 tt[0]=obj_meta_de_la_table.decallage_x;
                                 tt[1]=obj_meta_de_la_table.decallage_y;

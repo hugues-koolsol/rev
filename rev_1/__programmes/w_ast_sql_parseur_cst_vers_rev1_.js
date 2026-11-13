@@ -52,16 +52,16 @@ class w_ast_sql_parseur_cst_vers_rev1{
         let behaviorKw='';
         let column='';
         let ifExistsKw='';
-        let checkKw=null
+        let checkKw=null;
         let clauses=[];
         let expr=null;
-        if(element.checkKw===null || element.checkKw.name !== 'CHECK' ){
+        if(element.checkKw === null || element.checkKw.name !== 'CHECK'){
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
-        if(!Array.isArray(element.clauses) || element.clauses.length !== 0 ){
+        if(!Array.isArray( element.clauses ) || element.clauses.length !== 0){
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
-        if(element.expr===null ){
+        if(element.expr === null){
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
         obj1=this.#traite_expr( element.expr , niveau , element , options , vient_de );
@@ -70,7 +70,7 @@ class w_ast_sql_parseur_cst_vers_rev1{
         }else{
             return(this.#astsql_le( {"__xst" : __xer ,"__xme" : this.__ig1.nl2() + ' '} ));
         }
-        return({"__xst" : __xsu ,"__xva" : 'verifier_contrainte('+expr+')'});
+        return({"__xst" : __xsu ,"__xva" : 'verifier_contrainte(' + expr + ')'});
     }
     /*
       =============================================================================================================

@@ -5522,7 +5522,6 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
                 src_serveur_js2+='    }\r\n';
             }else{
-             
                 fragment_trouve=-1;
                 for( let i=0 ; i < tableau_des_fragments_serveur.length ; i++ ){
                     if(tableau_des_fragments_serveur[i].nom_methode_serveur === 'sous_liste2'){
@@ -8170,12 +8169,10 @@ class x_ecran_generer_programmes1{
         o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> m &amp; r : ';
         o1+=' <input id="masquer_le_bouton_modifier_et_retour" type="checkbox" />';
         o1+='</label>';
-        
         o1+='<label for="sans_bouton_dupliquer1" style="border:1px black solid;padding:1px;" title="sans bouton dupliquer">';
         o1+=' <div class="yy_svg0">' + this.__ig1.les_svg.masquer + '</div> sbd : ';
         o1+=' <input id="sans_bouton_dupliquer1" type="checkbox" />';
         o1+='</label>';
-        
         /*  */
         o1+='<label for="est_une_grandeur" style="border:1px black solid;padding:1px;" title="est une grandeur">';
         o1+=' ? grandeur : ';

@@ -458,7 +458,7 @@ class __ig1{
                                 }
                             }
                             this.affiche_les_messages();
-                            this.retablir_les_boutons_masques( {"__xst" : __xer , "__xva_param" : __xva_param } );
+                            this.retablir_les_boutons_masques( {"__xst" : __xer ,"__xva_param" : __xva_param} );
                             return({"__xst" : __xer ,"cumul_message" : cumul_message});
                         }else if(obj3.__xst === __xsu){
                         }
@@ -1539,7 +1539,7 @@ class __ig1{
                         }
                     } catch {}
                 }
-        }.bind( this ) );
+            }.bind( this ) );
         this.#vv_div_des_positions_du_curseur=document.createElement( 'div' );
         this.#vv_div_des_positions_du_curseur.id='vv_div_des_positions_du_curseur';
         this.#vv_div_des_positions_du_curseur.setAttribute( 'style' , 'position:absolute;top:60px;left:0px;background:white;display:inline-block;min-height:12px!important;line-height:12px;' );
@@ -2389,14 +2389,20 @@ class __ig1{
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
         /* animation temporaire pour le retour OK ou KO après modification */
         t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ok1 0.25s;  animation-iteration-count: 3;}';
-        t+='@keyframes yy_bouge_bouton_ok1{ 0% { transform: translateY(0) } 25% { transform: translateY(15px) } 50% { transform: translateY(-15px)} 75% { transform: translateY(15px) } 100% { transform: translateY(0)  }}';
-        t+='.yy__KO{color:#FF3030;background:linear-gradient(to bottom, #FF3030, #C01010);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ko1 0.25s;  animation-iteration-count: 3;}';
         let echelle1=4;
+        t+='@keyframes yy_bouge_bouton_ok1{';
+        t+='   0% { transform: rotate(0)      translateY(0)     scale(1) }';
+        t+='  25% { transform: rotate(90deg)  translateY(15px)  scale(' + (echelle1 / 2) + ') }';
+        t+='  50% { transform: rotate(180deg) translateY(-15px) scale(' + (echelle1 / 1) + ') }';
+        t+='  75% { transform: rotate(270deg) translateY(15px)  scale(' + (echelle1 / 2) + ') }';
+        t+=' 100% { transform: rotate(0)      translateY(0)     scale(1) }';
+        t+='}';
+        t+='.yy__KO{color:#FF3030;background:linear-gradient(to bottom, #FF3030, #C01010);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ko1 0.25s;  animation-iteration-count: 3;}';
         t+='@keyframes yy_bouge_bouton_ko1{';
         t+='   0% { transform: rotate(0)      translateY(0)     scale(1) }';
-        t+='  25% { transform: rotate(90deg)  translateY(15px)  scale('+(echelle1/2)+') }';
-        t+='  50% { transform: rotate(180deg) translateY(-15px) scale('+(echelle1/1)+')}';
-        t+='  75% { transform: rotate(270deg) translateY(15px)  scale('+(echelle1/2)+') }';
+        t+='  25% { transform: rotate(90deg)  translateY(15px)  scale(' + (echelle1 / 2) + ') }';
+        t+='  50% { transform: rotate(180deg) translateY(-15px) scale(' + (echelle1 / 1) + ') }';
+        t+='  75% { transform: rotate(270deg) translateY(15px)  scale(' + (echelle1 / 2) + ') }';
         t+=' 100% { transform: rotate(0)      translateY(0)     scale(1) }';
         t+='}';
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
@@ -3317,10 +3323,10 @@ class __ig1{
                 /*
                 */
                 let la_classe_pour_okko='yy__OK';
-                if(__xva_param && __xva_param.hasOwnProperty('__xst') && __xva_param.__xst !== 1){
-                   la_classe_pour_okko='yy__KO';
+                if(__xva_param && __xva_param.hasOwnProperty( '__xst' ) && __xva_param.__xst !== 1){
+                    la_classe_pour_okko='yy__KO';
                 }
-                let arg={"idtemp" : elt.getAttribute( 'data-indicateur_graphique' ) , "la_classe_pour_okko" : la_classe_pour_okko };
+                let arg={"idtemp" : elt.getAttribute( 'data-indicateur_graphique' ) ,"la_classe_pour_okko" : la_classe_pour_okko};
                 let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
                 if(lst.length > 0){
                     lst[0].classList.add( la_classe_pour_okko );
@@ -3330,7 +3336,7 @@ class __ig1{
                             if(lst.length > 0){
                                 /* console.log( 'indicateur on encore' , lst ); */
                                 lst[0].classList.add( la_classe_pour_okko );
-                                let arg1={"idtemp" : arg.idtemp , "la_classe_pour_okko" : la_classe_pour_okko };
+                                let arg1={"idtemp" : arg.idtemp ,"la_classe_pour_okko" : la_classe_pour_okko};
                                 setTimeout( function( arg1 ){
                                         /* console.log( 'indicateur off' ); */
                                         let la_classe_pour_okko=arg1.la_classe_pour_okko;
@@ -3338,7 +3344,7 @@ class __ig1{
                                         if(lst.length > 0){
                                             lst[0].classList.remove( la_classe_pour_okko );
                                         }
-                                    } , 250 , arg1 );
+                                } , 250 , arg1 );
                             }
                     } , 50 , arg );
                 }
@@ -4073,7 +4079,7 @@ class __ig1{
     affiche_les_messages( obj=null , le_colis11=null ){
         let bouton_supp='';
         bouton_supp+='<button class="yy_b1 yy__2 " rev_clic1="m1(n1(' + this.moi + '),f1(supprimer_les_messages()))" style="margin:0;display: inline-flex;" title="supprimer les messages">';
-        bouton_supp+='<div style="width: 1em;height: 1em;display: inline-block;">'
+        bouton_supp+='<div style="width: 1em;height: 1em;display: inline-block;">';
         bouton_supp+='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><use xlink:href="#les_svg1_poubelle"></use></svg>';
         bouton_supp+='</div>';
         bouton_supp+='<div style="line-height: calc(var(--t_police) - 1px);"> les messages</div>';
@@ -4119,9 +4125,10 @@ class __ig1{
                 vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
                 vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
                 let t='';
-                t+=bouton_supp; //'<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>';
+                t+=bouton_supp;
+                /* '<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>'; */
                 if(dans_sous_fenetre === false){
-                    t+=bouton_agrandir_retrecir
+                    t+=bouton_agrandir_retrecir;
                 }
                 this.maj_htm1( vv_supprimer_les_messages , t );
                 a1.insertBefore( vv_supprimer_les_messages , a1.firstChild );
@@ -4137,7 +4144,8 @@ class __ig1{
             vv_supprimer_les_messages.setAttribute( 'id' , "vv_supprimer_les_messages" );
             vv_supprimer_les_messages.setAttribute( 'class' , "yy__1" );
             let t='';
-            t+=bouton_supp; //'<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>';
+            t+=bouton_supp;
+            /* '<button class="yy_b1 yy__2 "  rev_clic1="m1(n1(__ig1),f1(supprimer_les_messages()))" style="margin:0;" title="supprimer les messages">🗑 les messages</button>'; */
             if(dans_sous_fenetre === false){
                 t+=bouton_agrandir_retrecir;
             }

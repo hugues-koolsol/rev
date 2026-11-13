@@ -1751,6 +1751,7 @@ class __fnt1{
                 }
                 o1+='</div>';
             }
+            o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             if(les_donnees_du_champ.hasOwnProperty( 'les_suggestions' ) && les_donnees_du_champ.les_suggestions.length > 0){
                 o1+='<div class="yy__lst_btns1" style="opacity:1;">';
                 for( let i=0 ; i < les_donnees_du_champ.les_suggestions.length ; i++ ){
@@ -1764,8 +1765,7 @@ class __fnt1{
                 }
                 o1+='</div>';
             }
-            o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
                 o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
@@ -1847,7 +1847,7 @@ class __fnt1{
                 o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
                 o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
@@ -1993,7 +1993,7 @@ class __fnt1{
                 o1+='</div>';
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
-            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
                 o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
@@ -2077,7 +2077,7 @@ class __fnt1{
                 }
                 o1+='</div>';
             }
-            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== '' ){
+            if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
                 o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
