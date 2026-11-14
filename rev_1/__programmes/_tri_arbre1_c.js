@@ -639,7 +639,7 @@ class _tri_arbre1{
             if(this.arbre[i].id_interne_parent === id_parent){
                 let attributs='';
                 for(let j in this.arbre[i].attributs){
-                    attributs+=j + '="' + this.arbre[i].attributs[j] + '"';
+                    attributs+=j + '="' + this.arbre[i].attributs[j].replace( /"/g , '&quot;' ) + '"';
                 }
                 t+='<li' + (attributs !== '' ? ( ' ' + attributs ) : ( '' )) + '>' + this.arbre[i].contenu;
                 if(this.arbre[i].contient_des_enfants > 0){

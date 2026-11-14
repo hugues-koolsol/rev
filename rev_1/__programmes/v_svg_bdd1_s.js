@@ -1100,11 +1100,11 @@ class v_svg_bdd1{
                 const query=db1temp.prepare( la_requete + ' LIMIT 500' );
                 lignes=query.all();
                 this.__ig1.donnees_retournees.__xva['lignes']=lignes;
-                this.__ig1.ma_trace1( "lignes=" , lignes );
+                /* this.__ig1.ma_trace1( "lignes=" , lignes ); */
                 await db1temp.close();
             }else{
                 let b=await db1temp.exec( la_requete );
-                this.__ig1.ma_trace1( "b=" , b );
+                /* this.__ig1.ma_trace1( "b=" , b ); */
                 await db1temp.close();
                 this.__ig1.donnees_retournees.__xsi[__xsu].push( 'la base ' + id_bdd_de_la_base + ' a bien été modifiée contexte(' + contexte + ')' );
             }
@@ -1117,7 +1117,7 @@ class v_svg_bdd1{
                 /* si la colonne a déjà été supprimée, ce n'est pas vraiment une erreur et on continue pour le faire sur les autres bases systèmes */
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la colonne a déjà été supprimée de la base ' + id_bdd_de_la_base + ' contexte(' + contexte + ')' );
             }else{
-                this.__ig1.ma_trace1( 'bug dans la requête ' + la_requete + '\n' + this.__ig1.retirer_informations_fichier_de_stack( e.stack ) );
+                /* this.__ig1.ma_trace1( 'bug dans la requête ' + la_requete + '\n' + this.__ig1.retirer_informations_fichier_de_stack( e.stack ) ); */
                 if(la_requete.indexOf( 'DROP' ) >= 0 && la_requete.indexOf( 'COLUMN' ) >= 0){
                     this.__ig1.donnees_retournees.__xsi[__xer].push( ' <b>REMARQUE : </b><br /> si la colonne à supprimer est la dernière de la table, il faut la déplacer en avant dernière position pour la supprimer ' );
                 }

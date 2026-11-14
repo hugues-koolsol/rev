@@ -3716,6 +3716,8 @@ class v_svg_bdd1{
         this.#id_bdd_de_la_base_en_cours=id_bdd_de_la_base;
         var t='';
         t+='<h1>modification de la base</h1>';
+        /*
+        */
         t+='<hr /><h3>données générales</h3>';
         let obj_meta={"collate" : '' ,"default_charset" : ''};
         var id_svg_rectangle_de_la_base=0;
@@ -3730,11 +3732,21 @@ class v_svg_bdd1{
                 }
             }
         }
-        t+='<br />default_charset : ' + '<input type="text" id="vv_meta_default_charset" value="' + obj_meta.default_charset.replace( /"/g , '&quot;' ) + '" autocapitalize="off"  /> "utf8mb4"';
-        t+='<br />collate : ' + '<input type="text" id="vv_meta_collate" value="' + obj_meta.collate.replace( /"/g , '&quot;' ) + '" autocapitalize="off"  /> "utf8mb4_unicode_ci"';
-        t+='<br /><button class="yy_b1 yy__3" rev_clic1="';
+        t+='<label class="yy_lib1">';
+        t+='default_charset : ' + '<input type="text" id="vv_meta_default_charset" class="yy_input1" value="' + obj_meta.default_charset.replace( /"/g , '&quot;' ) + '" autocapitalize="off"  size="7" max-length="32" style="width:6em;" />';
+        t+=' <details><summary style="color:red;">?</summary>utf8mb4</details>';
+        t+='</label>';
+        t+='<label class="yy_lib1">';
+        t+='collate : ' + '<input type="text" id="vv_meta_collate" class="yy_input1" value="' + obj_meta.collate.replace( /"/g , '&quot;' ) + '" autocapitalize="off" size="7" max-length="32" style="width:6em;" />';
+        t+=' <details><summary style="color:red;">?</summary>utf8mb4_unicode_ci</details>';
+        t+='</label>';
+        t+='<label class="yy_lib1">';
+        t+='<button class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(modifier_la_base_de_modale(id_svg_rectangle_de_la_base(' + id_svg_rectangle_de_la_base + '))))';
         t+='">modifier</button>';
+        t+='</label>';
+        /*
+        */
         t+='<hr /><h3>ajouter une table</h3>';
         t+='nom de la table <input id="vv_nom_de_la_nouvelle_table" type="text" value="tbl_zzzs" autocapitalize="off" />';
         t+='<button class="yy_b1 yy__3" rev_clic1="';
@@ -3745,22 +3757,42 @@ class v_svg_bdd1{
         t+='">remplir les champs féminin</button>';
         t+='<br />';
         for(let i in this.#liste_des_meta_table){
-            t+=this.#liste_des_meta_table[i].nom_du_meta_table.replace( /_/ , ' ' );
-            if(this.#liste_des_meta_table[i].zone_html2 === 'text'){
-                t+=' : <input id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" type="text" autocapitalize="off" value="';
-                if(this.#liste_des_meta_table[i].nom_du_meta_table === 'rang_de_la_table'){
+            let enreg=this.#liste_des_meta_table[i];
+            if(enreg.zone_html2 === 'text'){
+                t+='<label class="yy_lib1">';
+                t+=enreg.nom_du_meta_table.replace( /_/g , ' ' );
+                t+=' : <input id="vv_' + enreg.nom_du_meta_table + '" class="yy_input1" type="text" autocapitalize="off" value="';
+                if(enreg.nom_du_meta_table === 'rang_de_la_table'){
                     t+='0';
                 }
-                t+='"  />';
-            }else if(this.#liste_des_meta_table[i].zone_html2 === 'textarea'){
-                t+=' : <textarea id="vv_' + this.#liste_des_meta_table[i].nom_du_meta_table + '" rows="5" cols="50" autocapitalize="off" /></textarea>';
+                t+='" size="' + enreg.lng + '" />';
+                if(enreg.hasOwnProperty( 'exemple' )){
+                    t+='<details><summary style="color:red;">?</summary>';
+                    t+=enreg.exemple;
+                    t+='</details>';
+                }
+                t+='</label>';
+            }else if(enreg.zone_html2 === 'textarea'){
+                t+='<label class="yy_lib1">';
+                t+='<details>';
+                t+='  <summary>' + enreg.nom_du_meta_table.replace( /_/g , ' ' ) + '</summary>';
+                t+=' <textarea id="vv_' + enreg.nom_du_meta_table + '" rows="5" cols="50" autocapitalize="off" /></textarea>';
+                if(enreg.hasOwnProperty( 'exemple' )){
+                    t+=enreg.exemple;
+                }
+                t+='</details>';
+                t+='</label>';
             }else{
-                debugger;
+                t+='<label class="yy_lib1">';
+                t+=enreg.nom_du_meta_table.replace( /_/ , ' ' );
+                t+=' : <input type="range" id="vv_' + enreg.nom_du_meta_table + '" class="yy_ouinon" min="0" max="1" step="1" value="0">';
+                if(enreg.hasOwnProperty( 'exemple' )){
+                    t+='<details><summary style="color:red;">?</summary>';
+                    t+=enreg.exemple;
+                    t+='</details>';
+                }
+                t+='</label>';
             }
-            if(this.#liste_des_meta_table[i].hasOwnProperty( 'exemple' )){
-                t+=this.#liste_des_meta_table[i].exemple;
-            }
-            t+='<br />';
         }
         t+='<button class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(ajouter_une_table_provenant_de_modale(id_de_la_zone(\'vv_nom_de_la_nouvelle_table\'))))';
@@ -3812,7 +3844,103 @@ class v_svg_bdd1{
         /*
           =====================================================================================================
         */
+        let tab_des_tables=[];
+        if(id_svg_rectangle_de_la_base > 0){
+            t+='<hr /><h3>ordonner les tables</h3>';
+            let la_base=document.getElementById( 'refZnDessin' ).querySelectorAll( '[type_element="conteneur_de_base"]' );
+            let les_tables=la_base[0].querySelectorAll( '[type_element="rectangle_de_table"]' );
+            for( let i=0 ; i < les_tables.length ; i++ ){
+                let le_rev=les_tables[i].getAttribute( 'meta_rev_de_la_table' );
+                let nom_de_la_table='';
+                let rang_de_la_table=0;
+                let obj1=this.__ig1.__rev1.t2m( le_rev );
+                let mat1=obj1.__xva;
+                for( let j=1 ; j < mat1.length ; j=mat1[j][12] ){
+                    if(mat1[j][1] === 'meta' && mat1[j][2] === 'f'){
+                        for( let k=j + 1 ; k < mat1.length ; k=mat1[k][12] ){
+                            if(mat1[k][1] === 'nom_de_la_table' && mat1[k][8] === 1 && mat1[k][2] === 'f' && mat1[k + 1][2] === 'c'){
+                                nom_de_la_table=mat1[k + 1][1];
+                            }else if(mat1[k][1] === 'rang_de_la_table' && mat1[k][8] === 1 && mat1[k][2] === 'f' && mat1[k + 1][2] === 'c'){
+                                rang_de_la_table=parseInt( mat1[k + 1][1] , 10 );
+                            }
+                        }
+                    }
+                }
+                if(nom_de_la_table !== ''){
+                    tab_des_tables.push( [rang_de_la_table,nom_de_la_table,le_rev,les_tables[i].id] );
+                }
+            }
+            if(tab_des_tables.length > 0){
+                tab_des_tables.sort( function( a , b ){
+                        return(a[0] - b[0]);
+                } );
+                t+='<table>';
+                t+='<tr>';
+                t+='<td>';
+                t+='<ul id="ordre_modifie" >';
+                for( i=0 ; i < tab_des_tables.length ; i++ ){
+                    t+='<li';
+                    t+=' data-nom_de_la_table="' + tab_des_tables[i][1] + '"';
+                    t+=' data-le_rev="' + tab_des_tables[i][2].replace( /"/g , '&quot;' ) + '"';
+                    t+=' data-id_svg="' + tab_des_tables[i][3] + '"';
+                    t+='>' + tab_des_tables[i][1] + '</li>';
+                }
+                t+='</ul>';
+                t+='</td>';
+                t+='<td>';
+                rev='m1(n1(' + this.moi + '),f1(trier_les_tables(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '),nom_de_zone(ordre_modifie))))';
+                t+='<button class="yy_b1" rev_clic1="' + rev + '">trier les_tables</button>';
+                t+='</td>';
+                t+='<tr>';
+                t+='<table>';
+            }
+        }
+        /*
+          =====================================================================================================
+        */
         this.__ig1.affiche_sous_fenetre1( t );
+        if(tab_des_tables.length > 0){
+            let options1={
+                "hauteur_max_en_vh" : 80 ,
+                "largeur_max" : /* entre 20 et 80 */'400px' ,
+                "afficher_le_bouton_supprimer" : /* 'calc(100% - 50px)', */false ,
+                "fonction_appelee_apres_action" : this.action_sur_tri ,
+                "arborescent" : false ,
+                "class_du_bouton_deplacer" : 'yy_b1'
+            };
+            import( '/f0?n0=_tri_arbre1_c.js&__version=' + this.__ig1.__version ).then( ( m ) => {
+                    /* debugger */
+                    let aa=new m['_tri_arbre1']( this );
+                    aa.construire_arbre( 'ordre_modifie' , options1 );
+            } );
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    trier_les_tables( mat , d ){
+        let id_bdd_de_la_base_en_cours=0;
+        let nom_de_zone='';
+        for( let i=0 ; i < mat.length ; i++ ){
+            if(mat[i][1] === 'id_bdd_de_la_base_en_cours' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                id_bdd_de_la_base_en_cours=parseInt( mat[i + 1][1] , 10 );
+            }else if(mat[i][1] === 'nom_de_zone' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                nom_de_zone=mat[i + 1][1];
+            }
+        }
+        if(id_bdd_de_la_base_en_cours > 0 && nom_de_zone !== ''){
+            let tab_des_tables=[];
+            let aa=document.getElementById( nom_de_zone ).querySelectorAll( '[data-nom_de_la_table]' );
+            for( let i=0 ; i < aa.length ; i++ ){
+                tab_des_tables.push( [aa[i].getAttribute( 'data-nom_de_la_table' ),aa[i].getAttribute( 'data-le_rev' ),aa[i].getAttribute( 'data-id_svg' )] );
+            }
+            for( let i=0 ; i < tab_des_tables.length ; i++ ){
+                let obj_meta_de_la_table=this.#corrige_meta_table( tab_des_tables[i][1] , {"rang_de_la_table" : i} , tab_des_tables[i][0] );
+                document.getElementById( tab_des_tables[i][2] ).setAttribute( 'meta_rev_de_la_table' , obj_meta_de_la_table.texte.replace( /"/g , '&quot;' ) );
+            }
+        }
+        this.__ig1.fermer_la_sous_fenetre();
         return({"__xst" : __xsu});
     }
     /*
