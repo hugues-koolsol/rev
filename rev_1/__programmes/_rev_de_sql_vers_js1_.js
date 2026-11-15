@@ -1800,6 +1800,7 @@ class _rev_de_sql_vers_js1{
                 t+='        where0=\' WHERE 1=1 \';' + CRLF;
                 t+='        /* this.__ig1.ma_trace1( \'tup=\' , tup ); */' + CRLF;
                 t+='        try{' + CRLF;
+                debugger
                 if(est_table_virtuelle === 1){
                     debugger;
                     t+='            if(tup.hasOwnProperty( \'les_match\' )  && tup.les_match !== \'\'){\r\n';
@@ -2084,7 +2085,15 @@ class _rev_de_sql_vers_js1{
             t+='            lignes=await statement.values();\r\n';
             t+='            await statement.finalize();\r\n';
             t+='        }catch(e){\r\n';
-            t+='            return(this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} ));\r\n';
+            t+='            this.__ig1.traite_erreur_sql( ' + id_requete_en_base + ' , e , sql0 , {} );\r\n';
+            t+='            return({\r\n';
+            t+='                     /*  */\r\n';
+            t+='                    "__xst" : __xsu ,\r\n';
+            t+='                    "__xva" : donnees0 ,\r\n';
+            t+='                    "nombre" : __nbEnregs ,\r\n';
+            t+='                    "sql0" : sql0 ,\r\n';
+            t+='                    "where0" : where0\r\n';
+            t+='                });\r\n';
             t+='        }\r\n';
             t+='        /*  */\r\n';
             t+='        for(let numero_de_ligne in lignes){\r\n';

@@ -30,6 +30,7 @@ class bdds1{
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
+            case 'dump2_de_la_base' :
             case 'forcer_fermeture_fichier_wal' : 
             case 'dump_de_la_base' : 
             case 'enregistrer_la_matrice_dans_la_table_rev' : break;
@@ -458,6 +459,7 @@ class bdds1{
         lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))">' + this.__ig1.les_svg.editer + '</button>';
         lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
         lst+='<button class="yy_svg1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(dump_de_la_base(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))" title="faire un dump de la base">' + this.__ig1.les_svg.disquette + '</button>';
+        lst+='<button class="yy_svg1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(dump2_de_la_base(chi_id_basedd(' + tup.T0_chi_id_basedd + ')))))" title="dump2">' + this.__ig1.les_svg.disquette + '</button>';
         lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(v_svg_bdd1),f1(editer_les_schemas2(les_bases_a_editer(\'' + tup.T0_chi_id_basedd + '\')))))">' + this.__ig1.les_svg.bdd + '</button>';
         if(le_colis1._CA_ === 1 && le_colis1.chi_id_projet === 1){
         }else{

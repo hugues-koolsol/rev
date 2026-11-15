@@ -1,5 +1,7 @@
 import {_developpement1} from '/f0?n0=_developpement1_c.js';
 import {w_rev_vers_js1} from './f0?n0=w_rev_vers_js1_.js';
+import {w_ast_js_vers_rev1} from './f0?n0=w_ast_js_vers_rev1_.js';
+
 /*
   enrichir_objet_base
   générer_les_programmes
@@ -40,6 +42,7 @@ class x_ecran_generer_programmes1{
     #dependances={};
     #rev_fragment_mat=null;
     #objet_conversion_rev_vers_js=null;
+    #objet_conversionw_ast_js_vers_rev1=null;
     #liste_des_liens_dejà_definis={};
     #liste_des_liens_dejà_definis_pour_affichage={};
     #liste_des_methodes_desfragments={};
@@ -47,6 +50,7 @@ class x_ecran_generer_programmes1{
     #src_client_verouille1=0;
     client_cht_import_module_rev_source=null;
     serveur_cht_import_module_rev_source=null;
+
     /*
       =============================================================================================================
     */
@@ -58,6 +62,9 @@ class x_ecran_generer_programmes1{
         /* console.log( 'ici' ); */
         this.#_developpement1=new _developpement1( [] , 0 , this.__ig1 );
         this.#objet_conversion_rev_vers_js=new w_rev_vers_js1( '#objet_conversion_rev_vers_js' , this.__ig1 );
+        this.#objet_conversionw_ast_js_vers_rev1=new w_ast_js_vers_rev1( '#objet_conversionw_ast_js_vers_rev1_' , this.__ig1 );
+        this.__ig1.charger_script_dynamique( '/f0?n0=bibliotheques_externes/acorn1_c.js' );
+        
     }
     /*
       =============================================================================================================
@@ -3621,6 +3628,116 @@ class x_ecran_generer_programmes1{
                         debugger;
                     }
                 }
+                /*tableau_des_fragments_client[fragment_trouve] */
+                if(obj_champ.nom_du_champ === 'fld_sequence_modele'){
+                    for( let i in tableau_des_fragments_client){
+                        if( tableau_des_fragments_client[i].nom_methode_client === 'page_modification1' ){
+                            let tableau_des_commentaires_js=[];
+                            let obj0=null;
+                            try{
+                                let le_parseur=window.acorn.Parser;
+                                obj0=le_parseur.parse( 'class ___la_classe_bidon{' + tableau_des_fragments_client[i].src_js + '}' , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
+                            }catch(e){
+                                return({
+                                        "__xst" : __xer ,
+                                        "__xme" : 'le source javascript de la fonction pour liste n\'a pas pu interprétée correctement' + this.__ig1.nl2( e )
+                                    });
+                            }
+                            let obj1=this.#objet_conversionw_ast_js_vers_rev1.traite_ast( obj0.body , tableau_des_commentaires_js , {} );
+                            if(obj1.__xst !== __xsu){
+                                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                            }
+                            let obj2=this.__ig1.__rev1.t2m( obj1.__xva );
+                            if(obj2.__xst !== __xsu){
+                                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( )});
+                            }
+                            let mat2=obj2.__xva;
+                            /*#
+                              definition_de_classe(
+                                 nom_classe(___la_classe_bidon),
+                                 contenu(
+                                    #(
+                                      =========================== fragment ========================================================================
+                                    ),
+                                    méthode(
+                                       definition(nom(page_modification1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
+                                       contenu(
+                                          #(
+                                            debut_de_après_fld_sequence_modele
+                                          ),
+                                          fonction(
+                                             definition(nom(ajouter__après__fld_sequence_modele)),
+                                             contenu(...)
+                                          )
+                                       )
+                                    )
+                                 )
+                              )
+                            */                            
+                            //let fonction_pour_liste1=obj1.__xva.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' );
+                            let l02=mat2.length;
+                            for(let i=1 ; i < l02 ; i=mat2[i][12]){
+                                if(mat2[i][1]==='definition_de_classe' && mat2[i][2]==='f'){
+                                    for(let j=i+1 ; j < l02 ; j=mat2[j][12]){
+                                        if(mat2[j][1]==='contenu' && mat2[j][2]==='f'){
+                                            for(let k=j+1 ; k < l02 ; k=mat2[k][12]){
+                                                if(mat2[k][1]==='méthode' && mat2[k][2]==='f'){
+                                                    let indice_methode=0
+                                                    let indice_fonction=0
+                                                    for(let l=k+1 ; l < l02 ; l=mat2[l][12]){
+                                                        if(mat2[l][1]==='definition' && mat2[l][2]==='f'){
+                                                            for(let m=l+1 ; m < l02 ; m=mat2[m][12]){
+                                                                if(mat2[m][1]==='nom' && mat2[m][2]==='f'){
+                                                                    for(let n=m+1 ; n < l02 ; n=mat2[n][12]){
+                                                                        if(mat2[n][1]==='page_modification1' && mat2[n][2]==='c' ){
+                                                                            indice_methode=k;
+                                                                            break
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    if(indice_methode>0){
+                                                        for(let l=k+1 ; l < l02 ; l=mat2[l][12]){
+                                                            if(mat2[l][1]==='contenu' && mat2[l][2]==='f'){
+                                                                for(let m=l+1 ; m < l02 ; m=mat2[m][12]){
+                                                                    if(mat2[m][1]==='fonction' && mat2[m][2]==='f'){
+                                                                        for(let n=m+1 ; n < l02 ; n=mat2[n][12]){
+                                                                            if(mat2[n][1]==='definition' && mat2[n][2]==='f' ){
+                                                                                for(let o=n+1 ; o < l02 ; o=mat2[o][12]){
+                                                                                    if(mat2[o][1]==='nom' && mat2[o][2]==='f' && mat2[o][8]===1 && mat2[o+1][2]=== 'c'){
+                                                                                        if( mat2[o+1][1] === 'ajouter__après__' + obj_champ.nom_du_champ ){
+                                                                                             indice_fonction=m;
+                                                                                             break
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        if(indice_fonction >0){
+                                                            for(let l=indice_fonction+1 ; l < l02 ; l=mat2[l][12]){
+                                                                if(mat2[l][1]==='contenu' && mat2[l][2]==='f'){
+                                                                   debugger
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }                            
+                        }
+                    }
+                    debugger
+                }
+                
             }
             if(contient_televersement === 1){
                 src_client2+='        /*\r\n';
@@ -4548,8 +4665,10 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : suppression impossible [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        /*  */\r\n';
+            src_serveur_js2+='        await __db1.exec( \'BEGIN TRANSACTION;\' );\r\n';
             src_serveur_js2+='        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
             src_serveur_js2+='        if(tas.__xst !== __xsu){\r\n';
+            src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : tas.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let criteres_' + ref_delete + '={/**/\r\n';
@@ -4558,13 +4677,16 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let tt' + ref_delete + '=await this.__ig1.sql_iij( ' + ref_delete + ' , criteres_' + ref_delete + ' , __db1 );\r\n';
             src_serveur_js2+='        /**/\r\n';
             src_serveur_js2+='        if(tt' + ref_delete + '.__xst !== __xsu){\r\n';
+            src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : tt' + ref_delete + '.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
             src_serveur_js2+='        if(__aavc.__xst === __xer){\r\n';
+            src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aavc.__xme});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        /**/\r\n';
+            src_serveur_js2+='        await __db1.exec( \'COMMIT;\' );\r\n';
             src_serveur_js2+='        if(fo1.__mat_liste_si_ok !== \'\'){\r\n';
             src_serveur_js2+='            let mat1=JSON.parse( fo1.__mat_liste_si_ok );\r\n';
             src_serveur_js2+='            return( await this.liste1( mat1 , 1 , __db1 ) );\r\n';

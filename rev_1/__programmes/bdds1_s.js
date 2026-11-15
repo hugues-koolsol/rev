@@ -13,6 +13,52 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
   =====================================================================================================================
 */
 class bdds1{
+
+    /*
+      =========================== fragment ========================================================================
+    */
+    async dump2_de_la_base( mat , d ){
+        /* chi_id_projet est <> de null dans le cas ou on fait une saugegarde de la base système */
+        
+        let chi_id_basedd=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_basedd' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        this.__ig1.ma_trace1("chi_id_basedd=",chi_id_basedd);
+        let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
+        let chemin_sauvegarde='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sauvegarde_des_bases/__sauvegarde2_bdd_' + chi_id_basedd + '.sqlite.backup_vacuum';
+        this.__ig1.ma_trace1("est_fichier chemin_bdd",chemin_bdd,await this.__ig1.is_file(chemin_bdd));
+        this.__ig1.ma_trace1("est_fichier chemin_sauvegarde",chemin_sauvegarde,await this.__ig1.is_file(chemin_sauvegarde));
+        
+        if(await this.__ig1.is_file(chemin_sauvegarde)){
+            try{
+                this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde(chemin_sauvegarde,true)
+            }catch(e){
+                return({"__xst" : __xer , __xme : this.__ig1.nl2(e) });
+            }
+        }
+        
+        let __db=new Database( chemin_bdd , {"create" : false} );
+        try{
+            await __db.exec( "PRAGMA wal_checkpoint(FULL);" );
+            //let ligne = '.dump > "' + chemin_sauvegarde + '"';
+            let ligne = 'VACUUM INTO \'' + chemin_sauvegarde + '\'';
+            this.__ig1.ma_trace1("ligne="+ligne);
+            await __db.exec( ligne );
+            this.__ig1.ma_trace1("OK");
+            
+            
+            
+            __db.close();
+            return({"__xst" : __xsu});
+        }catch( e ){
+            __db.close();
+            return({"__xst" : __xer , __xme : this.__ig1.nl2(e) });
+        }
+    }
     /*
       =========================== fragment ========================================================================
     */
