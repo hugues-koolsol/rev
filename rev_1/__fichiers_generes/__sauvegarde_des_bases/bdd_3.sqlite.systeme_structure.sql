@@ -598,10 +598,10 @@ CREATE TABLE `tbl_sources`(
 choix(si(condition(non(ou(egalstricte(tup.cht_condition_rev_source,null),egalstricte(tup.cht_condition_rev_source,\'\')))),alors(
       choix(si(condition(ou(egalstricte(tup.cht_notification_ko_source,null),egalstricte(tup.cht_notification_ko_source,\'\'))),alors(
             throw(new(appelf(nomf(Error),p(\'si une condition existe alors une notification doit être indiquée\'))))))))))
-choix(si(condition(et(egalstricte(tup.che_est_fragment_source,1),diffstricte(tup.chx_dossier_id_source,null))),alors(
-      throw(new(appelf(nomf(Error),p(\'si c\\\'est un fragment alors le dossier ne doit pas être indiqué\')))))))
-choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.che_est_fragment_source,1))),alors(
-      throw(new(appelf(nomf(Error),p(\'un fragment ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(516,9))) 
+choix(si(condition(et(egalstricte(tup.che_est_extrait_source,1),diffstricte(tup.chx_dossier_id_source,null))),alors(
+      throw(new(appelf(nomf(Error),p(\'si c\\\'est un extrait alors le dossier ne doit pas être indiqué\')))))))
+choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.che_est_extrait_source,1))),alors(
+      throw(new(appelf(nomf(Error),p(\'un extrait ne doit pas être pour un utilisateur\')))))))'),transform_base_sur_svg(translate(516,9))) 
 */
     
             /*
@@ -759,13 +759,13 @@ choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.ch
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('che_est_fragment_source'),
-            nom_bref_du_champ('est fragment'),libelle_du_champ('est fragment'),entete_distant_du_champ('usage source'),
+            nom_du_champ('che_est_extrait_source'),
+            nom_bref_du_champ('est extrait'),libelle_du_champ('est extrait'),entete_distant_du_champ('usage source'),
             typologie(che),
             genre(5)
             )
             */
-             `che_est_fragment_source` INTEGER NOT NULL DEFAULT  0
+             `che_est_extrait_source` INTEGER NOT NULL DEFAULT  0
     ,
     
             /*

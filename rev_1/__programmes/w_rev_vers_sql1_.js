@@ -623,7 +623,7 @@ class w_rev_vers_sql1{
                         if(liste_des_tables_js.substr( liste_des_tables_js.length - 1 , 1 ) === ','){
                             liste_des_tables_js=liste_des_tables_js.substr( 0 , liste_des_tables_js.length - 1 );
                         }
-                        /* liste des champs extraits */
+                        /* liste des champs récupérés */
                         var precedent_est_commentaire=false;
                         var numero_de_champ=0;
                         for( j=i + 1 ; j < this.#l02 ; j=this.#tb[j][12] ){

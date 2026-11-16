@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class autorisations1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async ecrire_fichier_des_autorisations_pour_un_acces( tableau_des_auto , chx_acces_autorisation , __db1 ){
         if(this.__ig1.donnees_retournees._CA_ > 2 && chx_acces_autorisation <= 2){
@@ -54,7 +54,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async gererer_les_autorisation_serveur( mat , d , __db1=null ){
         if(__db1 === null){
@@ -278,7 +278,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
@@ -300,7 +300,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );
@@ -322,7 +322,7 @@ class autorisations1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         let obj=await this.gererer_les_autorisation_serveur( mat , d , __db1 );

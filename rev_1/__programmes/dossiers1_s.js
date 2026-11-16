@@ -13,7 +13,7 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 */
 class dossiers1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async zipper( mat , d ){
         let m=null;
@@ -54,7 +54,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async dézipper( mat , d ){
         let m=null;
@@ -97,7 +97,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async integrer_des_enregistrements_de_fichier_csv1( tableau_des_enregistrements , la_table , les_champs , __db1 , nombre_d_entrees , nombre_max_d_entrees ){
         /* this.__ig1.ma_trace1('tableau_des_enregistrements=',tableau_des_enregistrements, la_table , les_champs); */
@@ -145,7 +145,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async asynchrone_importer_un_csv_methode_02( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=0 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
         /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
@@ -162,7 +162,7 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_extrait_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
         `T0`.`cht_import_module_rev_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
@@ -465,7 +465,7 @@ class dossiers1{
         return({"__xst" : __xsu ,"comptage_du_nombre_d_enregistrements_inseres" : comptage_du_nombre_d_enregistrements_inseres});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async asynchrone_importer_un_csv_methode_01( chi_id_dossier , chi_id_basedd , chi_id_source , la_table , les_champs , sauter_n_enregistrements=1 , nombre_max_d_entrees=0 , interactif=false , __db1=null ){
         /* let nom_complet_du_fichier='./__fichiers_generes/' + nom_du_fichier; */
@@ -491,7 +491,7 @@ class dossiers1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_extrait_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
         `T0`.`cht_import_module_rev_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
@@ -788,7 +788,7 @@ class dossiers1{
         return({"__xst" : __xsu ,"comptage_du_nombre_d_enregistrements_inseres" : comptage_du_nombre_d_enregistrements_inseres});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async integrer_csv_sans_entete2( mat , d ){
         let chi_id_dossier=0;
@@ -857,7 +857,7 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_extrait_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
             `T0`.`cht_import_module_rev_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
@@ -905,7 +905,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async traitement_integrer_csv0( mat , d ){
         let chi_id_dossier=0;
@@ -943,7 +943,7 @@ class dossiers1{
             SELECT 
             `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
             `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+            `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_extrait_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
             `T0`.`cht_import_module_rev_source`
              FROM b1.tbl_sources T0
              LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
@@ -995,7 +995,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     fermer_bdd( chi_id_basedd , __db1 ){
         if(this.__ig1.donnees_retournees.chi_id_utilisateur === 0){
@@ -1011,7 +1011,7 @@ class dossiers1{
         } catch {}
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async analyser_premiere_ligne_de_csv_sans_entete( mat , d ){
         let chp_nom_source='';
@@ -1091,7 +1091,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async analyser_premiere_ligne_de_csv_avec_entete( mat , d ){
         let chp_nom_source='';
@@ -1155,7 +1155,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async traitement_vider_la_table( mat , d ){
         let chi_id_basedd=0;
@@ -1192,7 +1192,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async vv_dossiers_nouveau_numero1( mat , d ){
         let chi_id_dossier_ancienne=0;
@@ -1245,7 +1245,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async construire_chemin( chi_id_dossier , __db1 ){
         if(chi_id_dossier === 1){
@@ -1330,7 +1330,7 @@ class dossiers1{
         return({"__xst" : __xsu ,"__xva" : le_retour});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async supprimer_un_fichier_du_disque( mat , d ){
         let chi_id_dossier=0;
@@ -1377,7 +1377,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async liste_des_fidos( chi_id_dossier , __db1 ){
         let liste_des_fido=[];
@@ -1483,7 +1483,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async test_dossier_vide( chemin ){
         if(!this.__ig1.is_dir( chemin )){
@@ -1493,7 +1493,7 @@ class dossiers1{
         return({"__xst" : tt.length === 0 ? ( __xsu ) : ( __xer ) ,"__xva" : {"chemin" : chemin ,"existe" : __xsu}});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tester_arbre_dossier( __db1 , nom_de_dossier , chx_parent_dossier , id_actuel=null ){
         /*
@@ -1569,7 +1569,7 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async creer_le_dossier_sur_disque( mat , d ){
         let chi_id_dossier=0;
@@ -1601,7 +1601,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async integrer_ce_fichier_dans_les_sources( mat , d ){
         /*
@@ -1667,7 +1667,7 @@ class dossiers1{
                             "cht_genere_source" : contenu_fichier ,
                             "che_binaire_source" : che_binaire_source ,
                             "che_autorisation_globale_source" : 0 ,
-                            "che_est_fragment_source" : 0 ,
+                            "che_est_extrait_source" : 0 ,
                             "che_pour_util_source" : 0
                         }]
             };
@@ -1678,7 +1678,7 @@ class dossiers1{
             INSERT INTO b1.`tbl_sources`(
                 `chx_dossier_id_source` , 
                 `chp_nom_source` , 
-                `che_est_fragment_source` , 
+                `che_est_extrait_source` , 
                 `che_pour_util_source` , 
                 `che_binaire_source` , 
                 `cht_genere_source` , 
@@ -1686,7 +1686,7 @@ class dossiers1{
             ) VALUES (
                 :chx_dossier_id_source , 
                 :chp_nom_source , 
-                :che_est_fragment_source , 
+                :che_est_extrait_source , 
                 :che_pour_util_source , 
                 :che_binaire_source , 
                 :cht_genere_source , 
@@ -1710,7 +1710,7 @@ class dossiers1{
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async supprimer_un_dossier_du_disque( mat , d ){
         let chi_id_dossier=0;
@@ -1754,7 +1754,7 @@ class dossiers1{
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async integrer_ce_dossier1( mat , d ){
         let chx_parent_dossier=-1;
@@ -1803,7 +1803,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
         let obj=await this.liste_des_fidos( __xva_avant.T0_chi_id_dossier , __db1 );
@@ -1813,7 +1813,7 @@ class dossiers1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         /*  */
@@ -1845,13 +1845,13 @@ class dossiers1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
         return(await this.tester_arbre_dossier( __db1 , form.chp_nom_dossier , form.chx_parent_dossier , form.chi_id_dossier ));
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.construire_chemin( __xva_avant.T0_chi_id_dossier , __db1 );

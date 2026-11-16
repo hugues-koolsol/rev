@@ -52,7 +52,7 @@ class sql_1331{
         if(!['cht','chi','che','chx','chp','chd','chc','chu','chn'].includes(tup.n_chp_prefixe_genre)){
             throw new Error( tete + '"' + tup.n_chp_prefixe_genre + '" pour "préfixe" '  + this.__ig1.nl2() );
         }
-        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes(tup.n_chp_espece_genre)){
+        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL','DATETIME'].includes(tup.n_chp_espece_genre)){
             throw new Error( tete + '"' + tup.n_chp_espece_genre + '" pour "espece" '  + this.__ig1.nl2() );
         }
         if( ! ( 0 === tup.n_che_est_primaire_genre || 1 === tup.n_che_est_primaire_genre ) ){

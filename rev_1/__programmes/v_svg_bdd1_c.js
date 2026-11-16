@@ -1772,8 +1772,16 @@ class v_svg_bdd1{
         }
         a.proprietes.longueur_du_champ=document.getElementById( 'che_longueur_genre' ).value.trim();
         a.proprietes.espece_du_champ=document.getElementById( 'chp_espece_genre' ).value.toUpperCase().trim();
-        if(!['TEXT','VARCHAR','INTEGER','FLOAT','DECIMAL'].includes( a.proprietes.espece_du_champ )){
-            return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL'});
+        if(![
+                    'TEXT',
+                    'VARCHAR',
+                    'INTEGER',
+                    'FLOAT',
+                    'DECIMAL',
+                    'DATETIME'
+                ].includes( a.proprietes.espece_du_champ )
+        ){
+            return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être TEXT,VARCHAR,INTEGER,FLOAT,DECIMAL,DATETIME'});
         }
         if(a.proprietes.espece_du_champ === ''){
             return({"__xst" : __xer ,"__xme" : 'l\'espèce du champ doit être indiquée'});

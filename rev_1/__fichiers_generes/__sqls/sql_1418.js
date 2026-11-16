@@ -18,7 +18,7 @@ class sql_1418{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_est_fragment_source\` , 
+          \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`chx_dossier_id_source\` , \`T1\`.\`chp_nom_dossier\` , \`T0\`.\`che_est_extrait_source\` , 
           \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`che_binaire_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`cht_condition_rev_source\` , 
           \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`cht_commentaire_source\`
         `;
@@ -69,8 +69,8 @@ class sql_1418{
             if(tup.hasOwnProperty( 'T0_che_est_verrouille_source' ) && tup.T0_che_est_verrouille_source !== ''){
                 where0+=` AND \`T0\`.\`che_est_verrouille_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_verrouille_source , 'T0_che_est_verrouille_source' ) + `` + '\r\n';
             }
-            if(tup.hasOwnProperty( 'T0_che_est_fragment_source' ) && tup.T0_che_est_fragment_source !== ''){
-                where0+=` AND \`T0\`.\`che_est_fragment_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_fragment_source , 'T0_che_est_fragment_source' ) + `` + '\r\n';
+            if(tup.hasOwnProperty( 'T0_che_est_extrait_source' ) && tup.T0_che_est_extrait_source !== ''){
+                where0+=` AND \`T0\`.\`che_est_extrait_source\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_est_extrait_source , 'T0_che_est_extrait_source' ) + `` + '\r\n';
             }
             if(tup.hasOwnProperty( 'T0_cht_rev_source' ) && tup.T0_cht_rev_source !== ''){
                 where0+=` AND \`T0\`.\`cht_rev_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_source , 'T0_cht_rev_source' ) + '\r\n';
@@ -97,7 +97,15 @@ class sql_1418{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1418 , e , sql0 , {} ));
+            this.__ig1.traite_erreur_sql( 1418 , e , sql0 , {} );
+            return({
+                     /*  */
+                    "__xst" : __xsu ,
+                    "__xva" : donnees0 ,
+                    "nombre" : __nbEnregs ,
+                    "sql0" : sql0 ,
+                    "where0" : where0
+                });
         }
         /*  */
         for(let numero_de_ligne in lignes){
@@ -106,7 +114,7 @@ class sql_1418{
                     "T0_chp_nom_source" : lignes[numero_de_ligne][1] ,
                     "T0_chx_dossier_id_source" : lignes[numero_de_ligne][2] ,
                     "T1_chp_nom_dossier" : lignes[numero_de_ligne][3] ,
-                    "T0_che_est_fragment_source" : lignes[numero_de_ligne][4] ,
+                    "T0_che_est_extrait_source" : lignes[numero_de_ligne][4] ,
                     "T0_che_autorisation_globale_source" : lignes[numero_de_ligne][5] ,
                     "T0_che_binaire_source" : lignes[numero_de_ligne][6] ,
                     "T0_che_est_verrouille_source" : lignes[numero_de_ligne][7] ,

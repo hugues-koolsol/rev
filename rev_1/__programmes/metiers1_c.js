@@ -480,7 +480,7 @@ class metiers1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';

@@ -50,7 +50,7 @@ class sql_1221{
             where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = 0`;
             where0+=` AND \`T0\`.\`che_pour_util_source\` = 1`;
             where0+=` AND \`T0\`.\`che_binaire_source\` = 0`;
-            where0+=` AND \`T0\`.\`che_est_fragment_source\` = 0`;
+            where0+=` AND \`T0\`.\`che_est_extrait_source\` = 0`;
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });
             
@@ -73,7 +73,15 @@ class sql_1221{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1221 , e , sql0 , {} ));
+            this.__ig1.traite_erreur_sql( 1221 , e , sql0 , {} );
+            return({
+                     /*  */
+                    "__xst" : __xsu ,
+                    "__xva" : donnees0 ,
+                    "nombre" : __nbEnregs ,
+                    "sql0" : sql0 ,
+                    "where0" : where0
+                });
         }
         /*  */
         for(let numero_de_ligne in lignes){

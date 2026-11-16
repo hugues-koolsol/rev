@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class revs1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tout_supprimer( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );

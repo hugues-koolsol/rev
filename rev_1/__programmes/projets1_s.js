@@ -13,7 +13,7 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 */
 class projets1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async vacuum_et_checkpoint( mat , d ){
         let nom_fichier='bdd_' + this.__ig1.donnees_retournees.chi_id_projet;
@@ -57,7 +57,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async creer_le_repertoire_racine( mat , d ){
         /* , this.__ig1.donnees_recues , this.__ig1.donnees_retournees , this.__ig1.options_generales ]{ */
@@ -89,7 +89,7 @@ class projets1{
         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async sauvegarder_la_base_systeme( mat , d ){
         let chi_id_projet=0;
@@ -111,7 +111,7 @@ class projets1{
         return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async rcopydir( dir1 , dir2 ){
         /*
@@ -153,7 +153,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async initialiser_le_clone( mat , d ){
         /*
@@ -181,7 +181,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async initialiser_projet_2( mat , d ){
         /*
@@ -208,7 +208,7 @@ class projets1{
         return({"__xst" : __xsu ,"__xme" : 'le projet 2 a été initialisé [' + this.__ig1.nl2() + ']'});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async desactiver1( mat , d ){
         this.__ig1.donnees_retournees.chi_id_projet=0;
@@ -221,7 +221,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async activer1( mat , d ){
         let chi_id_projet=0;
@@ -247,7 +247,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         if(this.__ig1.donnees_retournees.chi_id_projet > 2){
@@ -287,7 +287,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         let chemin='../rev_' + __xva_avant.T0_chi_id_projet;
@@ -332,7 +332,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         let chp_nom_projet=form.chp_nom_projet;
@@ -589,8 +589,10 @@ class projets1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1375 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1375.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1382={
@@ -605,16 +607,19 @@ class projets1{
         /*sql_inclure_fin*/ 1382 , criteres_1382 , __db1 );
         /*  */
         if(tt1382.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1382.__xme});
         }
         let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1375.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -697,7 +702,7 @@ class projets1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             /*
               lors de la création d'un projet, on DOIT revenir à l'écran liste
@@ -708,7 +713,7 @@ class projets1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async page_creer1( mat , d ){
         /*#
@@ -848,14 +853,18 @@ class projets1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        return(await this.filtre1( mat , d ));
+    async liste1( mat , d , __db1=null ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================
     */
     moi='projets1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

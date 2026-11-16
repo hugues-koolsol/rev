@@ -56,7 +56,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 /*========================================================================================================================*/
 
 /*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (62) */
-INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_fragment_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
+INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_extrait_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('77','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('78','__serveur.ps1',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('79','_connexion1_c.js',NULL,NULL,'0','2',NULL,'1',NULL,NULL,NULL,'1','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -807,7 +807,7 @@ const __xac=/* actions */''__xac'';
 */
 class groupes2{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     ajoute_criteres_sous_liste2( criteres_xxxx ){
         criteres_xxxx[''groupe_a_exclure'']=''-1'';
@@ -2828,7 +2828,7 @@ class __televersement2{
         this.__ig1=__ig1;
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregister_l_ordre_des_televersements1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -3273,7 +3273,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(
@@ -3324,7 +3324,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(
@@ -3770,7 +3770,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(supprimer_une_grandeur1),asynchrone(),argument(mat),argument(d)),
@@ -3905,7 +3905,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(vv_grandeurs_nouveau_numero1),asynchrone(),argument(mat),argument(d)),
@@ -4104,7 +4104,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(enregistrer_l_ordre_des_grandeurs2),asynchrone(),argument(mat),argument(d)),
@@ -4153,7 +4153,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(modifier_la_valeur_de2),asynchrone(),argument(mat),argument(d)),
@@ -4736,7 +4736,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(modifier_verouille_de2),asynchrone(),argument(mat),argument(d)),
@@ -4986,7 +4986,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(modifier_actif_de2),asynchrone(),argument(mat),argument(d)),
@@ -5220,7 +5220,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(modifier_la_cle_de2),asynchrone(),argument(mat),argument(d)),
@@ -5443,7 +5443,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(enregister_nouveau_parametre1),asynchrone(),argument(mat),argument(d)),
@@ -5965,7 +5965,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         let criteres_select_1186={"T0_chx_parametre_grandeur" : __xva_avant[''T0_chi_id_parametre'']};
@@ -5989,7 +5989,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xsu ,"" : tt1186.__xva});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async produire_les_json_des_paramètres( mat , d , chi_id_bdd ){
         /*
@@ -6121,7 +6121,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         __db1.close();
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async supprimer_une_grandeur1( mat , d ){
         let chi_id_grandeur=0;
@@ -6175,7 +6175,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async vv_grandeurs_nouveau_numero1( mat , d ){
         let chi_id_grandeur_ancienne=0;
@@ -6245,7 +6245,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregistrer_l_ordre_des_grandeurs2( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -6269,7 +6269,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async modifier_la_valeur_de2( mat , d ){
         let chi_id_parametre=0;
@@ -6433,7 +6433,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xer});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async modifier_verouille_de2( mat , d ){
         if(this.__ig1.donnees_retournees.chi_id_utilisateur !== 1){
@@ -6494,7 +6494,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xer});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async modifier_actif_de2( mat , d ){
         let chi_id_parametre=0;
@@ -6550,7 +6550,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xer});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async modifier_la_cle_de2( mat , d ){
         let chi_id_parametre=0;
@@ -6623,7 +6623,7 @@ export{__televersement2 as __televersement2};','0','2',NULL,'0',NULL,NULL,NULL,'
         return({"__xst" : __xer});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregister_nouveau_parametre1( mat , d ){
         let chi_id_parametre=0;
@@ -13931,7 +13931,7 @@ LIMIT :quantitee OFFSET :debut
          egal(champ(`T0`,`che_autorisation_globale_source`),0),
          egal(champ(`T0`,`che_pour_util_source`),1),
          egal(champ(`T0`,`che_binaire_source`),0),
-         egal(champ(`T0`,`che_est_fragment_source`),0)
+         egal(champ(`T0`,`che_est_extrait_source`),0)
       )
    ),
    complements(
@@ -13950,7 +13950,7 @@ WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
    AND `T0`.`che_autorisation_globale_source` = 0
    AND `T0`.`che_pour_util_source` = 1
    AND `T0`.`che_binaire_source` = 0
-   AND `T0`.`che_est_fragment_source` = 0) 
+   AND `T0`.`che_est_extrait_source` = 0) 
 ORDER BY `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
 LIMIT :quantitee OFFSET :debut 
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_sources','1'),

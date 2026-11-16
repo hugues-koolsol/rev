@@ -13,7 +13,7 @@ class sql_1429{
         const champs0=`
           \`T0\`.\`chi_id_source\` , \`T0\`.\`chp_nom_source\` , \`T0\`.\`cht_rev_source\` , \`T0\`.\`cht_genere_source\` , \`T0\`.\`che_binaire_source\` , 
           \`T0\`.\`chx_dossier_id_source\` , \`T0\`.\`cht_commentaire_source\` , \`T0\`.\`che_autorisation_globale_source\` , \`T0\`.\`cht_condition_rev_source\` , \`T0\`.\`cht_condition_js_source\` , 
-          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`che_est_fragment_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`cht_import_module_rev_source\`
+          \`T0\`.\`cht_notification_ko_source\` , \`T0\`.\`che_pour_util_source\` , \`T0\`.\`che_est_extrait_source\` , \`T0\`.\`che_est_verrouille_source\` , \`T0\`.\`cht_import_module_rev_source\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
@@ -45,7 +45,7 @@ class sql_1429{
                     "T0_cht_condition_js_source" : col[9] ,
                     "T0_cht_notification_ko_source" : col[10] ,
                     "T0_che_pour_util_source" : col[11] ,
-                    "T0_che_est_fragment_source" : col[12] ,
+                    "T0_che_est_extrait_source" : col[12] ,
                     "T0_che_est_verrouille_source" : col[13] ,
                     "T0_cht_import_module_rev_source" : col[14]
                 } );

@@ -13,13 +13,11 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
   =====================================================================================================================
 */
 class bdds1{
-
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async dump2_de_la_base( mat , d ){
         /* chi_id_projet est <> de null dans le cas ou on fait une saugegarde de la base système */
-        
         let chi_id_basedd=0;
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -27,40 +25,35 @@ class bdds1{
                 chi_id_basedd=parseInt( mat[i + 1][1] , 10 );
             }
         }
-        this.__ig1.ma_trace1("chi_id_basedd=",chi_id_basedd);
+        this.__ig1.ma_trace1( "chi_id_basedd=" , chi_id_basedd );
         let chemin_bdd='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__bases_de_donnees/bdd_' + chi_id_basedd + '.sqlite';
         let chemin_sauvegarde='../rev_' + this.__ig1.donnees_retournees.chi_id_projet + '/__fichiers_generes/__sauvegarde_des_bases/__sauvegarde2_bdd_' + chi_id_basedd + '.sqlite.backup_vacuum';
-        this.__ig1.ma_trace1("est_fichier chemin_bdd",chemin_bdd,await this.__ig1.is_file(chemin_bdd));
-        this.__ig1.ma_trace1("est_fichier chemin_sauvegarde",chemin_sauvegarde,await this.__ig1.is_file(chemin_sauvegarde));
-        
-        if(await this.__ig1.is_file(chemin_sauvegarde)){
+        this.__ig1.ma_trace1( "est_fichier chemin_bdd" , chemin_bdd , await this.__ig1.is_file( chemin_bdd ) );
+        this.__ig1.ma_trace1( "est_fichier chemin_sauvegarde" , chemin_sauvegarde , await this.__ig1.is_file( chemin_sauvegarde ) );
+        if((await this.__ig1.is_file( chemin_sauvegarde ))){
             try{
-                this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde(chemin_sauvegarde,true)
+                this.__ig1.__fnt1.supprimer_fichier_sans_sauvegarde( chemin_sauvegarde , true );
             }catch(e){
-                return({"__xst" : __xer , __xme : this.__ig1.nl2(e) });
+                return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
             }
         }
-        
         let __db=new Database( chemin_bdd , {"create" : false} );
         try{
             await __db.exec( "PRAGMA wal_checkpoint(FULL);" );
-            //let ligne = '.dump > "' + chemin_sauvegarde + '"';
-            let ligne = 'VACUUM INTO \'' + chemin_sauvegarde + '\'';
-            this.__ig1.ma_trace1("ligne="+ligne);
+            /* let ligne = '.dump > "' + chemin_sauvegarde + '"'; */
+            let ligne='VACUUM INTO \'' + chemin_sauvegarde + '\'';
+            this.__ig1.ma_trace1( "ligne=" + ligne );
             await __db.exec( ligne );
-            this.__ig1.ma_trace1("OK");
-            
-            
-            
+            this.__ig1.ma_trace1( "OK" );
             __db.close();
             return({"__xst" : __xsu});
-        }catch( e ){
+        }catch(e){
             __db.close();
-            return({"__xst" : __xer , __xme : this.__ig1.nl2(e) });
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2( e )});
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async forcer_fermeture_fichier_wal( mat , d ){
         let chi_id_basedd=0;
@@ -84,7 +77,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregistrer_la_matrice_dans_la_table_rev( mat , d , __db1=null ){
         let chi_id_basedd=0;
@@ -204,7 +197,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async dump_de_la_base( mat , d , chi_id_projet=null ){
         /* chi_id_projet est <> de null dans le cas ou on fait une saugegarde de la base système */
@@ -213,7 +206,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async asynchrone_dump_de_la_base( mat , d , chi_id_projet=null , asynchrone=false ){
         /* attention, cette fonction asynchrone DOIT être incluse dans un try/catch */
@@ -586,7 +579,7 @@ class bdds1{
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     formatter_erreur_catch( e ){
         const repl0=new RegExp( this.__ig1.options_generales.repertoire_du_pgm_serveur , 'g' );
@@ -595,7 +588,7 @@ class bdds1{
         return('<pre>' + le_message + '</pre>');
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async recuperer_les_revs_des_bases( mat , d ){
         let les_bases_a_editer='';

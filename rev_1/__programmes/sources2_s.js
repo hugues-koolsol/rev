@@ -12,10 +12,10 @@ const __xac=/* actions */'__xac';
 */
 class sources2{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     ajoute_criteres_sous_liste2( criteres_xxxx ){
-        criteres_xxxx['T0_che_est_fragment_source']=0;
+        criteres_xxxx['T0_che_est_extrait_source']=0;
         criteres_xxxx['T0_che_autorisation_globale_source']=0;
         criteres_xxxx['T0_che_pour_util_source']=1;
         criteres_xxxx['T0_che_binaire_source']=0;

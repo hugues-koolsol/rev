@@ -27,7 +27,7 @@ class sources1{
             "T0_che_autorisation_globale_source" : {"nom" : 'auto. globale' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_che_pour_util_source" : {"nom" : 'pour util' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_che_est_verrouille_source" : {"nom" : 'vérrouillé' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
-            "T0_che_est_fragment_source" : {"nom" : 'est fragment' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
+            "T0_che_est_extrait_source" : {"nom" : 'est extrait' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_cht_rev_source" : {"nom" : 'rev' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
@@ -47,11 +47,11 @@ class sources1{
         "`T0`.`che_autorisation_globale_source`" : 'auto. globale' ,
         "`T0`.`che_pour_util_source`" : 'pour util' ,
         "`T0`.`che_est_verrouille_source`" : 'vérrouillé' ,
-        "`T0`.`che_est_fragment_source`" : 'est fragment' ,
+        "`T0`.`che_est_extrait_source`" : 'est extrait' ,
         "`T0`.`cht_rev_source`" : 'rev'
     };
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     page_nouveau_numero_source1( mat , d ){
         let l01=mat.length;
@@ -80,7 +80,7 @@ class sources1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     constituer_la_liste_et_envoyer_en_cron( mat , d ){
         let la_liste=[];
@@ -105,7 +105,7 @@ class sources1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     remplacer_une_chaine_par_une_autre_dans_les_sources( mat , d ){
         let la_liste=[];
@@ -134,7 +134,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     compiler_cette_liste_de_js_en_cron1(){
         let liste_des_chi_id_source=[];
@@ -150,7 +150,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     charger_source_pour_compilation1( mat , d , le_colis1=null ){
         /* au retour du serveur */
@@ -160,7 +160,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     rev_vers_rev( mat , d ){
         let l01=mat.length;
@@ -197,14 +197,14 @@ class sources1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     lire_ce_source_du_disque1( mat , d , le_colis1=null ){
         document.getElementById( 'cht_genere_source' ).value=le_colis1.__xva.contenu_du_fichier;
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     enregistrer_un_source_compile1( mat , d , le_colis1=null ){
         let chi_id_source=0;
@@ -227,7 +227,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -253,7 +253,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -309,7 +309,7 @@ class sources1{
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_source' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_est_extrait_source' ,"vpd" : 0 ,"lib" : 'est extrait'},
             {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'},
             {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
             {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
@@ -324,7 +324,7 @@ class sources1{
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
-            {"nt" : 'zero_un1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_extrait_source" ,"lib" : 'est extrait'},
             {"nt" : 'zero_un1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
             {"nt" : 'zero_un1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
             {"nt" : 'zero_un1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale'},
@@ -409,7 +409,7 @@ class sources1{
         o1+='<div class="yy_edition_champ2">';
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_binaire_source' , tup , 'modifier1' , 'binaire' );
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_pour_util_source' , tup , 'modifier1' , 'pour util' );
-        o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_est_fragment_source' , tup , 'modifier1' , 'est fragment' );
+        o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_est_extrait_source' , tup , 'modifier1' , 'est extrait' );
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_est_verrouille_source' , tup , 'modifier1' , 'vérrouillé' );
         o1+=this.__ig1.__fnt1.html_de_zones_zero_un_pour_ecran1( 'che_autorisation_globale_source' , tup , 'modifier1' , 'auto. globale' );
         o1+='</div>';
@@ -606,7 +606,7 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_fragment_source" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "est fragment"} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_extrait_source" ,"__contexte" : "supprimer1" ,"libelle_du_champ" : "est extrait"} );
         /*
           =====================================================================================================
         */
@@ -689,7 +689,7 @@ class sources1{
         let __les_convertions=[
             /*  */
             {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
-            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_est_extrait_source' ,"vpd" : 0 ,"lib" : 'est extrait'},
             {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
             {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'}
         ];
@@ -701,7 +701,7 @@ class sources1{
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_extrait_source" ,"lib" : 'est extrait' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]}
         ];
@@ -753,7 +753,7 @@ class sources1{
         /*
           =====================================================================================================
         */
-        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_fragment_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est fragment" ,"valeur_par_defaut" : '0'} );
+        o1+=this.__ig1.__fnt1.html_edition_zero_un2( tup , {"nom_du_champ" : "che_est_extrait_source" ,"__contexte" : "creer1" ,"libelle_du_champ" : "est extrait" ,"valeur_par_defaut" : '0'} );
         /*
           =====================================================================================================
         */
@@ -922,7 +922,7 @@ class sources1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
@@ -991,8 +991,8 @@ class sources1{
             lst+='" >> de 3</button>';
         }
         if(this.__ig1._CA_ === 2){
-            if(tup.T0_che_est_fragment_source === 1){
-                /* export inactif car c'est un fragment */
+            if(tup.T0_che_est_extrait_source === 1){
+                /* export inactif car c'est un extrait */
                 lst+='  <button class="yy_b1 yy__0 yy__0_inactif" disabled="true" >exporter dans 1</button>';
                 /*  */
             }else{
@@ -1011,7 +1011,7 @@ class sources1{
         return lst;
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     zones_liste1( le_colis1 ){
         let o1='';
@@ -1038,18 +1038,18 @@ class sources1{
                 */
                 /*
                   =====================================================================================
-                  combinaison fragment / nom / dossier 
+                  combinaison extrait / nom / dossier 
                 */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
                 /* cas 5 */
-                if(tup.T0_che_est_fragment_source === 1){
+                if(tup.T0_che_est_extrait_source === 1){
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }else{
                     lst+='<div style="display:inline-block;height:var(--t_police);width:var(--t_police);margin:0 auto;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }
                 /* cas 6.1 */
                 lst+=' ';
-                if(tup.T0_che_est_fragment_source === 1){
+                if(tup.T0_che_est_extrait_source === 1){
                     lst+='<b style="color:red;">' + this.__ig1.fi2( tup.T0_chp_nom_source ) + '</b>';
                 }else{
                     lst+=this.__ig1.fi2( tup.T0_chp_nom_source );
@@ -1132,7 +1132,7 @@ class sources1{
                 o1+='<tr>';
                 o1+='<th>action</th>';
                 o1+=/* chi_id_source */'<th>id</th>';
-                o1+=/* combinaison */'<th>fragment / nom / dossier </th>';
+                o1+=/* combinaison */'<th>extrait / nom / dossier </th>';
                 o1+=/* combinaison */'<th>auto glob / binaire / verouillé / pour util </th>';
                 o1+=/* combinaison */'<th>condition rev / message KO </th>';
                 o1+=/* combinaison */'<th>commentaire</th>';

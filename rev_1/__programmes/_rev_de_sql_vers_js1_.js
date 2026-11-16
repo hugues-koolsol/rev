@@ -1800,9 +1800,7 @@ class _rev_de_sql_vers_js1{
                 t+='        where0=\' WHERE 1=1 \';' + CRLF;
                 t+='        /* this.__ig1.ma_trace1( \'tup=\' , tup ); */' + CRLF;
                 t+='        try{' + CRLF;
-                debugger
                 if(est_table_virtuelle === 1){
-                    debugger;
                     t+='            if(tup.hasOwnProperty( \'les_match\' )  && tup.les_match !== \'\'){\r\n';
                     t+='                where0+=` AND ' + table_reference + ' match ` + this.__ig1.__fnt1.sq1( tup.les_match ) + \'\\r\\n\';\r\n';
                     t+='            }else{\r\n';

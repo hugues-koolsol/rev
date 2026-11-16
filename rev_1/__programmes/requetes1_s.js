@@ -20,7 +20,7 @@ import {_rev_de_sql_vers_js1} from './_rev_de_sql_vers_js1_.js';
 */
 class requetes1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async integrer_cette_requete_dans_un_autre_projet( mat , d ){
         let chi_id_requete=0;
@@ -158,7 +158,7 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async page_exporter_requete_de_1_vers_n1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );

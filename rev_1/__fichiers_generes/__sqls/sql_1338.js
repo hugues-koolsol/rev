@@ -16,11 +16,11 @@ class sql_1338{
                 throw new Error( 'si une condition existe alors une notification doit être indiquée' );
             }
         }
-        if(tup.n_che_est_fragment_source === 1 && tup.n_chx_dossier_id_source !== null){
-            throw new Error( 'si c\'est un fragment alors le dossier ne doit pas être indiqué' );
+        if(tup.n_che_est_extrait_source === 1 && tup.n_chx_dossier_id_source !== null){
+            throw new Error( 'si c\'est un extrait alors le dossier ne doit pas être indiqué' );
         }
-        if(tup.n_che_pour_util_source === 1 && tup.n_che_est_fragment_source === 1){
-            throw new Error( 'un fragment ne doit pas être pour un utilisateur' );
+        if(tup.n_che_pour_util_source === 1 && tup.n_che_est_extrait_source === 1){
+            throw new Error( 'un extrait ne doit pas être pour un utilisateur' );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});

@@ -87,7 +87,15 @@ class sql_1220{
             lignes=await statement.values();
             await statement.finalize();
         }catch(e){
-            return(this.__ig1.traite_erreur_sql( 1220 , e , sql0 , {} ));
+            this.__ig1.traite_erreur_sql( 1220 , e , sql0 , {} );
+            return({
+                     /*  */
+                    "__xst" : __xsu ,
+                    "__xva" : donnees0 ,
+                    "nombre" : __nbEnregs ,
+                    "sql0" : sql0 ,
+                    "where0" : where0
+                });
         }
         /*  */
         for(let numero_de_ligne in lignes){

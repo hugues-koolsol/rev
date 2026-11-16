@@ -12,9 +12,10 @@ const __xac=/* actions */'__xac';
 */
 class taches1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async retrancher_01( mat , d ){
+        /* ,  this.__ig1.donnees_recues ,  this.__ig1.donnees_retournees ,  this.__ig1.options_generales */
         let chi_id_tache='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -46,7 +47,7 @@ class taches1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async ajouter_01_a_la_tache( mat , d ){
         let chi_id_tache='';
@@ -80,7 +81,7 @@ class taches1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async priorite_a( mat , d ){
         let valeur=0;
@@ -124,7 +125,7 @@ class taches1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async réordonner1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
@@ -389,8 +390,10 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1112 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1112.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1114={
@@ -406,13 +409,16 @@ class taches1{
         /*sql_inclure_fin*/ 1114 , criteres_1114 , __db1 );
         /*  */
         if(tt1114.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1114.__xme});
         }
         let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1112.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             return(await this.liste1( mat1 , 1 , __db1 ));

@@ -1259,7 +1259,7 @@ class __ig1{
         if(module_appelant1 !== '' && module_appele1 !== '' && nom_champ_dans_parent2 !== '' && nom_libelle_dans_parent2 !== ''){
             let o1='';
             o1+='<!-- module_appele1="' + module_appele1 + '" -->';
-            o1+='<h1 id="vv_titre_sous_liste_2">sélection ' + __sous_titre_a_afficher + '</h1>';
+            o1+='<h1 id="vv_titre_sous_liste_2">sélection ' + __sous_titre_a_afficher.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '</h1>';
             o1+='<div id="vv_contenu_de_sous_liste2">';
             if(le_colis1 !== null && le_colis1.__xva.hasOwnProperty( 'sous_liste2' )){
                 let la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
@@ -1324,7 +1324,12 @@ class __ig1{
                     o1+='<tr>';
                     o1+='<th>action</th>';
                     o1+='<th>id</th>';
-                    o1+='<th>' + this.fi2( __sous_titre_a_afficher === '' ? ( 'cle' ) : ( __sous_titre_a_afficher ) ) + '</th>';
+                    o1+='<th>' + this.fi2( __sous_titre_a_afficher === '' ?
+                          ( 
+                            'cle'
+                          ) : ( 
+                            __sous_titre_a_afficher.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' )
+                          ) ) + '</th>';
                     for(let i in les_libelles_complementaires){
                         o1+='<th>' + this.fi2( les_libelles_complementaires[i] ) + '</th>';
                     }
@@ -1443,7 +1448,7 @@ class __ig1{
         o1+='  nom_champ_dans_parent2(' + champ_fils + ')';
         o1+='  nom_libelle_dans_parent2(' + id_span_libelle + ')';
         if(__sous_titre_a_afficher !== ''){
-            o1+='  __sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+            o1+='  __sous_titre_a_afficher(\'' + __sous_titre_a_afficher.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ).replace( /&apos;/g , '\\&apos;' ) + '\')';
         }
         if(chi_id_parametre !== 0){
             o1+='  chi_id_parametre(' + chi_id_parametre + ')';
@@ -2807,6 +2812,14 @@ class __ig1{
         t+='button:focus{box-shadow: inset 0px 0px 5px 4px red;outline:auto!important;}';
         t+='textarea[data-editeur1="rev"],textarea[data-editeur1="source_editeur1"]{font-family:monospace;}';
         t+='details{cursor:help;}';
+        t+='#vv_calendrier td{';
+        t+='  min-width:' + ((largeur_du_m + t_border) * 2) + 'px;';
+        t+='  height:' + ((largeur_du_m + t_border) * 2) + 'px;';
+        t+='  text-align:center;';
+        t+='  border-width:' + t_border + 'px;';
+        t+='  border-style:outset;';
+        t+='  border-color:white;';
+        t+='}';
         document.getElementById( 'vv_style1' ).innerText=t;
         return({"__xst" : __xsu});
     }
@@ -3487,7 +3500,7 @@ class __ig1{
             }
         }
         document.getElementById( nom_champ_dans_parent2 ).value=id2;
-        this.maj_htm2( nom_libelle_dans_parent2 , '<div>' + libelle2 + '</div>' );
+        this.maj_htm2( nom_libelle_dans_parent2 , '<div>' + libelle2.replace( /\\\\/g , '\\' ).replace( /\\\'/g , '\'' ) + '</div>' );
         try{
             if(document.getElementById( nom_champ_dans_parent2 ).parentNode.tagName.toUpperCase() === 'LABEL'){
                 let lst=document.getElementById( nom_champ_dans_parent2 ).parentNode.querySelectorAll( '[data-libelle_de="' + nom_champ_dans_parent2 + '"]' );

@@ -28,7 +28,7 @@ class x_ecran_generer_programmes1{
         let nom_source_serveur=nom_de_la_classe + '_s.js';
         let nom_source_client=nom_de_la_classe + '_c.js';
         /*
-          recherche des fragments serveur
+          recherche des extraits serveur
         */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let critere_1429={"T0_chp_nom_source" : '\'' + nom_source_serveur + '\' ' + ',' + ' \'' + nom_source_client + '\''};
@@ -37,7 +37,7 @@ class x_ecran_generer_programmes1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_rev_source` , `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , 
         `T0`.`chx_dossier_id_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`cht_condition_rev_source` , `T0`.`cht_condition_js_source` , 
-        `T0`.`cht_notification_ko_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_fragment_source` , `T0`.`che_est_verrouille_source` , `T0`.`cht_import_module_rev_source`
+        `T0`.`cht_notification_ko_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_extrait_source` , `T0`.`che_est_verrouille_source` , `T0`.`cht_import_module_rev_source`
          FROM b1.tbl_sources T0
         WHERE `T0`.`chp_nom_source` IN (:T0_chp_nom_source)
         ;
@@ -47,25 +47,25 @@ class x_ecran_generer_programmes1{
             return({"__xst" : __xer ,"__xme" : tt1429.__xme});
         }
         /* this.__ig1.ma_trace1("tt1429.__xva=",tt1429.__xva); */
-        let rev_fragment=null;
+        let rev_extrait=null;
         let src_serveur_verouille1=0;
         let src_client_verouille1=0;
         let serveur_cht_import_module_rev_source=null;
         let client_cht_import_module_rev_source=null;
         for(let i in tt1429.__xva){
-            if(tt1429.__xva[i]['T0_cht_rev_source'] !== null && tt1429.__xva[i]['T0_che_est_fragment_source'] === 1){
-                if(rev_fragment === null){
-                    rev_fragment={};
+            if(tt1429.__xva[i]['T0_cht_rev_source'] !== null && tt1429.__xva[i]['T0_che_est_extrait_source'] === 1){
+                if(rev_extrait === null){
+                    rev_extrait={};
                 }
-                rev_fragment[tt1429.__xva[i]['T0_chp_nom_source']]=tt1429.__xva[i]['T0_cht_rev_source'];
+                rev_extrait[tt1429.__xva[i]['T0_chp_nom_source']]=tt1429.__xva[i]['T0_cht_rev_source'];
             }
             if(tt1429.__xva[i]['T0_chp_nom_source'] === nom_source_client){
-                if(tt1429.__xva[i]['T0_che_est_fragment_source'] === 0){
+                if(tt1429.__xva[i]['T0_che_est_extrait_source'] === 0){
                     src_client_verouille1=tt1429.__xva[i]['T0_che_est_verrouille_source'];
                     client_cht_import_module_rev_source=tt1429.__xva[i]['T0_cht_import_module_rev_source'];
                 }
             }else if(tt1429.__xva[i]['T0_chp_nom_source'] === nom_source_serveur){
-                if(tt1429.__xva[i]['T0_che_est_fragment_source'] === 0){
+                if(tt1429.__xva[i]['T0_che_est_extrait_source'] === 0){
                     src_serveur_verouille1=tt1429.__xva[i]['T0_che_est_verrouille_source'];
                     serveur_cht_import_module_rev_source=tt1429.__xva[i]['T0_cht_import_module_rev_source'];
                 }
@@ -152,7 +152,7 @@ class x_ecran_generer_programmes1{
         }
         this.__ig1.donnees_retournees.__xva['tab_liens_parents']=tab_liens_parents;
         this.__ig1.donnees_retournees.__xva['tab_ref']=tab_ref;
-        this.__ig1.donnees_retournees.__xva['rev_fragment']=rev_fragment;
+        this.__ig1.donnees_retournees.__xva['rev_extrait']=rev_extrait;
         this.__ig1.donnees_retournees.__xva['le_source_n_existe_pas']=le_source_n_existe_pas;
         return({"__xst" : __xsu});
     }

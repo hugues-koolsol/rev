@@ -34,7 +34,7 @@ class taches1{
         "`T0`.`chi_id_tache`" : 'id'
     };
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -50,7 +50,7 @@ class taches1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -117,13 +117,7 @@ class taches1{
         }
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
         if(__test_1_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_1_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -301,13 +295,7 @@ class taches1{
         }
         let __test_2_1=this.__ig1.__fnts_c_et_s.test_entier_compris_entre( 0 , 99 , fo1.che_priorite_tache , 'priorité' );
         if(__test_2_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_2_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'che_priorite_tache' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_2_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -437,7 +425,7 @@ class taches1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     liste1( mat , d , le_colis1=null ){
         if(le_colis1 === null || !le_colis1.__xva.hasOwnProperty( 'liste1' )){
@@ -512,7 +500,7 @@ class taches1{
         return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';
@@ -534,7 +522,7 @@ class taches1{
         return lst;
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     zones_liste1( le_colis1 ){
         if(this.__ig1.__deverminage === 2){

@@ -20,7 +20,7 @@ import {w_rev_vers_js1} from './w_rev_vers_js1_.js';
 */
 class sources1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async vv_sources_nouveau_numero1( mat , d ){
         let chi_id_source_ancienne=0;
@@ -56,7 +56,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async remplacer_une_chaine_par_une_autre_en_arriere_plan( mat , d ){
         /* this.__ig1.ma_trace1('d='+d+',mat',mat); */
@@ -127,7 +127,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async exporter_dans_base_de_prod1( mat , d ){
         let chi_id_source=0;
@@ -191,7 +191,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async supprimer_ce_source_du_disque1( mat , d ){
         let chi_id_source=0;
@@ -235,7 +235,7 @@ class sources1{
         this.__ig1.donnees_retournees.__xsi[__xer].push( 'erreur de suppression de fichier  [' + this.__ig1.nl2() + ']' );
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async ecrire_ce_source_sur_disque1( mat , d ){
         let chi_id_source=0;
@@ -338,7 +338,7 @@ class sources1{
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async lire_ce_source_du_disque1( mat , d ){
         let chi_id_source=0;
@@ -358,7 +358,7 @@ class sources1{
                     });
             }
             if(tt1419.__xva[0]['T0_chx_dossier_id_source'] === null){
-                /* return({"__xst" : __xer ,"__xme" : 'ce source n\'a pas de dossier ( est-ce un fragment ? )  [' + this.__ig1.nl2() + ']'}); */
+                /* return({"__xst" : __xer ,"__xme" : 'ce source n\'a pas de dossier ( est-ce un extrait ? )  [' + this.__ig1.nl2() + ']'}); */
             }
             let m=await import( './dossiers1_s.js' );
             let o=new m['dossiers1']( this.__ig1 );
@@ -468,7 +468,7 @@ class sources1{
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async remplacer_une_chaine_par_une_autre( mat , d ){
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -542,7 +542,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async compiler_cette_liste_de_js_en_cron2( mat , d ){
         let __dbn=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -568,7 +568,7 @@ class sources1{
         let o=new m['dossiers1']( this.__ig1 );
         for(let i in tt1402.__xva){
             /*
-              pour les fragments on ne fait rien
+              pour les extraits on ne fait rien
             */
             if(tt1402.__xva[i]['T0_chx_dossier_id_source'] !== null){
                 let chemin=await o.construire_chemin( tt1402.__xva[i]['T0_chx_dossier_id_source'] , __dbn );
@@ -617,7 +617,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async compiler_texte_js_vers_ast( mat , d , texte_js ){
         let tableau_des_commentaires_js=[];
@@ -656,7 +656,7 @@ class sources1{
             });
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async compiler_source_js_par_id_en_arriere_plan( mat , d ){
         /* this.__ig1.ma_trace1('d='+d+',mat',mat); */
@@ -796,7 +796,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async sauvegarder_une_matrice_de_source( mat , d , chi_id_source , matrice_source , __db1 ){
         let criteres_1353={
@@ -954,7 +954,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async importer_ou_exporter( mat , d , projet_source , projet_cible ){
         /*
@@ -1014,7 +1014,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async exporter_dans_rev_un( mat , d ){
         /*
@@ -1029,7 +1029,7 @@ class sources1{
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async importer_de_rev_un( mat , d ){
         /*
@@ -1056,7 +1056,7 @@ class sources1{
         }
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregistrer_un_source_compile1( mat , d ){
         /* $this.__ig1.donnees_retournees.__xsi[__xdv][]='<pre>'.var_export( $this.__ig1.donnees_recues , true ).'</pre> [' . __LINE__ . ']'; */
@@ -1125,7 +1125,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async charger_source_pour_compilation1( mat , d ){
         let chi_id_source=0;
@@ -1191,7 +1191,7 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         let m=await import( './dossiers1_s.js' );
@@ -1286,7 +1286,7 @@ class sources1{
         SELECT 
         `T0`.`chi_id_source` , `T0`.`chx_dossier_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`cht_rev_source` , 
         `T0`.`cht_genere_source` , `T0`.`che_binaire_source` , `T0`.`che_autorisation_globale_source` , `T1`.`chp_nom_dossier` , `T0`.`cht_condition_rev_source` , 
-        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_fragment_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
+        `T0`.`cht_condition_js_source` , `T0`.`cht_notification_ko_source` , `T0`.`che_est_extrait_source` , `T0`.`che_pour_util_source` , `T0`.`che_est_verrouille_source` , 
         `T0`.`cht_import_module_rev_source`
          FROM b1.tbl_sources T0
          LEFT JOIN b1.tbl_dossiers T1 ON T1.chi_id_dossier = T0.chx_dossier_id_source
@@ -1307,7 +1307,7 @@ class sources1{
         let __les_convertions=[
             /*  */
             {"nc" : "id1" ,"nz" : 'chi_id_source' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_est_extrait_source' ,"vpd" : 0 ,"lib" : 'est extrait'},
             {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'},
             {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
             {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
@@ -1322,7 +1322,7 @@ class sources1{
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
-            {"nt" : 'zero_un1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment'},
+            {"nt" : 'zero_un1' ,"nz" : "che_est_extrait_source" ,"lib" : 'est extrait'},
             {"nt" : 'zero_un1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire'},
             {"nt" : 'zero_un1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util'},
             {"nt" : 'zero_un1' ,"nz" : "che_autorisation_globale_source" ,"lib" : 'autorisation globale'},
@@ -1377,7 +1377,7 @@ class sources1{
              /*  */
             "c_chi_id_source" : fo1.chi_id_source ,
             "n_chp_nom_source" : fo1.chp_nom_source ,
-            "n_che_est_fragment_source" : fo1.che_est_fragment_source ,
+            "n_che_est_extrait_source" : fo1.che_est_extrait_source ,
             "n_che_binaire_source" : fo1.che_binaire_source ,
             "n_che_pour_util_source" : fo1.che_pour_util_source ,
             "n_chx_dossier_id_source" : fo1.chx_dossier_id_source === '' ? ( null ) : ( fo1.chx_dossier_id_source ) ,
@@ -1396,7 +1396,7 @@ class sources1{
         /*sql_inclure_deb*/ /*#
         UPDATE b1.tbl_sources SET 
            `chp_nom_source` = :n_chp_nom_source , 
-           `che_est_fragment_source` = :n_che_est_fragment_source , 
+           `che_est_extrait_source` = :n_che_est_extrait_source , 
            `che_binaire_source` = :n_che_binaire_source , 
            `che_pour_util_source` = :n_che_pour_util_source , 
            `chx_dossier_id_source` = :n_chx_dossier_id_source , 
@@ -1566,7 +1566,7 @@ class sources1{
         let __les_convertions=[
             /*  */
             {"nc" : "entier1" ,"nz" : 'chx_dossier_id_source' ,"vpd" : null ,"lib" : 'dossier id'},
-            {"nc" : "entier1" ,"nz" : 'che_est_fragment_source' ,"vpd" : 0 ,"lib" : 'est fragment'},
+            {"nc" : "entier1" ,"nz" : 'che_est_extrait_source' ,"vpd" : 0 ,"lib" : 'est extrait'},
             {"nc" : "entier1" ,"nz" : 'che_pour_util_source' ,"vpd" : 0 ,"lib" : 'pour util'},
             {"nc" : "entier1" ,"nz" : 'che_binaire_source' ,"vpd" : 0 ,"lib" : 'binaire'}
         ];
@@ -1578,7 +1578,7 @@ class sources1{
         let __les_tests=[
             /*  */
             {"nt" : 'non_vide1' ,"nz" : "chp_nom_source" ,"lib" : 'nom du source' ,"ldc" : '128'},
-            {"nt" : 'parmis1' ,"nz" : "che_est_fragment_source" ,"lib" : 'est fragment' ,"p" : [0,1]},
+            {"nt" : 'parmis1' ,"nz" : "che_est_extrait_source" ,"lib" : 'est extrait' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_pour_util_source" ,"lib" : 'pour util' ,"p" : [0,1]},
             {"nt" : 'parmis1' ,"nz" : "che_binaire_source" ,"lib" : 'binaire' ,"p" : [0,1]}
         ];
@@ -1599,7 +1599,7 @@ class sources1{
             "donnees" : [{
                         "chx_dossier_id_source" : fo1.chx_dossier_id_source === '' ? ( null ) : ( fo1.chx_dossier_id_source ) ,
                         "chp_nom_source" : fo1.chp_nom_source ,
-                        "che_est_fragment_source" : fo1.che_est_fragment_source ,
+                        "che_est_extrait_source" : fo1.che_est_extrait_source ,
                         "che_pour_util_source" : fo1.che_pour_util_source ,
                         "che_binaire_source" : fo1.che_binaire_source ,
                         "cht_genere_source" : fo1.cht_genere_source === '' ? ( null ) : ( fo1.cht_genere_source ) ,
@@ -1613,7 +1613,7 @@ class sources1{
         INSERT INTO b1.`tbl_sources`(
             `chx_dossier_id_source` , 
             `chp_nom_source` , 
-            `che_est_fragment_source` , 
+            `che_est_extrait_source` , 
             `che_pour_util_source` , 
             `che_binaire_source` , 
             `cht_genere_source` , 
@@ -1621,7 +1621,7 @@ class sources1{
         ) VALUES (
             :chx_dossier_id_source , 
             :chp_nom_source , 
-            :che_est_fragment_source , 
+            :che_est_extrait_source , 
             :che_pour_util_source , 
             :che_binaire_source , 
             :cht_genere_source , 
@@ -1709,7 +1709,7 @@ class sources1{
         let tt1418=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
+        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_extrait_source` , 
         `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
         `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source`
          FROM b1.tbl_sources T0
@@ -1725,7 +1725,7 @@ class sources1{
            AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
            AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source
            AND `T0`.`che_est_verrouille_source` = :T0_che_est_verrouille_source
-           AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+           AND `T0`.`che_est_extrait_source` = :T0_che_est_extrait_source
            AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source) 
         ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
         LIMIT :quantitee OFFSET :debut 
@@ -1745,7 +1745,7 @@ class sources1{
             tt1418=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_fragment_source` , 
+            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`chx_dossier_id_source` , `T1`.`chp_nom_dossier` , `T0`.`che_est_extrait_source` , 
             `T0`.`che_autorisation_globale_source` , `T0`.`che_binaire_source` , `T0`.`che_est_verrouille_source` , `T0`.`che_pour_util_source` , `T0`.`cht_condition_rev_source` , 
             `T0`.`cht_notification_ko_source` , `T0`.`cht_commentaire_source`
              FROM b1.tbl_sources T0
@@ -1761,7 +1761,7 @@ class sources1{
                AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
                AND `T0`.`che_pour_util_source` = :T0_che_pour_util_source
                AND `T0`.`che_est_verrouille_source` = :T0_che_est_verrouille_source
-               AND `T0`.`che_est_fragment_source` = :T0_che_est_fragment_source
+               AND `T0`.`che_est_extrait_source` = :T0_che_est_extrait_source
                AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source) 
             ORDER BY `T0`.`chx_dossier_id_source` ASC, `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
             LIMIT :quantitee OFFSET :debut 
@@ -1794,7 +1794,7 @@ class sources1{
     __ig1=null;
     __variables_module={};
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     constructor( __ig1 ){
         this.__ig1=__ig1;

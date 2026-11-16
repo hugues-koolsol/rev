@@ -26,11 +26,11 @@ class bdds1{
     vv_ecran_liste_boutons_avant='';
     __champs_sortie_pour_tri1={"`T0`.`chi_id_basedd`" : 'id'};
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
-            case 'dump2_de_la_base' :
+            case 'dump2_de_la_base' : 
             case 'forcer_fermeture_fichier_wal' : 
             case 'dump_de_la_base' : 
             case 'enregistrer_la_matrice_dans_la_table_rev' : break;
@@ -41,7 +41,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -443,7 +443,7 @@ class bdds1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     liste_des_boutons_action1( tup , le_colis1 ){
         let lst='';

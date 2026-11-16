@@ -16,11 +16,11 @@ class sql_1422{
                 throw new Error( 'si une condition existe alors une notification doit être indiquée' );
             }
         }
-        if(tup.n_che_est_fragment_source === 1 && tup.n_chx_dossier_id_source !== null){
-            throw new Error( 'si c\'est un fragment alors le dossier ne doit pas être indiqué' );
+        if(tup.n_che_est_extrait_source === 1 && tup.n_chx_dossier_id_source !== null){
+            throw new Error( 'si c\'est un extrait alors le dossier ne doit pas être indiqué' );
         }
-        if(tup.n_che_pour_util_source === 1 && tup.n_che_est_fragment_source === 1){
-            throw new Error( 'un fragment ne doit pas être pour un utilisateur' );
+        if(tup.n_che_pour_util_source === 1 && tup.n_che_est_extrait_source === 1){
+            throw new Error( 'un extrait ne doit pas être pour un utilisateur' );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -41,8 +41,8 @@ class sql_1422{
         if( ! ( 0 === tup.n_che_pour_util_source || 1 === tup.n_che_pour_util_source ) ){
             throw new Error( tete + '"' + tup.n_che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
         }
-        if( ! ( 0 === tup.n_che_est_fragment_source || 1 === tup.n_che_est_fragment_source ) ){
-            throw new Error( tete + '"' + tup.n_che_est_fragment_source + '" pour "est fragment" '  + this.__ig1.nl2() );
+        if( ! ( 0 === tup.n_che_est_extrait_source || 1 === tup.n_che_est_extrait_source ) ){
+            throw new Error( tete + '"' + tup.n_che_est_extrait_source + '" pour "est fragment" '  + this.__ig1.nl2() );
         }
         if( ! ( 0 === tup.n_che_est_verrouille_source || 1 === tup.n_che_est_verrouille_source ) ){
             throw new Error( tete + '"' + tup.n_che_est_verrouille_source + '" pour "vérrouillé" '  + this.__ig1.nl2() );
@@ -65,8 +65,8 @@ class sql_1422{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : ' + __test_0_1.__xme});
         }
-        /* test 0,1 sur le champ "che_est_fragment_source" */
-        if(!( tup.n_che_est_fragment_source === 0 ||  tup.n_che_est_fragment_source === 1 ) ){
+        /* test 0,1 sur le champ "che_est_extrait_source" */
+        if(!( tup.n_che_est_extrait_source === 0 ||  tup.n_che_est_extrait_source === 1 ) ){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test 0,1 sur le champ "che_binaire_source" */
@@ -136,7 +136,7 @@ class sql_1422{
             }else{
                 tableau_champs.push( '`chp_nom_source` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_nom_source , 'n_chp_nom_source' ) + '\'' );
             }
-            tableau_champs.push( '`che_est_fragment_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_fragment_source , 'n_che_est_fragment_source' ) + '' );
+            tableau_champs.push( '`che_est_extrait_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_est_extrait_source , 'n_che_est_extrait_source' ) + '' );
             tableau_champs.push( '`che_binaire_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_binaire_source , 'n_che_binaire_source' ) + '' );
             tableau_champs.push( '`che_pour_util_source` = ' + this.__ig1.__fnt1.sq0( tup.n_che_pour_util_source , 'n_che_pour_util_source' ) + '' );
             if(tup.n_chx_dossier_id_source === undefined || tup.n_chx_dossier_id_source === '' || tup.n_chx_dossier_id_source === null){

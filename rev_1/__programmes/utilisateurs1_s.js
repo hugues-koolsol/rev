@@ -13,7 +13,7 @@ import {hash as crypte_mot} from "https://deno.land/x/bcrypt/mod.ts";
 */
 class utilisateurs1{
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async modifier_le_mot_de_passe( mat , d ){
         let chi_id_utilisateur=0;
@@ -67,7 +67,7 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         if(__xva_avant.T0_chi_id_utilisateur === 1 && fo1.che_actif_utilisateur !== 1){
@@ -100,7 +100,7 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async tests_avant_creer( mat , d , fo1 , __db1 ){
         if(fo1.chi_id_utilisateur !== 1 && fo1.chx_acces_utilisateur === 1){
@@ -547,7 +547,7 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async liste1( mat , d , __db1=null ){
         if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
