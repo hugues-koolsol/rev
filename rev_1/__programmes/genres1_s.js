@@ -12,7 +12,7 @@ const __xac=/* actions */'__xac';
 */
 class genres1{
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async integrer_ce_genre_dans_un_autre_projet( mat , d ){
         let chi_id_genre=0;
@@ -128,7 +128,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async page_integrer_ce_genre_dans_un_autre_projet( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -149,7 +149,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async vv_genres_nouveau_numero1( mat , d ){
         let form=this.__ig1.donnees_recues[__xva]['__fo1'][this.__ig1.donnees_recues[__xva]['__co1']];
@@ -240,7 +240,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async mettre_a_jour_le_js_des_genres( mat , d , __db1 ){
         /*
@@ -307,7 +307,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregister_l_ordre_des_genres( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -332,7 +332,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async recuperer_les_genres_pour_tri( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -355,7 +355,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , chi_id_genre , __db1 ){
         let criteres_select_1302={};
@@ -398,7 +398,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
@@ -414,7 +414,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.verifier_que_le_genre_n_est_pas_utilise_dans_la_base( mat , d , form['chi_id_genre'] , __db1 );
@@ -424,7 +424,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );
@@ -440,7 +440,7 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== extrait ========================================================================
+      =========================== extrait =========================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
         let obj=await this.mettre_a_jour_le_js_des_genres( mat , d , __db1 );

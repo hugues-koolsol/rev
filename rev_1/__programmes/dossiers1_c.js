@@ -999,13 +999,7 @@ class dossiers1{
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_dossier' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_0_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -1043,6 +1037,7 @@ class dossiers1{
         } , this );
         /*
           =====================================================================================================
+          extrait page_modification 
         */
         if(tup.T0_chp_nom_dossier === '__fichiers_binaires'){
             o1+='  <div class="yy_edition_champ1">';
@@ -1132,6 +1127,7 @@ class dossiers1{
         } , this );
         /*
           =====================================================================================================
+          extrait page_confirmation_supprimer 
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
@@ -1152,6 +1148,9 @@ class dossiers1{
           =====================================================================================================
         */
         o1+='      <input type="hidden" id="chi_id_dossier" value="' + tup.T0_chi_id_dossier + '" />';
+        /*
+          =====================================================================================================
+        */
         let cmd='';
         cmd+='liste1(';
         for(let i in this.tableau_des_filtres['liste1']){
@@ -1215,13 +1214,7 @@ class dossiers1{
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_de_fichier1( fo1.chp_nom_dossier , 'nom du dossier' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_dossier' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_0_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;

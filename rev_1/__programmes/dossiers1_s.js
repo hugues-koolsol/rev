@@ -1957,7 +1957,7 @@ class dossiers1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let criteres_select_1386={"T0_chi_id_dossier" : fo1.chi_id_dossier};
         let tt1386=await this.recup_chi_id_dossier( criteres_select_1386 , __db1 );
         if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
@@ -1997,7 +1997,7 @@ class dossiers1{
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -2023,7 +2023,7 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : chi_id_dossier} , __db1 );
         if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
@@ -2049,7 +2049,7 @@ class dossiers1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : chi_id_dossier} , __db1 );
         if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1386 ' + this.__ig1.nl2() + ']'});
@@ -2064,14 +2064,16 @@ class dossiers1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : fo1.chi_id_dossier} , __db1 );
         if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1386 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1386.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1410={
@@ -2086,16 +2088,19 @@ class dossiers1{
         /*sql_inclure_fin*/ 1410 , criteres_1410 , __db1 );
         /*  */
         if(tt1410.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1410.__xme});
         }
         let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1386.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -2116,7 +2121,7 @@ class dossiers1{
         if(chi_id_dossier === 0){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1386=await this.recup_chi_id_dossier( {"T0_chi_id_dossier" : chi_id_dossier} , __db1 );
         if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1386 ' + this.__ig1.nl2() + ']'});
@@ -2159,7 +2164,7 @@ class dossiers1{
         if(__test_0_1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
@@ -2192,7 +2197,7 @@ class dossiers1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1378['nouvel_id'] , __db1 );
         }
@@ -2210,7 +2215,7 @@ class dossiers1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
@@ -2255,7 +2260,7 @@ class dossiers1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1389=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -2337,11 +2342,11 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
+    async liste1( mat , d , __db1=null ){
         if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
         }
-        return(await this.filtre1( mat , d ));
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================

@@ -336,49 +336,19 @@ class sources1{
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_0_1;
         }
-        if(fo1.cht_rev_source !== null && fo1.cht_rev_source !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_source );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "rev" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_rev_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_5_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_source , 'rev' );
+        if(__test_5_1.__xst !== __xsu){
+            return __test_5_1;
         }
-        if(fo1.cht_condition_rev_source !== null && fo1.cht_condition_rev_source !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_rev_source );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_condition_rev_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_7_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_rev_source , 'condition au format rev' );
+        if(__test_7_1.__xst !== __xsu){
+            return __test_7_1;
         }
-        if(fo1.cht_import_module_rev_source !== null && fo1.cht_import_module_rev_source !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_import_module_rev_source );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "liste des imports" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_import_module_rev_source' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_13_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_import_module_rev_source , 'liste des imports' );
+        if(__test_13_1.__xst !== __xsu){
+            return __test_13_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -437,6 +407,7 @@ class sources1{
         } );
         /*
           =====================================================================================================
+          extrait page_modification 
         */
         let boutons_avant1=[];
         if(tup.T0_chp_nom_source.toLowerCase().slice( -3 ) === '.js'){
@@ -471,6 +442,9 @@ class sources1{
             '<button class="yy_b1 yy__2" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(ecrire_ce_source_sur_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="écrire sur disque" >📥 sur 💽</button>',
             '<button class="yy_b1 yy__1" style="float:right;" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(lire_ce_source_du_disque1(chi_id_source(' + tup.T0_chi_id_source + ')))))" title="lire du disque" >📤 du 💽</button>'
         ];
+        /*
+          =====================================================================================================
+        */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_genere_source" ,
             "__contexte" : "modification1" ,
@@ -711,13 +685,7 @@ class sources1{
         }
         let __test_1_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_source , 'nom du source' );
         if(__test_1_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_1_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_source' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_1_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;

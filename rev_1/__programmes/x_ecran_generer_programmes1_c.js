@@ -1704,6 +1704,7 @@ class x_ecran_generer_programmes1{
             'tests_avant_creer',
             'action_apres_creer',
             'actions_et_tests_apres_page_voir',
+            'tests_avant_page_confirmation_supprimer',
             'modifier1',
             'page_modification1',
             'page_duplication1',
@@ -1912,6 +1913,26 @@ class x_ecran_generer_programmes1{
                     src_serveur_js2+='        return{__xst:__xsu};\r\n';
                     src_serveur_js2+='    }\r\n';
                 }
+                if(ref_delete !== ''){
+                    extrait_trouve=-1;
+                    for( let i=0 ; i < tableau_des_extraits_serveur.length ; i++ ){
+                        if(tableau_des_extraits_serveur[i].nom_methode_serveur === 'tests_avant_page_confirmation_supprimer'){
+                            extrait_trouve=i;
+                            break;
+                        }
+                    }
+                    if(extrait_trouve >= 0){
+                        src_serveur_js2+=tableau_des_extraits_serveur[extrait_trouve].src_js;
+                    }else{
+                        src_serveur_js2+='    /*\r\n';
+                        src_serveur_js2+='      =============================================================================================================\r\n';
+                        src_serveur_js2+='    */\r\n';
+                        src_serveur_js2+='    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){\r\n';
+                        src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                        src_serveur_js2+='    }\r\n';
+                    }
+                }
+                
             }
         }
         /*
@@ -2955,17 +2976,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'[\' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        if(__db1 === null){\r\n';
-            /*
-              if(this.chi_id_projet <= 2){
-              src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
-              }else{
-              if(chi_id_basedd_de_reference === 1){
-              src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
-              }else{
-              src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-              }
-              }
-            */
             if(this.chi_id_projet <= 2){
                 src_serveur_js2+='            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
@@ -2994,6 +3004,7 @@ class x_ecran_generer_programmes1{
             let indice_methode_page_modification1=0;
             let mat_pm2=[];
             let lng_pm2=0;
+            let liste_des_fonctions_page_modifier1={};
             for(let i in tableau_des_extraits_client){
                 if(tableau_des_extraits_client[i].nom_methode_client === 'page_modification1'){
                     let tableau_des_commentaires_js=[];
@@ -3047,14 +3058,44 @@ class x_ecran_generer_programmes1{
                                 if(mat_pm2[j][1] === 'contenu' && mat_pm2[j][2] === 'f'){
                                     for( let k=j + 1 ; k < lng_pm2 ; k=mat_pm2[k][12] ){
                                         if(mat_pm2[k][1] === 'méthode' && mat_pm2[k][2] === 'f'){
+                                            indice_methode_page_modification1=0;
                                             for( let l=k + 1 ; l < lng_pm2 ; l=mat_pm2[l][12] ){
                                                 if(mat_pm2[l][1] === 'definition' && mat_pm2[l][2] === 'f'){
                                                     for( let m=l + 1 ; m < lng_pm2 ; m=mat_pm2[m][12] ){
                                                         if(mat_pm2[m][1] === 'nom' && mat_pm2[m][2] === 'f'){
                                                             for( let n=m + 1 ; n < lng_pm2 ; n=mat_pm2[n][12] ){
                                                                 if(mat_pm2[n][1] === 'page_modification1' && mat_pm2[n][2] === 'c'){
+                                                                    /* on a trouve la méthode page_modification1 */
                                                                     indice_methode_page_modification1=k;
                                                                     break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            if(indice_methode_page_modification1 >0 ){
+                                                /* on va chercher les fonctions dans cette méthode */
+                                                for( let o=k+1 ; o < lng_pm2 ; o=mat_pm2[o][12] ){
+                                                    if(mat_pm2[o][1] === 'contenu' && mat_pm2[o][2] === 'f'){
+                                                        for( let p=o+1 ; p < lng_pm2 ; p=mat_pm2[p][12] ){
+                                                            if(mat_pm2[p][1] === 'fonction' && mat_pm2[p][2] === 'f'){
+                                                                let nom_de_la_fonction='';
+                                                                for( let q=p+1 ; q < lng_pm2 ; q=mat_pm2[q][12] ){
+                                                                    if(mat_pm2[q][1] === 'definition' && mat_pm2[q][2] === 'f'){
+                                                                        for( let r=q+1 ; r < lng_pm2 ; r=mat_pm2[r][12] ){
+                                                                           if(mat_pm2[r][1] === 'nom' && mat_pm2[r][2] === 'f' && mat_pm2[r][8] === 1  && mat_pm2[r+1][2] === 'c' ){
+                                                                               nom_de_la_fonction=mat_pm2[r+1][1];
+                                                                           }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                if(nom_de_la_fonction !== ''){
+                                                                    for( let q=p+1 ; q < lng_pm2 ; q=mat_pm2[q][12] ){
+                                                                        if(mat_pm2[q][1] === 'contenu' && mat_pm2[q][2] === 'f'){
+                                                                            liste_des_fonctions_page_modifier1[nom_de_la_fonction]=q;
+                                                                        }
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -3703,42 +3744,17 @@ class x_ecran_generer_programmes1{
                     }
                 }
                 if(indice_methode_page_modification1 > 0){
-                    let indice_fonction=0;
-                    for( let l=indice_methode_page_modification1 + 1 ; l < lng_pm2 ; l=mat_pm2[l][12] ){
-                        if(mat_pm2[l][1] === 'contenu' && mat_pm2[l][2] === 'f'){
-                            for( let m=l + 1 ; m < lng_pm2 ; m=mat_pm2[m][12] ){
-                                if(mat_pm2[m][1] === 'fonction' && mat_pm2[m][2] === 'f'){
-                                    for( let n=m + 1 ; n < lng_pm2 ; n=mat_pm2[n][12] ){
-                                        if(mat_pm2[n][1] === 'definition' && mat_pm2[n][2] === 'f'){
-                                            for( let o=n + 1 ; o < lng_pm2 ; o=mat_pm2[o][12] ){
-                                                if(mat_pm2[o][1] === 'nom' && mat_pm2[o][2] === 'f' && mat_pm2[o][8] === 1 && mat_pm2[o + 1][2] === 'c'){
-                                                    if(mat_pm2[o + 1][1] === 'ajouter__après__' + obj_champ.nom_du_champ){
-                                                        indice_fonction=m;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                    if(liste_des_fonctions_page_modifier1.hasOwnProperty('ajouter__après__' + obj_champ.nom_du_champ)){
+                        let osr1=this.__ig1.__rev1.m2t( mat_pm2 , liste_des_fonctions_page_modifier1['ajouter__après__' + obj_champ.nom_du_champ] );
+                        if(osr1.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
                         }
-                    }
-                    if(indice_fonction > 0){
-                        for( let l=indice_fonction + 1 ; l < lng_pm2 ; l=mat_pm2[l][12] ){
-                            if(mat_pm2[l][1] === 'contenu' && mat_pm2[l][2] === 'f'){
-                                let osr1=this.__ig1.__rev1.m2t( mat_pm2 , l );
-                                if(osr1.__xst !== __xsu){
-                                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-                                }
-                                let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( osr1.__xva , {} );
-                                if(obj1.__xst !== __xsu){
-                                    return({"__xst" : __xer ,"__xme" : 'conversion extrait page_modification1 ' + this.__ig1.nl2()});
-                                }
-                                src_client2+='\r\n        /*\r\n    ==========\r\n      extrait page_modification */\r\n' + obj1.__xva;
-                                break;
-                            }
+                        let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( osr1.__xva , {} );
+                        if(obj1.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : 'conversion extrait page_modification1 ' + this.__ig1.nl2()});
                         }
+                        src_client2+='\r\n        /*\r\n    ==========\r\n      extrait page_modification */\r\n' + obj1.__xva;
+                        
                     }
                 }
             }
@@ -3850,6 +3866,93 @@ class x_ecran_generer_programmes1{
           
         */
         if(ref_delete !== ''){
+         
+         
+            /* tableau_des_extraits_client[extrait_trouve] */
+            let liste_des_fonctions_page_confirmation_supprimer1={};
+            let indice_methode_page_confirmation_supprimer1=0;
+            let mat_cs2=[];
+            let lng_cs2=0;
+            for(let i in tableau_des_extraits_client){
+                if(tableau_des_extraits_client[i].nom_methode_client === 'page_confirmation_supprimer1'){
+                    let tableau_des_commentaires_js=[];
+                    let obj0=null;
+                    try{
+                        let le_parseur=window.acorn.Parser;
+                        obj0=le_parseur.parse( 'class ___la_classe_bidon{' + tableau_des_extraits_client[i].src_js + '}' , {"ecmaVersion" : 'latest' ,"sourceType" : 'module' ,"ranges" : false ,"onComment" : tableau_des_commentaires_js} );
+                    }catch(e){
+                        return({
+                                "__xst" : __xer ,
+                                "__xme" : 'le source javascript de la fonction pour liste n\'a pas pu interprétée correctement' + this.__ig1.nl2( e )
+                            });
+                    }
+                    let obj1=this.#objet_conversionw_ast_js_vers_rev1.traite_ast( obj0.body , tableau_des_commentaires_js , {} );
+                    if(obj1.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                    }
+                    let obj2=this.__ig1.__rev1.t2m( obj1.__xva );
+                    if(obj2.__xst !== __xsu){
+                        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                    }
+                    /* matrice page_mod2 */
+                    mat_cs2=obj2.__xva;
+                    lng_cs2=mat_cs2.length;
+                    for( let i=1 ; i < lng_cs2 ; i=mat_cs2[i][12] ){
+                        if(mat_cs2[i][1] === 'definition_de_classe' && mat_cs2[i][2] === 'f'){
+                            for( let j=i + 1 ; j < lng_cs2 ; j=mat_cs2[j][12] ){
+                                if(mat_cs2[j][1] === 'contenu' && mat_cs2[j][2] === 'f'){
+                                    for( let k=j + 1 ; k < lng_cs2 ; k=mat_cs2[k][12] ){
+                                        if(mat_cs2[k][1] === 'méthode' && mat_cs2[k][2] === 'f'){
+                                            for( let l=k + 1 ; l < lng_cs2 ; l=mat_cs2[l][12] ){
+                                                if(mat_cs2[l][1] === 'definition' && mat_cs2[l][2] === 'f'){
+                                                    for( let m=l + 1 ; m < lng_cs2 ; m=mat_cs2[m][12] ){
+                                                        if(mat_cs2[m][1] === 'nom' && mat_cs2[m][2] === 'f'){
+                                                            for( let n=m + 1 ; n < lng_cs2 ; n=mat_cs2[n][12] ){
+                                                                if(mat_cs2[n][1] === 'page_confirmation_supprimer1' && mat_cs2[n][2] === 'c'){
+                                                                    indice_methode_page_confirmation_supprimer1=k;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            if(indice_methode_page_confirmation_supprimer1 > 0){
+                                                for( let o=k+1 ; o < lng_cs2 ; o=mat_cs2[o][12] ){
+                                                    if(mat_cs2[o][1] === 'contenu' && mat_cs2[o][2] === 'f'){
+                                                        for( let p=o+1 ; p < lng_cs2 ; p=mat_cs2[p][12] ){
+                                                            if(mat_cs2[p][1] === 'fonction' && mat_cs2[p][2] === 'f'){
+                                                                let nom_de_la_fonction='';
+                                                                for( let q=p+1 ; q < lng_cs2 ; q=mat_cs2[q][12] ){
+                                                                    if(mat_cs2[q][1] === 'definition' && mat_cs2[q][2] === 'f'){
+                                                                        for( let r=q+1 ; r < lng_cs2 ; r=mat_cs2[r][12] ){
+                                                                           if(mat_cs2[r][1] === 'nom' && mat_cs2[r][2] === 'f' && mat_cs2[r][8] === 1  && mat_cs2[r+1][2] === 'c' ){
+                                                                               nom_de_la_fonction=mat_cs2[r+1][1];
+                                                                           }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                if(nom_de_la_fonction !== ''){
+                                                                    for( let q=p+1 ; q < lng_cs2 ; q=mat_cs2[q][12] ){
+                                                                        if(mat_cs2[q][1] === 'contenu' && mat_cs2[q][2] === 'f'){
+                                                                            liste_des_fonctions_page_confirmation_supprimer1[nom_de_la_fonction]=q;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }         
+         
             src_client2+='    /*\r\n';
             src_client2+='      =============================================================================================================\r\n';
             src_client2+='    */\r\n';
@@ -4176,6 +4279,61 @@ class x_ecran_generer_programmes1{
                         */
                         debugger;
                     }
+                }
+                if(indice_methode_page_confirmation_supprimer1 > 0){
+                 
+                    if(liste_des_fonctions_page_confirmation_supprimer1.hasOwnProperty('ajouter__après__' + obj_champ.nom_du_champ)){
+                        debugger
+                        let osr1=this.__ig1.__rev1.m2t( mat_cs2 , liste_des_fonctions_page_confirmation_supprimer1['ajouter__après__' + obj_champ.nom_du_champ] );
+                        if(osr1.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                        }
+                        let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( osr1.__xva , {} );
+                        if(obj1.__xst !== __xsu){
+                            return({"__xst" : __xer ,"__xme" : 'conversion extrait page_confirmation_supprimer ' + this.__ig1.nl2()});
+                        }
+                        src_client2+='\r\n        /*\r\n    ==========\r\n      extrait page_confirmation_supprimer */\r\n' + obj1.__xva;
+                        
+                    }
+/*                 
+                    let indice_fonction=0;
+                    for( let l=indice_methode_page_confirmation_supprimer1 + 1 ; l < lng_cs2 ; l=mat_cs2[l][12] ){
+                        if(mat_cs2[l][1] === 'contenu' && mat_cs2[l][2] === 'f'){
+                            for( let m=l + 1 ; m < lng_cs2 ; m=mat_cs2[m][12] ){
+                                if(mat_cs2[m][1] === 'fonction' && mat_cs2[m][2] === 'f'){
+                                    for( let n=m + 1 ; n < lng_cs2 ; n=mat_cs2[n][12] ){
+                                        if(mat_cs2[n][1] === 'definition' && mat_cs2[n][2] === 'f'){
+                                            for( let o=n + 1 ; o < lng_cs2 ; o=mat_cs2[o][12] ){
+                                                if(mat_cs2[o][1] === 'nom' && mat_cs2[o][2] === 'f' && mat_cs2[o][8] === 1 && mat_cs2[o + 1][2] === 'c'){
+                                                    if(mat_cs2[o + 1][1] === 'ajouter__après__' + obj_champ.nom_du_champ){
+                                                        indice_fonction=m;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if(indice_fonction > 0){
+                        for( let l=indice_fonction + 1 ; l < lng_cs2 ; l=mat_cs2[l][12] ){
+                            if(mat_cs2[l][1] === 'contenu' && mat_cs2[l][2] === 'f'){
+                                let osr1=this.__ig1.__rev1.m2t( mat_cs2 , l );
+                                if(osr1.__xst !== __xsu){
+                                    return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+                                }
+                                let obj1=this.#objet_conversion_rev_vers_js.c_rev_vers_js( osr1.__xva , {} );
+                                if(obj1.__xst !== __xsu){
+                                    return({"__xst" : __xer ,"__xme" : 'conversion extrait page_confirmation_supprimer ' + this.__ig1.nl2()});
+                                }
+                                src_client2+='\r\n        /'+'*\r\n    ==========\r\n      extrait page_confirmation_supprimer *'+'/\r\n' + obj1.__xva;
+                                break;
+                            }
+                        }
+                    }
+*/            
                 }
             }
             src_client2+='        /*\n';
@@ -4725,6 +4883,10 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        let tt' + ref_select + '=await this.recup_' + champ_primaire + '( {"T0_' + champ_primaire + '" : ' + champ_primaire + '} , __db1 );\r\n';
             src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : suppression impossible [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
+            src_serveur_js2+='        }\r\n';
+            src_serveur_js2+='        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
+            src_serveur_js2+='        if(obj_tst1.__xst !== __xsu){\r\n';
+            src_serveur_js2+='            return obj_tst1;\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'page_confirmation_supprimer1\']=tt' + ref_select + ';\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';

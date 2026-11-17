@@ -10,12 +10,6 @@ const __xac=/* actions */'__xac';
 import {x_ecran_concevoir_une_requete1 as x_ecran_concevoir_une_requete1_s} from './x_ecran_concevoir_une_requete1_s.js';
 import {_rev_de_sql_vers_js1} from './_rev_de_sql_vers_js1_.js';
 /*
-  éventuellement, indégrer ceci : 
-  import {w_rev_vers_sql1} from './w_rev_vers_sql1_.js';
-  import sqlParser from "https://esm.sh/sql-parser-cst";
-  
-*/
-/*
   =====================================================================================================================
 */
 class requetes1{
@@ -179,7 +173,7 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async exporter_requete_de_1_vers_3( mat , d ){
         let chi_id_requete=0;
@@ -279,7 +273,7 @@ class requetes1{
         return({"__xst" : __xer});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async importer_requete_de_1( mat , d ){
         /*
@@ -350,7 +344,7 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async compiler_requete_par_id( mat , d , __db1=null ){
         /* ,  this.__ig1.donnees_recues ,  this.__ig1.donnees_retournees ,  this.__ig1.options_generales ]{ */
@@ -421,7 +415,7 @@ class requetes1{
           =====================================================================================================
           construction du js de la requête
         */
-        let obj0=await this._rev_de_sql_vers_js1.compiler_requete_vers_js1( [] , 0 , les_bases_et_la_requete );
+        let obj0=await this.__variables_module['_rev_de_sql_vers_js1']['compiler_requete_vers_js1']( [] , 0 , les_bases_et_la_requete );
         if(obj0.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
@@ -450,15 +444,16 @@ class requetes1{
           et on supprime les genérés et rev de la table source
           =====================================================================================================
         */
-        await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , chi_id_requete , __db1 );
+        await this.__variables_module['concevoir_une_requete1_s']['sauvegarder_une_matrice_de_requete']( mat , d , chi_id_requete , __db1 );
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-      met une liste de js dans la table tbl_cron
+      =========================== extrait =========================================================================
     */
     async compiler_cette_liste_de_sql_en_cron2( mat , d ){
-        /* this.__ig1.ma_trace1('this.__ig1.donnees_recues=',this.__ig1.donnees_recues); */
+        /*
+          met une liste de js dans la table tbl_cron
+        */
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
         let criteres_select_1405={"T0_chi_id_requete" : '(' + this.__ig1.donnees_recues.__xva.liste_des_chi_id_requete.join( ',' ) + ')'};
         /* this.__ig1.ma_trace1( 'criteres_select_1405=' , criteres_select_1405 ); */
@@ -519,7 +514,7 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async enregistrer_une_requete_compile_en_ligne1( mat , d ){
         let criteres_1343={};
@@ -567,13 +562,13 @@ class requetes1{
                 });
         }
         if(!(this.__ig1.donnees_retournees._CA_ === 1 && this.__ig1.donnees_retournees.chi_id_projet === 1)){
-            await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , this.__ig1.donnees_recues.__xva['chi_id_requete'] , __db1 );
+            await this.__variables_module['concevoir_une_requete1_s']['sauvegarder_une_matrice_de_requete']( mat , d , this.__ig1.donnees_recues.__xva['chi_id_requete'] , __db1 );
         }
-        await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
+        await this.__variables_module['concevoir_une_requete1_s']['construire_le_js_contenant_la_liste_des_requetes']( mat , d , __db1 );
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async recuperer_requete_et_base_pour_compilation_en_ligne( mat , d ){
         let chi_id_requete=0;
@@ -623,7 +618,7 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async vv_requetes_nouveau_numero1( mat , d ){
         let chi_id_requete_ancienne=0;
@@ -737,8 +732,8 @@ class requetes1{
             return({"__xst" : __xer ,"__xme" : 'l\'écriture du fichier a échoué [' + this.__ig1.nl2( e ) + ']'});
         }
         this.__ig1.donnees_recues['chi_id_requete']=chi_id_requete_nouvelle;
-        await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , chi_id_requete_nouvelle , __db1 );
-        await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
+        await this.__variables_module['concevoir_une_requete1_s']['sauvegarder_une_matrice_de_requete']( mat , d , chi_id_requete_nouvelle , __db1 );
+        await this.__variables_module['concevoir_une_requete1_s']['construire_le_js_contenant_la_liste_des_requetes']( mat , d , __db1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -748,15 +743,15 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         this.__ig1.donnees_recues['chi_id_requete']=__xva_avant.T0_chi_id_requete;
-        let ret1=await this.concevoir_une_requete1_s.sauvegarder_une_matrice_de_requete( mat , d , __xva_avant.T0_chi_id_requete , __db1 );
+        let ret1=await this.__variables_module['concevoir_une_requete1_s']['sauvegarder_une_matrice_de_requete']( mat , d , __xva_avant.T0_chi_id_requete , __db1 );
         if(ret1.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : ret1.__xme});
         }
-        await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
+        await this.__variables_module['concevoir_une_requete1_s']['construire_le_js_contenant_la_liste_des_requetes']( mat , d , __db1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -772,7 +767,7 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
         let chemin_fichier='';
@@ -787,7 +782,7 @@ class requetes1{
                 return({"__xst" : __xer ,"__xme" : 'la suppression du fichier n\'a pas fonctionné [' + this.__ig1.nl2()});
             }
         }
-        await this.concevoir_une_requete1_s.construire_le_js_contenant_la_liste_des_requetes( mat , d , __db1 );
+        await this.__variables_module['concevoir_une_requete1_s']['construire_le_js_contenant_la_liste_des_requetes']( mat , d , __db1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -809,240 +804,10 @@ class requetes1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
-    async recup_chi_id_requete( criteres_select_1354 , __db1 ){
-        let tt1354=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
-        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
-         FROM b1.tbl_requetes T0
-        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
-        ;
-        */
-        /*sql_inclure_fin*/ 1354 , criteres_select_1354 , __db1 );
-        return tt1354;
-    }
-    /*
-      =============================================================================================================
-    */
-    async modifier1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
-        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
-        /*  */
-        let __les_convertions=[
-            /*  */
-            {"nc" : "id1" ,"nz" : 'chi_id_requete' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
-            {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
-            {"nc" : "decim1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"ldc" : '3,0' ,"lib" : 'base'}
-        ];
-        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
-        if(__obj_convertions.__xst !== __xsu){
-            return __obj_convertions;
-        }
-        /* conversion des données numériques verifier_modifier fin */
-        let __les_tests=[
-            /*  */
-            {"nt" : 'zero_un1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?'},
-            {
-                    "nt" : 'parmis1' ,
-                    "nz" : "chp_type_requete" ,
-                    "lib" : 'type de requête' ,
-                    "p" : [
-                        /* tbel */
-                        'liste_ecran','insert','select','update','delete','requete_manuelle']
-                },
-            {"nt" : 'non_vide1' ,"nz" : "che_base_reference_requete" ,"lib" : 'base'}
-        ];
-        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
-        if(__obj_tests.__xst !== __xsu){
-            return __obj_tests;
-        }
-        if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "format rev de la requête" n\'est pas dans un format rev valide'});
-            }
-        }
-        let retour_a_la_liste=false;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
-                retour_a_la_liste=true;
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let criteres_select_1354={"T0_chi_id_requete" : fo1.chi_id_requete};
-        let tt1354=await this.recup_chi_id_requete( criteres_select_1354 , __db1 );
-        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1354 ' + this.__ig1.nl2() + ']'});
-        }
-        await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1354.__xva[0] , __db1 );
-        if(__aetavm.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
-        }
-        let criteres_1355={
-             /*  */
-            "c_chi_id_requete" : fo1.chi_id_requete ,
-            "n_che_est_souche_requete" : fo1.che_est_souche_requete ,
-            "n_chp_type_requete" : fo1.chp_type_requete ,
-            "n_cht_rev_requete" : fo1.cht_rev_requete === '' ? ( null ) : ( fo1.cht_rev_requete ) ,
-            "n_cht_sql_requete" : fo1.cht_sql_requete === '' ? ( null ) : ( fo1.cht_sql_requete ) ,
-            "n_cht_commentaire_requete" : fo1.cht_commentaire_requete === '' ? ( null ) : ( fo1.cht_commentaire_requete ) ,
-            "n_chp_table_reference_requete" : fo1.chp_table_reference_requete === '' ? ( null ) : ( fo1.chp_table_reference_requete ) ,
-            "n_che_base_reference_requete" : fo1.che_base_reference_requete
-        };
-        /* =========================== mise à jour effective ======================== */
-        let tt1355=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        UPDATE b1.tbl_requetes SET 
-           `che_est_souche_requete` = :n_che_est_souche_requete , 
-           `chp_type_requete` = :n_chp_type_requete , 
-           `cht_rev_requete` = :n_cht_rev_requete , 
-           `cht_sql_requete` = :n_cht_sql_requete , 
-           `cht_commentaire_requete` = :n_cht_commentaire_requete , 
-           `chp_table_reference_requete` = :n_chp_table_reference_requete , 
-           `che_base_reference_requete` = :n_che_base_reference_requete
-        WHERE `chi_id_requete` = :c_chi_id_requete ;
-        */
-        /*sql_inclure_fin*/ 1355 , criteres_1355 , __db1 );
-        if(tt1355.__xst !== __xsu || tt1355.changements !== 1){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tt1355.__xme});
-        }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1354.__xva[0] , __db1 );
-        if(__taam.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __taam.__xme});
-        }
-        await __db1.exec( 'COMMIT;' );
-        if(retour_a_la_liste === true){
-            if(fo1.__mat_liste_si_ok){
-                let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
-            }
-            return({"__xst" : __xsu});
-        }
-        let tt1354_bis=await this.recup_chi_id_requete( criteres_select_1354 , __db1 );
-        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1354_bis;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_modification1( mat , d , chi_id_requete=null , __db1=null ){
-        if(chi_id_requete === null){
-            const l01=mat.length;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    chi_id_requete=parseInt( mat[i + 1][1] , 10 );
-                }
-            }
-        }else{
-            this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + chi_id_requete + ')))))';
-        }
-        if(chi_id_requete === null){
-            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
-        }
-        if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        }
-        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
-        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1354 ' + this.__ig1.nl2() + ']'});
-        }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1354.__xva[0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
-        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1354;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-      recherche dans la base de données l'enregistrement à dupliquer.
-    */
-    async page_duplication1( mat , d , chi_id_requete=null ){
-        if(chi_id_requete === null){
-            const l01=mat.length;
-            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-                if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                    chi_id_requete=parseInt( mat[i + 1][1] , 10 );
-                }
-            }
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
-        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1354 ' + this.__ig1.nl2() + ']'});
-        }
-        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1354;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
-        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
-        /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : fo1.chi_id_requete} , __db1 );
-        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1354 ' + this.__ig1.nl2() + ']'});
-        }
-        /*  */
-        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1354.__xva[0] , __db1 );
-        if(tas.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
-        let criteres_1352={
-             /*  */
-            "chi_id_requete" : fo1.chi_id_requete
-        };
-        let tt1352=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b1.tbl_requetes
-        WHERE `chi_id_requete` = :chi_id_requete
-        */
-        /*sql_inclure_fin*/ 1352 , criteres_1352 , __db1 );
-        /*  */
-        if(tt1352.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt1352.__xme});
-        }
-        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1354.__xva[0] , __db1 );
-        if(__aavc.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
-        }
-        /*  */
-        if(fo1.__mat_liste_si_ok !== ''){
-            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_confirmation_supprimer1( mat , d ){
-        let chi_id_requete=0;
-        const l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_requete === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
-        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
-            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1354 ' + this.__ig1.nl2() + ']'});
-        }
+    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
+        let chi_id_requete=__xva_avant['T0_chi_id_requete'];
         let liste_des_sources_utilisant_cette_requete={};
         let critere_1411={"T0_chp_valeur_rev" : chi_id_requete};
         let tt1411=await this.__ig1.sql_iij(
@@ -1157,6 +922,250 @@ class requetes1{
         if(la_requete_est_utilisee_dans_un_source === true){
             return({"__xst" : __xer ,"__xme" : 'la requête ' + chi_id_requete + ' est utilisée dans des sources'});
         }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async recup_chi_id_requete( criteres_select_1354 , __db1 ){
+        let tt1354=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        SELECT 
+        `T0`.`chi_id_requete` , `T0`.`chp_type_requete` , `T0`.`cht_rev_requete` , `T0`.`cht_sql_requete` , `T0`.`cht_commentaire_requete` , 
+        `T0`.`cht_matrice_requete` , `T0`.`che_est_souche_requete` , `T0`.`chp_table_reference_requete` , `T0`.`che_base_reference_requete`
+         FROM b1.tbl_requetes T0
+        WHERE `T0`.`chi_id_requete` = :T0_chi_id_requete
+        ;
+        */
+        /*sql_inclure_fin*/ 1354 , criteres_select_1354 , __db1 );
+        return tt1354;
+    }
+    /*
+      =============================================================================================================
+    */
+    async modifier1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues.__xva.__co1;
+        let fo1=this.__ig1.donnees_recues.__xva.__fo1[nom_formulaire];
+        /*  */
+        let __les_convertions=[
+            /*  */
+            {"nc" : "id1" ,"nz" : 'chi_id_requete' ,"m" : 'une erreur système est survenue sur le champ "identifiant"'},
+            {"nc" : "entier1" ,"nz" : 'che_est_souche_requete' ,"vpd" : 0 ,"lib" : 'requête souche ?'},
+            {"nc" : "decim1" ,"nz" : 'che_base_reference_requete' ,"vpd" : 1 ,"ldc" : '3,0' ,"lib" : 'base'}
+        ];
+        let __obj_convertions=this.__ig1.__fnt1.convertir_les_zonnes_saisies( __les_convertions , fo1 );
+        if(__obj_convertions.__xst !== __xsu){
+            return __obj_convertions;
+        }
+        /* conversion des données numériques verifier_modifier fin */
+        let __les_tests=[
+            /*  */
+            {"nt" : 'zero_un1' ,"nz" : "che_est_souche_requete" ,"lib" : 'requête souche ?'},
+            {
+                    "nt" : 'parmis1' ,
+                    "nz" : "chp_type_requete" ,
+                    "lib" : 'type de requête' ,
+                    "p" : [
+                        /* tbel */
+                        'liste_ecran','insert','select','update','delete','requete_manuelle']
+                },
+            {"nt" : 'non_vide1' ,"nz" : "che_base_reference_requete" ,"lib" : 'base'}
+        ];
+        let __obj_tests=this.__ig1.__fnt1.tester_les_zonnes_saisies( __les_tests , fo1 );
+        if(__obj_tests.__xst !== __xsu){
+            return __obj_tests;
+        }
+        let __test_2_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
+        if(__test_2_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_2_1.__xme});
+        }
+        let retour_a_la_liste=false;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'retour_a_la_liste' && mat[i][2] === 'f'){
+                retour_a_la_liste=true;
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        let criteres_select_1354={"T0_chi_id_requete" : fo1.chi_id_requete};
+        let tt1354=await this.recup_chi_id_requete( criteres_select_1354 , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1354 ' + this.__ig1.nl2() + ']'});
+        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1354.__xva[0] , __db1 );
+        if(__aetavm.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
+        }
+        let criteres_1355={
+             /*  */
+            "c_chi_id_requete" : fo1.chi_id_requete ,
+            "n_che_est_souche_requete" : fo1.che_est_souche_requete ,
+            "n_chp_type_requete" : fo1.chp_type_requete ,
+            "n_cht_rev_requete" : fo1.cht_rev_requete === '' ? ( null ) : ( fo1.cht_rev_requete ) ,
+            "n_cht_sql_requete" : fo1.cht_sql_requete === '' ? ( null ) : ( fo1.cht_sql_requete ) ,
+            "n_cht_commentaire_requete" : fo1.cht_commentaire_requete === '' ? ( null ) : ( fo1.cht_commentaire_requete ) ,
+            "n_chp_table_reference_requete" : fo1.chp_table_reference_requete === '' ? ( null ) : ( fo1.chp_table_reference_requete ) ,
+            "n_che_base_reference_requete" : fo1.che_base_reference_requete
+        };
+        /* =========================== mise à jour effective ======================== */
+        let tt1355=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        UPDATE b1.tbl_requetes SET 
+           `che_est_souche_requete` = :n_che_est_souche_requete , 
+           `chp_type_requete` = :n_chp_type_requete , 
+           `cht_rev_requete` = :n_cht_rev_requete , 
+           `cht_sql_requete` = :n_cht_sql_requete , 
+           `cht_commentaire_requete` = :n_cht_commentaire_requete , 
+           `chp_table_reference_requete` = :n_chp_table_reference_requete , 
+           `che_base_reference_requete` = :n_che_base_reference_requete
+        WHERE `chi_id_requete` = :c_chi_id_requete ;
+        */
+        /*sql_inclure_fin*/ 1355 , criteres_1355 , __db1 );
+        if(tt1355.__xst !== __xsu || tt1355.changements !== 1){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt1355.__xme});
+        }
+        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1354.__xva[0] , __db1 );
+        if(__taam.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : __taam.__xme});
+        }
+        await __db1.exec( 'COMMIT;' );
+        if(retour_a_la_liste === true){
+            if(fo1.__mat_liste_si_ok){
+                let mat1=JSON.parse( fo1.__mat_liste_si_ok );
+                await this.liste1( mat1 , 1 , __db1 );
+            }
+            return({"__xst" : __xsu});
+        }
+        let tt1354_bis=await this.recup_chi_id_requete( criteres_select_1354 , __db1 );
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1354_bis;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_modification1( mat , d , chi_id_requete=null , __db1=null ){
+        if(chi_id_requete === null){
+            const l01=mat.length;
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+                }
+            }
+        }else{
+            this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_requete(' + chi_id_requete + ')))))';
+        }
+        if(chi_id_requete === null){
+            return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
+        }
+        if(__db1 === null){
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        }
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1354 ' + this.__ig1.nl2() + ']'});
+        }
+        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1354.__xva[0] , __db1 );
+        if(aetam.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : aetam.__xme});
+        }
+        this.__ig1.donnees_retournees.__xva['page_modification1']=tt1354;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+      recherche dans la base de données l'enregistrement à dupliquer.
+    */
+    async page_duplication1( mat , d , chi_id_requete=null ){
+        if(chi_id_requete === null){
+            const l01=mat.length;
+            for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+                if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                    chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1354 ' + this.__ig1.nl2() + ']'});
+        }
+        this.__ig1.donnees_retournees.__xva['page_duplication1']=tt1354;
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async supprimer1( mat , d ){
+        let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
+        let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
+        /*  */
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : fo1.chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1354 ' + this.__ig1.nl2() + ']'});
+        }
+        /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1354.__xva[0] , __db1 );
+        if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tas.__xme});
+        }
+        let criteres_1352={
+             /*  */
+            "chi_id_requete" : fo1.chi_id_requete
+        };
+        let tt1352=await this.__ig1.sql_iij(
+        /*sql_inclure_deb*/ /*#
+        DELETE FROM b1.tbl_requetes
+        WHERE `chi_id_requete` = :chi_id_requete
+        */
+        /*sql_inclure_fin*/ 1352 , criteres_1352 , __db1 );
+        /*  */
+        if(tt1352.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : tt1352.__xme});
+        }
+        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1354.__xva[0] , __db1 );
+        if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
+            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
+        }
+        /*  */
+        await __db1.exec( 'COMMIT;' );
+        if(fo1.__mat_liste_si_ok !== ''){
+            let mat1=JSON.parse( fo1.__mat_liste_si_ok );
+            return(await this.liste1( mat1 , 1 , __db1 ));
+        }
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async page_confirmation_supprimer1( mat , d ){
+        let chi_id_requete=0;
+        const l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'chi_id_requete' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
+                chi_id_requete=parseInt( mat[i + 1][1] , 10 );
+            }
+        }
+        if(chi_id_requete === 0){
+            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        let tt1354=await this.recup_chi_id_requete( {"T0_chi_id_requete" : chi_id_requete} , __db1 );
+        if(tt1354.__xst !== __xsu || tt1354.__xva.length !== 1){
+            return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1354 ' + this.__ig1.nl2() + ']'});
+        }
+        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1354.__xva[0] , __db1 );
+        if(obj_tst1.__xst !== __xsu){
+            return obj_tst1;
+        }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1354;
         return({"__xst" : __xsu});
     }
@@ -1201,13 +1210,11 @@ class requetes1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_requete !== null && fo1.cht_rev_requete !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_requete );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "format rev de la requête" n\'est pas dans un format rev valide'});
-            }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_requete , 'format rev de la requête' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
@@ -1258,7 +1265,7 @@ class requetes1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1390['nouvel_id'] , __db1 );
         }
@@ -1276,7 +1283,7 @@ class requetes1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
@@ -1321,7 +1328,7 @@ class requetes1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1350=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -1389,31 +1396,35 @@ class requetes1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        return(await this.filtre1( mat , d ));
+    async liste1( mat , d , __db1=null ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================
     */
     moi='requetes1';
     __ig1=null;
-    concevoir_une_requete1_s=null;
-    _rev_de_sql_vers_js1=null;
+    __variables_module={};
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     constructor( __ig1 ){
         this.__ig1=__ig1;
-        this.concevoir_une_requete1_s=new x_ecran_concevoir_une_requete1_s( __ig1 );
-        this._rev_de_sql_vers_js1=new _rev_de_sql_vers_js1( __ig1 );
-        let options_pour_le_parseur_si_on_l_utilise={
-            "dialect" : /* obligatoire */"sqlite" ,
-            "includeSpaces" : /* Adds spaces/tabs */true ,
-            "includeNewlines" : /* Adds newlines */true ,
-            "includeComments" : /* Adds comments */true ,
-            "includeRange" : /* Adds source code location data */true
-        };
-        /* const cst=sqlParser.parse( "SELECT * FROM users WHERE id = 1;" , options_pour_le_parseur_si_on_l_utilise );        console.log( cst ); */
+        this.__variables_module['concevoir_une_requete1_s']=new x_ecran_concevoir_une_requete1_s( __ig1 );
+        this.__variables_module['_rev_de_sql_vers_js1']=new _rev_de_sql_vers_js1( __ig1 );
+        /*#
+          let options_pour_le_parseur_si_on_l_utilise={
+              "dialect" : "sqlite" ,
+              "includeSpaces" : true ,
+              "includeNewlines" : true ,
+              "includeComments" : true ,
+              "includeRange" : true
+          };
+          const cst=sqlParser.parse( "SELECT * FROM users WHERE id = 1;" , options_pour_le_parseur_si_on_l_utilise );        console.log( cst );
+        */
     }
     /*
       =============================================================================================================
