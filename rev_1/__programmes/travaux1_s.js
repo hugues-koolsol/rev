@@ -13,11 +13,14 @@ import {Database} from "https://deno.land/x/sqlite3/mod.ts";
 */
 class travaux1{
     /*
-      =============================================================================================================
-      ================================== Attention, lancée en asynchrone ==========================================
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async lancer_la_compilation( mat , d ){
+        /*
+          =====================================================================================================
+          ================================== Attention, lancée en asynchrone ==========================================
+          =====================================================================================================
+        */
         function sleep0( ms ){
             return(new Promise( ( resolve ) => {
                     setTimeout( resolve , ms );
@@ -275,7 +278,7 @@ class travaux1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async compiler_les_travaux( mat , d ){
         /* lancement en asynchrone */
@@ -283,7 +286,7 @@ class travaux1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async supprimer_les_travaux_termines( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -305,7 +308,7 @@ class travaux1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async supprimer_les_travaux( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
@@ -326,7 +329,7 @@ class travaux1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
+      =========================== extrait =========================================================================
     */
     async demarrer_manuellement_job_cron( mat , d ){
         let chi_id_travail=0;
@@ -475,6 +478,12 @@ class travaux1{
     /*
       =============================================================================================================
     */
+    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async recup_chi_id_travail( criteres_select_1396 , __db1 ){
         let tt1396=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -526,11 +535,9 @@ class travaux1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'});
-            }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -539,7 +546,7 @@ class travaux1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let criteres_select_1396={"T0_chi_id_travail" : fo1.chi_id_travail};
         let tt1396=await this.recup_chi_id_travail( criteres_select_1396 , __db1 );
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
@@ -590,7 +597,7 @@ class travaux1{
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -616,7 +623,7 @@ class travaux1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : chi_id_travail} , __db1 );
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
@@ -642,7 +649,7 @@ class travaux1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : chi_id_travail} , __db1 );
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1396 ' + this.__ig1.nl2() + ']'});
@@ -657,14 +664,16 @@ class travaux1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : fo1.chi_id_travail} , __db1 );
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1396 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1396.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1399={
@@ -679,16 +688,19 @@ class travaux1{
         /*sql_inclure_fin*/ 1399 , criteres_1399 , __db1 );
         /*  */
         if(tt1399.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1399.__xme});
         }
         let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1396.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -706,10 +718,14 @@ class travaux1{
         if(chi_id_travail === 0){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1396=await this.recup_chi_id_travail( {"T0_chi_id_travail" : chi_id_travail} , __db1 );
         if(tt1396.__xst !== __xsu || tt1396.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1396 ' + this.__ig1.nl2() + ']'});
+        }
+        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1396.__xva[0] , __db1 );
+        if(obj_tst1.__xst !== __xsu){
+            return obj_tst1;
         }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1396;
         return({"__xst" : __xsu});
@@ -754,13 +770,11 @@ class travaux1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'});
-            }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
         if(__tac.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : __tac.__xme});
@@ -809,7 +823,7 @@ class travaux1{
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1398['nouvel_id'] , __db1 );
         }
@@ -827,7 +841,7 @@ class travaux1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
@@ -872,7 +886,7 @@ class travaux1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1395=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -942,11 +956,11 @@ class travaux1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
+    async liste1( mat , d , __db1=null ){
         if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
         }
-        return(await this.filtre1( mat , d ));
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================

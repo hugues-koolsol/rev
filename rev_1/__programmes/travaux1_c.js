@@ -137,17 +137,9 @@ class travaux1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_rev_travail' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return __test_1_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -380,17 +372,9 @@ class travaux1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_rev_travail !== null && fo1.cht_rev_travail !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_rev_travail );
-            if(obj1.__xst !== __xsu){
-                this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : 'le contenu de "description rev du travail" n\'est pas dans un format rev valide'} );
-                this.__ig1.affiche_les_messages();
-                this.__ig1.retablir_les_boutons_masques();
-                try{
-                    document.getElementById( 'cht_rev_travail' ).focus();
-                } catch {}
-                return({"__xst" : __xsu});
-            }
+        let __test_1_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_rev_travail , 'description rev du travail' );
+        if(__test_1_1.__xst !== __xsu){
+            return __test_1_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;

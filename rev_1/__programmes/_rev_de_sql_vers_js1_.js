@@ -35,6 +35,7 @@ class _rev_de_sql_vers_js1{
         "champs_combinaison_liste" : [] ,
         "champs_combinaison_update" : [] ,
         "champs_combinaison_insert" : [] ,
+        "specifites_champs_update" : {} ,
         "tableau_des_bases_tables_champs" : {} ,
         "ne_pas_tester_les_dependances_de_suppression" : 0 ,
         "ne_pas_exclure_les_id_a_ne_pas_supprimer" : 0 ,
@@ -2393,7 +2394,6 @@ class _rev_de_sql_vers_js1{
         this.#obj_webs['champs_combinaison_update']=[];
         for( var i=1 ; i < l01 ; i=tab[i][12] ){
             if(tab[i][2] === 'f'){
-                /* liste_ecran */
                 for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
                     if(tab[j][1] === 'champs_combinaison_update' && tab[j][2] === 'f'){
                         if(tab[j][8] === 0){
@@ -2418,6 +2418,27 @@ class _rev_de_sql_vers_js1{
                                             "commentaire_champ_combinaison" : commentaire_champ_combinaison ,
                                             "champs" : champs
                                         } );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        this.#obj_webs['specifites_champs_update']=[];
+        for( var i=1 ; i < l01 ; i=tab[i][12] ){
+            if(tab[i][2] === 'f'){
+                for( var j=i + 1 ; j < l01 ; j=tab[j][12] ){
+                    if(tab[j][1] === 'specifites_champs_update' && tab[j][2] === 'f'){
+                        if(tab[j][8] === 0){
+                        }else{
+                            for( var k=j + 1 ; k < l01 ; k=tab[k][12] ){
+                                if(tab[k][2] === 'f' && tab[k][1] !== ''){
+                                    let obj0=this.__ig1.__rev1.m2t(tab , k);
+                                    if(obj0.__xst !== __xsu ){
+                                        debugger
+                                    }
+                                    this.#obj_webs['specifites_champs_update'][tab[k][1]]=obj0.__xva;
                                 }
                             }
                         }

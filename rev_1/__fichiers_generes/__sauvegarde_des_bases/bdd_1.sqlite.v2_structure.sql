@@ -568,7 +568,7 @@ choix(si(condition(et(egalstricte(tup.che_pour_util_source,1),egalstricte(tup.ch
             meta(
             genre_meta(champ),
             nom_du_champ('che_est_extrait_source'),
-            nom_bref_du_champ('est fragment'),libelle_du_champ('est fragment'),entete_distant_du_champ('usage source'),
+            nom_bref_du_champ('est extrait'),libelle_du_champ('est extrait'),entete_distant_du_champ('usage source'),
             typologie(che),
             genre(5)
             )

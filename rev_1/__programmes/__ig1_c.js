@@ -850,9 +850,9 @@ class __ig1{
         o1+='<div id="vv_ecran_creation_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_creation_zone_boutons"  style="display:none;">';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1())))';
-        o1+='   <button id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '" data-indicateur_graphique="bouton_ajout_zone1">ajouter</button>';
+        o1+='   <button id="vv_ajouter_un_element_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '" data-indicateur_graphique1="bouton_ajout_zone1">ajouter</button>';
         tt1='fo1(co1(vv_ecran_creation_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_creer1(retour_a_la_liste()))))';
-        o1+='   <button id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '" data-indicateur_graphique="bouton_ajout_zone2">ajouter et revenir à la liste</button>';
+        o1+='   <button id="vv_ajouter_un_element_et_retour_a_la_ligne_' + nom_module + '" class="yy_b1 yy__3" rev_clic1="' + tt1 + '" data-indicateur_graphique1="bouton_ajout_zone2">ajouter et revenir à la liste</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_creation_zone_complement" style="display:none;"></div>';
         /*
@@ -865,7 +865,7 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_suppression_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_suppression_zone_boutons" style="display:none;display:none;">';
-        o1+='  <button class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="je confirme la suppression" data-indicateur_graphique="bouton_suppression_zone1">je confirme la suppression</button>';
+        o1+='  <button class="yy_b1 yy__2" rev_clic1="fo1(co1(vv_ecran_suppression_zone_contenu),pm1(m1(n1(' + nom_module + '),f1(supprimer1()))))" title="je confirme la suppression" data-indicateur_graphique1="bouton_suppression_zone1">je confirme la suppression</button>';
         o1+='  <button class="yy_b1 yy__3" id="vv_bouton_aller_page_edition_' + nom_module + '" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_page_modification1(nom_module(\'' + nom_module + '\'),nom_du_champ_cle(\'' + nom_du_champ_cle + '\'))))" title="modifier">aller à la modification</button>';
         o1+='</div>';
         o1+='<div id="vv_ecran_suppression_zone_complement" style="display:none;"></div>';
@@ -874,10 +874,10 @@ class __ig1{
         */
         o1+='<div id="vv_ecran_modification_zone_contenu" style="display:none;"></div>';
         o1+='<div id="vv_ecran_modification_zone_boutons" style="display:none;">';
-        o1+='  <button id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique="bouton_modification_zone1" ';
+        o1+='  <button id="vv_bouton_modifier_seulement_' + nom_module + '" class="yy_b1 yy__3" data-indicateur_graphique1="bouton_modification_zone1" ';
         o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1())))" ';
         o1+='    title="">modifier</button>    ';
-        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" data-indicateur_graphique="bouton_modification_zone2" ';
+        o1+='  <button class="yy_b1 yy__3" id="vv_bouton_modifier_et_retour_' + nom_module + '" data-indicateur_graphique1="bouton_modification_zone2" ';
         o1+='    rev_clic1="fo1(co1(vv_ecran_modification_zone_contenu),m1(n1(' + nom_module + '),f1(verifier_modifier1(retour_a_la_liste()))))" ';
         o1+='    title="">modifier et retour</button>';
         o1+='  <button class="yy_svg1 yy__2" id="vv_bouton_aller_page_confirmation_supprimer_' + nom_module + '" ';
@@ -2392,9 +2392,9 @@ class __ig1{
         t+='.yy__4_inactif{border-style: dashed;background: ' + couleur3hex + ';opacity: 0.5;}';
         t+='.yy_invisible{visibility:hidden;}';
         t+='.yy_element_actif_donc_masque{visibility:hidden;}';
-        /* animation temporaire pour le retour OK ou KO après modification */
-        t+='.yy__OK{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ok1 0.25s;  animation-iteration-count: 3;}';
+        /* indice 1 pour une grosse animation temporaire pour le retour OK ou KO après modification */
         let echelle1=4;
+        t+='.yy__OK1{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ok1 0.25s;  animation-iteration-count: 3;}';
         t+='@keyframes yy_bouge_bouton_ok1{';
         t+='   0% { transform: rotate(0)      translateY(0)     scale(1) }';
         t+='  25% { transform: rotate(90deg)  translateY(15px)  scale(' + (echelle1 / 2) + ') }';
@@ -2402,13 +2402,29 @@ class __ig1{
         t+='  75% { transform: rotate(270deg) translateY(15px)  scale(' + (echelle1 / 2) + ') }';
         t+=' 100% { transform: rotate(0)      translateY(0)     scale(1) }';
         t+='}';
-        t+='.yy__KO{color:#FF3030;background:linear-gradient(to bottom, #FF3030, #C01010);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ko1 0.25s;  animation-iteration-count: 3;}';
+        t+='.yy__KO1{color:#FF3030;background:linear-gradient(to bottom, #FF3030, #C01010);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ko1 0.25s;  animation-iteration-count: 3;}';
         t+='@keyframes yy_bouge_bouton_ko1{';
         t+='   0% { transform: rotate(0)      translateY(0)     scale(1) }';
         t+='  25% { transform: rotate(90deg)  translateY(15px)  scale(' + (echelle1 / 2) + ') }';
         t+='  50% { transform: rotate(180deg) translateY(-15px) scale(' + (echelle1 / 1) + ') }';
         t+='  75% { transform: rotate(270deg) translateY(15px)  scale(' + (echelle1 / 2) + ') }';
         t+=' 100% { transform: rotate(0)      translateY(0)     scale(1) }';
+        t+='}';
+        /* indice 2 pour une petite animation, par exemple, bouton copier */
+        let echelle2=0.1;
+        t+='.yy__OK2{color:#7FFF00;background:linear-gradient(to bottom, #7FFF00, #5DBB00);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ok2 0.15s;  animation-iteration-count: 1;}';
+        t+='@keyframes yy_bouge_bouton_ok2{';
+        t+='   0% { transform: rotate(0)      scale(1) }';
+        t+='  50% { transform: rotate(180deg) scale(' + (echelle2 / 1) + ') }';
+        t+=' 100% { transform: rotate(0)      scale(1) }';
+        t+='}';
+        t+='.yy__KO2{color:#FF3030;background:linear-gradient(to bottom, #FF3030, #C01010);box-shadow:0px 0px 15px lime;  animation: yy_bouge_bouton_ko2 0.15s;  animation-iteration-count: 1;}';
+        t+='@keyframes yy_bouge_bouton_ko2{';
+        t+='   0% { transform: rotate(0)      scale(1) }';
+        t+='  25% { transform: rotate(90deg)  scale(' + (echelle2 / 2) + ') }';
+        t+='  50% { transform: rotate(180deg) scale(' + (echelle2 / 1) + ') }';
+        t+='  75% { transform: rotate(270deg) scale(' + (echelle2 / 2) + ') }';
+        t+=' 100% { transform: rotate(0)      scale(1) }';
         t+='}';
         t+='h1,h2,h3,h4,h5,h6{text-shadow:#ccc 1px 1px 1px;text-align:center;color:red;margin:0 auto;}';
         t+='h1{font-size:1.6em;margin-bottom:0.6em;line-height:1.3em;text-wrap-style:balance;}';
@@ -3332,35 +3348,36 @@ class __ig1{
                     }
                 }
             }
-            if(elt.hasAttribute( 'data-indicateur_graphique' ) && elt.getAttribute( 'data-indicateur_graphique' ) !== ''){
+            if( 
+                  ( elt.hasAttribute( 'data-indicateur_graphique1' ) && elt.getAttribute( 'data-indicateur_graphique1' ) !== '' )
+               || ( elt.hasAttribute( 'data-indicateur_graphique2' ) && elt.getAttribute( 'data-indicateur_graphique2' ) !== '' )
+             ){
                 /*
+                  yy__OK1 ou yy__OK2
                 */
-                let la_classe_pour_okko='yy__OK';
+                let indice=1;
+                let le_data='data-indicateur_graphique1';
+                let tempo1=250;
+                if(elt.hasAttribute( 'data-indicateur_graphique2' )){
+                    indice=2;
+                    le_data='data-indicateur_graphique2';
+                    tempo1=150;
+                }
+                let la_classe_pour_okko='yy__OK' + indice;
                 if(__xva_param && __xva_param.hasOwnProperty( '__xst' ) && __xva_param.__xst !== 1){
-                    la_classe_pour_okko='yy__KO';
+                    la_classe_pour_okko='yy__KO' + indice;
                 }
-                let arg={"idtemp" : elt.getAttribute( 'data-indicateur_graphique' ) ,"la_classe_pour_okko" : la_classe_pour_okko};
-                let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
-                if(lst.length > 0){
-                    lst[0].classList.add( la_classe_pour_okko );
-                    setTimeout( function( arg ){
-                            let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
-                            let la_classe_pour_okko=arg.la_classe_pour_okko;
-                            if(lst.length > 0){
-                                /* console.log( 'indicateur on encore' , lst ); */
-                                lst[0].classList.add( la_classe_pour_okko );
-                                let arg1={"idtemp" : arg.idtemp ,"la_classe_pour_okko" : la_classe_pour_okko};
-                                setTimeout( function( arg1 ){
-                                        /* console.log( 'indicateur off' ); */
-                                        let la_classe_pour_okko=arg1.la_classe_pour_okko;
-                                        let lst=document.querySelectorAll( '[data-indicateur_graphique="' + arg.idtemp + '"]' );
-                                        if(lst.length > 0){
-                                            lst[0].classList.remove( la_classe_pour_okko );
-                                        }
-                                } , 250 , arg1 );
-                            }
-                    } , 50 , arg );
-                }
+                let arg={"idtemp" : elt.getAttribute( le_data ) ,"la_classe_pour_okko" : la_classe_pour_okko , le_data:le_data , tempo1:tempo1,elt:elt};
+                elt.classList.add( la_classe_pour_okko );
+                setTimeout( function( arg ){
+                        let la_classe_pour_okko=arg.la_classe_pour_okko;
+                        arg.elt.classList.add( la_classe_pour_okko );
+                        let arg1={"idtemp" : arg.idtemp ,"la_classe_pour_okko" : la_classe_pour_okko , le_data:arg.le_data, tempo1:arg.tempo1, elt:arg.elt};
+                        setTimeout( function( arg1 ){
+                                let la_classe_pour_okko=arg1.la_classe_pour_okko;
+                                arg1.elt.classList.remove( la_classe_pour_okko );
+                        } , arg1.tempo1 , arg1 );
+                } , 0 , arg );
             }
         }
         return({"__xst" : __xsu});

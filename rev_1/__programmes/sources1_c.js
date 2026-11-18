@@ -411,8 +411,8 @@ class sources1{
         */
         let boutons_avant1=[];
         if(tup.T0_chp_nom_source.toLowerCase().slice( -3 ) === '.js'){
-            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
-            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" data-indicateur_graphique2="1" title="convertir de rev versjs" >↧rev->js↧</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source),normaliser_le_rev(1))))"  data-indicateur_graphique2="2" title="convertir de js vers rev" >↥js->rev↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.htm'
                || tup.T0_chp_nom_source.toLowerCase().slice( -5 ) === '.html'
         ){
@@ -900,7 +900,12 @@ class sources1{
           boutons de la liste début
           =====================================================================================================
         */
-        lst+='<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + tup.T0_chx_dossier_id_source + ')))))">' + this.__ig1.les_svg.dossier + '</button>';
+        if(tup.T0_chx_dossier_id_source === null){
+            /* cas des extraits : pas de source */
+            lst+='<button class="yy_b1 yy__1 yy__1_inactif" disabled="true">' + this.__ig1.les_svg.dossier + '</button>';
+        }else{
+            lst+='<button class="yy_svg1 yy__1" rev_clic1="pm1(m1(n1(dossiers1),f1(page_modification1(chi_id_dossier(' + tup.T0_chx_dossier_id_source + ')))))">' + this.__ig1.les_svg.dossier + '</button>';
+        }
         lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
         lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.editer + '</button>';
         lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_source(' + tup.T0_chi_id_source + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';

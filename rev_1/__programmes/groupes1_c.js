@@ -119,13 +119,7 @@ class groupes1{
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_groupe , 'nom' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_groupe' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_0_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;
@@ -302,13 +296,7 @@ class groupes1{
         }
         let __test_0_1=this.__ig1.__fnts_c_et_s.test_du_nom_technique1( fo1.chp_nom_groupe , 'nom' );
         if(__test_0_1.__xst !== __xsu){
-            this.__ig1.ajoute_message( {"__xst" : __xer ,"__xme" : __test_0_1.__xme} );
-            this.__ig1.affiche_les_messages();
-            this.__ig1.retablir_les_boutons_masques();
-            try{
-                document.getElementById( 'chp_nom_groupe' ).focus();
-            } catch {}
-            return({"__xst" : __xsu});
+            return __test_0_1;
         }
         let __fo1={};
         __fo1[co1]=fo1;

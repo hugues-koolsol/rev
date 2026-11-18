@@ -40,48 +40,48 @@ class v2_menu_pour_acces_1{
         }
         /* ================== */
         if(this.__ig1.donnees_retournees.chi_id_utilisateur > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_11"   data-id_auto="46" data-id_menu="32" data-id_source="567" class="yy_svg1"  title="mes coordonnées" rev_clic1="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_11"   data-id_auto="46" data-id_menu="32" data-id_source="567" class="yy_svg1"  title="mes coordonnées" rev_clic1="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></button></li>`;
         }
         if(donnees_retournees.chi_id_projet === 1 ){
-            les_sous_menus[0]+=`<li><button  id="menu_12"   data-id_auto="84" data-id_menu="37" data-id_source="1027" class="yy_b1"  title="liste des paramètres" rev_clic1="m1(n1(parametres1),f1(entree_module()))">paramètres</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_12"   data-id_auto="84" data-id_menu="37" data-id_source="1027" class="yy_b1"  title="liste des paramètres" rev_clic1="m1(n1(parametres1),f1(entree_module()))">paramètres</button></li>`;
         }
         les_sous_menus[0]+=`<li data-separateur="1">organisation</li>`;
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_14"   data-id_auto="31" data-id_menu="14" data-id_source="565" class="yy_b1"  title="liste des groupes" rev_clic1="m1(n1(groupes1),f1(entree_module()))">groupes</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_14"   data-id_auto="31" data-id_menu="14" data-id_source="565" class="yy_b1"  title="liste des groupes" rev_clic1="m1(n1(groupes1),f1(entree_module()))">groupes</button></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_15"   data-id_auto="32" data-id_menu="15" data-id_source="556" class="yy_b1"  title="liste des métiers" rev_clic1="m1(n1(metiers1),f1(entree_module()))">métiers</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_15"   data-id_auto="32" data-id_menu="15" data-id_source="556" class="yy_b1"  title="liste des métiers" rev_clic1="m1(n1(metiers1),f1(entree_module()))">métiers</button></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_16"   data-id_auto="33" data-id_menu="25" data-id_source="558" class="yy_b1"  title="liste des accès" rev_clic1="m1(n1(acces1),f1(entree_module()))">accès</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_16"   data-id_auto="33" data-id_menu="25" data-id_source="558" class="yy_b1"  title="liste des accès" rev_clic1="m1(n1(acces1),f1(entree_module()))">accès</button></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_17"   data-id_auto="26" data-id_menu="18" data-id_source="561" class="yy_b1"  title="liste des autorisations" rev_clic1="m1(n1(autorisations1),f1(entree_module()))">autorisations</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_17"   data-id_auto="26" data-id_menu="18" data-id_source="561" class="yy_b1"  title="liste des autorisations" rev_clic1="m1(n1(autorisations1),f1(entree_module()))">autorisations</button></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_18"   data-id_auto="34" data-id_menu="19" data-id_source="563" class="yy_b1"  title="liste des menus" rev_clic1="m1(n1(menus1),f1(entree_module()))">menus</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_18"   data-id_auto="34" data-id_menu="19" data-id_source="563" class="yy_b1"  title="liste des menus" rev_clic1="m1(n1(menus1),f1(entree_module()))">menus</button></li>`;
         }
         if(donnees_retournees.chi_id_projet === 1 && donnees_retournees._CA_ == 1){
-            les_sous_menus[0]+=`<li><button  id="menu_19"   data-id_auto="35" data-id_menu="17" data-id_source="569" class="yy_b1"  title="liste des utilisateurs" rev_clic1="m1(n1(utilisateurs1),f1(entree_module()))">utilisateurs</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_19"   data-id_auto="35" data-id_menu="17" data-id_source="569" class="yy_b1"  title="liste des utilisateurs" rev_clic1="m1(n1(utilisateurs1),f1(entree_module()))">utilisateurs</button></li>`;
         }
         les_sous_menus[0]+=`<li data-separateur="1">outils génération</li>`;
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_21"   data-id_auto="36" data-id_menu="26" data-id_source="553" class="yy_b1"  title="générer des programmes" rev_clic1="m1(n1(x_ecran_generer_programmes1),f1(entree_module()))">générer</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_21"   data-id_auto="36" data-id_menu="26" data-id_source="553" class="yy_b1"  title="générer des programmes" rev_clic1="m1(n1(x_ecran_generer_programmes1),f1(entree_module()))">générer</button></li>`;
         }
         if(donnees_retournees.chi_id_projet > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_22"   data-id_auto="51" data-id_menu="30" data-id_source="572" class="yy_b1"  title="générer les souches" rev_clic1="m1(n1(x_ecran_generer_souches1),f1(entree_module()))">souches</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_22"   data-id_auto="51" data-id_menu="30" data-id_source="572" class="yy_b1"  title="générer les souches" rev_clic1="m1(n1(x_ecran_generer_souches1),f1(entree_module()))">souches</button></li>`;
         }
         les_sous_menus[0]+=`<li data-separateur="1">outils convertions</li>`;
-        les_sous_menus[0]+=`<li><button  id="menu_24"   data-id_auto="38" data-id_menu="3" data-id_source="520" class="yy_b1"  title="convertion de javascript " rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))">js</button></li>`;
-        les_sous_menus[0]+=`<li><button  id="menu_25"   data-id_auto="37" data-id_menu="2" data-id_source="521" class="yy_b1"  title="convertion de rev vers matrice" rev_clic1="m1(n1(x_ecran_rev_vers_matrice1),f1(entree_module()))">matrice</button></li>`;
-        les_sous_menus[0]+=`<li><button  id="menu_26"   data-id_auto="39" data-id_menu="21" data-id_source="519" class="yy_b1"  title="html" rev_clic1="m1(n1(x_ecran_rev_vers_html1),f1(entree_module()))">html</button></li>`;
-        les_sous_menus[0]+=`<li><button  id="menu_27"   data-id_auto="40" data-id_menu="4" data-id_source="522" class="yy_b1"  title="convertion de php" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(entree_module()))">php</button></li>`;
-        les_sous_menus[0]+=`<li><button  id="menu_28"   data-id_auto="41" data-id_menu="5" data-id_source="523" class="yy_b1"  title="convertion de sql" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(entree_module()))">sql</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_24"   data-id_auto="38" data-id_menu="3" data-id_source="520" class="yy_b1"  title="convertion de javascript " rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(entree_module()))">js</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_25"   data-id_auto="37" data-id_menu="2" data-id_source="521" class="yy_b1"  title="convertion de rev vers matrice" rev_clic1="m1(n1(x_ecran_rev_vers_matrice1),f1(entree_module()))">matrice</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_26"   data-id_auto="39" data-id_menu="21" data-id_source="519" class="yy_b1"  title="html" rev_clic1="m1(n1(x_ecran_rev_vers_html1),f1(entree_module()))">html</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_27"   data-id_auto="40" data-id_menu="4" data-id_source="522" class="yy_b1"  title="convertion de php" rev_clic1="m1(n1(x_ecran_rev_vers_php1),f1(entree_module()))">php</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_28"   data-id_auto="41" data-id_menu="5" data-id_source="523" class="yy_b1"  title="convertion de sql" rev_clic1="m1(n1(x_ecran_rev_vers_sql1),f1(entree_module()))">sql</button></li>`;
         if(this.__ig1.donnees_retournees.chi_id_utilisateur > 0){
-            les_sous_menus[0]+=`<li><button  id="menu_29"   data-id_auto="42" data-id_menu="6" data-id_source="518" class="yy_b1"  title="convertion de css" rev_clic1="m1(n1(x_ecran_rev_vers_css1),f1(entree_module()))">css</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_29"   data-id_auto="42" data-id_menu="6" data-id_source="518" class="yy_b1"  title="convertion de css" rev_clic1="m1(n1(x_ecran_rev_vers_css1),f1(entree_module()))">css</button></li>`;
         }
-        les_sous_menus[0]+=`<li><button  id="menu_30"   data-id_auto="44" data-id_menu="7" data-id_source="524" class="yy_b1"  title="convertion de textes" rev_clic1="m1(n1(x_ecran_rev_vers_txt1),f1(entree_module()))">txt</button></li>`;
-        les_sous_menus[0]+=`<li><button  id="menu_31"   data-id_auto="45" data-id_menu="27" data-id_source="571" class="yy_b1"  title="source vers programme" rev_clic1="m1(n1(x_ecran_source_vers_programme1),f1(entree_module()))">src->pgm</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_30"   data-id_auto="44" data-id_menu="7" data-id_source="524" class="yy_b1"  title="convertion de textes" rev_clic1="m1(n1(x_ecran_rev_vers_txt1),f1(entree_module()))">txt</button></li>`;
+        les_sous_menus[0]+=`<li><button id="menu_31"   data-id_auto="45" data-id_menu="27" data-id_source="571" class="yy_b1"  title="source vers programme" rev_clic1="m1(n1(x_ecran_source_vers_programme1),f1(entree_module()))">src->pgm</button></li>`;
         /* niveau 0 */
         if(les_sous_menus[0] !== ''){
             les_menu1+='<li><div data-separateur="0" data-libelle_noeud_menu1="0">admin</div>';

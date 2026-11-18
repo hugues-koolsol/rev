@@ -94,7 +94,7 @@ class revs1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1359=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -162,14 +162,18 @@ class revs1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        return(await this.filtre1( mat , d ));
+    async liste1( mat , d , __db1=null ){
+        if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
+        }
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================
     */
     moi='revs1';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

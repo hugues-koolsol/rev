@@ -559,6 +559,29 @@ class x_ecran_generer_programmes1{
     /*
       =============================================================================================================
     */
+    ajouter_specifites_champs_update2( obj_a_modifier , obj1 ){
+       if(obj1 !== undefined){
+           for( let i in obj1){
+               obj_a_modifier[i]=obj1[i];
+           }
+       }
+       return obj_a_modifier;
+    }
+    /*
+      =============================================================================================================
+    */
+    ajouter_specifites_champs_update1( obj1 ){
+       let src_client2='';
+       if(obj1 !== undefined){
+           for( let i in obj1){
+               src_client2+='"' + i +'" : ' + obj1[i] + ' ,';
+           }
+       }
+       return src_client2;
+    }
+    /*
+      =============================================================================================================
+    */
     générer_les_programmes( mat , d ){
         let src_client2='';
         let src_serveur_js2='';
@@ -813,6 +836,7 @@ class x_ecran_generer_programmes1{
         let liste_des_champs_condition_update=[];
         let liste_des_champs_visualisation_update=[];
         let champs_combinaison_update=[];
+        let specifites_champs_update={};
         let matu=null;
         if(ref_update !== ''){
             let objet_requete_update=this.__ig1.__liste_des_sql[ref_update];
@@ -868,6 +892,23 @@ class x_ecran_generer_programmes1{
                                     }
                                 }else if(matu[k][1] === 'session' && matu[k][2] === 'f' && matu[k][8] === 1 && matu[k + 1][2] === 'c'){
                                     liste_des_champs_condition_update[liste_des_champs_condition_update.length - 1].nom_variable_session=matu[k + 1][1];
+                                }
+                            }
+                        }else if(matu[j][1] === 'specifites_champs_update' && matu[j][2] === 'f'){
+                            for( let k=j + 1 ; k < lngumat ; k=matu[k][12] ){
+                                if(matu[k][1] !== '' && matu[k][1] !== '#' && matu[k][2] === 'f' ){
+                                    specifites_champs_update[matu[k][1]]={};
+                                    for( let l=k + 1 ; l < lngumat ; l=matu[l][12] ){
+                                        if(matu[l][1] !== '' && matu[l][1] !== '#' && matu[l][2] === 'f' && matu[l][8] === 1 && matu[l+1][2] === 'c' ){
+                                            if(matu[l+1][4] === 1){
+                                                specifites_champs_update[matu[k][1]][matu[l][1]]='\'' + matu[l+1][1].replace(/\\/g,'\\\\').replace(/\'/g,'\\\'') + '\'';
+                                            }else if(matu[l+1][4] === 0){
+                                                specifites_champs_update[matu[k][1]][matu[l][1]]=matu[l+1][1];
+                                            }else{
+                                                debugger
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }else if(matu[j][1] === 'champs_visualisation_update' && matu[j][2] === 'f'){
@@ -3613,6 +3654,7 @@ class x_ecran_generer_programmes1{
                         if(obj_champ.meta.description_du_champ){
                             src_client2+='            "description_du_champ" : "' + obj_champ.meta.description_du_champ.replace( /"/g , '\\"' ) + '" ,';
                         }
+                        src_client2+=this.ajouter_specifites_champs_update1( specifites_champs_update[obj_champ.nom_du_champ] );
                         src_client2+='        } );\r\n';
                     }else if(obj_champ.genre_objet_du_champ.chp_espece_genre === 'TEXT'){
                         let hauteur_par_defaut=10;
@@ -3651,6 +3693,7 @@ class x_ecran_generer_programmes1{
                         if(les_suggestions.length > 0){
                             a_transmettre['les_suggestions']=les_suggestions;
                         }
+                        this.ajouter_specifites_champs_update2( a_transmettre , specifites_champs_update[obj_champ.nom_du_champ] );
                         src_client2+='        /*\r\n';
                         src_client2+='          =====================================================================================\r\n';
                         src_client2+='        */\r\n';

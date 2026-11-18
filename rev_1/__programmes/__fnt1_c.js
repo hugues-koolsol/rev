@@ -4945,8 +4945,8 @@ class __fnt1{
         }
         o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</button>';
         o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</button>';
-        o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
-        o1+='<button class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
+        o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" data-indicateur_graphique2="copier_tout1" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
+        o1+='<button class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" data-indicateur_graphique2="copier_selection1" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
         o1+='<button class="yy_svg1 yy__0  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</button>';
         o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</button>';
         o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</button>\r\n';

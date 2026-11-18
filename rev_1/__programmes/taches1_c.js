@@ -68,7 +68,7 @@ class taches1{
             }
         }
         this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
-        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xdv" data-indicateur_graphique="réordonner" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(réordonner1())))" title="réordonner" >' + this.__ig1.les_svg.reordonner + '</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xdv" data-indicateur_graphique2="réordonner" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(réordonner1())))" title="réordonner" >' + this.__ig1.les_svg.reordonner + '</button>';
     }
     /*
       =============================================================================================================
@@ -508,13 +508,13 @@ class taches1{
         lst+='<button class="yy_svg1 yy__2" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_confirmation_supprimer1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.poubelle + '</button>';
         lst+='<button class="yy_svg1 yy__3" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_modification1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.editer + '</button>';
         lst+='<button class="yy_b1 yy__1" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + tup.T0_chi_id_tache + '),valeur(99)))))"  title="99">99</button>';
-        lst+='<button class="yy_b1 yy__1" data-indicateur_graphique="0' + this.moi + '_' + tup.T0_chi_id_tache + '" rev_clic1="';
+        lst+='<button class="yy_b1 yy__1" rev_clic1="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(priorite_a(chi_id_tache(' + tup.T0_chi_id_tache + '),valeur(0)))))';
         lst+='" title="0">00</button>';
-        lst+='<button class="yy_b1 yy__4" data-indicateur_graphique="+1' + this.moi + '_' + tup.T0_chi_id_tache + '" rev_clic1="';
+        lst+='<button class="yy_b1 yy__4" rev_clic1="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(ajouter_01_a_la_tache(chi_id_tache(' + tup.T0_chi_id_tache + ')))))';
         lst+='" title="+1">+1</button>';
-        lst+='<button class="yy_b1 yy__4" data-indicateur_graphique="-1' + this.moi + '_' + tup.T0_chi_id_tache + '" rev_clic1="';
+        lst+='<button class="yy_b1 yy__4" rev_clic1="';
         lst+='pm1(m1(n1(' + this.moi + '),f1(retrancher_01(chi_id_tache(' + tup.T0_chi_id_tache + ')))))';
         lst+='"  title="-1">-1</button>';
         lst+='<button class="yy_svg1 yy__4" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(page_duplication1(chi_id_tache(' + tup.T0_chi_id_tache + ')))))">' + this.__ig1.les_svg.dupliquer + '</button>';
