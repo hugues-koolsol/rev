@@ -167,36 +167,6 @@ class taches1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async tests_avant_creer( mat , d , fo1 , __db1 ){
         return({"__xst" : __xsu});
     }
@@ -210,6 +180,12 @@ class taches1{
       =============================================================================================================
     */
     async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
+    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -307,11 +283,7 @@ class taches1{
             }
             return({"__xst" : __xer ,"__xme" : tt1113.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1112.__xva[0] , __db1 );
-        if(__taam.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __taam.__xme});
-        }
+        /* let __taam=await this.tests_et_actions_apres_modifier(mat , d , fo1 , tt1112.__xva[0] , __db1); */
         await __db1.exec( 'COMMIT;' );
         this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( fo1.che__nur_tache , 10 ) + 1;
         if(retour_a_la_liste === true){
@@ -349,10 +321,7 @@ class taches1{
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1112 ' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1112.__xva[0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
+        /* let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt1112.__xva[0] , __db1); */
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1112;
         return({"__xst" : __xsu});
     }
@@ -391,11 +360,7 @@ class taches1{
         }
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1112.__xva[0] , __db1 );
-        if(tas.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
+        /* let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1112.__xva[0] , __db1 ); */
         let criteres_1114={
              /*  */
             "chi_id_tache" : fo1.chi_id_tache
@@ -412,11 +377,7 @@ class taches1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1114.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1112.__xva[0] , __db1 );
-        if(__aavc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
-        }
+        /* let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1112.__xva[0] , __db1 ); */
         /*  */
         await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
@@ -443,6 +404,10 @@ class taches1{
         let tt1112=await this.recup_chi_id_tache( {"T0_chi_id_tache" : chi_id_tache} , __db1 );
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1112 ' + this.__ig1.nl2() + ']'});
+        }
+        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1112.__xva[0] , __db1 );
+        if(obj_tst1.__xst !== __xsu){
+            return obj_tst1;
         }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1112;
         return({"__xst" : __xsu});

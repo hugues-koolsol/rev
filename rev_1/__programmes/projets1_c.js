@@ -5,7 +5,7 @@ class projets1{
       ref_insert=1377;
       ref_update=1384;
       ref_delete=1382;
-      masquer_le_bouton_modifier_et_retour=1;
+      masquer_le_bouton_modifier1=1;
       masquer_le_bouton_ajouter_seulement=1;
     */
     moi='projets1';
@@ -210,7 +210,7 @@ class projets1{
         cmd+=')';
         let obj2=this.__ig1.__rev1.rev_tm( cmd );
         let jso=JSON.stringify( obj2.__xva );
-        document.getElementById( 'vv_bouton_modifier_et_retour_' + this.moi + '' ).style.display='none';
+        document.getElementById( 'vv_bouton_modifier_seulement_' + this.moi + '' ).style.display='none';
         o1+='      <input type="hidden" id="__mat_liste_si_ok" value="' + this.__ig1.fi2( jso ) + '" />';
         o1+='<div class="yy__bdp1"></div>';
         this.__ig1.maj_inner1( 'vv_ecran_modification_zone_contenu' , o1 );

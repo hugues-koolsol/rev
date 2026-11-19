@@ -3348,10 +3348,11 @@ class __ig1{
                     }
                 }
             }
-            if( 
-                  ( elt.hasAttribute( 'data-indicateur_graphique1' ) && elt.getAttribute( 'data-indicateur_graphique1' ) !== '' )
-               || ( elt.hasAttribute( 'data-indicateur_graphique2' ) && elt.getAttribute( 'data-indicateur_graphique2' ) !== '' )
-             ){
+            if(elt.hasAttribute( 'data-indicateur_graphique1' )
+                       && elt.getAttribute( 'data-indicateur_graphique1' ) !== ''
+                   || elt.hasAttribute( 'data-indicateur_graphique2' )
+                       && elt.getAttribute( 'data-indicateur_graphique2' ) !== ''
+            ){
                 /*
                   yy__OK1 ou yy__OK2
                 */
@@ -3367,12 +3368,12 @@ class __ig1{
                 if(__xva_param && __xva_param.hasOwnProperty( '__xst' ) && __xva_param.__xst !== 1){
                     la_classe_pour_okko='yy__KO' + indice;
                 }
-                let arg={"idtemp" : elt.getAttribute( le_data ) ,"la_classe_pour_okko" : la_classe_pour_okko , le_data:le_data , tempo1:tempo1,elt:elt};
+                let arg={"idtemp" : elt.getAttribute( le_data ) ,"la_classe_pour_okko" : la_classe_pour_okko ,"le_data" : le_data ,"tempo1" : tempo1 ,"elt" : elt};
                 elt.classList.add( la_classe_pour_okko );
                 setTimeout( function( arg ){
                         let la_classe_pour_okko=arg.la_classe_pour_okko;
                         arg.elt.classList.add( la_classe_pour_okko );
-                        let arg1={"idtemp" : arg.idtemp ,"la_classe_pour_okko" : la_classe_pour_okko , le_data:arg.le_data, tempo1:arg.tempo1, elt:arg.elt};
+                        let arg1={"idtemp" : arg.idtemp ,"la_classe_pour_okko" : la_classe_pour_okko ,"le_data" : arg.le_data ,"tempo1" : arg.tempo1 ,"elt" : arg.elt};
                         setTimeout( function( arg1 ){
                                 let la_classe_pour_okko=arg1.la_classe_pour_okko;
                                 arg1.elt.classList.remove( la_classe_pour_okko );

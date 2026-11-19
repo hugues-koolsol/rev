@@ -424,6 +424,12 @@ class projets1{
     /*
       =============================================================================================================
     */
+    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async recup_chi_id_projet( criteres_select_1375 , __db1 ){
         let tt1375=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -641,6 +647,10 @@ class projets1{
         let tt1375=await this.recup_chi_id_projet( {"T0_chi_id_projet" : chi_id_projet} , __db1 );
         if(tt1375.__xst !== __xsu || tt1375.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1375 ' + this.__ig1.nl2() + ']'});
+        }
+        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1375.__xva[0] , __db1 );
+        if(obj_tst1.__xst !== __xsu){
+            return obj_tst1;
         }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1375;
         return({"__xst" : __xsu});

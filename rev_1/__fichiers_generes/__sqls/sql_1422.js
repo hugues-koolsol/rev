@@ -42,7 +42,7 @@ class sql_1422{
             throw new Error( tete + '"' + tup.n_che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
         }
         if( ! ( 0 === tup.n_che_est_extrait_source || 1 === tup.n_che_est_extrait_source ) ){
-            throw new Error( tete + '"' + tup.n_che_est_extrait_source + '" pour "est fragment" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.n_che_est_extrait_source + '" pour "est extrait" '  + this.__ig1.nl2() );
         }
         if( ! ( 0 === tup.n_che_est_verrouille_source || 1 === tup.n_che_est_verrouille_source ) ){
             throw new Error( tete + '"' + tup.n_che_est_verrouille_source + '" pour "vérrouillé" '  + this.__ig1.nl2() );
@@ -67,7 +67,7 @@ class sql_1422{
         }
         /* test 0,1 sur le champ "che_est_extrait_source" */
         if(!( tup.n_che_est_extrait_source === 0 ||  tup.n_che_est_extrait_source === 1 ) ){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
+            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "est extrait" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
         /* test 0,1 sur le champ "che_binaire_source" */
         if(!( tup.n_che_binaire_source === 0 ||  tup.n_che_binaire_source === 1 ) ){

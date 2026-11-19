@@ -39,7 +39,7 @@ class sql_1420{
             throw new Error( tete + '"' + tup.che_pour_util_source + '" pour "pour util" '  + this.__ig1.nl2() );
         }
         if( ! ( 0 === tup.che_est_extrait_source || 1 === tup.che_est_extrait_source ) ){
-            throw new Error( tete + '"' + tup.che_est_extrait_source + '" pour "est fragment" '  + this.__ig1.nl2() );
+            throw new Error( tete + '"' + tup.che_est_extrait_source + '" pour "est extrait" '  + this.__ig1.nl2() );
         }
         this.__ig1.options_generales.erreur_controlee=false;
         return({"__xst" : __xsu});
@@ -77,7 +77,7 @@ class sql_1420{
 
                 /* test 0,1 sur le champ "che_est_extrait_source" */
                 if(!( tup.che_est_extrait_source === 0 ||  tup.che_est_extrait_source === 1 )){
-                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est fragment" doit être renseignée [' + this.__ig1.nl2() + ']'});
+                    return({"__xst" : __xer ,"__xme" : this.moi + ' : le champ "est extrait" doit être renseignée [' + this.__ig1.nl2() + ']'});
                 }
                 /* test 0,1 sur le champ "che_pour_util_source" */
                 if(!( tup.che_pour_util_source === 0 ||  tup.che_pour_util_source === 1 )){

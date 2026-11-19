@@ -126,6 +126,12 @@ class utilisateurs1{
     /*
       =============================================================================================================
     */
+    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async recup_chi_id_utilisateur( criteres_select_1121 , __db1 ){
         let tt1121=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -292,8 +298,10 @@ class utilisateurs1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1121 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1121.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1123={
@@ -308,13 +316,16 @@ class utilisateurs1{
         /*sql_inclure_fin*/ 1123 , criteres_1123 , __db1 );
         /*  */
         if(tt1123.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1123.__xme});
         }
         let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1121.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             return(await this.liste1( mat1 , 1 , __db1 ));
@@ -339,6 +350,10 @@ class utilisateurs1{
         let tt1121=await this.recup_chi_id_utilisateur( {"T0_chi_id_utilisateur" : chi_id_utilisateur} , __db1 );
         if(tt1121.__xst !== __xsu || tt1121.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1121 ' + this.__ig1.nl2() + ']'});
+        }
+        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1121.__xva[0] , __db1 );
+        if(obj_tst1.__xst !== __xsu){
+            return obj_tst1;
         }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1121;
         return({"__xst" : __xsu});

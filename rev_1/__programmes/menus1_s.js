@@ -241,6 +241,12 @@ class menus1{
     /*
       =============================================================================================================
     */
+    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
+        return({"__xst" : __xsu});
+    }
+    /*
+      =============================================================================================================
+    */
     async recup_chi_id_menu( criteres_select_1146 , __db1 ){
         let tt1146=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -289,17 +295,13 @@ class menus1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'});
-            }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
         }
-        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'});
-            }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
         }
         let retour_a_la_liste=false;
         const l01=mat.length;
@@ -431,8 +433,10 @@ class menus1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1146 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
+        await __db1.exec( 'BEGIN TRANSACTION;' );
         let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1146.__xva[0] , __db1 );
         if(tas.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tas.__xme});
         }
         let criteres_1149={
@@ -447,13 +451,16 @@ class menus1{
         /*sql_inclure_fin*/ 1149 , criteres_1149 , __db1 );
         /*  */
         if(tt1149.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1149.__xme});
         }
         let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1146.__xva[0] , __db1 );
         if(__aavc.__xst === __xer){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : __aavc.__xme});
         }
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
             return(await this.liste1( mat1 , 1 , __db1 ));
@@ -478,6 +485,10 @@ class menus1{
         let tt1146=await this.recup_chi_id_menu( {"T0_chi_id_menu" : chi_id_menu} , __db1 );
         if(tt1146.__xst !== __xsu || tt1146.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1146 ' + this.__ig1.nl2() + ']'});
+        }
+        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1146.__xva[0] , __db1 );
+        if(obj_tst1.__xst !== __xsu){
+            return obj_tst1;
         }
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1146;
         return({"__xst" : __xsu});
@@ -516,17 +527,13 @@ class menus1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        if(fo1.cht_condition_menu !== null && fo1.cht_condition_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_condition_menu );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "condition au format rev" n\'est pas dans un format rev valide'});
-            }
+        let __test_4_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_condition_menu , 'condition au format rev' );
+        if(__test_4_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_4_1.__xme});
         }
-        if(fo1.cht_initialisation_menu !== null && fo1.cht_initialisation_menu !== ''){
-            let obj1=this.__ig1.__rev1.rev_tm( fo1.cht_initialisation_menu );
-            if(obj1.__xst !== __xsu){
-                return({"__xst" : __xer ,"__xme" : 'le contenu de "initialisation" n\'est pas dans un format rev valide'});
-            }
+        let __test_6_1=this.__ig1.__fnts_c_et_s.test_est_au_format_rev( fo1.cht_initialisation_menu , 'initialisation' );
+        if(__test_6_1.__xst !== __xsu){
+            return({"__xst" : __xer ,"__xme" : __test_6_1.__xme});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );

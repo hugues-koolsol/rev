@@ -43,7 +43,7 @@ class v2_menu_pour_acces_1{
             les_sous_menus[0]+=`<li><button id="menu_11"   data-id_auto="46" data-id_menu="32" data-id_source="567" class="yy_svg1"  title="mes coordonnées" rev_clic1="m1(n1(x_ecran_coordonnees1),f1(entree_module()))"><svg class="rev_svg_dans_menu1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50  100 100"><g style="stroke:rgb(255, 255, 255);fill:transparent;stroke-width:8;" transform="   "><circle cx="0" cy="-10" r="34"></circle><path d=" M -43 46 C -30 20 30 20 43 46 "></path><circle cx="-10" cy="-15" r="5"></circle><circle cx="10" cy="-15" r="5"></circle><path d=" M -10 0 C -15 10 15 10 10 0"></path><path d=" M 0 -10 V 0"></path><path d=" M -15 -15 H -30"></path><path d=" M 15 -15 H 30"></path><path d=" M -5 -15 c 0 -5 10 -5 10 0"></path></g><path d=" M -50 -50 h 100 v 100 h -100 v -100 " stroke="rgb(0, 0, 0)" stroke-width="0" fill="transparent" stroke-linejoin="round" stroke-linecap="round" transform="" style="stroke:black;fill:transparent;stroke-width:0.1;"></path></svg></button></li>`;
         }
         if(donnees_retournees.chi_id_projet === 1 ){
-            les_sous_menus[0]+=`<li><button id="menu_12"   data-id_auto="84" data-id_menu="37" data-id_source="1027" class="yy_b1"  title="liste des paramètres" rev_clic1="m1(n1(parametres1),f1(entree_module()))">paramètres</button></li>`;
+            les_sous_menus[0]+=`<li><button id="menu_12"   data-id_auto="84" data-id_menu="37" data-id_source="1027" class="yy_b1"  title="liste des paramètres" rev_clic1="m1(n1(parametres1),f1(entree_module(null)))">paramètres</button></li>`;
         }
         les_sous_menus[0]+=`<li data-separateur="1">organisation</li>`;
         if(donnees_retournees.chi_id_projet > 0){

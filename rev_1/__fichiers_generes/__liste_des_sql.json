@@ -328,7 +328,7 @@
     "cht_commentaire_requete": "menus",
     "chp_type_requete": "insert",
     "che_est_souche_requete": 1,
-    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chp_titre_menu`),:chp_titre_menu),\n      affecte(champ(`chx_autorisation_menu`),:chx_autorisation_menu),\n      affecte(champ(`chp_methode_menu`),:chp_methode_menu),\n      affecte(champ(`cht_libelle_menu`),:cht_libelle_menu),\n      affecte(champ(`cht_condition_menu`),:cht_condition_menu),\n      affecte(champ(`cht_condition_js_menu`),:cht_condition_js_menu),\n      affecte(champ(`cht_initialisation_menu`),:cht_initialisation_menu)\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,base(b1)))\n      )\n   )\n)  ",
+    "cht_rev_requete": "insérer(\n   valeurs(\n      affecte(champ(`chp_titre_menu`),:chp_titre_menu),\n      affecte(champ(`chx_autorisation_menu`),:chx_autorisation_menu),\n      affecte(champ(`chp_methode_menu`),:chp_methode_menu),\n      affecte(champ(`cht_libelle_menu`),:cht_libelle_menu),\n      affecte(champ(`cht_condition_menu`),:cht_condition_menu),\n      affecte(champ(`cht_condition_js_menu`),:cht_condition_js_menu),\n      affecte(champ(`cht_initialisation_menu`),:cht_initialisation_menu)\n   ),\n   specifites_champs_insert(\n      chp_methode_menu(\n         #(specifite insert 1),\n         boutons_avant1(var_boutons_avant1),\n         ajouter_le_div1('vv_liste_des_methodes')\n      )\n   ),\n   provenance(\n      table_reference(\n         source(nom_de_la_table(tbl_menus,base(b1)))\n      )\n   )\n)  ",
     "chp_table_reference_requete": "tbl_menus",
     "che_base_reference_requete": 1
   },
