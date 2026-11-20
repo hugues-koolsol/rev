@@ -167,30 +167,6 @@ class taches1{
     /*
       =============================================================================================================
     */
-    async tests_avant_creer( mat , d , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async recup_chi_id_tache( criteres_select_1112 , __db1 ){
         let tt1112=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -405,10 +381,7 @@ class taches1{
         if(tt1112.__xst !== __xsu || tt1112.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1112 ' + this.__ig1.nl2() + ']'});
         }
-        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1112.__xva[0] , __db1 );
-        if(obj_tst1.__xst !== __xsu){
-            return obj_tst1;
-        }
+        /* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1112.__xva[0] , __db1 ) */
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1112;
         return({"__xst" : __xsu});
     }
@@ -449,10 +422,7 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : __test_2_1.__xme});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
-        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
-        if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __tac.__xme});
-        }
+        /* let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 ); */
         let criteres_1111={"donnees" : [{"chp_texte_tache" : fo1.chp_texte_tache ,"che_priorite_tache" : fo1.che_priorite_tache}]};
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
@@ -477,11 +447,7 @@ class taches1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1111.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1111['nouvel_id'] , fo1 , __db1 );
-        if(__aapc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
-        }
+        /* let __aapc=await this.action_apres_creer( mat , d , tt1111['nouvel_id'] , fo1 , __db1 ); */
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );

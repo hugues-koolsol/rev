@@ -14,54 +14,6 @@ class grandeurs1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_creer( mat , d , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async recup_chi_id_grandeur( criteres_select_1202 , __db1 ){
         let tt1202=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -113,18 +65,14 @@ class grandeurs1{
                 retour_a_la_liste=true;
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let criteres_select_1202={"T0_chi_id_grandeur" : fo1.chi_id_grandeur};
         let tt1202=await this.recup_chi_id_grandeur( criteres_select_1202 , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1202 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1202.__xva[0] , __db1 );
-        if(__aetavm.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
-        }
+        /* let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1202.__xva[0] , __db1 ); */
         let criteres_1204={
              /*  */
             "c_chi_id_grandeur" : fo1.chi_id_grandeur ,
@@ -154,17 +102,13 @@ class grandeurs1{
             }
             return({"__xst" : __xer ,"__xme" : tt1204.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1202.__xva[0] , __db1 );
-        if(__taam.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __taam.__xme});
-        }
+        /* let __taam=await this.tests_et_actions_apres_modifier(mat , d , fo1 , tt1202.__xva[0] , __db1); */
         await __db1.exec( 'COMMIT;' );
         this.__ig1.donnees_retournees.__xva['__nouveau_nur']=parseInt( fo1.che__nur_grandeur , 10 ) + 1;
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
                 let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-                await this.filtre1( mat1 , 1 , __db1 );
+                await this.liste1( mat1 , 1 , __db1 );
             }
             return({"__xst" : __xsu});
         }
@@ -190,16 +134,13 @@ class grandeurs1{
             return({"__xst" : __xer ,"__xme" : '[' + this.__ig1.nl2() + ']'});
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1202=await this.recup_chi_id_grandeur( {"T0_chi_id_grandeur" : chi_id_grandeur} , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1202 ' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1202.__xva[0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
+        /* let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt1202.__xva[0] , __db1); */
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1202;
         return({"__xst" : __xsu});
     }
@@ -216,7 +157,7 @@ class grandeurs1{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1202=await this.recup_chi_id_grandeur( {"T0_chi_id_grandeur" : chi_id_grandeur} , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : duplication impossible [1202 ' + this.__ig1.nl2() + ']'});
@@ -231,16 +172,14 @@ class grandeurs1{
         let nom_formulaire=this.__ig1.donnees_recues.__xva['__co1'];
         let fo1=this.__ig1.donnees_recues.__xva['__fo1'][nom_formulaire];
         /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1202=await this.recup_chi_id_grandeur( {"T0_chi_id_grandeur" : fo1.chi_id_grandeur} , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1202 ' + this.__ig1.nl2() + ']'});
         }
         /*  */
-        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1202.__xva[0] , __db1 );
-        if(tas.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
+        await __db1.exec( 'BEGIN TRANSACTION;' );
+        /* let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1202.__xva[0] , __db1 ); */
         let criteres_1205={
              /*  */
             "chi_id_grandeur" : fo1.chi_id_grandeur
@@ -253,16 +192,15 @@ class grandeurs1{
         /*sql_inclure_fin*/ 1205 , criteres_1205 , __db1 );
         /*  */
         if(tt1205.__xst !== __xsu){
+            await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1205.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1202.__xva[0] , __db1 );
-        if(__aavc.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
-        }
+        /* let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1202.__xva[0] , __db1 ); */
         /*  */
+        await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            return(await this.liste1( mat1 , 1 , __db1 ));
         }
         return({"__xst" : __xsu});
     }
@@ -280,11 +218,12 @@ class grandeurs1{
         if(chi_id_grandeur === 0){
             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         let tt1202=await this.recup_chi_id_grandeur( {"T0_chi_id_grandeur" : chi_id_grandeur} , __db1 );
         if(tt1202.__xst !== __xsu || tt1202.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1202 ' + this.__ig1.nl2() + ']'});
         }
+        /* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1202.__xva[0] , __db1 ) */
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1202;
         return({"__xst" : __xsu});
     }
@@ -323,11 +262,8 @@ class grandeurs1{
         if(__obj_tests.__xst !== __xsu){
             return __obj_tests;
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
-        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
-        if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __tac.__xme});
-        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
+        /* let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 ); */
         let criteres_1203={
             "donnees" : [{
                         "chx_parametre_grandeur" : fo1.chx_parametre_grandeur ,
@@ -363,15 +299,11 @@ class grandeurs1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1203.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1203['nouvel_id'] , fo1 , __db1 );
-        if(__aapc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
-        }
+        /* let __aapc=await this.action_apres_creer( mat , d , tt1203['nouvel_id'] , fo1 , __db1 ); */
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
-            await this.filtre1( mat1 , 1 , __db1 );
+            await this.liste1( mat1 , 1 , __db1 );
         }else{
             await this.page_modification1( mat , d , tt1203['nouvel_id'] , __db1 );
         }
@@ -389,7 +321,7 @@ class grandeurs1{
           pm1( m1(n1('+this.moi+'),f1(page_creer1())) )
         */
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
@@ -434,7 +366,7 @@ class grandeurs1{
             }
         }
         if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+            __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         }
         let tt1201=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -484,6 +416,7 @@ class grandeurs1{
             /*sql_inclure_fin*/ 1201 , criteres_1201 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_grandeur`" : "DESC"};
+        /* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1201.__xva , __db1 ); */
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
@@ -498,11 +431,11 @@ class grandeurs1{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
+    async liste1( mat , d , __db1=null ){
         if(!this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
             this.__ig1.donnees_recues.__xva['__complements_sous_liste']={};
         }
-        return(await this.filtre1( mat , d ));
+        return(await this.filtre1( mat , d , __db1 ));
     }
     /*
       =============================================================================================================

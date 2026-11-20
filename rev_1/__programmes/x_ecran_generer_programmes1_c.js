@@ -1927,7 +1927,8 @@ class x_ecran_generer_programmes1{
             'sous_liste2',
             'liste1',
             'constructor',
-            'ajoute_criteres_sous_liste2'
+            'ajoute_criteres_sous_liste2' ,
+            'traitements_apres_liste1'
         ];
         let liste_des_methodes_serveur_normalisees_present_ou_absent={};
         for( let i=0 ; i < liste_des_methodes_serveur_normalisees.length ; i++ ){
@@ -2083,6 +2084,7 @@ class x_ecran_generer_programmes1{
             extrait_trouve=-1;
             for( let i=0 ; i < tableau_des_extraits_serveur.length ; i++ ){
                 if(tableau_des_extraits_serveur[i].nom_methode_serveur === 'tests_avant_creer'){
+                    liste_des_methodes_serveur_normalisees_present_ou_absent['tests_avant_creer']=1;
                     extrait_trouve=i;
                     break;
                 }
@@ -2090,20 +2092,21 @@ class x_ecran_generer_programmes1{
             if(extrait_trouve >= 0){
                 src_serveur_js2+=tableau_des_extraits_serveur[extrait_trouve].src_js;
             }else{
-                src_serveur_js2+='    /*\r\n';
-                src_serveur_js2+='      =============================================================================================================\r\n';
-                src_serveur_js2+='    */\r\n';
-                src_serveur_js2+='    async tests_avant_creer( mat , d , fo1 , __db1 ){\r\n';
-                src_serveur_js2+='        return{__xst:__xsu};\r\n';
-                src_serveur_js2+='    }\r\n';
+                /*#
+                  src_serveur_js2+='    /' + '*\r\n';
+                  src_serveur_js2+='      =============================================================================================================\r\n';
+                  src_serveur_js2+='    *' + '/\r\n';
+                  src_serveur_js2+='    async tests_avant_creer( mat , d , fo1 , __db1 ){\r\n';
+                  src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                  src_serveur_js2+='    }\r\n';
+                */
             }
-            /*
-            */
             /*
             */
             extrait_trouve=-1;
             for( let i=0 ; i < tableau_des_extraits_serveur.length ; i++ ){
                 if(tableau_des_extraits_serveur[i].nom_methode_serveur === 'action_apres_creer'){
+                    liste_des_methodes_serveur_normalisees_present_ou_absent['action_apres_creer']=1;
                     extrait_trouve=i;
                     break;
                 }
@@ -2111,12 +2114,14 @@ class x_ecran_generer_programmes1{
             if(extrait_trouve >= 0){
                 src_serveur_js2+=tableau_des_extraits_serveur[extrait_trouve].src_js;
             }else{
-                src_serveur_js2+='    /*\r\n';
-                src_serveur_js2+='      =============================================================================================================\r\n';
-                src_serveur_js2+='    */\r\n';
-                src_serveur_js2+='    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){\r\n';
-                src_serveur_js2+='        return{__xst:__xsu};\r\n';
-                src_serveur_js2+='    }\r\n';
+                /*#
+                  src_serveur_js2+='    /' + '*\r\n';
+                  src_serveur_js2+='      =============================================================================================================\r\n';
+                  src_serveur_js2+='    *' + '/\r\n';
+                  src_serveur_js2+='    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){\r\n';
+                  src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                  src_serveur_js2+='    }\r\n';
+                */
             }
         }
         if(est_une_grandeur !== 1){
@@ -2124,6 +2129,7 @@ class x_ecran_generer_programmes1{
                 extrait_trouve=-1;
                 for( let i=0 ; i < tableau_des_extraits_serveur.length ; i++ ){
                     if(tableau_des_extraits_serveur[i].nom_methode_serveur === 'actions_et_tests_apres_page_voir'){
+                        liste_des_methodes_serveur_normalisees_present_ou_absent['actions_et_tests_apres_page_voir']=1;
                         extrait_trouve=i;
                         break;
                     }
@@ -2131,17 +2137,20 @@ class x_ecran_generer_programmes1{
                 if(extrait_trouve >= 0){
                     src_serveur_js2+=tableau_des_extraits_serveur[extrait_trouve].src_js;
                 }else{
-                    src_serveur_js2+='    /*\r\n';
-                    src_serveur_js2+='      =============================================================================================================\r\n';
-                    src_serveur_js2+='    */\r\n';
-                    src_serveur_js2+='    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){\r\n';
-                    src_serveur_js2+='        return{__xst:__xsu};\r\n';
-                    src_serveur_js2+='    }\r\n';
+                    /*#
+                      src_serveur_js2+='    /' + '*\r\n';
+                      src_serveur_js2+='      =============================================================================================================\r\n';
+                      src_serveur_js2+='    *' + '/\r\n';
+                      src_serveur_js2+='    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){\r\n';
+                      src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                      src_serveur_js2+='    }\r\n';
+                    */
                 }
                 if(ref_delete !== ''){
                     extrait_trouve=-1;
                     for( let i=0 ; i < tableau_des_extraits_serveur.length ; i++ ){
                         if(tableau_des_extraits_serveur[i].nom_methode_serveur === 'tests_avant_page_confirmation_supprimer'){
+                            liste_des_methodes_serveur_normalisees_present_ou_absent['tests_avant_page_confirmation_supprimer']=1;
                             extrait_trouve=i;
                             break;
                         }
@@ -2149,12 +2158,14 @@ class x_ecran_generer_programmes1{
                     if(extrait_trouve >= 0){
                         src_serveur_js2+=tableau_des_extraits_serveur[extrait_trouve].src_js;
                     }else{
-                        src_serveur_js2+='    /*\r\n';
-                        src_serveur_js2+='      =============================================================================================================\r\n';
-                        src_serveur_js2+='    */\r\n';
-                        src_serveur_js2+='    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){\r\n';
-                        src_serveur_js2+='        return{__xst:__xsu};\r\n';
-                        src_serveur_js2+='    }\r\n';
+                        /*#
+                          src_serveur_js2+='    /' + '*\r\n';
+                          src_serveur_js2+='      =============================================================================================================\r\n';
+                          src_serveur_js2+='    *' + '/\r\n';
+                          src_serveur_js2+='    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){\r\n';
+                          src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                          src_serveur_js2+='    }\r\n';
+                        */
                     }
                 }
             }
@@ -3086,11 +3097,15 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
             src_serveur_js2+='        await __db1.exec(\'BEGIN TRANSACTION;\');\r\n';
-            src_serveur_js2+='        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
-            src_serveur_js2+='        if(__aetavm.__xst !== __xsu){\r\n';
-            src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});\r\n';
-            src_serveur_js2+='        }\r\n';
+            if(liste_des_methodes_serveur_normalisees_present_ou_absent['actions_et_tests_avant_modifier'] === 1){
+                src_serveur_js2+='        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
+                src_serveur_js2+='        if(__aetavm.__xst !== __xsu){\r\n';
+                src_serveur_js2+='            await __db1.exec(\'ROLLBACK;\');\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});\r\n';
+                src_serveur_js2+='        }\r\n';
+            }else{
+                src_serveur_js2+='        /' + '* let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt' + ref_select + '.__xva[0] , __db1 ); *' + '/\r\n';
+            }
             src_serveur_js2+='        let criteres_' + ref_update + '={\r\n';
             src_serveur_js2+='                /**/\r\n';
             for( let i=0 ; i < liste_des_champs_condition_update.length ; i++ ){
@@ -3673,7 +3688,7 @@ class x_ecran_generer_programmes1{
                     }
                 }else{
                     if(indice_methode_page_modification1 > 0){
-                        if(liste_des_fonctions_pages1['page_modification1'].hasOwnProperty( 'ajouter__avant__' + obj_champ.nom_du_champ )){
+                        if(liste_des_fonctions_pages1['page_modification1'] && liste_des_fonctions_pages1['page_modification1'].hasOwnProperty( 'ajouter__avant__' + obj_champ.nom_du_champ )){
                             src_client2+='\r\n        /' + '*\r\n    ==========\r\n      extrait page_modification *' + '/\r\n' + liste_des_fonctions_pages1['page_modification1']['ajouter__avant__' + obj_champ.nom_du_champ];
                         }
                     }
@@ -3873,7 +3888,7 @@ class x_ecran_generer_programmes1{
                     }
                 }
                 if(indice_methode_page_modification1 > 0){
-                    if(liste_des_fonctions_pages1['page_modification1'].hasOwnProperty( 'ajouter__après__' + obj_champ.nom_du_champ )){
+                    if(liste_des_fonctions_pages1['page_modification1'] && liste_des_fonctions_pages1['page_modification1'].hasOwnProperty( 'ajouter__après__' + obj_champ.nom_du_champ )){
                         src_client2+='\r\n        /' + '*\r\n    ==========\r\n      extrait page_modification *' + '/\r\n' + liste_des_fonctions_pages1['page_modification1']['ajouter__après__' + obj_champ.nom_du_champ];
                     }
                 }
@@ -4402,7 +4417,6 @@ class x_ecran_generer_programmes1{
                 }
                 if(indice_methode_page_confirmation_supprimer1 > 0){
                     if(liste_des_fonctions_page_confirmation_supprimer1.hasOwnProperty( 'ajouter__après__' + obj_champ.nom_du_champ )){
-                        debugger;
                         let osr1=this.__ig1.__rev1.m2t( mat_cs2 , liste_des_fonctions_page_confirmation_supprimer1['ajouter__après__' + obj_champ.nom_du_champ] );
                         if(osr1.__xst !== __xsu){
                             return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
@@ -4875,10 +4889,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        };\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iij( ' + ref_select + ' , critere_' + ref_select + ' , __db1 );\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'page_voir1\']=tt' + ref_select + ';\r\n';
-            src_serveur_js2+='        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
-            src_serveur_js2+='        if(__aetapv.__xst !== __xsu){\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});\r\n';
-            src_serveur_js2+='        }\r\n';
+            if(liste_des_methodes_serveur_normalisees_present_ou_absent['actions_et_tests_apres_page_voir'] === 1){
+                src_serveur_js2+='        let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
+                src_serveur_js2+='        if(__aetapv.__xst !== __xsu){\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aetapv.__xme});\r\n';
+                src_serveur_js2+='        }\r\n';
+            }else{
+                src_serveur_js2+='        /' + '* let __aetapv=await this.actions_et_tests_apres_page_voir( mat , d , tt' + ref_select + '.__xva[0] , __db1 ); *' + '/\r\n';
+            }
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='    }\r\n';
             src_serveur_js2+='\r\n';
@@ -4971,10 +4989,14 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        if(tt' + ref_select + '.__xst !== __xsu || tt' + ref_select + '.__xva.length !== 1){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : suppression impossible [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
-            src_serveur_js2+='        if(obj_tst1.__xst !== __xsu){\r\n';
-            src_serveur_js2+='            return obj_tst1;\r\n';
-            src_serveur_js2+='        }\r\n';
+            if(liste_des_methodes_serveur_normalisees_present_ou_absent['tests_avant_page_confirmation_supprimer'] === 1){
+                src_serveur_js2+='        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt' + ref_select + '.__xva[0] , __db1 );\r\n';
+                src_serveur_js2+='        if(obj_tst1.__xst !== __xsu){\r\n';
+                src_serveur_js2+='            return obj_tst1;\r\n';
+                src_serveur_js2+='        }\r\n';
+            }else{
+                src_serveur_js2+='        /' + '* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt' + ref_select + '.__xva[0] , __db1 ) *' + '/;\r\n';
+            }
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'page_confirmation_supprimer1\']=tt' + ref_select + ';\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
             src_serveur_js2+='    }\r\n';
@@ -5368,10 +5390,14 @@ class x_ecran_generer_programmes1{
                     src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
                 }
             }
-            src_serveur_js2+='        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );\r\n';
-            src_serveur_js2+='        if(__tac.__xst !== __xsu){\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __tac.__xme});\r\n';
-            src_serveur_js2+='        }\r\n';
+            if( liste_des_methodes_serveur_normalisees_present_ou_absent['tests_avant_creer'] === 1 ){
+                src_serveur_js2+='        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );\r\n';
+                src_serveur_js2+='        if(__tac.__xst !== __xsu){\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __tac.__xme});\r\n';
+                src_serveur_js2+='        }\r\n';
+            }else{
+                src_serveur_js2+='        /' + '* let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 ); *' + '/\r\n';
+            }
             src_serveur_js2+='        let criteres_' + ref_insert + '={\r\n';
             src_serveur_js2+='            donnees :[{\r\n';
             for( let i=0 ; i < liste_des_champs_insert.length ; i++ ){
@@ -5425,11 +5451,15 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : tt' + ref_insert + '.__xme + \' l\\\'insertion a échoué [\' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        let __aapc=await this.action_apres_creer( mat , d , tt' + ref_insert + '[\'nouvel_id\'] , fo1 , __db1 );\r\n';
-            src_serveur_js2+='        if(__aapc.__xst === __xer){\r\n';
-            src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
-            src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aapc.__xme});\r\n';
-            src_serveur_js2+='        }\r\n';
+            if(liste_des_methodes_serveur_normalisees_present_ou_absent['action_apres_creer']===1){
+                src_serveur_js2+='        let __aapc=await this.action_apres_creer( mat , d , tt' + ref_insert + '[\'nouvel_id\'] , fo1 , __db1 );\r\n';
+                src_serveur_js2+='        if(__aapc.__xst === __xer){\r\n';
+                src_serveur_js2+='            await __db1.exec( \'ROLLBACK;\' );\r\n';
+                src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : __aapc.__xme});\r\n';
+                src_serveur_js2+='        }\r\n';
+            }else{
+                src_serveur_js2+='        /' + '* let __aapc=await this.action_apres_creer( mat , d , tt' + ref_insert + '[\'nouvel_id\'] , fo1 , __db1 ); *' + '/\r\n';
+            }
             src_serveur_js2+='        await __db1.exec(\'COMMIT;\');\r\n';
             src_serveur_js2+='        if(retour_a_la_liste===true && fo1.__mat_liste_si_ok !== \'\'){\r\n';
             src_serveur_js2+='            let mat1=JSON.parse( fo1.__mat_liste_si_ok );\r\n';
@@ -5575,6 +5605,29 @@ class x_ecran_generer_programmes1{
             }
         }
         if(ref_liste_ecran !== '' && pour_sous_liste_uniquement === 0){
+         
+         
+            extrait_trouve=-1;
+            for( let i=0 ; i < tableau_des_extraits_serveur.length ; i++ ){
+                if(tableau_des_extraits_serveur[i].nom_methode_serveur === 'traitements_apres_liste1'){
+                    liste_des_methodes_serveur_normalisees_present_ou_absent['traitements_apres_liste1']=1;
+                    extrait_trouve=i;
+                    break;
+                }
+            }
+            if(extrait_trouve >= 0){
+                src_serveur_js2+=tableau_des_extraits_serveur[extrait_trouve].src_js;
+            }else{
+                /*#
+                  src_serveur_js2+='    /'+'*\r\n';
+                  src_serveur_js2+='      =============================================================================================================\r\n';
+                  src_serveur_js2+='    *'+'/\r\n';
+                  src_serveur_js2+='    async traitements_apres_liste1(mat , d , fo1 , __xva_apres , __db1){\r\n';
+                  src_serveur_js2+='        return{__xst:__xsu};\r\n';
+                  src_serveur_js2+='    }\r\n';
+                */
+            }
+         
             /* est_une_grandeur */
             src_serveur_js2+='    /*\r\n';
             src_serveur_js2+='      =============================================================================================================\r\n';
@@ -5680,6 +5733,15 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        }\r\n';
             }
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__champs_sortie_pour_tri1\']=' + JSON.stringify( tab_tri_liste1 ) + ';\r\n';
+            if(liste_des_methodes_serveur_normalisees_present_ou_absent['traitements_apres_liste1'] === 1){
+                src_serveur_js2+='        let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt' + ref_liste_ecran + '.__xva , __db1 );\r\n';
+                src_serveur_js2+='        if(tapl1.__xst !== __xsu){\r\n';
+                src_serveur_js2+='            return tapl1;\r\n';
+                src_serveur_js2+='        }\r\n';
+            }else{
+                src_serveur_js2+='        /' + '* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt' + ref_liste_ecran + '.__xva , __db1 ); *' + '/\r\n';
+            }
+            
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__nbMax\']=__nbMax;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__debut\']=__debut;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'__num_page\']=__num_page;\r\n';
@@ -6437,7 +6499,7 @@ class x_ecran_generer_programmes1{
                           =====================================================================
                         */
                         if(indice_methode_page_modification1 > 0){
-                            if(liste_des_fonctions_pages1['page_creer1'].hasOwnProperty( 'ajouter__avant__' + obj_champ.nom_du_champ )){
+                            if(liste_des_fonctions_pages1['page_creer1'] && liste_des_fonctions_pages1['page_creer1'].hasOwnProperty( 'ajouter__avant__' + obj_champ.nom_du_champ )){
                                 debugger;
                                 src_client2+='\r\n        /' + '*\r\n    ==========\r\n      extrait page_creer *' + '/\r\n' + liste_des_fonctions_pages1['page_creer1']['ajouter__avant__' + obj_champ.nom_du_champ];
                             }

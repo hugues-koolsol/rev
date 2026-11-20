@@ -1185,12 +1185,6 @@ class sources1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
       =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
@@ -1239,42 +1233,6 @@ class sources1{
                 }
             }
         }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_creer( mat , d , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -1362,11 +1320,7 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1419 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1419.__xva[0] , __db1 );
-        if(__aetavm.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
-        }
+        /* let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1419.__xva[0] , __db1 ); */
         let criteres_1422={
              /*  */
             "c_chi_id_source" : fo1.chi_id_source ,
@@ -1451,10 +1405,7 @@ class sources1{
         if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1419.__xva[0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
+        /* let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt1419.__xva[0] , __db1); */
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1419;
         return({"__xst" : __xsu});
     }
@@ -1493,11 +1444,7 @@ class sources1{
         }
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1419.__xva[0] , __db1 );
-        if(tas.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
+        /* let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1419.__xva[0] , __db1 ); */
         let criteres_1421={
              /*  */
             "chi_id_source" : fo1.chi_id_source
@@ -1513,11 +1460,7 @@ class sources1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1421.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1419.__xva[0] , __db1 );
-        if(__aavc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
-        }
+        /* let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1419.__xva[0] , __db1 ); */
         /*  */
         await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
@@ -1545,6 +1488,7 @@ class sources1{
         if(tt1419.__xst !== __xsu || tt1419.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1419 ' + this.__ig1.nl2() + ']'});
         }
+        /* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1419.__xva[0] , __db1 ) */
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1419;
         return({"__xst" : __xsu});
     }
@@ -1590,10 +1534,7 @@ class sources1{
             return({"__xst" : __xer ,"__xme" : __test_1_1.__xme});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
-        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
-        if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __tac.__xme});
-        }
+        /* let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 ); */
         let criteres_1420={
             "donnees" : [{
                         "chx_dossier_id_source" : fo1.chx_dossier_id_source === '' ? ( null ) : ( fo1.chx_dossier_id_source ) ,
@@ -1632,11 +1573,7 @@ class sources1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1420.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1420['nouvel_id'] , fo1 , __db1 );
-        if(__aapc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
-        }
+        /* let __aapc=await this.action_apres_creer( mat , d , tt1420['nouvel_id'] , fo1 , __db1 ); */
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
@@ -1769,6 +1706,7 @@ class sources1{
             /*sql_inclure_fin*/ 1418 , criteres_1418 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chx_dossier_id_source`" : "ASC" ,"`T0`.`chp_nom_source`" : "ASC" ,"`T0`.`chi_id_source`" : "ASC"};
+        /* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1418.__xva , __db1 ); */
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

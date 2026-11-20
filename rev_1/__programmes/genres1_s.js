@@ -392,12 +392,6 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
       =========================== extrait =========================================================================
     */
     async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
@@ -405,12 +399,6 @@ class genres1{
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -434,12 +422,6 @@ class genres1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-    */
-    async tests_avant_creer( mat , d , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
       =========================== extrait =========================================================================
     */
     async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
@@ -447,12 +429,6 @@ class genres1{
         if(obj.__xst !== __xsu){
             return({"__xst" : __xer ,"__xme" : obj.__xme});
         }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -564,11 +540,7 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1330 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1330.__xva[0] , __db1 );
-        if(__aetavm.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
-        }
+        /* let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1330.__xva[0] , __db1 ); */
         let criteres_1331={
              /*  */
             "c_chi_id_genre" : fo1.chi_id_genre ,
@@ -665,10 +637,7 @@ class genres1{
         if(tt1330.__xst !== __xsu || tt1330.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1330 ' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1330.__xva[0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
+        /* let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt1330.__xva[0] , __db1); */
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1330;
         return({"__xst" : __xsu});
     }
@@ -759,6 +728,7 @@ class genres1{
         if(tt1330.__xst !== __xsu || tt1330.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1330 ' + this.__ig1.nl2() + ']'});
         }
+        /* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1330.__xva[0] , __db1 ) */
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1330;
         return({"__xst" : __xsu});
     }
@@ -845,10 +815,7 @@ class genres1{
             return({"__xst" : __xer ,"__xme" : __test_13_1.__xme});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
-        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
-        if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __tac.__xme});
-        }
+        /* let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 ); */
         let criteres_1329={
             "donnees" : [{
                         "chp_nom_genre" : fo1.chp_nom_genre ,
@@ -1034,6 +1001,7 @@ class genres1{
             /*sql_inclure_fin*/ 1328 , criteres_1328 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`che_ordre_genre`" : "ASC" ,"`T0`.`chi_id_genre`" : "DESC"};
+        /* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1328.__xva , __db1 ); */
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

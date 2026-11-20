@@ -34,12 +34,6 @@ class revs1{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async recup_chi_id_rev( criteres_select_1344 , __db1 ){
         let tt1344=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -148,6 +142,7 @@ class revs1{
             /*sql_inclure_fin*/ 1359 , criteres_1359 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_rev`" : "ASC"};
+        /* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1359.__xva , __db1 ); */
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

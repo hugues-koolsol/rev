@@ -279,6 +279,12 @@ class sources1{
                 this.filtres.liste1[i]=jso[i]??this.tableau_des_filtres.liste1[i].défaut;
             }
         }
+        this.vv_ecran_liste_boutons_avant='';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron1()))" title="compiler" >compiler cette liste en cron</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
+        if(this.__ig1.chi_id_projet >= 3){
+            this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xal" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre_dans_les_sources()))" title="remplacer une chaîne par une autre">remplacer</button>';
+        }
     }
     /*
       =============================================================================================================
@@ -412,7 +418,7 @@ class sources1{
         let boutons_avant1=[];
         if(tup.T0_chp_nom_source.toLowerCase().slice( -3 ) === '.js'){
             boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_rev_source),zone_resultat(cht_genere_source))))" data-indicateur_graphique2="1" title="convertir de rev versjs" >↧rev->js↧</button>' );
-            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source),normaliser_le_rev(1))))"  data-indicateur_graphique2="2" title="convertir de js vers rev" >↥js->rev↥</button>' );
+            boutons_avant1.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_genere_source),zone_resultat(cht_rev_source),normaliser_le_rev(1))))" data-indicateur_graphique2="2" title="convertir de js vers rev" >↥js->rev↥</button>' );
         }else if(tup.T0_chp_nom_source.toLowerCase().slice( -4 ) === '.htm'
                || tup.T0_chp_nom_source.toLowerCase().slice( -5 ) === '.html'
         ){
@@ -468,6 +474,15 @@ class sources1{
         } );
         /*
           =====================================================================================================
+          extrait page_modification 
+        */
+        let boutons_avant2=[
+            /*  */
+            '<button rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_rev_source),zone_resultat(cht_condition_js_source))))" class="yy_b1 yy__3" title="convertir en js">↧rev->js↧</button>',
+            '<button rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_source),zone_resultat(cht_condition_rev_source))))" class="yy_b1 yy__1" title="convertir en rev" >↥js->rev↥</button>'
+        ];
+        /*
+          =====================================================================================================
         */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_source" ,
@@ -476,11 +491,7 @@ class sources1{
             "rows" : 3 ,
             "cols" : 50 ,
             "format_du_source" : 1 ,
-            "boutons_avant1" : [
-                /*  */
-                '<button rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_rev_source),zone_resultat(cht_condition_js_source))))" class="yy_b1 yy__3" title="convertir en js">↧rev->js↧</button>',
-                '<button rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_source),zone_resultat(cht_condition_rev_source))))" class="yy_b1 yy__1" title="convertir en rev" >↥js->rev↥</button>'
-            ]
+            "boutons_avant1" : boutons_avant2
         } );
         /*
           =====================================================================================================
@@ -844,12 +855,6 @@ class sources1{
                 this.__ig1.affiche_les_messages();
                 return({"__xst" : __xsu});
             }
-        }
-        this.vv_ecran_liste_boutons_avant='';
-        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(compiler_cette_liste_de_js_en_cron1()))" title="compiler" >compiler cette liste en cron</button>';
-        this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
-        if(this.__ig1.chi_id_projet >= 3){
-            this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xal" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_une_chaine_par_une_autre_dans_les_sources()))" title="remplacer une chaîne par une autre">remplacer</button>';
         }
         let o1='';
         let initialisation_fait=false;

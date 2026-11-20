@@ -1883,30 +1883,6 @@ class dossiers1{
     /*
       =============================================================================================================
     */
-    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_creer( mat , d , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     async recup_chi_id_dossier( criteres_select_1386 , __db1 ){
         let tt1386=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
@@ -2091,11 +2067,7 @@ class dossiers1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1410.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1386.__xva[0] , __db1 );
-        if(__aavc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
-        }
+        /* let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1386.__xva[0] , __db1 ); */
         /*  */
         await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
@@ -2108,9 +2080,6 @@ class dossiers1{
       =============================================================================================================
     */
     async page_confirmation_supprimer1( mat , d ){
-        /*
-          afr test de dépendance et répertoire non vide
-        */
         let chi_id_dossier=0;
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -2126,6 +2095,7 @@ class dossiers1{
         if(tt1386.__xst !== __xsu || tt1386.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1386 ' + this.__ig1.nl2() + ']'});
         }
+        /* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1386.__xva[0] , __db1 ) */
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1386;
         return({"__xst" : __xsu});
     }
@@ -2165,10 +2135,7 @@ class dossiers1{
             return({"__xst" : __xer ,"__xme" : __test_0_1.__xme});
         }
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
-        let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 );
-        if(__tac.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : __tac.__xme});
-        }
+        /* let __tac=await this.tests_avant_creer( mat , d , fo1 , __db1 ); */
         let criteres_1378={
             "donnees" : [{"chp_nom_dossier" : fo1.chp_nom_dossier === '' ? ( null ) : ( fo1.chp_nom_dossier ) ,"chx_parent_dossier" : fo1.chx_parent_dossier}]
         };
@@ -2189,11 +2156,7 @@ class dossiers1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1378.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1378['nouvel_id'] , fo1 , __db1 );
-        if(__aapc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
-        }
+        /* let __aapc=await this.action_apres_creer( mat , d , tt1378['nouvel_id'] , fo1 , __db1 ); */
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
@@ -2219,6 +2182,34 @@ class dossiers1{
         }
         /* on peut initialiser une valeur ici, par exemple : */
         /* this.__ig1.donnees_retournees.__xva['xxxxx']='xxxxx'; */
+        return({"__xst" : __xsu});
+    }
+    /*
+      =========================== extrait =========================================================================
+    */
+    async traitements_apres_liste1( mat , d , fo1 , __xva_apres , __db1 ){
+        let m=await import( './dossiers1_s.js' );
+        let o=new m['dossiers1']( this.__ig1 );
+        let le_chemin={};
+        for(let i in __xva_apres){
+            le_chemin=await o.construire_chemin( __xva_apres[i]['T0_chi_id_dossier'] , __db1 );
+            if(le_chemin.__xst !== __xsu){
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : ' erreur sur la construction du chemin ' + __xva_apres[i]['T0_chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
+                    });
+            }
+            __xva_apres[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+            le_chemin=await o.construire_chemin( __xva_apres[i]['T0_chx_parent_dossier'] , __db1 );
+            if(le_chemin.__xst !== __xsu){
+                return({
+                        "__xst" : __xer ,
+                        "__xme" : ' erreur sur la construction du chemin ' + __xva_apres[i]['T0_chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
+                    });
+            }
+            __xva_apres[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+        }
+        await this.liste_des_fidos( 1 , __db1 );
         return({"__xst" : __xsu});
     }
     /*
@@ -2306,28 +2297,10 @@ class dossiers1{
             /*sql_inclure_fin*/ 1389 , criteres_1389 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chx_parent_dossier`" : "ASC" ,"`T0`.`chp_nom_dossier`" : "ASC"};
-        let m=await import( './dossiers1_s.js' );
-        let o=new m['dossiers1']( this.__ig1 );
-        let le_chemin={};
-        for(let i in tt1389.__xva){
-            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0_chi_id_dossier'] , __db1 );
-            if(le_chemin.__xst !== __xsu){
-                return({
-                        "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0_chi_id_dossier'] + '[' + this.__ig1.nl2() + ']'
-                    });
-            }
-            tt1389.__xva[i]['nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
-            le_chemin=await o.construire_chemin( tt1389.__xva[i]['T0_chx_parent_dossier'] , __db1 );
-            if(le_chemin.__xst !== __xsu){
-                return({
-                        "__xst" : __xer ,
-                        "__xme" : ' erreur sur la construction du chemin ' + tt1389.__xva[i]['T0_chx_parent_dossier'] + '[' + this.__ig1.nl2() + ']'
-                    });
-            }
-            tt1389.__xva[i]['parent_nom_chemin_relatif2']=le_chemin.__xva.nom_chemin_relatif2;
+        let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1389.__xva , __db1 );
+        if(tapl1.__xst !== __xsu){
+            return tapl1;
         }
-        await this.liste_des_fidos( 1 , __db1 );
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;
