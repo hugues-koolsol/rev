@@ -29,7 +29,6 @@ class autorisations2{
     */
     filtres={};
     __variables_module={};
-    vv_ecran_liste_boutons_avant='';
     /*
       =============================================================================================================
     */
@@ -68,9 +67,6 @@ class autorisations2{
         }else{
             sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }
-        /*
-          this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-        */
     }
     /*
       =============================================================================================================
@@ -78,13 +74,6 @@ class autorisations2{
     entree_module( mat , d ){
         this.__ig1.recupere_liste_initiale( mat , d , this );
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
-    */
-    sous_liste2( mat , d , le_colis1 ){
-        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
       =============================================================================================================
@@ -120,7 +109,7 @@ class autorisations2{
                 libelle2+='       / ' + this.__ig1.fi2( tup.T1_chp_nom_acces );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</div>';
+                lst+='  <button class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</button>';
                 lst+='</td>';
                 /*
                 */

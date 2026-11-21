@@ -75,13 +75,6 @@ class metiers2{
     }
     /*
       =============================================================================================================
-      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
-    */
-    sous_liste2( mat , d , le_colis1 ){
-        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
-    }
-    /*
-      =============================================================================================================
     */
     zones_sous_liste2( mat , d , le_colis1 ){
         let o1='';

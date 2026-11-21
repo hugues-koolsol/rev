@@ -227,7 +227,7 @@ class requetes1{
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
-        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+        this.__ig1.maj_htm2( 'vv_ecran_modification_zone_complement' , o1 );
     }
     /*
       =============================================================================================================
@@ -639,7 +639,7 @@ class requetes1{
             return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -722,12 +722,12 @@ class requetes1{
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_requete' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
-            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
+            this.__ig1.maj_htm1( a , this.LISTE_DES_ELEMENTS_GERES );
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , this.zones_liste1( le_colis1 ) );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});

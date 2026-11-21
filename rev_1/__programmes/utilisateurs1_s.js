@@ -55,18 +55,6 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_et_actions_apres_modifier( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
       =========================== extrait =========================================================================
     */
     async actions_et_tests_avant_modifier( mat , d , fo1 , __xva_avant , __db1 ){
@@ -88,18 +76,6 @@ class utilisateurs1{
         return({"__xst" : __xsu});
     }
     /*
-      =============================================================================================================
-    */
-    async test_avant_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_apres_supprimer( mat , d , fo1 , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
       =========================== extrait =========================================================================
     */
     async tests_avant_creer( mat , d , fo1 , __db1 ){
@@ -109,24 +85,6 @@ class utilisateurs1{
         if(fo1.chi_id_utilisateur !== 2 && fo1.chx_acces_utilisateur === 2){
             return({"__xst" : __xer ,"__xme" : ' seul admin peut avoir l\'accès 2 [' + this.__ig1.nl2() + ']'});
         }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , fo1 , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_page_confirmation_supprimer( mat , d , __xva_avant , __db1 ){
         return({"__xst" : __xsu});
     }
     /*
@@ -216,11 +174,7 @@ class utilisateurs1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1122.__xme});
         }
-        let __taam=await this.tests_et_actions_apres_modifier( mat , d , fo1 , tt1121.__xva[0] , __db1 );
-        if(__taam.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __taam.__xme});
-        }
+        /* let __taam=await this.tests_et_actions_apres_modifier(mat , d , fo1 , tt1121.__xva[0] , __db1); */
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true){
             if(fo1.__mat_liste_si_ok){
@@ -257,10 +211,7 @@ class utilisateurs1{
         if(tt1121.__xst !== __xsu || tt1121.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : modification impossible [1121 ' + this.__ig1.nl2() + ']'});
         }
-        let aetam=await this.actions_et_tests_apres_page_modifications( mat , d , tt1121.__xva[0] , __db1 );
-        if(aetam.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : aetam.__xme});
-        }
+        /* let aetam=await this.actions_et_tests_apres_page_modifications(mat , d , tt1121.__xva[0] , __db1); */
         this.__ig1.donnees_retournees.__xva['page_modification1']=tt1121;
         return({"__xst" : __xsu});
     }
@@ -299,11 +250,7 @@ class utilisateurs1{
         }
         /*  */
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1121.__xva[0] , __db1 );
-        if(tas.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
+        /* let tas=await this.test_avant_supprimer( mat , d , fo1 , tt1121.__xva[0] , __db1 ); */
         let criteres_1123={
              /*  */
             "chi_id_utilisateur" : fo1.chi_id_utilisateur
@@ -319,11 +266,7 @@ class utilisateurs1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1123.__xme});
         }
-        let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1121.__xva[0] , __db1 );
-        if(__aavc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aavc.__xme});
-        }
+        /* let __aavc=await this.actions_apres_supprimer( mat , d , fo1 , tt1121.__xva[0] , __db1 ); */
         /*  */
         await __db1.exec( 'COMMIT;' );
         if(fo1.__mat_liste_si_ok !== ''){
@@ -351,10 +294,7 @@ class utilisateurs1{
         if(tt1121.__xst !== __xsu || tt1121.__xva.length !== 1){
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : suppression impossible [1121 ' + this.__ig1.nl2() + ']'});
         }
-        let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1121.__xva[0] , __db1 );
-        if(obj_tst1.__xst !== __xsu){
-            return obj_tst1;
-        }
+        /* let obj_tst1=await this.tests_avant_page_confirmation_supprimer( mat , d , tt1121.__xva[0] , __db1 ) */
         this.__ig1.donnees_retournees.__xva['page_confirmation_supprimer1']=tt1121;
         return({"__xst" : __xsu});
     }
@@ -423,11 +363,7 @@ class utilisateurs1{
             await __db1.exec( 'ROLLBACK;' );
             return({"__xst" : __xer ,"__xme" : tt1120.__xme + ' l\'insertion a échoué [' + this.__ig1.nl2() + ']'});
         }
-        let __aapc=await this.action_apres_creer( mat , d , tt1120['nouvel_id'] , fo1 , __db1 );
-        if(__aapc.__xst === __xer){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aapc.__xme});
-        }
+        /* let __aapc=await this.action_apres_creer( mat , d , tt1120['nouvel_id'] , fo1 , __db1 ); */
         await __db1.exec( 'COMMIT;' );
         if(retour_a_la_liste === true && fo1.__mat_liste_si_ok !== ''){
             let mat1=JSON.parse( fo1.__mat_liste_si_ok );
@@ -550,6 +486,7 @@ class utilisateurs1{
             /*sql_inclure_fin*/ 1119 , criteres_1119 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`chi_id_utilisateur`" : "DESC"};
+        /* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1119.__xva , __db1 ); */
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

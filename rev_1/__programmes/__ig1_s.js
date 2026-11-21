@@ -1646,9 +1646,9 @@ class __ig1{
                 this.donnees_retournees.__xsi[__xer].push( le_message );
             }else{
                 if(e.message.indexOf( 'CHECK constraint' ) >= 0){
-                    this.donnees_retournees.__xsi[__xer].push( 'SQ : une contrainte sur les données n\'est pas satisfaite' );
+                    this.donnees_retournees.__xsi[__xer].push( 'SQ ' + numero_de_requete + ' : une contrainte sur les données n\'est pas satisfaite' );
                 }else{
-                    this.donnees_retournees.__xsi[__xer].push( 'SQ : Il y a une erreur dans le programme, veuillez appeler la maintenance ' + e.message.substr( 0 , 20 ) );
+                    this.donnees_retournees.__xsi[__xer].push( 'SQ ' + numero_de_requete + ' : Il y a une erreur dans le programme, veuillez appeler la maintenance ' + e.message.substr( 0 , 20 ) );
                 }
             }
         }else if(this.__deverminage === 1){

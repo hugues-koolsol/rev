@@ -159,9 +159,9 @@ class __fnt1{
     /*
       =============================================================================================================
     */
-    async supprimer_fichier_sans_sauvegarde( chemin , chemin_en_absolu=true ){
+    async supprimer_fichier_sans_sauvegarde( chemin , chemin_est_complet=true ){
         const currentWorkingDirectory=Deno.cwd();
-        if(chemin_en_absolu === false){
+        if(chemin_est_complet === false){
             chemin=currentWorkingDirectory.replace( /\\/g , '/' ) + chemin;
         }
         try{

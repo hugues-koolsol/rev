@@ -12,12 +12,6 @@ const __xac=/* actions */'__xac';
 */
 class metiers2{
     /*
-      =============================================================================================================
-    */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
       =========================== extrait =========================================================================
     */
     ajoute_criteres_sous_liste2( criteres_xxxx ){

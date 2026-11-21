@@ -14,8 +14,8 @@ class acces2{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_voir( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
+    ajoute_criteres_sous_liste2( criteres_xxxx ){
+        /* voir exemple dans groupes2_s.js */
     }
     /*
       =============================================================================================================
@@ -42,12 +42,18 @@ class acces2{
                 }
             }
         }
-        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         const __nbMax=40;
         let __num_page=0;
         let liste2={};
         let criteres_xxxx={};
         criteres_xxxx['quantitee']=__nbMax;
+        this.ajoute_criteres_sous_liste2( criteres_xxxx );
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
         if(true || contexte === 'nom_du_contexte'){
             /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
             liste2=await this.__ig1.generique_sous_liste2( mat , d , 1219 , criteres_xxxx , __nbMax , __db1 );
@@ -61,14 +67,9 @@ class acces2{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        return(await this.filtre1( mat , d ));
-    }
-    /*
-      =============================================================================================================
-    */
     moi='acces2';
     __ig1=null;
+    __variables_module={};
     /*
       =============================================================================================================
     */

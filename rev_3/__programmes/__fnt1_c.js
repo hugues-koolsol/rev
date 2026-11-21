@@ -1525,7 +1525,7 @@ class __fnt1{
         o1+='<label for="' + ldc1.nom_du_champ + '_libelle" class="yy_lib1">';
         o1+='    <div data-libelle_de="' + ldc1.nom_du_champ + '" style="display:flex;margin:auto 3px;' + (valeur === '' ? ( 'opacity:0.5;' ) : ( 'font-weight:bold;' )) + '">' + ldc1.libelle_du_champ + ' :</div>';
         o1+='    <input type="hidden" id="' + ldc1.nom_du_champ + '" value="' + valeur + '" />';
-        o1+='    <div id="' + ldc1.nom_du_champ + '_libelle" style="display:flex;">';
+        o1+='    <div id="' + ldc1.nom_du_champ + '_libelle" style="display:flex;align-items:center;">';
         o1+=this.__ig1.rendu_lst_grandeur1( ldc1.chi_id_basedd , valeur );
         o1+='    </div>';
         o1+=this.__ig1.lien_parent2( ldc1.nom_du_lien , ldc1.nom_du_champ , ldc1.nom_du_champ + '_libelle' , that.moi , ldc1.chi_id_parametre , ldc1.libelle_du_champ , ldc1.pouvoir_annuler );
@@ -1569,7 +1569,7 @@ class __fnt1{
         }
         if(!(ldc1.__contexte === 'supprimer1' || ldc1.__contexte === 'voir1')){
             o1+='        <input  type="hidden" id="' + ldc1.nom_du_champ + '" value="' + this.__ig1.fi2( valeur ) + '" />';
-            o1+='        <div id="' + ldc1.nom_du_champ + '_libelle" style="display:inline-flex;">';
+            o1+='        <div id="' + ldc1.nom_du_champ + '_libelle" style="display:inline-flex;align-items:center;">';
             if(valeur !== ''){
                 o1+=this.__ig1.rendu_lst_grandeur1( ldc1.chi_id_basedd , valeur );
             }
@@ -3862,16 +3862,7 @@ class __fnt1{
         if(ref_champ_date.value !== ''){
             annee_courante=parseInt( ref_champ_date.value.substr( 0 , 4 ) , 10 );
         }
-        o1+='<style type="text/css">';
-        o1+='#vv_calendrier td{';
-        o1+='  min-width:2em;';
-        o1+='  text-align:center;';
-        o1+='  border-width:' + this.__ig1.css_dimensions.t_border + 'px;';
-        o1+='  border-style:solid;';
-        o1+='  border-color:white;';
-        o1+='}';
-        o1+='</style>';
-        o1+='<table id="vv_calendrier" border="0">';
+        o1+='<table id="vv_calendrier">';
         if(afficher_siecle === true){
             o1+='<tr id="vv_premiere_ligne" style="box-shadow:none;">';
             /*  */
@@ -3902,11 +3893,13 @@ class __fnt1{
                     o1+='<tr>';
                 }
                 let sty1='';
+                let complement_class='';
                 if(maintenant.getFullYear() === annee_courante){
                     sty1=' style="border-color:red;"';
+                    complement_class=' yy__1';
                 }
                 o1+='<td ' + sty1 + ' data-i="' + i + '-' + (i% (nb_annees_par_ligne - 1)) + '-' + ((i - 1)% nb_annees_par_ligne) + '-' + '">';
-                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(choisir_annee(nom_du_champ(' + nom_du_champ + '),annee(' + annee_courante + '),mois(' + mois_a_afficher + '))))">' + annee_courante + '</button>';
+                o1+='<button class="yy_b1 rev_b_ctxt ' + complement_class + '" rev_clic1="m1(n1(__fnt1),f1(choisir_annee(nom_du_champ(' + nom_du_champ + '),annee(' + annee_courante + '),mois(' + mois_a_afficher + '))))">' + annee_courante + '</button>';
                 o1+='</td>';
                 if(i >= nb_annees_par_ligne - 1 && (i - (nb_annees_par_ligne - 1))% nb_annees_par_ligne == 0){
                     o1+='</tr>';
@@ -4002,12 +3995,15 @@ class __fnt1{
           
           
         */
-        let jour_courant=maintenant.getDate();
+        let aujourd_hui_jour_courant=maintenant.getDate();
+        let aujourd_hui_mois=maintenant.getMonth() + 1;
+        let aujourd_hui_annee=maintenant.getFullYear();
+        let jour_en_cours_de_selection=maintenant.getDate();
         let obj_date_de_la_zone=null;
         if(ref_champ_date.value !== ''){
-            jour_courant=parseInt( ref_champ_date.value.substr( 8 , 2 ) , 10 );
+            jour_en_cours_de_selection=parseInt( ref_champ_date.value.substr( 8 , 2 ) , 10 );
             la_date_est_renseignee=true;
-            obj_date_de_la_zone=new Date( annee_courante , mois_courant_texte - 1 , jour_courant );
+            obj_date_de_la_zone=new Date( annee_courante , mois_courant_texte - 1 , jour_en_cours_de_selection );
         }
         let premier_jour_du_mois=new Date( annee_a_afficher , mois_a_afficher - 1 , 1 );
         /* 2017-11-01 = mercredi */
@@ -4030,18 +4026,18 @@ class __fnt1{
         /* maxDay = jour_max */
         let jour_max=31;
         if(mois_a_afficher == 2){
-            if(annee_a_afficher% 4 == 0 && !(annee_a_afficher% 100 == 0) || annee_a_afficher% 400 == 0){
+            if(annee_a_afficher% 4 === 0 && !(annee_a_afficher% 100 === 0) || annee_a_afficher% 400 === 0){
                 jour_max=29;
             }else{
                 jour_max=28;
             }
-        }else if(mois_a_afficher == 4 || mois_a_afficher == 6 || mois_a_afficher == 9 || mois_a_afficher == 11){
+        }else if(mois_a_afficher === 4 || mois_a_afficher === 6 || mois_a_afficher === 9 || mois_a_afficher === 11){
             jour_max=30;
         }
         /* lineNumber = numero_de_ligne */
         var numero_de_ligne=1;
         /* dateIsSet = la_date_est_renseignee */
-        /* nD = jour_courant */
+        /* nD = jour_en_cours_de_selection */
         for( let i=1 ; i <= jour_max ; i++ ){
             let date_en_cours=false;
             let fontWeight='';
@@ -4051,7 +4047,7 @@ class __fnt1{
                    && annee_a_afficher == maintenant.getFullYear()
             ){
                 if(obj_date_de_la_zone !== null
-                       && i == jour_courant
+                       && i == jour_en_cours_de_selection
                        && mois_a_afficher == obj_date_de_la_zone.getMonth() + 1
                        && annee_a_afficher == obj_date_de_la_zone.getFullYear()
                 ){
@@ -4062,7 +4058,7 @@ class __fnt1{
                 }
             }else{
                 if(obj_date_de_la_zone !== null
-                       && i == jour_courant
+                       && i == jour_en_cours_de_selection
                        && mois_a_afficher == obj_date_de_la_zone.getMonth() + 1
                        && annee_a_afficher == obj_date_de_la_zone.getFullYear()
                 ){
@@ -4073,21 +4069,24 @@ class __fnt1{
                     /* border-color:hotpink;' */
                 }
             }
-            /*#
-              if (obj_date_de_la_zone!==null && i == jour_courant && mois_courant == obj_date_de_la_zone.getMonth() + 1 && annee_courante == obj_date_de_la_zone.getFullYear()) {
-                  borderSty1+= 'border-color:red;'
-              }
-            */
             o1+='<td style="' + borderSty1;
             if((jour_du_premier_jour + 1)% 7 === 0 || (jour_du_premier_jour + 7)% 7 === 0){
                 o1+='background-color:yellow;';
             }
-            o1+='">';
+            o1+='"';
+            if(date_en_cours === true){
+                o1+=' class="yy__0"';
+            }
+            o1+='>';
             /* href="javascript:putDate1(' + annee_courante + ',' + mois_courant + ',' + i + ',\'' + valueId + '\',\'' + buttonId + '\',\'' + divId + '\',' + withDateNull + ',' + searchDateMode + ',\'' + callBackDate1 + '\')" */
             if(date_en_cours === true){
                 o1+='<span>' + i + '</span>';
             }else{
-                o1+='<button class="yy_b1 rev_b_ctxt" rev_clic1="m1(n1(__fnt1),f1(selectionner_la_date1(nom_du_champ(' + nom_du_champ + '),jour(' + i + '),mois(' + mois_a_afficher + '),annee(' + annee_a_afficher + '))))">' + i + '</button>';
+                let complement_class='';
+                if(aujourd_hui_jour_courant === i && aujourd_hui_mois === mois_a_afficher && aujourd_hui_annee === annee_a_afficher){
+                    complement_class=' yy__1 ';
+                }
+                o1+='<button class="yy_b1 rev_b_ctxt ' + complement_class + ' " rev_clic1="m1(n1(__fnt1),f1(selectionner_la_date1(nom_du_champ(' + nom_du_champ + '),jour(' + i + '),mois(' + mois_a_afficher + '),annee(' + annee_a_afficher + '))))">' + i + '</button>';
             }
             o1+='</td>';
             if(jour_du_premier_jour% 7 == 0){
@@ -4946,8 +4945,8 @@ class __fnt1{
         }
         o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</button>';
         o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</button>';
-        o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
-        o1+='<button class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
+        o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" data-indicateur_graphique2="copier_tout1" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
+        o1+='<button class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" data-indicateur_graphique2="copier_selection1" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
         o1+='<button class="yy_svg1 yy__0  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</button>';
         o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</button>';
         o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</button>\r\n';

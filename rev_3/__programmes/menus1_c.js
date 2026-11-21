@@ -41,7 +41,7 @@ class menus1{
         "`T0`.`chp_methode_menu`" : 'methode'
     };
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     recupere_methodes1( mat , d , données ){
         let vv_liste_des_methodes='';
@@ -113,7 +113,7 @@ class menus1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     affiche_methodes( mat , d ){
         let champ='';
@@ -151,7 +151,7 @@ class menus1{
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -271,15 +271,19 @@ class menus1{
         } , this );
         /*
           =====================================================================================================
+          extrait page_modification 
         */
-        let boutons_avant1=[];
-        boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</button>' );
+        let var_boutons_avant1=[];
+        var_boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</button>' );
+        /*
+          =====================================================================================================
+        */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_methode_menu" ,
             "__contexte" : "modification1" ,
-            "longueur_du_champ" : 64 ,
+            "longueur_du_champ" : '64' ,
             "libelle_du_champ" : "methode" ,
-            "boutons_avant1" : boutons_avant1 ,
+            "boutons_avant1" : var_boutons_avant1 ,
             "ajouter_le_div1" : 'vv_liste_des_methodes'
         } );
         /*
@@ -295,10 +299,14 @@ class menus1{
         } );
         /*
           =====================================================================================================
+          extrait page_modification 
         */
-        let boutons_avant2=[];
-        boutons_avant2.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
-        boutons_avant2.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_menu),zone_resultat(cht_condition_menu),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</button>' );
+        let var_boutons_avant2=[];
+        var_boutons_avant2.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
+        var_boutons_avant2.push( '<button class="yy_b1 yy__1" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(js_vers_rev1(zone_source(cht_condition_js_menu),zone_resultat(cht_condition_menu),normaliser_le_rev(1))))" title="convertir de js vers rev" >↥js->rev↥</button>' );
+        /*
+          =====================================================================================================
+        */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_textarea2( tup , {
             "nom_du_champ" : "cht_condition_js_menu" ,
             "__contexte" : "modification1" ,
@@ -306,7 +314,7 @@ class menus1{
             "rows" : 3 ,
             "cols" : 50 ,
             "format_du_source" : 1 ,
-            "boutons_avant1" : boutons_avant2
+            "boutons_avant1" : var_boutons_avant2
         } );
         /*
           =====================================================================================================
@@ -510,17 +518,21 @@ class menus1{
         } , this );
         /*
           =====================================================================================================
+          extrait page_creer 
         */
-        let boutons_avant1=[];
-        boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
+        let var_boutons_avant1=[];
+        var_boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
+        /*
+          =====================================================================================================
+        */
         o1+=this.__ig1.__fnt1.html_edition_de_zones_text2( tup , {
             "nom_du_champ" : "chp_methode_menu" ,
             "__contexte" : "creer1" ,
             "libelle_du_champ" : "methode" ,
             "non_nulle" : true ,
-            "longueur_du_champ" : '64' ,
-            "boutons_avant1" : boutons_avant1 ,
-            "ajouter_le_div1" : 'vv_liste_des_methodes'
+            "boutons_avant1" : var_boutons_avant1 ,
+            "ajouter_le_div1" : 'vv_liste_des_methodes' ,
+            "longueur_du_champ" : '64'
         } );
         /*
           =====================================================================================================

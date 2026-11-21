@@ -2400,7 +2400,7 @@ che_est_fragment_source en 0/1','99','2026-08-12 07:42:08.000','1','2026-08-12 1
 par. => tup.','99','2026-08-16 10:11:50.689','3','2026-08-16 10:59:04.762'),
 ('588','1','Faire systématiquement un programme sous liste.','99','2026-08-17 09:47:05.753','2','2026-08-20 08:17:57.886'),
 ('589','1','quand on modifie la formule des champs combinaison, il faut garder le commentaire','99','2026-08-17 10:11:37.744','1','2026-08-17 12:30:44.402'),
-('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','1','2026-08-17 10:13:46.556','0','2026-11-18 14:22:56.878'),
+('590','1','pouvoir créer une tâche à partir d''un bouton de l''interface','1','2026-08-17 10:13:46.556','4','2026-11-21 16:33:03.233'),
 ('591','1','retirer le paramètre
 this.donnees_retournees
 de l''appel 
@@ -61001,7 +61001,7 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1875','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1877','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$xv.rjW4JKTTCufVo1hMVuuLcUwGkGktjC3vXwdw7XhG/kuT.qh5EW',NULL,'20','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
 

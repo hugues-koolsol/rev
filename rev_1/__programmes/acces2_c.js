@@ -21,16 +21,15 @@ class acces2{
             "T0_chp_nom_acces" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_che_actif_acces" : {"nom" : 'actif' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chx_groupe_acces" : {"nom" : 'id groupe' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_chp_nom_groupe" : {"nom" : 'nom' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_chp_nom_groupe" : {"nom" : 'groupe' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_metier_acces" : {"nom" : 'id métier' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T2_chp_nom_metier" : {"nom" : '[n] id métier' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
+            "T2_chp_nom_metier" : {"nom" : 'métier' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
     /*
     */
     filtres={};
     __variables_module={};
-    vv_ecran_liste_boutons_avant='';
     /*
       =============================================================================================================
     */
@@ -63,15 +62,12 @@ class acces2{
         let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi );
         if(aa !== null){
             let jso=JSON.parse( aa );
-            for(let i in this.tableau_des_filtres['sous_liste2']){
-                this.filtres['sous_liste2'][i]=jso[i]??this.tableau_des_filtres['sous_liste2'][i].défaut;
+            for(let i in this.tableau_des_filtres.sous_liste2){
+                this.filtres.sous_liste2[i]=jso[i]??this.tableau_des_filtres.sous_liste2[i].défaut;
             }
         }else{
             sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
         }
-        /*
-          this.vv_ecran_liste_boutons_avant+='<div class="yy_svg1 yy__xif" rev_clic1="m1(n1('+this.moi+'),f1(page_creer1()))" title="création'+this.DUN_DUNE_ELEMENT_GERE +'" >' + this.__ig1.les_svg.nouveau_document + '</div>';
-        */
     }
     /*
       =============================================================================================================
@@ -79,13 +75,6 @@ class acces2{
     entree_module( mat , d ){
         this.__ig1.recupere_liste_initiale( mat , d , this );
         return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================
-    */
-    sous_liste2( mat , d , le_colis1 ){
-        return(this.__ig1.generique_sous_liste2( mat , d , le_colis1 , this.moi ));
     }
     /*
       =============================================================================================================
@@ -106,8 +95,8 @@ class acces2{
                 la_methode='m1(n1(__ig1),f1(choisir_dans_sous_fenetre2(';
             }
             let lst='';
-            for(let i in le_colis1.__xva['sous_liste2'].__xva){
-                let tup=le_colis1.__xva['sous_liste2'].__xva[i];
+            for(let i in le_colis1.__xva.sous_liste2.__xva){
+                let tup=le_colis1.__xva.sous_liste2.__xva[i];
                 lst+='<tr>';
                 lst+='<td style="text-wrap-mode: nowrap;">';
                 let parametres='';
@@ -120,38 +109,43 @@ class acces2{
                 libelle2+=tup.T0_chp_nom_acces ? ( ' , ' + this.__ig1.fi2( tup.T0_chp_nom_acces ) ) : ( '' );
                 parametres+=' libelle2(\'' + this.__ig1.fi1( libelle2 ).replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
                 parametres+=')))';
-                lst+='  <div class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</div>';
+                lst+='  <button class="yy_b1 yy__2" rev_clic1="' + parametres + '">=&gt;</button>';
                 lst+='</td>';
                 /*
                 */
                 lst+='<td style="text-align:center;">';
+                /* cas liste2 4.2 */
                 lst+=this.__ig1.fi2( tup.T0_chi_id_acces );
                 lst+='</td>';
                 /*
                 */
+                /* combinaison */
+                /* cas liste2 3.0 */
                 lst+='<td style="text-align:center;">';
                 if(tup.T0_che_actif_acces === 0){
                     lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_rouge1 + '</div>';
                 }else{
                     lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
-                /* cas liste2 5.4 */
+                /* cas liste2 3.2 */
                 lst+='<span class="" style="">' + this.__ig1.fi2( tup.T0_chp_nom_acces ) + '</span>';
                 lst+='</td>';
                 /*
                 */
+                /* combinaison */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
-                /* cas liste2 6.2 */
+                /* cas liste2 4.1 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_groupe_acces ) + ') ';
-                /* cas liste2 6.4 */
+                /* cas liste2 5.1 */
                 lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_groupe ) + '</span>';
                 lst+='</td>';
                 /*
                 */
+                /* combinaison */
                 lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
-                /* cas liste2 6.2 */
+                /* cas liste2 4.1 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_metier_acces ) + ') ';
-                /* cas liste2 6.4 */
+                /* cas liste2 5.1 */
                 lst+='<span class="" style="">' + this.__ig1.fi2( tup.T2_chp_nom_metier ) + '</span>';
                 lst+='</td>';
                 lst+='</tr>';

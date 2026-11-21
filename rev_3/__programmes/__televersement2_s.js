@@ -23,7 +23,7 @@ class __televersement2{
         this.__ig1=__ig1;
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     async enregister_l_ordre_des_televersements1( mat , d ){
         let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );

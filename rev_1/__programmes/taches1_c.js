@@ -78,7 +78,7 @@ class taches1{
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
-        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+        this.__ig1.maj_htm2( 'vv_ecran_modification_zone_complement' , o1 );
     }
     /*
       =============================================================================================================
@@ -367,7 +367,7 @@ class taches1{
             return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};

@@ -1231,7 +1231,7 @@ class __ig1{
             /* this.ma_trace1( "on ouvre Effectivement la base chemin_complet_bdd=" + chemin_complet_bdd ); */
             const __db=new Database( chemin_complet_bdd , {"create" : false} );
             this.__les_ressources.push( {"v" : __db ,"t" : 'bdd' ,"c" : chemin_complet_bdd} );
-            const les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
+            const les_pragma_set=['PRAGMA encoding = "UTF-8";','PRAGMA foreign_keys=ON;','PRAGMA journal_mode=WAL;PRAGMA busy_timeout = 6000;','attach database "' + chemin_complet_bdd + '" as b' + chi_id_basedd + ''];
             if(this.donnees_retournees._CA_ > 2 && this.__liste_des_bases.length > 0){
                 for( let i=0 ; i < this.__liste_des_bases.length ; i++ ){
                     if(chi_id_basedd !== this.__liste_des_bases[i]){
