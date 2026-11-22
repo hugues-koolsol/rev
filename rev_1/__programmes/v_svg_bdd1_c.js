@@ -3897,7 +3897,7 @@ class v_svg_bdd1{
                 t+='</td>';
                 t+='<td>';
                 rev='m1(n1(' + this.moi + '),f1(trier_les_tables(id_bdd_de_la_base_en_cours(' + this.#id_bdd_de_la_base_en_cours + '),nom_de_zone(ordre_modifie))))';
-                t+='<button class="yy_b1" rev_clic1="' + rev + '">trier les_tables</button>';
+                t+='<button class="yy_b1" rev_clic1="' + rev + '">enregistrer cet ordre</button>';
                 t+='</td>';
                 t+='<tr>';
                 t+='<table>';

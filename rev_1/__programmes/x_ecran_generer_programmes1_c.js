@@ -2698,8 +2698,8 @@ class x_ecran_generer_programmes1{
                         src_client2+='        */\r\n';
                     }
                 }
-                src_client2+='    }\r\n';
             }
+            src_client2+='    }\r\n';
         }
         if(ref_update !== '' && ref_select !== ''){
             /*  */
@@ -3023,14 +3023,17 @@ class x_ecran_generer_programmes1{
             src_client2+='    }\r\n';
         }
         if(ref_select !== ''){
-            src_serveur_js2+='    /*\r\n';
-            src_serveur_js2+='      =============================================================================================================\r\n';
-            src_serveur_js2+='    */\r\n';
-            src_serveur_js2+='    async recup_' + champ_primaire + '( criteres_select_' + ref_select + ' , __db1 ){\r\n';
-            src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iij( ' + ref_select + ' , criteres_select_' + ref_select + ' , __db1 );\r\n';
-            src_serveur_js2+='        return tt' + ref_select + ';\r\n';
-            src_serveur_js2+='    }\r\n';
-            src_serveur_js2+='\r\n';
+            if(est_une_grandeur === 1 && pour_sous_liste_uniquement === 1){
+            }else{
+                src_serveur_js2+='    /*\r\n';
+                src_serveur_js2+='      =============================================================================================================\r\n';
+                src_serveur_js2+='    */\r\n';
+                src_serveur_js2+='    async recup_' + champ_primaire + '( criteres_select_' + ref_select + ' , __db1 ){\r\n';
+                src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iij( ' + ref_select + ' , criteres_select_' + ref_select + ' , __db1 );\r\n';
+                src_serveur_js2+='        return tt' + ref_select + ';\r\n';
+                src_serveur_js2+='    }\r\n';
+                src_serveur_js2+='\r\n';
+            }
         }
         let l_update_gere_un_nur='';
         if(ref_update !== '' && ref_select !== ''){
@@ -5769,7 +5772,7 @@ class x_ecran_generer_programmes1{
                 }
             }
             if(nom_de_la_table_mere === ''){
-                return({"__xst" : __xer ,"__xme" : 'la table mère n\' pas été trouvée pour une requete liste d\'une grandeur'});
+                return({"__xst" : __xer ,"__xme" : 'la table mère n\' pas été trouvée pour une requete liste d\'une grandeur' + this.__ig1.nl2()});
             }
             for(let i in this.__ig1.__liste_des_sql){
                 let req=this.__ig1.__liste_des_sql[i];
@@ -5789,13 +5792,6 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='      =============================================================================================================\r\n';
             src_serveur_js2+='    */\r\n';
             src_serveur_js2+='    async selection_des_valeurs(chi_id_parametre , T0_che_actif_grandeur){\r\n';
-            /*#
-              if(this.chi_id_projet <= 2){
-                  src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_de_travail );\r\n';
-              }else{
-                  src_serveur_js2+='        let __db1=await this.__ig1.ouvrir_bdd( ' + parseInt( document.getElementById( 'vv_les_bases' ).value , 10 ) + ' );\r\n';
-              }
-            */
             if(this.chi_id_projet <= 2){
                 src_serveur_js2+='            let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );\r\n';
             }else{
@@ -5823,7 +5819,8 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        criteres_' + ref_select + '[\'liste_des_tris\']=\'CASE `T0`.`chi_id_grandeur`\\r\\n\' + liste_des_tris + \'    ELSE 999999\\r\\n    END\';\r\n';
             src_serveur_js2+='        let tt' + ref_select + '=await this.__ig1.sql_iij(\r\n';
             src_serveur_js2+='         ' + ref_select + ' , criteres_' + ref_select + ' , __db1 );\r\n';
-            src_serveur_js2+='        return tt' + ref_select + ';\r\n';
+            /* src_serveur_js2+='        return tt' + ref_select + ';\r\n'; */
+            src_serveur_js2+='        return({"__xst" : tt' + ref_select + '.__xst ,"les_elements" : tt' + ref_select + '.__xva ,"chi_id_basedd" : ' + chi_id_basedd_de_reference + '});\r\n';
             src_serveur_js2+='    }\r\n';
             src_serveur_js2+='\r\n';
             src_serveur_js2+='    /*\r\n';
@@ -5853,7 +5850,8 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        if(les_valeurs.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'liste_des_grandeurs\']=les_valeurs.__xva;\r\n';
+            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'liste_des_grandeurs\']=les_valeurs.les_elements;\r\n';
+            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'chi_id_basedd\']=les_valeurs.chi_id_basedd;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'chi_id_parametre\']=chi_id_parametre;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'id_zone\']=id_zone;\r\n';
             src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
@@ -5898,7 +5896,8 @@ class x_ecran_generer_programmes1{
             src_serveur_js2+='        if(les_valeurs.__xst !== __xsu){\r\n';
             src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
             src_serveur_js2+='        }\r\n';
-            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'liste_des_grandeurs\']=les_valeurs.__xva;\r\n';
+            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'liste_des_grandeurs\']=les_valeurs.les_elements;\r\n';
+            src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'chi_id_basedd\']=les_valeurs.chi_id_basedd;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'chi_id_parametre\']=chi_id_parametre;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'id_zone\']=id_zone;\r\n';
             src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'origine_de_l_appel_liste\']=origine_de_l_appel_liste;\r\n';
@@ -5954,7 +5953,8 @@ class x_ecran_generer_programmes1{
                 src_serveur_js2+='        if(les_valeurs.__xst !== __xsu){\r\n';
                 src_serveur_js2+='            return({"__xst" : __xer ,"__xme" : \'enregistrement non trouvé : aucune modification effectuée [' + ref_select + ' \' + this.__ig1.nl2() + \']\'});\r\n';
                 src_serveur_js2+='        }\r\n';
-                src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'sous_liste2\']=les_valeurs;\r\n';
+                src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'sous_liste2\']=les_valeurs.les_elements;\r\n';
+                src_serveur_js2+='        this.__ig1.donnees_retournees.__xva[\'chi_id_basedd\']=les_valeurs.chi_id_basedd;\r\n';
                 src_serveur_js2+='        return({"__xst" : __xsu});\r\n';
                 src_serveur_js2+='    }\r\n';
             }else{
@@ -6502,7 +6502,6 @@ class x_ecran_generer_programmes1{
                             if(liste_des_fonctions_pages1['page_creer1']
                                    && liste_des_fonctions_pages1['page_creer1'].hasOwnProperty( 'ajouter__avant__' + obj_champ.nom_du_champ )
                             ){
-                                debugger;
                                 src_client2+='\r\n        /' + '*\r\n    ==========\r\n      extrait page_creer *' + '/\r\n' + liste_des_fonctions_pages1['page_creer1']['ajouter__avant__' + obj_champ.nom_du_champ];
                             }
                         }
@@ -6845,7 +6844,7 @@ class x_ecran_generer_programmes1{
         /*
         */
         if(des_champs_dependent_d_une_autre_table === true){
-            if(pour_sous_liste_uniquement === 0){
+            if(pour_sous_liste_uniquement === 0 || est_une_grandeur === 1){
                 src_client2+='    /*\r\n';
                 src_client2+='      =============================================================================================================\r\n';
                 src_client2+='      ===================== utilisé pour afficher une sous liste dans une page modifier ou creer ==================\r\n';
@@ -8653,7 +8652,7 @@ class x_ecran_generer_programmes1{
         */
         o1+='<div class="yy_conteneur_txtara">';
         o1+='   <div>';
-        o1+='      JS client 2:';
+        o1+='      clt2:';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'JS_client2' );
         /*  */
         o1+='<label for="avec_page_voir1" style="border:1px black solid;padding:1px;" title="avec page voir1">';
@@ -8680,7 +8679,7 @@ class x_ecran_generer_programmes1{
         */
         o1+='<div class="yy_conteneur_txtara">';
         o1+=' <div>';
-        o1+='  JS serveur 2 : ';
+        o1+='  srv2: ';
         o1+=this.__ig1.__fnt1.boutons_edition1( 'serveur_js2' );
         /*  */
         if(this.__ig1.chi_id_projet > 2){
