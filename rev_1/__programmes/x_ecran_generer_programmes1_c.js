@@ -6970,7 +6970,6 @@ class x_ecran_generer_programmes1{
                                 console.log( tt , 'background:red;color:yellow;' );
                                 src_client2+='        libelle2+=\'       / \' + this.__ig1.fi2( tup.T0_' + le_champ_trouve.nom_du_champ + ' ) ;\r\n';
                             }else{
-                                debugger;
                                 /*
                                   pas de champ lien direct trouvé, on essaie de remonter aux n-y
                                 */

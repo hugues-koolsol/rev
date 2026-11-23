@@ -252,7 +252,7 @@ class __ig1{
                                     if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
                                         this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
                                     }else{
-                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -265,7 +265,7 @@ class __ig1{
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2')
                                 ){
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CLT erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
@@ -274,7 +274,7 @@ class __ig1{
                                 this.executer1( 'pm1(m1(n1(_connexion1),f1(page_connexion1())))' );
                                 this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'connectez vous !'} );
                             }else{
-                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 3'} );
                             }
                             return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
@@ -384,7 +384,7 @@ class __ig1{
                                     if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
                                         this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
                                     }else{
-                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -404,13 +404,13 @@ class __ig1{
                                 ){
                                     this.affiche_les_messages( {
                                             "__xst" : __xer ,
-                                            "__xme" : 'CLT erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )
+                                            "__xme" : 'CL erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )
                                         } );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
                         }else{
-                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
+                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 4'} );
                             return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }catch(e){

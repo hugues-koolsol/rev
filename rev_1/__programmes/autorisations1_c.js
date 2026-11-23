@@ -76,7 +76,7 @@ class autorisations1{
             }
         }
         this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
-        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" data-indicateur_graphique2="bouton_generer_les_autorisations" title="" >générer les autorisations</button>';
     }
     /*
       =============================================================================================================

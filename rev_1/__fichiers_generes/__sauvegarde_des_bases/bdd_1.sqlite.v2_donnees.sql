@@ -2684,10 +2684,10 @@ END;
 
  DROP TRIGGER update_tbl_presta_clts_timestamp;','99','2026-11-16 12:27:29.288','8','2026-11-16 16:54:58.964'),
 ('642','1','projet 4, autorisations1_c fait référence à sources4 et n''est donc pas le même que 
-projet 1, autorisations1_c qui fait référence à sources4
+projet 1, autorisations1_c qui fait référence à sources2
 donc projet 4 doit contenir un autorisation3_c à la place d''un autorisations1_c
 
-','1','2026-11-22 17:05:59.435','12','2026-11-22 17:06:40.263');
+','1','2026-11-22 17:05:59.435','13','2026-11-23 08:09:09.686');
 /*================================================================================ FIN BLOC TABLE tbl_taches offset 0 */
 
 
@@ -29146,7 +29146,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                            nomt(tableau(nomt(this.__ig1.donnees_recues.__xva),p(''__complements_sous_liste''))),
                            p(''acces_pas_dans'')
                         ),
-                        ''(1,2)''
+                        ''1,2''
                      )
                   )
                )
@@ -29350,7 +29350,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         this.__ig1.donnees_recues.__xva[''__complements_sous_liste'']={};
         this.__ig1.donnees_recues.__xva[''__complements_sous_liste''][''acces_pas_dans'']=''(-1)'';
         if(this.__ig1.donnees_retournees._CA_ > 2 && this.__ig1.donnees_retournees.chi_id_utilisateur > 1){
-            this.__ig1.donnees_recues.__xva[''__complements_sous_liste''][''acces_pas_dans'']=''(1,2)'';
+            this.__ig1.donnees_recues.__xva[''__complements_sous_liste''][''acces_pas_dans'']=''1,2'';
         }
         return(await this.filtre1( mat , d ));
     }
@@ -58108,7 +58108,6 @@ LIMIT :quantitee OFFSET :debut
          infegal(champ(`T0`,`chi_id_source`),:T0_chi_id_source3),
          comme(champ(`T0`,`cht_rev_source`),:T0_cht_rev_source),
          egal(champ(`T0`,`che_autorisation_globale_source`),0),
-         egal(champ(`T0`,`che_pour_util_source`),1),
          egal(champ(`T0`,`che_binaire_source`),0),
          egal(champ(`T0`,`che_est_extrait_source`),0)
       )
@@ -58127,7 +58126,6 @@ WHERE ( /* */ `T0`.`chp_nom_source` LIKE :T0_chp_nom_source
    AND `T0`.`chi_id_source` <= :T0_chi_id_source3
    AND `T0`.`cht_rev_source` LIKE :T0_cht_rev_source
    AND `T0`.`che_autorisation_globale_source` = 0
-   AND `T0`.`che_pour_util_source` = 1
    AND `T0`.`che_binaire_source` = 0
    AND `T0`.`che_est_extrait_source` = 0) 
 ORDER BY `T0`.`chp_nom_source` ASC, `T0`.`chi_id_source` ASC  
@@ -61050,6 +61048,6 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1879','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1881','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$xv.rjW4JKTTCufVo1hMVuuLcUwGkGktjC3vXwdw7XhG/kuT.qh5EW',NULL,'20','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */
