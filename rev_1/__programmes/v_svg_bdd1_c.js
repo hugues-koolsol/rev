@@ -785,7 +785,6 @@ class v_svg_bdd1{
     }
     /*
       =============================================================================================================
-      function ajouter_un_champ_de_modale
     */
     ajouter_un_champ_de_modale( mat ){
         let id_svg_conteneur_table=0;
@@ -821,11 +820,13 @@ class v_svg_bdd1{
             cht_fonction_tstchp=document.getElementById( 'cht_fonction_tstchp' ).value;
         } catch {}
         var references='';
+        /*
         if(document.getElementById( 'table_mère' ).value.trim() !== ''
                && document.getElementById( 'champ_père' ).value.trim() !== ''
         ){
             references=document.getElementById( 'table_mère' ).value + ',' + document.getElementById( 'champ_père' ).value;
         }
+        */
         var masquer_champ_dans_svg=document.getElementById( 'masquer_champ_dans_svg' ).checked ? ( 1 ) : ( 0 );
         var est_pas_cascade_quand_maj=document.getElementById( 'est_pas_cascade_quand_maj' ).checked ? ( 1 ) : ( 0 );
         var decimal_peut_etre_negatif=document.getElementById( 'decimal_peut_etre_negatif' ).checked ? ( 1 ) : ( 0 );
@@ -854,13 +855,14 @@ class v_svg_bdd1{
                     "__xme" : 'Vous devez choisir un type de champ et une typologie et renseigner le nom du champ [' + this.__ig1.nl2() + ']'
                 });
         }
+        /*#
         if(document.getElementById( 'table_mère' ).value !== '' || document.getElementById( 'champ_père' ).value !== ''){
             if(document.getElementById( 'table_mère' ).value === '' || document.getElementById( 'champ_père' ).value === ''){
                 return({"__xst" : __xer ,"__xme" : 'erreur sur la table mère ou le champ père'});
             }
-            /*
-              la référence croisée existe-t-elle dans le svg
-            */
+            
+            //la référence croisée existe-t-elle dans le svg
+            
             trouve=false;
             var elems2=document.getElementById( this.#id_svg_de_la_base_en_cours ).getElementsByTagName( 'rect' );
             for( var j=0 ; j < elems2.length && trouve === false ; j++ ){
@@ -879,6 +881,7 @@ class v_svg_bdd1{
                 return({"__xst" : __xer ,"__xme" : 'table mère ou champ père non trouvé'});
             }
         }
+        */
         var indice_courant=this.#recuperer_prochain_id_svg();
         var rev='';
         rev+='meta(';
@@ -893,7 +896,8 @@ class v_svg_bdd1{
         rev+='    nom_bref_du_champ(\'' + document.getElementById( 'meta_ajouter__nom_bref_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    libelle_du_champ(\'' + document.getElementById( 'meta_ajouter__libelle_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         rev+='    entete_distant_du_champ(\'' + document.getElementById( 'meta_ajouter__entete_distant_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
-        rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+//        rev+='    suggestion_du_champ(\'' + document.getElementById( 'meta_ajouter__suggestion_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        rev+='    suggestion_du_champ(\'\')';
         rev+='    description_du_champ(\'' + document.getElementById( 'meta_ajouter__description_du_champ' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         if(document.getElementById( 'meta_ajouter__fonction_pour_liste1' )){
             rev+='    fonction_pour_liste1(\'' + document.getElementById( 'meta_ajouter__fonction_pour_liste1' ).value.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
@@ -910,6 +914,27 @@ class v_svg_bdd1{
         var a=this.#ajouter_champ_a_arbre( nom_du_champ , indice_courant , id_svg_conteneur_table , nom_de_la_table , this.#id_bdd_de_la_base_en_cours , rev , primary_key , non_nulle , auto_increment , references , a_une_valeur_par_defaut , espece_du_champ , longueur_du_champ , valeur_par_defaut , la_valeur_par_defaut_est_caractere , cht_fonction_init , cht_fonction_tstchp );
         this.__ig1.fermer_la_sous_fenetre();
         this.#dessiner_le_svg();
+        /*
+          après création du champ, on va l'éditer directement
+        */
+        let id_svg_champ_en_cours=0;
+        var cmd='';
+        cmd+=' id_svg_conteneur_table(' + id_svg_conteneur_table + ')';
+        cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\') ';
+        cmd+=' nom_du_champ(\'' + nom_du_champ.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
+        let lst1=document.getElementById(id_svg_conteneur_table).getElementsByTagName('g');
+        for(let i =0; i<lst1.length ; i++){
+            if(lst1[i].getAttribute('type_element') && lst1[i].getAttribute('type_element')  === 'conteneur_de_champ' && lst1[i].getAttribute('nom_du_champ') && lst1[i].getAttribute('nom_du_champ') === nom_du_champ  ){
+               id_svg_champ_en_cours=parseInt( lst1[i].id , 10);
+               break;
+            }
+        }
+        if(id_svg_champ_en_cours >0){
+            cmd+=' id_svg_champ_en_cours(' + id_svg_champ_en_cours + ')';
+            let obj1=this.__ig1.__rev1.rev_tm( cmd );
+            this.modale_modifier_le_champ( obj1.__xva , 0 );
+            return({"__xst" : __xsu});
+        }
         return({"__xst" : __xsu});
     }
     /*
@@ -5278,7 +5303,8 @@ class v_svg_bdd1{
         }
         var t='';
         t+='<h1>gestion de la table</h1>';
-        /*  */
+        
+        /*
         var cmd='';
         cmd+='m1(n1(__ig1),f1(fermer_la_sous_fenetre()))';
         cmd+='m1(n1(x_ecran_generer_programmes1),f1(entree_module(';
@@ -5286,7 +5312,7 @@ class v_svg_bdd1{
         cmd+=' chi_id_basedd(' + id_bdd_de_la_base_en_cours + ')';
         cmd+=')))';
         t+='<button class="yy_b1 yy__1" rev_clic1="' + cmd + '" >générer le programme</button>';
-        /*  */
+        
         var cmd='';
         cmd+='m1(n1(__ig1),f1(fermer_la_sous_fenetre()))';
         cmd+='m1(n1(ecran_generer_souches),f1(entree_module(';
@@ -5294,9 +5320,10 @@ class v_svg_bdd1{
         cmd+=' chi_id_basedd(' + id_bdd_de_la_base_en_cours + '),';
         cmd+=')))';
         t+='<button class="yy_b1 yy__1" rev_clic1="' + cmd + '" >générer les requêtes souches</button>';
-        /*  */
+        */
         t+='<hr />';
-        t+='<h2>dans ce schema, changer le nom de la table</h2>';
+        t+='<details open  name="modifier_une_table1">';
+        t+='<summary><h2>changer le nom de la table</h2></summary>';
         t+='<input id="nouveau_nom" type="text" class="yy_input1" value="' + nom_de_la_table + '" autocapitalize="off" />';
         t+='<input id="ancien_nom" type="hidden" value="' + nom_de_la_table + '" autocapitalize="off" />';
         let id_svg_rectangle_de_la_table=0;
@@ -5323,7 +5350,11 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<button class="yy_b1 yy__0" rev_clic1="' + cmd + '" >changer sur le svg</button>';
         t+='<hr />';
-        t+='<h3>modifier ses propriétés</h3>';
+        t+='</details>';
+        /*  */
+        t+='<hr />';
+        t+='<details  name="modifier_une_table1">';
+        t+='<summary><h3>modifier ses propriétés</h3></summary>';
         var rev='';
         rev+='m1(n1(' + this.moi + '),f1(remplir_les_metas_de_la_table(id_de_la_zone(\'ancien_nom\'),masculin_feminin(1))))';
         t+='<button class="yy_b1 yy__3" rev_clic1="' + rev + '">remplir les champs masculin</button>';
@@ -5427,39 +5458,21 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=')))';
         t+='<button class="yy_b1 yy__1" rev_clic1="' + cmd + '" >voir la définition de la table</button>';
+        t+='</details>';
+        
         /*
           =====================================================================================================
+          =====================================================================================================
         */
+        t+='<br />';
         t+='<hr />';
-        t+='<h3>ajouter un champ</h3>';
-        t+='<button class="yy__0" id="zone_message_ajouter_un_champ"></button>';
-        /*
-          =====================================================================================================
-          =====================================================================================================
-        */
-        t+='<table><tr>';
-        t+='<td>';
-        /*
-          =====================================================================================================
-        */
+        t+='<details name="modifier_une_table1">';
+        t+='<summary><h3>ajouter un champ à la table</h3></summary>';
+        t+='<div class="yy__0" id="zone_message_ajouter_un_champ"></div>';
         let l_option='';
         let texte__liste_des_genres='';
         let tableau_des_genres=[];
         for(let i in this.__ig1.__liste_des_genres){
-            /*
-              {
-              "chi_id_genre":1,
-              "chp_nom_genre":"indéfini",
-              "chp_espece_genre":"TEXT",
-              "che_longueur_genre":null,
-              "che_est_primaire_genre":0,
-              "che_est_incrément_genre":0,
-              "che_est_obligatoire_genre":0,
-              "che_a_init_genre":0,
-              "che_init_est_mot_genre":0,
-              "cht_valeur_init_genre":null
-              }
-            */
             l_option='';
             l_option+='<option';
             if(1 == this.__ig1.__liste_des_genres[i].chi_id_genre){
@@ -5485,22 +5498,21 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=' zone_du_nom(vv_nom_du_champ)';
         cmd+=')))';
-        t+='genre: <select id="vv_genre1" rev_change1="' + cmd + '">' + texte__liste_des_genres + '</select>';
-        t+='<br /><br />';
-        /*
-          =====================================================================================================
-        */
-        /*
-          =====================================================================================================
-        */
+        /*  */
+        t+='<label class="yy_lib1">'
+        t+='genre: <select id="vv_genre1" rev_change1="' + cmd + '" style="width:10em;">' + texte__liste_des_genres + '</select>';
+        t+='</label>'
+        t+='';
+        /*  */
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(maj_typologie(';
         cmd+=' nom_zone(chp_prefixe_genre),';
         cmd+=' nom_zone_du_champ(nom_du_champ),';
         cmd+=' nom_zone_de_la_table(nouveau_nom),';
         cmd+=')))';
+        t+='<label class="yy_lib1">';
         t+='typologie : ';
-        t+='<select id="chp_prefixe_genre" rev_change1="' + cmd + '">';
+        t+='<select id="chp_prefixe_genre" rev_change1="' + cmd + '" style="width:10em;">';
         t+='<option value="">choisissez une typologie</option>';
         t+='<option value="chi">index entier (chi) integer[n]</option>';
         t+='<option value="cht">texte (cht) text</option>';
@@ -5518,12 +5530,17 @@ class v_svg_bdd1{
         t+='<option value="chb">blob (chb) blob</option>';
         t+='<option value="ch?">inconnue (ch?)</option>';
         t+='</select>';
-        t+='<br />';
-        t+='nom : ';
-        t+='<input id="vv_nom_du_champ" type="text" value="" autocapitalize="off" />';
-        t+='<br />espece  : <input id="chp_espece_genre" type="text" value="" autocapitalize="off" />';
-        t+='<br />longueur  : <input id="che_longueur_genre" type="text" value="" autocapitalize="off" />';
-        t+='<br />table mère pour chx  : <input id="table_mère" type="text" value="" autocapitalize="off" />';
+        t+='</label>';
+        /*  */
+        t+='<label class="yy_lib1">nom : ';
+        t+='<input id="vv_nom_du_champ" type="text" value="" autocapitalize="off" class="yy_input1" aria-autocomplete="list" />';
+        t+='</label>';
+        /*  */
+        t+='<label class="yy_lib1">espece  : <input id="chp_espece_genre" type="text" value="" autocapitalize="off" maxlength="32" size="7" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" /></label>';
+        /*  */
+        t+='<label class="yy_lib1">longueur : <input id="che_longueur_genre" type="text" value="" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" /></label>';
+        /*
+        t+='<label class="yy_lib1">table mère : <input id="table_mère" type="text" value="" maxlength="64"  autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:6em;" /></label>';
         let sel='';
         if(this.#arbre[this.#id_bdd_de_la_base_en_cours].matrice !== undefined){
             let mat1=this.#arbre[this.#id_bdd_de_la_base_en_cours].matrice;
@@ -5539,7 +5556,7 @@ class v_svg_bdd1{
             }
         }
         if(sel !== ''){
-            /* créer le champ */
+
             var cmd='';
             cmd+='m1(n1(' + this.moi + '),f1(lister_les_champs_de_la_table(';
             cmd+='  zone_select(vv_table_parente),';
@@ -5550,22 +5567,17 @@ class v_svg_bdd1{
             t+='<select id="vv_table_parente" rev_change1="' + cmd + '"><option value=""></option>' + sel + '</select>';
         }
         t+='<br />champ père pour chx  : <input id="champ_père" type="text" value="" autocapitalize="off" /><span id="vv_liste_des_champs_pere"></span>';
-        t+='<br />index primary_key <input id="che_est_primaire_genre" type="checkbox" /> ';
-        t+='<br />non nulle <input id="che_est_obligatoire_genre" type="checkbox" /> ';
-        t+='<br />auto increment <input id="che_est_incrément_genre" type="checkbox" /> ';
-        t+='<br />a une valeur par défaut <input id="che_a_init_genre" type="checkbox" />';
-        t+=' , type caractère <input id="che_init_est_mot_genre" type="checkbox" />';
-        t+=' , valeur : <input id="cht_valeur_init_genre" type="text" value="" autocapitalize="off"  /> ';
+        */
+        t+='<label class="yy_lib1">primary_key <input id="che_est_primaire_genre" type="checkbox" /></label>';
+        t+='<label class="yy_lib1">non nulle <input id="che_est_obligatoire_genre" type="checkbox" /></label>';
+        t+='<label class="yy_lib1">auto increment <input id="che_est_incrément_genre" type="checkbox" /></label>';
+        t+='<label class="yy_lib1">a une valeur par défaut <input id="che_a_init_genre" type="checkbox" /></label>';
+        t+='<label class="yy_lib1">type caractère <input id="che_init_est_mot_genre" type="checkbox" /></label>';
+        t+='<label class="yy_lib1">valeur : <input id="cht_valeur_init_genre" type="text" value="" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:11em;" /></label>';
         /*
           =====================================================================================================
         */
-        t+='</td>';
-        t+='</tr>';
-        t+='</table>';
-        /*
-          =====================================================================================================
-        */
-        t+='<br />nom bref du champ : <input type="text" id="meta_ajouter__nom_bref_du_champ" value="A faire ..." autocapitalize="off" />';
+        t+='<label class="yy_lib1">nom bref : <input type="text" id="meta_ajouter__nom_bref_du_champ" value="A faire ..." autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:10em;" />';
         var cmd='';
         cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
         cmd+=' nom_de_la_zone(meta_ajouter__nom_bref_du_champ),';
@@ -5574,10 +5586,20 @@ class v_svg_bdd1{
         cmd+=' meta_champ(bref)';
         cmd+=')))';
         t+='<button class="yy_b1 yy__3" rev_clic1="' + cmd + '" >modifier</button>';
+        t+='</label>'
         /*  */
-        t+='<br />libelle_du_champ : <input type="text" id="meta_ajouter__libelle_du_champ" value="A faire ..." autocapitalize="off" />';
-        t+='<br />entete_distant_du_champ : <input type="text" id="meta_ajouter__entete_distant_du_champ" value="" autocapitalize="off" />';
-        t+='<br />suggestion_du_champ : <input type="text" id="meta_ajouter__suggestion_du_champ" value="" autocapitalize="off" />';
+        t+='<label class="yy_lib1">libelle_du_champ : <input type="text" id="meta_ajouter__libelle_du_champ" value="A faire ..." autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:10em;"/>';
+        var cmd='';
+        cmd+='m1(n1(' + this.moi + '),f1(modifier_nom_xxx_du_champ(';
+        cmd+=' nom_de_la_zone(meta_ajouter__libelle_du_champ),';
+        cmd+=' mode(nouveau_champ)';
+        cmd+=' zone_du_champ(vv_nom_du_champ)';
+        cmd+=' meta_champ(bref)';
+        cmd+=')))';
+        t+='<button class="yy_b1 yy__3" rev_clic1="' + cmd + '" >modifier</button>';
+        t+='</label>'
+        t+='<label class="yy_lib1">entete_distant_du_champ : <input type="text" id="meta_ajouter__entete_distant_du_champ" value="" autocapitalize="off" aria-autocomplete="list" class="yy_input1" style="width:10em;" /></label>';
+//        t+='<label class="yy_lib1">suggestion_du_champ : <input type="text" id="meta_ajouter__suggestion_du_champ" value="" autocapitalize="off" /></label>';
         t+='<br />libelle_grandeur : <input type="text" id="meta_ajouter__libelle_grandeur" value="" autocapitalize="off" />';
         t+='<br />chi_id_parametre : <input type="text" id="meta_ajouter__chi_id_parametre" value="" autocapitalize="off" />';
         t+='<br />masquer_champ_dans_svg : <input id="masquer_champ_dans_svg" type="checkbox" />';
@@ -5594,12 +5616,15 @@ class v_svg_bdd1{
         cmd+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\\'/g , '\'' ).replace( /\\\\/g , '\\' ).replace( /"/g , '&quot;' ) + '\')';
         cmd+=')))';
         t+='<button class="yy_b1 yy__3" rev_clic1="' + cmd + '" >ajouter ce champ à la table du schéma</button>';
+        t+='</details>';
         /*
           =====================================================================================================
           =====================================================================================================
         */
+        t+='<br />';
         t+='<hr />';
-        t+='<h3>ajouter un index</h3>';
+        t+='<details name="modifier_une_table1">';
+        t+='<summary><h3>ajouter un index</h3></summary>';
         t+='nom : <input id="nom_de_l_index" type="text" value="idx_" autocapitalize="off" />';
         t+='<br />';
         t+='liste des champs : <input id="liste_des_champs_de_l_index" type="text" value="" disabled style="width:90%;" autocapitalize="off"/>';
@@ -5617,15 +5642,24 @@ class v_svg_bdd1{
         t+='<br />message de l\'index : <input id="message_de_l_index" type="text" value="" autocapitalize="off" />';
         t+='<br />unique  : <input type="checkbox" id="unique" />';
         t+='<br />';
+        t+='<br />';
         t+='<button class="yy_b1 yy__3" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(ajouter_l_index_dans_modale(';
         t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
         t+=' id_svg_conteneur_table(' + id_svg_conteneur_table + '),';
         t+=')))" >ajouter cet index</button>';
         /*  */
+        t+='<br />';
+        t+='<br />';
         t+='<hr />';
+        t+='</details>';
         t+='<hr />';
-        t+='<h3>Supprimer la table de ce schema </h3>';
+        /*
+          =====================================================================================================
+        */
+        t+='<details name="modifier_une_table1">';
+        t+='<summary><h3>opérations</h3></summary>';
+        t+='<br /><br />';
         t+='<button class="yy_b1 yy__0" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(';
         t+=' supprimer_la_table_de_modale(';
@@ -5634,19 +5668,17 @@ class v_svg_bdd1{
         t+=' )';
         t+='))';
         t+='" >supprimer cette table du schéma</button>';
-        t+='<hr />';
         /*
-          =====================================================================================================
         */
-        t+='<h2>table dans la base physique</h2>';
-        t+='<hr />';
+        t+='<br /><br />';
         t+='<button class="yy_b1 yy__1" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(ajouter_la_table_en_base_de_modale(';
         t+=' nom_de_la_table(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\')';
         t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + '),';
         t+=')))';
         t+='" >ajouter la table dans la base physique</button>';
-        /*  */
+        /*
+        */
         t+='<br /><br />';
         t+='<button class="yy_b1 yy__0" rev_clic1="';
         t+='m1(n1(' + this.moi + '),f1(supprimer_la_table_en_base_de_modale(';
@@ -5654,6 +5686,8 @@ class v_svg_bdd1{
         t+=' id_svg_rectangle_de_la_table(' + id_svg_rectangle_de_la_table + ' ),';
         t+=')))';
         t+='" >supprimer la table de la base physique</button>';
+        /*
+        */
         t+='<br /><br />';
         t+='<button class="yy_b1 yy__2" rev_clic1="';
         t+='pm1(m1(n1(' + this.moi + '),f1(compter_le_nombre_d_enregistrements(';
@@ -5663,7 +5697,7 @@ class v_svg_bdd1{
         t+='))))';
         t+='" >compter le nombre d enregistrements</button>';
         if(est_table_virtuelle === 1){
-            t+='<br /><br />';
+            t+='<hr /><br />';
             t+='<button class="yy_b1 yy__4" rev_clic1="';
             t+='m1(n1(' + this.moi + '),f1(insérer_les_donnees_dans_la_table_virtuelle(';
             t+=' nom_de_la_table_virtuelle(\'' + nom_de_la_table.replace( /\\/g , '\\\\' ).replace( /\'/g , '\\\'' ) + '\'),';
@@ -5781,11 +5815,13 @@ class v_svg_bdd1{
             */
             t+='<br /><br />';
         }
-        /*
-          
-        */
         t+='<hr />';
-        t+='<h3>ordonner les champs dans la bdd</h3>';
+        t+='</details>';
+        t+='<hr />';
+        /*
+        */
+        t+='<details name="modifier_une_table1">';
+        t+='<summary><h3>ordonner les champs dans la bdd</h3></summary>';
         t+='<table><tr>';
         t+='<th>original</th>';
         t+='<th>modifié<br /><span style="color:red;">glisser / déplacer avec la souris</span></th><th>action</th>';
@@ -5825,11 +5861,13 @@ class v_svg_bdd1{
         cmd+=')))';
         t+='<button class="yy_b1 yy__3" rev_clic1="' + cmd + '">ordonner ici uniquement</button>';
         t+='</td></tr></table>';
+        t+='</details>';
+        t+='<hr />';
         /*
           
         */
-        t+='<hr />';
-        t+='<h3>opérations sur les champs </h3>';
+        t+='<details name="modifier_une_table1">';
+        t+='<summary><h3>opérations sur les champs </h3></summary>';
         t+='<table><tr>';
         t+='<th>champs</th>';
         t+='<th>action</th>';
@@ -5895,11 +5933,13 @@ class v_svg_bdd1{
             t+='</tr>';
         }
         t+='</table>';
+        t+='</details>';
         /*
           
         */
         t+='<hr />';
-        t+='<h3>Opérations sur des valeurs initiales</h3>';
+        t+='<details name="modifier_une_table1">';
+        t+='<summary><h3>Opérations sur des valeurs initiales</h3></summary>';
         t+='<table id="opérations_sur_valeurs_initiales"><tr>';
         t+='<th>champs</th>';
         t+='<th>insérer</th>';
@@ -5928,6 +5968,8 @@ class v_svg_bdd1{
         t+='</table>';
         t+='<hr />';
         t+='<hr />';
+        t+='</details>';
+        
         this.__ig1.affiche_sous_fenetre1( t );
         let options1={
             "hauteur_max_en_vh" : 80 ,

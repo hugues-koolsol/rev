@@ -555,7 +555,7 @@ class v_svg_bdd1{
                 /* this.__ig1.ma_trace1( 'chemin_absolu=' + chemin_absolu ); */
                 let obj1=await this.reecrire_la_base( mat , d , liste_des_autres_projets[k1] , chemin_absolu , source_sql_de_la_base , liste_des_tables , liste_des_tables_champs );
                 if(obj1.__xst !== __xsu){
-                    return({"__xst" : __xer ,"__xme" : 'erreur de réécriture 2 (' + liste_des_autres_projets[k1] + ') [' + this.__ig1.nl2()});
+                    return({"__xst" : __xer ,"__xme" : obj1.__xme + '<br />erreur de réécriture 2 ( proj=' + liste_des_autres_projets[k1] + ') [' + this.__ig1.nl2()});
                 }
             }else{
                 this.__ig1.donnees_retournees.__xsi[__xal].push( 'la base (' + chemin_absolu + ') n\'a pas pu être réécrite car le fichier est absent du disque<br /> [' + this.__ig1.nl2() );
