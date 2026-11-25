@@ -15,6 +15,7 @@ class autorisations2{
       =============================================================================================================
     */
     ajoute_criteres_sous_liste2( criteres_xxxx ){
+        criteres_xxxx['source_comme_c_js']='_c.js';
         /* voir exemple dans groupes2_s.js */
     }
     /*

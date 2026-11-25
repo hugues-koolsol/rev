@@ -18,6 +18,14 @@ CREATE UNIQUE INDEX idx_ligne_rev ON `tbl_revs`
         /* meta(nom_de_l_index(idx_ligne_rev),genre_meta(index_de_table),message('')) */
          ( `chi_id_rev` ) ;
 
+CREATE UNIQUE INDEX idx_parametre ON `tbl_parametres` 
+        /* meta(nom_de_l_index(idx_parametre),genre_meta(index_de_table),message('')) */
+         ( `chp_cle_parametre` ) ;
+
+CREATE UNIQUE INDEX idx_grandeur ON `tbl_grandeurs` 
+        /* meta(nom_de_l_index(idx_grandeur),genre_meta(index_de_table),message('')) */
+         ( `chx_parametre_grandeur` , `chp_cle_grandeur` ) ;
+
 CREATE UNIQUE INDEX idx_nom_groupe ON `tbl_groupes` 
         /* meta(nom_de_l_index(idx_nom_groupe),genre_meta(index_de_table),message('ce nom de groupe existe')) */
          ( `chp_nom_groupe` ) ;
@@ -37,12 +45,4 @@ CREATE UNIQUE INDEX idx_unique1 ON `tbl_autorisations`
 CREATE UNIQUE INDEX idx_nom_unique_utilisateurs ON `tbl_utilisateurs` 
         /* meta(nom_de_l_index(idx_nom_unique_utilisateurs),genre_meta(index_de_table),message('Ce nom d\'utilisateur existe déjà')) */
          ( `chp_nom_de_connexion_utilisateur` ) ;
-
-CREATE UNIQUE INDEX idx_parametre ON `tbl_parametres` 
-        /* meta(nom_de_l_index(idx_parametre),genre_meta(index_de_table),message('')) */
-         ( `chp_cle_parametre` ) ;
-
-CREATE UNIQUE INDEX idx_grandeur ON `tbl_grandeurs` 
-        /* meta(nom_de_l_index(idx_grandeur),genre_meta(index_de_table),message('')) */
-         ( `chx_parametre_grandeur` , `chp_cle_grandeur` ) ;
 

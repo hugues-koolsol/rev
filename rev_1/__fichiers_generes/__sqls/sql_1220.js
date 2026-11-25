@@ -35,6 +35,13 @@ class sql_1220{
             if(tup.hasOwnProperty( 'T2_chp_nom_source' ) && tup.T2_chp_nom_source !== ''){
                 where0+=` AND \`T2\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T2_chp_nom_source , 'T2_chp_nom_source' ) + '\r\n';
             }
+            if(tup.hasOwnProperty( 'T0_chx_acces_autorisation' ) && tup.T0_chx_acces_autorisation !== ''){
+                if(tup.T0_chx_acces_autorisation === 0){
+                    where0+=' AND `T0`.`chx_acces_autorisation` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_autorisation`' , tup.T0_chx_acces_autorisation );
+                }
+            }
             if(tup.hasOwnProperty( 'T1_chp_nom_acces' ) && tup.T1_chp_nom_acces !== ''){
                 where0+=` AND \`T1\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_acces , 'T1_chp_nom_acces' ) + '\r\n';
             }
@@ -45,18 +52,8 @@ class sql_1220{
                     where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_source_autorisation`' , tup.T0_chx_source_autorisation );
                 }
             }
-            if(tup.hasOwnProperty( 'T0_chx_acces_autorisation' ) && tup.T0_chx_acces_autorisation !== ''){
-                if(tup.T0_chx_acces_autorisation === 0){
-                    where0+=' AND `T0`.`chx_acces_autorisation` IS NULL \r\n';
-                }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_acces_autorisation`' , tup.T0_chx_acces_autorisation );
-                }
-            }
             if(tup.hasOwnProperty( 'T0_che_pour_sous_liste_autorisation' ) && tup.T0_che_pour_sous_liste_autorisation !== ''){
                 where0+=` AND \`T0\`.\`che_pour_sous_liste_autorisation\` = ` + this.__ig1.__fnt1.sq1( tup.T0_che_pour_sous_liste_autorisation , 'T0_che_pour_sous_liste_autorisation' ) + `` + '\r\n';
-            }
-            if(tup.hasOwnProperty( 'acces_pas_dans' ) && tup.acces_pas_dans !== ''){
-                where0+=` AND \`T0\`.\`chx_acces_autorisation\` NOT IN ` + tup.acces_pas_dans + '\r\n';
             }
             if(tup.hasOwnProperty( 'T0_chi_id_autorisation' ) && tup.T0_chi_id_autorisation !== ''){
                 if(tup.T0_chi_id_autorisation === 0){
@@ -64,6 +61,12 @@ class sql_1220{
                 }else{
                     where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chi_id_autorisation`' , tup.T0_chi_id_autorisation );
                 }
+            }
+            if(tup.hasOwnProperty( 'acces_pas_dans' ) && tup.acces_pas_dans !== ''){
+                where0+=` AND \`T0\`.\`chx_acces_autorisation\` NOT IN ` + tup.acces_pas_dans + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'source_comme_c_js' ) && tup.source_comme_c_js !== ''){
+                where0+=` AND \`T2\`.\`chp_nom_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.source_comme_c_js , 'source_comme_c_js' ) + '\r\n';
             }
         }catch(e){
             return({"__xst" : __xer , "__xme" : 'erreur de construction de la requête [' + this.__ig1.nl2(e) + ' ] ' });

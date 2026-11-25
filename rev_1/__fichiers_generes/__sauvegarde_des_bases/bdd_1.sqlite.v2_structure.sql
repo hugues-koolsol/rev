@@ -182,19 +182,6 @@ CREATE TABLE `tbl_taches`(
             /*
             meta(
             genre_meta(champ),
-            nom_du_champ('che__nur_tache'),
-            nom_bref_du_champ(' nur'),libelle_du_champ(' nur'),entete_distant_du_champ(' nur tâche'),
-            typologie(che),
-            genre(15),
-            masquer_champ_dans_svg(1)
-            )
-            */
-             `che__nur_tache` INTEGER NOT NULL DEFAULT  0
-    ,
-    
-            /*
-            meta(
-            genre_meta(champ),
             nom_du_champ('chd__dtm_tache'),
             nom_bref_du_champ('dtm'),libelle_du_champ('dtm'),suggestion_du_champ(''),
             typologie(chd),
@@ -203,6 +190,19 @@ CREATE TABLE `tbl_taches`(
             )
             */
              `chd__dtm_tache` VARCHAR(23) NOT NULL DEFAULT  '2000-01-01 00:00:00.000'
+    ,
+    
+            /*
+            meta(
+            genre_meta(champ),
+            nom_du_champ('che__nur_tache'),
+            nom_bref_du_champ(' nur'),libelle_du_champ(' nur'),entete_distant_du_champ(' nur tâche'),
+            typologie(che),
+            genre(15),
+            masquer_champ_dans_svg(1)
+            )
+            */
+             `che__nur_tache` INTEGER NOT NULL DEFAULT  0
      , CHECK(che_priorite_tache >= 0 AND che_priorite_tache <= 99)
     );
 

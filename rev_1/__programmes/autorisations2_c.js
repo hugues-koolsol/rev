@@ -18,9 +18,9 @@ class autorisations2{
         "sous_liste2" : {
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
             "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T0_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_source_autorisation" : {"nom" : 'id source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T0_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_che_pour_sous_liste_autorisation" : {"nom" : 'pour s/liste' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chi_id_autorisation" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
@@ -120,7 +120,7 @@ class autorisations2{
                 /*
                 */
                 /* combinaison */
-                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                lst+='<td style="text-align: center; overflow-wrap: break-word;">';
                 /* cas liste2 4.1 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_source_autorisation ) + ') ';
                 /* cas liste2 5.1 */
@@ -129,7 +129,7 @@ class autorisations2{
                 /*
                 */
                 /* combinaison */
-                lst+='<td style="text-align: center; max-width: 24em;overflow-wrap: break-word;">';
+                lst+='<td style="text-align: center; overflow-wrap: break-word;">';
                 /* cas liste2 4.1 */
                 lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ') ';
                 /* cas liste2 5.1 */

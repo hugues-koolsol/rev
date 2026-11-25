@@ -15,7 +15,6 @@ class taches1{
       =========================== extrait =========================================================================
     */
     async retrancher_01( mat , d ){
-        /* ,  this.__ig1.donnees_recues ,  this.__ig1.donnees_retournees ,  this.__ig1.options_generales */
         let chi_id_tache='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
