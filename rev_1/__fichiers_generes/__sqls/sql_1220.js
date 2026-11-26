@@ -18,8 +18,8 @@ class sql_1220{
         let from0='';
         /*  */
         champs0=`
-          \`T0\`.\`chi_id_autorisation\` , \`T0\`.\`chx_source_autorisation\` , \`T2\`.\`chp_nom_source\` , \`T0\`.\`chx_acces_autorisation\` , \`T1\`.\`chp_nom_acces\` , 
-          \`T0\`.\`che_pour_sous_liste_autorisation\`
+          \`T2\`.\`chp_nom_source\` , \`T0\`.\`chx_acces_autorisation\` , \`T1\`.\`chp_nom_acces\` , \`T0\`.\`chx_source_autorisation\` , \`T0\`.\`che_pour_sous_liste_autorisation\` , 
+          \`T0\`.\`chi_id_autorisation\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
@@ -103,12 +103,12 @@ class sql_1220{
         /*  */
         for(let numero_de_ligne in lignes){
             donnees0.push( {
-                    "T0_chi_id_autorisation" : lignes[numero_de_ligne][0] ,
-                    "T0_chx_source_autorisation" : lignes[numero_de_ligne][1] ,
-                    "T2_chp_nom_source" : lignes[numero_de_ligne][2] ,
-                    "T0_chx_acces_autorisation" : lignes[numero_de_ligne][3] ,
-                    "T1_chp_nom_acces" : lignes[numero_de_ligne][4] ,
-                    "T0_che_pour_sous_liste_autorisation" : lignes[numero_de_ligne][5]
+                    "T2_chp_nom_source" : lignes[numero_de_ligne][0] ,
+                    "T0_chx_acces_autorisation" : lignes[numero_de_ligne][1] ,
+                    "T1_chp_nom_acces" : lignes[numero_de_ligne][2] ,
+                    "T0_chx_source_autorisation" : lignes[numero_de_ligne][3] ,
+                    "T0_che_pour_sous_liste_autorisation" : lignes[numero_de_ligne][4] ,
+                    "T0_chi_id_autorisation" : lignes[numero_de_ligne][5]
                 } );
         }
         /* comptage */

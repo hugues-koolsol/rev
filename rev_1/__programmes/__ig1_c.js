@@ -1067,33 +1067,36 @@ class __ig1{
                     o1+=that.__ig1.fi1( valeur_en_cours );
                     o1+='" /> ';
                     o1+='        </div>\r\n';
-                    o1+='        </div>\r\n';
                 }else{
                     if(premiere_zone_affichee === ''){
                         premiere_zone_affichee=i;
                     }
-                    o1+='        <div><span>' + elem.nom + '</span></div>';
-                    o1+='        <div>\r\n';
-                    o1+='          <input class="yy_input1" type="text" id="' + i + '" ';
+                    let val=''
+                    let le_style='';
                     if(le_colis1.__xva
                            && le_colis1.__xva.criteres2
                            && le_colis1.__xva.criteres2.hasOwnProperty( i )
                            && le_colis1.__xva.criteres2[i] !== ''
                     ){
                         derniere_zone_non_vide=i;
-                        o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
-                        o1+=' style="background:yellow;"';
-                    }else{
-                        o1+=' value="" ';
+                        val=this.fi1( le_colis1.__xva.criteres2[i] );
+                        le_style=' style="background:yellow;"'
                     }
-                    o1+=' aria-autocomplete="list" ';
-                    o1+=' size="' + elem.taille + '" ';
-                    o1+=' maxlength="64" ';
-                    o1+=' autocapitalize="off" ';
-                    o1+=' />';
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
+                    o1+='<div class="yy_libelle_filtre">' + elem.nom + '</div>';
+                    o1+='<div class="yy_champ_filtre1">\r\n';
+                    if(elem.genre && elem.genre === 5){
+                        o1+='  <input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
+                        o1+='  <div class="yy__fil_btns1">';
+                        o1+='    <button data-pos=""  data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</button>';
+                        o1+='    <button data-pos="0" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</button>';
+                        o1+='    <button data-pos="1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</button>';
+                        o1+='  </div>';
+                    }else{
+                        o1+='          <input class="yy_input1" type="text" id="' + i + '" value="' + val + '" ' + le_style + ' aria-autocomplete="list" size="' + elem.taille + '" maxlength="64" autocapitalize="off" />';
+                    }
+                    o1+='</div>';
                 }
+                o1+='    </div>\r\n';
             }else{
                 /* les zones masquées sont plus bas */
             }

@@ -2801,7 +2801,7 @@ INSERT INTO tbl_dossiers (  chi_id_dossier ,  chp_nom_dossier ,  chx_parent_doss
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (145) */
+/*================================================================================ DEBUT BLOC TABLE tbl_sources offset 0 (146) */
 INSERT INTO tbl_sources (  chi_id_source ,  chp_nom_source ,  cht_rev_source ,  cht_genere_source ,  che_binaire_source ,  chx_dossier_id_source ,  cht_commentaire_source ,  che_autorisation_globale_source ,  cht_condition_rev_source ,  cht_condition_js_source ,  cht_notification_ko_source ,  che_pour_util_source ,  che_est_extrait_source ,  che_est_verrouille_source ,  cht_import_module_rev_source ,  chd__dtm_source ,  chd__dtc_source ,  che__nur_source ) VALUES
 ('1','__serveur.js',NULL,NULL,'0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
 ('2','__serveur.ps1',NULL,'','0','1',NULL,'0',NULL,NULL,NULL,'0','0','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
@@ -26791,7 +26791,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                   ''</button>''
                )
             ),
-            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('',this.moi,''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>''))
+            affectop(''+='',this.vv_ecran_liste_boutons_avant,concat(''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('',this.moi,''),f1(gererer_les_autorisation_serveur())))" data-indicateur_graphique2="bouton_generer_les_autorisations" title="" >générer les autorisations</button>''))
          )
       ),
       #(
@@ -26910,7 +26910,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
         }
         this.vv_ecran_liste_boutons_avant+=''<button class="yy_svg1 yy__xif" rev_clic1="m1(n1('' + this.moi + ''),f1(page_creer1()))" title="création'' + this.DUN_DUNE_ELEMENT_GERE + ''" >'' + this.__ig1.les_svg.nouveau_document + ''</button>'';
-        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>'';
+        this.vv_ecran_liste_boutons_avant+=''<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1('' + this.moi + ''),f1(gererer_les_autorisation_serveur())))" data-indicateur_graphique2="bouton_generer_les_autorisations" title="" >générer les autorisations</button>'';
     }
     /*
       =============================================================================================================
@@ -52417,6 +52417,29 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         /*sql_inclure_fin*/ 1401 , criteres_1401 , __db1 );
         return({"__xst" : __xsu});
     }
+}','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0'),
+('1070','autorisations2_s.js','definition_de_classe(
+   nom_classe(autorisations2),
+   contenu(
+      #(
+        =========================================================================================================
+      ),
+      méthode(
+         definition(nom(ajoute_criteres_sous_liste2),argument(criteres_xxxx)),
+         contenu(
+            affecte(tableau(nomt(criteres_xxxx),p(''source_comme_c_js'')),''_c.js''),
+            #( voir exemple dans groupes2_s.js )
+         )
+      )
+   )
+)','class autorisations2{
+    /*
+      =============================================================================================================
+    */
+    ajoute_criteres_sous_liste2( criteres_xxxx ){
+        criteres_xxxx[''source_comme_c_js'']=''_c.js'';
+        /* voir exemple dans groupes2_s.js */
+    }
 }','0',NULL,NULL,'0',NULL,NULL,NULL,'0','1','0',NULL,'2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0');
 /*================================================================================ FIN BLOC TABLE tbl_sources offset 0 */
 
@@ -55870,7 +55893,7 @@ ajouter_index(
 
 /*========================================================================================================================*/
 
-/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (170) */
+/*================================================================================ DEBUT BLOC TABLE tbl_requetes offset 0 (171) */
 INSERT INTO tbl_requetes (  chi_id_requete ,  cht_commentaire_requete ,  chp_type_requete ,  cht_rev_requete ,  cht_sql_requete ,  cht_matrice_requete ,  che__nur_requete ,  chd__dtm_requete ,  chd__dtc_requete ,  che_est_souche_requete ,  chp_table_reference_requete ,  che_base_reference_requete ) VALUES
 ('1101','utilisateur par nom_de_connexion','select','sélectionner(
    valeurs(champ(`T0`,`chp_mot_de_passe_utilisateur`),champ(`T0`,`chi_id_utilisateur`),champ(`T0`,`chx_acces_utilisateur`)),
@@ -58088,12 +58111,12 @@ LIMIT :quantitee OFFSET :debut
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_acces','1'),
 ('1220','pour sous liste','liste_ecran','sélectionner(
    valeurs(
-      champ(`T0`,`chi_id_autorisation`),
-      champ(`T0`,`chx_source_autorisation`),
       champ(`T2`,`chp_nom_source`),
       champ(`T0`,`chx_acces_autorisation`),
       champ(`T1`,`chp_nom_acces`),
-      champ(`T0`,`che_pour_sous_liste_autorisation`)
+      champ(`T0`,`chx_source_autorisation`),
+      champ(`T0`,`che_pour_sous_liste_autorisation`),
+      champ(`T0`,`chi_id_autorisation`)
    ),
    champs_combinaison_liste(
       (
@@ -58143,8 +58166,8 @@ LIMIT :quantitee OFFSET :debut
       limité_à(quantité(:quantitee),début(:debut))
    )
 )  ','SELECT 
-`T0`.`chi_id_autorisation` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , 
-`T0`.`che_pour_sous_liste_autorisation`
+`T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+`T0`.`chi_id_autorisation`
  FROM b1.tbl_autorisations T0
  LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
 
@@ -58306,6 +58329,74 @@ WHERE ( /* */ `T0`.`che_actif_grandeur` IN (:T0_che_actif_grandeur)
    AND `T0`.`chx_parametre_grandeur` = :T0_chx_parametre_grandeur) 
 ORDER BY  :liste_des_tris
 ;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_grandeurs','1'),
+('1226',NULL,'liste_ecran','sélectionner(
+   valeurs(
+      champ(`T0`,`chi_id_utilisateur`),
+      champ(`T0`,`che_actif_utilisateur`),
+      champ(`T0`,`chp_nom_de_connexion_utilisateur`),
+      champ(`T0`,`chx_acces_utilisateur`),
+      champ(`T1`,`chp_nom_acces`),
+      champ(`T1`,`che_actif_acces`)
+   ),
+   champs_combinaison_liste(
+      (
+         #(),
+         entete_liste(''actif / nom de connexion''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T0`,`che_actif_utilisateur`)),
+         utiliser(htm_pref('' ''),champ(`T0`,`chp_nom_de_connexion_utilisateur`))
+      ),
+      (
+         #(),
+         entete_liste(''accès''),
+         format_colonne(''text-align: center; max-width: 24em;overflow-wrap: break-word;''),
+         format_entete(''''),
+         utiliser(champ(`T1`,`che_actif_acces`)),
+         utiliser(champ(`T0`,`chx_acces_utilisateur`)),
+         utiliser(htm_pref('' ''),champ(`T1`,`chp_nom_acces`))
+      )
+   ),
+   provenance(
+      table_reference(
+         source(nom_de_la_table(tbl_utilisateurs,alias(T0),base(b1)))
+      ),
+      jointure_gauche(
+         source(nom_de_la_table(tbl_acces,alias(T1),base(b1))),
+         contrainte(egal(champ(T1,chi_id_acces),champ(T0,chx_acces_utilisateur)))
+      )
+   ),
+   conditions(
+      et(
+         egal(champ(`T0`,`chi_id_utilisateur`),:T0_chi_id_utilisateur),
+         egal(champ(`T0`,`che_actif_utilisateur`),:T0_che_actif_utilisateur),
+         comme(champ(`T0`,`chp_nom_de_connexion_utilisateur`),:T0_chp_nom_de_connexion_utilisateur),
+         egal(champ(`T0`,`chx_acces_utilisateur`),:T0_chx_acces_utilisateur),
+         comme(champ(`T1`,`chp_nom_acces`),:T1_chp_nom_acces),
+         egal(champ(`T1`,`che_actif_acces`),:T1_che_actif_acces),
+         pas_dans(champ(`T0`,`chx_acces_utilisateur`),:acces_pas_dans)
+      )
+   ),
+   complements(
+      trier_par((champ(`T0`,`che_actif_utilisateur`),décroissant()),(champ(`T0`,`chi_id_utilisateur`),décroissant())),
+      limité_à(quantité(:quantitee),début(:debut))
+   )
+)  ','SELECT 
+`T0`.`chi_id_utilisateur` , `T0`.`che_actif_utilisateur` , `T0`.`chp_nom_de_connexion_utilisateur` , `T0`.`chx_acces_utilisateur` , `T1`.`chp_nom_acces` , 
+`T1`.`che_actif_acces`
+ FROM b1.tbl_utilisateurs T0
+ LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_utilisateur
+
+WHERE (`T0`.`chi_id_utilisateur` = :T0_chi_id_utilisateur
+   AND `T0`.`che_actif_utilisateur` = :T0_che_actif_utilisateur
+   AND `T0`.`chp_nom_de_connexion_utilisateur` LIKE :T0_chp_nom_de_connexion_utilisateur
+   AND `T0`.`chx_acces_utilisateur` = :T0_chx_acces_utilisateur
+   AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
+   AND `T1`.`che_actif_acces` = :T1_che_actif_acces
+   AND `T0`.`chx_acces_utilisateur` NOT IN :acces_pas_dans) 
+ORDER BY `T0`.`che_actif_utilisateur` DESC, `T0`.`chi_id_utilisateur` DESC  
+LIMIT :quantitee OFFSET :debut 
+;',NULL,'0','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','1','tbl_utilisateurs','1'),
 ('1301','dossiers par parents','select','sélectionner(
 
    valeurs(champ(`T0`,`chi_id_dossier`),champ(`T0`,`chp_nom_dossier`)),
@@ -61142,6 +61233,6 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1884','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1887','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$xv.rjW4JKTTCufVo1hMVuuLcUwGkGktjC3vXwdw7XhG/kuT.qh5EW',NULL,'20','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */

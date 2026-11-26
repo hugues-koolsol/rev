@@ -2948,6 +2948,9 @@ class __fnt1{
             } catch {}
         }
         let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
+        if(vv_bouton_loupe === null){
+            vv_bouton_loupe=document.getElementById( 'yy_bouton_loupe_sous_fenetre2' );
+        }
         this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'rev_clic1' ) );
         return({"__xst" : __xsu});
     }

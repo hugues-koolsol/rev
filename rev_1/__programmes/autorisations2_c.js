@@ -113,9 +113,12 @@ class autorisations2{
                 lst+='</td>';
                 /*
                 */
-                lst+='<td style="text-align:center;">';
-                /* cas liste2 4.2 */
-                lst+=this.__ig1.fi2( tup.T0_chi_id_autorisation );
+                /* combinaison */
+                lst+='<td style="text-align: center; overflow-wrap: break-word;">';
+                /* cas liste2 4.1 */
+                lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ') ';
+                /* cas liste2 5.1 */
+                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
                 lst+='</td>';
                 /*
                 */
@@ -128,15 +131,6 @@ class autorisations2{
                 lst+='</td>';
                 /*
                 */
-                /* combinaison */
-                lst+='<td style="text-align: center; overflow-wrap: break-word;">';
-                /* cas liste2 4.1 */
-                lst+='(' + this.__ig1.fi2( tup.T0_chx_acces_autorisation ) + ') ';
-                /* cas liste2 5.1 */
-                lst+='<span class="" style="">' + this.__ig1.fi2( tup.T1_chp_nom_acces ) + '</span>';
-                lst+='</td>';
-                /*
-                */
                 /* cas liste2 3.0 */
                 lst+='<td style="text-align:center;">';
                 if(tup.T0_che_pour_sous_liste_autorisation === 0){
@@ -145,6 +139,12 @@ class autorisations2{
                     lst+='<div style="height:var(--t_police);width:var(--t_police);margin:0 auto;display:inline-block;">' + this.__ig1.les_svg.rond_vert1 + '</div>';
                 }
                 lst+='</td>';
+                /*
+                */
+                lst+='<td style="text-align:center;">';
+                /* cas liste2 4.2 */
+                lst+=this.__ig1.fi2( tup.T0_chi_id_autorisation );
+                lst+='</td>';
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -152,10 +152,10 @@ class autorisations2{
                 o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+=/* chi_id_autorisation */'<th>id</th>';
-                o1+=/* combinaison */'<th>source</th>';
                 o1+=/* combinaison */'<th>accès</th>';
+                o1+=/* combinaison */'<th>source</th>';
                 o1+=/* che_pour_sous_liste_autorisation */'<th>pour s/liste</th>';
+                o1+=/* chi_id_autorisation */'<th>id</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

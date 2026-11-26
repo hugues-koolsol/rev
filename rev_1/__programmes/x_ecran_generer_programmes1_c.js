@@ -8164,7 +8164,6 @@ class x_ecran_generer_programmes1{
                 this.#liste_des_types_de_requetes[type_requete]=true;
             }
         }
-        debugger;
         if(this.#liste_des_types_de_requetes.liste_ecran === true){
             document.getElementById( 'gererer_le_js_bdd1' ).style.visibility='visible';
         }else{

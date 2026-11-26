@@ -48,7 +48,6 @@ class sql_1221{
                 where0+=` AND \`T0\`.\`cht_rev_source\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T0_cht_rev_source , 'T0_cht_rev_source' ) + '\r\n';
             }
             where0+=` AND \`T0\`.\`che_autorisation_globale_source\` = 0`;
-            where0+=` AND \`T0\`.\`che_pour_util_source\` = 1`;
             where0+=` AND \`T0\`.\`che_binaire_source\` = 0`;
             where0+=` AND \`T0\`.\`che_est_extrait_source\` = 0`;
         }catch(e){
