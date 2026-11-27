@@ -2288,6 +2288,9 @@ class _rev_de_sql_vers_js1{
                                 }
                                 if(ordre_de_table.nom_de_la_table !== '' && ordre_de_table.id_bdd !== 0){
                                     /* this.#obj_webs['bases'][ind] */
+                                    if(!this.#obj_webs['bases'][ordre_de_table.id_bdd].tables.hasOwnProperty(ordre_de_table.nom_de_la_table)){
+                                        return({__xst : __xer , __xme : ' la table ' + ordre_de_table.nom_de_la_table + ' est absente de la base ' + ordre_de_table.id_bdd })
+                                    }
                                     this.#obj_webs['bases'][ordre_de_table.id_bdd].tables[ordre_de_table.nom_de_la_table].active=true;
                                     this.#obj_webs['ordre_des_tables'].push( ordre_de_table );
                                 }
@@ -3054,6 +3057,7 @@ class _rev_de_sql_vers_js1{
                 this.#obj_webs['champs_sortie']=[{"type_d_element" : 'formule' ,"formule" : formule_insert}];
             }
         }
+        return({__xst : __xsu});
     }
     /*
       =============================================================================================================
@@ -3276,7 +3280,10 @@ class _rev_de_sql_vers_js1{
             /*
               this.convertir_rev_pour_construction( bases );
             */
-            this.convertir_rev_pour_construction( bases );
+            let ret1=this.convertir_rev_pour_construction( bases );
+            if(ret1.__xst !== __xsu){
+                return(ret1);
+            }
             /*
             */
             a_retourner.globale_id_requete=this.#globale_id_requete;

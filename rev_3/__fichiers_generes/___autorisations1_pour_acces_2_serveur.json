@@ -55,20 +55,6 @@
     "cht_notification_ko_source": null,
     "che_pour_sous_liste_autorisation": 0
   },
-  "sources2_s.js": {
-    "id_autorisation": 46,
-    "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null,
-    "che_pour_sous_liste_autorisation": 1
-  },
-  "acteurs1_s.js": {
-    "id_autorisation": 48,
-    "autorisation_cote_client": 0,
-    "cht_condition_js_source": null,
-    "cht_notification_ko_source": null,
-    "che_pour_sous_liste_autorisation": 0
-  },
   "parametres1_s.js": {
     "id_autorisation": 60,
     "autorisation_cote_client": 0,
@@ -82,6 +68,13 @@
     "cht_condition_js_source": null,
     "cht_notification_ko_source": null,
     "che_pour_sous_liste_autorisation": 0
+  },
+  "sources4_s.js": {
+    "id_autorisation": 46,
+    "autorisation_cote_client": 0,
+    "cht_condition_js_source": null,
+    "cht_notification_ko_source": null,
+    "che_pour_sous_liste_autorisation": 1
   },
   "_connexion1_s.js": {
     "id_autorisation": 0,

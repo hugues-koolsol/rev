@@ -18,11 +18,7 @@ class sql_2004{
         if(tup.n_chp_prenom_acteur === null || tup.n_chp_prenom_acteur === ''){
             return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "prénom de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
         }
-        /* test "non nul" sur le champ "chx_statut_acteur" */
-        if(tup.n_chx_statut_acteur === null || tup.n_chx_statut_acteur === ''){
-            return({"__xst" : __xer ,"__xme" : this.moi + ' : la valeur pour "statut de l\'acteur" doit être renseignée [' + this.__ig1.nl2() + ']'});
-        }
-        let sql0='UPDATE `tbl_acteurs` SET \r\n';
+        let sql0='UPDATE `tbl_base2_acteurs` SET \r\n';
         let tableau_champs=[];
         try{
             if(tup.n_chp_nom_acteur === undefined || tup.n_chp_nom_acteur === '' || tup.n_chp_nom_acteur === null){
@@ -35,21 +31,13 @@ class sql_2004{
             }else{
                 tableau_champs.push( '`chp_prenom_acteur` = \'' + this.__ig1.__fnt1.sq0( tup.n_chp_prenom_acteur , 'n_chp_prenom_acteur' ) + '\'' );
             }
-            if(tup.n_chx_statut_acteur === undefined || tup.n_chx_statut_acteur === '' || tup.n_chx_statut_acteur === null){
-                tableau_champs.push( '`chx_statut_acteur` = NULL' );
-            }else{
-                if(isNaN(parseInt( tup.n_chx_statut_acteur , 10 ))){
-                    return({"__xst" : __xer ,"__xme" : 'le champ "statut" doit être numérique'});
-                }
-                tableau_champs.push( '`chx_statut_acteur` = ' + this.__ig1.__fnt1.sq0( tup.n_chx_statut_acteur , 'n_chx_statut_acteur' ) + '' );
-            }
             if(tableau_champs.length === 0){
                 return({
                          /*  */
                         "__xst" : __xer ,
                         "__xme" : 'aucun champ à mettre à jour' ,
                         "sql0" : sql0 ,
-                        "texte_requete" : 'la modification dans la table des acteurs'
+                        "texte_requete" : 'la modification dans la table des base2_acteurs'
                     });
             }
             sql0+=tableau_champs.join( ',' + '\r\n' + '    ' ) + '\r\n';

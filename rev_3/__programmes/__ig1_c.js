@@ -252,7 +252,7 @@ class __ig1{
                                     if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
                                         this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
                                     }else{
-                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 1 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -265,7 +265,7 @@ class __ig1{
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_filtre_liste2'
                                            || mat[d + 1][1] === 'obtenir_les_grandeurs_pour_sous_liste2')
                                 ){
-                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CLT erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                    this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 5 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
@@ -274,7 +274,7 @@ class __ig1{
                                 this.executer1( 'pm1(m1(n1(_connexion1),f1(page_connexion1())))' );
                                 this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'connectez vous !'} );
                             }else{
-                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 3 <br />cette action n\'est pas disponnible'} );
+                                this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 3'} );
                             }
                             return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
@@ -384,7 +384,7 @@ class __ig1{
                                     if(elem.cht_notification_ko_source && elem.cht_notification_ko_source !== ''){
                                         this.affiche_les_messages( {"__xst" : __xal ,"__xme" : elem.cht_notification_ko_source} );
                                     }else{
-                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
+                                        this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 2 pour ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )} );
                                     }
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
@@ -404,13 +404,13 @@ class __ig1{
                                 ){
                                     this.affiche_les_messages( {
                                             "__xst" : __xer ,
-                                            "__xme" : 'CLT erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )
+                                            "__xme" : 'CL erreur autorisation 6 pour ' + mat[d + 1][1] + ' ' + nom_a_importer.substr( 0 , nom_a_importer.length - 3 )
                                         } );
                                     return({"__xst" : __xer ,"__xme" : this.nl2()});
                                 }
                             }
                         }else{
-                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'erreur autorisation 4 <br />cette action n\'est pas disponnible'} );
+                            this.affiche_les_messages( {"__xst" : __xer ,"__xme" : 'CL erreur autorisation 4'} );
                             return({"__xst" : __xer ,"__xme" : this.nl2()});
                         }
                     }catch(e){
@@ -1067,33 +1067,36 @@ class __ig1{
                     o1+=that.__ig1.fi1( valeur_en_cours );
                     o1+='" /> ';
                     o1+='        </div>\r\n';
-                    o1+='        </div>\r\n';
                 }else{
                     if(premiere_zone_affichee === ''){
                         premiere_zone_affichee=i;
                     }
-                    o1+='        <div><span>' + elem.nom + '</span></div>';
-                    o1+='        <div>\r\n';
-                    o1+='          <input class="yy_input1" type="text" id="' + i + '" ';
+                    let val='';
+                    let le_style='';
                     if(le_colis1.__xva
                            && le_colis1.__xva.criteres2
                            && le_colis1.__xva.criteres2.hasOwnProperty( i )
                            && le_colis1.__xva.criteres2[i] !== ''
                     ){
                         derniere_zone_non_vide=i;
-                        o1+=' value="' + this.fi1( le_colis1.__xva.criteres2[i] ) + '" ';
-                        o1+=' style="background:yellow;"';
-                    }else{
-                        o1+=' value="" ';
+                        val=this.fi1( le_colis1.__xva.criteres2[i] );
+                        le_style=' style="background:yellow;"';
                     }
-                    o1+=' aria-autocomplete="list" ';
-                    o1+=' size="' + elem.taille + '" ';
-                    o1+=' maxlength="64" ';
-                    o1+=' autocapitalize="off" ';
-                    o1+=' />';
-                    o1+='        </div>\r\n';
-                    o1+='    </div>\r\n';
+                    o1+='<div class="yy_libelle_filtre">' + elem.nom + '</div>';
+                    o1+='<div class="yy_champ_filtre1">\r\n';
+                    if(elem.genre && elem.genre === 5){
+                        o1+='  <input type="hidden" id="' + i + '" value="' + val + '" maxlength="1" />';
+                        o1+='  <div class="yy__fil_btns1">';
+                        o1+='    <button data-pos=""  data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '' ? ( 'yy__4' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur())))">X</button>';
+                        o1+='    <button data-pos="0" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '0' ? ( 'yy__0' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(0))))" >0</button>';
+                        o1+='    <button data-pos="1" data-filtre_zero_id="' + i + '" class="yy_b1 ' + (val === '1' ? ( 'yy__1' ) : ( '' )) + '" rev_clic1="m1(n1(__fnt1),f1(filtre_zero_un(id(' + i + '),valeur(1))))" >1</button>';
+                        o1+='  </div>';
+                    }else{
+                        o1+='          <input class="yy_input1" type="text" id="' + i + '" value="' + val + '" ' + le_style + ' aria-autocomplete="list" size="' + elem.taille + '" maxlength="64" autocapitalize="off" />';
+                    }
+                    o1+='</div>';
                 }
+                o1+='    </div>\r\n';
             }else{
                 /* les zones masquées sont plus bas */
             }
@@ -2827,7 +2830,20 @@ class __ig1{
         t+='button{font-size:' + t_police + 'px;vertical-align:top;}';
         t+='button:focus{box-shadow: inset 0px 0px 5px 4px red;outline:auto!important;}';
         t+='textarea[data-editeur1="rev"],textarea[data-editeur1="source_editeur1"]{font-family:monospace;}';
-        t+='details{cursor:help;}';
+        t+='details{cursor:pointer;';
+        t+='  interpolate-size: allow-keywords;';
+        t+='  &::details-content {';
+        t+='    transition:';
+        t+='      block-size 0.15s,';
+        t+='      content-visibility 1s allow-discrete;';
+        t+='    overflow: hidden;';
+        t+='    block-size: 0;     /* Or also:  height:0; */';
+        t+='  }';
+        t+='  ';
+        t+='  &[open]::details-content {';
+        t+='    block-size: auto;  /* Or also:  height:auto; */';
+        t+='  }';
+        t+='}        ';
         t+='#vv_calendrier td{';
         t+='  min-width:' + ((largeur_du_m + t_border) * 2) + 'px;';
         t+='  height:' + ((largeur_du_m + t_border) * 2) + 'px;';
@@ -3540,6 +3556,7 @@ class __ig1{
         let vv_sous_fenetre1=document.getElementById( 'vv_sous_fenetre1' );
         vv_sous_fenetre1.style.maxWidth='80vw';
         vv_sous_fenetre1.style.minWidth='min(80vw, ' + this.css_dimensions.t_fenetre + 'px)';
+        vv_sous_fenetre1.style.overflowY='scroll';
         this.maj_htm1( vv_sous_fenetre1 , contenu_a_afficher );
         vv_sous_fenetre1.showModal();
         return({"__xst" : __xsu});

@@ -20,7 +20,7 @@
         "id_bdd_de_la_base_dependante": 1
       },
       {
-        "table_dependante": "tbl_acteurs",
+        "table_dependante": "tbl_base2_acteurs",
         "champ_dependant": "chx_utilisateur_acteur",
         "id_bdd_de_la_base_dependante": 2
       }
@@ -119,7 +119,7 @@
     "champ_parent": "chi_id_grandeur",
     "dependances": [
       {
-        "table_dependante": "tbl_acteurs",
+        "table_dependante": "tbl_base2_acteurs",
         "champ_dependant": "chx_statut_acteur",
         "id_bdd_de_la_base_dependante": 2
       }

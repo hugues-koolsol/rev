@@ -15,7 +15,6 @@ class taches1{
       =========================== extrait =========================================================================
     */
     async retrancher_01( mat , d ){
-        /* ,  this.__ig1.donnees_recues ,  this.__ig1.donnees_retournees ,  this.__ig1.options_generales */
         let chi_id_tache='';
         const l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
@@ -227,11 +226,7 @@ class taches1{
             return({"__xst" : __xer ,"__xme" : 'enregistrement non trouvé : aucune modification effectuée [1112 ' + this.__ig1.nl2() + ']'});
         }
         await __db1.exec( 'BEGIN TRANSACTION;' );
-        let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1112.__xva[0] , __db1 );
-        if(__aetavm.__xst !== __xsu){
-            await __db1.exec( 'ROLLBACK;' );
-            return({"__xst" : __xer ,"__xme" : __aetavm.__xme});
-        }
+        /* let __aetavm=await this.actions_et_tests_avant_modifier( mat , d , fo1 , tt1112.__xva[0] , __db1 ); */
         let criteres_1113={
              /*  */
             "c_chi_id_tache" : fo1.chi_id_tache ,
@@ -345,7 +340,7 @@ class taches1{
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_taches
         WHERE (`chi_id_tache` = :chi_id_tache
-           AND `chx_utilisateur_tache` = chi_id_utilisateur)
+           AND `chx_utilisateur_tache` = chi_id_utilisateur) ;
         */
         /*sql_inclure_fin*/ 1114 , criteres_1114 , __db1 );
         /*  */
@@ -560,6 +555,7 @@ class taches1{
             /*sql_inclure_fin*/ 1110 , criteres_1110 , __db1 );
         }
         this.__ig1.donnees_retournees.__xva['__champs_sortie_pour_tri1']={"`T0`.`che_priorite_tache`" : "ASC"};
+        /* let tapl1=await this.traitements_apres_liste1( mat , d , formulaire , tt1110.__xva , __db1 ); */
         this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
         this.__ig1.donnees_retournees.__xva['__debut']=__debut;
         this.__ig1.donnees_retournees.__xva['__num_page']=__num_page;

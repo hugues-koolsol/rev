@@ -13,11 +13,11 @@ class sql_2002{
         const champs0=`
           \`T0\`.\`chx_utilisateur_acteur\` , \`T0\`.\`chp_nom_acteur\` , \`T0\`.\`chp_prenom_acteur\` , \`T1\`.\`chi_id_utilisateur\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\` , 
           \`T1\`.\`chx_acces_utilisateur\` , \`T1\`.\`che_actif_utilisateur\` , \`T2\`.\`chp_nom_acces\` , \`T2\`.\`chx_groupe_acces\` , \`T2\`.\`chx_metier_acces\` , 
-          \`T3\`.\`chp_nom_groupe\` , \`T4\`.\`chp_nom_metier\` , \`T0\`.\`chx_statut_acteur\` , \`T5\`.\`chp_cle_grandeur\`
+          \`T3\`.\`chp_nom_groupe\` , \`T4\`.\`chp_nom_metier\`
         `;
         let sql0='SELECT ' + champs0;
         const from0=`
-          FROM  b2.tbl_acteurs T0
+          FROM  b2.tbl_base2_acteurs T0
            LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
 
            LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
@@ -25,8 +25,6 @@ class sql_2002{
            LEFT JOIN b1.tbl_groupes T3 ON T3.chi_id_groupe = T2.chx_groupe_acces
 
            LEFT JOIN b1.tbl_metiers T4 ON T4.chi_id_metier = T2.chx_metier_acces
-
-           LEFT JOIN b1.tbl_grandeurs T5 ON T5.chi_id_grandeur = T0.chx_statut_acteur
         `;
         sql0+=from0;
         const where0=` WHERE \`T0\`.\`chx_utilisateur_acteur\` = ` + this.__ig1.__fnt1.sq1( tup.T0_chx_utilisateur_acteur , 'T0_chx_utilisateur_acteur' ) + ``;
@@ -54,9 +52,7 @@ class sql_2002{
                     "T2_chx_groupe_acces" : col[8] ,
                     "T2_chx_metier_acces" : col[9] ,
                     "T3_chp_nom_groupe" : col[10] ,
-                    "T4_chp_nom_metier" : col[11] ,
-                    "T0_chx_statut_acteur" : col[12] ,
-                    "T5_chp_cle_grandeur" : col[13]
+                    "T4_chp_nom_metier" : col[11]
                 } );
         }
         return({"__xst" : __xsu ,"__xva" : donnees0 ,"sql0" : sql0 ,"where0" : where0});

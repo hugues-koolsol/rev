@@ -2769,6 +2769,9 @@ class x_ecran_concevoir_une_requete1{
           this.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1 );
         */
         let obj=this._rev_de_sql_vers_js1.traite_les_donnees_base_et_requetes_du_serveur( mat , d , le_colis1 );
+        if(obj.__xst !== __xsu){
+            return obj;
+        }
         this.#globale_id_requete=obj.__xva.a_retourner.globale_id_requete;
         this.#globale_rev_requete=obj.__xva.a_retourner.globale_rev_requete;
         this.#globale_type_requete=obj.__xva.a_retourner.globale_type_requete;

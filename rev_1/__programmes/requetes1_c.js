@@ -101,25 +101,25 @@ class requetes1{
             }
         }
         let obj=this.__variables_module['concevoir_une_requete1']['compiler_en_ligne']( mat , d , le_colis1 );
-        if(obj.__xst === __xsu){
-            if(bouton_compiler !== ''){
-                document.getElementById( bouton_compiler ).className='yy_b1 yy__1';
-            }
-            let obj1={
-                "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete(' + chi_id_requete + ')))))' ,
-                "__xva" : {
-                    "chi_id_requete" : chi_id_requete ,
-                    "cht_sql_requete" : obj.source_sql ,
-                    "source_js" : obj.source_js ,
-                    "cht_matrice_requete" : obj.matrice_requete ,
-                    "chp_table_reference_requete" : obj.chp_table_reference_requete ,
-                    "che_base_reference_requete" : obj.che_base_reference_requete
-                }
-            };
-            this.__ig1.envoyer_un_colis_au_worker( obj1 );
-            return({"__xst" : __xsu});
+        if(obj.__xst !== __xsu){
+            return obj;
         }
-        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        if(bouton_compiler !== ''){
+            document.getElementById( bouton_compiler ).className='yy_b1 yy__1';
+        }
+        let obj1={
+            "__xac" : 'pm1(m1(n1(' + this.moi + '),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete(' + chi_id_requete + ')))))' ,
+            "__xva" : {
+                "chi_id_requete" : chi_id_requete ,
+                "cht_sql_requete" : obj.source_sql ,
+                "source_js" : obj.source_js ,
+                "cht_matrice_requete" : obj.matrice_requete ,
+                "chp_table_reference_requete" : obj.chp_table_reference_requete ,
+                "che_base_reference_requete" : obj.che_base_reference_requete
+            }
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj1 );
+        return({"__xst" : __xsu});
     }
     /*
       =========================== extrait =========================================================================

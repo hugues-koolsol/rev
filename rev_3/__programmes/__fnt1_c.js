@@ -1766,7 +1766,7 @@ class __fnt1{
                 o1+='</div>';
             }
             if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
-                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                o1+='          <details style="cursor:help;"><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
                 }
@@ -1848,7 +1848,7 @@ class __fnt1{
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
-                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                o1+='          <details style="cursor:help;"><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
                 }
@@ -1994,7 +1994,7 @@ class __fnt1{
             }
             o1+=this.__ig1.__fnt1.boutons_edition_text( les_donnees_du_champ.nom_du_champ );
             if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
-                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                o1+='          <details style="cursor:help;"><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
                 }
@@ -2078,7 +2078,7 @@ class __fnt1{
                 o1+='</div>';
             }
             if(les_donnees_du_champ.description_du_champ !== undefined && les_donnees_du_champ.description_du_champ !== ''){
-                o1+='          <details><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
+                o1+='          <details style="cursor:help;"><summary title="commentaires sur ce champ" style="color:red;">?</summary><i style="text-align:left;font-weight:100;">';
                 if(les_donnees_du_champ.description_du_champ){
                     o1+=les_donnees_du_champ.description_du_champ.replace( /¶LF¶/g , '<br />' );
                 }
@@ -2948,6 +2948,9 @@ class __fnt1{
             } catch {}
         }
         let vv_bouton_loupe=document.getElementById( 'vv_bouton_loupe' );
+        if(vv_bouton_loupe === null){
+            vv_bouton_loupe=document.getElementById( 'yy_bouton_loupe_sous_fenetre2' );
+        }
         this.__ig1.executer1( vv_bouton_loupe.getAttribute( 'rev_clic1' ) );
         return({"__xst" : __xsu});
     }
@@ -4943,16 +4946,16 @@ class __fnt1{
         if(sans_div === false){
             o1+='<div class="yy__lst_btns1">';
         }
-        o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</button>';
-        o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</button>';
         o1+='<button class="yy_svg1 yy__1  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu1(zone_source(' + nom_de_la_zone + '))))" data-indicateur_graphique2="copier_tout1" title="copier le contenu" >' + this.__ig1.les_svg.copier_tout + '</button>';
         o1+='<button class="yy_svg1 yy__3  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(copier_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" data-indicateur_graphique2="copier_selection1" title="copier le contenu sélectionné">' + this.__ig1.les_svg.copier_la_selection + '</button>';
         o1+='<button class="yy_svg1 yy__0  yy_svg1" rev_clic1="m1(n1(' + this.moi + '),f1(coller_le_contenu_sélectionné1(zone_source(' + nom_de_la_zone + '))))" title="coller le contenu sélectionné">' + this.__ig1.les_svg.scotcher + '</button>';
         o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(agrandir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="agrandir la zone" >' + this.__ig1.les_svg.agrandir + '</button>';
         o1+='<button class="yy_svg1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(retrecir_la_zone(zone_source(' + nom_de_la_zone + '))))" title="retrecir la zone" >' + this.__ig1.les_svg.retrecir + '</button>\r\n';
         o1+='<button class="yy_svg1 yy__0 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(vider_la_zone(zone_source(' + nom_de_la_zone + '))))" title="vider la zone" >' + this.__ig1.les_svg.ensemble_vide + '</button>';
-        o1+='<button class="yy_b1 yy__1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</button>';
         o1+='<button class="yy_svg1 yy__2 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(effacer_la_selection(zone_source(' + nom_de_la_zone + '))))" title="effacer la sélection">' + this.__ig1.les_svg.clav_supp + '</button>';
+        o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_position1(zone_source(' + nom_de_la_zone + '))))" title="aller à la position" >position</button>';
+        o1+='<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(aller_a_la_ligne1(zone_source(' + nom_de_la_zone + '))))" title="aller à la ligne" >ligne</button>';
+        o1+='<button class="yy_b1 yy__1 rev_b_ctxt" rev_clic1="m1(n1(' + this.moi + '),f1(remplacer_dans_la_zone(zone_source(' + nom_de_la_zone + '))))" title="remplacer un texte par un autre dans la zone" >remplacer</button>';
         if(sans_div === false){
             o1+='</div>';
         }

@@ -20,11 +20,11 @@ class sql_2001{
         champs0=`
           \`T0\`.\`chp_nom_acteur\` , \`T0\`.\`chp_prenom_acteur\` , \`T0\`.\`chx_utilisateur_acteur\` , \`T1\`.\`chp_nom_de_connexion_utilisateur\` , \`T2\`.\`chi_id_acces\` , 
           \`T1\`.\`chx_acces_utilisateur\` , \`T2\`.\`chp_nom_acces\` , \`T2\`.\`chx_groupe_acces\` , \`T2\`.\`chx_metier_acces\` , \`T3\`.\`chp_nom_groupe\` , 
-          \`T4\`.\`chp_nom_metier\` , \`T0\`.\`chx_utilisateur_acteur\` , \`T0\`.\`chx_statut_acteur\`
+          \`T4\`.\`chp_nom_metier\` , \`T0\`.\`chx_utilisateur_acteur\`
         `;
         sql0='SELECT ' + champs0;
         from0=`
-          FROM  b2.tbl_acteurs T0
+          FROM  b2.tbl_base2_acteurs T0
             LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
      
             LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
@@ -46,18 +46,44 @@ class sql_2001{
             if(tup.hasOwnProperty( 'T1_chp_nom_de_connexion_utilisateur' ) && tup.T1_chp_nom_de_connexion_utilisateur !== ''){
                 where0+=` AND \`T1\`.\`chp_nom_de_connexion_utilisateur\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T1_chp_nom_de_connexion_utilisateur , 'T1_chp_nom_de_connexion_utilisateur' ) + '\r\n';
             }
+            if(tup.hasOwnProperty( 'T2_chp_nom_acces' ) && tup.T2_chp_nom_acces !== ''){
+                where0+=` AND \`T2\`.\`chp_nom_acces\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T2_chp_nom_acces , 'T2_chp_nom_acces' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T2_chx_groupe_acces' ) && tup.T2_chx_groupe_acces !== ''){
+                if(tup.T2_chx_groupe_acces === 0){
+                    where0+=' AND `T2`.`chx_groupe_acces` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T2`.`chx_groupe_acces`' , tup.T2_chx_groupe_acces );
+                }
+            }
+            if(tup.hasOwnProperty( 'T2_chx_metier_acces' ) && tup.T2_chx_metier_acces !== ''){
+                if(tup.T2_chx_metier_acces === 0){
+                    where0+=' AND `T2`.`chx_metier_acces` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T2`.`chx_metier_acces`' , tup.T2_chx_metier_acces );
+                }
+            }
+            if(tup.hasOwnProperty( 'T2_che_actif_acces' ) && tup.T2_che_actif_acces !== ''){
+                where0+=` AND \`T2\`.\`che_actif_acces\` = ` + this.__ig1.__fnt1.sq1( tup.T2_che_actif_acces , 'T2_che_actif_acces' ) + `` + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T3_chi_id_groupe' ) && tup.T3_chi_id_groupe !== ''){
+                if(tup.T3_chi_id_groupe === 0){
+                    where0+=' AND `T3`.`chi_id_groupe` IS NULL \r\n';
+                }else{
+                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T3`.`chi_id_groupe`' , tup.T3_chi_id_groupe );
+                }
+            }
+            if(tup.hasOwnProperty( 'T3_chp_nom_groupe' ) && tup.T3_chp_nom_groupe !== ''){
+                where0+=` AND \`T3\`.\`chp_nom_groupe\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T3_chp_nom_groupe , 'T3_chp_nom_groupe' ) + '\r\n';
+            }
+            if(tup.hasOwnProperty( 'T4_chp_nom_metier' ) && tup.T4_chp_nom_metier !== ''){
+                where0+=` AND \`T4\`.\`chp_nom_metier\` LIKE ` + this.__ig1.__fnt1.sq2( tup.T4_chp_nom_metier , 'T4_chp_nom_metier' ) + '\r\n';
+            }
             if(tup.hasOwnProperty( 'T0_chx_utilisateur_acteur' ) && tup.T0_chx_utilisateur_acteur !== ''){
                 if(tup.T0_chx_utilisateur_acteur === 0){
                     where0+=' AND `T0`.`chx_utilisateur_acteur` IS NULL \r\n';
                 }else{
                     where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_utilisateur_acteur`' , tup.T0_chx_utilisateur_acteur );
-                }
-            }
-            if(tup.hasOwnProperty( 'T0_chx_statut_acteur' ) && tup.T0_chx_statut_acteur !== ''){
-                if(tup.T0_chx_statut_acteur === 0){
-                    where0+=' AND `T0`.`chx_statut_acteur` IS NULL \r\n';
-                }else{
-                    where0+='\r\n' + this.__ig1.__fnt1.construction_where_sql_sur_id1( '`T0`.`chx_statut_acteur`' , tup.T0_chx_statut_acteur );
                 }
             }
         }catch(e){
@@ -106,8 +132,7 @@ class sql_2001{
                     "T2_chx_metier_acces" : lignes[numero_de_ligne][8] ,
                     "T3_chp_nom_groupe" : lignes[numero_de_ligne][9] ,
                     "T4_chp_nom_metier" : lignes[numero_de_ligne][10] ,
-                    "T0_chx_utilisateur_acteur" : lignes[numero_de_ligne][11] ,
-                    "T0_chx_statut_acteur" : lignes[numero_de_ligne][12]
+                    "T0_chx_utilisateur_acteur" : lignes[numero_de_ligne][11]
                 } );
         }
         /* comptage */

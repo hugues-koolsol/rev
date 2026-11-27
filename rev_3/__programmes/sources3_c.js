@@ -105,7 +105,6 @@ class sources3{
         if(this.__ig1.stockage_local['parametres']['__deverminage']['valeur'] > 0){
             this.__ig1.maj_hash( mat , 0 );
         }
-        
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_suppression_zone_boutons' );
         return({"__xst" : __xsu});
     }
@@ -120,7 +119,6 @@ class sources3{
         let tt=this.zones_liste1( le_colis1 );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
         for( let i=0 ; i < lst.length ; i++ ){
@@ -208,7 +206,6 @@ class sources3{
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
         document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
-        
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});

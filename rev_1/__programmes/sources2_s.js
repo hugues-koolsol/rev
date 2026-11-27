@@ -15,7 +15,6 @@ class sources2{
       =========================== extrait =========================================================================
     */
     ajoute_criteres_sous_liste2( criteres_xxxx ){
-        this.__ig1.ma_trace1("ici");
         criteres_xxxx['T0_che_est_extrait_source']=0;
         criteres_xxxx['T0_che_autorisation_globale_source']=0;
         /* criteres_xxxx['T0_che_pour_util_source']=1; */

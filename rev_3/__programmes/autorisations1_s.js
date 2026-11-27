@@ -474,7 +474,7 @@ class autorisations1{
         let tt1144=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_autorisations
-        WHERE `chi_id_autorisation` = :chi_id_autorisation
+        WHERE `chi_id_autorisation` = :chi_id_autorisation ;
         */
         /*sql_inclure_fin*/ 1144 , criteres_1144 , __db1 );
         /*  */
@@ -653,20 +653,20 @@ class autorisations1{
         let tt1140=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         SELECT 
-        `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , 
-        `T0`.`che_pour_sous_liste_autorisation`
+        `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+        `T0`.`chi_id_autorisation`
          FROM b1.tbl_autorisations T0
          LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
         
          LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
         
-        WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+        WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+           AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
            AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
            AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-           AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source
            AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
-           AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
-           AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
+           AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+           AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
         ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
         LIMIT :quantitee OFFSET :debut 
         ;
@@ -685,20 +685,20 @@ class autorisations1{
             tt1140=await this.__ig1.sql_iij(
             /*sql_inclure_deb*/ /*#
             SELECT 
-            `T0`.`chi_id_autorisation` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T2`.`chp_nom_source` , 
-            `T0`.`che_pour_sous_liste_autorisation`
+            `T2`.`chp_nom_source` , `T0`.`chx_acces_autorisation` , `T1`.`chp_nom_acces` , `T0`.`chx_source_autorisation` , `T0`.`che_pour_sous_liste_autorisation` , 
+            `T0`.`chi_id_autorisation`
              FROM b1.tbl_autorisations T0
              LEFT JOIN b1.tbl_acces T1 ON T1.chi_id_acces = T0.chx_acces_autorisation
             
              LEFT JOIN b1.tbl_sources T2 ON T2.chi_id_source = T0.chx_source_autorisation
             
-            WHERE (`T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
+            WHERE (`T2`.`chp_nom_source` LIKE :T2_chp_nom_source
+               AND `T0`.`chx_acces_autorisation` = :T0_chx_acces_autorisation
                AND `T1`.`chp_nom_acces` LIKE :T1_chp_nom_acces
                AND `T0`.`chx_source_autorisation` = :T0_chx_source_autorisation
-               AND `T2`.`chp_nom_source` LIKE :T2_chp_nom_source
                AND `T0`.`che_pour_sous_liste_autorisation` = :T0_che_pour_sous_liste_autorisation
-               AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans
-               AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation) 
+               AND `T0`.`chi_id_autorisation` = :T0_chi_id_autorisation
+               AND `T0`.`chx_acces_autorisation` NOT IN :acces_pas_dans) 
             ORDER BY `T0`.`chx_acces_autorisation` DESC, `T2`.`chp_nom_source` ASC, `T0`.`chi_id_autorisation` DESC, `T2`.`chp_nom_source` ASC  
             LIMIT :quantitee OFFSET :debut 
             ;

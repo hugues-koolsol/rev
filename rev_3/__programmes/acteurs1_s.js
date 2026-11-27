@@ -70,7 +70,7 @@ class acteurs1{
         `T0`.`chx_utilisateur_acteur` , `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T1`.`chi_id_utilisateur` , `T1`.`chp_nom_de_connexion_utilisateur` , 
         `T1`.`chx_acces_utilisateur` , `T1`.`che_actif_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , 
         `T3`.`chp_nom_groupe` , `T4`.`chp_nom_metier` , `T0`.`chx_statut_acteur` , `T5`.`chp_cle_grandeur`
-         FROM b2.tbl_acteurs T0
+         FROM b2.tbl_base2_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
          LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
@@ -143,7 +143,7 @@ class acteurs1{
         /* =========================== mise à jour effective ======================== */
         let tt2004=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
-        UPDATE b2.tbl_acteurs SET 
+        UPDATE b2.tbl_base2_acteurs SET 
            `chp_nom_acteur` = :n_chp_nom_acteur , 
            `chp_prenom_acteur` = :n_chp_prenom_acteur , 
            `chx_statut_acteur` = :n_chx_statut_acteur
@@ -246,7 +246,7 @@ class acteurs1{
         };
         let tt2005=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
-        DELETE FROM b2.tbl_acteurs
+        DELETE FROM b2.tbl_base2_acteurs
         WHERE `chx_utilisateur_acteur` = :chx_utilisateur_acteur ;
         */
         /*sql_inclure_fin*/ 2005 , criteres_2005 , __db1 );
@@ -341,7 +341,7 @@ class acteurs1{
         /*sql_inclure_deb*/ /*#
         meta(inclure_le_prefixe_de_la_base_devant_la_table(1))
         
-        INSERT INTO b2.`tbl_acteurs`(
+        INSERT INTO b2.`tbl_base2_acteurs`(
             `chx_utilisateur_acteur` , 
             `chp_nom_acteur` , 
             `chp_prenom_acteur` , 
@@ -438,7 +438,7 @@ class acteurs1{
         `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
         `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
         `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur`
-         FROM b2.tbl_acteurs T0
+         FROM b2.tbl_base2_acteurs T0
          LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
         
          LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
@@ -474,7 +474,7 @@ class acteurs1{
             `T0`.`chp_nom_acteur` , `T0`.`chp_prenom_acteur` , `T0`.`chx_utilisateur_acteur` , `T1`.`chp_nom_de_connexion_utilisateur` , `T2`.`chi_id_acces` , 
             `T1`.`chx_acces_utilisateur` , `T2`.`chp_nom_acces` , `T2`.`chx_groupe_acces` , `T2`.`chx_metier_acces` , `T3`.`chp_nom_groupe` , 
             `T4`.`chp_nom_metier` , `T0`.`chx_utilisateur_acteur` , `T0`.`chx_statut_acteur`
-             FROM b2.tbl_acteurs T0
+             FROM b2.tbl_base2_acteurs T0
              LEFT JOIN b1.tbl_utilisateurs T1 ON T1.chi_id_utilisateur = T0.chx_utilisateur_acteur
             
              LEFT JOIN b1.tbl_acces T2 ON T2.chi_id_acces = T1.chx_acces_utilisateur
