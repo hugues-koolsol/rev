@@ -413,7 +413,7 @@ class sources1{
         } );
         /*
           =====================================================================================================
-          extrait page_modification 
+          dans source est_extrait page_modification ajouter__avant__cht_genere_source update sql_1422 
         */
         let boutons_avant1=[];
         if(tup.T0_chp_nom_source.toLowerCase().slice( -3 ) === '.js'){
@@ -458,8 +458,8 @@ class sources1{
             "rows" : 20 ,
             "cols" : 50 ,
             "format_du_source" : 1 ,
-            "boutons_avant1" : boutons_avant1 ,
-            "boutons_apres1" : boutons_apres1
+            "boutons_avant1" : /* sql_1422 */boutons_avant1 ,
+            "boutons_apres1" : /* sql_1422 */boutons_apres1
         } );
         /*
           =====================================================================================================
@@ -474,7 +474,7 @@ class sources1{
         } );
         /*
           =====================================================================================================
-          extrait page_modification 
+          dans source est_extrait page_modification ajouter__avant__cht_condition_js_source update sql_1422 
         */
         let boutons_avant2=[
             /*  */
@@ -491,7 +491,7 @@ class sources1{
             "rows" : 3 ,
             "cols" : 50 ,
             "format_du_source" : 1 ,
-            "boutons_avant1" : boutons_avant2
+            "boutons_avant1" : /* sql_1422 */boutons_avant2
         } );
         /*
           =====================================================================================================
@@ -776,34 +776,6 @@ class sources1{
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         document.getElementById( 'vv_ajouter_un_element_et_retour_a_la_ligne_' + this.moi ).style.visibility='hidden';
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    filtre1( mat , d , le_colis1=null ){
-        let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
-        if(a === null){
-            return(this.liste1( mat , d , le_colis1 ));
-        }
-        let tt=this.zones_liste1( le_colis1 );
-        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
-        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
-        this.filtres={};
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(lst[i].id){
-                this.filtres[lst[i].id]=lst[i].value;
-            }
-        }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi );
-        if(aa === null){
-            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
-        }else{
-            let jso=JSON.parse( aa );
-            jso['filtres']=this.filtres;
-            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
-        }
         return({"__xst" : __xsu});
     }
     /*

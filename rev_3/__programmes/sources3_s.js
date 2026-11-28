@@ -65,7 +65,7 @@ class sources3{
         let tt2015=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_sources
-        WHERE `chi_id_source` = :chi_id_source ;
+        WHERE `chi_id_source` = :chi_id_source
         */
         /*sql_inclure_fin*/ 2015 , criteres_2015 , __db1 );
         /*  */

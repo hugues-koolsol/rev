@@ -328,34 +328,6 @@ class bdds1{
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_colis1=null ){
-        let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
-        if(a === null){
-            return(this.liste1( mat , d , le_colis1 ));
-        }
-        let tt=this.zones_liste1( le_colis1 );
-        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
-        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
-        this.filtres={};
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(lst[i].id){
-                this.filtres[lst[i].id]=lst[i].value;
-            }
-        }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi );
-        if(aa === null){
-            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
-        }else{
-            let jso=JSON.parse( aa );
-            jso['filtres']=this.filtres;
-            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     raz_champ_filtre_grandeurs0( mat , d ){
         let l01=mat.length;
         for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){

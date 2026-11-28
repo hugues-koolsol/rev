@@ -23359,7 +23359,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(compiler_cette_liste_de_sql_en_cron1)),
@@ -23399,7 +23399,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================== extrait =========================================================================
       ),
       méthode(
          definition(nom(recuperer_requete_et_base_pour_compilation_en_ligne),argument(mat),argument(d),argument(le_colis1,defaut(null))),
@@ -23495,58 +23495,48 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
                )
             ),
             choix(
+               si(condition(diffstricte(obj.__xst,__xsu)),alors(retourner(obj)))
+            ),
+            choix(
                si(
-                  condition(egalstricte(obj.__xst,__xsu)),
+                  condition(diffstricte(bouton_compiler,'''')),
                   alors(
-                     choix(
-                        si(
-                           condition(diffstricte(bouton_compiler,'''')),
-                           alors(
-                              affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''yy_b1 yy__1'')
-                           )
-                        )
-                     ),
-                     declare_variable(
-                        obj1,
-                        obj(
-                           (
-                              "__xac",
-                              concat(
-                                 ''pm1(m1(n1('',
-                                 this.moi,
-                                 ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('',
-                                 chi_id_requete,
-                                 '')))))''
-                              )
-                           ),
-                           (
-                              "__xva",
-                              obj(
-                                 ("chi_id_requete",chi_id_requete),
-                                 ("cht_sql_requete",obj.source_sql),
-                                 ("source_js",obj.source_js),
-                                 ("cht_matrice_requete",obj.matrice_requete),
-                                 ("chp_table_reference_requete",obj.chp_table_reference_requete),
-                                 ("che_base_reference_requete",obj.che_base_reference_requete)
-                              )
-                           )
-                        )
-                     ),
-                     appelf(element(this.__ig1),nomf(envoyer_un_colis_au_worker),p(obj1)),
-                     retourner(obj(("__xst",__xsu)))
+                     affecte(appelf(element(document),nomf(getElementById),p(bouton_compiler),prop(className)),''yy_b1 yy__1'')
                   )
                )
             ),
-            retourner(
+            declare_variable(
+               obj1,
                obj(
-                  ("__xst",__xer),
-                  ("__xme",appelf(element(this.__ig1),nomf(nl2),p()))
+                  (
+                     "__xac",
+                     concat(
+                        ''pm1(m1(n1('',
+                        this.moi,
+                        ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('',
+                        chi_id_requete,
+                        '')))))''
+                     )
+                  ),
+                  (
+                     "__xva",
+                     obj(
+                        ("chi_id_requete",chi_id_requete),
+                        ("cht_sql_requete",obj.source_sql),
+                        ("source_js",obj.source_js),
+                        ("cht_matrice_requete",obj.matrice_requete),
+                        ("chp_table_reference_requete",obj.chp_table_reference_requete),
+                        ("che_base_reference_requete",obj.che_base_reference_requete)
+                     )
+                  )
                )
-            )
+            ),
+            appelf(element(this.__ig1),nomf(envoyer_un_colis_au_worker),p(obj1)),
+            retourner(obj(("__xst",__xsu)))
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(compiler_requete1),argument(mat),argument(d)),
@@ -23731,7 +23721,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(f1),argument(mat),argument(d),argument(le_colis1,defaut(null))),
@@ -23762,7 +23752,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
          )
       ),
       #(
-        =========================== fragment ========================================================================
+        =========================================================================================================
       ),
       méthode(
          definition(nom(constructor),argument(mat),argument(d),argument(__ig1)),
@@ -24231,7 +24221,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     compiler_cette_liste_de_sql_en_cron1(){
         let liste_des_chi_id_requete=[];
@@ -24247,7 +24237,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =========================== extrait =========================================================================
     */
     recuperer_requete_et_base_pour_compilation_en_ligne( mat , d , le_colis1=null ){
         let l01=mat.length;
@@ -24261,28 +24251,28 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
             }
         }
         let obj=this.__variables_module[''concevoir_une_requete1''][''compiler_en_ligne'']( mat , d , le_colis1 );
-        if(obj.__xst === __xsu){
-            if(bouton_compiler !== ''''){
-                document.getElementById( bouton_compiler ).className=''yy_b1 yy__1'';
-            }
-            let obj1={
-                "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('' + chi_id_requete + '')))))'' ,
-                "__xva" : {
-                    "chi_id_requete" : chi_id_requete ,
-                    "cht_sql_requete" : obj.source_sql ,
-                    "source_js" : obj.source_js ,
-                    "cht_matrice_requete" : obj.matrice_requete ,
-                    "chp_table_reference_requete" : obj.chp_table_reference_requete ,
-                    "che_base_reference_requete" : obj.che_base_reference_requete
-                }
-            };
-            this.__ig1.envoyer_un_colis_au_worker( obj1 );
-            return({"__xst" : __xsu});
+        if(obj.__xst !== __xsu){
+            return obj;
         }
-        return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
+        if(bouton_compiler !== ''''){
+            document.getElementById( bouton_compiler ).className=''yy_b1 yy__1'';
+        }
+        let obj1={
+            "__xac" : ''pm1(m1(n1('' + this.moi + ''),f1(enregistrer_une_requete_compile_en_ligne1(chi_id_requete('' + chi_id_requete + '')))))'' ,
+            "__xva" : {
+                "chi_id_requete" : chi_id_requete ,
+                "cht_sql_requete" : obj.source_sql ,
+                "source_js" : obj.source_js ,
+                "cht_matrice_requete" : obj.matrice_requete ,
+                "chp_table_reference_requete" : obj.chp_table_reference_requete ,
+                "che_base_reference_requete" : obj.che_base_reference_requete
+            }
+        };
+        this.__ig1.envoyer_un_colis_au_worker( obj1 );
+        return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     compiler_requete1( mat , d ){
         let l01=mat.length;
@@ -24332,7 +24322,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     f1( mat , d , le_colis1=null ){
         switch (mat[d][1]){
@@ -24353,7 +24343,7 @@ sup(this.donnees_retournees.chi_id_projet,0)','this.donnees_retournees.chi_id_pr
         return({"__xst" : __xsu});
     }
     /*
-      =========================== fragment ========================================================================
+      =============================================================================================================
     */
     constructor( mat , d , __ig1 ){
         this.__ig1=__ig1;
@@ -52515,7 +52505,7 @@ INSERT INTO tbl_bdds (  chi_id_basedd ,  chp_rev_travail_basedd ,  chp_fournisse
    genre_meta(base_de_données),
    default_charset(''utf8mb4''),
    collate(''utf8mb4_unicode_ci''),
-   transform_base_sur_svg(translate(-747.5,-119.5))
+   transform_base_sur_svg(translate(-606.5,12.5))
 ),
 créer_table(
    nom_de_la_table(''tbl_projets''),
@@ -61233,6 +61223,6 @@ sup(this.__ig1.donnees_retournees.chi_id_utilisateur,0)','this.__ig1.donnees_ret
 
 /*================================================================================ DEBUT BLOC TABLE tbl_utilisateurs offset 0 (2) */
 INSERT INTO tbl_utilisateurs (  chi_id_utilisateur ,  chp_nom_de_connexion_utilisateur ,  chp_mot_de_passe_utilisateur ,  chp_parametres_utilisateur ,  chi_compteur1_utilisateur ,  chx_acces_utilisateur ,  chd__dtm_utilisateur ,  chd__dtc_utilisateur ,  che__nur_utilisateur ,  che_actif_utilisateur ) VALUES
-('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1887','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
+('1','dev','$2a$10$aKN2PBwBvSUo94sDqhwKeuRXA9Ca7vV.Rxn0fPm.0MZwlsrnsIsIa',NULL,'1891','1','2000-01-01 00:00:00','2000-01-01 00:00:00','0','1'),
 ('2','admin','$2a$10$xv.rjW4JKTTCufVo1hMVuuLcUwGkGktjC3vXwdw7XhG/kuT.qh5EW',NULL,'20','2','2000-01-01 00:00:00.000','2000-01-01 00:00:00.000','0','1');
 /*================================================================================ FIN BLOC TABLE tbl_utilisateurs offset 0 */

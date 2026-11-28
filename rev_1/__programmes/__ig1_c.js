@@ -1071,7 +1071,7 @@ class __ig1{
                     if(premiere_zone_affichee === ''){
                         premiere_zone_affichee=i;
                     }
-                    let val=''
+                    let val='';
                     let le_style='';
                     if(le_colis1.__xva
                            && le_colis1.__xva.criteres2
@@ -1080,7 +1080,7 @@ class __ig1{
                     ){
                         derniere_zone_non_vide=i;
                         val=this.fi1( le_colis1.__xva.criteres2[i] );
-                        le_style=' style="background:yellow;"'
+                        le_style=' style="background:yellow;"';
                     }
                     o1+='<div class="yy_libelle_filtre">' + elem.nom + '</div>';
                     o1+='<div class="yy_champ_filtre1">\r\n';

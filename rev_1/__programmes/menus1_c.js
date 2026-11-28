@@ -271,7 +271,7 @@ class menus1{
         } , this );
         /*
           =====================================================================================================
-          extrait page_modification 
+          extrait page_modification update sql_1148 
         */
         let var_boutons_avant1=[];
         var_boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</button>' );
@@ -299,7 +299,7 @@ class menus1{
         } );
         /*
           =====================================================================================================
-          extrait page_modification 
+          extrait page_modification update sql_1148 
         */
         let var_boutons_avant2=[];
         var_boutons_avant2.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
@@ -518,7 +518,7 @@ class menus1{
         } , this );
         /*
           =====================================================================================================
-          extrait page_creer 
+          extrait page_creer insert sql_1147 
         */
         let var_boutons_avant1=[];
         var_boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );

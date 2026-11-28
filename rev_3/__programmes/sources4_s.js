@@ -14,271 +14,52 @@ class sources4{
     /*
       =============================================================================================================
     */
-    async actions_et_tests_apres_page_modifications( mat , d , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_et_actions_apres_modifier( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_et_tests_avant_modifier( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async test_avant_supprimer( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async actions_apres_supprimer( mat , d , form , __xva_avant , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async tests_avant_creer( mat , d , form , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async action_apres_creer( mat , d , nouvel_id , form , __db1 ){
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_voir1( mat , d ){
-        let chi_id_source=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_source'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
-                chi_id_source=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_source === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_2012={"T0_chi_id_source" : chi_id_source};
-        let tt2012=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 2012 , critere_2012 , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_voir1']=tt2012;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async supprimer1( mat , d ){
-        let nom_formulaire=this.__ig1.donnees_recues[__xva]['__co1'];
-        let form=this.__ig1.donnees_recues[__xva]['__fo1'][nom_formulaire];
-        /*  */
-        let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let criteres_2012={
-             /*  */
-            "T0_chi_id_source" : form['chi_id_source']
-        };
-        let tt2012=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 2012 , criteres_2012 , __db1 );
-        if(tt2012.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt2012.__xme});
-        }
-        /*  */
-        let tas=await this.test_avant_supprimer( mat , d , form , tt2012[__xva][0] , __db1 );
-        if(tas.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tas.__xme});
-        }
-        let criteres_2015={
-             /*  */
-            "chi_id_source" : form['chi_id_source']
-        };
-        let tt2015=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        DELETE FROM b1.tbl_sources
-        WHERE `chi_id_source` = :chi_id_source ;
-        */
-        /*sql_inclure_fin*/ 2015 , criteres_2015 , __db1 );
-        /*  */
-        if(tt2015.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt2015.__xme});
-        }
-        let aac=await this.actions_apres_supprimer( mat , d , form , tt2012[__xva][0] , __db1 );
-        if(aac.__xst === __xer){
-            return({"__xst" : __xer ,"__xme" : aac.__xme});
-        }
-        /*  */
-        if(form['__mat_liste_si_ok'] !== ''){
-            let mat1=JSON.parse( form['__mat_liste_si_ok'] );
-            await this.filtre1( mat1 , 1 , __db1 );
-        }
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async page_confirmation_supprimer1( mat , d ){
-        let chi_id_source=0;
-        let l01=mat.length;
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'chi_id_source'
-                   && mat[i][2] === 'f'
-                   && mat[i][8] === 1
-                   && mat[i + 1][2] === 'c'
-                   && mat[i + 1][4] === 0
-            ){
-                chi_id_source=parseInt( mat[i + 1][1] , 10 );
-            }
-        }
-        if(chi_id_source === 0){
-            return({"__xst" : __xer ,"__xme" : this.__ig1.nl2()});
-        }
-        let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let critere_2012={"T0_chi_id_source" : chi_id_source};
-        let tt2012=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source` , `T0`.`che_pour_util_source`
-         FROM b1.tbl_sources T0
-        WHERE `T0`.`chi_id_source` = :T0_chi_id_source
-        ;
-        */
-        /*sql_inclure_fin*/ 2012 , critere_2012 , __db1 );
-        this.__ig1.donnees_retournees[__xva]['page_confirmation_supprimer1']=tt2012;
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    async filtre1( mat , d , __db1=null ){
-        let l01=mat.length;
-        let option_de_13='';
-        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
-            if(mat[i][1] === 'de_13' && mat[i][2] === 'f' && mat[i][8] === 1 && mat[i + 1][2] === 'c'){
-                option_de_13='de_13(' + mat[i + 1][1] + ')';
-            }
-        }
-        const __nbMax=40;
-        let __num_page=0;
-        let formulaire=this.__ig1.__fnt1.debut_filtre1( mat , d , this.fonction_liste );
-        if(!formulaire.hasOwnProperty( '__num_page' ) || !this.__ig1.est_num( formulaire.__num_page )){
-            __num_page=0;
-        }else{
-            __num_page=parseInt( formulaire.__num_page , 10 );
-        }
-        let __debut=__num_page * __nbMax;
-        let criteres_2011={
-             /*  */
-            "quantitee" : __nbMax ,
-            "debut" : __debut
-        };
-        for(let i in formulaire){
-            if(i !== '__num_page'){
-                criteres_2011[i]=formulaire[i];
-            }
-        }
-        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
-            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
-                criteres_2011[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
-            }
-        }
-        if(__db1 === null){
-            __db1=await this.__ig1.ouvrir_bdd( 1 );
-        }
-        let tt2011=await this.__ig1.sql_iij(
-        /*sql_inclure_deb*/ /*#
-        SELECT 
-        `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
-         FROM b1.tbl_sources T0
-        WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
-           AND `T0`.`chi_id_source` = :T0_chi_id_source
-           AND `T0`.`chi_id_source` > :T0_chi_id_source2
-           AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-           AND `T0`.`che_binaire_source` = :T0_che_binaire_source
-           AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
-           AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
-        ORDER BY `T0`.`chi_id_source` DESC  
-        LIMIT :quantitee OFFSET :debut 
-        ;
-        */
-        /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
-        if(tt2011.__xst !== __xsu){
-            return({"__xst" : __xer ,"__xme" : tt2011.__xme});
-        }
-        if(tt2011.__xst === __xsu && tt2011.__xva.length === 0 && __debut > 0){
-            /*
-              si la liste est vide et que la page en cours est > 0 alors on essaie à partir de la page 0
-            */
-            __debut=0;
-            __num_page=0;
-            criteres_2011['debut']=__debut;
-            tt2011=await this.__ig1.sql_iij(
-            /*sql_inclure_deb*/ /*#
-            SELECT 
-            `T0`.`chi_id_source` , `T0`.`chp_nom_source` , `T0`.`che_binaire_source` , `T0`.`cht_commentaire_source` , `T0`.`che_autorisation_globale_source`
-             FROM b1.tbl_sources T0
-            WHERE (`T0`.`chp_nom_source` LIKE :T0_chp_nom_source
-               AND `T0`.`chi_id_source` = :T0_chi_id_source
-               AND `T0`.`chi_id_source` > :T0_chi_id_source2
-               AND `T0`.`chi_id_source` <= :T0_chi_id_source3
-               AND `T0`.`che_binaire_source` = :T0_che_binaire_source
-               AND `T0`.`che_autorisation_globale_source` = :T0_che_autorisation_globale_source
-               AND `T0`.`che_pour_util_source` IN (:T0_che_pour_util_source)) 
-            ORDER BY `T0`.`chi_id_source` DESC  
-            LIMIT :quantitee OFFSET :debut 
-            ;
-            */
-            /*sql_inclure_fin*/ 2011 , criteres_2011 , __db1 );
-        }
-        this.__ig1.donnees_retournees.__xva['__nbMax']=__nbMax;
-        this.__ig1.donnees_retournees[__xva]['__debut']=__debut;
-        this.__ig1.donnees_retournees[__xva]['__num_page']=__num_page;
-        this.__ig1.donnees_retournees[__xac]='pm1(m1(n1(' + this.moi + '),f1(' + this.fonction_liste + '(' + option_de_13;
-        for(let i in formulaire){
-            this.__ig1.donnees_retournees[__xac]+=this.__ig1.__fnt1.critere_liste( formulaire , i );
-        }
-        this.__ig1.donnees_retournees[__xac]+='))))';
-        this.__ig1.donnees_retournees[__xva][this.fonction_liste]=tt2011;
-        return({"__xst" : __xsu});
+    ajoute_criteres_sous_liste2( criteres_xxxx ){
+        /* voir exemple dans groupes2_s.js */
     }
     /*
       =============================================================================================================
     */
     async sous_liste2( mat , d ){
+        let contexte='';
+        let nom_de_variable=0;
+        let l01=mat.length;
+        for( let i=d + 1 ; i < l01 ; i=mat[i][12] ){
+            if(mat[i][1] === 'methode_sur_click2' && mat[i][2] === 'f'){
+                for( let j=i + 1 ; j < l01 ; j=mat[j][12] ){
+                    if(mat[j][1] === 'f1' && mat[j][2] === 'f'){
+                        for( let k=j + 1 ; k < l01 ; k=mat[k][12] ){
+                            if(mat[k][1] === 'nom_du_contexte' && mat[k][2] === 'f'){
+                                contexte='nom_du_contexte';
+                                for( let l=k + 1 ; l < l01 ; l=mat[l][12] ){
+                                    if(mat[l][1] === 'nom_de_variable' && mat[l][2] === 'f' && mat[l][8] === 1 && mat[l + 1][2] === 'c'){
+                                        nom_de_variable=parseInt( mat[l + 1][1] , 10 );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let __db1=await this.__ig1.ouvrir_bdd( this.__ig1.options_generales.base_cible_ou_base_un );
         const __nbMax=40;
-        let criteres_2011={};
-        criteres_2011['quantitee']=__nbMax;
-        /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
-        let __db1=await this.__ig1.ouvrir_bdd( 1 );
-        let liste2=await this.__ig1.generique_sous_liste2( mat , d , 2011 , criteres_2011 , __nbMax , __db1 );
+        let __num_page=0;
+        let liste2={};
+        let criteres_xxxx={};
+        criteres_xxxx['quantitee']=__nbMax;
+        this.ajoute_criteres_sous_liste2( criteres_xxxx );
+        if(this.__ig1.donnees_recues.__xva.hasOwnProperty( '__complements_sous_liste' )){
+            for(let i in this.__ig1.donnees_recues.__xva.__complements_sous_liste){
+                criteres_xxxx[i]=this.__ig1.donnees_recues.__xva.__complements_sous_liste[i];
+            }
+        }
+        if(true || contexte === 'nom_du_contexte'){
+            /* on peut éventuellement ajouter des criteres ici, voir par exemple metiers1_s.js */
+            liste2=await this.__ig1.generique_sous_liste2( mat , d , 2011 , criteres_xxxx , __nbMax , __db1 );
+        }
         if(liste2.__xst === __xsu){
-            /* faire éventuellement faire quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
+            /* faire éventuellement quelque chose ici avec les éléments contenus dans this.__ig1.donnees_retournees.__xva.sous_liste2.__xva */
             /* voir par exemple dossiers1_s.js */
         }
         return liste2;
@@ -286,17 +67,9 @@ class sources4{
     /*
       =============================================================================================================
     */
-    async liste1( mat , d ){
-        this.fonction_liste='liste1';
-        await this.filtre1( mat , d );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
     moi='sources4';
     __ig1=null;
-    fonction_liste='liste1';
+    __variables_module={};
     /*
       =============================================================================================================
     */

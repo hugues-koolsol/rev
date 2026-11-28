@@ -21,7 +21,7 @@ class utilisateurs1{
             "T0_chp_nom_de_connexion_utilisateur" : {"nom" : 'nom de connexion' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_acces_utilisateur" : {"nom" : 'accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T1_che_actif_acces" : {"nom" : 'actif accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
+            "T1_che_actif_acces" : {"nom" : 'actif accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chi_compteur1_utilisateur" : {"nom" : 'compteur1 >=' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
     };
@@ -419,15 +419,14 @@ class utilisateurs1{
     /*
       =============================================================================================================
     */
-    filtre1( mat , d , le_colis1=null ){
-        debugger;
+    zz_filtre1( mat , d , le_colis1=null ){
+        debugger
         let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
         if(a === null){
             return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
         this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
-        debugger;
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};

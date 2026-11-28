@@ -1037,7 +1037,7 @@ class dossiers1{
         } , this );
         /*
           =====================================================================================================
-          extrait page_modification 
+          dans source est_extrait dans page_modification ajouter__après__chx_parent_dossier  
         */
         if(tup.T0_chp_nom_dossier === '__fichiers_binaires'){
             o1+='  <div class="yy_edition_champ1">';
@@ -1127,7 +1127,7 @@ class dossiers1{
         } , this );
         /*
           =====================================================================================================
-          extrait page_confirmation_supprimer 
+          dans source est_extrait dans page_confirmation_supprimer pour ajouter__après__chx_parent_dossier 
         */
         o1+='  <div class="yy_edition_champ1">';
         o1+='    <div class="yy_edition_libelle1">';
@@ -1268,34 +1268,6 @@ class dossiers1{
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( 'création ' + this.DUN_DUNE_ELEMENT_GERE );
         this.__ig1.repositionner_les_boutons_action( 'vv_ecran_creation_zone_boutons' );
-        return({"__xst" : __xsu});
-    }
-    /*
-      =============================================================================================================
-    */
-    filtre1( mat , d , le_colis1=null ){
-        let a=document.getElementById( 'vv_ecran_liste_zone_contenu' );
-        if(a === null){
-            return(this.liste1( mat , d , le_colis1 ));
-        }
-        let tt=this.zones_liste1( le_colis1 );
-        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
-        this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
-        let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
-        this.filtres={};
-        for( let i=0 ; i < lst.length ; i++ ){
-            if(lst[i].id){
-                this.filtres[lst[i].id]=lst[i].value;
-            }
-        }
-        let aa=sessionStorage.getItem( this.__ig1.cle_lst0 + '_' + this.moi );
-        if(aa === null){
-            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( {"filtres" : this.filtres} ) );
-        }else{
-            let jso=JSON.parse( aa );
-            jso['filtres']=this.filtres;
-            sessionStorage.setItem( this.__ig1.cle_lst0 + '_' + this.moi , JSON.stringify( jso ) );
-        }
         return({"__xst" : __xsu});
     }
     /*

@@ -16,10 +16,10 @@ class autorisations1{
     tableau_des_filtres={
         "liste1" : {
             "__num_page" : {"nom" : '__num_page' ,"taille" : 9 ,"défaut" : 0 ,"masqué" : true} ,
+            "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_acces_autorisation" : {"nom" : 'id accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T1_chp_nom_acces" : {"nom" : 'nom accès' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_chx_source_autorisation" : {"nom" : 'id source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
-            "T2_chp_nom_source" : {"nom" : 'nom source' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false} ,
             "T0_che_pour_sous_liste_autorisation" : {"nom" : 'pour s/liste' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false ,"genre" : 5} ,
             "T0_chi_id_autorisation" : {"nom" : 'id' ,"taille" : 9 ,"défaut" : '' ,"masqué" : false}
         }
@@ -30,13 +30,13 @@ class autorisations1{
     __variables_module={};
     vv_ecran_liste_boutons_avant='';
     __champs_sortie_pour_tri1={
+        "`T2`.`chp_nom_source`" : 'nom' ,
         "`T0`.`chx_acces_autorisation`" : 'id accès' ,
         "`T1`.`chp_nom_acces`" : 'nom' ,
         "`T0`.`chx_source_autorisation`" : 'id source' ,
-        "`T2`.`chp_nom_source`" : 'nom' ,
         "`T0`.`che_pour_sous_liste_autorisation`" : 'pour s/liste' ,
-        "`T0`.`chx_acces_autorisation`" : 'id accès' ,
-        "`T0`.`chi_id_autorisation`" : 'id'
+        "`T0`.`chi_id_autorisation`" : 'id' ,
+        "`T0`.`chx_acces_autorisation`" : 'id accès'
     };
     /*
       =========================== extrait =========================================================================
@@ -76,7 +76,7 @@ class autorisations1{
             }
         }
         this.vv_ecran_liste_boutons_avant+='<button class="yy_svg1 yy__xif" rev_clic1="m1(n1(' + this.moi + '),f1(page_creer1()))" title="création' + this.DUN_DUNE_ELEMENT_GERE + '" >' + this.__ig1.les_svg.nouveau_document + '</button>';
-        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" title="" >générer les autorisations</button>';
+        this.vv_ecran_liste_boutons_avant+='<button class="yy_b1 yy__xif" rev_clic1="pm1(m1(n1(' + this.moi + '),f1(gererer_les_autorisation_serveur())))" data-indicateur_graphique2="bouton_generer_les_autorisations" title="" >générer les autorisations</button>';
     }
     /*
       =============================================================================================================
@@ -86,7 +86,7 @@ class autorisations1{
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
-        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+        this.__ig1.maj_htm2( 'vv_ecran_modification_zone_complement' , o1 );
     }
     /*
       =============================================================================================================
@@ -397,7 +397,7 @@ class autorisations1{
             return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -480,12 +480,12 @@ class autorisations1{
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_autorisation' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
-            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
+            this.__ig1.maj_htm1( a , this.LISTE_DES_ELEMENTS_GERES );
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , this.zones_liste1( le_colis1 ) );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});
@@ -549,13 +549,6 @@ class autorisations1{
                 /*
                   =====================================================================================
                 */
-                lst+='<td style="text-align:center;">';
-                /* cas 9.1.0 */
-                lst+='<span data-chi_id_autorisation="' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '">' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '</span>';
-                lst+='</td>';
-                /*
-                  =====================================================================================
-                */
                 /*
                   =====================================================================================
                   combinaison accès
@@ -593,6 +586,13 @@ class autorisations1{
                 /*
                   =====================================================================================
                 */
+                lst+='<td style="text-align:center;">';
+                /* cas 9.1.0 */
+                lst+='<span data-chi_id_autorisation="' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '">' + this.__ig1.fi2( tup.T0_chi_id_autorisation ) + '</span>';
+                lst+='</td>';
+                /*
+                  =====================================================================================
+                */
                 lst+='</tr>';
             }
             if(lst !== ''){
@@ -600,10 +600,10 @@ class autorisations1{
                 o1+='<table>';
                 o1+='<tr>';
                 o1+='<th>action</th>';
-                o1+=/* chi_id_autorisation */'<th>id</th>';
                 o1+=/* combinaison */'<th style="min-width: 12em;">accès</th>';
                 o1+=/* combinaison */'<th style="min-width: 12em;">source</th>';
                 o1+=/* che_pour_sous_liste_autorisation */'<th>pour s/liste</th>';
+                o1+=/* chi_id_autorisation */'<th>id</th>';
                 o1+='</tr>';
                 o1+=lst;
                 o1+='</table>';

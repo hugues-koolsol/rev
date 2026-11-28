@@ -184,7 +184,7 @@ class menus1{
         if(o1 !== ''){
             o1+='<div class="yy__bdp1"></div>';
         }
-        document.getElementById( 'vv_ecran_modification_zone_complement' ).innerHTML=o1;
+        this.__ig1.maj_htm2( 'vv_ecran_modification_zone_complement' , o1 );
     }
     /*
       =============================================================================================================
@@ -271,7 +271,7 @@ class menus1{
         } , this );
         /*
           =====================================================================================================
-          extrait page_modification 
+          extrait page_modification update sql_1148 
         */
         let var_boutons_avant1=[];
         var_boutons_avant1.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</button>' );
@@ -299,7 +299,7 @@ class menus1{
         } );
         /*
           =====================================================================================================
-          extrait page_modification 
+          extrait page_modification update sql_1148 
         */
         let var_boutons_avant2=[];
         var_boutons_avant2.push( '<button class="yy_b1 yy__3" rev_clic1="m1(n1(x_ecran_rev_vers_js1),f1(rev_vers_js1(zone_source(cht_condition_menu),zone_resultat(cht_condition_js_menu))))" title="convertir de rev versjs" >↧rev->js↧</button>' );
@@ -518,7 +518,7 @@ class menus1{
         } , this );
         /*
           =====================================================================================================
-          extrait page_creer 
+          extrait page_creer insert sql_1147 
         */
         let var_boutons_avant1=[];
         var_boutons_avant1.push( '<div class="yy_b1 yy__3" rev_clic1="m1(n1(' + this.moi + '),f1(affiche_methodes(champ(chx_autorisation_menu))))" title="méthodes" >méthodes</div>' );
@@ -608,7 +608,7 @@ class menus1{
             return(this.liste1( mat , d , le_colis1 ));
         }
         let tt=this.zones_liste1( le_colis1 );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=tt.o1;
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , o1 );
         this.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant );
         let lst=document.getElementById( 'vv_filtre1' ).querySelectorAll( "input" );
         this.filtres={};
@@ -691,12 +691,12 @@ class menus1{
                 this.__ig1.initialisation_des_zones( this.moi , 'chi_id_menu' );
                 a=document.getElementById( 'vv_titre_de_la_page' );
             }
-            a.innerHTML=this.LISTE_DES_ELEMENTS_GERES;
+            this.__ig1.maj_htm1( a , this.LISTE_DES_ELEMENTS_GERES );
             this.__ig1.afficher_les_zones( 'vv_ecran_liste' );
         }
         this.zones_filtres1( mat , d , le_colis1 );
         this.__ig1.vv_ecran_liste_zones_navigation1( le_colis1 , this.vv_ecran_liste_boutons_avant , 'liste1' );
-        document.getElementById( 'vv_ecran_liste_zone_contenu' ).innerHTML=this.zones_liste1( le_colis1 );
+        this.__ig1.maj_htm2( 'vv_ecran_liste_zone_contenu' , this.zones_liste1( le_colis1 ) );
         this.__ig1.maj_hash( mat , 0 );
         this.__ig1.maj_title_htm1( this.LISTE_DES_ELEMENTS_GERES );
         return({"__xst" : __xsu});

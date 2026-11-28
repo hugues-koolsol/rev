@@ -899,7 +899,7 @@ class acces1{
         let tt1139=await this.__ig1.sql_iij(
         /*sql_inclure_deb*/ /*#
         DELETE FROM b1.tbl_acces
-        WHERE `chi_id_acces` = :chi_id_acces ;
+        WHERE `chi_id_acces` = :chi_id_acces
         */
         /*sql_inclure_fin*/ 1139 , criteres_1139 , __db1 );
         /*  */
